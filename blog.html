@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Property Journal | Blogs &amp; Insights | One Roof Properties</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&family=Nanum+Myeongjo:wght@400;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #FAF8EE;
+      color: #465665;
+      font-family: 'Jost', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    .dropdown-parent:hover .prop-dropdown { display: block !important; }
+    .dropdown-parent:hover .prop-caret { transform: rotate(180deg) !important; }
+
+    /* ======================================================== */
+    /* TOP OVERLAY NAVBAR (TRANSPARENT ON HERO, BG ON SCROLL)   */
+    /* ======================================================== */
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1500;
+      padding: 34px 0 0;
+      background: transparent;
+      transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .holder {
+      padding: 0 max(24px, 4.5vw);
+      max-width: 1820px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .header-block {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 58px;
+      gap: 24px;
+    }
+
+    .header-logo {
+      position: relative;
+      text-align: center;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .header-nav-list {
+      display: flex;
+      gap: clamp(18px, 2.2vw, 36px);
+      list-style: none;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-nav-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .header-nav-list li {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(13px, 0.88vw, 15px);
+      font-weight: 400;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .header-nav-list a {
+      color: #ffffff;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .header-nav-list a::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 1px;
+      background: #ffffff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .header-nav-list a:hover::before {
+      transform: scaleX(1);
+    }
+
+    @media (max-width: 1024px) {
+      .header-nav-list { display: none; }
+      .header-block { grid-template-columns: 1fr; justify-items: center; }
+    }
+
+    /* ======================================================== */
+    /* 1. BLOG HERO SECTION (NORTH WIND EDITORIAL JOURNAL)      */
+    /* ======================================================== */
+    .blog-hero {
+      position: relative;
+      width: 100%;
+      height: 76vh;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #1e272e;
+    }
+
+    .blog-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('realestate23.webp'), url('counter-day.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      transform: scale(1.02);
+      filter: brightness(0.76) contrast(1.04);
+      z-index: 1;
+    }
+
+    .blog-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20, 28, 34, 0.32) 0%, rgba(20, 28, 34, 0.22) 50%, rgba(20, 28, 34, 0.62) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .blog-hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 820px;
+      padding: 48px 24px 0;
+      color: #ffffff;
+    }
+
+    .blog-hero-overline {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 3.2px;
+      text-transform: uppercase;
+      color: rgba(250, 248, 238, 0.88);
+      margin-bottom: 14px;
+    }
+
+    .blog-hero-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 4.4vw, 3.85rem);
+      font-weight: 400;
+      line-height: 1.16;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.45);
+      margin: 0 0 18px;
+    }
+
+    .blog-hero-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+      font-weight: 300;
+      line-height: 1.68;
+      color: rgba(250, 248, 238, 0.92);
+      max-width: 610px;
+      margin: 0 auto;
+    }
+
+    .blog-hero-caption {
+      position: absolute;
+      right: 22px;
+      bottom: 14px;
+      z-index: 5;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.78);
+      letter-spacing: 0.5px;
+    }
+
+    /* ======================================================== */
+    /* 2. FEATURED ARTICLE SHOWCASE + SLIDER ARROWS             */
+    /* ======================================================== */
+    #featuredArticleSection {
+      background-color: #FAF8EE;
+      padding: 72px 24px 28px;
+    }
+
+    .blog-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .featured-card-wrap {
+      background: linear-gradient(180deg, rgba(243, 239, 226, 0.45) 0%, rgba(243, 239, 226, 0.85) 75%, rgba(250, 248, 238, 0) 100%);
+      border-radius: 24px;
+      padding-bottom: 28px;
+      transition: opacity 0.35s ease;
+    }
+
+    .featured-img-box {
+      position: relative;
+      width: 100%;
+      height: 440px;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(70, 86, 101, 0.12);
+      margin-bottom: 24px;
+      background: #e2e8f0;
+    }
+
+    .featured-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .featured-card-wrap:hover .featured-img-box img {
+      transform: scale(1.03);
+    }
+
+    .blog-pill-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(30, 41, 52, 0.76);
+      backdrop-filter: blur(8px);
+      color: #FAF8EE;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      z-index: 3;
+    }
+
+    .featured-body {
+      padding: 0 18px;
+    }
+
+    .featured-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-bottom: 8px;
+    }
+
+    .featured-headline {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.45rem, 2.2vw, 1.95rem);
+      font-weight: 700;
+      line-height: 1.3;
+      color: #465665;
+      margin: 0 0 10px;
+      letter-spacing: -0.3px;
+    }
+
+    .featured-excerpt {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 400;
+      line-height: 1.65;
+      color: #7b8791;
+      max-width: 780px;
+      margin: 0;
+    }
+
+    .blog-read-inline {
+      display: inline-block;
+      color: #465665;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      margin-left: 6px;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .blog-read-inline:hover {
+      color: #b45309;
+    }
+
+    /* Centered Circular Slider Controls (< >) Below Featured Article */
+    .featured-slider-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .featured-nav-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(70, 86, 101, 0.42);
+      background: transparent;
+      color: #465665;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .featured-nav-circle:hover {
+      background: #465665;
+      color: #FAF8EE;
+      border-color: #465665;
+      transform: translateY(-2px);
+    }
+
+    /* ======================================================== */
+    /* 3. EDITORIAL CATEGORY FILTERS BAR                        */
+    /* ======================================================== */
+    #blogCategorySection {
+      background-color: #FAF8EE;
+      padding: 24px 24px 36px;
+    }
+
+    .blog-filter-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      border-top: 1px solid rgba(70, 86, 101, 0.12);
+      border-bottom: 1px solid rgba(70, 86, 101, 0.12);
+      padding: 18px 0;
+    }
+
+    .blog-filter-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 8px 20px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #7b8791;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .blog-filter-btn:hover {
+      color: #465665;
+      border-color: rgba(70, 86, 101, 0.24);
+    }
+
+    .blog-filter-btn.active {
+      background: #465665;
+      color: #FAF8EE;
+      border-color: #465665;
+    }
+
+    /* ======================================================== */
+    /* 4. 3-COLUMN EDITORIAL ARTICLE GRID (NORTH WIND LAYOUT)   */
+    /* ======================================================== */
+    #blogGridSection {
+      background-color: #FAF8EE;
+      padding: 12px 24px 90px;
+    }
+
+    .blog-cards-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 42px 30px;
+    }
+
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+
+    .blog-card.hidden-card {
+      display: none;
+    }
+
+    .blog-card-thumb {
+      position: relative;
+      width: 100%;
+      height: 245px;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      box-shadow: 0 12px 30px rgba(70, 86, 101, 0.1);
+      background: #e2e8f0;
+    }
+
+    .blog-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .blog-card:hover .blog-card-thumb img {
+      transform: scale(1.05);
+    }
+
+    .blog-card-meta {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-bottom: 6px;
+    }
+
+    .blog-card-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+      line-height: 1.38;
+      color: #465665;
+      margin: 0 0 10px;
+      letter-spacing: -0.2px;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .blog-card-title:hover {
+      color: #b45309;
+    }
+
+    .blog-card-excerpt {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.62;
+      color: #7b8791;
+      margin: 0 0 10px;
+    }
+
+    .blog-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #465665;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      width: fit-content;
+      transition: color 0.2s ease;
+    }
+
+    .blog-card-link:hover {
+      color: #b45309;
+    }
+
+    /* ======================================================== */
+    /* 5. FINAL EDITORIAL CTA ("YOUR NEXT MOVE")                */
+    /* ======================================================== */
+    #blogNextMoveCta {
+      background-color: #FAF8EE;
+      padding: 10px 24px 96px;
+    }
+
+    .next-move-box {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #F3EFE2 0%, #EAE4D3 100%);
+      border: 1px solid rgba(70, 86, 101, 0.16);
+      border-radius: 26px;
+      padding: 64px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(70, 86, 101, 0.08);
+    }
+
+    .next-move-overline {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-bottom: 12px;
+    }
+
+    .next-move-heading {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 3.2vw, 2.85rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: #465665;
+      margin: 0 0 16px;
+    }
+
+    .next-move-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.02rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: #7b8791;
+      max-width: 580px;
+      margin: 0 auto 30px;
+    }
+
+    .next-move-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #465665;
+      color: #FAF8EE;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 500;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      padding: 15px 34px;
+      border-radius: 10px;
+      transition: all 0.25s ease;
+    }
+
+    .next-move-btn:hover {
+      background: #34424f;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(70, 86, 101, 0.22);
+    }
+
+    /* ======================================================== */
+    /* ARTICLE READER MODAL (FOR INTERACTIVE READING)           */
+    /* ======================================================== */
+    .article-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 28, 36, 0.72);
+      backdrop-filter: blur(8px);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .article-modal-backdrop.open {
+      display: flex;
+    }
+
+    .article-modal-box {
+      background: #FAF8EE;
+      border: 1px solid rgba(70, 86, 101, 0.2);
+      border-radius: 22px;
+      max-width: 780px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 42px 40px;
+      position: relative;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    .article-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(70, 86, 101, 0.35);
+      background: transparent;
+      color: #465665;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .article-modal-close:hover {
+      background: #465665;
+      color: #FAF8EE;
+    }
+
+    /* ======================================================== */
+    /* 6. LUXURY CURVED-ARCH 3-COLUMN FOOTER (NORTH WIND STYLE) */
+    /* ======================================================== */
+    .nw-footer {
+      position: relative;
+      z-index: 10;
+      padding: 90px 24px 36px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(70, 86, 101, 0.14) 0%, rgba(70, 86, 101, 0.04) 45%, transparent 75%),
+        linear-gradient(180deg, #E3EAE8 0%, #EFF2EC 42%, #FAF8EE 100%);
+      color: #465665;
+      overflow: hidden;
+      border-top: 1px solid rgba(70, 86, 101, 0.14);
+    }
+
+    .nw-footer::before,
+    .nw-footer::after {
+      content: '';
+      position: absolute;
+      top: 40px;
+      width: 1150px;
+      height: 1150px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .nw-footer::before {
+      right: calc(50% + 195px);
+      border-right: 1px solid rgba(70, 86, 101, 0.18);
+    }
+
+    .nw-footer::after {
+      left: calc(50% + 195px);
+      border-left: 1px solid rgba(70, 86, 101, 0.18);
+    }
+
+    .nw-footer-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .nw-footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      margin-bottom: 64px;
+      gap: 24px;
+    }
+
+    .nw-footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #465665;
+    }
+
+    .nw-footer-socials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .nw-social-pill {
+      width: 58px;
+      height: 40px;
+      border-radius: 11px;
+      border: 1px solid rgba(70, 86, 101, 0.48);
+      background: rgba(255, 255, 255, 0.35);
+      color: #465665;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .nw-social-pill:hover {
+      background: #465665;
+      color: #ffffff;
+      border-color: #465665;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(70, 86, 101, 0.18);
+    }
+
+    .nw-footer-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nw-member-label {
+      font-family: 'Nanum Myeongjo', Georgia, serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #465665;
+      margin-bottom: 6px;
+    }
+
+    .nw-credai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: 'Jost', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #465665;
+      line-height: 1;
+      position: relative;
+    }
+
+    .nw-credai-roof {
+      color: #c05640;
+      font-size: 0.95rem;
+      margin-left: -2px;
+      transform: translateY(-7px);
+    }
+
+    .nw-footer-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      text-align: center;
+      padding-bottom: 64px;
+    }
+
+    .nw-col-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: 1.38rem;
+      font-weight: 700;
+      color: #465665;
+      margin: 0 0 26px;
+      letter-spacing: -0.2px;
+    }
+
+    .nw-col-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      align-items: center;
+    }
+
+    .nw-col-list a,
+    .nw-contact-item {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #7b8791;
+      text-decoration: none;
+      transition: color 0.22s ease, transform 0.22s ease;
+      line-height: 1.55;
+    }
+
+    .nw-col-list a:hover,
+    a.nw-contact-item:hover {
+      color: #465665;
+    }
+
+    .nw-contact-address {
+      max-width: 240px;
+      margin-top: 4px;
+    }
+
+    .nw-footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.84rem;
+      color: #7b8791;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .nw-footer-bottom a {
+      color: #7b8791;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nw-footer-bottom a:hover {
+      color: #465665;
+    }
+
+    @media (max-width: 960px) {
+      .featured-img-box {
+        height: 290px;
+      }
+      .blog-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .nw-footer::before,
+      .nw-footer::after {
+        display: none;
+      }
+      .nw-footer-top,
+      .nw-footer-cols {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================== -->
+  <!-- TOP NAVIGATION BAR (TRANSPARENT ON HERO, BG ON SCROLL)   -->
+  <!-- ======================================================== -->
+  <header class="header" id="mainHeader">
+    <div class="holder">
+      <div class="header-block">
+        <!-- Left Nav Items: Home | About | Properties -->
+        <ul class="header-nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+
+          <!-- Properties Dropdown -->
+          <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(0deg)';">
+            <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.prop-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.prop-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px;">
+              Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+            </a>
+
+            <div class="prop-dropdown" style="display: none; position: absolute; top: 100%; left: 0; min-width: 320px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 14px; z-index: 1200; text-transform: none;">
+              <div style="padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                <a href="residential.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700;">
+                  <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+                    <i class="fa-solid fa-building-user" style="color: #60a5fa;"></i> Residential Properties
+                  </span>
+                  <span style="font-size: 0.72rem; color: #60a5fa;">(3) &rarr;</span>
+                </a>
+                <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+                  <a href="residential-1.html" style="font-size: 0.8rem; color: #94a3b8; padding: 2px 0;">&bull; The Grand Emerald (3-4 BHK)</a>
+                  <a href="residential-2.html" style="font-size: 0.8rem; color: #94a3b8; padding: 2px 0;">&bull; Palm Crest Villas (4 BHK)</a>
+                  <a href="residential-3.html" style="font-size: 0.8rem; color: #94a3b8; padding: 2px 0;">&bull; Skyline Imperial (5 BHK)</a>
+                </div>
+              </div>
+
+              <div style="padding-top: 10px;">
+                <a href="plotting.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700;">
+                  <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+                    <i class="fa-solid fa-map-location-dot" style="color: #d97706;"></i> Plotting Developments
+                  </span>
+                  <span style="font-size: 0.72rem; color: #d97706;">(3) &rarr;</span>
+                </a>
+                <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+                  <a href="plotting-1.html" style="font-size: 0.8rem; color: #94a3b8; padding: 2px 0;">&bull; Green Valley Township Plots</a>
+                  <a href="plotting-2.html" style="font-size: 0.8rem; color: #94a3b8; padding: 2px 0;">&bull; Royal Meadows Farmhouse Plots</a>
+                  <a href="plotting-3.html" style="font-size: 0.8rem; color: #94a3b8; padding: 2px 0;">&bull; Metro Boulevard Commercial Plots</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Center Uploaded One Roof Properties Logo -->
+        <div class="header-logo">
+          <a href="index.html">
+            <img src="assets/one-roof-logo-white.png" alt="One Roof Properties">
+          </a>
+        </div>
+
+        <!-- Right Nav Items: Services | Blog | NRI Support | Contact Us -->
+        <div class="header-nav-right">
+          <ul class="header-nav-list">
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html" style="color: #d97706;">Blog</a></li>
+            <li><a href="nri-corner.html">NRI Support</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- 1. BLOG HERO SECTION ("THE PROPERTY JOURNAL")            -->
+  <!-- ======================================================== -->
+  <section class="blog-hero" id="blogHeroSection">
+    <div class="blog-hero-bg"></div>
+
+    <div class="blog-hero-content">
+      <div class="blog-hero-overline">THE PROPERTY JOURNAL &middot; INSIGHTS &middot; IDEAS &middot; REAL ESTATE</div>
+      <h1 class="blog-hero-title">
+        A Little More Insight.<br>A Better Property Decision.
+      </h1>
+      <p class="blog-hero-sub">
+        Explore thoughtful guides, practical advice and property insights to help you make your next move with confidence.
+      </p>
+    </div>
+
+    <span class="blog-hero-caption">One Roof Property Journal</span>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 2. FEATURED ARTICLE BANNER + SLIDER CONTROLS             -->
+  <!-- ======================================================== -->
+  <section id="featuredArticleSection">
+    <div class="blog-container">
+      <div class="featured-card-wrap" id="featuredCardWrap">
+        <div class="featured-img-box">
+          <img
+            id="featuredImg"
+            src="https://images.openai.com/static-rsc-4/wUAh88ST1OuWjmBwIu67dYEJ8XjAFIjspDXSrHNTkI3fa_Rsgp9ccXz4rF54pOpSH2Ga5mZY64-wVNHH--408c_FZLUyhpaISdmVKqS38OTl740S7lJRwnGJ07Xpyh-oSiIR7iLmUgHTZzbyxFjwvVow0rsip-sQLqYGe2CS_hM?purpose=inline"
+            alt="Finding the Right Property Begins with Asking the Right Questions"
+            onerror="this.onerror=null; this.src='realestate24.webp';"
+          >
+          <span class="blog-pill-badge" id="featuredPill">Featured &middot; Buying Guide</span>
+        </div>
+
+        <div class="featured-body">
+          <div class="featured-tag" id="featuredTag">FEATURED ARTICLE &middot; PROPERTY BUYING GUIDE</div>
+          <h2 class="featured-headline" id="featuredHeadline">
+            Finding the Right Property Begins with Asking the Right Questions.
+          </h2>
+          <p class="featured-excerpt">
+            <span id="featuredDesc">From location and budget to legal documents and future needs, discover what to consider before choosing your next property.</span>
+            <span class="blog-read-inline" id="featuredReadBtn" onclick="openArticleModal(0)">Read the Article &#8599;</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Circular < > Slider Buttons Matching Reference Screenshot -->
+      <div class="featured-slider-nav">
+        <button class="featured-nav-circle" id="featPrevBtn" aria-label="Previous Featured Article">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="featured-nav-circle" id="featNextBtn" aria-label="Next Featured Article">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 3. SIMPLE TEXT CATEGORY FILTERS ABOVE ARTICLE GRID       -->
+  <!-- ======================================================== -->
+  <section id="blogCategorySection">
+    <div class="blog-filter-bar" id="blogFilterBar">
+      <button class="blog-filter-btn active" data-filter="all">All Articles</button>
+      <button class="blog-filter-btn" data-filter="buying-guide">Buying Guide</button>
+      <button class="blog-filter-btn" data-filter="residential">Residential</button>
+      <button class="blog-filter-btn" data-filter="plotting">Plotting</button>
+      <button class="blog-filter-btn" data-filter="selling-reselling">Selling &amp; Reselling</button>
+      <button class="blog-filter-btn" data-filter="investment">Investment</button>
+      <button class="blog-filter-btn" data-filter="nri-corner">NRI Corner</button>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 4. 3-COLUMN EDITORIAL ARTICLE GRID (6 LAUNCH POSTS)      -->
+  <!-- ======================================================== -->
+  <section id="blogGridSection">
+    <div class="blog-cards-grid" id="blogCardsGrid">
+
+      <!-- Article 01: Buying Guide -->
+      <article class="blog-card" data-category="buying-guide">
+        <div class="blog-card-thumb" onclick="openArticleModal(1)" style="cursor: pointer;">
+          <img
+            src="https://images.openai.com/static-rsc-4/ha4A9YHZUv9s9oQRkxAZP1p2wXeJK8hMc8deZfXQpUddc3MCa35p9wcGJbA0F2RkAjYvW7QXhx2yf7SwuuPux6jtDupqAf2W1ThbQNibUUvzojN9xEVRTyt-V-1D3LzGqltZ3Zas5gqhXv-6UaInfvULH0jIy1L_0QBkJ9ZhpGI?purpose=inline"
+            alt="01. 7 Things to Check Before Buying Your First Home"
+            onerror="this.onerror=null; this.src='assets/project-1.jpg';"
+          >
+          <span class="blog-pill-badge">6 Min Read</span>
+        </div>
+        <div class="blog-card-meta">BUYING GUIDE &middot; 6 MIN READ</div>
+        <h3 class="blog-card-title" onclick="openArticleModal(1)">
+          01. 7 Things to Check Before Buying Your First Home
+        </h3>
+        <p class="blog-card-excerpt">
+          A practical guide to budget planning, location, carpet area, amenities, property documents and site visits.
+        </p>
+        <span class="blog-card-link" onclick="openArticleModal(1)">Read Article &#8599;</span>
+      </article>
+
+      <!-- Article 02: Plotting -->
+      <article class="blog-card" data-category="plotting">
+        <div class="blog-card-thumb" onclick="openArticleModal(2)" style="cursor: pointer;">
+          <img
+            src="https://images.openai.com/static-rsc-4/5WFI8xcAgsJXPD2A37Vx8RF1rGJfdmscHnVI84CPiCtiZjzxRUtHLQWilfL9_wlWLhb2YbORq1ZbSoUQqJ_YrzWH1bHi7v9ejNw-RNZf_fjWHeD9-zteKgPgbdUcD15MPRiX9xk2JDbAkFSpys78wQ6uFWmUgFSCmfy7Cu3yjEQ?purpose=inline"
+            alt="02. Buying a Residential Plot? Here's What You Need to Know"
+            onerror="this.onerror=null; this.src='assets/project-2.jpg';"
+          >
+          <span class="blog-pill-badge">7 Min Read</span>
+        </div>
+        <div class="blog-card-meta">PLOTTING &middot; 7 MIN READ</div>
+        <h3 class="blog-card-title" onclick="openArticleModal(2)">
+          02. Buying a Residential Plot? Here&rsquo;s What You Need to Know
+        </h3>
+        <p class="blog-card-excerpt">
+          Understand plot location, access roads, land records, layout approvals and essential checks before purchasing.
+        </p>
+        <span class="blog-card-link" onclick="openArticleModal(2)">Read Article &#8599;</span>
+      </article>
+
+      <!-- Article 03: Residential -->
+      <article class="blog-card" data-category="residential">
+        <div class="blog-card-thumb" onclick="openArticleModal(3)" style="cursor: pointer;">
+          <img
+            src="https://images.openai.com/static-rsc-4/dR1ZcnrOsr4an3p9pXI13uCIrqHj26sJjkVqcDzBqWYTt3OEiT8eHseJ-X4_YinAy_s05NxS3AcqMhP_cVL4dHkpGeW7VhZUHW96cgqW7b1oOx5YRy8gAx94TONd1NMiPezdRIa9FPjmHaoKWg1W6zlV3shW45lSctvkemlt8O4?purpose=inline"
+            alt="03. Apartment or Independent House: Which Is Right for You?"
+            onerror="this.onerror=null; this.src='assets/project-3.jpg';"
+          >
+          <span class="blog-pill-badge">5 Min Read</span>
+        </div>
+        <div class="blog-card-meta">RESIDENTIAL &middot; 5 MIN READ</div>
+        <h3 class="blog-card-title" onclick="openArticleModal(3)">
+          03. Apartment or Independent House: Which Is Right for You?
+        </h3>
+        <p class="blog-card-excerpt">
+          Compare lifestyle, maintenance, privacy, space and overall ownership costs to identify what fits your needs.
+        </p>
+        <span class="blog-card-link" onclick="openArticleModal(3)">Read Article &#8599;</span>
+      </article>
+
+      <!-- Article 04: Selling & Reselling -->
+      <article class="blog-card" data-category="selling-reselling">
+        <div class="blog-card-thumb" onclick="openArticleModal(4)" style="cursor: pointer;">
+          <img
+            src="https://images.openai.com/static-rsc-4/fdqGHbAoK2QitEIc04QaH5GySY6N316CcQ-JjlrTuATTULjkRR6LBMmlV-BA_bwAIatToLLJjn8F90tZ9Vxai0UT45WLVkh2ZmN-egp70HGDVAFYuFgGuVp3-pj8ogB6n_lDmwSP-9FAFIqa-ofvz3wwiI4bm6IM8k59oUW_GxY?purpose=inline"
+            alt="04. Planning to Sell Your Property? Start with These Steps"
+            onerror="this.onerror=null; this.src='about-building.jpg';"
+          >
+          <span class="blog-pill-badge">6 Min Read</span>
+        </div>
+        <div class="blog-card-meta">SELLING &amp; RESELLING &middot; 6 MIN READ</div>
+        <h3 class="blog-card-title" onclick="openArticleModal(4)">
+          04. Planning to Sell Your Property? Start with These Steps
+        </h3>
+        <p class="blog-card-excerpt">
+          Learn how to prepare documents, assess an asking price, present your property and handle buyer enquiries.
+        </p>
+        <span class="blog-card-link" onclick="openArticleModal(4)">Read Article &#8599;</span>
+      </article>
+
+      <!-- Article 05: Investment -->
+      <article class="blog-card" data-category="investment">
+        <div class="blog-card-thumb" onclick="openArticleModal(5)" style="cursor: pointer;">
+          <img
+            src="https://images.openai.com/static-rsc-4/8-3QGpkmNxHTX57tDi3_it4Iqh6ZMV_59ohJIUrXN7ONKvckJE3x5IsCrxv0NufYxBl0hjxecRy4rcpoLm78wUmUHzXV2j_8JdH1aYsz8C6HFvVx8joJMdUegHzMAijpCX2q51Nh3_eGIsTd-ETQSWCKV8hwWt-C8C_0yIF80XE?purpose=inline"
+            alt="05. How to Evaluate a Property for Long-Term Investment"
+            onerror="this.onerror=null; this.src='counter-day.jpg';"
+          >
+          <span class="blog-pill-badge">7 Min Read</span>
+        </div>
+        <div class="blog-card-meta">INVESTMENT &middot; 7 MIN READ</div>
+        <h3 class="blog-card-title" onclick="openArticleModal(5)">
+          05. How to Evaluate a Property for Long-Term Investment
+        </h3>
+        <p class="blog-card-excerpt">
+          Explore location, connectivity, demand, total costs, resale potential and risks without assuming that property prices always rise.
+        </p>
+        <span class="blog-card-link" onclick="openArticleModal(5)">Read Article &#8599;</span>
+      </article>
+
+      <!-- Article 06: NRI Corner -->
+      <article class="blog-card" data-category="nri-corner">
+        <div class="blog-card-thumb" onclick="openArticleModal(6)" style="cursor: pointer;">
+          <img
+            src="https://images.openai.com/static-rsc-4/xhkJjkwfdyZELzqj8apA2AE3oTADjCcUYL6BHGckfljz7-fFtSI9QABSbnHG5BoO4ZlaO8QLjDZBfccSGdVNUE4NwwgCFQ9BUoUI9OB8qF0kZgeTSWonQlXHMGmFiYFEYwneoVTXCAjlVQ8cWYZ0D4LULGFGVMgmetkJDdC-S30?purpose=inline"
+            alt="06. Buying Property in India as an NRI: A Beginner's Guide"
+            onerror="this.onerror=null; this.src='realestate23.webp';"
+          >
+          <span class="blog-pill-badge">8 Min Read</span>
+        </div>
+        <div class="blog-card-meta">NRI CORNER &middot; 8 MIN READ</div>
+        <h3 class="blog-card-title" onclick="openArticleModal(6)">
+          06. Buying Property in India as an NRI: A Beginner&rsquo;s Guide
+        </h3>
+        <p class="blog-card-excerpt">
+          An introduction to eligibility, property documentation, payment channels and professional assistance for overseas Indians.
+        </p>
+        <span class="blog-card-link" onclick="openArticleModal(6)">Read Article &#8599;</span>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5. FINAL EDITORIAL CTA ("YOUR NEXT MOVE")                -->
+  <!-- ======================================================== -->
+  <section id="blogNextMoveCta">
+    <div class="next-move-box">
+      <div class="next-move-overline">YOUR NEXT MOVE</div>
+      <h2 class="next-move-heading">
+        Knowledge First. The Right Property Next.
+      </h2>
+      <p class="next-move-desc">
+        Have questions about a home, a residential plot or a property resale? One Roof Properties is here to help you explore your options.
+      </p>
+      <a href="residential.html" class="next-move-btn">
+        Explore Properties <span>&#8599;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- INTERACTIVE ARTICLE READER MODAL                         -->
+  <!-- ======================================================== -->
+  <div class="article-modal-backdrop" id="articleModalBackdrop" onclick="if(event.target === this) closeArticleModal();">
+    <div class="article-modal-box">
+      <button class="article-modal-close" onclick="closeArticleModal()" aria-label="Close Article">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="featured-tag" id="modalArticleTag" style="margin-bottom: 10px;"></div>
+      <h2 class="featured-headline" id="modalArticleTitle" style="font-size: 1.85rem; margin-bottom: 18px;"></h2>
+      <div id="modalArticleBody" style="font-family: 'Jost', sans-serif; font-size: 1rem; line-height: 1.78; color: #465665;"></div>
+      <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(70,86,101,0.14); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <span style="font-size: 0.88rem; color: #7b8791;">Need personalised guidance on this topic?</span>
+        <a href="contact.html" class="next-move-btn" style="padding: 11px 24px; font-size: 0.8rem;">Speak With Our Team &#8599;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- 6. LUXURY 3-COLUMN CURVED-ARCH FOOTER (NORTH WIND STYLE) -->
+  <!-- ======================================================== -->
+  <footer class="nw-footer">
+    <div class="nw-footer-inner">
+
+      <!-- Top Row: Brand Logo | Social Outlined Pills | Member of CREDAI -->
+      <div class="nw-footer-top">
+        <a href="index.html" class="nw-footer-brand">
+          <img src="assets/one-roof-logo-dark.png" alt="One Roof Properties" style="height: 54px; width: auto; object-fit: contain;">
+        </a>
+
+        <div class="nw-footer-socials">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+
+        <div class="nw-footer-member">
+          <span class="nw-member-label">Member of</span>
+          <div class="nw-credai-badge">
+            <span>CREDAI</span>
+            <i class="fa-solid fa-caret-up nw-credai-roof"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main 3 Columns: Quick Links | Company | Reach Out -->
+      <div class="nw-footer-cols">
+        <!-- Column 1: Quick Links -->
+        <div>
+          <h4 class="nw-col-title">Quick Links</h4>
+          <ul class="nw-col-list">
+            <li><a href="residential.html">Residential Properties</a></li>
+            <li><a href="plotting.html">Plotting Developments</a></li>
+            <li><a href="residential-1.html">The Grand Emerald</a></li>
+            <li><a href="residential-2.html">Palm Crest Villas</a></li>
+            <li><a href="residential-3.html">Skyline Imperial</a></li>
+            <li><a href="plotting-1.html">Green Valley Plots</a></li>
+            <li><a href="nri-corner.html">NRI Corner</a></li>
+            <li><a href="index.html#faqSection">FAQ</a></li>
+            <li><a href="index.html#testimonialSection">Testimonials</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Company -->
+        <div>
+          <h4 class="nw-col-title">Company</h4>
+          <ul class="nw-col-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="residential.html">Projects</a></li>
+            <li><a href="about.html#whoWeAreSection">Our Legacy</a></li>
+            <li><a href="blog.html">Blogs</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="index.html#testimonialSection">Testimonials</a></li>
+            <li><a href="nri-corner.html">NRI Advisory</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Reach Out -->
+        <div>
+          <h4 class="nw-col-title">Reach Out</h4>
+          <ul class="nw-col-list">
+            <li><a href="tel:+919494168733" class="nw-contact-item">+91-949 416 8733</a></li>
+            <li><a href="mailto:contact@oneroofproperties.com" class="nw-contact-item">contact@oneroofproperties.com</a></li>
+            <li class="nw-contact-item nw-contact-address">
+              One Roof Tower, Financial District,<br>Pune, Maharashtra - 411045
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Copyright & Policy Links -->
+      <div class="nw-footer-bottom">
+        <span>&copy; 2026 One Roof Properties. All rights reserved. |</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="privacy-policy.html">Terms &amp; Conditions</a>
+        <a href="privacy-policy.html">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ========================================================
+    // 1. TRANSPARENT NAVBAR ON HERO -> FIXED SLATE BG ON SCROLL
+    // ========================================================
+    (function initBlogNavbarScroll() {
+      const mainHeader = document.getElementById('mainHeader');
+      const featuredSec = document.getElementById('featuredArticleSection');
+      function updateNavbar() {
+        if (!mainHeader) return;
+        const threshold = featuredSec ? Math.max(80, featuredSec.offsetTop - 90) : (window.innerHeight * 0.65);
+        if (window.scrollY >= threshold) {
+          mainHeader.style.position = 'fixed';
+          mainHeader.style.background = 'rgba(44, 56, 68, 0.94)';
+          mainHeader.style.backdropFilter = 'blur(12px)';
+          mainHeader.style.webkitBackdropFilter = 'blur(12px)';
+          mainHeader.style.padding = '14px 0';
+          mainHeader.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.25)';
+          mainHeader.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+        } else {
+          mainHeader.style.position = 'absolute';
+          mainHeader.style.background = 'transparent';
+          mainHeader.style.backdropFilter = 'none';
+          mainHeader.style.webkitBackdropFilter = 'none';
+          mainHeader.style.padding = '34px 0 0';
+          mainHeader.style.boxShadow = 'none';
+          mainHeader.style.borderBottom = 'none';
+        }
+      }
+      window.addEventListener('scroll', updateNavbar, { passive: true });
+      window.addEventListener('resize', updateNavbar);
+      updateNavbar();
+    })();
+
+    // ========================================================
+    // 2. FEATURED ARTICLE CAROUSEL (< > CONTROLS)
+    // ========================================================
+    const featuredSlides = [
+      {
+        modalId: 0,
+        img: "https://images.openai.com/static-rsc-4/wUAh88ST1OuWjmBwIu67dYEJ8XjAFIjspDXSrHNTkI3fa_Rsgp9ccXz4rF54pOpSH2Ga5mZY64-wVNHH--408c_FZLUyhpaISdmVKqS38OTl740S7lJRwnGJ07Xpyh-oSiIR7iLmUgHTZzbyxFjwvVow0rsip-sQLqYGe2CS_hM?purpose=inline",
+        fallback: "realestate24.webp",
+        pill: "Featured · Buying Guide",
+        tag: "FEATURED ARTICLE · PROPERTY BUYING GUIDE",
+        headline: "Finding the Right Property Begins with Asking the Right Questions.",
+        desc: "From location and budget to legal documents and future needs, discover what to consider before choosing your next property."
+      },
+      {
+        modalId: 2,
+        img: "https://images.openai.com/static-rsc-4/5WFI8xcAgsJXPD2A37Vx8RF1rGJfdmscHnVI84CPiCtiZjzxRUtHLQWilfL9_wlWLhb2YbORq1ZbSoUQqJ_YrzWH1bHi7v9ejNw-RNZf_fjWHeD9-zteKgPgbdUcD15MPRiX9xk2JDbAkFSpys78wQ6uFWmUgFSCmfy7Cu3yjEQ?purpose=inline",
+        fallback: "assets/project-2.jpg",
+        pill: "Plotting · 7 Min Read",
+        tag: "FEATURED INSIGHT · PLOTTING DEVELOPMENTS",
+        headline: "Buying a Residential Plot? Here’s What You Need to Know.",
+        desc: "Understand plot location, access roads, land records, layout approvals and essential checks before purchasing."
+      },
+      {
+        modalId: 5,
+        img: "https://images.openai.com/static-rsc-4/8-3QGpkmNxHTX57tDi3_it4Iqh6ZMV_59ohJIUrXN7ONKvckJE3x5IsCrxv0NufYxBl0hjxecRy4rcpoLm78wUmUHzXV2j_8JdH1aYsz8C6HFvVx8joJMdUegHzMAijpCX2q51Nh3_eGIsTd-ETQSWCKV8hwWt-C8C_0yIF80XE?purpose=inline",
+        fallback: "counter-day.jpg",
+        pill: "Investment · 7 Min Read",
+        tag: "FEATURED INSIGHT · LONG-TERM INVESTMENT",
+        headline: "How to Evaluate a Property for Long-Term Investment.",
+        desc: "Explore location, connectivity, demand, total costs, resale potential and risks without assuming that property prices always rise."
+      }
+    ];
+
+    let currentFeatIndex = 0;
+    const featWrap = document.getElementById('featuredCardWrap');
+    const featImg = document.getElementById('featuredImg');
+    const featPill = document.getElementById('featuredPill');
+    const featTag = document.getElementById('featuredTag');
+    const featHeadline = document.getElementById('featuredHeadline');
+    const featDesc = document.getElementById('featuredDesc');
+    const featReadBtn = document.getElementById('featuredReadBtn');
+
+    function renderFeaturedSlide(idx) {
+      currentFeatIndex = (idx + featuredSlides.length) % featuredSlides.length;
+      const item = featuredSlides[currentFeatIndex];
+      if (!featWrap) return;
+      featWrap.style.opacity = '0.35';
+      setTimeout(() => {
+        featImg.onerror = function() { this.onerror = null; this.src = item.fallback; };
+        featImg.src = item.img;
+        featPill.textContent = item.pill;
+        featTag.textContent = item.tag;
+        featHeadline.textContent = item.headline;
+        featDesc.textContent = item.desc;
+        featReadBtn.setAttribute('onclick', `openArticleModal(${item.modalId})`);
+        featWrap.style.opacity = '1';
+      }, 180);
+    }
+
+    document.getElementById('featPrevBtn')?.addEventListener('click', () => renderFeaturedSlide(currentFeatIndex - 1));
+    document.getElementById('featNextBtn')?.addEventListener('click', () => renderFeaturedSlide(currentFeatIndex + 1));
+
+    // ========================================================
+    // 3. CATEGORY FILTERING LOGIC
+    // ========================================================
+    const filterButtons = document.querySelectorAll('.blog-filter-btn');
+    const blogCards = document.querySelectorAll('.blog-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        blogCards.forEach(card => {
+          const cat = card.getAttribute('data-category');
+          if (filter === 'all' || cat === filter) {
+            card.classList.remove('hidden-card');
+          } else {
+            card.classList.add('hidden-card');
+          }
+        });
+      });
+    });
+
+    // ========================================================
+    // 4. INTERACTIVE ARTICLE READER MODAL DATA
+    // ========================================================
+    const articleFullContent = {
+      0: {
+        tag: "FEATURED ARTICLE · PROPERTY BUYING GUIDE",
+        title: "Finding the Right Property Begins with Asking the Right Questions.",
+        body: `
+          <p style="margin-bottom: 14px;">Choosing a home, a residential plot, or an investment property is one of the most significant financial and lifestyle decisions you will make. Before shortlisting listings, start by clarifying four core questions:</p>
+          <p style="margin-bottom: 12px;"><strong>1. Purpose &amp; Horizon:</strong> Are you purchasing for immediate self-use, family expansion over the next decade, or long-term capital appreciation?</p>
+          <p style="margin-bottom: 12px;"><strong>2. Micro-Market &amp; Connectivity:</strong> Look beyond city-wide averages. Evaluate daily commute corridors, upcoming civic infrastructure, schools, healthcare, and neighbourhood livability.</p>
+          <p style="margin-bottom: 12px;"><strong>3. Legal &amp; Title Clarity:</strong> Verify RERA registration, clear title deeds, sanction plans, and local authority approvals before committing a token amount.</p>
+          <p><strong>4. Total Cost of Ownership:</strong> Account for stamp duty, registration charges, GST (where applicable), maintenance deposits, and interior readiness alongside the base property price.</p>
+        `
+      },
+      1: {
+        tag: "BUYING GUIDE · 6 MIN READ",
+        title: "01. 7 Things to Check Before Buying Your First Home",
+        body: `
+          <p style="margin-bottom: 14px;">Walking into a show apartment is exciting, but a confident first-home purchase relies on structured due diligence across seven essentials:</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>Complete Budget Planning:</strong> Factor in down payment, home loan EMI comfort, stamp duty, registration, and society corpus funds.</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>RERA Carpet Area vs. Super Built-up Area:</strong> Always evaluate usable RERA carpet area to understand the true interior space you are paying for.</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>Location &amp; Social Infrastructure:</strong> Inspect peak-hour access roads, water supply, and proximity to workplaces and schools.</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>Title &amp; RERA Verification:</strong> Confirm clear land title, RERA registration number, and construction milestones.</p>
+          <p>&bull; <strong>On-Ground Site Visit:</strong> Visit the site during daytime and evening hours to experience natural ventilation, noise levels, and neighbourhood character firsthand.</p>
+        `
+      },
+      2: {
+        tag: "PLOTTING · 7 MIN READ",
+        title: "02. Buying a Residential Plot? Here's What You Need to Know",
+        body: `
+          <p style="margin-bottom: 14px;">Residential plots offer unmatched freedom to custom-build your home and strong long-term land appreciation—provided the fundamentals are verified upfront:</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>NA (Non-Agricultural) Order &amp; Collector Approvals:</strong> Ensure the land holds clear residential NA conversion and sanctioned layout approvals (such as PMRDA / local town planning).</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>7/12 Extract &amp; Title Search:</strong> Conduct a 30-year title search and verify mutation entries to confirm unencumbered ownership.</p>
+          <p>&bull; <strong>Demarcation &amp; Infrastructure:</strong> Check physical boundary stones, internal tar/concrete road widths, underground electricity, water lines, and drainage provisions.</p>
+        `
+      },
+      3: {
+        tag: "RESIDENTIAL · 5 MIN READ",
+        title: "03. Apartment or Independent House: Which Is Right for You?",
+        body: `
+          <p style="margin-bottom: 14px;">Deciding between a gated apartment community and an independent house or villa comes down to how your family prioritises convenience, privacy, and land ownership:</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>Apartments:</strong> Deliver 24/7 managed security, curated clubhouses, shared maintenance, and turn-key convenience in prime urban hubs.</p>
+          <p>&bull; <strong>Independent Homes &amp; Villas:</strong> Offer private gardens, zero shared walls, freedom to expand or customize interiors, and direct ownership of the underlying plot.</p>
+        `
+      },
+      4: {
+        tag: "SELLING & RESELLING · 6 MIN READ",
+        title: "04. Planning to Sell Your Property? Start with These Steps",
+        body: `
+          <p style="margin-bottom: 14px;">A smooth, well-valued property resale starts long before listing your home:</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>Organise Your Document Dossier:</strong> Keep original sale deeds, Index II, society share certificate, NOC readiness, property tax receipts, and loan closure/LOD documents ready.</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>Realistic Market Valuation:</strong> Benchmark against recent registered transactions in your micro-market rather than speculative asking prices.</p>
+          <p>&bull; <strong>Presentation &amp; Qualified Buyer Screening:</strong> First impressions—clean lighting, minor repairs, and working with a trusted advisory team to pre-screen serious buyers—accelerate closure.</p>
+        `
+      },
+      5: {
+        tag: "INVESTMENT · 7 MIN READ",
+        title: "05. How to Evaluate a Property for Long-Term Investment",
+        body: `
+          <p style="margin-bottom: 14px;">Sound real-estate investing requires objective evaluation of fundamentals rather than assuming every corridor appreciates equally:</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>Employment &amp; Infrastructure Catalysts:</strong> Track metro extensions, ring roads, IT/industrial parks, and genuine end-user housing demand.</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>Net Rental Yield &amp; Holding Costs:</strong> Calculate net yield after property taxes, society maintenance, and vacancy periods.</p>
+          <p>&bull; <strong>Liquidity &amp; Exit Horizon:</strong> Choose configurations (such as well-planned 2/3 BHK residences or sanctioned NA plots) that enjoy broad buyer demand when you decide to exit.</p>
+        `
+      },
+      6: {
+        tag: "NRI CORNER · 8 MIN READ",
+        title: "06. Buying Property in India as an NRI: A Beginner's Guide",
+        body: `
+          <p style="margin-bottom: 14px;">Under FEMA regulations, Non-Resident Indians (NRIs) and OCIs can seamlessly purchase residential and commercial properties in India (excluding agricultural land, plantation property, and farmhouses):</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>Eligible Payment Channels:</strong> All remittances and EMI payments must be routed through NRE, NRO, or FCNR bank accounts in India.</p>
+          <p style="margin-bottom: 10px;">&bull; <strong>Documentation &amp; Power of Attorney (PoA):</strong> If you cannot travel for registration, a properly adjudicated Specific Power of Attorney enables a trusted representative in India to execute registration on your behalf.</p>
+          <p>&bull; <strong>Dedicated NRI Desk at One Roof Properties:</strong> Our team assists with virtual walkthroughs, legal verification, TDS compliance, and end-to-end documentation.</p>
+        `
+      }
+    };
+
+    function openArticleModal(id) {
+      const data = articleFullContent[id];
+      if (!data) return;
+      document.getElementById('modalArticleTag').textContent = data.tag;
+      document.getElementById('modalArticleTitle').textContent = data.title;
+      document.getElementById('modalArticleBody').innerHTML = data.body;
+      document.getElementById('articleModalBackdrop').classList.add('open');
+    }
+
+    function closeArticleModal() {
+      document.getElementById('articleModalBackdrop').classList.remove('open');
+    }
+  </script>
+
+</body>
+</html>

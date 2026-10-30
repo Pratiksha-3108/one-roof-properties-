@@ -1,0 +1,4168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Roof Properties | Luxury Real Estate & Investment</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&family=Nanum+Myeongjo:wght@400;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: #070e0a; color: #334155; line-height: 1.6; overflow-x: hidden; font-family: 'Jost', 'Plus Jakarta Sans', sans-serif; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    .dropdown-parent:hover .prop-dropdown { display: block !important; }
+    .dropdown-parent:hover .prop-caret { transform: rotate(180deg) !important; }
+
+    /* ======================================================== */
+    /* HERO BANNER SECTION (MATCHING REFERENCE EXACTLY)         */
+    /* ======================================================== */
+    .banner {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      min-height: 680px;
+      overflow: hidden;
+      background: #070e0a;
+    }
+
+    .banner-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: 50% 50%;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out, transform 7s ease-out;
+      transform: scale(1.03);
+      will-change: opacity, transform;
+    }
+    .banner-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Subtle luxury bottom gradient overlay for hero text contrast (no dark band at top) */
+    .banner::after {
+      position: absolute;
+      inset: 0;
+      content: '';
+      background: linear-gradient(180deg, transparent 0%, transparent 52%, rgba(7,14,10,0.78) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Header Nav (Initially 100% Transparent on Hero, Fixed with Background from About Section) */
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1500;
+      padding: 34px 0 0;
+      background: transparent;
+      transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+    }
+    .holder {
+      padding: 0 max(24px, 4.5vw);
+      max-width: 1820px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .header-block {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 58px;
+      gap: 24px;
+    }
+    .header-logo {
+      position: relative;
+      text-align: center;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .header-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .header-nav-list {
+      display: flex;
+      gap: clamp(18px, 2.2vw, 36px);
+      list-style: none;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+    .header-nav-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .header-nav-list li {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(13px, 0.88vw, 15px);
+      font-weight: 400;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+    .header-nav-list a {
+      color: #ffffff;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .header-nav-list a::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 1px;
+      background: #ffffff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .header-nav-list a:hover::before {
+      transform: scaleX(1);
+    }
+    .header-phone {
+      margin-left: 28px;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      letter-spacing: 1.6px;
+      white-space: nowrap;
+    }
+
+    /* Banner Bottom Main Content (Text arrangement matching reference) */
+    .banner-main {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 75px;
+      z-index: 10;
+    }
+    .banner-block {
+      display: grid;
+      grid-template-columns: auto auto 1fr auto;
+      align-items: end;
+      column-gap: 0;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: transform 0.8s cubic-bezier(0.46,0.03,0.52,0.96), opacity 0.6s ease;
+    }
+    .banner-block.vis {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .banner-h1 {
+      font-family: 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(3rem, 6.2vw, 6.4rem);
+      font-weight: 400;
+      line-height: 94%;
+      letter-spacing: -2px;
+      color: #ffffff;
+      margin: 0;
+      white-space: nowrap;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.6);
+      display: contents; /* the two lines become grid items of .banner-block */
+    }
+    .bh-l1 { grid-column: 1 / -1; grid-row: 1; display: block; }
+    .bh-l2 { grid-column: 1; grid-row: 2; display: block; }
+    .subheading {
+      width: clamp(220px, 25vw, 320px);
+      max-width: 350px;
+      text-align: left;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 150%;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #ffffff;
+      opacity: 0.85;
+      margin-bottom: 8px;
+      margin-left: 28px;
+      grid-column: 2; grid-row: 2;
+      flex-shrink: 0;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+    .button-inquiry {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 38px;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      color: #ffffff;
+      background: transparent;
+      border-radius: 0px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      margin-bottom: 8px;
+      flex-shrink: 0;
+      grid-column: 4; grid-row: 2; justify-self: end;
+      transition: all 0.3s ease;
+    }
+    .button-inquiry:hover {
+      background: #ffffff;
+      color: #070e0a;
+      box-shadow: 0 4px 20px rgba(255,255,255,0.25);
+    }
+
+    /* Slick Slider Chevrons (< >) at Bottom Center */
+    .slick-arrow {
+      position: absolute;
+      bottom: 45px;
+      left: 50%;
+      z-index: 25;
+      display: block;
+      width: 14px;
+      height: 22px;
+      cursor: pointer;
+      background: url('arrow.svg') 50% 50% no-repeat;
+      background-size: contain;
+      border: none;
+      transition: opacity 0.2s ease;
+      padding: 0;
+    }
+    .slick-prev {
+      margin-left: -40px;
+      transform: scale(-1, 1);
+    }
+    .slick-next {
+      margin-left: 20px;
+    }
+    .slick-arrow:hover {
+      opacity: 0.6;
+    }
+
+    /* ======================================================== */
+    /* KEYHOLE OPENING LOADER (AUTHENTIC REFERENCE REPLICA)     */
+    /* ======================================================== */
+    body.is-loader {
+      overflow: hidden !important;
+    }
+
+    .loader {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999999;
+      cursor: pointer;
+      overflow: hidden;
+      transition: opacity 0.4s ease;
+    }
+
+    /* Twilight Estate Background peek through the keyhole cutout */
+    .loader::before {
+      position: absolute;
+      inset: 0;
+      content: '';
+      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80') 50% 50% no-repeat;
+      background-size: cover;
+      z-index: 1;
+    }
+
+    /* Keyhole Mask Overlay - Scales strictly from 50% 50% Center */
+    .loader-bg {
+      position: fixed;
+      inset: 0;
+      background-image: url('key-bg.svg'), url('data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%271920%27%20height%3D%271080%27%20viewBox%3D%270%200%201920%201080%27%20fill%3D%27none%27%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%3E%20%3Cpath%20fill-rule%3D%27evenodd%27%20clip-rule%3D%27evenodd%27%20d%3D%27M1920%200H0V1080H1920V0ZM884.359%20456.321C884.359%20482.773%20897.817%20506.083%20918.259%20519.776L888%20699H1032L1003.14%20519.747C1023.56%20506.05%201037%20482.755%201037%20456.321C1037%20414.17%201002.83%20380%20960.679%20380C918.529%20380%20884.359%20414.17%20884.359%20456.321Z%27%20fill%3D%27url%28%23paint0_linear_2927_7769%29%27/%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%27paint0_linear_2927_7769%27%20x1%3D%27960%27%20y1%3D%270%27%20x2%3D%27960%27%20y2%3D%271080%27%20gradientUnits%3D%27userSpaceOnUse%27%3E%20%3Cstop%20stop-color%3D%27%23152620%27/%3E%20%3Cstop%20offset%3D%271%27%20stop-color%3D%27%230a120e%27/%3E%20%3C/linearGradient%3E%20%3C/defs%3E%20%3C/svg%3E');
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transform-origin: 50% 50%;
+      transition: transform 2s cubic-bezier(0.65, 0, 0.35, 1);
+      will-change: transform;
+      z-index: 2;
+    }
+
+    /* Massive scale animation - zooms outward directly from center with ZERO drift */
+    .loader.animate .loader-bg {
+      transform: scale(25);
+    }
+
+    @media (max-width: 900px) {
+      .loader.animate .loader-bg {
+        transform: scale(15);
+      }
+    }
+
+    .loader.hide {
+      display: none !important;
+    }
+
+    /* Tagline and Gold Key Container */
+    .loader-box {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 85px;
+      width: 90%;
+      max-width: 460px;
+      text-align: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .loader-box .line {
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+
+    .loader-box .line-inner {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #f1f5f9;
+      line-height: 1.5;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      transition: transform 0.5s cubic-bezier(0.12, 0, 0.39, 0), opacity 0.4s ease;
+      will-change: transform, opacity;
+    }
+
+    .loader-key-wrap {
+      overflow: hidden;
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .loader-key {
+      width: 82px;
+      height: 27px;
+      background-image: url('key.svg'), url('data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%2782%27%20height%3D%2727%27%20viewBox%3D%270%200%2082%2027%27%20fill%3D%27none%27%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%3E%20%3Cpath%20fill-rule%3D%27evenodd%27%20clip-rule%3D%27evenodd%27%20d%3D%27M81.9935%2026.0496L79.0607%2026.0496L79.0607%2013.246L68.7147%2013.246L68.7147%2020.65L65.7793%2020.65L65.7793%2013.246L22.3021%2013.246L11.8242%2023.7107L-0.000809891%2011.9005L11.8242%200.0903251L22.2158%2010.4689L81.9961%2010.4689L81.9961%2026.047L81.9935%2026.0496ZM15.8444%209.74103L18.0085%2011.9024L15.771%2014.137L16.921%2015.2856L20.3104%2011.9005L16.9963%208.59054L15.8444%209.74103ZM14.1749%208.07371L15.1913%207.05865L11.8068%203.55312L8.62645%206.72949L9.61064%207.78848L11.75%205.65181L14.1749%208.07371ZM7.94007%209.45695L6.90248%208.34051L3.33802%2011.9005L6.53851%2015.097L7.61488%2014.0231L5.49155%2011.9024L7.94007%209.45695ZM11.75%2018.153L14.1016%2015.8044L15.1764%2016.8778L11.8227%2020.2254L8.28261%2016.6898L9.28429%2015.6904L11.75%2018.153ZM11.75%208.98645L8.83038%2011.9024L11.75%2014.8184L14.6696%2011.9024L11.75%208.98645Z%27%20fill%3D%27%23DCCBB3%27/%3E%20%3C/svg%3E');
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      transition: transform 0.5s cubic-bezier(0.12, 0, 0.39, 0), opacity 0.4s ease;
+      will-change: transform, opacity;
+      filter: drop-shadow(0 0 10px rgba(220,203,179,0.5));
+    }
+
+    .loader.animate .line-inner,
+    .loader.animate .loader-key {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    /* ======================================================== */
+    /* EXPANDING ARCHITECTURAL CIRCULAR ABOUT SECTION           */
+    /* ======================================================== */
+    #aboutExpandSection {
+      position: relative;
+      height: 230vh;
+      background: #FAF8EE;
+      margin: 0 0 90px 0;
+      padding: 0;
+    }
+
+    .about-sticky-wrapper {
+      position: sticky;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background: radial-gradient(circle at 18% 50%, #F3EFE2 0%, #FAF8EE 70%, #F5F2E6 100%);
+    }
+
+    .about-text-content {
+      position: relative;
+      z-index: 10;
+      width: 46vw;
+      max-width: 620px;
+      padding-left: max(24px, 6vw);
+      padding-right: 24px;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      will-change: opacity, transform;
+    }
+
+    .about-breadcrumb {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .about-breadcrumb span {
+      color: #465665;
+    }
+
+    .about-h2 {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.3rem, 3.5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: #465665;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    .about-p {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #7b8791;
+      max-width: 520px;
+      margin-bottom: 28px;
+    }
+
+    /* RIGHT EXPANDING PROPER CIRCULAR IMAGE CONTAINER */
+    .about-image-expand-box {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 55vw;
+      height: 55vw; /* aspect-square: ensures a 100% mathematically true circle */
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 5;
+      box-shadow: -20px 0 55px rgba(70, 86, 101, 0.18);
+      transform: translate(100px, 200px);
+      transform-origin: right bottom;
+      will-change: width, height, border-radius, transform;
+    }
+
+    .about-image-expand-box img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+    }
+
+    /* ======================================================== */
+    /* ARCHITECTURAL ZOOM & DAY-TO-NIGHT COUNTER SHOWCASE       */
+    /* ======================================================== */
+    #counterZoomSection {
+      position: relative;
+      height: 250vh;
+      background: #06090e;
+      margin: 0;
+      padding: 0;
+    }
+
+    .counter-sticky-wrapper {
+      position: sticky;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #06090e;
+    }
+
+    /* Zooming Background Container */
+    .counter-bg-zoom-container {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform-origin: center center;
+      will-change: transform;
+      z-index: 1;
+    }
+
+    .counter-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      will-change: opacity;
+    }
+
+    .counter-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(6, 9, 14, 0.45) 0%, rgba(6, 9, 14, 0.1) 40%, rgba(6, 9, 14, 0.5) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Giant Background Typographic Banner (Authentic Glassy Frosted Aesthetic) */
+    .counter-giant-title {
+      position: absolute;
+      top: max(88px, 11vh);
+      left: 0;
+      width: 100%;
+      white-space: nowrap;
+      font-family: 'Jost', 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(4rem, 10vw, 11rem);
+      font-weight: 800;
+      letter-spacing: clamp(6px, 1.2vw, 16px);
+      text-transform: uppercase;
+      
+      /* Pure Glassy Text Effect: Not solid white, but luxurious frosted glass */
+      color: rgba(245, 238, 228, 0.28);
+      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.65);
+      text-shadow: 0 8px 32px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.7);
+      
+      pointer-events: none;
+      z-index: 3;
+      user-select: none;
+      will-change: transform, opacity;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(25px);
+    }
+
+    /* Staggered Counter Cards Container */
+    .counter-cards-container {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      pointer-events: auto;
+    }
+
+    /* Counter Cards: Luxury Parchment Style */
+    .counter-card {
+      position: absolute;
+      background: #F2E6D6;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      padding: clamp(16px, 1.6vw, 24px) clamp(18px, 1.8vw, 28px);
+      border-radius: 4px;
+      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.65), 0 4px 12px rgba(0, 0, 0, 0.4);
+      will-change: transform, opacity;
+      transition: box-shadow 0.25s ease;
+      cursor: default;
+      opacity: 0; /* Starts hidden, floats in as the image zooms out */
+      transform: translateY(45px);
+    }
+
+    .counter-card:hover {
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.58);
+    }
+
+    .counter-card-num {
+      font-family: 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(1.7rem, 2.1vw, 2.35rem);
+      font-weight: 700;
+      color: #465665;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .counter-card-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-bottom: 10px;
+    }
+
+    .counter-card-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.82rem, 0.92vw, 0.92rem);
+      font-weight: 400;
+      line-height: 1.55;
+      color: #7b8791;
+    }
+
+    /* Exact 4-Column Brickwork Placement with Navbar Clearance */
+    /* --cs (set by JS) scales the whole brickwork so every card fits inside the viewport height */
+    .counter-card { transform-origin: top left; width: calc(min(23vw, 320px) / var(--cs, 1)); }
+    .card-pos-1 { left: 2vw;  top: calc(90px + 0px   * var(--cs, 1)); }
+    .card-pos-2 { left: 50vw; top: calc(90px + 0px   * var(--cs, 1)); }
+    .card-pos-3 { left: 26vw; top: calc(90px + 215px * var(--cs, 1)); }
+    .card-pos-4 { left: 74vw; top: calc(90px + 195px * var(--cs, 1)); }
+    .card-pos-5 { left: 50vw; top: calc(90px + 405px * var(--cs, 1)); }
+    .card-pos-6 { left: 26vw; top: calc(90px + 505px * var(--cs, 1)); }
+
+    @media (max-width: 1024px) {
+      .card-pos-1 { left: 2vw;  top: 8vh;  width: 28vw; }
+      .card-pos-2 { left: 50vw; top: 8vh;  width: 28vw; }
+      .card-pos-3 { left: 2vw;  top: 36vh; width: 28vw; }
+      .card-pos-4 { left: 68vw; top: 36vh; width: 28vw; }
+      .card-pos-5 { left: 50vw; top: 62vh; width: 28vw; }
+      .card-pos-6 { left: 2vw;  top: 62vh; width: 28vw; }
+    }
+
+    @media (max-width: 900px) {
+      .responsive-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+      .responsive-grid-3 { grid-template-columns: 1fr !important; }
+      .responsive-grid-2 { grid-template-columns: 1fr !important; }
+      .nav-links-menu { display: none !important; }
+      .nav-mobile-btn { display: block !important; }
+      .hero-search-grid { grid-template-columns: 1fr !important; }
+      .prop-dropdown { position: static !important; width: 100% !important; box-shadow: none !important; border: 1px solid #e2e8f0 !important; background: #f8fafc !important; }
+      .hero-bottom-container { padding: 0 24px 36px !important; flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; }
+      .hero-right-col { width: 100% !important; flex-direction: column !important; align-items: flex-start !important; }
+      .hero-brand-center { font-size: 1.3rem !important; }
+      #aboutExpandSection { height: 180vh; }
+      .about-text-content { width: 90vw !important; max-width: 100% !important; padding: 24px !important; }
+      .about-h2 { font-size: 1.85rem !important; }
+      .about-p { font-size: 0.95rem !important; }
+      .about-image-expand-box { width: 92vw; height: 92vw; transform: translate(0, 40px); }
+
+      #counterZoomSection { height: auto; min-height: 100vh; }
+      .counter-sticky-wrapper { position: relative; height: auto; min-height: 100vh; padding: 70px 0 50px; }
+      .counter-cards-container {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+        padding: 24px;
+        z-index: 10;
+      }
+      .card-pos-1, .card-pos-2, .card-pos-3, .card-pos-4, .card-pos-5, .card-pos-6 {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .counter-giant-title { font-size: 2.8rem; top: 20px; }
+    }
+
+    /* ======================================================== */
+    /* RADIAL SERVICE & PILLAR SHOWCASE (NORTH WIND PINNED VORTEX) */
+    /* ======================================================== */
+    #radialServicesSection {
+      position: relative;
+      height: 260vh;
+      background-color: #F9F7EE;
+      margin: 0;
+      padding: 0;
+      overflow: visible;
+    }
+
+    .radial-sticky-viewport {
+      position: sticky;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #F9F7EE;
+    }
+
+    /* Section Header */
+    .radial-header {
+      position: absolute;
+      top: clamp(24px, 5vh, 48px);
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 25;
+      width: 90%;
+      max-width: 860px;
+      pointer-events: none;
+    }
+
+    .radial-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #6c7e74;
+      background: rgba(223, 232, 198, 0.45);
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(216, 210, 180, 0.5);
+    }
+
+    .radial-title {
+      font-family: 'Cinzel', 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+      font-weight: 600;
+      color: #173A2C;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+      margin: 0 0 10px;
+    }
+
+    .radial-subtitle {
+      font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+      color: #5E7168;
+      max-width: 660px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    /* Concentric Circles Ripple System */
+    .radial-rings-layer {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      will-change: transform;
+    }
+
+    .radial-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid #1f343f;
+      pointer-events: none;
+      box-sizing: border-box;
+      transition: border-color 0.4s ease, transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .ring-1 { width: 450px; height: 450px; opacity: 0.08; }
+    .ring-2 { width: 380px; height: 380px; opacity: 0.12; }
+    .ring-3 { width: 310px; height: 310px; opacity: 0.18; }
+    .ring-4 { width: 250px; height: 250px; opacity: 0.26; }
+    .ring-5 { width: 190px; height: 190px; opacity: 0.36; }
+
+    /* Center Vortex Emblem */
+    .radial-center-swirl {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(230px, 22vw, 300px);
+      height: clamp(230px, 22vw, 300px);
+      z-index: 18;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      pointer-events: auto;
+      will-change: transform;
+      border-radius: 50%;
+    }
+
+    .radial-swirl-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 24px rgba(31, 52, 63, 0.18));
+      transform-origin: center center;
+      transition: filter 0.35s ease;
+      pointer-events: none;
+    }
+
+    .radial-center-swirl:hover .radial-swirl-img {
+      filter: drop-shadow(0 14px 34px rgba(31, 52, 63, 0.32));
+    }
+
+    /* Radial Cards Layer */
+    .radial-cards-stage {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    .radial-card {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0.22);
+      opacity: 0;
+      width: 320px;
+      max-width: 86vw;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(31, 52, 63, 0.16);
+      box-shadow: 0 15px 35px rgba(31, 52, 63, 0.06);
+      padding: 20px 24px;
+      will-change: transform, opacity;
+      transform-origin: center center;
+      pointer-events: auto;
+      transition: box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease, transform 0.3s ease;
+      cursor: default;
+    }
+
+    .radial-card:hover {
+      box-shadow: 0 22px 48px rgba(31, 52, 63, 0.18);
+      border-color: #1f343f;
+      background: #ffffff;
+    }
+
+    .radial-card-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .radial-card-iconbox {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 12px;
+      background: rgba(31, 52, 63, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1f343f;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 12px rgba(31, 52, 63, 0.08);
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    .radial-card:hover .radial-card-iconbox {
+      background: #1f343f;
+      color: #ffffff;
+      transform: scale(1.08);
+    }
+
+    .radial-card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: #1f343f;
+      margin: 0;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+
+    .radial-card-desc {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: rgba(31, 52, 63, 0.76);
+      margin: 0;
+    }
+
+    /* Mobile / Responsive Styles */
+    @media (max-width: 860px) {
+      #radialServicesSection {
+        height: auto !important;
+        min-height: 100vh;
+        padding: 60px 0 80px;
+      }
+      .radial-sticky-viewport {
+        position: relative !important;
+        height: auto !important;
+        min-height: auto;
+        overflow: visible;
+        padding: 0 20px;
+      }
+      .radial-header {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin-bottom: 30px;
+      }
+      .radial-rings-layer {
+        display: none;
+      }
+      .radial-center-swirl {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        margin: 0 auto 30px;
+        width: 140px;
+        height: 140px;
+      }
+      .radial-cards-stage {
+        position: relative !important;
+        inset: auto !important;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .radial-card {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+    /* ======================================================== */
+    /* EDITORIAL & BLOGS CAROUSEL SECTION                       */
+    /* ======================================================== */
+    #blogEditorialSection {
+      background-color: #FAF8EE;
+      position: relative;
+      height: 200vh; /* recalculated by JS */
+    }
+
+    .blog-pin {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 96px 0 24px;
+      box-sizing: border-box;
+    }
+
+    .blog-section-container {
+      width: 100%;
+      box-sizing: border-box;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .blog-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 32px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .blog-header-text {
+      max-width: 660px;
+    }
+
+    .blog-section-title {
+      font-family: 'Playfair Display', 'Cinzel', serif;
+      font-size: clamp(1.6rem, 2.6vw, 2.5rem);
+      font-weight: 600;
+      color: #465665;
+      line-height: 1.22;
+      margin: 0 0 10px;
+      letter-spacing: -0.015em;
+    }
+
+    .blog-section-subtitle {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      color: #7b8791;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .blog-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .blog-pills-wrap {
+      display: inline-flex;
+      background: rgba(70, 86, 101, 0.08);
+      padding: 4px;
+      border-radius: 9999px;
+      border: 1px solid rgba(70, 86, 101, 0.12);
+    }
+
+    .blog-pill-btn {
+      border: none;
+      background: transparent;
+      padding: 9px 24px;
+      border-radius: 9999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #7b8791;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      outline: none;
+    }
+
+    .blog-pill-btn.active {
+      background: #1f343f;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(31, 52, 63, 0.25);
+    }
+
+    .blog-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(70, 86, 101, 0.22);
+      background: #ffffff;
+      color: #465665;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      font-size: 0.92rem;
+      outline: none;
+    }
+
+    .blog-nav-btn:hover {
+      background: #1f343f;
+      color: #ffffff;
+      border-color: #1f343f;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(31, 52, 63, 0.16);
+    }
+
+    .blog-carousel-container {
+      display: flex;
+      gap: 32px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      max-width: 1232px;
+      width: calc(100% - 48px);
+      margin: 0 auto;
+      padding: 6px 0 8px;
+      flex: 1 1 auto;
+      min-height: 0;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .blog-carousel-container.is-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+    }
+
+    .blog-carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .blog-card-item {
+      flex: 0 0 min(370px, 82vw);
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+
+    .blog-card-media {
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 90px;
+      border-radius: 26px;
+      overflow: hidden;
+      background: #e2e8f0;
+      box-shadow: 0 12px 30px rgba(70, 86, 101, 0.08);
+    }
+
+    .blog-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
+      pointer-events: none;
+    }
+
+    .blog-card-item:hover .blog-card-media img {
+      transform: scale(1.06);
+    }
+
+    .blog-date-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0, 0, 0, 0.52);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+      z-index: 2;
+    }
+
+    .blog-watermark-tag {
+      position: absolute;
+      bottom: 14px;
+      right: 18px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.88);
+      text-transform: capitalize;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+      z-index: 2;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    .blog-card-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.16rem;
+      font-weight: 700;
+      color: #465665;
+      line-height: 1.35;
+      margin: 14px 0 8px;
+      flex: 0 0 auto;
+      transition: color 0.25s ease;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .blog-card-item:hover .blog-card-heading {
+      color: #1f343f;
+    }
+
+    .blog-card-desc {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      color: #7b8791;
+      line-height: 1.6;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ======================================================== */
+    /* CTA: FLOATING LUXURY BANNER WITH BUILDING (HALF IN FOOTER)*/
+    /* ======================================================== */
+    #ctaPivoraSection {
+      background: #FAF8EE;
+      position: relative;
+      z-index: 30;
+      padding: 50px 24px 0;
+      margin-bottom: -190px; /* Sits 50% in light section and 50% in dark footer */
+    }
+
+    .cta-pivora-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .cta-pivora-card {
+      position: relative;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14), 0 4px 16px rgba(0, 0, 0, 0.04);
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      align-items: center;
+      padding: 48px 56px;
+      min-height: 420px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+    }
+
+    /* Ambient natural illumination */
+    .cta-pivora-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #ffffff 0%, #faf9f6 50%, #f4f2eb 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .cta-pivora-left {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 540px;
+    }
+
+    .cta-pivora-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-bottom: 14px;
+    }
+
+    .cta-pivora-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 3.1vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      color: #465665; /* Exact user requested color code */
+      margin: 0 0 16px;
+    }
+
+    .cta-pivora-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.68;
+      color: #7b8791; /* Exact user requested color code */
+      margin: 0 0 28px;
+      max-width: 480px;
+    }
+
+    .cta-pivora-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 32px;
+      border-radius: 10px;
+      background: #465665;
+      color: #ffffff;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 20px rgba(70, 86, 101, 0.25);
+    }
+
+    .cta-pivora-btn:hover {
+      background: #1f343f;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(31, 52, 63, 0.35);
+      color: #ffffff;
+    }
+
+    .cta-btn-arrow {
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: transform 0.22s ease;
+    }
+
+    .cta-pivora-btn:hover .cta-btn-arrow {
+      transform: translate(2px, -2px);
+    }
+
+    .cta-pivora-right {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cta-pivora-tagline-box {
+      align-self: flex-end;
+      margin-bottom: 8px;
+      text-align: right;
+    }
+
+    .cta-tagline-text {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: #465665;
+      letter-spacing: -0.01em;
+    }
+
+    .cta-tagline-line {
+      width: 100%;
+      height: 1.5px;
+      background-color: #465665;
+      margin-top: 8px;
+      opacity: 0.35;
+    }
+
+    .cta-building-wrap {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cta-building-img {
+      width: 100%;
+      max-width: 530px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 18px 32px rgba(70, 86, 101, 0.16));
+      opacity: 0;
+      transform: translateY(150px) scale(0.95);
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease-out;
+      will-change: transform, opacity;
+    }
+
+    .cta-pivora-card.is-visible .cta-building-img {
+      opacity: 1;
+      transform: translateY(0) scale(1.04);
+    }
+
+    .cta-pivora-card.is-visible:hover .cta-building-img {
+      transform: translateY(-6px) scale(1.07);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @media (max-width: 960px) {
+      #ctaPivoraSection {
+        margin-bottom: -110px;
+        padding: 40px 16px 0;
+      }
+      .cta-pivora-card {
+        grid-template-columns: 1fr;
+        padding: 40px 28px;
+        gap: 32px;
+      }
+      .cta-pivora-tagline-box {
+        align-self: center;
+        text-align: center;
+      }
+      .cta-building-img {
+        max-width: 440px;
+      }
+    }
+
+    /* ======================================================== */
+    /* TESTIMONIALS SECTION (STACKED DECK - ABOVE FAQ SECTION)  */
+    /* ======================================================== */
+    #testimonialSection {
+      background: #FAF8EE;
+      position: relative;
+      padding: 80px 24px 60px;
+      overflow: hidden;
+    }
+
+    .testi-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.92fr 1.28fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* Left Column: Content + Pill Arrows */
+    .testi-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .testi-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-bottom: 14px;
+    }
+
+    .testi-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.16;
+      letter-spacing: -0.5px;
+      color: #465665;
+      margin: 0 0 18px;
+    }
+
+    .testi-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 400;
+      line-height: 1.68;
+      color: #7b8791;
+      max-width: 440px;
+      margin: 0 0 32px;
+    }
+
+    .testi-nav-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .testi-pill-btn {
+      width: 78px;
+      height: 46px;
+      border-radius: 9999px;
+      background: #FBF9F3;
+      border: 1px solid #465665;
+      color: #465665;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      outline: none;
+    }
+
+    .testi-pill-btn:hover {
+      background: #465665;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(70, 86, 101, 0.2);
+    }
+
+    .testi-pill-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Right Column: Stacked Cards Deck */
+    .testi-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 48px 48px 10px;
+    }
+
+    .testi-deck {
+      position: relative;
+      width: 100%;
+      max-width: 580px;
+      min-height: 340px;
+    }
+
+    .testi-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      padding: 38px 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                  background-color 0.55s ease,
+                  border-color 0.55s ease,
+                  box-shadow 0.55s ease,
+                  opacity 0.45s ease;
+      will-change: transform, opacity;
+      user-select: none;
+    }
+
+    /* Front Active Card */
+    .testi-card[data-pos="0"] {
+      position: relative;
+      z-index: 3;
+      background: #FBF9F3;
+      border: 1px solid rgba(70, 86, 101, 0.42);
+      box-shadow: 0 18px 42px rgba(70, 86, 101, 0.08);
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Second Card Peeking Behind */
+    .testi-card[data-pos="1"] {
+      z-index: 2;
+      background: #EAE5D9;
+      border: 1px solid rgba(70, 86, 101, 0.34);
+      box-shadow: 0 12px 28px rgba(70, 86, 101, 0.06);
+      transform: translate(24px, 14px) rotate(1.4deg);
+      opacity: 1;
+      pointer-events: none;
+    }
+
+    /* Third Card Tilted Behind */
+    .testi-card[data-pos="2"] {
+      z-index: 1;
+      background: #DDD7C8;
+      border: 1px solid rgba(70, 86, 101, 0.3);
+      box-shadow: 0 8px 20px rgba(70, 86, 101, 0.05);
+      transform: translate(44px, 38px) rotate(3.6deg);
+      opacity: 1;
+      pointer-events: none;
+    }
+
+    /* Any additional cards hidden behind */
+    .testi-card[data-pos="hidden"] {
+      z-index: 0;
+      background: #DDD7C8;
+      border: 1px solid rgba(70, 86, 101, 0.2);
+      transform: translate(44px, 38px) rotate(3.6deg) scale(0.96);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .testi-quote-mark {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 0.75;
+      color: #465665;
+      margin-bottom: 14px;
+      display: inline-block;
+      user-select: none;
+    }
+
+    .testi-quote {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(1rem, 1.15vw, 1.1rem);
+      font-weight: 400;
+      line-height: 1.65;
+      color: #465665;
+      margin: 0 0 26px;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: auto;
+    }
+
+    .testi-avatar {
+      width: 46px;
+      height: 46px;
+      min-width: 46px;
+      border-radius: 50%;
+      background: #E2E6EA;
+      border: 1px solid rgba(70, 86, 101, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nanum Myeongjo', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #465665;
+      overflow: hidden;
+    }
+
+    .testi-author-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testi-author-name {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #465665;
+      line-height: 1.3;
+    }
+
+    .testi-author-role {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 400;
+      color: #7b8791;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 960px) {
+      #testimonialSection {
+        padding: 50px 16px 40px;
+      }
+      .testi-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .testi-right {
+        padding: 10px 28px 40px 0;
+      }
+      .testi-card {
+        padding: 28px 26px;
+      }
+    }
+
+    /* ======================================================== */
+    /* FAQ ACCORDION SECTION (BELOW CTA SECTION)                */
+    /* ======================================================== */
+    #faqSection {
+      background: #FAF8EE;
+      position: relative;
+      padding: 70px 24px 100px;
+      overflow: hidden;
+    }
+
+    .faq-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.85fr 1.35fr;
+      gap: 64px;
+      align-items: flex-start;
+    }
+
+    .faq-left {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .faq-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.5px;
+      color: #465665;
+      margin: 0 0 18px;
+    }
+
+    .faq-subtitle {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 400;
+      line-height: 1.65;
+      color: #7b8791;
+      max-width: 370px;
+      margin: 0 0 28px;
+    }
+
+    .faq-swirl-watermark {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      margin-left: -36px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .faq-swirl-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0.065;
+      filter: grayscale(100%);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .faq-item {
+      background: #F3EFE2;
+      border: 1px solid rgba(70, 86, 101, 0.14);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, transform 0.25s ease;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(70, 86, 101, 0.35);
+      box-shadow: 0 6px 20px rgba(70, 86, 101, 0.06);
+    }
+
+    .faq-item.active {
+      background: #F1EDE0;
+      border-color: rgba(70, 86, 101, 0.32);
+      box-shadow: 0 10px 28px rgba(70, 86, 101, 0.08);
+    }
+
+    .faq-question-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 28px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      outline: none;
+    }
+
+    .faq-question-text {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.05rem, 1.25vw, 1.18rem);
+      font-weight: 700;
+      line-height: 1.35;
+      color: #465665;
+      letter-spacing: -0.2px;
+    }
+
+    .faq-icon-circle {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      background: rgba(70, 86, 101, 0.12);
+      color: #465665;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon-circle {
+      background: #465665;
+      color: #ffffff;
+      transform: rotate(180deg);
+    }
+
+    .faq-answer-wrap {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq-item.active .faq-answer-wrap {
+      grid-template-rows: 1fr;
+    }
+
+    .faq-answer-inner {
+      overflow: hidden;
+    }
+
+    .faq-answer-content {
+      border-top: 1px solid rgba(70, 86, 101, 0.14);
+      padding: 18px 28px 24px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 400;
+      line-height: 1.68;
+      color: #7b8791;
+    }
+
+    @media (max-width: 960px) {
+      #faqSection {
+        padding: 50px 16px 70px;
+      }
+      .faq-container {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .faq-swirl-watermark {
+        display: none;
+      }
+      .faq-question-btn {
+        padding: 18px 22px;
+      }
+      .faq-answer-content {
+        padding: 16px 22px 20px;
+      }
+    }
+
+    /* ======================================================== */
+    /* LUXURY CURVED-ARCH 3-COLUMN FOOTER (NORTH WIND STYLE)    */
+    /* ======================================================== */
+    .nw-footer {
+      position: relative;
+      z-index: 10;
+      padding: 250px 24px 36px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(70, 86, 101, 0.14) 0%, rgba(70, 86, 101, 0.04) 45%, transparent 75%),
+        linear-gradient(180deg, #E3EAE8 0%, #EFF2EC 42%, #FAF8EE 100%);
+      color: #465665;
+      overflow: hidden;
+      border-top: 1px solid rgba(70, 86, 101, 0.14);
+    }
+
+    /* Sweeping Curved Arch Dividers (Left & Right) */
+    .nw-footer::before,
+    .nw-footer::after {
+      content: '';
+      position: absolute;
+      top: 160px;
+      width: 1150px;
+      height: 1150px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .nw-footer::before {
+      right: calc(50% + 195px);
+      border-right: 1px solid rgba(70, 86, 101, 0.18);
+    }
+
+    .nw-footer::after {
+      left: calc(50% + 195px);
+      border-left: 1px solid rgba(70, 86, 101, 0.18);
+    }
+
+    .nw-footer-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    /* Top Row: Brand Logo | Social Pills | Member of CREDAI */
+    .nw-footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      margin-bottom: 64px;
+      gap: 24px;
+    }
+
+    .nw-footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #465665;
+    }
+
+    .nw-brand-main {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Cinzel', 'Nanum Myeongjo', Georgia, serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #465665;
+      line-height: 1.1;
+    }
+
+    .nw-brand-swirl {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      display: inline-block;
+      vertical-align: middle;
+      opacity: 0.85;
+    }
+
+    .nw-brand-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 6.5px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-top: 6px;
+      padding-left: 6.5px;
+    }
+
+    /* Center Social Outlined Pills */
+    .nw-footer-socials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .nw-social-pill {
+      width: 58px;
+      height: 40px;
+      border-radius: 11px;
+      border: 1px solid rgba(70, 86, 101, 0.48);
+      background: rgba(255, 255, 255, 0.35);
+      color: #465665;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .nw-social-pill:hover {
+      background: #465665;
+      color: #ffffff;
+      border-color: #465665;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(70, 86, 101, 0.18);
+    }
+
+    /* Right Member Badge */
+    .nw-footer-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nw-member-label {
+      font-family: 'Nanum Myeongjo', Georgia, serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #465665;
+      margin-bottom: 6px;
+    }
+
+    .nw-credai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: 'Jost', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #465665;
+      line-height: 1;
+      position: relative;
+    }
+
+    .nw-credai-roof {
+      color: #c05640;
+      font-size: 0.95rem;
+      margin-left: -2px;
+      transform: translateY(-7px);
+    }
+
+    /* Main 3-Column Links Grid */
+    .nw-footer-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      text-align: center;
+      padding-bottom: 64px;
+    }
+
+    .nw-col-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: 1.38rem;
+      font-weight: 700;
+      color: #465665;
+      margin: 0 0 26px;
+      letter-spacing: -0.2px;
+    }
+
+    .nw-col-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      align-items: center;
+    }
+
+    .nw-col-list a,
+    .nw-contact-item {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #7b8791;
+      text-decoration: none;
+      transition: color 0.22s ease, transform 0.22s ease;
+      line-height: 1.55;
+    }
+
+    .nw-col-list a:hover,
+    a.nw-contact-item:hover {
+      color: #465665;
+    }
+
+    .nw-contact-address {
+      max-width: 240px;
+      margin-top: 4px;
+    }
+
+    /* Bottom Legal & Copyright Bar */
+    .nw-footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.84rem;
+      color: #7b8791;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .nw-footer-bottom a {
+      color: #7b8791;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nw-footer-bottom a:hover {
+      color: #465665;
+    }
+
+    @media (max-width: 960px) {
+      .nw-footer {
+        padding: 160px 16px 32px;
+      }
+      .nw-footer::before,
+      .nw-footer::after {
+        display: none;
+      }
+      .nw-footer-top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin-bottom: 44px;
+      }
+      .nw-footer-cols {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-bottom: 44px;
+      }
+    }
+
+    /* ======================================================== */
+    /* CATEGORY SHOWCASE: RESIDENTIAL & PLOTTING (REAKTOR STYLE)*/
+    /* ======================================================== */
+    #categoryShowcaseSection {
+      position: relative;
+      height: 550vh;
+      background: #FAF8EE;
+      margin: 0;
+      padding: 0;
+    }
+    .sr-sticky-wrapper {
+      position: sticky;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #FAF8EE;
+      box-sizing: border-box;
+      padding: clamp(20px, 3vh, 36px) clamp(24px, 4.5vw, 64px) clamp(16px, 2.5vh, 28px);
+    }
+
+    /* Architectural Geometric Rings Layer in Background */
+    .sr-bg-rings {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .sr-bg-ring {
+      position: absolute;
+      border: 1px solid rgba(70, 86, 101, 0.12);
+      border-radius: 50%;
+      will-change: transform;
+    }
+    .sr-bg-ring.ring-a {
+      width: 900px;
+      height: 900px;
+      right: 2%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .sr-bg-ring.ring-b {
+      width: 620px;
+      height: 620px;
+      right: 12%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .sr-bg-ring.ring-c {
+      width: 1200px;
+      height: 1200px;
+      right: -8%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* Top Navigation Bar */
+    .sr-top-bar {
+      position: relative;
+      z-index: 25;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 4px;
+    }
+    .sr-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: #7b8791;
+    }
+    .sr-eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #465665;
+    }
+    .sr-pills-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(70, 86, 101, 0.08);
+      padding: 5px;
+      border-radius: 999px;
+      border: 1px solid rgba(70, 86, 101, 0.12);
+    }
+    .sr-pill-btn {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #7b8791;
+      background: transparent;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .sr-pill-btn:hover {
+      color: #465665;
+    }
+    .sr-pill-btn.active {
+      background: #465665;
+      color: #FAF8EE;
+      box-shadow: 0 4px 14px rgba(70, 86, 101, 0.2);
+    }
+
+    /* Center Stage */
+    .sr-stage-center {
+      position: relative;
+      z-index: 10;
+      flex: 1;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    /* Left Brand & Category Headline Block */
+    .sr-brand-block {
+      position: relative;
+      z-index: 20;
+      width: clamp(340px, 32vw, 480px);
+      flex-shrink: 0;
+      pointer-events: auto;
+    }
+    .sr-cat-subtitle {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-bottom: 8px;
+      transition: opacity 0.3s ease;
+    }
+    .sr-title-stack {
+      position: relative;
+      height: clamp(75px, 10.5vw, 130px);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .sr-title-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-family: 'Jost', 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(3.8rem, 8.5vw, 7.8rem);
+      font-weight: 700;
+      color: #465665;
+      line-height: 0.9;
+      letter-spacing: -2px;
+      margin: 0;
+      white-space: nowrap;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+    }
+    .sr-title-text.is-active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .sr-title-text.is-prev {
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .sr-title-text.is-next {
+      transform: translateY(110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .sr-cat-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.95rem, 1.05vw, 1.08rem);
+      font-weight: 300;
+      color: #7b8791;
+      line-height: 1.65;
+      margin: 0 0 28px 0;
+      max-width: 440px;
+      min-height: 4.8em;
+      transition: opacity 0.35s ease;
+    }
+    .sr-cat-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #465665;
+      color: #FAF8EE;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 24px rgba(70, 86, 101, 0.22);
+    }
+    .sr-cat-action-btn:hover {
+      background: #273440;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(70, 86, 101, 0.3);
+      color: #FAF8EE;
+    }
+    .sr-action-icon {
+      font-size: 1.1rem;
+      transition: transform 0.25s ease;
+    }
+    .sr-cat-action-btn:hover .sr-action-icon {
+      transform: translateX(4px);
+    }
+
+    /* Right Side / Horizontal Project Trains Viewport */
+    .sr-projects-viewport {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 5;
+    }
+    .sr-projects-train {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0; /* Outer blueprint circles touch as tangent rings */
+      pointer-events: auto;
+      will-change: transform;
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+    .sr-projects-train.is-active {
+      opacity: 1;
+    }
+
+    /* Project Node with Outer Tangent Blueprint Ring */
+    .sr-project-node {
+      position: relative;
+      flex-shrink: 0;
+      width: clamp(480px, 46vw, 680px);
+      height: clamp(480px, 46vw, 680px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      will-change: transform, opacity;
+    }
+    /* The large outer circle outside the image circle */
+    .sr-node-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid rgba(70, 86, 101, 0.22);
+      pointer-events: none;
+      transition: border-color 0.4s ease;
+    }
+    .sr-project-node:hover .sr-node-ring {
+      border-color: rgba(70, 86, 101, 0.6);
+    }
+
+    /* Circular Architectural Window Frame (Inner Image Circle that scales Big <-> Small) */
+    .sr-node-portal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      transform-origin: center center;
+      width: clamp(380px, 35vw, 520px);
+      height: clamp(380px, 35vw, 520px);
+      border-radius: 50%;
+      overflow: hidden;
+      background: #111a22;
+      box-shadow: 0 20px 45px rgba(70, 86, 101, 0.16);
+      transition: filter 0.3s ease;
+      will-change: transform;
+    }
+    .sr-node-portal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.92);
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+    }
+    .sr-project-node:hover .sr-node-portal img {
+      transform: scale(1.08);
+      filter: brightness(1);
+    }
+
+    /* Window Overlay Caption */
+    .sr-node-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(17, 26, 34, 0.25) 0%, rgba(17, 26, 34, 0.85) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      box-sizing: border-box;
+      transition: opacity 0.3s ease;
+    }
+    .sr-node-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #FAF8EE;
+      opacity: 0.85;
+      margin-bottom: 6px;
+    }
+    .sr-node-name {
+      font-family: 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(1.25rem, 1.55vw, 1.75rem);
+      font-weight: 700;
+      color: #FAF8EE;
+      margin: 0 0 6px 0;
+      line-height: 1.25;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+    .sr-node-detail {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(250, 248, 238, 0.85);
+      line-height: 1.45;
+      max-width: 260px;
+      margin: 0 0 12px 0;
+    }
+    .sr-node-link {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #d97706;
+      transition: transform 0.25s ease;
+    }
+    .sr-project-node:hover .sr-node-link {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 960px) {
+      #categoryShowcaseSection {
+        height: auto;
+        padding: 60px 0;
+      }
+      .sr-sticky-wrapper {
+        position: relative;
+        height: auto;
+        padding: 0 24px;
+        gap: 36px;
+      }
+      .sr-stage-center {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+      }
+      .sr-brand-block {
+        width: 100%;
+      }
+      .sr-projects-viewport {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        overflow-x: auto;
+        scrollbar-width: none;
+        pointer-events: auto;
+        padding: 20px 0;
+      }
+      .sr-projects-viewport::-webkit-scrollbar {
+        display: none;
+      }
+      .sr-projects-train {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none !important;
+        display: none;
+      }
+      .sr-projects-train.is-active {
+        display: flex;
+      }
+      .sr-project-node {
+        width: 290px;
+        height: 290px;
+      }
+      .sr-node-portal {
+        width: 220px;
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body class="is-loader" style="background-color: #FAF8EE; color: #334155; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif;">
+
+  <!-- ======================================================== -->
+  <!-- KEYHOLE OPENING LOADER (MATCHING REFERENCE EXACTLY)      -->
+  <!-- ======================================================== -->
+  <div class="loader" id="loader" onclick="skipKeyholeAnimation()">
+    <div class="loader-bg" id="loaderBg"></div>
+    <div class="loader-box" id="loaderBox">
+      <div class="line">
+        <div class="line-inner">Discover Premium Residential Homes</div>
+      </div>
+      <div class="line">
+        <div class="line-inner">Curated Plots &amp; Property Investments</div>
+      </div>
+      <div class="loader-key-wrap">
+        <div class="loader-key"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- TOP NAVIGATION BAR (TRANSPARENT ON HERO, BG FROM ABOUT)  -->
+  <!-- ======================================================== -->
+  <header class="header" id="mainHeader">
+    <div class="holder">
+      <div class="header-block">
+        <!-- Left Nav Items: Home | About | Properties -->
+        <ul class="header-nav-list">
+          <li><a href="index.html" style="color: #d97706;">Home</a></li>
+          <li><a href="about.html">About</a></li>
+
+          <!-- Properties Dropdown with Caret Icon -->
+          <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(0deg)';">
+            <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.prop-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.prop-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px;">
+              Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+            </a>
+
+            <!-- Dropdown Card (Residential & Plotting) -->
+            <div class="prop-dropdown" style="display: none; position: absolute; top: 100%; left: 0; min-width: 320px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 14px; z-index: 1200; text-transform: none;">
+              <!-- Residential Section -->
+              <div style="padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                <a href="residential.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
+                  <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; letter-spacing: 1px;">
+                    <i class="fa-solid fa-building-user" style="color: #60a5fa;"></i> Residential Properties
+                  </span>
+                  <span style="font-size: 0.72rem; color: #60a5fa; font-weight: 600;">(3) &rarr;</span>
+                </a>
+                <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+                  <a href="residential-1.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; The Grand Emerald (3-4 BHK)</a>
+                  <a href="residential-2.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Palm Crest Villas (4 BHK)</a>
+                  <a href="residential-3.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Skyline Imperial (5 BHK)</a>
+                </div>
+              </div>
+
+              <!-- Plotting Section -->
+              <div style="padding-top: 10px;">
+                <a href="plotting.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
+                  <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; letter-spacing: 1px;">
+                    <i class="fa-solid fa-map-location-dot" style="color: #d97706;"></i> Plotting Developments
+                  </span>
+                  <span style="font-size: 0.72rem; color: #d97706; font-weight: 600;">(3) &rarr;</span>
+                </a>
+                <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+                  <a href="plotting-1.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Green Valley Township Plots</a>
+                  <a href="plotting-2.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Royal Meadows Farmhouse Plots</a>
+                  <a href="plotting-3.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Metro Boulevard Commercial Plots</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Center Uploaded One Roof Properties Logo -->
+        <div class="header-logo">
+          <a href="index.html">
+            <img src="assets/one-roof-logo-white.png" alt="One Roof Properties">
+          </a>
+        </div>
+
+        <!-- Right Nav Items: Services | Blog | NRI Support | Contact Us -->
+        <div class="header-nav-right">
+          <ul class="header-nav-list">
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="nri-corner.html">NRI Support</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Mobile Toggle Button -->
+        <button id="mobileBtn" class="nav-mobile-btn" aria-label="Toggle navigation" style="display: none; background: transparent; border: none; font-size: 1.5rem; color: #ffffff; cursor: pointer;">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- HERO BANNER SECTION (MATCHING REFERENCE EXACTLY)         -->
+  <!-- ======================================================== -->
+  <section class="banner" id="heroSection">
+    
+    <!-- Slides with authentic dusk architecture -->
+    <div class="banner-slider" id="bannerSlider">
+      <div class="banner-slide active" style="background-image: url('https://tref.digitaldesignnyc.co/wp-content/uploads/2023/12/slide1.jpeg');"></div>
+      <div class="banner-slide" style="background-image: url('https://tref.digitaldesignnyc.co/wp-content/uploads/2023/12/slide2-1.jpeg');"></div>
+      <div class="banner-slide" style="background-image: url('https://tref.digitaldesignnyc.co/wp-content/uploads/2023/12/slide3-1.jpeg');"></div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileDrawer" style="display: none; position: fixed; top: 80px; left: 0; width: 100%; background: rgba(7,14,10,0.98); backdrop-filter: blur(14px); padding: 24px; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.1);">
+      <ul style="display: flex; flex-direction: column; gap: 16px; margin: 0; padding: 0;">
+        <li><a href="index.html" style="color: #d97706; font-weight: 700; font-size: 1.05rem;">Home</a></li>
+        <li><a href="about.html" style="color: #ffffff; font-size: 1rem;">About</a></li>
+        <li><a href="residential.html" style="color: #ffffff; font-size: 1rem;">Residential Properties (3)</a></li>
+        <li><a href="plotting.html" style="color: #ffffff; font-size: 1rem;">Plotting Developments (3)</a></li>
+        <li><a href="services.html" style="color: #ffffff; font-size: 1rem;">Services</a></li>
+        <li><a href="nri-corner.html" style="color: #ffffff; font-size: 1rem;">NRI Corner</a></li>
+        <li><a href="blog.html" style="color: #ffffff; font-size: 1rem;">Blogs</a></li>
+        <li><a href="contact.html" style="color: #ffffff; font-size: 1rem;">Contact</a></li>
+        <li><a href="tel:9494168733" style="color: #d97706; font-size: 1rem; font-weight: 600;">949-416-8733</a></li>
+      </ul>
+    </div>
+
+    <!-- Banner Main: Exact Horizontal Text Arrangement Matching Reference -->
+    <div class="banner-main">
+      <div class="holder">
+        <div class="banner-block vis" id="bannerBlock">
+          <h1 class="banner-h1"><span class="bh-l1">One Roof Properties</span><span class="bh-l2">Trusted Advisory</span></h1>
+          <div class="subheading">Discover Premium Residential Homes, Curated Plots &amp; Property Investments</div>
+          <a href="contact.html" class="button-inquiry">Book A Consultation</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Centered Bottom Slider Arrows (< >) Matching Reference -->
+    <button class="slick-arrow slick-prev" id="heroPrevBtn" aria-label="Previous slide"></button>
+    <button class="slick-arrow slick-next" id="heroNextBtn" aria-label="Next slide"></button>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- EXPANDING CIRCULAR ARCHITECTURAL ABOUT SECTION           -->
+  <!-- ======================================================== -->
+  <section id="aboutExpandSection">
+    <div class="about-sticky-wrapper" id="aboutStickyWrapper">
+      
+      <!-- Left Content (Hero Section Typography) -->
+      <div class="about-text-content" id="aboutTextContent">
+        <div class="about-breadcrumb">
+          Home <span>/</span> About Us
+        </div>
+        <h2 class="about-h2">
+          Where architecture is performance driven and communities thrive Under One Roof
+        </h2>
+        <p class="about-p">
+          But it's not just about the buildings and the skylines, our environments are Designed to connect with who you are, to enhance the everyday, and to create a true sense of belonging.
+        </p>
+        <div style="display: flex; align-items: center; gap: 24px; margin-top: 24px;">
+          <a href="about.html" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #465665; text-decoration: none; border-bottom: 1.5px solid rgba(70, 86, 101, 0.45); padding-bottom: 4px; transition: all 0.3s ease;" onmouseover="this.style.color='#1e293b'; this.style.borderColor='#1e293b';" onmouseout="this.style.color='#465665'; this.style.borderColor='rgba(70, 86, 101, 0.45)';">
+            Explore Our Story &rarr;
+          </a>
+        </div>
+        <!-- Vertical Slate Accent Line -->
+        <div style="width: 1px; height: 90px; background: rgba(70, 86, 101, 0.28); margin-top: 32px;"></div>
+      </div>
+
+      <!-- Right Expanding Circular Image Container -->
+      <div class="about-image-expand-box" id="aboutImageExpandBox">
+        <img src="about-building.jpg" alt="Luxury Architectural Living" onerror="this.onerror=null; this.src='https://apilive.origenrealty.in/uploads/pages/1792396151722-689617382.jpg';">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- ARCHITECTURAL ZOOM & DAY-TO-NIGHT COUNTER SHOWCASE       -->
+  <!-- ======================================================== -->
+  <section id="counterZoomSection">
+    
+    <!-- Sticky Viewport Wrapper -->
+    <div class="counter-sticky-wrapper" id="counterStickyWrapper">
+      
+      <!-- Zooming Background Container (scales smoothly from 1.35 to 1.0) -->
+      <div class="counter-bg-zoom-container" id="counterBgZoom">
+        
+        <!-- Day View Image (Crossfades from 1 to 0) -->
+        <img src="counter-day.jpg" id="counterDayImg" alt="One Roof Masterplan Architecture Day View" class="counter-bg-img" style="opacity: 1;" onerror="this.onerror=null; this.src='https://static.tildacdn.com/tild6534-6132-4330-a233-656665623565/Khodynka_Field.jpg';">
+        
+        <!-- Night View Image (Crossfades from 0 to 1 with illuminated towers & night skyline) -->
+        <img src="counter-night.jpg" id="counterNightImg" alt="One Roof Masterplan Architecture Night View" class="counter-bg-img" style="opacity: 0;" onerror="this.onerror=null; this.src='https://static.tildacdn.com/tild6234-6239-4338-b864-666632346636/2.jpg';">
+
+        <!-- Cinematic Radial Overlay for Contrast -->
+        <div class="counter-bg-overlay"></div>
+      </div>
+
+      <!-- Giant Architectural Typographic Background (Parallax Shift) -->
+      <div class="counter-giant-title" id="counterGiantTitle">
+        ONE ROOF &bull; ARCHITECTURE &bull; MASTERPLAN
+      </div>
+
+      <!-- Staggered Counter Cards Container (4-Column Brickwork Masonry Layout) -->
+      <div class="counter-cards-container" id="counterCardsContainer">
+        
+        <!-- Card 1: Top-Left (Col 1, Row 1) -->
+        <div class="counter-card card-pos-1">
+          <div class="counter-card-num"><span class="counter-val" data-target="18">18</span> BUILDINGS</div>
+          <div class="counter-card-tag">8 TO 32 STORIES</div>
+          <div class="counter-card-desc">Varying architectural tower heights offering stunning panoramic city & lakefront views.</div>
+        </div>
+
+        <!-- Card 2: Top-Center-Right (Col 3, Row 1) -->
+        <div class="counter-card card-pos-2">
+          <div class="counter-card-num"><span class="counter-val" data-target="150">150</span> ACRES</div>
+          <div class="counter-card-tag">OF TOTAL GROUNDS</div>
+          <div class="counter-card-desc">A private sanctuary for living, leisure, and relaxation, shielded from city bustle.</div>
+        </div>
+
+        <!-- Card 3: Mid-Left (Col 2, Row 2) -->
+        <div class="counter-card card-pos-3">
+          <div class="counter-card-num"><span class="counter-val" data-target="35">35</span> ACRES</div>
+          <div class="counter-card-tag">OF LANDSCAPING</div>
+          <div class="counter-card-desc">Premium outdoor botanical amenities, wellness zones, meditation lawns, and lush parks.</div>
+        </div>
+
+        <!-- Card 4: Far-Right (Col 4, Row 2) -->
+        <div class="counter-card card-pos-4">
+          <div class="counter-card-num"><span class="counter-val" data-target="1280">1,280</span> RESIDENCES</div>
+          <div class="counter-card-tag">AS FEW AS 2 RESIDENCES PER FLOOR</div>
+          <div class="counter-card-desc">Over 80 unique floor plans designed for generous cross-ventilation and personalized living.</div>
+        </div>
+
+        <!-- Card 5: Lower-Center-Right (Col 3, Row 3) -->
+        <div class="counter-card card-pos-5">
+          <div class="counter-card-num"><span class="counter-val" data-target="45000">45,000</span> SQ.FT.</div>
+          <div class="counter-card-tag">OF CLUBHOUSE & RETAIL</div>
+          <div class="counter-card-desc">Exclusive member lounges, commercial suites, sports arenas, and high-street shopping.</div>
+        </div>
+
+        <!-- Card 6: Bottom-Left (Col 2, Row 4) -->
+        <div class="counter-card card-pos-6">
+          <div class="counter-card-num">100% CLEAR</div>
+          <div class="counter-card-tag">RERA REGISTERED TITLES</div>
+          <div class="counter-card-desc">Immediate title registry, legal documentation, and approvals from premier institutional banks.</div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- ARCHITECTURAL CATEGORY SHOWCASE (RESIDENTIAL & PLOTTING) -->
+  <!-- Studio Reaktor Inspired Window Geometry & Horizontal Train-->
+  <!-- ======================================================== -->
+  <section id="categoryShowcaseSection">
+    <div class="sr-sticky-wrapper">
+
+      <!-- Concentric Blueprint Rings in Background -->
+      <div class="sr-bg-rings" aria-hidden="true">
+        <div class="sr-bg-ring ring-a" id="srRingA"></div>
+        <div class="sr-bg-ring ring-b" id="srRingB"></div>
+        <div class="sr-bg-ring ring-c" id="srRingC"></div>
+      </div>
+
+      <!-- Top Bar: Category Switcher & Eyebrow -->
+      <div class="sr-top-bar">
+        <div class="sr-eyebrow">
+          <span class="sr-eyebrow-dot"></span>
+          <span>Property Portfolios</span>
+        </div>
+        <nav class="sr-pills-nav" role="tablist" aria-label="Portfolio Categories">
+          <button class="sr-pill-btn active" id="srTabResidential" role="tab" aria-selected="true" data-cat="0">
+            01 Residential
+          </button>
+          <button class="sr-pill-btn" id="srTabPlotting" role="tab" aria-selected="false" data-cat="1">
+            02 Plotting
+          </button>
+        </nav>
+      </div>
+
+      <!-- Center Stage Body -->
+      <div class="sr-stage-center">
+
+        <!-- Left Brand & Category Headline Block -->
+        <div class="sr-brand-block">
+          <span class="sr-cat-subtitle" id="srCatSubtitle">01 / Curated Living Spaces</span>
+          <div class="sr-title-stack">
+            <h2 class="sr-title-text is-active" id="srCatTitleRes">Residential</h2>
+            <h2 class="sr-title-text is-next" id="srCatTitlePlot">Plotting</h2>
+          </div>
+          <p class="sr-cat-desc" id="srCatDesc">
+            From luxury high-rise penthouses to serene private villas, explore premier homes designed for generational comfort, elevated lifestyle, and timeless architecture.
+          </p>
+          <a href="residential-1.html" class="sr-cat-action-btn" id="srCatActionBtn">
+            <span id="srCatActionText">Explore Residential</span>
+            <span class="sr-action-icon">&rarr;</span>
+          </a>
+        </div>
+
+        <!-- Right Horizontal Project Tracks Viewport -->
+        <div class="sr-projects-viewport" id="srProjectsViewport">
+
+          <!-- RESIDENTIAL PROJECTS TRAIN (3 Projects) -->
+          <div class="sr-projects-train is-active" id="srTrainResidential">
+
+            <!-- Residential 01 -->
+            <a href="residential-1.html" class="sr-project-node" data-index="0">
+              <div class="sr-node-ring"></div>
+              <div class="sr-node-portal">
+                <img src="assets/realestate23.webp" alt="The Grand Emerald - Luxury Apartments" loading="lazy">
+                <div class="sr-node-overlay">
+                  <span class="sr-node-sub">3 &amp; 4 BHK Luxury</span>
+                  <h3 class="sr-node-name">The Grand Emerald</h3>
+                  <p class="sr-node-detail">Panoramic skyline residences with private elevators and marble decks.</p>
+                  <span class="sr-node-link">View Residence &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Residential 02 -->
+            <a href="residential-2.html" class="sr-project-node" data-index="1">
+              <div class="sr-node-ring"></div>
+              <div class="sr-node-portal">
+                <img src="counter-day.jpg" alt="Palm Crest Villas" loading="lazy">
+                <div class="sr-node-overlay">
+                  <span class="sr-node-sub">Private Gated Estate</span>
+                  <h3 class="sr-node-name">Palm Crest Villas</h3>
+                  <p class="sr-node-detail">Signature courtyard villas with private pools and landscaped lawns.</p>
+                  <span class="sr-node-link">View Residence &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Residential 03 -->
+            <a href="residential-3.html" class="sr-project-node" data-index="2">
+              <div class="sr-node-ring"></div>
+              <div class="sr-node-portal">
+                <img src="assets/cta-interior-2.jpg" alt="Skyline Imperial Penthouses" loading="lazy">
+                <div class="sr-node-overlay">
+                  <span class="sr-node-sub">Signature Sky Homes</span>
+                  <h3 class="sr-node-name">Skyline Imperial</h3>
+                  <p class="sr-node-detail">Double-height sky penthouses with bespoke concierge amenities.</p>
+                  <span class="sr-node-link">View Residence &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+          </div>
+
+          <!-- PLOTTING PROJECTS TRAIN (3 Projects) -->
+          <div class="sr-projects-train" id="srTrainPlotting">
+
+            <!-- Plotting 01 -->
+            <a href="plotting-1.html" class="sr-project-node" data-index="0">
+              <div class="sr-node-ring"></div>
+              <div class="sr-node-portal">
+                <img src="assets/realestate25.webp" alt="Green Valley Township Plots" loading="lazy">
+                <div class="sr-node-overlay">
+                  <span class="sr-node-sub">Gated Township</span>
+                  <h3 class="sr-node-name">Green Valley Plots</h3>
+                  <p class="sr-node-detail">Clear-title residential plots with wide avenues and underground utilities.</p>
+                  <span class="sr-node-link">View Parcels &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Plotting 02 -->
+            <a href="plotting-2.html" class="sr-project-node" data-index="1">
+              <div class="sr-node-ring"></div>
+              <div class="sr-node-portal">
+                <img src="assets/project-3.jpg" alt="Royal Meadows Farmhouse Plots" loading="lazy">
+                <div class="sr-node-overlay">
+                  <span class="sr-node-sub">Luxury Farmhouses</span>
+                  <h3 class="sr-node-name">Royal Meadows</h3>
+                  <p class="sr-node-detail">Expansive countryside plots tailored for private estates and retreats.</p>
+                  <span class="sr-node-link">View Parcels &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Plotting 03 -->
+            <a href="plotting-3.html" class="sr-project-node" data-index="2">
+              <div class="sr-node-ring"></div>
+              <div class="sr-node-portal">
+                <img src="assets/realestate24.webp" alt="Metro Boulevard Commercial Plots" loading="lazy">
+                <div class="sr-node-overlay">
+                  <span class="sr-node-sub">High-Street Commercial</span>
+                  <h3 class="sr-node-name">Metro Boulevard</h3>
+                  <p class="sr-node-detail">Prime corridor-facing commercial parcels pre-approved for retail hubs.</p>
+                  <span class="sr-node-link">View Parcels &rarr;</span>
+                </div>
+              </div>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- RADIAL SERVICE & PILLAR SHOWCASE (PINNED ROTATING VORTEX) -->
+  <!-- ======================================================== -->
+  <section id="radialServicesSection">
+    <div class="radial-sticky-viewport" id="radialViewport">
+
+      <!-- Concentric Ripple Circles Layer -->
+      <div class="radial-rings-layer" id="radialRingsLayer">
+        <div class="radial-ring ring-1"></div>
+        <div class="radial-ring ring-2"></div>
+        <div class="radial-ring ring-3"></div>
+        <div class="radial-ring ring-4"></div>
+        <div class="radial-ring ring-5"></div>
+      </div>
+
+      <!-- Center Rotating Vortex Swirl Emblem -->
+      <div class="radial-center-swirl" id="radialCenterSwirl">
+        <img src="service-swirl.svg" alt="One Roof Center Vortex Emblem" class="radial-swirl-img" id="radialSwirlImg">
+      </div>
+
+      <!-- 6 Radial Service Cards Layer (Emerge outward from the center circle on scroll) -->
+      <div class="radial-cards-stage" id="radialCardsStage">
+
+        <!-- Card 1: Top Center (Selling) -->
+        <div class="radial-card" data-card-idx="0">
+          <div class="radial-card-top">
+            <div class="radial-card-iconbox"><i class="fa-solid fa-house-chimney-window"></i></div>
+            <h3 class="radial-card-title">Selling</h3>
+          </div>
+          <p class="radial-card-desc">Expert sales of residential plots, luxury bungalows, and high-value masterplanned communities.</p>
+        </div>
+
+        <!-- Card 2: Top Left (Redevelopment Projects) -->
+        <div class="radial-card" data-card-idx="1">
+          <div class="radial-card-top">
+            <div class="radial-card-iconbox"><i class="fa-solid fa-city"></i></div>
+            <h3 class="radial-card-title">Redevelopment Projects</h3>
+          </div>
+          <p class="radial-card-desc">Transforming urban infrastructure through end-to-end planning, modernization, and flawless execution.</p>
+        </div>
+
+        <!-- Card 3: Top Right (Construction Projects) -->
+        <div class="radial-card" data-card-idx="2">
+          <div class="radial-card-top">
+            <div class="radial-card-iconbox"><i class="fa-solid fa-trowel-bricks"></i></div>
+            <h3 class="radial-card-title">Construction Projects</h3>
+          </div>
+          <p class="radial-card-desc">Bespoke construction of luxury villas, farmhouses, and estates engineered for aesthetic excellence.</p>
+        </div>
+
+        <!-- Card 4: Bottom Left (Investment Projects) -->
+        <div class="radial-card" data-card-idx="3">
+          <div class="radial-card-top">
+            <div class="radial-card-iconbox"><i class="fa-solid fa-chart-line"></i></div>
+            <h3 class="radial-card-title">Investment Projects</h3>
+          </div>
+          <p class="radial-card-desc">High-yield property investments, portfolio guidance, and dedicated advisory desks for NRI investors.</p>
+        </div>
+
+        <!-- Card 5: Bottom Right (Reselling and Purchasing) -->
+        <div class="radial-card" data-card-idx="4">
+          <div class="radial-card-top">
+            <div class="radial-card-iconbox"><i class="fa-solid fa-repeat"></i></div>
+            <h3 class="radial-card-title">Reselling and Purchasing</h3>
+          </div>
+          <p class="radial-card-desc">Hassle-free reselling and buying services ensuring clear verified titles and swift seamless transactions.</p>
+        </div>
+
+        <!-- Card 6: Bottom Center (Engineer & Contractor Services) -->
+        <div class="radial-card" data-card-idx="5">
+          <div class="radial-card-top">
+            <div class="radial-card-iconbox"><i class="fa-solid fa-helmet-safety"></i></div>
+            <h3 class="radial-card-title">Engineer & Contractor Services</h3>
+          </div>
+          <p class="radial-card-desc">Turnkey engineering solutions, civil contracting, structural integrity, and punctual milestone delivery.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 7.5 EDITORIAL & BLOGS CAROUSEL SECTION                   -->
+  <!-- ======================================================== -->
+  <section id="blogEditorialSection">
+   <div class="blog-pin">
+    <div class="blog-section-container">
+      <div class="blog-header-row">
+        <div class="blog-header-text">
+          <h2 class="blog-section-title">Ideas Carried on a Rarer Wind</h2>
+          <p class="blog-section-subtitle">
+            Explore curated perspectives on refined living, thoughtful design, sustainability and the enduring value of timeless real estate.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Container (Full width, left aligned with content container) -->
+    <div class="blog-carousel-container" id="blogCarouselTrack">
+      <!-- Blog 1 -->
+      <a href="blog.html" class="blog-card-item type-blog">
+        <div class="blog-card-media">
+          <img src="assets/project-1.jpg" alt="The Growing Appeal of Luxury Homes in Pune">
+        </div>
+        <h3 class="blog-card-heading">The Growing Appeal of Luxury Homes in Pune</h3>
+        <p class="blog-card-desc">Demand for luxury homes in Pune is rising because buyers want more space, privacy and planned green surroundings with world-class connectivity.</p>
+      </a>
+
+      <!-- Blog 2 -->
+      <a href="blog.html" class="blog-card-item type-blog">
+        <div class="blog-card-media">
+          <img src="assets/project-2.jpg" alt="Why Pune is Emerging as the Next Luxury Real Estate Destination in Maharashtra">
+        </div>
+        <h3 class="blog-card-heading">Why Pune is Emerging as Maharashtra's Next Luxury Frontier</h3>
+        <p class="blog-card-desc">Pune is emerging as Maharashtra's next luxury destination because of three verifiable shifts: expansive planned corridors, and institutional grade developers.</p>
+      </a>
+
+      <!-- Blog 3 -->
+      <a href="blog.html" class="blog-card-item type-blog">
+        <div class="blog-card-media">
+          <img src="assets/project-3.jpg" alt="Buying a Luxury Home in Pune Guide">
+        </div>
+        <h3 class="blog-card-heading">Buying a Luxury Home in Pune: The Complete Guide</h3>
+        <p class="blog-card-desc">To buy a luxury home in Pune with confidence, check five things before you pay a token amount: MahaRERA registration, clear land titles, delivery milestones, and master plan zoning.</p>
+      </a>
+
+      <!-- Blog 4 -->
+      <a href="blog.html" class="blog-card-item type-blog">
+        <div class="blog-card-media">
+          <img src="assets/project-4.jpg" alt="Sustainable Luxury Living: How Green Architecture Shapes Modern Homes">
+        </div>
+        <h3 class="blog-card-heading">Sustainable Luxury Living: How Green Architecture Shapes Modern Homes</h3>
+        <p class="blog-card-desc">A sustainable luxury residence is designed, built and operated to cut energy and water use, improve indoor air quality, and bring nature into everyday living through biophilic harmony.</p>
+      </a>
+
+      <!-- Blog 5 -->
+      <a href="blog.html" class="blog-card-item type-blog">
+        <div class="blog-card-media">
+          <img src="assets/project-5.jpg" alt="Pune Property Investment Guide: Capital Growth Dynamics">
+        </div>
+        <h3 class="blog-card-heading">Pune Property Investment: Capital Growth Dynamics</h3>
+        <p class="blog-card-desc">Pune is a long-horizon, infrastructure-led property market in 2026. Explore key growth corridors, multi-modal links, and premier investment pockets driving appreciation.</p>
+      </a>
+
+      <!-- Media Item 1 -->
+      <a href="blog.html" class="blog-card-item type-media" style="display: none;">
+        <div class="blog-card-media">
+          <img src="assets/project-2.jpg" alt="Media Coverage: The Economic Times">
+        </div>
+        <h3 class="blog-card-heading">The Economic Times: One Roof Sets New Benchmark in Real Estate</h3>
+        <p class="blog-card-desc">Leading national business daily covers how One Roof Properties delivers verified developments and institutional quality across premier corridors.</p>
+      </a>
+
+      <!-- Media Item 2 -->
+      <a href="blog.html" class="blog-card-item type-media" style="display: none;">
+        <div class="blog-card-media">
+          <img src="assets/project-4.jpg" alt="Media Coverage: Financial Express">
+        </div>
+        <h3 class="blog-card-heading">Financial Express: Maharashtra Infrastructure Surge Drives Luxury Living</h3>
+        <p class="blog-card-desc">Insightful analysis on how expressway corridors and international airport connectivity are driving sustained demand for gated estates.</p>
+      </a>
+
+      <!-- Media Item 3 -->
+      <a href="blog.html" class="blog-card-item type-media" style="display: none;">
+        <div class="blog-card-media">
+          <img src="assets/project-1.jpg" alt="Media Coverage: Architectural Digest">
+        </div>
+        <h3 class="blog-card-heading">Architectural Digest: Biophilic Architecture and Enduring Luxury</h3>
+        <p class="blog-card-desc">A deep dive into how sustainable craftsmanship, double-height volumes, and nature-integrated spaces define contemporary luxury living.</p>
+      </a>
+    </div>
+   </div>
+  </section>
+
+  <!-- 8.2 Testimonials Section (Left Content, Right Stacked Cards - Above FAQ) -->
+  <section id="testimonialSection">
+    <div class="testi-container">
+      <!-- Left Column: Heading, Description & Navigation Arrows -->
+      <div class="testi-left">
+        <div class="testi-tag">Trusted by Homebuyers &amp; Investors</div>
+        <h2 class="testi-title">Client-first mindset</h2>
+        <p class="testi-desc">
+          Experience matters—and not just when selecting a property. That's why we put families and investors first, creating transparent buying experiences and partnering with you to secure the right residential home or plot in Pune.
+        </p>
+        <div class="testi-nav-row">
+          <button type="button" class="testi-pill-btn" onclick="cycleTestimonial(-1)" aria-label="Previous testimonial">
+            <i class="fa-solid fa-arrow-left-long"></i>
+          </button>
+          <button type="button" class="testi-pill-btn" onclick="cycleTestimonial(1)" aria-label="Next testimonial">
+            <i class="fa-solid fa-arrow-right-long"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Stacked Testimonial Card Deck -->
+      <div class="testi-right">
+        <div class="testi-deck" id="testimonialDeck">
+          <!-- Card 1 -->
+          <article class="testi-card" data-pos="0">
+            <div>
+              <div class="testi-quote-mark">&ldquo;</div>
+              <p class="testi-quote">
+                "Working with More Roof Properties has been an exceptional experience. Their support in shortlisting our residential apartment in Pune and assisting our family in ensuring every legal check and registration ran smoothly has been invaluable. We are grateful and highly recommend their team!"
+              </p>
+            </div>
+            <div class="testi-author">
+              <div class="testi-avatar">RD</div>
+              <div class="testi-author-info">
+                <span class="testi-author-name">Rajesh Deshmukh</span>
+                <span class="testi-author-role">Residential Homeowner, Pune</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="testi-card" data-pos="1">
+            <div>
+              <div class="testi-quote-mark">&ldquo;</div>
+              <p class="testi-quote">
+                "Finding a clear-title residential plot in a high-growth Pune corridor felt overwhelming until we connected with More Roof Properties. Their transparent consultation, budget alignment, and on-ground verification gave us complete confidence in our investment."
+              </p>
+            </div>
+            <div class="testi-author">
+              <div class="testi-avatar">AK</div>
+              <div class="testi-author-info">
+                <span class="testi-author-name">Ananya Kulkarni</span>
+                <span class="testi-author-role">Plotting Investor, Baner–Hinjewadi Corridor</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="testi-card" data-pos="2">
+            <div>
+              <div class="testi-quote-mark">&ldquo;</div>
+              <p class="testi-quote">
+                "As an NRI investing in India from abroad, having a trustworthy advisory team on the ground made all the difference. More Roof Properties handled property comparisons, regulatory guidance, and end-to-end documentation with remarkable professionalism."
+              </p>
+            </div>
+            <div class="testi-author">
+              <div class="testi-avatar">SM</div>
+              <div class="testi-author-info">
+                <span class="testi-author-name">Siddharth Mehta</span>
+                <span class="testi-author-role">NRI Real Estate Investor, Dubai &amp; Pune</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8.5 Frequently Asked Questions Section -->
+  <section id="faqSection">
+    <div class="faq-container">
+      <!-- Left Column: Title, Subtitle & Watermark Swirl -->
+      <div class="faq-left">
+        <h2 class="faq-title">Frequently Asked<br>Questions?</h2>
+        <p class="faq-subtitle">
+          Discover thoughtful answers designed to bring greater confidence, clarity and ease to your journey with One Roof Properties.
+        </p>
+        <div class="faq-swirl-watermark">
+          <img src="service-swirl.svg" alt="" class="faq-swirl-img">
+        </div>
+      </div>
+
+      <!-- Right Column: 5 Accordion Cards -->
+      <div class="faq-list">
+        <!-- FAQ 1 (Open by default) -->
+        <div class="faq-item active">
+          <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)" aria-expanded="true">
+            <span class="faq-question-text">1. What types of properties does More Roof Properties offer?</span>
+            <span class="faq-icon-circle"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="faq-answer-content">
+                More Roof Properties offers a range of residential properties, including flats, apartments, and independent homes, along with residential plots for customers looking to build their dream homes or invest in real estate.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)" aria-expanded="false">
+            <span class="faq-question-text">2. How can I find the right residential property or plot in Pune?</span>
+            <span class="faq-icon-circle"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="faq-answer-content">
+                You can explore our Residential Properties and Plotting Projects sections to view available options. Our team will help you choose a property based on your budget, preferred location, and requirements.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)" aria-expanded="false">
+            <span class="faq-question-text">3. What real estate services does More Roof Properties provide?</span>
+            <span class="faq-icon-circle"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="faq-answer-content">
+                We provide real estate services such as property buying and selling, resale assistance, property consultation, and guidance for residential and plotting investments.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)" aria-expanded="false">
+            <span class="faq-question-text">4. Can NRIs invest in properties in India through More Roof Properties?</span>
+            <span class="faq-icon-circle"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="faq-answer-content">
+                Yes, NRIs can contact our team for assistance with eligible property investments in India. We provide guidance on property options and the buying process, subject to applicable Indian laws and regulations.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question-btn" onclick="toggleFaqItem(this)" aria-expanded="false">
+            <span class="faq-question-text">5. How can I contact More Roof Properties to enquire about a property?</span>
+            <span class="faq-icon-circle"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer-wrap">
+            <div class="faq-answer-inner">
+              <div class="faq-answer-content">
+                You can reach us through the Contact Us page or submit an enquiry form on a property listing. Our team will connect with you to discuss property details, pricing, location, and the next steps.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8.8 Floating CTA Banner (Above Footer, Half in Footer) -->
+  <section id="ctaPivoraSection">
+    <div class="cta-pivora-wrap">
+      <div class="cta-pivora-card">
+        <div class="cta-pivora-left">
+          <div class="cta-pivora-tag">PREMIUM LIVING | ONE ROOF PROPERTIES</div>
+          <h2 class="cta-pivora-title">
+            Discover Premium<br>Residences in One Roof Properties
+          </h2>
+          <p class="cta-pivora-desc">
+            Modern architecture, prime location and a lifestyle designed for your tomorrow. Explore our exclusive residences and find the perfect place to call home.
+          </p>
+          <a href="residential.html" class="cta-pivora-btn">
+            <span>EXPLORE RESIDENCES</span>
+            <span class="cta-btn-arrow">&#x2197;</span>
+          </a>
+        </div>
+        <div class="cta-pivora-right">
+          <div class="cta-pivora-tagline-box">
+            <div class="cta-tagline-text">Thoughtfully designed<br>for modern living.</div>
+            <div class="cta-tagline-line"></div>
+          </div>
+          <div class="cta-building-wrap">
+            <img src="assets/cta-building-luxury.png" alt="One Roof Luxury Residences" class="cta-building-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Footer (Curved-Arch 3-Column North Wind Style) -->
+  <footer class="nw-footer">
+    <div class="nw-footer-inner">
+      <!-- Top Row: Logo | Social Icons | Member Badge -->
+      <div class="nw-footer-top">
+        <a href="index.html" class="nw-footer-brand">
+          <img src="assets/one-roof-logo-dark.png" alt="One Roof Properties" style="height: 54px; width: auto; object-fit: contain;">
+        </a>
+
+        <div class="nw-footer-socials">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+
+        <div class="nw-footer-member">
+          <span class="nw-member-label">Member of</span>
+          <div class="nw-credai-badge">
+            <span>CREDAI</span>
+            <i class="fa-solid fa-caret-up nw-credai-roof"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main 3 Columns: Quick Links | Company | Reach Out -->
+      <div class="nw-footer-cols">
+        <!-- Column 1: Quick Links -->
+        <div>
+          <h4 class="nw-col-title">Quick Links</h4>
+          <ul class="nw-col-list">
+            <li><a href="residential.html">Residential Properties</a></li>
+            <li><a href="plotting.html">Plotting Developments</a></li>
+            <li><a href="residential-1.html">The Grand Emerald</a></li>
+            <li><a href="residential-2.html">Palm Crest Villas</a></li>
+            <li><a href="residential-3.html">Skyline Imperial</a></li>
+            <li><a href="plotting-1.html">Green Valley Plots</a></li>
+            <li><a href="nri-corner.html">NRI Corner</a></li>
+            <li><a href="#faqSection">FAQ</a></li>
+            <li><a href="#testimonialSection">Testimonials</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Company -->
+        <div>
+          <h4 class="nw-col-title">Company</h4>
+          <ul class="nw-col-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="residential.html">Projects</a></li>
+            <li><a href="#aboutExpandSection">Our Legacy</a></li>
+            <li><a href="blog.html">Blogs</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="#testimonialSection">Testimonials</a></li>
+            <li><a href="nri-corner.html">NRI Advisory</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Reach Out -->
+        <div>
+          <h4 class="nw-col-title">Reach Out</h4>
+          <ul class="nw-col-list">
+            <li><a href="tel:+919494168733" class="nw-contact-item">+91-949 416 8733</a></li>
+            <li><a href="mailto:contact@oneroofproperties.com" class="nw-contact-item">contact@oneroofproperties.com</a></li>
+            <li class="nw-contact-item nw-contact-address">
+              One Roof Tower, Financial District,<br>Pune, Maharashtra - 411045
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Copyright & Policy Links -->
+      <div class="nw-footer-bottom">
+        <span>&copy; 2026 One Roof Properties. All rights reserved. |</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="privacy-policy.html">Terms &amp; Conditions</a>
+        <a href="privacy-policy.html">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ========================================================
+    // 1. KEYHOLE LOADER OPENING CONTROLLER (REFERENCE REPLICA)
+    // ========================================================
+    let keyholeTimer1 = null;
+    let keyholeTimer2 = null;
+
+    function clearKeyholeTimers() {
+      if (keyholeTimer1) clearTimeout(keyholeTimer1);
+      if (keyholeTimer2) clearTimeout(keyholeTimer2);
+    }
+
+    function runKeyholeAnimation() {
+      clearKeyholeTimers();
+      const loader = document.getElementById('loader');
+      const bannerBlock = document.getElementById('bannerBlock');
+      if (!loader) return;
+
+      document.body.classList.add('is-loader');
+      loader.classList.remove('hide', 'animate');
+      loader.style.opacity = '1';
+      loader.style.pointerEvents = 'all';
+      if (bannerBlock) bannerBlock.classList.remove('vis');
+
+      // After 1.4s, trigger .animate:
+      // - Tagline & gold key slide down and fade out
+      // - Keyhole background zooms straight from 50% 50% center with ZERO drift
+      keyholeTimer1 = setTimeout(() => {
+        loader.classList.add('animate');
+
+        // After 2.0s zoom completes, cleanly hide loader and reveal hero
+        keyholeTimer2 = setTimeout(() => {
+          document.body.classList.remove('is-loader');
+          loader.style.opacity = '0';
+          if (bannerBlock) bannerBlock.classList.add('vis');
+          setTimeout(() => {
+            loader.classList.add('hide');
+          }, 350);
+        }, 2000);
+      }, 1400);
+    }
+
+    function skipKeyholeAnimation() {
+      clearKeyholeTimers();
+      const loader = document.getElementById('loader');
+      const bannerBlock = document.getElementById('bannerBlock');
+      if (loader) {
+        loader.style.opacity = '0';
+        document.body.classList.remove('is-loader');
+        if (bannerBlock) bannerBlock.classList.add('vis');
+        setTimeout(() => {
+          loader.classList.add('hide');
+        }, 250);
+      }
+    }
+
+    function replayKeyholeAnimation() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      runKeyholeAnimation();
+    }
+
+    // Launch opening reveal on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      runKeyholeAnimation();
+    });
+
+    // ========================================================
+    // 2. HERO BACKGROUND SLIDER (AUTO & MANUAL CONTROLS)
+    // ========================================================
+    const heroSlides = document.querySelectorAll('.banner-slide');
+    const heroPrevBtn = document.getElementById('heroPrevBtn');
+    const heroNextBtn = document.getElementById('heroNextBtn');
+    let currentSlideIndex = 0;
+    let slideInterval = null;
+
+    function goToSlide(index) {
+      if (!heroSlides.length) return;
+      currentSlideIndex = (index + heroSlides.length) % heroSlides.length;
+      heroSlides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentSlideIndex);
+      });
+    }
+
+    function nextHeroSlide() {
+      goToSlide(currentSlideIndex + 1);
+    }
+
+    function prevHeroSlide() {
+      goToSlide(currentSlideIndex - 1);
+    }
+
+    if (heroNextBtn) {
+      heroNextBtn.addEventListener('click', () => {
+        nextHeroSlide();
+        resetSlideInterval();
+      });
+    }
+
+    if (heroPrevBtn) {
+      heroPrevBtn.addEventListener('click', () => {
+        prevHeroSlide();
+        resetSlideInterval();
+      });
+    }
+
+    function resetSlideInterval() {
+      if (slideInterval) clearInterval(slideInterval);
+      slideInterval = setInterval(nextHeroSlide, 6000);
+    }
+    resetSlideInterval();
+
+    // ========================================================
+    // 3. STICKY NAVBAR ON SCROLL (TRANSPARENT ON HERO, BG FROM ABOUT)
+    // ========================================================
+    const mainHeader = document.getElementById('mainHeader');
+    function updateNavbarBackground() {
+      if (!mainHeader) return;
+      const aboutSec = document.getElementById('aboutExpandSection');
+      const threshold = aboutSec ? Math.max(80, aboutSec.offsetTop - 90) : (window.innerHeight - 90);
+      if (window.scrollY >= threshold) {
+        mainHeader.style.position = 'fixed';
+        mainHeader.style.background = 'rgba(44, 56, 68, 0.94)';
+        mainHeader.style.backdropFilter = 'blur(12px)';
+        mainHeader.style.webkitBackdropFilter = 'blur(12px)';
+        mainHeader.style.padding = '14px 0';
+        mainHeader.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.25)';
+        mainHeader.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+      } else {
+        mainHeader.style.position = 'absolute';
+        mainHeader.style.background = 'transparent';
+        mainHeader.style.backdropFilter = 'none';
+        mainHeader.style.webkitBackdropFilter = 'none';
+        mainHeader.style.padding = '34px 0 0';
+        mainHeader.style.boxShadow = 'none';
+        mainHeader.style.borderBottom = 'none';
+      }
+    }
+    window.addEventListener('scroll', updateNavbarBackground, { passive: true });
+    window.addEventListener('resize', updateNavbarBackground);
+    updateNavbarBackground();
+
+    // ========================================================
+    // 4. MOBILE DRAWER NAVIGATION
+    // ========================================================
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileBtn && mobileDrawer) {
+      mobileBtn.addEventListener('click', () => {
+        mobileDrawer.style.display = (mobileDrawer.style.display === 'block' ? 'none' : 'block');
+      });
+    }
+
+    // ========================================================
+    // 5. EXPANDING CIRCULAR ARCHITECTURAL ABOUT SECTION
+    // ========================================================
+    const aboutSection = document.getElementById('aboutExpandSection');
+    const aboutImageBox = document.getElementById('aboutImageExpandBox');
+    const aboutTextContent = document.getElementById('aboutTextContent');
+
+    function updateAboutExpandOnScroll() {
+      if (!aboutSection || !aboutImageBox || !aboutTextContent) return;
+
+      const rect = aboutSection.getBoundingClientRect();
+      const scrollDist = aboutSection.offsetHeight - window.innerHeight;
+
+      if (scrollDist <= 0) return;
+
+      let progress = -rect.top / scrollDist;
+      progress = Math.max(0, Math.min(1, progress));
+
+      const ease = progress < 0.5 
+        ? 2 * progress * progress 
+        : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+      const isMobile = window.innerWidth <= 900;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      if (isMobile) {
+        const startSize = vw * 0.92;
+        const currentW = startSize + ((vw - startSize) * ease);
+        const currentH = startSize + ((vh - startSize) * ease);
+        const currentRadius = 50 * (1 - ease);
+        const currentY = 40 * (1 - ease);
+
+        aboutImageBox.style.width = `${currentW}px`;
+        aboutImageBox.style.height = `${currentH}px`;
+        aboutImageBox.style.borderRadius = `${currentRadius}%`;
+        aboutImageBox.style.transform = `translate(0, ${currentY}px)`;
+        aboutTextContent.style.opacity = `${Math.max(0, 1 - (ease * 2.2))}`;
+        aboutTextContent.style.transform = `translateY(-${ease * 60}px)`;
+      } else {
+        // Desktop: Square box (55vw x 55vw) ensures 100% mathematically true circle at rest
+        const startW = vw * 0.55;
+        const startH = vw * 0.55;
+
+        const currentW = startW + ((vw - startW) * ease);
+        const currentH = startH + ((vh - startH) * ease);
+        const currentRadius = 50 * (1 - ease);
+        const currentX = 100 * (1 - ease);
+        const currentY = 200 * (1 - ease);
+
+        aboutImageBox.style.width = `${currentW}px`;
+        aboutImageBox.style.height = `${currentH}px`;
+        aboutImageBox.style.borderRadius = `${currentRadius}%`;
+        aboutImageBox.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+        aboutTextContent.style.opacity = `${Math.max(0, 1 - (ease * 1.8))}`;
+        aboutTextContent.style.transform = `translateY(-${ease * 100}px)`;
+      }
+    }
+
+    // ========================================================
+    // 6. ARCHITECTURAL ZOOM & DAY-TO-NIGHT COUNTER SHOWCASE
+    // ========================================================
+    const counterSection = document.getElementById('counterZoomSection');
+    const counterBgZoom = document.getElementById('counterBgZoom');
+    const counterDayImg = document.getElementById('counterDayImg');
+    const counterNightImg = document.getElementById('counterNightImg');
+    const counterGiantTitle = document.getElementById('counterGiantTitle');
+    const counterCards = document.querySelectorAll('#counterCardsContainer .counter-card');
+    const counterCardsContainer = document.getElementById('counterCardsContainer');
+
+    let countersAnimated = false;
+
+    function animateCountUpNumbers() {
+      const elements = document.querySelectorAll('.counter-val');
+      elements.forEach(el => {
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        if (!target) return;
+        const duration = 1600;
+        const startTime = performance.now();
+
+        function updateCount(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(1, elapsed / duration);
+          const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+          const currentVal = Math.round(target * easeProgress);
+          el.textContent = currentVal.toLocaleString('en-US');
+          if (progress < 1) {
+            requestAnimationFrame(updateCount);
+          } else {
+            el.textContent = target.toLocaleString('en-US');
+          }
+        }
+        requestAnimationFrame(updateCount);
+      });
+    }
+
+    function updateCounterZoomOnScroll() {
+      if (!counterSection || !counterBgZoom || !counterDayImg || !counterNightImg) return;
+
+      const rect = counterSection.getBoundingClientRect();
+      const scrollDist = counterSection.offsetHeight - window.innerHeight;
+      if (scrollDist <= 0) return;
+
+      // Overall scroll progress (0 to 1)
+      let progress = -rect.top / scrollDist;
+      progress = Math.max(0, Math.min(1, progress));
+
+      // 1. ZOOM OUT EFFECT: Starts zoomed in at scale 1.35, then zooms out as you scroll
+      // Zooms out between progress 0.15 and 0.85
+      const zoomProgress = Math.max(0, Math.min(1, (progress - 0.15) / 0.70));
+      const zoomEase = zoomProgress < 0.5 
+        ? 2 * zoomProgress * zoomProgress 
+        : 1 - Math.pow(-2 * zoomProgress + 2, 2) / 2;
+      const currentScale = 1.35 - (0.35 * zoomEase);
+      counterBgZoom.style.transform = `scale(${currentScale.toFixed(4)})`;
+
+      // 2. DAY-TO-NIGHT CROSSFADE (turns from day to night as image zooms out)
+      const nightProgress = Math.max(0, Math.min(1, (progress - 0.20) / 0.60));
+      const nightEase = nightProgress < 0.5 
+        ? 2 * nightProgress * nightProgress 
+        : 1 - Math.pow(-2 * nightProgress + 2, 2) / 2;
+      counterNightImg.style.opacity = `${nightEase.toFixed(3)}`;
+      counterDayImg.style.opacity = `${(1 - nightEase).toFixed(3)}`;
+
+      // 3. "AND THEN THIS LINE COME" - Glassy Architectural Title enters in Phase 2
+      if (counterGiantTitle) {
+        // Appears smoothly between progress 0.08 and 0.28
+        const titleProgress = Math.max(0, Math.min(1, (progress - 0.08) / 0.20));
+        const titleEase = titleProgress < 0.5
+          ? 2 * titleProgress * titleProgress
+          : 1 - Math.pow(-2 * titleProgress + 2, 2) / 2;
+
+        const shiftX = -progress * 160;
+        const shiftY = (1 - titleEase) * 25;
+        counterGiantTitle.style.opacity = `${titleEase.toFixed(3)}`;
+        counterGiantTitle.style.transform = `translateX(${shiftX.toFixed(1)}px) translateY(${shiftY.toFixed(1)}px)`;
+      }
+
+      // 4. "HOW THE BACKGROUND IMAGE ZOOM OUT THEN THIS COUNTER BOXES WILL COME"
+      // Counter boxes float up and emerge smoothly as the background zooms out (progress 0.26 to 0.78)
+      if (window.innerWidth > 820) {
+        // Fit all cards inside the pinned viewport (lowest card bottom ~ 90 + 660 * scale)
+        const fitScale = window.innerWidth > 1024
+          ? Math.max(0.5, Math.min(1, (window.innerHeight - 102) / 660))
+          : 1;
+        counterCardsContainer.style.setProperty('--cs', fitScale.toFixed(3));
+        const cardStageProgress = Math.max(0, Math.min(1, (progress - 0.25) / 0.48));
+
+        counterCards.forEach((card, idx) => {
+          // Staggered arrival for each card
+          const cardDelay = idx * 0.08;
+          const cardNorm = Math.max(0, Math.min(1, (cardStageProgress - cardDelay) / (1 - cardDelay)));
+          const cardEase = cardNorm < 0.5
+            ? 2 * cardNorm * cardNorm
+            : 1 - Math.pow(-2 * cardNorm + 2, 2) / 2;
+
+          card.style.opacity = `${cardEase.toFixed(3)}`;
+          const yOff = (1 - cardEase) * 45;
+          card.style.transform = `translateY(${yOff.toFixed(1)}px) scale(${fitScale.toFixed(3)})`;
+        });
+
+        // Trigger count-up numbers as boxes arrive
+        if (cardStageProgress > 0.35 && !countersAnimated) {
+          countersAnimated = true;
+          animateCountUpNumbers();
+        }
+      } else {
+        // Mobile Layout: cards always visible in responsive grid
+        counterCards.forEach(card => {
+          card.style.opacity = '1';
+          card.style.transform = 'none';
+        });
+        if (progress > 0.06 && !countersAnimated) {
+          countersAnimated = true;
+          animateCountUpNumbers();
+        }
+      }
+    }
+
+    // ========================================================
+    // 7. RADIAL SERVICE & PILLAR SHOWCASE (PINNED ROTATING VORTEX)
+    // ========================================================
+    const radialSection = document.getElementById('radialServicesSection');
+    const radialCenterSwirl = document.getElementById('radialCenterSwirl');
+    const radialSwirlImg = document.getElementById('radialSwirlImg');
+    const radialRingsLayer = document.getElementById('radialRingsLayer');
+    const radialCards = document.querySelectorAll('#radialCardsStage .radial-card');
+
+    function updateRadialServicesOnScroll() {
+      if (!radialSection || !radialSwirlImg || !radialCards.length) return;
+
+      const rect = radialSection.getBoundingClientRect();
+      const scrollDist = radialSection.offsetHeight - window.innerHeight;
+      if (scrollDist <= 0) return;
+
+      // Overall scroll progress (0 to 1)
+      let progress = -rect.top / scrollDist;
+      progress = Math.max(0, Math.min(1, progress));
+
+      // 1. Vortex swirl rotation (smoothly rotates 270 degrees as you scroll)
+      const rotation = progress * 270;
+      radialSwirlImg.style.transform = `rotate(${rotation.toFixed(2)}deg)`;
+
+      // 2. Concentric rings subtle breathing scale
+      if (radialRingsLayer) {
+        const ringScale = 0.94 + 0.10 * Math.sin(progress * Math.PI);
+        radialRingsLayer.style.transform = `translate(-50%, -50%) scale(${ringScale.toFixed(3)})`;
+      }
+
+      // Seamlessly slide fixed navbar out of view while inside this section
+      if (typeof mainHeader !== 'undefined' && mainHeader) {
+        if (rect.top <= 100 && rect.bottom >= 120) {
+          mainHeader.style.transform = 'translateY(-100%)';
+          mainHeader.style.transition = 'transform 0.35s ease';
+        } else {
+          mainHeader.style.transform = 'translateY(0)';
+        }
+      }
+
+      // 3. Radial Cards Emergence ("thi circle willscroll then this service will through from this circle")
+      if (window.innerWidth > 860) {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+
+        // Increased radial offsets for generous spacing between the circle and the boxes
+        const xDist = Math.min(530, Math.max(380, vw * 0.34));
+        // Fit factor: keeps the top/bottom cards fully inside short viewports
+        const fit = Math.max(0.4, Math.min(1, (vh / 2 - 10) / 430));
+        const yDistRow = 185 * fit;
+        const yDistCenter = 345 * fit;
+
+        // 6 radial target nodes around the vortex:
+        // [Top, Top-Left, Top-Right, Bottom-Left, Bottom-Right, Bottom]
+        const targets = [
+          { x: 0, y: -yDistCenter },        // 0: Dynamism (Top)
+          { x: -xDist, y: -yDistRow },      // 1: Sustainability (Top-Left)
+          { x: xDist, y: -yDistRow },       // 2: Transparency (Top-Right)
+          { x: -xDist, y: yDistRow },       // 3: Innovation (Bottom-Left)
+          { x: xDist, y: yDistRow },        // 4: Client Focused (Bottom-Right)
+          { x: 0, y: yDistCenter }          // 5: Ethical (Bottom)
+        ];
+
+        // Cards emerge between progress 0.08 and 0.82
+        const cardProgress = Math.max(0, Math.min(1, (progress - 0.08) / 0.74));
+        const ease = cardProgress < 0.5 
+          ? 2 * cardProgress * cardProgress 
+          : 1 - Math.pow(-2 * cardProgress + 2, 2) / 2;
+
+        radialCards.forEach((card, idx) => {
+          const t = targets[idx] || { x: 0, y: 0 };
+          const curX = t.x * ease;
+          const curY = t.y * ease;
+          const scale = (0.22 + 0.78 * ease) * fit;
+          const opacity = Math.min(1, ease * 1.6);
+
+          card.style.transform = `translate(calc(-50% + ${curX.toFixed(1)}px), calc(-50% + ${curY.toFixed(1)}px)) scale(${scale.toFixed(3)})`;
+          card.style.opacity = `${opacity.toFixed(3)}`;
+        });
+      } else {
+        // Mobile fallback
+        radialCards.forEach(card => {
+          card.style.transform = 'none';
+          card.style.opacity = '1';
+        });
+      }
+    }
+
+    function onCombinedScroll() {
+      updateAboutExpandOnScroll();
+      updateCounterZoomOnScroll();
+      updateRadialServicesOnScroll();
+    }
+
+    window.addEventListener('scroll', onCombinedScroll, { passive: true });
+    window.addEventListener('resize', onCombinedScroll, { passive: true });
+    onCombinedScroll();
+
+    /* ======================================================== */
+    /* EDITORIAL & BLOGS CAROUSEL INTERACTION                   */
+    /* ======================================================== */
+    function scrollBlogCarousel(direction) {
+      const track = document.getElementById('blogCarouselTrack');
+      if (!track) return;
+      const scrollStep = Math.min(window.innerWidth * 0.8, 410);
+      track.scrollBy({ left: direction * scrollStep, behavior: 'smooth' });
+    }
+
+    function switchBlogTab(tabName) {
+      const blogBtn = document.getElementById('blogTabBtn');
+      const mediaBtn = document.getElementById('mediaTabBtn');
+      const blogCards = document.querySelectorAll('.blog-card-item.type-blog');
+      const mediaCards = document.querySelectorAll('.blog-card-item.type-media');
+      const track = document.getElementById('blogCarouselTrack');
+
+      if (tabName === 'blogs') {
+        if (blogBtn) blogBtn.classList.add('active');
+        if (mediaBtn) mediaBtn.classList.remove('active');
+        blogCards.forEach(c => c.style.display = 'flex');
+        mediaCards.forEach(c => c.style.display = 'none');
+      } else {
+        if (mediaBtn) mediaBtn.classList.add('active');
+        if (blogBtn) blogBtn.classList.remove('active');
+        blogCards.forEach(c => c.style.display = 'none');
+        mediaCards.forEach(c => c.style.display = 'flex');
+      }
+
+      if (track) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      }
+    }
+
+    // Drag-to-scroll functionality for carousel
+    (function initBlogCarouselDrag() {
+      const track = document.getElementById('blogCarouselTrack');
+      if (!track) return;
+
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+      let isMoved = false;
+
+      track.addEventListener('mousedown', (e) => {
+        isDown = true;
+        isMoved = false;
+        track.classList.add('is-dragging');
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDown) {
+          isDown = false;
+          track.classList.remove('is-dragging');
+        }
+      });
+
+      track.addEventListener('mouseleave', () => {
+        if (isDown) {
+          isDown = false;
+          track.classList.remove('is-dragging');
+        }
+      });
+
+      track.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.6;
+        if (Math.abs(walk) > 5) {
+          isMoved = true;
+        }
+        track.scrollLeft = scrollLeft - walk;
+      });
+
+      // Prevent accidental link opening while dragging
+      track.addEventListener('click', (e) => {
+        if (isMoved) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }, true);
+    })();
+    /* Pinned scroll: vertical scroll drives horizontal card movement */
+    function updateBlogPinScroll() {
+      const sec = document.getElementById('blogEditorialSection');
+      const track = document.getElementById('blogCarouselTrack');
+      if (!sec || !track) return;
+      const maxX = Math.max(0, track.scrollWidth - track.clientWidth);
+      sec.style.height = (window.innerHeight + maxX) + 'px';
+      const rect = sec.getBoundingClientRect();
+      const progress = Math.max(0, Math.min(1, -rect.top / Math.max(1, maxX)));
+      track.style.scrollBehavior = 'auto';
+      track.scrollLeft = maxX * progress;
+    }
+    window.addEventListener('scroll', updateBlogPinScroll, { passive: true });
+    window.addEventListener('resize', updateBlogPinScroll, { passive: true });
+    window.addEventListener('load', updateBlogPinScroll);
+    updateBlogPinScroll();
+
+    /* CTA Building Rise-From-Bottom Scroll Animation */
+    (function initCtaBuildingAnimation() {
+      const ctaCard = document.querySelector('#ctaPivoraSection .cta-pivora-card');
+      if (!ctaCard) return;
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              ctaCard.classList.add('is-visible');
+            } else if (entry.boundingClientRect.top > 0) {
+              // Reset when scrolled back above so it animates again on scroll down
+              ctaCard.classList.remove('is-visible');
+            }
+          });
+        }, {
+          threshold: 0.18,
+          rootMargin: '0px 0px -40px 0px'
+        });
+        observer.observe(ctaCard);
+      } else {
+        ctaCard.classList.add('is-visible');
+      }
+    })();
+    /* Testimonial Stacked Deck Navigation (Manual + Auto-Play) */
+    (function initTestimonialDeck() {
+      let currentIdx = 0;
+      let autoTimer = null;
+      const AUTO_INTERVAL_MS = 3800;
+
+      function applyPositions(dir) {
+        const cards = document.querySelectorAll('#testimonialDeck .testi-card');
+        if (!cards.length) return;
+        const total = cards.length;
+        currentIdx = (currentIdx + dir + total) % total;
+        cards.forEach((card, i) => {
+          const offset = (i - currentIdx + total) % total;
+          if (offset === 0) {
+            card.setAttribute('data-pos', '0');
+          } else if (offset === 1) {
+            card.setAttribute('data-pos', '1');
+          } else if (offset === 2) {
+            card.setAttribute('data-pos', '2');
+          } else {
+            card.setAttribute('data-pos', 'hidden');
+          }
+        });
+      }
+
+      function startAutoCycle() {
+        stopAutoCycle();
+        autoTimer = setInterval(() => {
+          applyPositions(1);
+        }, AUTO_INTERVAL_MS);
+      }
+
+      function stopAutoCycle() {
+        if (autoTimer) {
+          clearInterval(autoTimer);
+          autoTimer = null;
+        }
+      }
+
+      window.cycleTestimonial = function(dir) {
+        applyPositions(dir);
+        startAutoCycle(); // Reset auto timer after manual click
+      };
+
+      const deck = document.getElementById('testimonialDeck');
+      if (deck) {
+        deck.addEventListener('mouseenter', stopAutoCycle);
+        deck.addEventListener('mouseleave', startAutoCycle);
+      }
+
+      startAutoCycle();
+    })();
+
+    /* FAQ Accordion Toggle & Hover Auto-Open */
+    function openFaqItem(item) {
+      if (!item) return;
+      document.querySelectorAll('#faqSection .faq-item').forEach((el) => {
+        if (el !== item) {
+          el.classList.remove('active');
+          const b = el.querySelector('.faq-question-btn');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        }
+      });
+      item.classList.add('active');
+      const btn = item.querySelector('.faq-question-btn');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+    }
+
+    function toggleFaqItem(btn) {
+      const item = btn.closest('.faq-item');
+      if (!item) return;
+      if (item.classList.contains('active')) {
+        item.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        openFaqItem(item);
+      }
+    }
+
+    // Auto-open FAQ cards whenever the mouse enters/hovers over them
+    document.querySelectorAll('#faqSection .faq-item').forEach((card) => {
+      card.addEventListener('mouseenter', () => {
+        openFaqItem(card);
+      });
+    });
+
+    /* ======================================================== */
+    /* CATEGORY SHOWCASE (RESIDENTIAL & PLOTTING) CONTROLLER   */
+    /* Sequential Project Viewing & Pinned Horizontal Scroll    */
+    /* ======================================================== */
+    (function initCategoryShowcase() {
+      const section = document.getElementById('categoryShowcaseSection');
+      if (!section) return;
+
+      const tabRes = document.getElementById('srTabResidential');
+      const tabPlot = document.getElementById('srTabPlotting');
+      const trainRes = document.getElementById('srTrainResidential');
+      const trainPlot = document.getElementById('srTrainPlotting');
+      const titleRes = document.getElementById('srCatTitleRes');
+      const titlePlot = document.getElementById('srCatTitlePlot');
+      const subtitle = document.getElementById('srCatSubtitle');
+      const desc = document.getElementById('srCatDesc');
+      const actionBtn = document.getElementById('srCatActionBtn');
+      const actionText = document.getElementById('srCatActionText');
+      const progressFill = document.getElementById('srProgressFill');
+      const counterLabel = document.getElementById('srCounterLabel');
+      const ringA = document.getElementById('srRingA');
+      const ringB = document.getElementById('srRingB');
+      const ringC = document.getElementById('srRingC');
+
+      const resNodes = trainRes ? Array.from(trainRes.querySelectorAll('.sr-project-node')) : [];
+      const plotNodes = trainPlot ? Array.from(trainPlot.querySelectorAll('.sr-project-node')) : [];
+
+      const RES_PROJECT_NAMES = ['THE GRAND EMERALD', 'PALM CREST VILLAS', 'SKYLINE IMPERIAL'];
+      const PLOT_PROJECT_NAMES = ['GREEN VALLEY PLOTS', 'ROYAL MEADOWS', 'METRO BOULEVARD'];
+
+      const RES_DESC = 'From luxury high-rise penthouses to serene private villas, explore premier homes designed for generational comfort, elevated lifestyle, and timeless architecture.';
+      const PLOT_DESC = 'Secure prime residential plots and strategic commercial parcels with clear RERA titles, master-planned infrastructure, and immense long-term appreciation potential.';
+
+      let activeCategory = -1; // Force initial setup
+
+      function updateCategoryUI(catIndex) {
+        if (activeCategory === catIndex) return;
+        activeCategory = catIndex;
+
+        if (catIndex === 0) {
+          if (tabRes) { tabRes.classList.add('active'); tabRes.setAttribute('aria-selected', 'true'); }
+          if (tabPlot) { tabPlot.classList.remove('active'); tabPlot.setAttribute('aria-selected', 'false'); }
+          if (titleRes) { titleRes.className = 'sr-title-text is-active'; }
+          if (titlePlot) { titlePlot.className = 'sr-title-text is-next'; }
+          if (subtitle) subtitle.textContent = '01 / CURATED LIVING SPACES';
+          if (desc) desc.textContent = RES_DESC;
+          if (actionBtn) actionBtn.setAttribute('href', 'residential-1.html');
+          if (actionText) actionText.textContent = 'Explore Residential';
+          if (trainRes) trainRes.classList.add('is-active');
+          if (trainPlot) trainPlot.classList.remove('is-active');
+        } else {
+          if (tabRes) { tabRes.classList.remove('active'); tabRes.setAttribute('aria-selected', 'false'); }
+          if (tabPlot) { tabPlot.classList.add('active'); tabPlot.setAttribute('aria-selected', 'true'); }
+          if (titleRes) { titleRes.className = 'sr-title-text is-prev'; }
+          if (titlePlot) { titlePlot.className = 'sr-title-text is-active'; }
+          if (subtitle) subtitle.textContent = '02 / CLEAR-TITLE LAND PARCELS';
+          if (desc) desc.textContent = PLOT_DESC;
+          if (actionBtn) actionBtn.setAttribute('href', 'plotting-1.html');
+          if (actionText) actionText.textContent = 'Explore Plotting';
+          if (trainRes) trainRes.classList.remove('is-active');
+          if (trainPlot) trainPlot.classList.add('is-active');
+        }
+      }
+
+      function updateTrainPositions(train, nodes, subProgress, targetCenter) {
+        if (!train || nodes.length === 0) return;
+
+        const firstNode = nodes[0];
+        const nodeWidth = firstNode.offsetWidth || 560;
+        const stride = nodeWidth; // Tangent outer rings touch edge-to-edge
+        const totalProjects = nodes.length;
+
+        const maxScrollDist = (totalProjects - 1) * stride;
+        const currentScroll = subProgress * maxScrollDist;
+        const trainLeft = (targetCenter - nodeWidth / 2) - currentScroll;
+
+        train.style.transform = `translate3d(${trainLeft}px, -50%, 0)`;
+
+        nodes.forEach((node, i) => {
+          const nodeCenter = trainLeft + i * stride + nodeWidth / 2;
+          const dist = nodeCenter - targetCenter;
+          const normDist = dist / stride; // negative if moved left, positive if on right
+
+          const portal = node.querySelector('.sr-node-portal');
+          const overlay = node.querySelector('.sr-node-overlay');
+
+          if (portal) {
+            let scale = 1.0;
+            if (normDist < 0) {
+              // Scrolled past to the left: inner image circle shrinks to SMALL (down to 0.30)
+              scale = Math.max(0.30, 1.0 - 0.70 * Math.abs(normDist));
+            } else {
+              // Coming from the right: starts medium-big (~0.85) and expands to 1.0
+              scale = Math.max(0.85, 1.0 - 0.15 * normDist);
+            }
+            portal.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
+
+            // When circle shrinks into small circle, fade out the overlay text smoothly
+            if (overlay) {
+              if (scale < 0.75) {
+                const overlayOpacity = Math.max(0, (scale - 0.40) / 0.35);
+                overlay.style.opacity = overlayOpacity.toFixed(2);
+                overlay.style.pointerEvents = overlayOpacity > 0.3 ? 'auto' : 'none';
+              } else {
+                overlay.style.opacity = '1';
+                overlay.style.pointerEvents = 'auto';
+              }
+            }
+          }
+        });
+      }
+
+      function onScrollSync() {
+        if (window.innerWidth <= 960) return;
+
+        const rect = section.getBoundingClientRect();
+        const totalDistance = section.offsetHeight - window.innerHeight;
+        if (totalDistance <= 0) return;
+
+        const scrolled = -rect.top;
+        const progress = Math.max(0, Math.min(1, scrolled / totalDistance));
+
+        // Parallax background blueprint rings
+        if (ringA) ringA.style.transform = `translateY(calc(-50% + ${(progress - 0.5) * 60}px)) scale(${1 + (progress - 0.5) * 0.08})`;
+        if (ringB) ringB.style.transform = `translateY(calc(-50% - ${(progress - 0.5) * 80}px)) scale(${1 - (progress - 0.5) * 0.06})`;
+        if (ringC) ringC.style.transform = `translateY(calc(-50% + ${(progress - 0.5) * 100}px))`;
+
+        const viewportWidth = window.innerWidth;
+        const firstNode = resNodes[0] || plotNodes[0];
+        const nodeWidth = firstNode ? firstNode.offsetWidth : 560;
+        // Position of active project: anchored on the right side of the screen
+        const targetCenter = Math.min(viewportWidth * 0.70, viewportWidth - nodeWidth * 0.45);
+
+        // PHASE 1: RESIDENTIAL (progress 0.00 to 0.48)
+        // Scrolls through all 3 residential projects one by one
+        if (progress < 0.48) {
+          updateCategoryUI(0);
+          const subProgress = Math.max(0, Math.min(1, progress / 0.48));
+          updateTrainPositions(trainRes, resNodes, subProgress, targetCenter);
+        }
+        // TRANSITION PHASE (progress 0.48 to 0.52)
+        else if (progress >= 0.48 && progress < 0.52) {
+          updateCategoryUI(1);
+          const subProgress = 0;
+          updateTrainPositions(trainPlot, plotNodes, subProgress, targetCenter);
+        }
+        // PHASE 2: PLOTTING (progress 0.52 to 1.00)
+        // Scrolls through all 3 plotting projects one by one
+        else {
+          updateCategoryUI(1);
+          const subProgress = Math.max(0, Math.min(1, (progress - 0.52) / 0.48));
+          updateTrainPositions(trainPlot, plotNodes, subProgress, targetCenter);
+        }
+      }
+
+      if (tabRes) {
+        tabRes.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (window.innerWidth <= 960) {
+            updateCategoryUI(0);
+            return;
+          }
+          const secTop = section.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({ top: secTop + 10, behavior: 'smooth' });
+        });
+      }
+
+      if (tabPlot) {
+        tabPlot.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (window.innerWidth <= 960) {
+            updateCategoryUI(1);
+            return;
+          }
+          const secTop = section.getBoundingClientRect().top + window.pageYOffset;
+          const totalDistance = section.offsetHeight - window.innerHeight;
+          window.scrollTo({ top: secTop + totalDistance * 0.53, behavior: 'smooth' });
+        });
+      }
+
+      let isTicking = false;
+      window.addEventListener('scroll', () => {
+        if (!isTicking) {
+          requestAnimationFrame(() => {
+            onScrollSync();
+            isTicking = false;
+          });
+          isTicking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        onScrollSync();
+      }, { passive: true });
+
+      setTimeout(() => {
+        updateCategoryUI(0);
+        onScrollSync();
+      }, 120);
+    })();
+  </script>
+</body>
+</html>

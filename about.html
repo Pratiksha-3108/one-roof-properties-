@@ -1,0 +1,2292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | One Roof Properties</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&family=Nanum+Myeongjo:wght@400;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: #ffffff; color: #334155; line-height: 1.6; font-family: 'Jost', 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    .dropdown-parent:hover .prop-dropdown { display: block !important; }
+    .dropdown-parent:hover .prop-caret { transform: rotate(180deg) !important; }
+
+    /* ======================================================== */
+    /* ABOUT US HERO BANNER + OVERLAY HEADER (WEBSITE FONTS)    */
+    /* ======================================================== */
+    .about-hero {
+      position: relative;
+      width: 100%;
+      height: 78vh;
+      min-height: 540px;
+      max-height: 760px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #070e17;
+    }
+
+    .about-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('counter-day.jpg') center center / cover no-repeat;
+      transform: scale(1.03);
+      animation: aboutHeroZoom 9s ease-out forwards;
+      z-index: 1;
+    }
+
+    @keyframes aboutHeroZoom {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1); }
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 0 24px;
+      margin-top: 24px;
+    }
+
+    .about-hero-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      font-weight: 400;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      line-height: 1.12;
+      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.55);
+      margin: 0;
+    }
+
+    /* Overlay Navigation Header (Transparent on Hero, Fixed with Background from About Content) */
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1500;
+      padding: 34px 0 0;
+      background: transparent;
+      transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+    }
+    .holder {
+      padding: 0 max(24px, 4.5vw);
+      max-width: 1820px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .header-block {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 58px;
+      gap: 24px;
+    }
+    .header-logo {
+      position: relative;
+      text-align: center;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .header-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .header-nav-list {
+      display: flex;
+      gap: clamp(18px, 2.2vw, 36px);
+      list-style: none;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+    .header-nav-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .header-nav-list li {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(13px, 0.88vw, 15px);
+      font-weight: 400;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+    .header-nav-list a {
+      color: #ffffff;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .header-nav-list a::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 1px;
+      background: #ffffff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .header-nav-list a:hover::before {
+      transform: scaleX(1);
+    }
+    .header-phone {
+      margin-left: 28px;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      letter-spacing: 1.6px;
+      white-space: nowrap;
+    }
+
+    /* ======================================================== */
+    /* WHO WE ARE SECTION (NORTH WIND EDITORIAL LAYOUT)         */
+    /* ======================================================== */
+    #whoWeAreSection {
+      background: #FAF8EE;
+      padding: 96px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .who-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .who-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .who-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-bottom: 14px;
+    }
+
+    .who-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.2rem, 3.6vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.5px;
+      color: #465665;
+      margin: 0 0 26px;
+    }
+
+    .who-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.72;
+      color: #7b8791;
+      max-width: 580px;
+      margin: 0 0 18px;
+    }
+
+    .who-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: 100%;
+      max-width: 580px;
+      margin-top: 38px;
+      padding-top: 12px;
+    }
+
+    .who-stat-item {
+      padding-right: 24px;
+      border-right: 1px solid rgba(70, 86, 101, 0.14);
+    }
+
+    .who-stat-item:not(:first-child) {
+      padding-left: 28px;
+    }
+
+    .who-stat-item:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    .who-stat-num {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 2.8vw, 2.65rem);
+      font-weight: 700;
+      color: #465665;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .who-stat-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #7b8791;
+      line-height: 1.45;
+    }
+
+    .who-right {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .who-visual-card {
+      position: relative;
+      width: 100%;
+      max-width: 470px;
+      height: 550px;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 24px 55px rgba(70, 86, 101, 0.14);
+    }
+
+    .who-visual-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+
+    .who-visual-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .who-visual-caption {
+      position: absolute;
+      right: 20px;
+      bottom: 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+      z-index: 2;
+    }
+
+    @media (max-width: 960px) {
+      #whoWeAreSection {
+        padding: 64px 16px;
+      }
+      .who-container {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+      .who-right {
+        justify-content: center;
+      }
+      .who-visual-card {
+        height: 440px;
+      }
+      .who-stats-row {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .who-stat-item,
+      .who-stat-item:not(:first-child) {
+        padding: 0 0 18px 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(70, 86, 101, 0.14);
+      }
+      .who-stat-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+    }
+
+    /* ======================================================== */
+    /* VISION & MISSION PINNED SCROLL SECTION (WEBSITE PALETTE) */
+    /* ======================================================== */
+    #visionMissionSection {
+      position: relative;
+      width: 100%;
+      height: 235vh;
+      background-color: #FAF8EE;
+      border-top: 1px solid rgba(70, 86, 101, 0.08);
+    }
+
+    .vm-sticky {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Subtle architectural wireframe background lines (left & right edges) */
+    .vm-bg-wireframe-left,
+    .vm-bg-wireframe-right {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.22;
+    }
+
+    .vm-bg-wireframe-left {
+      bottom: -20px;
+      left: -20px;
+      width: 340px;
+      height: 460px;
+    }
+
+    .vm-bg-wireframe-right {
+      top: 40px;
+      right: -20px;
+      width: 340px;
+      height: 520px;
+    }
+
+    .vm-stage {
+      position: relative;
+      width: 100%;
+      max-width: 1440px;
+      height: 100%;
+      margin: 0 auto;
+      z-index: 2;
+    }
+
+    /* Morphing Image Cards */
+    .vm-img-card {
+      position: absolute;
+      overflow: hidden;
+      box-shadow: 0 24px 55px rgba(70, 86, 101, 0.15);
+      will-change: left, top, width, height, border-radius;
+      cursor: pointer;
+      background: #e2e8f0;
+    }
+
+    .vm-img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .vm-img-card:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Right Column Text Viewport */
+    .vm-text-viewport {
+      position: absolute;
+      left: 59%;
+      top: 13%;
+      width: 34%;
+      height: 55%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .vm-text-item {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      will-change: transform, opacity;
+    }
+
+    .vm-overline {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .vm-heading {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.1rem, 3.3vw, 3.15rem);
+      font-weight: 400;
+      line-height: 1.18;
+      letter-spacing: -0.4px;
+      color: #465665;
+      margin: 0 0 22px 0;
+    }
+
+    .vm-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.78;
+      color: #7b8791;
+      margin: 0;
+      max-width: 470px;
+    }
+
+    /* Mobile / Tablet Fallback Layout */
+    @media (max-width: 960px) {
+      #visionMissionSection {
+        height: auto;
+        padding: 64px 16px 80px;
+      }
+      .vm-sticky {
+        position: relative;
+        height: auto;
+        overflow: visible;
+      }
+      .vm-stage {
+        display: flex;
+        flex-direction: column;
+        gap: 56px;
+        height: auto;
+      }
+      .vm-img-card {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        height: 360px !important;
+        border-radius: 22px !important;
+      }
+      .vm-text-viewport {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+      }
+      .vm-text-item {
+        position: relative !important;
+        top: auto !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+
+    /* ===================================================================== */
+    /* 5. OUR CORE VALUES SECTION (FULL EDGE-TO-EDGE PINNED STAGE)            */
+    /* ===================================================================== */
+    #coreValuesSection {
+      position: relative;
+      height: 520vh;
+      background-color: #0b1118;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .cv-sticky {
+      position: sticky;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      background-color: #0b1118;
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .cv-header-floating {
+      position: absolute;
+      top: 106px;
+      left: clamp(24px, 5.5vw, 80px);
+      z-index: 10;
+      pointer-events: none;
+    }
+    .cv-main-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 400;
+      color: #FAF8EE;
+      line-height: 1.12;
+      letter-spacing: -0.4px;
+      margin: 0;
+      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Main Visual Stage: Full Screen Edge-to-Edge Image Coverage */
+    .cv-stage-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      overflow: hidden;
+      background: #0b1118;
+      box-shadow: none;
+      border: none;
+    }
+    .cv-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .cv-slide.is-interactive {
+      pointer-events: auto;
+    }
+    .cv-slide-img-wrap {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      overflow: hidden;
+      will-change: transform, opacity;
+    }
+    .cv-slide-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: none;
+      image-rendering: auto;
+    }
+    .cv-slide-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(10, 16, 22, 0.42) 0%,
+        rgba(10, 16, 22, 0.04) 40%,
+        rgba(10, 16, 22, 0.38) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* Small Card on the Image (Arrives After the Image on Scroll) */
+    .cv-floating-card {
+      position: absolute;
+      right: clamp(24px, 5.5vw, 80px);
+      bottom: clamp(32px, 6vh, 70px);
+      z-index: 10;
+      width: min(440px, calc(100% - 48px));
+      background: rgba(250, 248, 238, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(70, 86, 101, 0.18);
+      border-radius: 22px;
+      padding: 32px 34px;
+      box-shadow: 0 24px 54px rgba(0, 0, 0, 0.42);
+      will-change: transform, opacity;
+    }
+    .cv-floating-card.card-left {
+      right: auto;
+      left: clamp(24px, 5.5vw, 80px);
+    }
+    .cv-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(70, 86, 101, 0.12);
+    }
+    .cv-card-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: #7b8791;
+    }
+    .cv-card-num {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #465665;
+      background: rgba(70, 86, 101, 0.09);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cv-card-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.5rem, 2.1vw, 1.95rem);
+      font-weight: 400;
+      color: #465665;
+      line-height: 1.22;
+      margin: 0 0 12px 0;
+    }
+    .cv-card-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      color: #7b8791;
+      line-height: 1.72;
+      margin: 0;
+    }
+
+    @media (max-width: 960px) {
+      #coreValuesSection {
+        height: auto;
+        padding: 0;
+      }
+      .cv-sticky {
+        position: relative;
+        height: auto;
+        padding: 0;
+      }
+      .cv-header-floating {
+        position: relative;
+        top: auto;
+        left: auto;
+        padding: 50px 24px 24px;
+        background: #0b1118;
+      }
+      .cv-stage-frame {
+        position: relative;
+        inset: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .cv-slide {
+        position: relative !important;
+        inset: auto !important;
+        height: 82vh !important;
+        min-height: 520px;
+        pointer-events: auto !important;
+      }
+      .cv-slide-img-wrap {
+        transform: none !important;
+        opacity: 1 !important;
+      }
+      .cv-floating-card {
+        left: 20px !important;
+        right: 20px !important;
+        bottom: 24px !important;
+        width: auto !important;
+        transform: none !important;
+        opacity: 1 !important;
+        padding: 24px 24px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .responsive-grid { grid-template-columns: 1fr !important; }
+      .nav-links-menu { display: none !important; }
+      .nav-mobile-btn { display: block !important; }
+      .timeline-inner::before { left: 20px !important; }
+      .timeline-box { width: 100% !important; left: 0 !important; text-align: left !important; padding-left: 50px !important; }
+      .timeline-box .dot-node { left: 12px !important; }
+      .prop-dropdown { position: static !important; width: 100% !important; box-shadow: none !important; border: 1px solid #e2e8f0 !important; background: #f8fafc !important; }
+    }
+
+    /* ===================================================================== */
+    /* 6. WHY ONE ROOF PROPERTIES SECTION (RANGE DEVELOPMENTS GROUP STYLE)   */
+    /* ===================================================================== */
+    #whyOneRoofSection {
+      position: relative;
+      background-color: #FAF8EE;
+      width: 100%;
+      margin: 0;
+      padding: clamp(80px, 10vh, 120px) 0 clamp(90px, 12vh, 130px);
+      box-sizing: border-box;
+      border-top: 1px solid rgba(70, 86, 101, 0.1);
+    }
+
+    /* Top Accent Rule & Lead Paragraph (Matching Video) */
+    .wor-header {
+      max-width: 920px;
+      margin: 0 auto clamp(48px, 6vh, 72px);
+      padding: 0 clamp(24px, 4vw, 40px);
+      text-align: center;
+    }
+    .wor-rule {
+      width: 44px;
+      height: 2px;
+      background: #465665;
+      margin: 0 auto 24px;
+      opacity: 0.75;
+      border-radius: 2px;
+    }
+    .wor-lead {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(1rem, 1.35vw, 1.25rem);
+      font-weight: 300;
+      line-height: 1.75;
+      color: #5a6b7a;
+      margin: 0;
+      letter-spacing: -0.1px;
+    }
+
+    /* 2-Column Split Stage Layout */
+    .wor-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 4.5vw, 64px);
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: clamp(40px, 6vw, 90px);
+      align-items: flex-start;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Left Column: Scrolling Visual Cards */
+    .wor-visuals-col {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(36px, 5vh, 56px);
+      position: relative;
+    }
+
+    .wor-card-item {
+      position: relative;
+      border-radius: clamp(18px, 2vw, 26px);
+      overflow: hidden;
+      background: #111a22;
+      box-shadow: 0 16px 40px rgba(70, 86, 101, 0.12);
+      height: clamp(440px, 58vh, 600px);
+      width: 100%;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+    }
+    .wor-card-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 50px rgba(70, 86, 101, 0.2);
+    }
+
+    .wor-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: clamp(18px, 2vw, 26px);
+      filter: brightness(0.96);
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+    }
+    .wor-card-item:hover .wor-card-img {
+      transform: scale(1.04);
+      filter: brightness(1.02);
+    }
+
+    /* Mobile Inline Info (hidden on desktop) */
+    .wor-card-mobile-info {
+      display: none;
+    }
+
+    /* Right Column: Pinned Sticky Content */
+    .wor-content-col {
+      position: sticky;
+      top: clamp(80px, 12vh, 130px);
+      align-self: flex-start;
+      padding-top: 10px;
+    }
+
+    .wor-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: #465665;
+      margin-bottom: clamp(24px, 3.5vh, 36px);
+    }
+    .wor-eyebrow-line {
+      width: 24px;
+      height: 1.5px;
+      background: #465665;
+    }
+
+    /* Accordion / List of 5 Reasons */
+    .wor-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .wor-nav-item {
+      position: relative;
+      cursor: pointer;
+      padding: 8px 0;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .wor-nav-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 2.5vw, 2.65rem);
+      font-weight: 400;
+      color: rgba(70, 86, 101, 0.28);
+      line-height: 1.18;
+      letter-spacing: -0.3px;
+      margin: 0;
+      transition: color 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .wor-nav-item:hover .wor-nav-title {
+      color: rgba(70, 86, 101, 0.65);
+      transform: translateX(4px);
+    }
+
+    /* Active Item */
+    .wor-nav-item.is-active .wor-nav-title {
+      color: #465665;
+      font-size: clamp(2.1rem, 3vw, 3.05rem);
+      transform: translateX(0);
+    }
+
+    .wor-nav-body {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(10px);
+      transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.4s ease,
+                  transform 0.4s ease;
+    }
+
+    .wor-nav-item.is-active .wor-nav-body {
+      max-height: 280px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wor-nav-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+      font-weight: 300;
+      line-height: 1.68;
+      color: #7b8791;
+      margin: 16px 0 20px 0;
+      max-width: 440px;
+    }
+
+    .wor-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #465665;
+      text-decoration: none;
+      padding-bottom: 4px;
+      border-bottom: 1.5px solid #465665;
+      transition: all 0.25s ease;
+    }
+    .wor-nav-link:hover {
+      color: #d97706;
+      border-color: #d97706;
+      gap: 12px;
+    }
+    .wor-nav-link span.arrow {
+      transition: transform 0.25s ease;
+    }
+    .wor-nav-link:hover span.arrow {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 960px) {
+      .wor-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 20px;
+      }
+      .wor-content-col {
+        display: none; /* In mobile, content is shown inline under each card */
+      }
+      .wor-card-item {
+        height: auto;
+        min-height: 380px;
+        margin-bottom: 24px;
+      }
+      .wor-card-item .wor-img-wrap {
+        height: 280px;
+        position: relative;
+        overflow: hidden;
+      }
+      .wor-card-item .wor-img-wrap img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+      .wor-card-mobile-info {
+        display: block;
+        padding: 24px 20px 28px;
+        background: #FAF8EE;
+        border: 1px solid rgba(70, 86, 101, 0.12);
+        border-top: none;
+      }
+      .wor-card-mobile-info h3 {
+        font-family: 'Nanum Myeongjo', Georgia, serif;
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: #465665;
+        margin: 0 0 10px 0;
+      }
+      .wor-card-mobile-info p {
+        font-family: 'Jost', sans-serif;
+        font-size: 0.95rem;
+        color: #7b8791;
+        line-height: 1.6;
+        margin: 0 0 16px 0;
+      }
+    }
+
+    /* ===================================================================== */
+    /* 7. STRATEGIC PROCESS SECTION (BRAND PALETTE & DOUBLE GUIDELINE)       */
+    /* ===================================================================== */
+    #processSection {
+      position: relative;
+      background-color: #FAF8EE;
+      padding: clamp(90px, 12vh, 140px) 0 clamp(90px, 12vh, 140px);
+      border-top: 1px solid rgba(70, 86, 101, 0.12);
+      overflow: hidden;
+    }
+
+    .proc-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 4.5vw, 64px);
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: clamp(48px, 7vw, 110px);
+      align-items: flex-start;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Left Column: Strategic Pitch Block (Sticky) */
+    .proc-pitch-col {
+      position: sticky;
+      top: clamp(100px, 15vh, 160px);
+      align-self: flex-start;
+      padding-top: 8px;
+    }
+
+    .proc-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: #465665;
+      margin-bottom: 18px;
+    }
+
+    .proc-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1.5px;
+      background: #465665;
+    }
+
+    .proc-heading {
+      font-family: 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(2.1rem, 3.4vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.3px;
+      color: #465665;
+      margin: 0 0 22px 0;
+    }
+
+    .proc-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.96rem, 1.1vw, 1.05rem);
+      font-weight: 300;
+      line-height: 1.72;
+      color: #7b8791;
+      margin: 0 0 34px 0;
+      max-width: 440px;
+    }
+
+    .proc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 34px;
+      border: 1.5px solid #465665;
+      border-radius: 999px;
+      background: transparent;
+      color: #465665;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 4px 14px rgba(70, 86, 101, 0.08);
+    }
+    .proc-btn:hover {
+      background: #465665;
+      color: #FAF8EE;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(70, 86, 101, 0.22);
+    }
+
+    /* Right Column: Timeline Roadmap */
+    .proc-timeline-col {
+      position: relative;
+      padding-left: 10px;
+    }
+
+    /* Timeline Step Item */
+    .proc-step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .proc-step-item {
+      display: grid;
+      grid-template-columns: 46px 1fr 90px;
+      gap: clamp(20px, 3vw, 36px);
+      align-items: stretch;
+      cursor: pointer;
+      padding: 6px 0;
+      opacity: 0.55;
+      transform: translateY(14px);
+      transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .proc-step-item.is-active,
+    .proc-step-item:hover {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Flex Node Column: Centered Circle + Double Line Segment */
+    .proc-node-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-self: stretch;
+      position: relative;
+      width: 46px;
+      flex-shrink: 0;
+    }
+
+    /* Step Node Circle (01, 02, 03, 04) - On-Brand One Roof Colors */
+    .proc-node-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.8px solid #465665;
+      background: #ffffff;
+      color: #465665;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(70, 86, 101, 0.08);
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+      z-index: 5;
+      flex-shrink: 0;
+    }
+
+    .proc-step-item.is-active .proc-node-circle,
+    .proc-step-item:hover .proc-node-circle {
+      background: #ffffff;
+      color: #d97706;
+      border-color: #d97706;
+      transform: scale(1.06);
+      box-shadow: 0 0 0 5px rgba(217, 119, 6, 0.16), 0 8px 18px rgba(70, 86, 101, 0.14);
+    }
+
+    /* Double Vertical Line Segment - Primary Left Line + Secondary Right Line */
+    .proc-segment-track {
+      width: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      flex: 1;
+      min-height: clamp(52px, 7.5vh, 76px);
+      position: relative;
+      margin-top: 4px;
+      margin-bottom: -6px;
+      z-index: 2;
+    }
+
+    /* Primary Left Vertical Connector */
+    .proc-line-primary {
+      width: 1.5px;
+      height: 100%;
+      background: rgba(70, 86, 101, 0.16);
+      position: relative;
+      overflow: hidden;
+      border-radius: 1px;
+    }
+
+    .proc-segment-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(180deg, #465665 0%, #d97706 100%);
+      transition: height 0.3s ease-out;
+    }
+
+    /* Secondary Right Parallel Line (Double Line from Reference) */
+    .proc-line-secondary {
+      width: 1px;
+      height: 100%;
+      background: rgba(70, 86, 101, 0.22);
+      position: relative;
+      border-radius: 1px;
+      transition: background 0.35s ease;
+    }
+
+    .proc-step-item.is-active .proc-line-secondary {
+      background: rgba(217, 119, 6, 0.45);
+    }
+
+    .proc-tail-track {
+      flex: 0 0 32px;
+      min-height: 32px;
+      margin-bottom: 0;
+    }
+
+    /* Step Content */
+    .proc-step-content {
+      padding-top: 4px;
+      padding-bottom: clamp(24px, 3.5vh, 40px);
+    }
+
+    .proc-step-title {
+      font-family: 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(1.25rem, 1.6vw, 1.6rem);
+      font-weight: 700;
+      color: #465665;
+      line-height: 1.25;
+      margin: 0 0 8px 0;
+      letter-spacing: -0.2px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .proc-step-item.is-active .proc-step-title,
+    .proc-step-item:hover .proc-step-title {
+      color: #273440;
+      transform: translateX(2px);
+    }
+
+    .proc-step-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.92rem, 1.05vw, 1rem);
+      font-weight: 300;
+      line-height: 1.68;
+      color: #7b8791;
+      margin: 0;
+      max-width: 460px;
+    }
+
+    /* Giant Watermark Step Number on Far Right (01, 02, 03, 04) */
+    .proc-watermark-num {
+      font-family: 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(3rem, 4.8vw, 4.8rem);
+      font-weight: 700;
+      color: rgba(70, 86, 101, 0.08);
+      line-height: 0.85;
+      text-align: right;
+      user-select: none;
+      padding-top: 4px;
+      transition: color 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .proc-step-item.is-active .proc-watermark-num,
+    .proc-step-item:hover .proc-watermark-num {
+      color: rgba(70, 86, 101, 0.18);
+      transform: scale(1.05) translateX(3px);
+    }
+
+    @media (max-width: 960px) {
+      #processSection {
+        padding: 70px 0 80px;
+      }
+      .proc-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 0 20px;
+      }
+      .proc-pitch-col {
+        position: relative;
+        top: auto;
+      }
+      .proc-timeline-col {
+        padding-left: 0;
+      }
+      .proc-step-item {
+        grid-template-columns: 46px 1fr;
+        gap: 16px;
+      }
+      .proc-watermark-num {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body style="background-color: #ffffff; color: #334155; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif;">
+
+  <!-- ======================================================== -->
+  <!-- ABOUT US HERO SECTION (DUSK TOWERS + WEBSITE SERIF FONT) -->
+  <!-- ======================================================== -->
+  <section class="about-hero" id="aboutHeroSection">
+    <div class="about-hero-bg"></div>
+
+    <!-- Header Navigation Overlay (Matching Home Page) -->
+    <header class="header" id="mainHeader">
+      <div class="holder">
+        <div class="header-block">
+          <!-- Left Nav Items: Home | About | Properties -->
+          <ul class="header-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" style="color: #d97706;">About</a></li>
+
+            <!-- Properties Dropdown with Caret Icon -->
+            <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(0deg)';">
+              <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.prop-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.prop-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px;">
+                Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+              </a>
+
+              <!-- Dropdown Card (Residential & Plotting) -->
+              <div class="prop-dropdown" style="display: none; position: absolute; top: 100%; left: 0; min-width: 320px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 14px; z-index: 1200; text-transform: none;">
+                <!-- Residential Section -->
+                <div style="padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                  <a href="residential.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
+                    <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; letter-spacing: 1px;">
+                      <i class="fa-solid fa-building-user" style="color: #60a5fa;"></i> Residential Properties
+                    </span>
+                    <span style="font-size: 0.72rem; color: #60a5fa; font-weight: 600;">(3) &rarr;</span>
+                  </a>
+                  <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+                    <a href="residential-1.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; The Grand Emerald (3-4 BHK)</a>
+                    <a href="residential-2.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Palm Crest Villas (4 BHK)</a>
+                    <a href="residential-3.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Skyline Imperial (5 BHK)</a>
+                  </div>
+                </div>
+
+                <!-- Plotting Section -->
+                <div style="padding-top: 10px;">
+                  <a href="plotting.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
+                    <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; letter-spacing: 1px;">
+                      <i class="fa-solid fa-map-location-dot" style="color: #d97706;"></i> Plotting Developments
+                    </span>
+                    <span style="font-size: 0.72rem; color: #d97706; font-weight: 600;">(3) &rarr;</span>
+                  </a>
+                  <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+                    <a href="plotting-1.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Green Valley Township Plots</a>
+                    <a href="plotting-2.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Royal Meadows Farmhouse Plots</a>
+                    <a href="plotting-3.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Metro Boulevard Commercial Plots</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Center Uploaded One Roof Properties Logo -->
+          <div class="header-logo">
+            <a href="index.html">
+              <img src="assets/one-roof-logo-white.png" alt="One Roof Properties">
+            </a>
+          </div>
+
+          <!-- Right Nav Items: Services | Blog | NRI Support | Contact Us -->
+          <div class="header-nav-right">
+            <ul class="header-nav-list">
+              <li><a href="services.html">Services</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="nri-corner.html">NRI Support</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Centered "About Us" Title in Website Serif Font -->
+    <div class="about-hero-content">
+      <h1 class="about-hero-title">About Us</h1>
+    </div>
+  </section>
+
+  <!-- 4. Who We Are Section (North Wind Editorial Style + Website Fonts & Colors) -->
+  <section id="whoWeAreSection">
+    <div class="who-container">
+      <!-- Left Column: Tag, Heading, Paragraphs & Stats Row -->
+      <div class="who-left">
+        <div class="who-tag">WHO WE ARE</div>
+        <h2 class="who-title">
+          Your Property Journey,<br>All Under One Roof.
+        </h2>
+        <p class="who-desc">
+          At One Roof Properties, we believe finding the right property should be a confident and rewarding experience. Whether you are searching for your dream home, exploring residential plots or considering a property resale, we bring relevant opportunities and personalised assistance together in one place.
+        </p>
+        <p class="who-desc">
+          Our approach centres on understanding your needs, helping you explore suitable options and guiding you through your property journey with clarity and care.
+        </p>
+
+        <!-- 3-Column Bottom Stats Row -->
+        <div class="who-stats-row">
+          <div class="who-stat-item">
+            <div class="who-stat-num">100%</div>
+            <div class="who-stat-label">Customer-First Approach</div>
+          </div>
+          <div class="who-stat-item">
+            <div class="who-stat-num">18+</div>
+            <div class="who-stat-label">Years of Real Estate<br>Expertise</div>
+          </div>
+          <div class="who-stat-item">
+            <div class="who-stat-num">1,450+</div>
+            <div class="who-stat-label">Properties &amp; Plots<br>Guided</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Rounded Architectural Portrait Card -->
+      <div class="who-right">
+        <div class="who-visual-card">
+          <img src="about-building.jpg" alt="One Roof Properties Architecture">
+          <span class="who-visual-caption">Artistic Impression</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4B. Vision & Mission Pinned Scroll Section (North Wind Choreography + Website Palette & Fonts) -->
+  <section id="visionMissionSection">
+    <div class="vm-sticky">
+      <!-- Architectural Blueprint Wireframes (Left & Right) -->
+      <svg class="vm-bg-wireframe-left" viewBox="0 0 340 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-20 460 L120 120 L250 180 L250 460" stroke="#7b8791" stroke-width="1"/>
+        <path d="M120 120 L120 460" stroke="#7b8791" stroke-width="0.8"/>
+        <path d="M40 315 L250 355" stroke="#7b8791" stroke-width="0.7"/>
+        <path d="M75 230 L250 275" stroke="#7b8791" stroke-width="0.7"/>
+        <path d="M100 165 L250 215" stroke="#7b8791" stroke-width="0.7"/>
+      </svg>
+
+      <svg class="vm-bg-wireframe-right" viewBox="0 0 340 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M90 520 L90 150 L230 70 L355 150 L355 520" stroke="#7b8791" stroke-width="1"/>
+        <path d="M230 70 L230 520" stroke="#7b8791" stroke-width="0.9"/>
+        <path d="M90 220 L230 155 L355 220" stroke="#7b8791" stroke-width="0.7"/>
+        <path d="M90 300 L230 245 L355 300" stroke="#7b8791" stroke-width="0.7"/>
+        <path d="M90 380 L230 335 L355 380" stroke="#7b8791" stroke-width="0.7"/>
+        <path d="M160 110 L160 520" stroke="#7b8791" stroke-width="0.5" stroke-dasharray="4 4"/>
+        <path d="M295 110 L295 520" stroke="#7b8791" stroke-width="0.5" stroke-dasharray="4 4"/>
+      </svg>
+
+      <div class="vm-stage">
+        <!-- Image 1: Our Vision (Starts Large Center-Left -> Shrinks to Top-Left Thumbnail on Scroll) -->
+        <div class="vm-img-card" id="vmImg1" title="Our Vision" style="left: 23.5%; top: 12%; width: 31%; height: 76%; border-radius: 26px; z-index: 3;">
+          <img src="assets/realestate23.webp" alt="Our Vision — Making Property Dreams a Reality" loading="eager" decoding="async">
+        </div>
+
+        <!-- Image 2: Our Mission (Starts Small Bottom-Right Thumbnail -> Expands to Large Center-Left on Scroll) -->
+        <div class="vm-img-card" id="vmImg2" title="Our Mission" style="left: 59.5%; top: 72%; width: 9.2%; height: 18.5%; border-radius: 14px; z-index: 4;">
+          <img src="assets/realestate24.webp" alt="Our Mission — Simplifying Every Step" loading="eager" decoding="async">
+        </div>
+
+        <!-- Right Column Text Track (Vision Scrolls Up & Out while Mission Scrolls Up Into Center) -->
+        <div class="vm-text-viewport">
+          <!-- OUR VISION -->
+          <div class="vm-text-item" id="vmText1" style="transform: translateY(-50%); opacity: 1;">
+            <div class="vm-overline">OUR VISION</div>
+            <h2 class="vm-heading">Making Property Dreams<br>a Reality.</h2>
+            <p class="vm-desc">
+              To become a trusted real-estate partner by connecting people with meaningful property opportunities and creating better experiences for homebuyers, land buyers and property investors.
+            </p>
+          </div>
+
+          <!-- OUR MISSION -->
+          <div class="vm-text-item" id="vmText2" style="transform: translateY(85%); opacity: 0;">
+            <div class="vm-overline">OUR MISSION</div>
+            <h2 class="vm-heading">Simplifying Every Step.</h2>
+            <p class="vm-desc">
+              Our mission is to make property discovery simpler through personalised service, clear communication and assistance with residential properties, plotting projects, buying, selling and reselling.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Our Core Values Pinned Scroll Section (Edge-to-Edge Full Screen Images) -->
+  <section id="coreValuesSection">
+    <div class="cv-sticky">
+      <!-- Floating Top Title: Our Core Values -->
+      <div class="cv-header-floating">
+        <h2 class="cv-main-title">Our Core Values</h2>
+      </div>
+
+      <!-- Stage Frame: Full Screen Edge-to-Edge Images -->
+      <div class="cv-stage-frame" id="cvStageFrame">
+        <!-- Slide 1: Trust & Transparency -->
+        <div class="cv-slide is-interactive" id="cvSlide0" style="z-index: 1;">
+          <div class="cv-slide-img-wrap" id="cvImgWrap0">
+            <img src="assets/realestate24.webp" alt="Trust &amp; Transparency — One Roof Properties" loading="eager" decoding="async">
+          </div>
+          <div class="cv-floating-card" id="cvCard0">
+            <div class="cv-card-top">
+              <span class="cv-card-tag">Our Core Values</span>
+              <span class="cv-card-num">01</span>
+            </div>
+            <h3 class="cv-card-title">Trust &amp; Transparency</h3>
+            <p class="cv-card-desc">
+              We believe every property journey should begin with honest communication and clear information.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 2: Customer-First Approach -->
+        <div class="cv-slide" id="cvSlide1" style="z-index: 2;">
+          <div class="cv-slide-img-wrap" id="cvImgWrap1">
+            <img src="counter-day.jpg" alt="Customer-First Approach — One Roof Properties" loading="eager" decoding="async">
+          </div>
+          <div class="cv-floating-card card-left" id="cvCard1">
+            <div class="cv-card-top">
+              <span class="cv-card-tag">Our Core Values</span>
+              <span class="cv-card-num">02</span>
+            </div>
+            <h3 class="cv-card-title">Customer-First Approach</h3>
+            <p class="cv-card-desc">
+              We listen to your needs and preferences to help you explore suitable property options.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 3: Quality & Value -->
+        <div class="cv-slide" id="cvSlide2" style="z-index: 3;">
+          <div class="cv-slide-img-wrap" id="cvImgWrap2">
+            <img src="assets/cta-interior-2.jpg" alt="Quality &amp; Value — One Roof Properties" loading="eager" decoding="async">
+          </div>
+          <div class="cv-floating-card" id="cvCard2">
+            <div class="cv-card-top">
+              <span class="cv-card-tag">Our Core Values</span>
+              <span class="cv-card-num">03</span>
+            </div>
+            <h3 class="cv-card-title">Quality &amp; Value</h3>
+            <p class="cv-card-desc">
+              We encourage thoughtful property decisions based on location, suitability and long-term goals.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 4: Lasting Relationships -->
+        <div class="cv-slide" id="cvSlide3" style="z-index: 4;">
+          <div class="cv-slide-img-wrap" id="cvImgWrap3">
+            <img src="counter-night.jpg" alt="Lasting Relationships — One Roof Properties" loading="eager" decoding="async">
+          </div>
+          <div class="cv-floating-card card-left" id="cvCard3">
+            <div class="cv-card-top">
+              <span class="cv-card-tag">Our Core Values</span>
+              <span class="cv-card-num">04</span>
+            </div>
+            <h3 class="cv-card-title">Lasting Relationships</h3>
+            <p class="cv-card-desc">
+              We aim to build meaningful relationships through dependable service and continued support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 6. WHY ONE ROOF PROPERTIES (RANGE DEVELOPMENTS GROUP SPLIT STYLE)     -->
+  <!-- ===================================================================== -->
+  <section id="whyOneRoofSection">
+    
+    <!-- 2-Column Container: Left Visuals Stack + Right Sticky Text Accordion -->
+    <div class="wor-container">
+
+      <!-- Left Column: 5 High-Resolution Property Visual Cards -->
+      <div class="wor-visuals-col" id="worVisualsCol">
+
+        <!-- Card 01: Everything Under One Roof -->
+        <article class="wor-card-item" id="worCard0" data-index="0" onclick="selectWorItem(0)">
+          <img src="assets/project-5.jpg" alt="Everything Under One Roof — Pune Luxury Integrated Residential & Plotting" class="wor-card-img" loading="lazy">
+          <div class="wor-card-mobile-info">
+            <h3>Everything Under One Roof</h3>
+            <p>Residential, plotting and resale property solutions in one place.</p>
+            <a href="services.html" class="wor-nav-link">Explore Solutions <span class="arrow">&rarr;</span></a>
+          </div>
+        </article>
+
+        <!-- Card 02: Personalized Property Assistance -->
+        <article class="wor-card-item" id="worCard1" data-index="1" onclick="selectWorItem(1)">
+          <img src="assets/project-3.jpg" alt="Personalized Property Assistance — Modern Pune Residences & Garden Communities" class="wor-card-img" loading="lazy">
+          <div class="wor-card-mobile-info">
+            <h3>Personalized Property Assistance</h3>
+            <p>Property suggestions based on your requirements, preferences and budget.</p>
+            <a href="contact.html" class="wor-nav-link">Get Consultation <span class="arrow">&rarr;</span></a>
+          </div>
+        </article>
+
+        <!-- Card 03: Transparent Approach -->
+        <article class="wor-card-item" id="worCard2" data-index="2" onclick="selectWorItem(2)">
+          <img src="assets/project-4.jpg" alt="Transparent Approach — Clear RERA Verified Pune Properties" class="wor-card-img" loading="lazy">
+          <div class="wor-card-mobile-info">
+            <h3>Transparent Approach</h3>
+            <p>Clear communication and straightforward property information.</p>
+            <a href="services.html" class="wor-nav-link">Our Process <span class="arrow">&rarr;</span></a>
+          </div>
+        </article>
+
+        <!-- Card 04: Local Market Understanding -->
+        <article class="wor-card-item" id="worCard3" data-index="3" onclick="selectWorItem(3)">
+          <img src="assets/realestate25.webp" alt="Local Market Understanding — Prime Pune Locations & Hillside Corridors" class="wor-card-img" loading="lazy">
+          <div class="wor-card-mobile-info">
+            <h3>Local Market Understanding</h3>
+            <p>Guidance to explore property opportunities in your preferred locations.</p>
+            <a href="plotting.html" class="wor-nav-link">Explore Locations <span class="arrow">&rarr;</span></a>
+          </div>
+        </article>
+
+        <!-- Card 05: Support Throughout Your Journey -->
+        <article class="wor-card-item" id="worCard4" data-index="4" onclick="selectWorItem(4)">
+          <img src="assets/pune-luxury-villas.jpg" alt="Support Throughout Your Journey — Luxury Pune Villas & Plotted Communities" class="wor-card-img" loading="lazy">
+          <div class="wor-card-mobile-info">
+            <h3>Support Throughout Your Journey</h3>
+            <p>Assistance from your first enquiry to your property selection.</p>
+            <a href="contact.html" class="wor-nav-link">Connect With Us <span class="arrow">&rarr;</span></a>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Right Column: Sticky Accordion Navigation -->
+      <aside class="wor-content-col" id="worContentCol">
+        <span class="wor-eyebrow">
+          <span class="wor-eyebrow-line"></span>
+          WHY ONE ROOF PROPERTIES?
+        </span>
+
+        <div class="wor-nav-list" role="tablist">
+
+          <!-- Item 01 -->
+          <div class="wor-nav-item is-active" id="worNavItem0" onclick="selectWorItem(0)">
+            <h3 class="wor-nav-title">Everything Under One Roof</h3>
+            <div class="wor-nav-body">
+              <p class="wor-nav-desc">
+                Residential, plotting and resale property solutions in one place.
+              </p>
+              <a href="services.html" class="wor-nav-link">
+                <span>Explore Solutions</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Item 02 -->
+          <div class="wor-nav-item" id="worNavItem1" onclick="selectWorItem(1)">
+            <h3 class="wor-nav-title">Personalized Property Assistance</h3>
+            <div class="wor-nav-body">
+              <p class="wor-nav-desc">
+                Property suggestions based on your requirements, preferences and budget.
+              </p>
+              <a href="contact.html" class="wor-nav-link">
+                <span>Get Consultation</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Item 03 -->
+          <div class="wor-nav-item" id="worNavItem2" onclick="selectWorItem(2)">
+            <h3 class="wor-nav-title">Transparent Approach</h3>
+            <div class="wor-nav-body">
+              <p class="wor-nav-desc">
+                Clear communication and straightforward property information.
+              </p>
+              <a href="services.html" class="wor-nav-link">
+                <span>Our Process</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Item 04 -->
+          <div class="wor-nav-item" id="worNavItem3" onclick="selectWorItem(3)">
+            <h3 class="wor-nav-title">Local Market Understanding</h3>
+            <div class="wor-nav-body">
+              <p class="wor-nav-desc">
+                Guidance to explore property opportunities in your preferred locations.
+              </p>
+              <a href="plotting.html" class="wor-nav-link">
+                <span>Explore Locations</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Item 05 -->
+          <div class="wor-nav-item" id="worNavItem4" onclick="selectWorItem(4)">
+            <h3 class="wor-nav-title">Support Throughout Your Journey</h3>
+            <div class="wor-nav-body">
+              <p class="wor-nav-desc">
+                Assistance from your first enquiry to your property selection.
+              </p>
+              <a href="contact.html" class="wor-nav-link">
+                <span>Connect With Us</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 7. STRATEGIC PROCESS SECTION (FALCON REALTY STYLE VERTICAL ROADMAP)   -->
+  <!-- ===================================================================== -->
+  <section id="processSection">
+    <div class="proc-container">
+
+      <!-- Left Column: Strategic Pitch Block (Sticky) -->
+      <div class="proc-pitch-col">
+        <span class="proc-eyebrow">STRATEGIC OPERATION ACROSS PUNE &amp; BEYOND</span>
+        <h2 class="proc-heading">We have the best team and the best process</h2>
+        <p class="proc-desc">
+          From first conversation to keys in hand, our structured approach keeps every project transparent, efficient, and aligned with your expectations.
+        </p>
+        <a href="contact.html" class="proc-btn">GET STARTED</a>
+      </div>
+
+      <!-- Right Column: Vertical Timeline Roadmap -->
+      <div class="proc-timeline-col" id="procTimelineCol">
+
+        <!-- 4 Process Steps List with Centered Connecting Lines -->
+        <div class="proc-step-list">
+
+          <!-- Step 01: Discovery & Consultation -->
+          <div class="proc-step-item is-active" id="procStep0" data-step="0">
+            <div class="proc-node-col">
+              <div class="proc-node-circle">01</div>
+              <div class="proc-segment-track">
+                <div class="proc-line-primary">
+                  <div class="proc-segment-fill" id="procFill0"></div>
+                </div>
+                <div class="proc-line-secondary" id="procSec0"></div>
+              </div>
+            </div>
+            <div class="proc-step-content">
+              <h3 class="proc-step-title">Discovery &amp; Consultation</h3>
+              <p class="proc-step-desc">
+                We begin with a dedicated session to understand your vision, investment goals, and timeline for your real estate journey.
+              </p>
+            </div>
+            <div class="proc-watermark-num">01</div>
+          </div>
+
+          <!-- Step 02: Site Analysis & Planning -->
+          <div class="proc-step-item" id="procStep1" data-step="1">
+            <div class="proc-node-col">
+              <div class="proc-node-circle">02</div>
+              <div class="proc-segment-track">
+                <div class="proc-line-primary">
+                  <div class="proc-segment-fill" id="procFill1"></div>
+                </div>
+                <div class="proc-line-secondary" id="procSec1"></div>
+              </div>
+            </div>
+            <div class="proc-step-content">
+              <h3 class="proc-step-title">Site Analysis &amp; Planning</h3>
+              <p class="proc-step-desc">
+                Our team evaluates locations, market trends, and feasibility to build a strategic roadmap tailored to your objectives.
+              </p>
+            </div>
+            <div class="proc-watermark-num">02</div>
+          </div>
+
+          <!-- Step 03: Design & Development -->
+          <div class="proc-step-item" id="procStep2" data-step="2">
+            <div class="proc-node-col">
+              <div class="proc-node-circle">03</div>
+              <div class="proc-segment-track">
+                <div class="proc-line-primary">
+                  <div class="proc-segment-fill" id="procFill2"></div>
+                </div>
+                <div class="proc-line-secondary" id="procSec2"></div>
+              </div>
+            </div>
+            <div class="proc-step-content">
+              <h3 class="proc-step-title">Design &amp; Development</h3>
+              <p class="proc-step-desc">
+                From concept to construction, we coordinate architects, contractors, and compliance to deliver excellence at every stage.
+              </p>
+            </div>
+            <div class="proc-watermark-num">03</div>
+          </div>
+
+          <!-- Step 04: Handover & Ongoing Support -->
+          <div class="proc-step-item" id="procStep3" data-step="3">
+            <div class="proc-node-col">
+              <div class="proc-node-circle">04</div>
+              <div class="proc-segment-track proc-tail-track">
+                <div class="proc-line-primary"></div>
+                <div class="proc-line-secondary"></div>
+              </div>
+            </div>
+            <div class="proc-step-content">
+              <h3 class="proc-step-title">Handover &amp; Ongoing Support</h3>
+              <p class="proc-step-desc">
+                We ensure a seamless transition at completion and remain your trusted partner for property management and future growth.
+              </p>
+            </div>
+            <div class="proc-watermark-num">04</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. Footer (Inline CSS) -->
+  <footer style="background-color: #0b1120; color: #94a3b8; padding-top: 70px; font-size: 0.92rem;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+      <div class="responsive-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 50px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+        <div>
+          <div style="font-size: 1.5rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+            <i class="fa-solid fa-house-chimney" style="color: #d97706;"></i>
+            <div>One<span style="color: #60a5fa;">Roof</span></div>
+          </div>
+          <p style="line-height: 1.7; margin-bottom: 20px;">
+            One Roof Properties is a premier full-service real estate brokerage providing modern residential and commercial property solutions backed by technology and verified expertise.
+          </p>
+          <div style="display: flex; gap: 10px;">
+            <a href="#" style="width: 38px; height: 38px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: #cbd5e1;"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" style="width: 38px; height: 38px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: #cbd5e1;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" style="width: 38px; height: 38px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: #cbd5e1;"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;">Quick Links</h4>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: 12px;"><a href="index.html" style="color: #94a3b8; text-decoration: none;">Home</a></li>
+            <li style="margin-bottom: 12px;"><a href="about.html" style="color: #ffffff; font-weight: 600; text-decoration: none;">About Us</a></li>
+            <li style="margin-bottom: 12px;"><a href="residential.html" style="color: #94a3b8; text-decoration: none;">Residential</a></li>
+            <li style="margin-bottom: 12px;"><a href="plotting.html" style="color: #94a3b8; text-decoration: none;">Plotting</a></li>
+            <li style="margin-bottom: 12px;"><a href="nri-corner.html" style="color: #94a3b8; text-decoration: none;">NRI Corner</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;">Resources</h4>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: 12px;"><a href="services.html" style="color: #94a3b8; text-decoration: none;">Services</a></li>
+            <li style="margin-bottom: 12px;"><a href="blog.html" style="color: #94a3b8; text-decoration: none;">Blogs</a></li>
+            <li style="margin-bottom: 12px;"><a href="contact.html" style="color: #94a3b8; text-decoration: none;">Contact Us</a></li>
+            <li style="margin-bottom: 12px;"><a href="privacy-policy.html" style="color: #94a3b8; text-decoration: none;">Privacy & Policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;">Get in Touch</h4>
+          <p style="margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-phone" style="color: #d97706;"></i> +1 (800) 555-ROOF
+          </p>
+          <p style="margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-envelope" style="color: #d97706;"></i> contact@oneroofproperties.com
+          </p>
+          <p style="display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-location-dot" style="color: #d97706;"></i> One Roof Tower, 500 Financial Center
+          </p>
+        </div>
+      </div>
+
+      <div style="padding: 24px 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; flex-wrap: wrap; gap: 10px;">
+        <div>&copy; 2026 One Roof Properties LLC. All rights reserved.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="privacy-policy.html" style="color: #94a3b8; text-decoration: none;">Privacy & Policy</a>
+          <a href="contact.html" style="color: #94a3b8; text-decoration: none;">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const mobileBtn = document.getElementById('mobileBtn');
+    const navLinks = document.getElementById('navLinks');
+    if (mobileBtn && navLinks) {
+      mobileBtn.addEventListener('click', () => {
+        if (navLinks.style.display === 'flex') {
+          navLinks.style.display = 'none';
+        } else {
+          navLinks.style.display = 'flex';
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '70px';
+          navLinks.style.left = '0';
+          navLinks.style.width = '100%';
+          navLinks.style.backgroundColor = '#ffffff';
+          navLinks.style.padding = '20px';
+          navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+        }
+      });
+    }
+
+    // Sticky Navbar with Background Starting from About Content Section
+    (function initAboutNavbarScroll() {
+      const mainHeader = document.getElementById('mainHeader');
+      function updateNavbar() {
+        if (!mainHeader) return;
+        const whoSec = document.getElementById('whoWeAreSection');
+        const threshold = whoSec ? Math.max(80, whoSec.offsetTop - 90) : (window.innerHeight - 90);
+        if (window.scrollY >= threshold) {
+          mainHeader.style.position = 'fixed';
+          mainHeader.style.background = 'rgba(44, 56, 68, 0.94)';
+          mainHeader.style.backdropFilter = 'blur(12px)';
+          mainHeader.style.webkitBackdropFilter = 'blur(12px)';
+          mainHeader.style.padding = '14px 0';
+          mainHeader.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.25)';
+          mainHeader.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+        } else {
+          mainHeader.style.position = 'absolute';
+          mainHeader.style.background = 'transparent';
+          mainHeader.style.backdropFilter = 'none';
+          mainHeader.style.webkitBackdropFilter = 'none';
+          mainHeader.style.padding = '34px 0 0';
+          mainHeader.style.boxShadow = 'none';
+          mainHeader.style.borderBottom = 'none';
+        }
+      }
+      window.addEventListener('scroll', updateNavbar, { passive: true });
+      window.addEventListener('resize', updateNavbar);
+      updateNavbar();
+    })();
+
+    // Vision & Mission Pinned Scroll Choreography
+    (function initVisionMissionScroll() {
+      const section = document.getElementById('visionMissionSection');
+      const img1 = document.getElementById('vmImg1');
+      const img2 = document.getElementById('vmImg2');
+      const text1 = document.getElementById('vmText1');
+      const text2 = document.getElementById('vmText2');
+      if (!section || !img1 || !img2 || !text1 || !text2) return;
+
+      const lerp = (a, b, t) => a + (b - a) * t;
+      const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+      const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+      function updateVisionMission() {
+        if (window.innerWidth <= 960) return;
+
+        const rect = section.getBoundingClientRect();
+        const totalScroll = section.offsetHeight - window.innerHeight;
+        if (totalScroll <= 0) return;
+
+        // Raw scroll progress [0..1], with brief hold at start and end
+        const raw = clamp(-rect.top / totalScroll, 0, 1);
+        const mapped = clamp((raw - 0.08) / 0.84, 0, 1);
+        const p = easeInOutCubic(mapped);
+
+        // Image 1 (Vision): Large Center-Left -> Small Top-Left Thumbnail
+        const img1Left = lerp(23.5, 11.5, p);
+        const img1Top = lerp(12, 12, p);
+        const img1Width = lerp(31, 9.2, p);
+        const img1Height = lerp(76, 19.5, p);
+        const img1Radius = lerp(26, 16, p);
+
+        img1.style.left = img1Left.toFixed(2) + '%';
+        img1.style.top = img1Top.toFixed(2) + '%';
+        img1.style.width = img1Width.toFixed(2) + '%';
+        img1.style.height = img1Height.toFixed(2) + '%';
+        img1.style.borderRadius = img1Radius.toFixed(1) + 'px';
+
+        // Image 2 (Mission): Small Bottom-Right Thumbnail -> Large Center-Left
+        const img2Left = lerp(59.5, 23.5, p);
+        const img2Top = lerp(72, 12, p);
+        const img2Width = lerp(9.2, 31, p);
+        const img2Height = lerp(18.5, 76, p);
+        const img2Radius = lerp(14, 26, p);
+
+        img2.style.left = img2Left.toFixed(2) + '%';
+        img2.style.top = img2Top.toFixed(2) + '%';
+        img2.style.width = img2Width.toFixed(2) + '%';
+        img2.style.height = img2Height.toFixed(2) + '%';
+        img2.style.borderRadius = img2Radius.toFixed(1) + 'px';
+
+        // Right-side Text: Vision scrolls up & fades out; Mission scrolls up from bottom into center
+        const text1Y = lerp(-50, -185, p);
+        const text1Opacity = clamp(1 - p * 1.65, 0, 1);
+        text1.style.transform = `translateY(${text1Y.toFixed(1)}%)`;
+        text1.style.opacity = text1Opacity.toFixed(3);
+        text1.style.pointerEvents = p < 0.5 ? 'auto' : 'none';
+
+        const text2Y = lerp(85, -50, p);
+        const text2Opacity = clamp((p - 0.32) * 1.65, 0, 1);
+        text2.style.transform = `translateY(${text2Y.toFixed(1)}%)`;
+        text2.style.opacity = text2Opacity.toFixed(3);
+        text2.style.pointerEvents = p >= 0.5 ? 'auto' : 'none';
+      }
+
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateVisionMission();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', updateVisionMission);
+      updateVisionMission();
+
+      // Allow clicking either thumbnail to smoothly scroll to Vision or Mission
+      img1.addEventListener('click', () => {
+        if (window.innerWidth <= 960) return;
+        const top = section.offsetTop;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+
+      img2.addEventListener('click', () => {
+        if (window.innerWidth <= 960) return;
+        const top = section.offsetTop + (section.offsetHeight - window.innerHeight);
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    })();
+
+    // Core Values Pinned Scroll Choreography:
+    // Image 1 -> Small Card 1 on Image -> Image 2 -> Small Card 2 on Image -> Image 3 -> Small Card 3 -> Image 4 -> Small Card 4
+    (function initCoreValuesScroll() {
+      const section = document.getElementById('coreValuesSection');
+      if (!section) return;
+
+      const slides = [0, 1, 2, 3].map((i) => ({
+        slide: document.getElementById('cvSlide' + i),
+        imgWrap: document.getElementById('cvImgWrap' + i),
+        card: document.getElementById('cvCard' + i)
+      }));
+
+      const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+      const lerp = (a, b, t) => a + (b - a) * t;
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+      function updateCoreValues() {
+        if (window.innerWidth <= 960) return;
+
+        const rect = section.getBoundingClientRect();
+        const totalScroll = section.offsetHeight - window.innerHeight;
+        if (totalScroll <= 0) return;
+
+        // Global progress [0..1] across the section
+        const raw = clamp(-rect.top / totalScroll, 0, 1);
+
+        // Divide scroll into 4 value segments [0..4]
+        const scaled = raw * 4;
+        const activeIndex = clamp(Math.floor(scaled), 0, 3);
+
+        slides.forEach((item, i) => {
+          if (!item.slide || !item.imgWrap || !item.card) return;
+
+          // Local progress within this value's [0..1] window
+          const local = scaled - i;
+
+          if (i === 0) {
+            // Slide 1 (Base slide): Image rises/settles first [0..0.32], then Card 1 rises onto image [0.28..0.72]
+            const imgT = easeOutCubic(clamp((raw + 0.08) / 0.22, 0, 1));
+            const imgScale = lerp(1.08, 1.0, imgT);
+            item.imgWrap.style.opacity = '1';
+            item.imgWrap.style.transform = `scale(${imgScale.toFixed(3)})`;
+
+            const cardIn = easeOutCubic(clamp((local - 0.18) / 0.44, 0, 1));
+            // Slightly fade card out when Slide 2 arrives on top
+            const nextImgIn = easeOutCubic(clamp((scaled - 1) / 0.42, 0, 1));
+            const cardOpacity = clamp(cardIn * (1 - nextImgIn * 1.15), 0, 1);
+            const cardY = lerp(68, 0, cardIn) - nextImgIn * 24;
+
+            item.card.style.opacity = cardOpacity.toFixed(3);
+            item.card.style.transform = `translateY(${cardY.toFixed(1)}px)`;
+            item.slide.classList.toggle('is-interactive', activeIndex === 0);
+          } else {
+            // Slides 2, 3, 4:
+            // Phase A (local 0.00 -> 0.45): Image arrives smoothly from bottom over previous slide
+            // Phase B (local 0.42 -> 0.85): Small floating card rises & fades in onto the image
+            // Phase C (local 0.85 -> 1.00): Holds on screen before next image arrives
+            const imgIn = easeOutCubic(clamp(local / 0.45, 0, 1));
+            const imgY = lerp(100, 0, imgIn);
+            const imgScale = lerp(1.08, 1.0, imgIn);
+
+            item.imgWrap.style.opacity = clamp(imgIn * 1.35, 0, 1).toFixed(3);
+            item.imgWrap.style.transform = `translateY(${imgY.toFixed(2)}%) scale(${imgScale.toFixed(3)})`;
+
+            const cardIn = easeOutCubic(clamp((local - 0.42) / 0.42, 0, 1));
+            const nextImgIn =
+              i < 3 ? easeOutCubic(clamp((scaled - (i + 1)) / 0.42, 0, 1)) : 0;
+            const cardOpacity = clamp(cardIn * (1 - nextImgIn * 1.15), 0, 1);
+            const cardY = lerp(72, 0, cardIn) - nextImgIn * 24;
+
+            item.card.style.opacity = cardOpacity.toFixed(3);
+            item.card.style.transform = `translateY(${cardY.toFixed(1)}px)`;
+            item.slide.classList.toggle('is-interactive', activeIndex === i);
+          }
+        });
+      }
+
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateCoreValues();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', updateCoreValues);
+      updateCoreValues();
+    })();
+
+    /* ===================================================================== */
+    /* 6. WHY ONE ROOF PROPERTIES INTERACTIVE CONTROLLER                     */
+    /* (Smooth Scroll Sync & Interactive Sticky Accordion Navigation)        */
+    /* ===================================================================== */
+    (function initWhyOneRoof() {
+      const section = document.getElementById('whyOneRoofSection');
+      if (!section) return;
+
+      const navItems = Array.from(document.querySelectorAll('.wor-nav-item'));
+      const cards = Array.from(document.querySelectorAll('.wor-card-item'));
+      let activeIndex = 0;
+      let isManualClick = false;
+      let clickTimeout = null;
+
+      function setActiveIndex(idx) {
+        if (activeIndex === idx && navItems[idx]?.classList.contains('is-active')) return;
+        activeIndex = idx;
+
+        navItems.forEach((item, i) => {
+          if (i === idx) {
+            item.classList.add('is-active');
+          } else {
+            item.classList.remove('is-active');
+          }
+        });
+      }
+
+      window.selectWorItem = function(idx) {
+        if (idx < 0 || idx >= cards.length) return;
+        setActiveIndex(idx);
+
+        if (window.innerWidth > 960) {
+          const card = cards[idx];
+          if (card) {
+            isManualClick = true;
+            clearTimeout(clickTimeout);
+            const cardRect = card.getBoundingClientRect();
+            const currentScroll = window.pageYOffset;
+            const targetY = currentScroll + cardRect.top - (window.innerHeight / 2 - card.offsetHeight / 2);
+
+            window.scrollTo({
+              top: targetY,
+              behavior: 'smooth'
+            });
+
+            clickTimeout = setTimeout(() => {
+              isManualClick = false;
+            }, 850);
+          }
+        }
+      };
+
+      // Hover on inactive items previews them smoothly
+      navItems.forEach((item, idx) => {
+        item.addEventListener('mouseenter', () => {
+          if (window.innerWidth > 960 && !isManualClick) {
+            setActiveIndex(idx);
+          }
+        });
+      });
+
+      // Synchronize active item with scroll position of cards
+      function checkActiveCardOnScroll() {
+        if (isManualClick || window.innerWidth <= 960) return;
+
+        const viewportCenter = window.innerHeight * 0.48;
+        let closestIndex = 0;
+        let minDistance = Infinity;
+
+        cards.forEach((card, i) => {
+          const rect = card.getBoundingClientRect();
+          const cardCenter = rect.top + rect.height / 2;
+          const dist = Math.abs(cardCenter - viewportCenter);
+
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestIndex = i;
+          }
+        });
+
+        setActiveIndex(closestIndex);
+      }
+
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            checkActiveCardOnScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', checkActiveCardOnScroll);
+
+      setTimeout(() => {
+        checkActiveCardOnScroll();
+      }, 200);
+    })();
+
+    /* ===================================================================== */
+    /* 7. STRATEGIC PROCESS SECTION CONTROLLER (TIMELINE FILL & ACTIVATION)  */
+    /* ===================================================================== */
+    (function initProcessSection() {
+      const section = document.getElementById('processSection');
+      if (!section) return;
+
+      const stepItems = Array.from(document.querySelectorAll('.proc-step-item'));
+      const fills = [
+        document.getElementById('procFill0'),
+        document.getElementById('procFill1'),
+        document.getElementById('procFill2')
+      ];
+      if (stepItems.length === 0) return;
+
+      function updateProcessTimeline() {
+        const secRect = section.getBoundingClientRect();
+        const winHeight = window.innerHeight;
+
+        // If section is off-screen, return early
+        if (secRect.top > winHeight || secRect.bottom < 0) return;
+
+        // Trigger threshold line in viewport (e.g. 58% down screen)
+        const triggerLine = winHeight * 0.58;
+
+        // Activate step nodes based on scroll position
+        stepItems.forEach((step, idx) => {
+          const circle = step.querySelector('.proc-node-circle');
+          if (!circle) return;
+          const cRect = circle.getBoundingClientRect();
+          const nodeCenter = cRect.top + cRect.height / 2;
+
+          if (nodeCenter <= triggerLine) {
+            step.classList.add('is-active');
+          } else if (idx > 0 && nodeCenter > triggerLine + 40) {
+            step.classList.remove('is-active');
+          }
+        });
+
+        // Compute fill progress for each segment between nodes
+        fills.forEach((fillEl, idx) => {
+          if (!fillEl) return;
+          const currentStep = stepItems[idx];
+          const nextStep = stepItems[idx + 1];
+          if (!currentStep || !nextStep) return;
+
+          const currentCircle = currentStep.querySelector('.proc-node-circle');
+          const nextCircle = nextStep.querySelector('.proc-node-circle');
+          if (!currentCircle || !nextCircle) return;
+
+          const startY = currentCircle.getBoundingClientRect().bottom;
+          const endY = nextCircle.getBoundingClientRect().top;
+          const totalDist = Math.max(1, endY - startY);
+
+          let segProgress = 0;
+          if (triggerLine >= endY) {
+            segProgress = 1;
+          } else if (triggerLine <= startY) {
+            segProgress = 0;
+          } else {
+            segProgress = (triggerLine - startY) / totalDist;
+          }
+
+          segProgress = Math.max(0, Math.min(1, segProgress));
+          fillEl.style.height = (segProgress * 100) + '%';
+        });
+      }
+
+      // Interactive hover/click on steps
+      stepItems.forEach((step, idx) => {
+        step.addEventListener('mouseenter', () => {
+          for (let i = 0; i <= idx; i++) {
+            stepItems[i].classList.add('is-active');
+            if (fills[i - 1]) fills[i - 1].style.height = '100%';
+          }
+        });
+      });
+
+      let procTicking = false;
+      window.addEventListener('scroll', () => {
+        if (!procTicking) {
+          window.requestAnimationFrame(() => {
+            updateProcessTimeline();
+            procTicking = false;
+          });
+          procTicking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', updateProcessTimeline);
+      setTimeout(updateProcessTimeline, 250);
+    })();
+  </script>
+</body>
+</html>

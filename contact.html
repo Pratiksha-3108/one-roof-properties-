@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | One Roof Properties</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&family=Nanum+Myeongjo:wght@400;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #FAF8EE;
+      color: #465665;
+      font-family: 'Jost', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ======================================================== */
+    /* TOP HEADER BAR (MATCHING WEBSITE NAVIGATION)             */
+    /* ======================================================== */
+    .contact-header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 18px 0;
+      background: rgba(250, 248, 238, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(70, 86, 101, 0.12);
+      transition: all 0.3s ease;
+    }
+
+    .contact-header .holder {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 36px;
+    }
+
+    .header-block {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .header-nav-list {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-nav-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .header-nav-list > li > a {
+      color: #465665;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    .header-nav-list > li > a:hover,
+    .header-nav-list > li > a.active {
+      color: #b45309;
+    }
+
+    .header-brand-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .header-brand-center img {
+      height: 46px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .header-phone {
+      color: #465665;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-decoration: none;
+      border: 1px solid rgba(70, 86, 101, 0.38);
+      padding: 9px 18px;
+      border-radius: 999px;
+      margin-left: 28px;
+      transition: all 0.25s ease;
+    }
+
+    .header-phone:hover {
+      background: #465665;
+      color: #ffffff;
+      border-color: #465665;
+    }
+
+    @media (max-width: 1024px) {
+      .header-nav-list, .header-phone {
+        display: none;
+      }
+      .header-block {
+        justify-content: center;
+      }
+    }
+
+    /* ======================================================== */
+    /* 1. TOP CONTACT & INQUIRY SECTION (ORIGEN LAYOUT)         */
+    /* ======================================================== */
+    #contactInquirySection {
+      background-color: #FAF8EE;
+      padding: 76px 24px 96px;
+      position: relative;
+    }
+
+    .contact-inquiry-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* Left Column: Centered Swirl Emblem, Heading, Copy & Social Circles */
+    .contact-left-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px 16px;
+    }
+
+    .contact-swirl-emblem {
+      width: 110px;
+      height: 110px;
+      margin-bottom: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.55;
+    }
+
+    .contact-swirl-emblem svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .contact-overline {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      color: #7b8791;
+      margin-bottom: 12px;
+    }
+
+    .contact-main-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.35rem, 3.6vw, 3.25rem);
+      font-weight: 400;
+      line-height: 1.18;
+      letter-spacing: -0.4px;
+      color: #465665;
+      margin: 0 0 22px 0;
+    }
+
+    .contact-main-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 400;
+      line-height: 1.72;
+      color: #7b8791;
+      max-width: 360px;
+      margin: 0 0 34px 0;
+    }
+
+    .contact-social-circles {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .contact-social-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(70, 86, 101, 0.55);
+      color: #465665;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: all 0.25s ease;
+    }
+
+    .contact-social-circle:hover {
+      background: #465665;
+      color: #FAF8EE;
+      border-color: #465665;
+      transform: translateY(-2px);
+    }
+
+    /* Right Column: Framed Rounded Card ("Send an inquiry") */
+    .contact-form-card {
+      position: relative;
+      border-radius: 30px;
+      border: 1px solid rgba(70, 86, 101, 0.16);
+      background: rgba(250, 248, 238, 0.5);
+      padding: 48px 46px 46px;
+    }
+
+    .contact-form-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.75rem, 2.4vw, 2.2rem);
+      font-weight: 400;
+      color: #465665;
+      margin: 0 0 28px 0;
+      letter-spacing: -0.3px;
+    }
+
+    .contact-field-group {
+      margin-bottom: 14px;
+    }
+
+    .contact-input,
+    .contact-textarea {
+      width: 100%;
+      background: rgba(70, 86, 101, 0.045);
+      border: 1px solid rgba(70, 86, 101, 0.22);
+      border-radius: 4px;
+      padding: 13px 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: #465665;
+      outline: none;
+      transition: border-color 0.25s ease, background-color 0.25s ease;
+    }
+
+    .contact-input::placeholder,
+    .contact-textarea::placeholder {
+      color: #63707b;
+    }
+
+    .contact-input:focus,
+    .contact-textarea:focus {
+      border-color: #465665;
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    .contact-textarea {
+      min-height: 104px;
+      resize: vertical;
+    }
+
+    .contact-consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 16px 0 26px;
+    }
+
+    .contact-consent-row input[type="checkbox"] {
+      margin-top: 4px;
+      width: 15px;
+      height: 15px;
+      accent-color: #465665;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .contact-consent-text {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      line-height: 1.55;
+      color: #63707b;
+    }
+
+    .contact-submit-btn {
+      background: #465665;
+      color: #ffffff;
+      border: 1px solid #465665;
+      border-radius: 6px;
+      padding: 12px 34px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .contact-submit-btn:hover {
+      background: #34424f;
+      border-color: #34424f;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(70, 86, 101, 0.22);
+    }
+
+    .contact-alert-success {
+      display: none;
+      background: rgba(70, 86, 101, 0.1);
+      color: #465665;
+      border: 1px solid rgba(70, 86, 101, 0.28);
+      padding: 13px 16px;
+      border-radius: 6px;
+      margin-bottom: 18px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* ======================================================== */
+    /* 2. LOCATION MAP SECTION (DARK BAND + OVERLAPPING MAP)    */
+    /* ======================================================== */
+    #locationMapSection {
+      position: relative;
+      background: #FAF8EE;
+      padding-bottom: 50px;
+    }
+
+    /* Full-width Dark Slate Top Half Behind Map */
+    .map-dark-band {
+      background: #2C3844;
+      padding: 78px 24px 235px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle Concentric Swirl on Right Edge of Dark Band */
+    .map-band-swirl {
+      position: absolute;
+      right: -45px;
+      bottom: 25px;
+      width: 210px;
+      height: 210px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .map-overline {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #D2C4A8;
+      margin-bottom: 10px;
+    }
+
+    .map-heading {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.95rem, 3.1vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.24;
+      color: #EAE3D2;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Overlapping Map Wrapper */
+    .map-overlap-wrap {
+      max-width: 1140px;
+      margin: -175px auto 0;
+      padding: 0 24px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .map-frame-box {
+      position: relative;
+      width: 100%;
+      height: 450px;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(44, 56, 68, 0.18);
+      border: 1px solid rgba(70, 86, 101, 0.16);
+      background: #e5e3df;
+    }
+
+    .map-frame-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* Custom Branded Map Pin Overlays (Matching Reference Circular Pins) */
+    .map-pin-badge {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      pointer-events: none;
+      z-index: 6;
+      transform: translate(-50%, -50%);
+    }
+
+    .map-pin-circle {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: #2C3844;
+      border: 2px solid #D2C4A8;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+      color: #FAF8EE;
+    }
+
+    .map-pin-circle .pin-brand {
+      font-family: 'Cinzel', 'Nanum Myeongjo', serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: #EAE3D2;
+      line-height: 1.2;
+    }
+
+    .map-pin-circle .pin-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.52rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #D2C4A8;
+      margin-top: 3px;
+    }
+
+    .map-pin-drop {
+      margin-top: -4px;
+      color: #C5A358;
+      font-size: 2rem;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
+    }
+
+    /* ======================================================== */
+    /* 3. ROTATING DOTTED EARTH & SEMICIRCLE ORBIT ARCH SECTION */
+    /* ======================================================== */
+    #contactArchSection {
+      position: relative;
+      background: #FAF8EE;
+      padding: 10px 24px 96px;
+      overflow: hidden;
+    }
+
+    .arch-orbit-stage {
+      position: relative;
+      max-width: 1180px;
+      height: 650px;
+      margin: 0 auto;
+    }
+
+    /* Large Downward-Curving Semicircle SVG Passing Through All 3 Icon Nodes */
+    .arch-orbit-svg {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 980px;
+      height: 460px;
+      pointer-events: none;
+      z-index: 1;
+      overflow: visible;
+    }
+
+    /* 3D Rotating Dotted Earth Globe in Upper Center */
+    .arch-earth-box {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 320px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    #rotatingEarthCanvas {
+      width: 320px;
+      height: 320px;
+      display: block;
+    }
+
+    /* Orbit Node Shared Styles */
+    .arch-orbit-node {
+      position: absolute;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 3;
+      will-change: opacity, transform;
+      transition: opacity 0.12s linear, transform 0.18s ease-out;
+    }
+
+    /* Left Node (Phone) Sitting on Left Arc at (x = -395px, y = 240px) */
+    .arch-node-left {
+      left: calc(50% - 395px);
+      top: 213px;
+      width: 260px;
+    }
+
+    /* Right Node (Email) Sitting on Right Arc at (x = +395px, y = 240px) */
+    .arch-node-right {
+      left: calc(50% + 395px);
+      top: 213px;
+      width: 280px;
+    }
+
+    /* Bottom-Center Node (Location Pin) Sitting at Bottom Vertex (x = 0, y = 440px) */
+    .arch-node-bottom {
+      left: 50%;
+      top: 413px;
+      width: 680px;
+    }
+
+    .arch-node-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1px solid rgba(70, 86, 101, 0.65);
+      background: #FAF8EE;
+      color: #465665;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 0 6px #FAF8EE;
+    }
+
+    .arch-orbit-node:hover .arch-node-icon {
+      background: #465665;
+      color: #FAF8EE;
+      border-color: #465665;
+      transform: translateY(-2px);
+    }
+
+    .arch-node-label {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #465665;
+      margin-bottom: 6px;
+      letter-spacing: 0.1px;
+    }
+
+    .arch-node-value,
+    .arch-node-value a {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 400;
+      color: #465665;
+      line-height: 1.6;
+      transition: color 0.2s ease;
+    }
+
+    .arch-node-value a:hover {
+      color: #b45309;
+    }
+
+    .arch-sub-block {
+      margin-top: 22px;
+    }
+
+    /* ======================================================== */
+    /* 4. LUXURY CURVED-ARCH 3-COLUMN FOOTER (NORTH WIND STYLE) */
+    /* ======================================================== */
+    .nw-footer {
+      position: relative;
+      z-index: 10;
+      padding: 90px 24px 36px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(70, 86, 101, 0.14) 0%, rgba(70, 86, 101, 0.04) 45%, transparent 75%),
+        linear-gradient(180deg, #E3EAE8 0%, #EFF2EC 42%, #FAF8EE 100%);
+      color: #465665;
+      overflow: hidden;
+      border-top: 1px solid rgba(70, 86, 101, 0.14);
+    }
+
+    .nw-footer::before,
+    .nw-footer::after {
+      content: '';
+      position: absolute;
+      top: 40px;
+      width: 1150px;
+      height: 1150px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .nw-footer::before {
+      right: calc(50% + 195px);
+      border-right: 1px solid rgba(70, 86, 101, 0.18);
+    }
+
+    .nw-footer::after {
+      left: calc(50% + 195px);
+      border-left: 1px solid rgba(70, 86, 101, 0.18);
+    }
+
+    .nw-footer-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .nw-footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      margin-bottom: 64px;
+      gap: 24px;
+    }
+
+    .nw-footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #465665;
+    }
+
+    .nw-brand-main {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Cinzel', 'Nanum Myeongjo', Georgia, serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #465665;
+      line-height: 1.1;
+    }
+
+    .nw-brand-swirl {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      display: inline-block;
+      vertical-align: middle;
+      opacity: 0.85;
+    }
+
+    .nw-brand-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 6.5px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-top: 6px;
+      padding-left: 6.5px;
+    }
+
+    .nw-footer-socials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .nw-social-pill {
+      width: 58px;
+      height: 40px;
+      border-radius: 11px;
+      border: 1px solid rgba(70, 86, 101, 0.48);
+      background: rgba(255, 255, 255, 0.35);
+      color: #465665;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .nw-social-pill:hover {
+      background: #465665;
+      color: #ffffff;
+      border-color: #465665;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(70, 86, 101, 0.18);
+    }
+
+    .nw-footer-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nw-member-label {
+      font-family: 'Nanum Myeongjo', Georgia, serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #465665;
+      margin-bottom: 6px;
+    }
+
+    .nw-credai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: 'Jost', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #465665;
+      line-height: 1;
+      position: relative;
+    }
+
+    .nw-credai-roof {
+      color: #c05640;
+      font-size: 0.95rem;
+      margin-left: -2px;
+      transform: translateY(-7px);
+    }
+
+    .nw-footer-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      text-align: center;
+      padding-bottom: 64px;
+    }
+
+    .nw-col-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: 1.38rem;
+      font-weight: 700;
+      color: #465665;
+      margin: 0 0 26px;
+      letter-spacing: -0.2px;
+    }
+
+    .nw-col-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      align-items: center;
+    }
+
+    .nw-col-list a,
+    .nw-contact-item {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #7b8791;
+      text-decoration: none;
+      transition: color 0.22s ease, transform 0.22s ease;
+      line-height: 1.55;
+    }
+
+    .nw-col-list a:hover,
+    a.nw-contact-item:hover {
+      color: #465665;
+    }
+
+    .nw-contact-address {
+      max-width: 240px;
+      margin-top: 4px;
+    }
+
+    .nw-footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.84rem;
+      color: #7b8791;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .nw-footer-bottom a {
+      color: #7b8791;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nw-footer-bottom a:hover {
+      color: #465665;
+    }
+
+    @media (max-width: 960px) {
+      .contact-inquiry-container {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+      .contact-form-card {
+        padding: 34px 24px;
+      }
+      .map-frame-box {
+        height: 360px;
+      }
+      .map-pin-badge {
+        display: none;
+      }
+      .arch-orbit-stage {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        padding-top: 20px;
+      }
+      .arch-orbit-circle {
+        display: none;
+      }
+      .arch-earth-box,
+      .arch-orbit-node {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 520px;
+      }
+      .nw-footer::before,
+      .nw-footer::after {
+        display: none;
+      }
+      .nw-footer-top,
+      .nw-footer-cols {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================== -->
+  <!-- TOP NAVIGATION BAR (MATCHING WEBSITE HEADER)             -->
+  <!-- ======================================================== -->
+  <header class="contact-header" id="mainHeader">
+    <div class="holder">
+      <div class="header-block">
+        <!-- Left Nav Items: Home | About | Properties -->
+        <ul class="header-nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+
+          <!-- Properties Dropdown -->
+          <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(0deg)';">
+            <a href="javascript:void(0)" style="display: flex; align-items: center; gap: 6px;">
+              Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #b45309; transition: transform 0.25s ease;"></i>
+            </a>
+
+            <div class="prop-dropdown" style="display: none; position: absolute; top: 100%; left: 0; min-width: 320px; background: #FAF8EE; border: 1px solid rgba(70,86,101,0.18); border-radius: 12px; box-shadow: 0 16px 36px rgba(70,86,101,0.14); padding: 14px; z-index: 1200; text-transform: none;">
+              <div style="padding-bottom: 10px; border-bottom: 1px solid rgba(70,86,101,0.1);">
+                <a href="residential.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #465665; font-weight: 600;">
+                  <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+                    <i class="fa-solid fa-building-user" style="color: #465665;"></i> Residential Properties
+                  </span>
+                  <span style="font-size: 0.72rem; color: #7b8791;">(3) &rarr;</span>
+                </a>
+                <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+                  <a href="residential-1.html" style="font-size: 0.8rem; color: #7b8791; padding: 2px 0;">&bull; The Grand Emerald (3-4 BHK)</a>
+                  <a href="residential-2.html" style="font-size: 0.8rem; color: #7b8791; padding: 2px 0;">&bull; Palm Crest Villas (4 BHK)</a>
+                  <a href="residential-3.html" style="font-size: 0.8rem; color: #7b8791; padding: 2px 0;">&bull; Skyline Imperial (5 BHK)</a>
+                </div>
+              </div>
+
+              <div style="padding-top: 10px;">
+                <a href="plotting.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #465665; font-weight: 600;">
+                  <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+                    <i class="fa-solid fa-map-location-dot" style="color: #b45309;"></i> Plotting Developments
+                  </span>
+                  <span style="font-size: 0.72rem; color: #b45309;">(3) &rarr;</span>
+                </a>
+                <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+                  <a href="plotting-1.html" style="font-size: 0.8rem; color: #7b8791; padding: 2px 0;">&bull; Green Valley Township Plots</a>
+                  <a href="plotting-2.html" style="font-size: 0.8rem; color: #7b8791; padding: 2px 0;">&bull; Royal Meadows Farmhouse Plots</a>
+                  <a href="plotting-3.html" style="font-size: 0.8rem; color: #7b8791; padding: 2px 0;">&bull; Metro Boulevard Commercial Plots</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Center Uploaded One Roof Properties Logo -->
+        <a href="index.html" class="header-brand-center">
+          <img src="assets/one-roof-logo-dark.png" alt="One Roof Properties">
+        </a>
+
+        <!-- Right Nav Items: Services | Blog | NRI Support | Contact Us -->
+        <div class="header-nav-right">
+          <ul class="header-nav-list">
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="nri-corner.html">NRI Support</a></li>
+            <li><a href="contact.html" class="active">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- 1. CONTACT & FRAMED INQUIRY SECTION (REFERENCE LAYOUT)   -->
+  <!-- ======================================================== -->
+  <section id="contactInquirySection">
+    <div class="contact-inquiry-container">
+
+      <!-- Left Column: "Let's talk in more detail", Copy & Socials -->
+      <div class="contact-left-col">
+        <div class="contact-overline">Contact</div>
+        <h1 class="contact-main-title">
+          Let&rsquo;s talk in more<br>detail
+        </h1>
+        <p class="contact-main-desc">
+          At One Roof Properties, every conversation is a step toward something more meaningful&mdash;spaces thoughtfully crafted around the way you live and belong.
+        </p>
+
+        <div class="contact-social-circles">
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-social-circle" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-social-circle" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-social-circle" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="contact-social-circle" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Framed Inquiry Card -->
+      <div class="contact-form-card">
+        <h2 class="contact-form-title">Send an inquiry</h2>
+
+        <div id="contactSuccessAlert" class="contact-alert-success">
+          <i class="fa-solid fa-circle-check" style="margin-right: 6px;"></i>
+          Thank you! Your inquiry has been received by One Roof Properties. Our team will connect with you shortly.
+        </div>
+
+        <form id="contactInquiryForm" onsubmit="event.preventDefault(); const alertBox = document.getElementById('contactSuccessAlert'); if(alertBox){ alertBox.style.display='block'; } this.reset();">
+          <div class="contact-field-group">
+            <input type="text" class="contact-input" placeholder="Full name*" required>
+          </div>
+
+          <div class="contact-field-group">
+            <input type="tel" class="contact-input" placeholder="Phone number">
+          </div>
+
+          <div class="contact-field-group">
+            <input type="email" class="contact-input" placeholder="Email*" required>
+          </div>
+
+          <div class="contact-field-group">
+            <input type="text" class="contact-input" placeholder="City*" required>
+          </div>
+
+          <div class="contact-field-group">
+            <textarea class="contact-textarea" placeholder="Message*" required></textarea>
+          </div>
+
+          <label class="contact-consent-row">
+            <input type="checkbox" required checked>
+            <span class="contact-consent-text">
+              I authorize One Roof Properties and its representatives to contact me with updates and notifications via Email, SMS, WhatsApp and Call. This will override the registry on DND/NDNC.
+            </span>
+          </label>
+
+          <button type="submit" class="contact-submit-btn">Submit Now</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 2. LOCATION MAP SECTION (DARK BAND + OVERLAPPING MAP)    -->
+  <!-- ======================================================== -->
+  <section id="locationMapSection">
+    <div class="map-dark-band">
+      <div class="map-overline">Location Map</div>
+      <h2 class="map-heading">
+        Every Direction Aligned Within<br>the One Roof Realm
+      </h2>
+
+      <!-- Decorative Swirl on Right Edge -->
+      <svg class="map-band-swirl" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="54" stroke="#D2C4A8" stroke-width="0.9" stroke-dasharray="160 35"/>
+        <circle cx="60" cy="60" r="46" stroke="#D2C4A8" stroke-width="0.9" stroke-dasharray="140 30"/>
+        <circle cx="60" cy="60" r="38" stroke="#D2C4A8" stroke-width="0.9" stroke-dasharray="115 25"/>
+        <circle cx="60" cy="60" r="30" stroke="#D2C4A8" stroke-width="0.9" stroke-dasharray="90 20"/>
+        <circle cx="60" cy="60" r="22" stroke="#D2C4A8" stroke-width="0.9" stroke-dasharray="65 15"/>
+      </svg>
+    </div>
+
+    <div class="map-overlap-wrap">
+      <div class="map-frame-box">
+        <!-- Embedded Google Map of Pune Financial District & Prime Corridors -->
+        <iframe
+          title="One Roof Properties Pune Location Map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.04711156077!2d73.78056543154413!3d18.524598599502376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+
+        <!-- Custom Branded Circular Pin 1: The Grand Emerald / West Pune -->
+        <div class="map-pin-badge" style="left: 36%; top: 52%;">
+          <div class="map-pin-circle">
+            <span class="pin-brand">GRAND<br>EMERALD</span>
+            <span class="pin-sub">RESIDENCES</span>
+          </div>
+          <i class="fa-solid fa-location-dot map-pin-drop"></i>
+        </div>
+
+        <!-- Custom Branded Circular Pin 2: One Roof Properties HQ -->
+        <div class="map-pin-badge" style="left: 59%; top: 64%;">
+          <div class="map-pin-circle">
+            <span class="pin-brand">ONE ROOF</span>
+            <span class="pin-sub">PROPERTIES HQ</span>
+          </div>
+          <i class="fa-solid fa-location-dot map-pin-drop"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 3. ROTATING DOTTED EARTH & SEMICIRCLE ORBIT ARCH SECTION -->
+  <!-- ======================================================== -->
+  <section id="contactArchSection">
+    <div class="arch-orbit-stage">
+
+      <!-- Downward-Curving Semicircle Orbit SVG (Draws Progressively on Scroll) -->
+      <!-- Circle center is (490, -50) with radius R = 490:
+           Top entry points: x = 490 - 487.4 = 2.6, y = 0  to  x = 490 + 487.4 = 977.4, y = 0
+           Passes through Left Node (95, 240), Bottom Vertex (490, 440), Right Node (885, 240) -->
+      <svg class="arch-orbit-svg arch-orbit-circle" viewBox="0 0 980 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Faint base track -->
+        <path
+          d="M 2.6 0 A 490 490 0 0 0 977.4 0"
+          stroke="rgba(70, 86, 101, 0.06)"
+          stroke-width="1.1"
+          fill="none"
+        />
+        <!-- Animated scroll-drawn orbit arc -->
+        <path
+          id="archOrbitPath"
+          d="M 2.6 0 A 490 490 0 0 0 977.4 0"
+          stroke="rgba(70, 86, 101, 0.24)"
+          stroke-width="1.2"
+          stroke-linecap="round"
+          fill="none"
+        />
+      </svg>
+
+      <!-- 3D Rotating Dotted Earth Globe in Upper Center -->
+      <div class="arch-earth-box" id="archEarthBox">
+        <canvas id="rotatingEarthCanvas" width="640" height="640"></canvas>
+      </div>
+
+      <!-- Left Orbit Node: Call Now -->
+      <div class="arch-orbit-node arch-node-left" id="archNodeLeft">
+        <a href="tel:+919494168733" class="arch-node-icon" aria-label="Call One Roof Properties">
+          <i class="fa-solid fa-phone"></i>
+        </a>
+        <div class="arch-node-label">Call Now:</div>
+        <div class="arch-node-value">
+          <a href="tel:+919494168733">+91 9494168733</a>
+        </div>
+      </div>
+
+      <!-- Right Orbit Node: Email -->
+      <div class="arch-orbit-node arch-node-right" id="archNodeRight">
+        <a href="mailto:contact@oneroofproperties.com" class="arch-node-icon" aria-label="Email One Roof Properties">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+        <div class="arch-node-label">Email:</div>
+        <div class="arch-node-value">
+          <a href="mailto:contact@oneroofproperties.com">contact@oneroofproperties.com</a>
+        </div>
+      </div>
+
+      <!-- Bottom Vertex Orbit Node: Corporate & Sales Office Addresses -->
+      <div class="arch-orbit-node arch-node-bottom" id="archNodeBottom">
+        <div class="arch-node-icon">
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div class="arch-node-label">Corporate Office Address:</div>
+        <div class="arch-node-value">
+          One Roof Properties, One Roof Tower, Financial District, Pune, Maharashtra 411045
+        </div>
+
+        <div class="arch-sub-block">
+          <div class="arch-node-label">Sales Office Address:</div>
+          <div class="arch-node-value">
+            The Grand Emerald Experience Center, Baner-Balewadi High Street, Pune, 411045
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 4. LUXURY 3-COLUMN CURVED-ARCH FOOTER (NORTH WIND STYLE) -->
+  <!-- ======================================================== -->
+  <footer class="nw-footer">
+    <div class="nw-footer-inner">
+
+      <!-- Top Row: Brand Logo | Social Outlined Pills | Member of CREDAI -->
+      <div class="nw-footer-top">
+        <a href="index.html" class="nw-footer-brand">
+          <img src="assets/one-roof-logo-dark.png" alt="One Roof Properties" style="height: 54px; width: auto; object-fit: contain;">
+        </a>
+
+        <div class="nw-footer-socials">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+
+        <div class="nw-footer-member">
+          <span class="nw-member-label">Member of</span>
+          <div class="nw-credai-badge">
+            <span>CREDAI</span>
+            <i class="fa-solid fa-caret-up nw-credai-roof"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main 3 Columns: Quick Links | Company | Reach Out -->
+      <div class="nw-footer-cols">
+        <!-- Column 1: Quick Links -->
+        <div>
+          <h4 class="nw-col-title">Quick Links</h4>
+          <ul class="nw-col-list">
+            <li><a href="residential.html">Residential Properties</a></li>
+            <li><a href="plotting.html">Plotting Developments</a></li>
+            <li><a href="residential-1.html">The Grand Emerald</a></li>
+            <li><a href="residential-2.html">Palm Crest Villas</a></li>
+            <li><a href="residential-3.html">Skyline Imperial</a></li>
+            <li><a href="plotting-1.html">Green Valley Plots</a></li>
+            <li><a href="nri-corner.html">NRI Corner</a></li>
+            <li><a href="index.html#faqSection">FAQ</a></li>
+            <li><a href="index.html#testimonialSection">Testimonials</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Company -->
+        <div>
+          <h4 class="nw-col-title">Company</h4>
+          <ul class="nw-col-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="residential.html">Projects</a></li>
+            <li><a href="about.html#whoWeAreSection">Our Legacy</a></li>
+            <li><a href="blog.html">Blogs</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="index.html#testimonialSection">Testimonials</a></li>
+            <li><a href="nri-corner.html">NRI Advisory</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Reach Out -->
+        <div>
+          <h4 class="nw-col-title">Reach Out</h4>
+          <ul class="nw-col-list">
+            <li><a href="tel:+919494168733" class="nw-contact-item">+91-949 416 8733</a></li>
+            <li><a href="mailto:contact@oneroofproperties.com" class="nw-contact-item">contact@oneroofproperties.com</a></li>
+            <li class="nw-contact-item nw-contact-address">
+              One Roof Tower, Financial District,<br>Pune, Maharashtra - 411045
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Copyright & Policy Links -->
+      <div class="nw-footer-bottom">
+        <span>&copy; 2026 One Roof Properties. All rights reserved. |</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="privacy-policy.html">Terms &amp; Conditions</a>
+        <a href="privacy-policy.html">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ========================================================
+    // 3D ROTATING DOTTED EARTH GLOBE (ORIGEN STYLE REPLICA)
+    // ========================================================
+    (function initRotatingDottedEarth() {
+      const canvas = document.getElementById('rotatingEarthCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const W = canvas.width;
+      const H = canvas.height;
+      const cx = W / 2;
+      const cy = H / 2;
+      const R = W * 0.42;
+
+      // Simplified continent polygons in [lon, lat] degrees (Africa, Europe, Asia/India, Americas, Australia)
+      const continents = [
+        // Africa
+        [[-17,15],[-12,8],[-5,5],[8,4],[10,-2],[13,-12],[18,-28],[20,-35],[28,-33],[35,-24],[40,-15],[42,-2],[51,11],[43,12],[38,22],[33,31],[25,32],[11,37],[0,36],[-6,36],[-13,28],[-17,21]],
+        // Madagascar
+        [[44,-13],[47,-25],[50,-24],[49,-13]],
+        // Europe
+        [[-9,37],[-9,43],[-4,48],[2,51],[8,54],[10,58],[5,62],[15,69],[28,71],[32,68],[28,60],[22,55],[28,45],[24,38],[15,38],[12,42],[5,43],[0,40]],
+        // UK & Ireland
+        [[-8,52],[-5,58],[1,52],[-4,50]],
+        // Asia + Middle East + India
+        [[28,41],[36,37],[35,30],[44,13],[55,17],[60,22],[50,28],[56,27],[67,24],[72,21],[76,8],[80,13],[86,21],[90,22],[94,16],[98,8],[104,2],[109,12],[108,21],[115,22],[122,29],[121,39],[129,35],[132,43],[141,52],[155,60],[170,66],[140,72],[105,74],[75,72],[60,68],[40,66],[32,60],[28,45]],
+        // Japan & SE Asia Islands
+        [[130,31],[136,34],[141,41],[140,36]],
+        [[96,5],[105,-6],[106,-3],[99,4]],
+        [[110,-1],[117,5],[118,-3],[112,-4]],
+        // Australia
+        [[114,-22],[115,-34],[124,-33],[132,-32],[138,-35],[147,-38],[153,-28],[149,-20],[142,-11],[136,-12],[129,-14],[122,-17]],
+        // North America
+        [[-165,64],[-150,60],[-135,56],[-125,48],[-124,40],[-117,32],[-105,20],[-90,16],[-83,10],[-79,9],[-82,22],[-96,26],[-90,29],[-81,25],[-80,32],[-75,36],[-70,42],[-60,46],[-55,52],[-64,60],[-78,62],[-95,68],[-125,70],[-155,70]],
+        // Greenland
+        [[-52,60],[-44,60],[-22,70],[-28,80],[-54,78],[-56,68]],
+        // South America
+        [[-78,9],[-75,11],[-62,10],[-50,0],[-35,-6],[-38,-16],[-42,-23],[-52,-33],[-62,-41],[-68,-54],[-74,-50],[-72,-35],[-70,-18],[-77,-12],[-81,-4]]
+      ];
+
+      function pointInPoly(lon, lat, poly) {
+        let inside = false;
+        for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+          const xi = poly[i][0], yi = poly[i][1];
+          const xj = poly[j][0], yj = poly[j][1];
+          const intersect = ((yi > lat) !== (yj > lat)) &&
+            (lon < (xj - xi) * (lat - yi) / ((yj - yi) || 1e-7) + xi);
+          if (intersect) inside = !inside;
+        }
+        return inside;
+      }
+
+      function isLand(lon, lat) {
+        for (let k = 0; k < continents.length; k++) {
+          if (pointInPoly(lon, lat, continents[k])) return true;
+        }
+        return false;
+      }
+
+      // Build crisp latitude-aligned dot rows on land
+      const dots = [];
+      const latStep = 2.65;
+      for (let lat = -58; lat <= 78; lat += latStep) {
+        const cosLat = Math.cos((lat * Math.PI) / 180);
+        const lonStep = latStep / Math.max(0.26, cosLat);
+        for (let lon = -180; lon < 180; lon += lonStep) {
+          if (isLand(lon, lat)) {
+            dots.push({
+              latRad: (lat * Math.PI) / 180,
+              lonRad: (lon * Math.PI) / 180
+            });
+          }
+        }
+      }
+
+      // Start centered on Africa/Europe/India and rotate smoothly (matching video rotation)
+      let rotLon = -0.32;
+      const tiltLat = 0.16;
+      const sinTilt = Math.sin(tiltLat);
+      const cosTilt = Math.cos(tiltLat);
+
+      function renderGlobe() {
+        ctx.clearRect(0, 0, W, H);
+
+        for (let i = 0; i < dots.length; i++) {
+          const d = dots[i];
+          const lon = d.lonRad + rotLon;
+          const cosLat = Math.cos(d.latRad);
+          const sinLat = Math.sin(d.latRad);
+          const sinLon = Math.sin(lon);
+          const cosLon = Math.cos(lon);
+
+          // 3D coordinates on unit sphere
+          const x = cosLat * sinLon;
+          const y = -sinLat;
+          const z = cosLat * cosLon;
+
+          // Apply axial tilt
+          const yTilted = y * cosTilt - z * sinTilt;
+          const zTilted = y * sinTilt + z * cosTilt;
+
+          // Front hemisphere only with smooth limb fade near horizon
+          if (zTilted > -0.05) {
+            const depthAlpha = Math.min(1, Math.max(0, (zTilted + 0.05) / 0.42));
+            const px = cx + x * R;
+            const py = cy + yTilted * R;
+            const dotRadius = (1.3 + Math.max(0, zTilted) * 1.55);
+
+            ctx.beginPath();
+            ctx.arc(px, py, dotRadius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(44, 56, 68, ${(0.2 + depthAlpha * 0.78).toFixed(3)})`;
+            ctx.fill();
+          }
+        }
+
+        // West-to-East globe spin matching reference recording
+        rotLon -= 0.0052;
+        requestAnimationFrame(renderGlobe);
+      }
+
+      renderGlobe();
+    })();
+
+    // ========================================================
+    // SCROLL-LINKED SEMICIRCLE ORBIT DRAW & ICON NODE REVEAL
+    // ========================================================
+    (function initOrbitArchScrollAnimation() {
+      const section = document.getElementById('contactArchSection');
+      const orbitPath = document.getElementById('archOrbitPath');
+      const nodeLeft = document.getElementById('archNodeLeft');
+      const nodeRight = document.getElementById('archNodeRight');
+      const nodeBottom = document.getElementById('archNodeBottom');
+      const earthBox = document.getElementById('archEarthBox');
+
+      if (!section || !orbitPath || !nodeLeft || !nodeRight || !nodeBottom) return;
+
+      const pathLength = orbitPath.getTotalLength ? orbitPath.getTotalLength() : 1460;
+      orbitPath.style.strokeDasharray = pathLength;
+      orbitPath.style.strokeDashoffset = pathLength;
+
+      const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+      const smoothstep = (min, max, value) => {
+        const x = clamp((value - min) / (max - min), 0, 1);
+        return x * x * (3 - 2 * x);
+      };
+
+      function updateOnScroll() {
+        if (window.innerWidth <= 960) {
+          orbitPath.style.strokeDashoffset = '0';
+          nodeLeft.style.opacity = '1';
+          nodeRight.style.opacity = '1';
+          nodeBottom.style.opacity = '1';
+          nodeLeft.style.transform = 'none';
+          nodeRight.style.transform = 'none';
+          nodeBottom.style.transform = 'none';
+          return;
+        }
+
+        const rect = section.getBoundingClientRect();
+        const vh = window.innerHeight;
+
+        // Progress = 0 when section top enters at 88% viewport height;
+        // Progress = 1 when section top reaches 12% viewport height
+        const rawProgress = (vh * 0.88 - rect.top) / (vh * 0.76);
+        const progress = clamp(rawProgress, 0, 1);
+
+        // 1. Progressive SVG semicircle arc draw (from top-left -> bottom vertex -> top-right)
+        const arcProgress = smoothstep(0.02, 0.92, progress);
+        orbitPath.style.strokeDashoffset = (pathLength * (1 - arcProgress)).toFixed(1);
+
+        // 2. Earth globe subtle entrance scale & fade
+        if (earthBox) {
+          const earthP = smoothstep(0.0, 0.45, progress);
+          const earthScale = 0.9 + 0.1 * earthP;
+          earthBox.style.opacity = (0.25 + 0.75 * earthP).toFixed(3);
+          earthBox.style.transform = `translateX(-50%) scale(${earthScale.toFixed(3)})`;
+        }
+
+        // 3. Left ("Call Now:") & Right ("Email:") nodes fade from 0 -> 0.3 -> 1 as upper/mid arc reveals
+        const sideP = smoothstep(0.14, 0.56, progress);
+        const sideY = (1 - sideP) * 18;
+        const sideScale = 0.92 + 0.08 * sideP;
+        nodeLeft.style.opacity = sideP.toFixed(3);
+        nodeLeft.style.transform = `translate(-50%, ${sideY.toFixed(1)}px) scale(${sideScale.toFixed(3)})`;
+
+        nodeRight.style.opacity = sideP.toFixed(3);
+        nodeRight.style.transform = `translate(-50%, ${sideY.toFixed(1)}px) scale(${sideScale.toFixed(3)})`;
+
+        // 4. Bottom Vertex ("Corporate Office Address:" & "Sales Office Address:") fades from 0 -> 0.25 -> 1 as bottom of arc enters view
+        const bottomP = smoothstep(0.46, 0.92, progress);
+        const bottomY = (1 - bottomP) * 22;
+        const bottomScale = 0.92 + 0.08 * bottomP;
+        nodeBottom.style.opacity = bottomP.toFixed(3);
+        nodeBottom.style.transform = `translate(-50%, ${bottomY.toFixed(1)}px) scale(${bottomScale.toFixed(3)})`;
+      }
+
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateOnScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', updateOnScroll);
+      updateOnScroll();
+    })();
+  </script>
+
+</body>
+</html>

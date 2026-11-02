@@ -3,314 +3,701 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Green Valley Plots - Plotting Detail | One Roof Properties</title>
+  <title>Green Valley Township Plots | RERA Approved Plotting | One Roof Properties</title>
+  <meta name="description" content="Green Valley Township: 80 acres of RERA approved residential plots, 150 to 500 sq yards, on the North Expressway growth hub. Immediate registry and possession.">
+  <meta name="theme-color" content="#070e0a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: #f8fafc; color: #334155; line-height: 1.6; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --ink: #070e0a;
+      --ink-2: #0d1a13;
+      --cream: #FAF8EE;
+      --cream-2: #F3EFE2;
+      --navy: #465665;
+      --navy-deep: #1f343f;
+      --muted: #7b8791;
+      --gold: #d97706;
+      --gold-soft: rgba(217,119,6,.14);
+      --line: rgba(70,86,101,.16);
+      --ease: cubic-bezier(.22,1,.36,1);
+      --ease-io: cubic-bezier(.65,0,.35,1);
+      --head: 'Nanum Myeongjo', Georgia, serif;
+      --body: 'Jost', sans-serif;
+    }
+    html { overflow-x: hidden; overflow-x: clip; }
+    body { background: var(--cream); color: var(--navy); font-family: var(--body); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; overflow-x: clip; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
-    img { max-width: 100%; height: auto; display: block; }
-    .dropdown-parent:hover .prop-dropdown { display: block !important; }
-    .dropdown-parent:hover .prop-caret { transform: rotate(180deg) !important; }
+    img { max-width: 100%; display: block; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--gold); color: #fff; padding: 8px 14px; z-index: 3000; }
+    .skip:focus { left: 8px; }
+
+    /* ---------- Header (same as index.html) ---------- */
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1500; padding: 30px 0 0; background: transparent; transition: background-color .3s ease, padding .3s ease, box-shadow .3s ease; }
+    .header.scrolled { background: rgba(23,34,45,.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); padding: 14px 0; box-shadow: 0 10px 30px rgba(0,0,0,.35); border-bottom: 1px solid rgba(255,255,255,.1); }
+    .holder { padding: 0 max(24px, 4.5vw); max-width: 1820px; margin: 0 auto; width: 100%; }
+    .header-block { position: relative; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 58px; gap: 24px; }
+    .header-logo { display: flex; justify-content: center; align-items: center; z-index: 20; }
+    .header-logo img { height: 48px; width: auto; object-fit: contain; }
+    .header-nav-list { display: flex; gap: clamp(18px, 2.2vw, 36px); align-items: center; }
+    .header-nav-right { display: flex; justify-content: flex-end; }
+    .header-nav-list li { font-size: clamp(13px, .88vw, 15px); font-weight: 400; letter-spacing: 1.4px; text-transform: uppercase; }
+    .header-nav-list a { color: #fff; position: relative; transition: color .2s ease; }
+    .header-nav-list a::before { content: ''; position: absolute; left: 0; bottom: -3px; width: 100%; height: 1px; background: #fff; transform: scaleX(0); transform-origin: left; transition: transform .4s ease; }
+    .header-nav-list a:hover::before { transform: scaleX(1); }
+    .dd-parent { position: relative; padding: 6px 0; }
+    .dd { display: none; position: absolute; top: 100%; min-width: 300px; background: rgba(10,18,14,.96); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,.5); padding: 14px; z-index: 1200; text-transform: none; letter-spacing: 0; }
+    .dd.left { left: 0; } .dd.right { right: 0; }
+    .dd-parent:hover .dd, .dd-parent:focus-within .dd { display: block; }
+    .dd a { display: block; padding: 7px 10px; border-radius: 8px; color: #cbd5e1; font-size: .86rem; }
+    .dd a:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .dd a::before { display: none; }
+    .dd .dd-h { color: #fff; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: .8rem; display: flex; align-items: center; gap: 8px; }
+    .dd .sub { padding-left: 26px; margin-bottom: 8px; }
+    .dd .sub a.on { color: var(--gold); font-weight: 600; }
+    .nav-mobile-btn { display: none; background: transparent; border: none; font-size: 1.5rem; color: #fff; cursor: pointer; justify-self: end; grid-column: 3; }
+    .drawer { display: none; position: fixed; top: 76px; left: 0; width: 100%; background: rgba(7,14,10,.98); backdrop-filter: blur(14px); padding: 20px 24px 28px; z-index: 1400; border-bottom: 1px solid rgba(255,255,255,.1); max-height: calc(100vh - 76px); overflow: auto; }
+    .drawer.open { display: block; }
+    .drawer a { display: block; padding: 11px 0; color: #fff; font-size: .95rem; letter-spacing: 1.4px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .drawer a.on { color: var(--gold); }
+
+    /* ---------- Scroll journey: scenes that switch ---------- */
+    .journey { position: relative; height: 620vh; background: var(--ink); }
+    .stage { position: sticky; top: 0; height: 100vh; overflow: hidden; background: var(--ink); isolation: isolate; }
+    .scene { position: absolute; inset: 0; overflow: hidden; will-change: clip-path; }
+    .scene:first-child { clip-path: none; }
+    .scene-img { position: absolute; inset: -4%; width: 108%; max-width: none; height: 108%; object-fit: cover; will-change: transform, filter; }
+    .scene::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(7,14,10,.55) 0%, rgba(7,14,10,.08) 32%, rgba(7,14,10,.18) 55%, rgba(7,14,10,.82) 100%), radial-gradient(ellipse 80% 70% at 22% 62%, rgba(7,14,10,.62) 0%, rgba(7,14,10,0) 70%); }
+    .scene-copy { position: absolute; left: max(24px, 6vw); bottom: clamp(70px, 13vh, 140px); width: min(780px, 88vw); z-index: 5; color: #fff; will-change: opacity, transform; }
+    .scene-copy > * { text-shadow: 0 2px 18px rgba(0,0,0,.55); }
+    .kicker { display: inline-flex; align-items: center; gap: 12px; font-size: .78rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: #f3d9b0; margin-bottom: 18px; }
+    .kicker::before { content: ''; width: 36px; height: 1px; background: var(--gold); }
+    .scene-title { font-family: var(--head); font-weight: 700; font-size: clamp(2.3rem, 5.4vw, 5rem); line-height: 1.04; letter-spacing: -1.5px; color: #fff; margin-bottom: 18px; }
+    .scene-title .ln { display: block; overflow: hidden; padding: .06em 0 .14em; margin: -.06em 0 -.14em; }
+    .scene-title .ln > span { display: block; will-change: transform; }
+    .scene-sub { font-size: clamp(.98rem, 1.15vw, 1.12rem); font-weight: 300; line-height: 1.7; color: rgba(255,255,255,.88); max-width: 520px; }
+    .scene-tag { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 11px 20px; border: 1px solid rgba(255,255,255,.55); font-size: .82rem; letter-spacing: 1.6px; text-transform: uppercase; background: rgba(7,14,10,.35); backdrop-filter: blur(6px); }
+    .scene-tag i { color: var(--gold); }
+    .scene-price { position: absolute; right: max(24px, 6vw); bottom: clamp(70px, 13vh, 140px); z-index: 5; text-align: right; color: #fff; will-change: opacity, transform; }
+    .scene-price small { display: block; font-size: .74rem; letter-spacing: 2.4px; text-transform: uppercase; color: rgba(255,255,255,.75); margin-bottom: 6px; }
+    .scene-price strong { font-family: var(--head); font-size: clamp(1.6rem, 3vw, 2.7rem); font-weight: 700; letter-spacing: -.5px; }
+
+    .rail { position: absolute; right: max(18px, 2.4vw); top: 50%; transform: translateY(-50%); z-index: 20; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+    .rail button { display: flex; align-items: center; gap: 12px; background: none; border: none; cursor: pointer; color: rgba(255,255,255,.6); font-family: var(--body); font-size: .72rem; letter-spacing: 2px; text-transform: uppercase; padding: 4px 0; transition: color .4s var(--ease); }
+    .rail button span.lbl { opacity: 0; transform: translateX(8px); transition: opacity .4s var(--ease), transform .4s var(--ease); white-space: nowrap; }
+    .rail button:hover span.lbl, .rail button.on span.lbl, .rail button:focus-visible span.lbl { opacity: 1; transform: none; }
+    .rail button i { display: block; width: 8px; height: 8px; border-radius: 50%; border: 1px solid rgba(255,255,255,.75); transition: background .4s var(--ease), transform .4s var(--ease), border-color .4s var(--ease); }
+    .rail button.on { color: #fff; }
+    .rail button.on i { background: var(--gold); border-color: var(--gold); transform: scale(1.5); }
+    .counter { position: absolute; left: max(24px, 6vw); top: clamp(100px, 16vh, 150px); z-index: 20; color: rgba(255,255,255,.85); font-size: .8rem; letter-spacing: 3px; display: flex; align-items: center; gap: 14px; }
+    .counter b { font-family: var(--head); font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: 0; display: inline-block; min-width: 1.4em; }
+    .counter .bar { width: 90px; height: 1px; background: rgba(255,255,255,.28); position: relative; overflow: hidden; }
+    .counter .bar i { position: absolute; inset: 0; background: var(--gold); transform-origin: left; transform: scaleX(0); will-change: transform; }
+    .cue { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 20; color: rgba(255,255,255,.8); font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 8px; transition: opacity .5s var(--ease); }
+    .cue i { width: 1px; height: 30px; background: linear-gradient(var(--gold), transparent); animation: cue 2.4s ease-in-out infinite; transform-origin: top; }
+    @keyframes cue { 0%, 100% { transform: scaleY(.3); opacity: .5; } 50% { transform: scaleY(1); opacity: 1; } }
+
+    /* ---------- Content sections ---------- */
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .eyebrow { font-size: .8rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+    .eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+    h2.title { font-family: var(--head); font-size: clamp(2rem, 3.6vw, 3.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -.5px; color: var(--navy); margin-bottom: 18px; }
+    .lead { color: var(--muted); font-size: 1.04rem; line-height: 1.75; max-width: 560px; }
+
+    .reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--d, 0) * 1ms); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    .stats { background: var(--cream); padding: clamp(60px, 9vw, 110px) 0 clamp(40px, 6vw, 70px); }
+    .stats-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; margin-bottom: 44px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+    .stat { padding: 34px 26px 30px 0; border-right: 1px solid var(--line); margin-right: 26px; }
+    .stat:last-child { border-right: 0; margin-right: 0; }
+    .stat i { color: var(--gold); font-size: 1.3rem; margin-bottom: 18px; display: block; }
+    .stat .num { font-family: var(--head); font-size: clamp(1.7rem, 2.6vw, 2.5rem); font-weight: 700; color: var(--navy); line-height: 1.1; }
+    .stat .cap { font-size: .86rem; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+
+    .layout { background: var(--cream-2); padding: clamp(70px, 9vw, 120px) 0; }
+    .layout-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(36px, 6vw, 90px); align-items: center; }
+    .viewer { position: relative; }
+    .viewer-main { position: relative; aspect-ratio: 4/3; border-radius: 22px; overflow: hidden; background: #dfe5dc; box-shadow: 0 30px 60px rgba(31,52,63,.16); }
+    .viewer-main img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.08); transition: opacity 1s var(--ease-io), transform 1.6s var(--ease); }
+    .viewer-main img.on { opacity: 1; transform: scale(1); }
+    .viewer-cap { position: absolute; left: 18px; bottom: 16px; z-index: 3; background: rgba(7,14,10,.55); backdrop-filter: blur(8px); color: #fff; font-size: .78rem; letter-spacing: 1.8px; text-transform: uppercase; padding: 8px 14px; border-radius: 999px; }
+    .thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+    .thumbs button { position: relative; height: 82px; border-radius: 12px; overflow: hidden; border: 0; padding: 0; cursor: pointer; background: #ccd; opacity: .6; transition: opacity .5s var(--ease), transform .5s var(--ease); }
+    .thumbs button img { width: 100%; height: 100%; object-fit: cover; }
+    .thumbs button::after { content: ''; position: absolute; inset: 0; border-radius: 12px; border: 2px solid transparent; transition: border-color .4s var(--ease); }
+    .thumbs button:hover { opacity: 1; transform: translateY(-3px); }
+    .thumbs button.on { opacity: 1; }
+    .thumbs button.on::after { border-color: var(--gold); }
+    .tick-list { margin-top: 26px; display: flex; flex-direction: column; gap: 12px; }
+    .tick-list li { display: flex; gap: 14px; align-items: flex-start; color: var(--navy); font-size: 1rem; }
+    .tick-list i { color: var(--gold); margin-top: 5px; font-size: .9rem; }
+
+    .reserve { background: var(--ink); color: #fff; padding: clamp(70px, 9vw, 120px) 0; position: relative; overflow: hidden; }
+    .reserve::before { content: ''; position: absolute; width: 900px; height: 900px; border-radius: 50%; border: 1px solid rgba(255,255,255,.07); right: -260px; top: -300px; }
+    .reserve::after { content: ''; position: absolute; width: 640px; height: 640px; border-radius: 50%; border: 1px solid rgba(217,119,6,.18); right: -130px; top: -170px; }
+    .reserve-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 90px); align-items: center; }
+    .reserve h2.title { color: #fff; }
+    .reserve .eyebrow { color: #c9b995; }
+    .reserve .lead { color: #aebcb3; }
+    .form-card { background: #fff; color: var(--navy); border-radius: 22px; padding: clamp(26px, 3vw, 40px); box-shadow: 0 30px 70px rgba(0,0,0,.45); }
+    .form-card h3 { font-family: var(--head); font-size: 1.5rem; margin-bottom: 6px; color: var(--navy); }
+    .form-card p.sm { font-size: .92rem; color: var(--muted); margin-bottom: 20px; }
+    .form-card form { display: flex; flex-direction: column; gap: 14px; }
+    .form-card input, .form-card select { font-family: var(--body); padding: 14px 16px; border: 1.5px solid #cfd6db; border-radius: 10px; font-size: .96rem; color: var(--navy); background: #fff; transition: border-color .3s var(--ease), box-shadow .3s var(--ease); }
+    .form-card input:focus, .form-card select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px var(--gold-soft); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--navy); color: #fff; border: 0; padding: 16px 28px; border-radius: 10px; font-family: var(--body); font-size: .88rem; font-weight: 500; letter-spacing: 1.6px; text-transform: uppercase; cursor: pointer; transition: background .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease); box-shadow: 0 8px 20px rgba(70,86,101,.25); min-height: 44px; }
+    .btn:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 12px 26px rgba(217,119,6,.35); }
+    .btn.gold { background: var(--gold); } .btn.gold:hover { background: #b45309; }
+    .form-ok { display: none; text-align: center; padding: 26px 8px; }
+    .form-ok i { font-size: 2.2rem; color: #15803d; margin-bottom: 10px; }
+    .form-ok h3 { margin-bottom: 8px; }
+    .form-card.sent form, .form-card.sent .head { display: none; }
+    .form-card.sent .form-ok { display: block; animation: pop .7s var(--ease); }
+    @keyframes pop { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+    .others { background: var(--cream); padding: clamp(60px, 8vw, 100px) 0; }
+    .others-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 30px; }
+    .other { position: relative; display: block; border-radius: 20px; overflow: hidden; min-height: 280px; color: #fff; isolation: isolate; }
+    .other img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.2s var(--ease); }
+    .other::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(7,14,10,.1), rgba(7,14,10,.82)); }
+    .other:hover img { transform: scale(1.07); }
+    .other .in-copy { position: absolute; left: 26px; right: 26px; bottom: 24px; }
+    .other small { font-size: .74rem; letter-spacing: 2.4px; text-transform: uppercase; color: #f3d9b0; }
+    .other h3 { font-family: var(--head); font-size: 1.5rem; color: #fff; margin: 6px 0 8px; }
+    .other span.go { font-size: .84rem; letter-spacing: 1.6px; text-transform: uppercase; display: inline-flex; gap: 8px; align-items: center; transition: gap .4s var(--ease); }
+    .other:hover span.go { gap: 14px; }
+
+    /* ---------- Footer (same as index.html) ---------- */
+    .nw-footer { position: relative; padding: 110px 24px 36px; background: radial-gradient(ellipse at 50% 0%, rgba(70,86,101,.14) 0%, rgba(70,86,101,.04) 45%, transparent 75%), linear-gradient(180deg, #E3EAE8 0%, #EFF2EC 42%, #FAF8EE 100%); color: var(--navy); overflow: hidden; border-top: 1px solid rgba(70,86,101,.14); }
+    .nw-footer-inner { position: relative; z-index: 2; max-width: 1240px; margin: 0 auto; }
+    .nw-footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; margin-bottom: 56px; gap: 24px; }
+    .nw-footer-brand { display: flex; justify-content: center; }
+    .nw-footer-socials { display: flex; justify-content: center; gap: 16px; }
+    .nw-social-pill { width: 58px; height: 40px; border-radius: 11px; border: 1px solid rgba(70,86,101,.48); background: rgba(255,255,255,.35); color: var(--navy); display: inline-flex; align-items: center; justify-content: center; transition: all .25s ease; }
+    .nw-social-pill:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
+    .nw-footer-member { display: flex; flex-direction: column; align-items: center; }
+    .nw-member-label { font-family: var(--head); font-size: .92rem; font-weight: 700; margin-bottom: 6px; }
+    .nw-credai-badge { font-size: 1.45rem; font-weight: 700; letter-spacing: 2.5px; display: inline-flex; gap: 4px; }
+    .nw-credai-roof { color: #c05640; font-size: .95rem; transform: translateY(-7px); }
+    .nw-footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; padding-bottom: 50px; }
+    .nw-col-title { font-family: var(--head); font-size: 1.38rem; font-weight: 700; margin-bottom: 22px; }
+    .nw-col-list { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+    .nw-col-list a, .nw-contact-item { font-size: .95rem; color: var(--muted); transition: color .22s ease; }
+    .nw-col-list a:hover { color: var(--navy); }
+    .nw-contact-address { max-width: 240px; }
+    .nw-footer-bottom { border-top: 1px solid rgba(70,86,101,.14); padding-top: 22px; text-align: center; font-size: .86rem; color: var(--muted); display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .nw-footer-bottom a:hover { color: var(--navy); }
+
+    /* ---------- Responsive / reduced motion: scenes stack as calm full-screen cards ---------- */
     @media (max-width: 900px) {
-      .details-layout-res { grid-template-columns: 1fr !important; }
-      .nav-links-menu { display: none !important; }
-      .nav-mobile-btn { display: block !important; }
-      .specs-grid-res { grid-template-columns: repeat(2, 1fr) !important; }
-      .footer-grid-res { grid-template-columns: 1fr !important; }
-      .prop-dropdown { position: static !important; width: 100% !important; box-shadow: none !important; border: 1px solid #e2e8f0 !important; background: #f8fafc !important; }
+      .header-nav-list { display: none; }
+      .nav-mobile-btn { display: block; }
+      .header-block { grid-template-columns: 1fr auto 1fr; }
+      .layout-grid, .reserve-grid, .others-grid { grid-template-columns: 1fr; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+      .stat { border-right: 0; margin-right: 0; border-bottom: 1px solid var(--line); }
+      .nw-footer-top, .nw-footer-cols { grid-template-columns: 1fr; }
+      .rail, .cue, .counter { display: none; }
+    }
+    @media (max-width: 900px), (prefers-reduced-motion: reduce) {
+      .journey { height: auto; }
+      .stage { position: relative; height: auto; overflow: visible; }
+      .scene { position: relative; height: 88vh; min-height: 520px; clip-path: none !important; }
+      .scene-img { transform: none !important; filter: none !important; inset: 0; width: 100%; height: 100%; }
+      .scene-copy, .scene-price { opacity: 1 !important; transform: none !important; }
+      .scene-title .ln > span { transform: none !important; }
+      .scene-price { left: max(24px, 6vw); right: auto; text-align: left; bottom: 24px; }
+      .scene-copy { bottom: 130px; }
+      .scene:not(:first-child) .scene-price { display: none; }
+      .rail, .cue, .counter { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
+      .reveal { opacity: 1; transform: none; }
+      .viewer-main img { transform: none; }
     }
   </style>
 </head>
-<body style="background-color: #f8fafc; color: #334155; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif;">
+<body>
+  <a href="#main" class="skip">Skip to content</a>
 
-  <!-- Top Contact Bar (Inline CSS) -->
-  <div style="background-color: #0f172a; color: #cbd5e1; font-size: 0.84rem; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-      <div style="display: flex; gap: 24px;">
-        <span><i class="fa-solid fa-phone" style="color: #d97706;"></i> +1 (800) 555-ROOF</span>
-        <span><i class="fa-solid fa-envelope" style="color: #d97706;"></i> greenvalley@oneroofproperties.com</span>
-      </div>
-      <div>
-        <a href="nri-corner.html" style="color: #cbd5e1; text-decoration: underline;"><i class="fa-solid fa-earth-americas"></i> NRI Plot Allocation Desk</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navigation Bar (Inline CSS) -->
-  <header style="background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 1000; padding: 16px 0;">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center;">
-      <a href="index.html" style="display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800; color: #0f172a; text-decoration: none;">
-        <i class="fa-solid fa-house-chimney" style="color: #d97706; font-size: 1.7rem;"></i>
-        <div>One<span style="color: #1e3a8a;">Roof</span></div>
-      </a>
-
-      <button id="mobileBtn" class="nav-mobile-btn" style="display: none; background: none; border: none; font-size: 1.5rem; color: #0f172a; cursor: pointer;">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-
-      <ul id="navLinks" class="nav-links-menu" style="display: flex; align-items: center; gap: 22px; list-style: none; margin: 0; padding: 0;">
-        <li><a href="index.html" style="font-size: 0.95rem; font-weight: 600; color: #334155; text-decoration: none;">Home</a></li>
-        <li><a href="about.html" style="font-size: 0.95rem; font-weight: 600; color: #334155; text-decoration: none;">About Us</a></li>
-
-        <!-- Properties Dropdown with Caret Icon (Active) -->
-        <li class="dropdown-parent" style="position: relative; padding: 8px 0;" onmouseenter="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(0deg)';">
-          <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.prop-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.prop-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="font-size: 0.95rem; font-weight: 700; color: #1e3a8a; text-decoration: none; border-bottom: 2.5px solid #1e3a8a; padding-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-            Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.72rem; color: #1e3a8a; transition: transform 0.25s ease;"></i>
-          </a>
-
-          <!-- Dropdown Card (Residential & Plotting) -->
-          <div class="prop-dropdown" style="display: none; position: absolute; top: 100%; left: 0; min-width: 320px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,0.12); padding: 12px; z-index: 1200;">
-            <!-- Residential Section -->
-            <div style="padding-bottom: 10px; border-bottom: 1px solid #f1f5f9;">
-              <a href="residential.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: inherit; font-weight: 700; color: #0f172a; transition: background 0.15s ease;" onmouseover="this.style.background='#f1f5f9';" onmouseout="this.style.background='transparent';">
-                <span style="display: flex; align-items: center; gap: 8px;">
-                  <i class="fa-solid fa-building-user" style="color: #1e3a8a;"></i> Residential Properties
-                </span>
-                <span style="font-size: 0.75rem; color: #1e3a8a; font-weight: 600;">View (3) &rarr;</span>
-              </a>
-              <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
-                <a href="residential-1.html" style="font-size: 0.82rem; color: #64748b; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#1e3a8a';" onmouseout="this.style.color='#64748b';">&bull; The Grand Emerald (3-4 BHK)</a>
-                <a href="residential-2.html" style="font-size: 0.82rem; color: #64748b; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#1e3a8a';" onmouseout="this.style.color='#64748b';">&bull; Palm Crest Villas (4 BHK)</a>
-                <a href="residential-3.html" style="font-size: 0.82rem; color: #64748b; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#1e3a8a';" onmouseout="this.style.color='#64748b';">&bull; Skyline Imperial (5 BHK)</a>
+  <header class="header" id="mainHeader">
+    <div class="holder">
+      <div class="header-block">
+        <ul class="header-nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="dd-parent">
+            <a href="properties.html" style="display:flex;align-items:center;gap:6px;color:#d97706;">Properties <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+            <div class="dd left">
+              <a class="dd-h" href="residential.html"><i class="fa-solid fa-building-user" style="color:#60a5fa;"></i> Residential Properties</a>
+              <div class="sub">
+                <a href="residential-1.html">The Grand Emerald (3-4 BHK)</a>
+                <a href="residential-2.html">Palm Crest Villas (4 BHK)</a>
+                <a href="residential-3.html">Skyline Imperial (5 BHK)</a>
+              </div>
+              <a class="dd-h" href="plotting.html"><i class="fa-solid fa-map-location-dot" style="color:#d97706;"></i> Plotting Developments</a>
+              <div class="sub" style="margin-bottom:0;">
+                <a class="on" href="plotting-1.html">Green Valley Township Plots</a>
+                <a href="plotting-2.html">Royal Meadows Farmhouse Plots</a>
+                <a href="plotting-3.html">Metro Boulevard Commercial Plots</a>
               </div>
             </div>
+          </li>
+        </ul>
 
-            <!-- Plotting Section -->
-            <div style="padding-top: 10px;">
-              <a href="plotting.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: inherit; font-weight: 700; color: #0f172a; transition: background 0.15s ease;" onmouseover="this.style.background='#f1f5f9';" onmouseout="this.style.background='transparent';">
-                <span style="display: flex; align-items: center; gap: 8px;">
-                  <i class="fa-solid fa-map-location-dot" style="color: #d97706;"></i> Plotting Developments
-                </span>
-                <span style="font-size: 0.75rem; color: #d97706; font-weight: 600;">View (3) &rarr;</span>
-              </a>
-              <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
-                <a href="plotting-1.html" style="font-size: 0.82rem; color: #d97706; font-weight: 700; text-decoration: none; padding: 2px 0;">&bull; Green Valley Township (Active)</a>
-                <a href="plotting-2.html" style="font-size: 0.82rem; color: #64748b; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#d97706';" onmouseout="this.style.color='#64748b';">&bull; Royal Meadows Farmhouse Plots</a>
-                <a href="plotting-3.html" style="font-size: 0.82rem; color: #64748b; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#d97706';" onmouseout="this.style.color='#64748b';">&bull; Metro Boulevard Commercial Plots</a>
+        <div class="header-logo">
+          <a href="index.html"><img src="assets/one-roof-logo-white.png" alt="One Roof Properties"></a>
+        </div>
+
+        <div class="header-nav-right">
+          <ul class="header-nav-list">
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li class="dd-parent">
+              <a href="nri-corner.html" style="display:flex;align-items:center;gap:6px;">NRI Support <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:#d97706;"></i></a>
+              <div class="dd right" style="min-width:270px;">
+                <a href="legal-information.html"><i class="fa-solid fa-scale-balanced" style="color:#d97706;margin-right:8px;"></i>Legal Information</a>
+                <a href="loan-help.html"><i class="fa-solid fa-hand-holding-dollar" style="color:#60a5fa;margin-right:8px;"></i>Loan Help</a>
               </div>
-            </div>
-          </div>
-        </li>
+            </li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
 
-        <li><a href="services.html" style="font-size: 0.95rem; font-weight: 600; color: #334155; text-decoration: none;">Services</a></li>
-        <li><a href="nri-corner.html" style="font-size: 0.95rem; font-weight: 600; color: #334155; text-decoration: none;">NRI Corner</a></li>
-        <li><a href="blog.html" style="font-size: 0.95rem; font-weight: 600; color: #334155; text-decoration: none;">Blogs</a></li>
-        <li><a href="contact.html" style="font-size: 0.95rem; font-weight: 600; color: #334155; text-decoration: none;">Contact</a></li>
-      </ul>
-
-      <a href="contact.html" style="display: inline-flex; align-items: center; gap: 8px; background: #1e3a8a; color: #ffffff; padding: 10px 22px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none;">
-        <i class="fa-solid fa-map-location-dot"></i> Book Plot
-      </a>
+        <button id="mobileBtn" class="nav-mobile-btn" aria-label="Toggle navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      </div>
     </div>
   </header>
 
-  <!-- Header Banner (Inline CSS) -->
-  <section style="background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 30px 24px 20px;">
-    <div style="max-width: 1280px; margin: 0 auto;">
-      <div style="display: flex; gap: 8px; font-size: 0.88rem; color: #64748b; margin-bottom: 10px;">
-        <a href="index.html" style="color: #64748b; text-decoration: none;">Home</a> / <a href="plotting.html" style="color: #64748b; text-decoration: none;">Plotting</a> / <span style="color: #0f172a; font-weight: 600;">Green Valley City</span>
-      </div>
+  <nav class="drawer" id="drawer" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="residential.html">Residential Properties</a>
+    <a href="plotting.html" class="on">Plotting Developments</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html">Blog</a>
+    <a href="nri-corner.html">NRI Support</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
 
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+  <main id="main" tabindex="-1">
+
+    <!-- ===== Scroll journey: five scenes that switch as you scroll ===== -->
+    <section class="journey" id="journey" aria-label="Green Valley Township tour">
+      <div class="stage" id="stage">
+
+        <article class="scene" data-label="Arrival">
+          <img class="scene-img" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=80" alt="Green Valley Township open land at the North Expressway">
+          <div class="scene-copy">
+            <div class="kicker">Plotting Project 01</div>
+            <h1 class="scene-title"><span class="ln"><span>Green Valley</span></span><span class="ln"><span>Township Plots</span></span></h1>
+            <p class="scene-sub">80 acres of planned plots on the North Expressway growth hub. Fifteen minutes from the metro.</p>
+            <div class="scene-tag"><i class="fa-solid fa-location-dot"></i> North Expressway Growth Hub</div>
+          </div>
+          <div class="scene-price"><small>Plots from</small><strong>$75,000 - $210,000</strong></div>
+        </article>
+
+        <article class="scene" data-label="Roads">
+          <img class="scene-img" src="assets/pune-luxury-villas.jpg" alt="Paved lane with street lighting and landscaped edges">
+          <div class="scene-copy">
+            <div class="kicker">02 &nbsp;Roads and utilities</div>
+            <h2 class="scene-title"><span class="ln"><span>Wide roads.</span></span><span class="ln"><span>Wires underground.</span></span></h2>
+            <p class="scene-sub">40 and 60 feet blacktop roads, stormwater drains, LED streetlights and underground electric ducts, all laid before you build.</p>
+            <div class="scene-tag"><i class="fa-solid fa-road"></i> 40 &amp; 60 ft roads</div>
+          </div>
+        </article>
+
+        <article class="scene" data-label="Gardens">
+          <img class="scene-img" src="assets/amenity-garden.jpg" alt="Landscaped garden walk in the township">
+          <div class="scene-copy">
+            <div class="kicker">03 &nbsp;Green space</div>
+            <h2 class="scene-title"><span class="ln"><span>Five parks</span></span><span class="ln"><span>at the centre.</span></span></h2>
+            <p class="scene-sub">Walking paths, shaded seating and open lawns sit in the middle of the layout, so every plot is a short walk from green.</p>
+            <div class="scene-tag"><i class="fa-solid fa-tree"></i> 5 central theme parks</div>
+          </div>
+        </article>
+
+        <article class="scene" data-label="Clubhouse">
+          <img class="scene-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80" alt="Township clubhouse area">
+          <div class="scene-copy">
+            <div class="kicker">04 &nbsp;Safe and gated</div>
+            <h2 class="scene-title"><span class="ln"><span>Watched, lit,</span></span><span class="ln"><span>and gated.</span></span></h2>
+            <p class="scene-sub">24/7 CCTV checkpoints, a managed entrance and a clubhouse for residents, so land you hold stays looked after.</p>
+            <div class="scene-tag"><i class="fa-solid fa-shield-halved"></i> 24/7 surveillance</div>
+          </div>
+        </article>
+
+        <article class="scene" data-label="Registry">
+          <img class="scene-img" src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=2000&q=80" alt="Tall trees at the edge of the township">
+          <div class="scene-copy">
+            <div class="kicker">05 &nbsp;Clear title</div>
+            <h2 class="scene-title"><span class="ln"><span>Registry and</span></span><span class="ln"><span>possession, now.</span></span></h2>
+            <p class="scene-sub">RERA approved. Freehold registry and clear mutation records, with up to 80% bank loan approved on your plot.</p>
+            <a class="scene-tag" href="#reserve"><i class="fa-solid fa-map-location-dot"></i> Reserve your plot</a>
+          </div>
+        </article>
+
+        <div class="counter" aria-hidden="true"><b id="cnt">01</b><span>/ 05</span><span class="bar"><i id="bar"></i></span></div>
+        <div class="rail" id="rail" role="group" aria-label="Tour scenes"></div>
+        <div class="cue" id="cue" aria-hidden="true">Scroll<i></i></div>
+      </div>
+    </section>
+
+    <!-- ===== Numbers ===== -->
+    <section class="stats" aria-labelledby="statsTitle">
+      <div class="wrap">
+        <div class="stats-head">
+          <div class="reveal">
+            <div class="eyebrow">At a glance</div>
+            <h2 class="title" id="statsTitle">The plot, in four numbers.</h2>
+          </div>
+          <p class="lead reveal" style="--d:120">Pick a size from 150 to 500 square yards. Every plot is demarcated, registered and ready for you to build or hold.</p>
+        </div>
+        <div class="stat-grid">
+          <div class="stat reveal" style="--d:0"><i class="fa-solid fa-vector-square"></i><div class="num"><span class="count" data-to="150">150</span> - <span class="count" data-to="500">500</span></div><div class="cap">Square yards</div></div>
+          <div class="stat reveal" style="--d:100"><i class="fa-solid fa-road"></i><div class="num">40 &amp; 60 ft</div><div class="cap">Blacktop roads</div></div>
+          <div class="stat reveal" style="--d:200"><i class="fa-solid fa-stamp"></i><div class="num">RERA</div><div class="cap">Sanctioned township</div></div>
+          <div class="stat reveal" style="--d:300"><i class="fa-solid fa-hand-holding-hand"></i><div class="num">Immediate</div><div class="cap">Registry &amp; mutation</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Layout and infrastructure ===== -->
+    <section class="layout" aria-labelledby="layoutTitle">
+      <div class="wrap layout-grid">
+        <div class="viewer reveal">
+          <div class="viewer-main" id="viewerMain">
+            <img class="on" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Township entrance" data-cap="Township entrance">
+            <img src="assets/pune-luxury-villas.jpg" alt="Wide roads" data-cap="Wide roads" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80" alt="Tree-lined edge" data-cap="Tree-lined edge" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Clubhouse area" data-cap="Clubhouse area" loading="lazy">
+            <span class="viewer-cap" id="viewerCap">Township entrance</span>
+          </div>
+          <div class="thumbs" id="thumbs">
+            <button class="on" aria-label="Township entrance"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=300&q=80" alt=""></button>
+            <button aria-label="Wide roads"><img src="assets/pune-luxury-villas.jpg" alt="" loading="lazy"></button>
+            <button aria-label="Tree-lined edge"><img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy"></button>
+            <button aria-label="Clubhouse area"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy"></button>
+          </div>
+        </div>
         <div>
-          <span style="display: inline-block; padding: 4px 12px; background: #dcfce7; color: #15803d; border-radius: 6px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Plotting Project 1</span>
-          <h1 style="font-size: 2.3rem; font-weight: 800; color: #0f172a; line-height: 1.2; margin-bottom: 6px;">Green Valley Township Plots</h1>
-          <div style="font-size: 1rem; color: #64748b; display: flex; align-items: center; gap: 8px;">
-            <i class="fa-solid fa-location-dot" style="color: #d97706;"></i> North Expressway Growth Hub, 15 Mins from Metro
-          </div>
-        </div>
-
-        <div style="text-align: right;">
-          <div style="font-size: 2.4rem; font-weight: 800; color: #1e3a8a;">$75,000 - $210,000</div>
-          <span style="color: #16a34a; font-weight: 700; font-size: 0.9rem;"><i class="fa-solid fa-stamp"></i> Immediate Deed Registry & Possession</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Project Main Content (Inline CSS) -->
-  <main style="max-width: 1280px; margin: 0 auto; padding: 40px 24px 80px;">
-    <div class="details-layout-res" style="display: grid; grid-template-columns: 2fr 1fr; gap: 36px;">
-
-      <!-- Left Column -->
-      <div>
-        <div style="background: #ffffff; padding: 18px; border-radius: 14px; border: 1px solid #e2e8f0; margin-bottom: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-          <div style="width: 100%; height: 440px; border-radius: 10px; overflow: hidden; margin-bottom: 12px;">
-            <img id="mainPlot1Img" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Green Valley Plots" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
-            <div onclick="document.getElementById('mainPlot1Img').src='https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80'" style="height: 85px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid #1e3a8a;">
-              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=300&q=80" alt="Township Entrance" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div onclick="document.getElementById('mainPlot1Img').src='https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1200&q=80'" style="height: 85px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent;">
-              <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=300&q=80" alt="Wide Roads" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div onclick="document.getElementById('mainPlot1Img').src='https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80'" style="height: 85px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent;">
-              <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=300&q=80" alt="Parks" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div onclick="document.getElementById('mainPlot1Img').src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'" style="height: 85px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent;">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=300&q=80" alt="Clubhouse Area" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-          </div>
-        </div>
-
-        <!-- Specs -->
-        <div class="specs-grid-res" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; background: #ffffff; padding: 24px; border-radius: 14px; border: 1px solid #e2e8f0; margin-bottom: 28px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-          <div>
-            <i class="fa-solid fa-vector-square" style="font-size: 1.8rem; color: #1e3a8a; margin-bottom: 8px;"></i>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a;">150 - 500</div>
-            <div style="font-size: 0.85rem; color: #64748b;">Square Yards</div>
-          </div>
-          <div>
-            <i class="fa-solid fa-road" style="font-size: 1.8rem; color: #1e3a8a; margin-bottom: 8px;"></i>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a;">40 & 60 Feet</div>
-            <div style="font-size: 0.85rem; color: #64748b;">Blacktop Roads</div>
-          </div>
-          <div>
-            <i class="fa-solid fa-stamp" style="font-size: 1.8rem; color: #1e3a8a; margin-bottom: 8px;"></i>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a;">RERA Approved</div>
-            <div style="font-size: 0.85rem; color: #64748b;">Sanctioned Township</div>
-          </div>
-          <div>
-            <i class="fa-solid fa-hand-holding-hand" style="font-size: 1.8rem; color: #1e3a8a; margin-bottom: 8px;"></i>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a;">Immediate</div>
-            <div style="font-size: 0.85rem; color: #64748b;">Registry & Mutation</div>
-          </div>
-        </div>
-
-        <!-- Description -->
-        <div style="background: #ffffff; padding: 32px; border-radius: 14px; border: 1px solid #e2e8f0; margin-bottom: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-          <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a; margin-bottom: 14px;">Township Layout & Infrastructure</h2>
-          <p style="color: #475569; font-size: 1rem; line-height: 1.7; margin-bottom: 16px;">
-            Green Valley Township is an 80-acre master-planned residential plotted community positioned strategically along the high-speed expansion expressway. Designed with international urban planning guidelines, the township features underground electric ducts, modern stormwater drainage, LED streetlights, and 24/7 CCTV surveillance checkpoints.
-          </p>
-          <p style="color: #475569; font-size: 1rem; line-height: 1.7; margin-bottom: 20px;">
-            Plot owners receive instant demarcation with freehold registry and clear mutation records. You have complete freedom to construct your customized multi-story villa or hold for exponential capital appreciation.
-          </p>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <span style="background: #f1f5f9; padding: 8px 14px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; color: #1e3a8a;"><i class="fa-solid fa-check"></i> Underground Utilities</span>
-            <span style="background: #f1f5f9; padding: 8px 14px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; color: #1e3a8a;"><i class="fa-solid fa-check"></i> 5 Central Theme Parks</span>
-            <span style="background: #f1f5f9; padding: 8px 14px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; color: #1e3a8a;"><i class="fa-solid fa-check"></i> 80% Bank Loan Approved</span>
-          </div>
+          <div class="eyebrow reveal">Layout and infrastructure</div>
+          <h2 class="title reveal" id="layoutTitle" style="--d:80">A planned township, not just open land.</h2>
+          <p class="lead reveal" style="--d:160">Green Valley is an 80-acre master-planned community on the high-speed expansion expressway. The layout follows international urban planning guidelines, with underground electric ducts, modern stormwater drainage, LED streetlights and 24/7 CCTV checkpoints.</p>
+          <p class="lead reveal" style="--d:220;margin-top:14px;">You get instant demarcation, freehold registry and clear mutation records. Build your own multi-storey villa, or hold the land as it grows in value.</p>
+          <ul class="tick-list">
+            <li class="reveal" style="--d:280"><i class="fa-solid fa-check"></i> Underground utilities</li>
+            <li class="reveal" style="--d:340"><i class="fa-solid fa-check"></i> 5 central theme parks</li>
+            <li class="reveal" style="--d:400"><i class="fa-solid fa-check"></i> 80% bank loan approved</li>
+          </ul>
         </div>
       </div>
+    </section>
 
-      <!-- Right Column -->
-      <div>
-        <div style="background: #ffffff; padding: 28px; border-radius: 14px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 24px;">
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Reserve Your Plot</h3>
-          <p style="font-size: 0.88rem; color: #64748b; margin-bottom: 20px;">Select your preferred plot size and schedule on-ground boundary verification.</p>
-
-          <form onsubmit="event.preventDefault(); alert('Plot reservation inquiry submitted! Our land acquisition manager will contact you with master layout maps.');" style="display: flex; flex-direction: column; gap: 14px;">
-            <input type="text" placeholder="Investor Name" required style="padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none;">
-            <input type="email" placeholder="Email Address" required style="padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none;">
-            <input type="tel" placeholder="Mobile / WhatsApp" required style="padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none;">
-            <select style="padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none; background: #fff;">
+    <!-- ===== Reserve ===== -->
+    <section class="reserve" id="reserve" aria-labelledby="reserveTitle">
+      <div class="wrap reserve-grid">
+        <div>
+          <div class="eyebrow reveal">Reserve your plot</div>
+          <h2 class="title reveal" id="reserveTitle" style="--d:80">Pick your size. We confirm the number.</h2>
+          <p class="lead reveal" style="--d:160">Choose a plot size and we will schedule an on-ground boundary check with you. Our land manager sends the master layout map with your available plot numbers.</p>
+          <p class="reveal" style="--d:240;margin-top:26px;color:#c9b995;font-size:.95rem;"><i class="fa-solid fa-phone" style="color:var(--gold);margin-right:8px;"></i> +91-949 416 8733 &nbsp;&middot;&nbsp; greenvalley@oneroofproperties.com</p>
+        </div>
+        <div class="form-card reveal" id="formCard" style="--d:120">
+          <div class="head">
+            <h3>Reserve Your Plot</h3>
+            <p class="sm">Select your preferred plot size and schedule on-ground boundary verification.</p>
+          </div>
+          <form id="plotForm">
+            <input type="text" placeholder="Investor name" aria-label="Investor name" required>
+            <input type="email" placeholder="Email address" aria-label="Email address" required>
+            <input type="tel" placeholder="Mobile / WhatsApp" aria-label="Mobile or WhatsApp" required>
+            <select aria-label="Plot size">
               <option>150 Sq Yards (Corner Option)</option>
               <option>250 Sq Yards (Park Facing)</option>
               <option>350 Sq Yards (Wide Road)</option>
               <option>500 Sq Yards (Grand Plot)</option>
             </select>
-            <button type="submit" style="background: #15803d; color: #ffffff; border: none; padding: 14px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-              <i class="fa-solid fa-map-location-dot"></i> Check Available Numbers
-            </button>
+            <button type="submit" class="btn gold"><i class="fa-solid fa-map-location-dot"></i> Check Available Numbers</button>
           </form>
-        </div>
-
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; text-align: center;">
-          <h4 style="font-size: 1.05rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Other Land Projects</h4>
-          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 14px;">
-            <a href="plotting-2.html" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; color: #1e3a8a; text-decoration: none;">
-              Royal Meadows Farmhouse Plots &rarr;
-            </a>
-            <a href="plotting-3.html" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; color: #1e3a8a; text-decoration: none;">
-              Metro Boulevard Commercial Plots &rarr;
-            </a>
+          <div class="form-ok" role="status" aria-live="polite">
+            <i class="fa-solid fa-circle-check"></i>
+            <h3>Request received</h3>
+            <p class="sm" style="margin:0;">Our land acquisition manager will contact you with the master layout map.</p>
           </div>
         </div>
       </div>
+    </section>
 
-    </div>
+    <!-- ===== Other projects ===== -->
+    <section class="others" aria-labelledby="othersTitle">
+      <div class="wrap">
+        <div class="eyebrow reveal">Keep exploring</div>
+        <h2 class="title reveal" id="othersTitle" style="--d:80">Other land projects.</h2>
+        <div class="others-grid">
+          <a class="other reveal" href="plotting-2.html" style="--d:0">
+            <img src="assets/amenity-garden.jpg" alt="" loading="lazy">
+            <div class="in-copy"><small>Plotting Project 02</small><h3>Royal Meadows Farmhouse Plots</h3><span class="go">View project <i class="fa-solid fa-arrow-right"></i></span></div>
+          </a>
+          <a class="other reveal" href="plotting-3.html" style="--d:120">
+            <img src="assets/pune-luxury-tower.jpg" alt="" loading="lazy">
+            <div class="in-copy"><small>Plotting Project 03</small><h3>Metro Boulevard Commercial Plots</h3><span class="go">View project <i class="fa-solid fa-arrow-right"></i></span></div>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer (Inline CSS) -->
-  <footer style="background-color: #0b1120; color: #94a3b8; padding-top: 70px; font-size: 0.92rem;">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-      <div class="footer-grid-res" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.08);">
-        <div>
-          <div style="font-size: 1.5rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-            <i class="fa-solid fa-house-chimney" style="color: #d97706;"></i>
-            <div>One<span style="color: #60a5fa;">Roof</span></div>
-          </div>
-          <p style="line-height: 1.7; margin-bottom: 20px;">
-            One Roof Properties is a premier full-service real estate brokerage providing modern residential and commercial property solutions.
-          </p>
+  <footer class="nw-footer">
+    <div class="nw-footer-inner">
+      <div class="nw-footer-top">
+        <a href="index.html" class="nw-footer-brand"><img src="assets/one-roof-logo-dark.png" alt="One Roof Properties" style="height:54px;width:auto;object-fit:contain;"></a>
+        <div class="nw-footer-socials">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
-
-        <div>
-          <h4 style="color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;">Quick Links</h4>
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="margin-bottom: 12px;"><a href="index.html" style="color: #94a3b8; text-decoration: none;">Home</a></li>
-            <li style="margin-bottom: 12px;"><a href="about.html" style="color: #94a3b8; text-decoration: none;">About Us</a></li>
-            <li style="margin-bottom: 12px;"><a href="residential.html" style="color: #94a3b8; text-decoration: none;">Residential</a></li>
-            <li style="margin-bottom: 12px;"><a href="plotting.html" style="color: #fff; font-weight: 600; text-decoration: none;">Plotting</a></li>
-            <li style="margin-bottom: 12px;"><a href="nri-corner.html" style="color: #94a3b8; text-decoration: none;">NRI Corner</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 style="color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;">Resources</h4>
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="margin-bottom: 12px;"><a href="services.html" style="color: #94a3b8; text-decoration: none;">Services</a></li>
-            <li style="margin-bottom: 12px;"><a href="blog.html" style="color: #94a3b8; text-decoration: none;">Blogs</a></li>
-            <li style="margin-bottom: 12px;"><a href="contact.html" style="color: #94a3b8; text-decoration: none;">Contact Us</a></li>
-            <li style="margin-bottom: 12px;"><a href="privacy-policy.html" style="color: #94a3b8; text-decoration: none;">Privacy & Policy</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 style="color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;">Contact</h4>
-          <p style="margin-bottom: 10px;"><i class="fa-solid fa-phone" style="color: #d97706;"></i> +1 (800) 555-ROOF</p>
-          <p><i class="fa-solid fa-envelope" style="color: #d97706;"></i> greenvalley@oneroofproperties.com</p>
+        <div class="nw-footer-member">
+          <span class="nw-member-label">Member of</span>
+          <div class="nw-credai-badge"><span>CREDAI</span><i class="fa-solid fa-caret-up nw-credai-roof"></i></div>
         </div>
       </div>
-
-      <div style="padding: 24px 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; flex-wrap: wrap; gap: 10px;">
-        <div>&copy; 2026 One Roof Properties LLC. All rights reserved.</div>
-        <div style="display: flex; gap: 20px;">
-          <a href="privacy-policy.html" style="color: #94a3b8; text-decoration: none;">Privacy & Policy</a>
-          <a href="contact.html" style="color: #94a3b8; text-decoration: none;">Contact</a>
+      <div class="nw-footer-cols">
+        <div>
+          <h4 class="nw-col-title">Quick Links</h4>
+          <ul class="nw-col-list">
+            <li><a href="residential.html">Residential Properties</a></li>
+            <li><a href="plotting.html">Plotting Developments</a></li>
+            <li><a href="residential-1.html">The Grand Emerald</a></li>
+            <li><a href="residential-2.html">Palm Crest Villas</a></li>
+            <li><a href="residential-3.html">Skyline Imperial</a></li>
+            <li><a href="plotting-1.html">Green Valley Plots</a></li>
+            <li><a href="nri-corner.html">NRI Corner</a></li>
+          </ul>
         </div>
+        <div>
+          <h4 class="nw-col-title">Company</h4>
+          <ul class="nw-col-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="residential.html">Projects</a></li>
+            <li><a href="blog.html">Blogs</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="nri-corner.html">NRI Advisory</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="nw-col-title">Reach Out</h4>
+          <ul class="nw-col-list">
+            <li><a href="tel:+919494168733" class="nw-contact-item">+91-949 416 8733</a></li>
+            <li><a href="mailto:contact@oneroofproperties.com" class="nw-contact-item">contact@oneroofproperties.com</a></li>
+            <li class="nw-contact-item nw-contact-address">One Roof Tower, Financial District,<br>Pune, Maharashtra - 411045</li>
+          </ul>
+        </div>
+      </div>
+      <div class="nw-footer-bottom">
+        <span>&copy; 2026 One Roof Properties. All rights reserved. |</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="privacy-policy.html">Terms &amp; Conditions</a>
+        <a href="privacy-policy.html">Disclaimer</a>
       </div>
     </div>
   </footer>
 
   <script>
-    const mobileBtn = document.getElementById('mobileBtn');
-    const navLinks = document.getElementById('navLinks');
-    if (mobileBtn && navLinks) {
-      mobileBtn.addEventListener('click', () => {
-        if (navLinks.style.display === 'flex') {
-          navLinks.style.display = 'none';
-        } else {
-          navLinks.style.display = 'flex';
-          navLinks.style.flexDirection = 'column';
-          navLinks.style.position = 'absolute';
-          navLinks.style.top = '70px';
-          navLinks.style.left = '0';
-          navLinks.style.width = '100%';
-          navLinks.style.backgroundColor = '#ffffff';
-          navLinks.style.padding = '20px';
-          navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
-        }
-      });
+  (function () {
+    var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
+    var smooth = function (t) { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
+
+    /* ----- Header glass + mobile drawer ----- */
+    var header = document.getElementById('mainHeader');
+    function headerGlass() { header.classList.toggle('scrolled', window.scrollY >= 60); }
+    addEventListener('scroll', headerGlass, { passive: true }); headerGlass();
+    var mBtn = document.getElementById('mobileBtn'), drawer = document.getElementById('drawer');
+    mBtn.addEventListener('click', function () {
+      var open = drawer.classList.toggle('open');
+      mBtn.setAttribute('aria-expanded', open);
+      mBtn.firstElementChild.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    });
+
+    /* ----- Scene journey ----- */
+    var journey = document.getElementById('journey');
+    var scenes = Array.prototype.slice.call(journey.querySelectorAll('.scene'));
+    var N = scenes.length;
+    var imgs = scenes.map(function (s) { return s.querySelector('.scene-img'); });
+    var copies = scenes.map(function (s) { return s.querySelector('.scene-copy'); });
+    var lines = scenes.map(function (s) { return Array.prototype.slice.call(s.querySelectorAll('.scene-title .ln > span')); });
+    var subs = scenes.map(function (s) { return Array.prototype.slice.call(s.querySelectorAll('.kicker, .scene-sub, .scene-tag')); });
+    var price = scenes[0].querySelector('.scene-price');
+    var cnt = document.getElementById('cnt'), bar = document.getElementById('bar');
+    var cue = document.getElementById('cue'), rail = document.getElementById('rail');
+    var STATIC = matchMedia('(max-width: 900px), (prefers-reduced-motion: reduce)');
+
+    var railBtns = scenes.map(function (s, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Go to ' + s.dataset.label);
+      b.innerHTML = '<span class="lbl">' + s.dataset.label + '</span><i></i>';
+      b.addEventListener('click', function () { scrollToScene(i); });
+      rail.appendChild(b);
+      return b;
+    });
+
+    function range() { return journey.offsetHeight - innerHeight; }
+    function top() { return journey.getBoundingClientRect().top + scrollY; }
+    function scrollToScene(i) {
+      var p = i / (N - 1);
+      scrollTo({ top: top() + p * range(), behavior: 'smooth' });
     }
+    function rawProgress() { return clamp((scrollY - top()) / Math.max(1, range()), 0, 1); }
+
+    var target = 0, shown = 0, raf = null, last = 0, cache = {};
+    function setStyle(el, key, prop, val) {
+      if (cache[key] === val) return;
+      cache[key] = val; el.style[prop] = val;
+    }
+
+    /* Each scene owns a slot of scroll. Inside the slot the picture holds first,
+       then switches in the middle, then holds again, so words can be read. */
+    function render(p) {
+      var s = p * (N - 1);              // 0 .. N-1
+      var seg = Math.min(N - 2, Math.floor(s));
+      var t = s - seg;                  // 0..1 inside this switch
+      var e = smooth((t - 0.22) / 0.56); // eased switch, with holds at both ends
+      if (s >= N - 1) { seg = N - 2; e = 1; }
+
+      for (var i = 0; i < N; i++) {
+        var reveal;                     // how much of scene i is uncovered
+        if (i === 0) reveal = 1;
+        else if (i <= seg) reveal = 1;
+        else if (i === seg + 1) reveal = e;
+        else reveal = 0;
+
+        var clip = reveal >= 1 ? 'inset(0% 0% 0% 0%)' : 'inset(' + ((1 - reveal) * 100).toFixed(2) + '% 0% 0% 0%)';
+        if (i > 0) setStyle(scenes[i], 'c' + i, 'clipPath', clip);
+        setStyle(scenes[i], 'z' + i, 'zIndex', String(i + 1));
+
+        // picture motion: incoming settles from a push-in, outgoing drifts up and dims
+        var scale, ty = 0, dim = 1;
+        if (i === seg + 1 && seg + 1 <= N - 1 && reveal < 1) {
+          scale = 1.22 - 0.22 * e; ty = (1 - e) * 4;
+        } else if (i === seg && seg + 1 <= N - 1) {
+          scale = 1 + 0.06 * e; ty = -6 * e; dim = 1 - 0.45 * e;
+        } else if (i < seg) { scale = 1.06; ty = -6; dim = 0.55; }
+        else if (i === seg + 1) { scale = 1; }
+        else { scale = 1.22; ty = 4; }
+        // gentle drift while a scene is on show
+        var local = s - i; var drift = clamp(local, -1, 1) * -2.2;
+        setStyle(imgs[i], 'i' + i, 'transform', 'translate3d(0,' + (ty + drift).toFixed(2) + '%,0) scale(' + scale.toFixed(4) + ')');
+        setStyle(imgs[i], 'f' + i, 'filter', 'brightness(' + dim.toFixed(3) + ')');
+
+        // words: visible near their own scene, fade and slip out when the switch begins
+        var dist = Math.abs(s - i);
+        var vis = 1 - smooth((dist - 0.12) / 0.2);   // 1 inside the hold, 0 mid-switch
+        if (i === 0 && s < 0.12) vis = 1;
+        setStyle(copies[i], 'o' + i, 'opacity', vis.toFixed(3));
+        setStyle(copies[i], 'p' + i, 'pointerEvents', vis > 0.6 ? 'auto' : 'none');
+        var dir = s >= i ? -1 : 1;                    // leaving upward, arriving from below
+        var shift = (1 - vis) * 26 * dir;
+        setStyle(copies[i], 'y' + i, 'transform', 'translate3d(0,' + shift.toFixed(2) + 'px,0)');
+        for (var k = 0; k < lines[i].length; k++) {
+          var lv = clamp((vis - 0.12 * k) / (1 - 0.12 * k), 0, 1);
+          lv = lv * lv * (3 - 2 * lv);
+          setStyle(lines[i][k], 'l' + i + '_' + k, 'transform', 'translate3d(0,' + ((1 - lv) * 105 * (s >= i ? -1 : 1)).toFixed(1) + '%,0)');
+        }
+        for (var m = 0; m < subs[i].length; m++) {
+          setStyle(subs[i][m], 's' + i + '_' + m, 'opacity', clamp((vis - 0.18 - 0.1 * m) / 0.5, 0, 1).toFixed(3));
+        }
+      }
+
+      // price tag belongs to scene one only
+      var pv = 1 - smooth(s / 0.35);
+      setStyle(price, 'pr', 'opacity', pv.toFixed(3));
+      setStyle(price, 'prt', 'transform', 'translate3d(0,' + ((1 - pv) * -20).toFixed(1) + 'px,0)');
+
+      var cur = clamp(Math.round(s), 0, N - 1);
+      var txt = '0' + (cur + 1);
+      if (cache.cnt !== txt) { cache.cnt = txt; cnt.textContent = txt; railBtns.forEach(function (b, bi) { b.classList.toggle('on', bi === cur); }); }
+      setStyle(bar, 'bar', 'transform', 'scaleX(' + p.toFixed(3) + ')');
+      setStyle(cue, 'cue', 'opacity', s < 0.15 ? '1' : '0');
+    }
+
+    function tick(now) {
+      var dt = Math.min(100, now - (last || now)); last = now;
+      var k = 0.12;
+      shown += (target - shown) * (1 - Math.pow(1 - k, dt / 16.667));
+      if (Math.abs(target - shown) < 0.0004) { shown = target; raf = null; last = 0; render(shown); return; }
+      render(shown);
+      raf = requestAnimationFrame(tick);
+    }
+    var onScreen = true;
+    new IntersectionObserver(function (en) { onScreen = en[0].isIntersecting; if (onScreen) onScroll(); }, { rootMargin: '20% 0px' }).observe(journey);
+    function onScroll() {
+      if (STATIC.matches) return;
+      target = rawProgress();
+      if (raf === null && onScreen) raf = requestAnimationFrame(tick);
+    }
+    function clearInline() {
+      cache = {};
+      scenes.forEach(function (s, i) { s.style.clipPath = ''; s.style.zIndex = ''; imgs[i].style.transform = ''; imgs[i].style.filter = ''; copies[i].style.opacity = ''; copies[i].style.transform = ''; copies[i].style.pointerEvents = ''; lines[i].forEach(function (l) { l.style.transform = ''; }); subs[i].forEach(function (x) { x.style.opacity = ''; }); });
+      price.style.opacity = ''; price.style.transform = '';
+    }
+    function applyMode() {
+      if (STATIC.matches) { if (raf) cancelAnimationFrame(raf); raf = null; clearInline(); }
+      else { cache = {}; shown = target = rawProgress(); render(shown); }
+    }
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll, { passive: true });
+    STATIC.addEventListener('change', applyMode);
+    applyMode();
+
+    /* ----- Reveal on scroll ----- */
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } });
+    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    /* ----- Count-up for the size range ----- */
+    var counted = false;
+    var cio = new IntersectionObserver(function (en) {
+      if (!en[0].isIntersecting || counted) return; counted = true; cio.disconnect();
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      document.querySelectorAll('.count').forEach(function (el) {
+        var to = +el.dataset.to, t0 = performance.now(), dur = 1400;
+        (function step(now) {
+          var p = clamp((now - t0) / dur, 0, 1), v = Math.round(to * (1 - Math.pow(1 - p, 3)));
+          el.textContent = v; if (p < 1) requestAnimationFrame(step);
+        })(t0);
+      });
+    }, { threshold: 0.4 });
+    cio.observe(document.querySelector('.stat-grid'));
+
+    /* ----- Gallery crossfade ----- */
+    var vImgs = document.querySelectorAll('#viewerMain img'), thumbs = document.querySelectorAll('#thumbs button'), vCap = document.getElementById('viewerCap');
+    thumbs.forEach(function (b, i) {
+      b.addEventListener('click', function () {
+        vImgs.forEach(function (im, j) { im.classList.toggle('on', i === j); });
+        thumbs.forEach(function (t, j) { t.classList.toggle('on', i === j); });
+        vCap.textContent = vImgs[i].dataset.cap;
+      });
+    });
+
+    /* ----- Form: shows a thank-you state ----- */
+    document.getElementById('plotForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('formCard').classList.add('sent');
+    });
+  })();
   </script>
 </body>
 </html>
-

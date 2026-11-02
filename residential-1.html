@@ -3,314 +3,3277 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Grand Emerald - Residential Detail | One Roof Properties</title>
+  <title>Skyview Residency | Luxury 2 & 3 BHK in Kothrud, Pune | One Roof Properties</title>
+  <meta name="description" content="Skyview Residency by One Roof Properties in Kothrud, Pune. Premium 2 & 3 BHK residences starting ₹ 1.25 Cr* onwards with world-class amenities and seamless connectivity.">
+  
+  <!-- Fonts & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Nanum+Myeongjo:wght@400;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: #f8fafc; color: #334155; line-height: 1.6; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    img { max-width: 100%; height: auto; display: block; }
-    .dropdown-parent:hover .prop-dropdown { display: block !important; }
-    .dropdown-parent:hover .prop-caret { transform: rotate(180deg) !important; }
-    @media (max-width: 900px) {
-      .details-layout-res { grid-template-columns: 1fr !important; }
-      .nav-links-menu { display: none !important; }
-      .nav-mobile-btn { display: block !important; }
-      .amenities-grid-res { grid-template-columns: 1fr !important; }
-      .specs-grid-res { grid-template-columns: repeat(2, 1fr) !important; }
-      .footer-grid-res { grid-template-columns: 1fr !important; }
-      .prop-dropdown { position: static !important; width: 100% !important; box-shadow: none !important; border: 1px solid #e2e8f0 !important; background: #f8fafc !important; }
+    /* ===================================================================== */
+    /* 1. RESET & FOUNDATIONAL DESIGN SYSTEM                                 */
+    /* ===================================================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  </style>
+
+    :root {
+      --bg-cream: #FAF8EE;
+      --navy-primary: #465665;
+      --navy-dark: #1b2836;
+      --navy-slate: #2c3a47;
+      --navy-light: #5a6e7f;
+      --gold-accent: #d97706;
+      --gold-hover: #b45309;
+      --gold-light: rgba(217, 119, 6, 0.12);
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --border-light: rgba(70, 86, 101, 0.12);
+      --card-white: #ffffff;
+      --shadow-sm: 0 4px 12px rgba(70, 86, 101, 0.05);
+      --shadow-md: 0 10px 25px rgba(70, 86, 101, 0.08);
+      --shadow-lg: 0 16px 36px rgba(70, 86, 101, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      --font-heading: 'Nanum Myeongjo', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', 'Jost', sans-serif;
+    }
+
+    html {
+      overflow-x: clip;
+    }
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      color: var(--navy-primary);
+      letter-spacing: -0.3px;
+    }
+
+    .container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 3.5vw, 40px);
+    }
+
+    .section-wrap {
+      padding: clamp(40px, 5vh, 60px) 0;
+    }
+
+    .sec-title {
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      font-weight: 700;
+      color: var(--navy-primary);
+      margin-bottom: 18px;
+    }
+
+    .sec-title-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    /* ======================================================== */
+    /* HOME PAGE TOP NAVIGATION BAR (IDENTICAL TO INDEX.HTML)   */
+    /* ======================================================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1500;
+      padding: 30px 0 0;
+      background: transparent;
+      transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease, border-bottom 0.3s ease;
+    }
+    .header.scrolled {
+      background: rgba(23, 34, 45, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 14px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .holder {
+      padding: 0 max(24px, 4.5vw);
+      max-width: 1820px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .header-block {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 58px;
+      gap: 24px;
+    }
+    .header-logo {
+      position: relative;
+      text-align: center;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .header-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .header-nav-list {
+      display: flex;
+      gap: clamp(18px, 2.2vw, 36px);
+      list-style: none;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+    .header-nav-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .header-nav-list li {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(13px, 0.88vw, 15px);
+      font-weight: 400;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+    .header-nav-list a {
+      color: #ffffff;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .header-nav-list a::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 1px;
+      background: #ffffff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .header-nav-list a:hover::before {
+      transform: scaleX(1);
+    }
+    
+    /* ===================================================================== */
+    /* SECTION 1: SPRINGS-STYLE EXPANDED STICKY HERO & ABOUT SEQUENCE         */
+    /* ===================================================================== */
+    .springs-hero-track {
+      position: relative;
+      width: 100%;
+      height: 270vh; /* Smooth scroll travel distance for video-like transition */
+      background: #FAF8EE;
+      user-select: none;
+    }
+
+    .springs-hero-sticky {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      max-height: 960px;
+      overflow: hidden;
+      background: #FAF8EE;
+      z-index: 15;
+    }
+
+    /* LEFT SIDE: Luxury Warm Cream Panel with Home Page Colors & Fonts */
+    .springs-hero-reveal-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(circle at 18% 50%, #F3EFE2 0%, #FAF8EE 70%, #F5F2E6 100%);
+      z-index: 1;
+      padding: clamp(80px, 11vh, 110px) clamp(28px, 4.2vw, 65px) clamp(25px, 3vh, 45px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      overflow: hidden;
+      color: #465665;
+      box-shadow: 4px 0 24px rgba(70, 86, 101, 0.08);
+    }
+
+    .springs-reveal-scrollable {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      will-change: transform, opacity;
+      transform: translateY(0);
+      transition: transform 0.1s linear;
+    }
+
+    .springs-reveal-eyebrow {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #d97706; /* Home page brand gold accent */
+      margin-bottom: 14px;
+    }
+
+    .springs-reveal-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.3rem, 3.4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.5px;
+      color: #465665; /* Home page brand slate navy */
+      margin: 0 0 24px 0;
+    }
+
+    .springs-reveal-narrative {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #7b8791; /* Home page muted slate body color */
+      margin: 0 0 18px 0;
+      max-width: 520px;
+    }
+
+    .springs-reveal-subparagraph {
+      font-size: 0.98rem;
+      color: #7b8791;
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .springs-reveal-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(70, 86, 101, 0.16);
+      max-width: 520px;
+    }
+    .springs-spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .springs-spec-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #7b8791;
+      font-weight: 600;
+    }
+    .springs-spec-val {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: #465665;
+    }
+
+    /* RIGHT SIDE: Second Tower Perspective */
+    .springs-hero-second-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      z-index: 6; /* HIGHER than hero-clip-layer (z-index: 5) so it reveals over the right half */
+      overflow: hidden;
+      background: #FAF8EE;
+      will-change: transform, clip-path;
+      clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+      pointer-events: none;
+    }
+    .springs-second-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      will-change: transform;
+      transition: transform 0.08s linear;
+    }
+
+    /* SCROLL TO EXPLORE Pill Badge */
+    .springs-scroll-to-explore {
+      position: absolute;
+      bottom: clamp(24px, 4vh, 40px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(30, 41, 59, 0.76);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #FAF8EE;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.74rem;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+      transition: opacity 0.25s ease, background 0.2s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    .springs-scroll-to-explore:hover {
+      background: rgba(30, 41, 59, 0.92);
+      transform: translateX(-50%) translateY(-2px);
+    }
+    .springs-scroll-to-explore svg {
+      animation: bounceHintArrow 2s infinite ease-in-out;
+    }
+    @keyframes bounceHintArrow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+
+    /* MAIN HERO LAYER: Fullscreen, clips from left to right as you scroll */
+    .springs-hero-clip-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      overflow: hidden;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+      will-change: clip-path;
+      transition: clip-path 0.08s linear;
+    }
+
+    .springs-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: right 25% center;
+      background-repeat: no-repeat;
+    }
+
+    /* Low blackish effect with subtle opacity */
+    .springs-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.28);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .springs-hero-container {
+      position: absolute;
+      inset: 0;
+      z-index: 7; /* Placed outside and above the clip layer so letters are NEVER cut by clip-path */
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+      will-change: transform, opacity;
+      transition: opacity 0.1s linear, transform 0.1s linear;
+    }
+
+    .springs-hero-content {
+      max-width: 680px;
+    }
+
+    .springs-hero-headline {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(3.2rem, 5.6vw, 5.4rem);
+      font-weight: 400;
+      color: #FAF8EE;
+      line-height: 1.08;
+      letter-spacing: -0.5px;
+      margin: 0 0 24px 0;
+      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .springs-hero-subtext {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.8rem, 0.96vw, 0.92rem);
+      font-weight: 500;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: rgba(250, 248, 238, 0.9);
+      line-height: 1.9;
+      max-width: 480px;
+      margin: 0;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    @media (max-width: 960px) {
+      .springs-hero-track {
+        height: auto;
+      }
+      .springs-hero-sticky {
+        position: relative;
+        top: 0;
+        height: auto;
+        min-height: auto;
+      }
+      .springs-hero-clip-layer {
+        position: relative;
+        height: 75vh;
+        clip-path: none !important;
+      }
+      .springs-hero-reveal-left {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+      .springs-hero-second-right {
+        display: none;
+      }
+    }
+    
+    /* ===================================================================== */
+    /* SECTION 2: PROJECT OVERVIEW                                           */
+    /* ===================================================================== */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(24px, 3.5vw, 44px);
+      align-items: center;
+    }
+    .overview-text {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+    .overview-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .stat-card-box {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card-box:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .stat-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: #fef3c7;
+      color: #d97706;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    .stat-info-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .stat-info-val {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy-primary);
+      margin-top: 2px;
+    }
+
+    .overview-media-container {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      height: 340px;
+    }
+    .overview-media-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .overview-media-container:hover img {
+      transform: scale(1.03);
+    }
+    .video-play-pill {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      padding: 12px 26px;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    .video-play-pill:hover {
+      background: var(--gold-accent);
+      color: #ffffff;
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+    .video-play-pill i {
+      font-size: 1rem;
+      color: #f59e0b;
+      transition: color 0.2s;
+    }
+    .video-play-pill:hover i {
+      color: #ffffff;
+    }
+
+    /* ===================================================================== */
+    /* SECTION 3: PROJECT HIGHLIGHTS                                         */
+    /* ===================================================================== */
+    .highlights-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+    .highlight-item-box {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+    .highlight-item-box:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(217, 119, 6, 0.35);
+    }
+    .hl-circle-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      color: #d97706;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .highlight-item-box:hover .hl-circle-icon {
+      background: #d97706;
+      color: #ffffff;
+    }
+    .hl-text {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy-primary);
+      line-height: 1.35;
+    }
+
+    /* ===================================================================== */
+    /* SECTION 4: CONFIGURATIONS & PRICING                                   */
+    /* ===================================================================== */
+    .config-pricing-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: clamp(24px, 3.5vw, 40px);
+      align-items: stretch;
+    }
+    .pricing-table-container {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .custom-pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .custom-pricing-table th {
+      text-align: left;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 14px 12px;
+      border-bottom: 2px solid #f1f5f9;
+    }
+    .custom-pricing-table td {
+      padding: 18px 12px;
+      font-size: 0.94rem;
+      color: var(--text-dark);
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .custom-pricing-table tr:last-child td {
+      border-bottom: none;
+    }
+    .custom-pricing-table tr:hover td {
+      background: #fafaf9;
+    }
+    .bhk-pill {
+      font-weight: 700;
+      color: var(--navy-primary);
+    }
+    .price-bold {
+      font-weight: 800;
+      color: #b45309;
+      font-size: 1.05rem;
+    }
+    .pricing-footnote {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 18px;
+    }
+    .pricing-btn-row {
+      margin-top: 20px;
+    }
+    .btn-enquire-price {
+      background: var(--navy-primary);
+      color: #FAF8EE;
+      border: none;
+      padding: 12px 28px;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-enquire-price:hover {
+      background: var(--gold-accent);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .config-3d-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+    .floor-3d-visual {
+      width: 100%;
+      height: 240px;
+      border-radius: 12px;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 16px;
+      border: 1px solid #e2e8f0;
+    }
+    .floor-3d-visual svg, .floor-3d-visual img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    .view-all-configs-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--navy-primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .view-all-configs-link:hover {
+      color: var(--gold-accent);
+      gap: 12px;
+    }
+
+    /* ===================================================================== */
+    /* SECTION 5: FULL-SCREEN EDGE-TO-EDGE SLIDER (TOUCHES LEFT & RIGHT SCREEN)*/
+    /* ===================================================================== */
+    .gallery-header-container {
+      margin-bottom: 22px;
+    }
+    .gallery-filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .gal-filter-btn {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      color: var(--navy-primary);
+      padding: 7px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .gal-filter-btn.active, .gal-filter-btn:hover {
+      background: var(--navy-primary);
+      color: #ffffff;
+      border-color: var(--navy-primary);
+    }
+
+    /* FULL-BLEED EDGE-TO-EDGE SHOWCASE STAGE (TOUCHES LEFT & RIGHT SCREEN) */
+    .gallery-fullwidth-wrapper {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      overflow: hidden;
+      background: #0b111e;
+    }
+
+    .gal-stage-wrapper {
+      position: relative;
+      width: 100%;
+      height: clamp(620px, 88vh, 960px);
+      overflow: hidden;
+      user-select: none;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.3);
+    }
+
+    /* Big Image Horizontal Slider Track */
+    .big-slider-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .big-slide-item {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .big-slide-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Scrolling Thumbnail Slider Dock Along the Bottom */
+    .gal-slider-dock {
+      position: absolute;
+      bottom: clamp(20px, 3.5vh, 36px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(94vw, 1340px);
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      border-radius: 18px;
+      padding: 10px 14px;
+      overflow: hidden;
+      z-index: 10;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    /* Thumbnail Track that Visibly Slides Horizontally */
+    .thumb-slider-track {
+      display: flex;
+      gap: 14px;
+      transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    /* Pure Clean Thumbnail Item - No Words, Sized for Smooth Slide Effect */
+    .gal-thumb-item {
+      flex: 0 0 clamp(130px, 13vw, 175px);
+      height: clamp(75px, 7.5vw, 98px);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      border: 2px solid rgba(255, 255, 255, 0.22);
+      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      filter: grayscale(80%) brightness(0.65);
+      opacity: 0.7;
+      background: #0f172a;
+    }
+    .gal-thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .gal-thumb-item:hover {
+      filter: grayscale(0%) brightness(1);
+      opacity: 1;
+      border-color: rgba(255, 255, 255, 0.85);
+      transform: translateY(-2px);
+    }
+    .gal-thumb-item:hover img {
+      transform: scale(1.06);
+    }
+
+    /* Active Thumbnail Highlight - Amber Glow */
+    .gal-thumb-item.active {
+      filter: grayscale(0%) brightness(1.05);
+      opacity: 1;
+      border-color: var(--gold-accent);
+      border-width: 2.5px;
+      transform: scale(1.06);
+      box-shadow: 0 0 18px rgba(217, 119, 6, 0.8), 0 4px 14px rgba(0, 0, 0, 0.6);
+      z-index: 2;
+    }
+    .gal-thumb-item.active img {
+      transform: scale(1.04);
+    }
+
+    /* ===================================================================== */
+    /* TWO COLUMN PAIRED SECTIONS (6+7, 8+9, 10+11, 12+13)                    */
+    /* ===================================================================== */
+    .two-col-master-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 3.5vw, 40px);
+      margin-bottom: clamp(36px, 4.5vh, 50px);
+      align-items: stretch;
+    }
+
+    .master-card-box {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: clamp(22px, 3vw, 32px);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* SECTION 6: AMENITIES & FACILITIES */
+    .amenities-8-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px 12px;
+      margin-top: 14px;
+    }
+    .amenity-micro-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 12px 6px;
+      border-radius: 10px;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .amenity-micro-card:hover {
+      background: #fefce8;
+      transform: translateY(-2px);
+    }
+    .amenity-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #eff6ff;
+      color: #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+      transition: all 0.2s;
+    }
+    .amenity-micro-card:hover .amenity-circle {
+      background: var(--navy-primary);
+      color: #ffffff;
+    }
+    .amenity-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy-primary);
+      line-height: 1.3;
+    }
+
+    /* SECTION 7: FLOOR PLANS */
+    .floorplan-tab-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .plan-pill-tab {
+      background: #f1f5f9;
+      border: none;
+      color: var(--text-dark);
+      padding: 7px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .plan-pill-tab.active {
+      background: var(--navy-primary);
+      color: #ffffff;
+    }
+    .floorplan-detail-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .plan-sketch-frame {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 10px;
+    }
+    .plan-meta-col h4 {
+      font-size: 1.15rem;
+      color: var(--navy-primary);
+      margin-bottom: 10px;
+    }
+    .plan-spec-line {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed #e2e8f0;
+      padding-bottom: 4px;
+    }
+    .plan-spec-line strong {
+      color: var(--text-dark);
+    }
+    .btn-download-plan {
+      margin-top: 16px;
+      width: 100%;
+      background: var(--navy-primary);
+      color: #FAF8EE;
+      border: none;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+    .btn-download-plan:hover {
+      background: var(--gold-accent);
+      color: #ffffff;
+    }
+
+    /* SECTION 8: LOCATION ADVANTAGES */
+    .location-adv-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .landmarks-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .landmark-row-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--navy-primary);
+      font-weight: 500;
+    }
+    .landmark-icon-sq {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: #eff6ff;
+      color: #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .map-preview-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      position: relative;
+      height: 200px;
+      background: #f1f5f9;
+      box-shadow: var(--shadow-sm);
+    }
+    .map-preview-card iframe, .map-preview-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .btn-map-overlay {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffffff;
+      color: var(--navy-primary);
+      border: 1px solid var(--border-light);
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-map-overlay:hover {
+      background: var(--navy-primary);
+      color: #ffffff;
+    }
+
+    /* SECTION 9: PROJECT SPECIFICATIONS */
+    .specs-layout-flex {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .specs-table-compact {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .specs-table-compact td {
+      padding: 7px 4px;
+      font-size: 0.85rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .spec-label-col {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .spec-val-col {
+      color: var(--navy-primary);
+      font-weight: 700;
+      text-align: right;
+    }
+    .spec-photo-frame {
+      border-radius: 12px;
+      overflow: hidden;
+      height: 200px;
+      box-shadow: var(--shadow-sm);
+    }
+    .spec-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* SECTION 10: BROCHURE & DOWNLOADS */
+    .downloads-3-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+      margin-bottom: 20px;
+    }
+    .download-card-unit {
+      background: #fafaf9;
+      border: 1px solid #e7e5e4;
+      border-radius: 10px;
+      padding: 16px 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .download-card-unit:hover {
+      background: #ffffff;
+      border-color: var(--gold-accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .download-card-unit i {
+      font-size: 1.8rem;
+      color: var(--navy-primary);
+      margin-bottom: 8px;
+    }
+    .dl-name {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--navy-primary);
+      margin-bottom: 4px;
+    }
+    .dl-size {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .btn-download-all {
+      background: var(--navy-primary);
+      color: #FAF8EE;
+      border: none;
+      padding: 11px 24px;
+      border-radius: var(--radius-pill);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      transition: all 0.25s;
+    }
+    .btn-download-all:hover {
+      background: var(--gold-accent);
+      color: #ffffff;
+    }
+
+    /* SECTION 11: ENQUIRY / SITE VISIT */
+    .enquiry-card-inner {
+      position: relative;
+    }
+    .enquiry-subtext {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .enquiry-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .form-col-full {
+      grid-column: span 2;
+    }
+    .enquiry-input {
+      width: 100%;
+      padding: 9px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      color: var(--text-dark);
+      background: #ffffff;
+      transition: border-color 0.2s;
+    }
+    .enquiry-input:focus {
+      outline: none;
+      border-color: var(--gold-accent);
+    }
+    .terms-check-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin: 10px 0;
+    }
+    .enquiry-btn-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-submit-enquiry {
+      background: var(--navy-primary);
+      color: #FAF8EE;
+      border: none;
+      padding: 10px 24px;
+      border-radius: var(--radius-pill);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-submit-enquiry:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
+    }
+    .btn-whatsapp-chat {
+      background: #25d366;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 0.84rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+    .btn-whatsapp-chat:hover {
+      background: #20ba5a;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+    .whatsapp-float-helper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      padding: 8px 14px;
+      border-radius: 10px;
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: #166534;
+      font-weight: 600;
+    }
+
+    /* SECTION 12: SIMILAR RESIDENTIAL PROJECTS */
+    .similar-projects-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .similar-proj-card {
+      background: #fafaf9;
+      border: 1px solid #e7e5e4;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s;
+    }
+    .similar-proj-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+      border-color: var(--gold-accent);
+    }
+    .similar-img-box {
+      height: 95px;
+      position: relative;
+      overflow: hidden;
+    }
+    .similar-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .similar-meta-box {
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+    .similar-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy-primary);
+      margin-bottom: 2px;
+    }
+    .similar-loc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .similar-bhk {
+      font-size: 0.72rem;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+    .similar-price {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #b45309;
+      margin: 4px 0 8px;
+    }
+    .similar-link {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--navy-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s;
+    }
+    .similar-link:hover {
+      color: var(--gold-accent);
+    }
+
+    /* SECTION 13: FREQUENTLY ASKED QUESTIONS */
+    .faq-accordion-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .faq-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fafaf9;
+      transition: background 0.2s;
+    }
+    .faq-item.active {
+      background: #ffffff;
+      border-color: #cbd5e1;
+    }
+    .faq-header {
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--navy-primary);
+      user-select: none;
+    }
+    .faq-header i {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      transition: transform 0.25s ease;
+    }
+    .faq-item.active .faq-header i {
+      transform: rotate(45deg);
+      color: var(--gold-accent);
+    }
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      padding: 0 16px;
+    }
+    .faq-item.active .faq-body {
+      padding: 4px 16px 14px;
+      max-height: 200px;
+    }
+
+    /* ===================================================================== */
+    /* FOOTER STYLES                                                         */
+    /* ===================================================================== */
+    .main-footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      padding: 60px 0 24px;
+      margin-top: 60px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.88rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      gap: 36px;
+      margin-bottom: 40px;
+    }
+    .footer-brand h3 {
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+    .footer-brand p {
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+    .social-links a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #cbd5e1;
+      transition: all 0.2s;
+    }
+    .social-links a:hover {
+      background: var(--gold-accent);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    .footer-col-title {
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links-list a {
+      color: #94a3b8;
+      transition: color 0.2s;
+    }
+    .footer-links-list a:hover {
+      color: var(--gold-accent);
+    }
+    .footer-bottom-row {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.8rem;
+    }
+
+    /* Video Modal */
+    .video-modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-modal-box {
+      width: 90%;
+      max-width: 800px;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    .video-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      color: #fff;
+      font-size: 1.6rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-inner-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-media-col {
+        height: 320px;
+      }
+      .overview-grid {
+        grid-template-columns: 1fr;
+      }
+      .highlights-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .gallery-strip-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .two-col-master-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-menu {
+        display: none;
+      }
+      .header-phone {
+        display: none;
+      }
+      .highlights-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .config-pricing-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-strip-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .amenities-8-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .floorplan-detail-layout {
+        grid-template-columns: 1fr;
+      }
+      .location-adv-grid {
+        grid-template-columns: 1fr;
+      }
+      .specs-layout-flex {
+        grid-template-columns: 1fr;
+      }
+      .downloads-3-grid {
+        grid-template-columns: 1fr;
+      }
+      .enquiry-form-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-col-full {
+        grid-column: span 1;
+      }
+      .similar-projects-row {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+    /* ===================================================================== */
+    /* SECTION 6: SPRINGS-STYLE SPLIT OPPOSING CURTAIN AMENITIES SHOWCASE    */
+    /* MINIMALIST LUXURY: ONLY AMENITY TITLE ON WARM CREAM #FAF8EE PANEL     */
+    /* ===================================================================== */
+    .springs-infra-section {
+      position: relative;
+      width: 100%;
+      height: 480vh; /* Generous sticky scroll track for 7 amenities */
+      background: #FAF8EE;
+      user-select: none;
+      scroll-margin-top: 76px;
+    }
+
+    /* Sticky Viewport Frame: Locks cleanly below header at top: 76px */
+    .springs-sticky-frame {
+      position: sticky;
+      top: 76px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 76px);
+      min-height: 560px;
+      max-height: 850px;
+      overflow: hidden;
+      background: #FAF8EE;
+      z-index: 20;
+    }
+
+    /* Full-Screen 50/50 Split Grid */
+    .springs-split-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #FAF8EE;
+    }
+
+    /* LEFT SIDE: Warm Architectural Cream & Slate Panel (Only Title) */
+    .springs-text-panel {
+      background: radial-gradient(circle at 18% 50%, #F3EFE2 0%, #FAF8EE 70%, #F5F2E6 100%);
+      color: #465665;
+      padding: clamp(35px, 6vw, 90px) clamp(30px, 5vw, 75px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+      z-index: 10;
+      border-right: 1px solid rgba(70, 86, 101, 0.12);
+      height: 100%;
+    }
+
+    /* Middle: Unified Content Card Stage */
+    .springs-card-stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    /* Individual Content Card (Title Only - Centered & Majestic) */
+    .springs-content-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(60px);
+      transition: transform 1.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.15s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.25s;
+      will-change: transform, opacity;
+      pointer-events: none;
+    }
+    .springs-content-card.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+      z-index: 2;
+    }
+    /* When advancing down/next: card enters slowly from DOWN */
+    .springs-content-card.from-down {
+      transform: translateY(75px);
+      opacity: 0;
+      visibility: hidden;
+    }
+    /* When advancing down/next: old card exits UP */
+    .springs-content-card.exit-up {
+      transform: translateY(-60px);
+      opacity: 0;
+      visibility: hidden;
+    }
+    /* When advancing up/prev: card enters slowly from UP */
+    .springs-content-card.from-up {
+      transform: translateY(-60px);
+      opacity: 0;
+      visibility: hidden;
+    }
+    /* When advancing up/prev: old card exits DOWN */
+    .springs-content-card.exit-down {
+      transform: translateY(75px);
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* Big Headline: Exact Home Page Editorial Serif Typography */
+    
+    /* Amenity Description Typography */
+    .springs-slide-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.96rem, 1.15vw, 1.08rem);
+      line-height: 1.72;
+      color: #7b8791;
+      font-weight: 400;
+      max-width: 520px;
+      margin-top: 16px;
+    }
+
+    .springs-slide-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 4.2vw, 4rem);
+      font-weight: 700;
+      color: #465665;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin: 0;
+      max-width: 540px;
+    }
+
+    /* RIGHT SIDE: Vertical Opposing Curtain-Wipe Image Viewport - SLOW & CINEMATIC */
+    .springs-image-panel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: clamp(560px, calc(100vh - 76px), 820px);
+      overflow: hidden;
+      background: #FAF8EE;
+    }
+    .springs-curtain-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+      z-index: 1;
+    }
+    .springs-curtain-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 1.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* OPPOSING SLIDE STATES: */
+    .springs-curtain-slide.active {
+      transform: translateY(0);
+      z-index: 5;
+    }
+    .springs-curtain-slide.active img {
+      transform: scale(1);
+    }
+
+    /* Advancing Next (Down): Incoming Image slides slowly IN FROM UP */
+    .springs-curtain-slide.from-up {
+      transform: translateY(-100%);
+      z-index: 4;
+    }
+    .springs-curtain-slide.from-up img {
+      transform: scale(1.06);
+    }
+
+    /* Advancing Next (Down): Outgoing Image slides DOWN */
+    .springs-curtain-slide.exit-down {
+      transform: translateY(100%);
+      z-index: 3;
+    }
+
+    /* Advancing Prev (Up): Incoming Image slides slowly IN FROM DOWN */
+    .springs-curtain-slide.from-down {
+      transform: translateY(100%);
+      z-index: 4;
+    }
+    .springs-curtain-slide.from-down img {
+      transform: scale(1.06);
+    }
+
+    /* Advancing Prev (Up): Outgoing Image slides UP */
+    .springs-curtain-slide.exit-up {
+      transform: translateY(-100%);
+      z-index: 3;
+    }
+
+    .springs-panel-vignette {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(243, 239, 226, 0.3) 0%, transparent 18%),
+                  linear-gradient(to top, rgba(7, 14, 10, 0.25) 0%, transparent 22%);
+      pointer-events: none;
+      z-index: 6;
+    }
+
+    /* Scroll Prompt Hint - Warm Cream Glass Pill */
+    .springs-scroll-hint {
+      position: absolute;
+      bottom: 25px;
+      right: 30px;
+      z-index: 12;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      background: rgba(250, 248, 238, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(70, 86, 101, 0.18);
+      border-radius: var(--radius-pill);
+      color: #465665;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      pointer-events: auto;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(70, 86, 101, 0.12);
+      transition: opacity 0.5s ease;
+    }
+    .springs-scroll-hint svg {
+      width: 14px;
+      height: 14px;
+      animation: bounceHint 2.2s infinite ease-in-out;
+    }
+    @keyframes bounceHint {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+
+    @media (max-width: 960px) {
+      .springs-infra-section {
+        height: auto;
+        min-height: auto;
+      }
+      .springs-split-container {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .springs-text-panel {
+        height: auto;
+        min-height: 440px;
+      }
+      .springs-image-panel {
+        height: 55vh;
+        min-height: 380px;
+      }
+    }
+
+    </style>
+  <!-- Three.js Library for 3D Building Turning Animation -->
+  <script src="assets/three.min.js"></script>
 </head>
-<body style="background-color: #f8fafc; color: #334155; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif;">
+<body>
 
-  <!-- Top Contact Bar (Inline CSS) -->
-  <div style="background-color: #0f172a; color: #cbd5e1; font-size: 0.84rem; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-      <div style="display: flex; gap: 24px;">
-        <span><i class="fa-solid fa-phone" style="color: #d97706;"></i> +1 (800) 555-ROOF</span>
-        <span><i class="fa-solid fa-envelope" style="color: #d97706;"></i> emerald@oneroofproperties.com</span>
-      </div>
-      <div>
-        <a href="nri-corner.html" style="color: #cbd5e1; text-decoration: underline;"><i class="fa-solid fa-earth-americas"></i> NRI Booking Assistance</a>
-      </div>
-    </div>
-  </div>
+  <!-- ======================================================== -->
+  <!-- TOP NAVIGATION BAR (IDENTICAL TO HOME PAGE NAVBAR)        -->
+  <!-- ======================================================== -->
+  <header class="header" id="mainHeader">
+    <div class="holder">
+      <div class="header-block">
+        <!-- Left Nav Items: Home | About | Properties -->
+        <ul class="header-nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
 
-  <!-- Navigation Bar (Inline CSS) -->
-  <header style="background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 1000; padding: 16px 0;">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center;">
-      <a href="index.html" style="display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800; color: #0f172a; text-decoration: none;">
-        <i class="fa-solid fa-house-chimney" style="color: #d97706; font-size: 1.7rem;"></i>
-        <div>One<span style="color: #1e3a8a;">Roof</span></div>
-      </a>
+          <!-- Properties Dropdown with Caret Icon -->
+          <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(0deg)';">
+            <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.prop-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.prop-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px; color: #d97706;">
+              Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+            </a>
 
-      <button id="mobileBtn" class="nav-mobile-btn" style="display: none; background: none; border: none; font-size: 1.5rem; color: #0f172a; cursor: pointer;">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+            <!-- Dropdown Card (Residential & Plotting) -->
+            <div class="prop-dropdown" style="display: none; position: absolute; top: 100%; left: 0; min-width: 320px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 14px; z-index: 1200; text-transform: none;">
+              <!-- Residential Section -->
+              <div style="padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                <a href="residential.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
+                  <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; letter-spacing: 1px;">
+                    <i class="fa-solid fa-building-user" style="color: #60a5fa;"></i> Residential Properties
+                  </span>
+                  <span style="font-size: 0.72rem; color: #60a5fa; font-weight: 600;">(3) &rarr;</span>
+                </a>
+                <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+                  <a href="residential-1.html" style="font-size: 0.8rem; color: #d97706; font-weight: 600; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#d97706';">&bull; Skyview Residency (3-4 BHK)</a>
+                  <a href="residential-2.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Palm Crest Villas (4 BHK)</a>
+                  <a href="residential-3.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Skyline Imperial (5 BHK)</a>
+                </div>
+              </div>
 
-      <ul id="navLinks" class="nav-links-menu" style="display: flex; align-items: center; gap: 22px; list-style: none; margin: 0; padding: 0;">
-        <li><a href="index.html" style="font-size: 0.95rem; font-weight: 600; color: #334155; text-decoration: none;">Home</a></li>
-        <li><a href="about.html" style="font-size: 0.95rem; font-weight: 600; color: #334155; text-decoration: none;">About Us</a></li>
+              <!-- Plotting Section -->
+              <div style="padding-top: 10px;">
+                <a href="plotting.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
+                  <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; letter-spacing: 1px;">
+                    <i class="fa-solid fa-map-location-dot" style="color: #d97706;"></i> Plotting Developments
+                  </span>
+                  <span style="font-size: 0.72rem; color: #d97706; font-weight: 600;">(3) &rarr;</span>
+                </a>
+                <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+                  <a href="plotting-1.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Green Valley Township Plots</a>
+                  <a href="plotting-2.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Royal Meadows Farmhouse Plots</a>
+                  <a href="plotting-3.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Metro Boulevard Commercial Plots</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
 
-        <!-- Properties Dropdown with Caret Icon (Active) -->
-        <li class="dropdown-parent" style="position: relative; padding: 8px 0;" onmouseenter="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(0deg)';">
-          <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.prop-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.prop-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="font-size: 0.95rem; font-weight: 700; color: #1e3a8a; text-decoration: none; border-bottom: 2.5px solid #1e3a8a; padding-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-            Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.72rem; color: #1e3a8a; transition: transform 0.25s ease;"></i>
+        <!-- Center Uploaded One Roof Properties Logo -->
+        <div class="header-logo">
+          <a href="index.html">
+            <img src="assets/one-roof-logo-white.png" alt="One Roof Properties">
           </a>
+        </div>
 
-          <!-- Dropdown Card (Residential & Plotting) -->
-          <div class="prop-dropdown" style="display: none; position: absolute; top: 100%; left: 0; min-width: 320px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,0.12); padding: 12px; z-index: 1200;">
-            <!-- Residential Section -->
-            <div style="padding-bottom: 10px; border-bottom: 1px solid #f1f5f9;">
-              <a href="residential.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: inherit; font-weight: 700; color: #0f172a; transition: background 0.15s ease;" onmouseover="this.style.background='#f1f5f9';" onmouseout="this.style.background='transparent';">
-                <span style="display: flex; align-items: center; gap: 8px;">
-                  <i class="fa-solid fa-building-user" style="color: #1e3a8a;"></i> Residential Properties
-                </span>
-                <span style="font-size: 0.75rem; color: #1e3a8a; font-weight: 600;">View (3) &rarr;</span>
+        <!-- Right Nav Items: Services | Blog | NRI Support | Contact Us -->
+        <div class="header-nav-right">
+          <ul class="header-nav-list">
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+                        <!-- NRI Support Dropdown with Caret Icon -->
+            <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(0deg)';">
+              <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.nri-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.nri-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px;">
+                NRI Support <i class="fa-solid fa-chevron-down nri-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
               </a>
-              <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
-                <a href="residential-1.html" style="font-size: 0.82rem; color: #1e3a8a; font-weight: 700; text-decoration: none; padding: 2px 0;">&bull; The Grand Emerald (Active)</a>
-                <a href="residential-2.html" style="font-size: 0.82rem; color: #64748b; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#1e3a8a';" onmouseout="this.style.color='#64748b';">&bull; Palm Crest Villas (4 BHK)</a>
-                <a href="residential-3.html" style="font-size: 0.82rem; color: #64748b; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#1e3a8a';" onmouseout="this.style.color='#64748b';">&bull; Skyline Imperial (5 BHK)</a>
+
+              <!-- Dropdown Card (Legal Information & Loan Help) -->
+              <div class="nri-dropdown" style="display: none; position: absolute; top: 100%; right: 0; min-width: 290px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 12px; z-index: 1200; text-transform: none;">
+                <!-- Legal Information -->
+                <a href="legal-information.html" style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: #ffffff; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
+                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(217, 119, 6, 0.2); display: flex; align-items: center; justify-content: center; color: #d97706; font-size: 1.05rem; flex-shrink: 0;">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                  </div>
+                  <div>
+                    <div style="font-weight: 700; font-size: 0.88rem; color: #ffffff; letter-spacing: 0.5px;">Legal Information</div>
+                    <div style="font-size: 0.74rem; color: #94a3b8; font-weight: 400; margin-top: 2px;">FEMA, RBI, Title &amp; RERA Guidance</div>
+                  </div>
+                </a>
+
+                <!-- Separator -->
+                <div style="height: 1px; background: rgba(255,255,255,0.08); margin: 6px 0;"></div>
+
+                <!-- Loan Help -->
+                <a href="loan-help.html" style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: #ffffff; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
+                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(96, 165, 250, 0.15); display: flex; align-items: center; justify-content: center; color: #60a5fa; font-size: 1.05rem; flex-shrink: 0;">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                  </div>
+                  <div>
+                    <div style="font-weight: 700; font-size: 0.88rem; color: #ffffff; letter-spacing: 0.5px;">Loan Help</div>
+                    <div style="font-size: 0.74rem; color: #94a3b8; font-weight: 400; margin-top: 2px;">NRI Home Loans, Eligibility &amp; Banking</div>
+                  </div>
+                </a>
               </div>
-            </div>
-
-            <!-- Plotting Section -->
-            <div style="padding-top: 10px;">
-              <a href="plotting.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: inherit; font-weight: 700; color: #0f172a; transition: background 0.15s ease;" onmouseover="this.style.background='#f1f5f9';" onmouseout="this.style.background='transparent';">
-                <span style="display: flex; align-items: center; gap: 8px;">
-                  <i class="fa-solid fa-map-location-dot" style="color: #d97706;"></i> Plotting Developments
-                </span>
-                <span style="font-size: 0.75rem; color: #d97706; font-weight: 600;">View (3) &rarr;</span>
-              </a>
-              <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
-                <a href="plotting-1.html" style="font-size: 0.82rem; color: #64748b; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#d97706';" onmouseout="this.style.color='#64748b';">&bull; Green Valley Township Plots</a>
-                <a href="plotting-2.html" style="font-size: 0.82rem; color: #64748b; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#d97706';" onmouseout="this.style.color='#64748b';">&bull; Royal Meadows Farmhouse Plots</a>
-                <a href="plotting-3.html" style="font-size: 0.82rem; color: #64748b; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#d97706';" onmouseout="this.style.color='#64748b';">&bull; Metro Boulevard Commercial Plots</a>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li><a href="services.html" style="font-size: 0.95rem; font-weight: 600; color: #334155; text-decoration: none;">Services</a></li>
-        <li><a href="nri-corner.html" style="font-size: 0.95rem; font-weight: 600; color: #334155; text-decoration: none;">NRI Corner</a></li>
-        <li><a href="blog.html" style="font-size: 0.95rem; font-weight: 600; color: #334155; text-decoration: none;">Blogs</a></li>
-        <li><a href="contact.html" style="font-size: 0.95rem; font-weight: 600; color: #334155; text-decoration: none;">Contact</a></li>
-      </ul>
-
-      <a href="contact.html" style="display: inline-flex; align-items: center; gap: 8px; background: #1e3a8a; color: #ffffff; padding: 10px 22px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; text-decoration: none;">
-        <i class="fa-solid fa-calendar-check"></i> Book Visit
-      </a>
+            </li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </header>
+  <!-- ===================================================================== -->
+  <!-- 1. SPRINGS-STYLE EXPANDED STICKY HERO & ABOUT SEQUENCE                 -->
+  <!-- ===================================================================== -->
+  <section class="springs-hero-track" id="heroTrack">
+    <div class="springs-hero-sticky" id="heroStickyFrame">
 
-  <!-- Header Banner (Inline CSS) -->
-  <section style="background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 30px 24px 20px;">
-    <div style="max-width: 1280px; margin: 0 auto;">
-      <div style="display: flex; gap: 8px; font-size: 0.88rem; color: #64748b; margin-bottom: 10px;">
-        <a href="index.html" style="color: #64748b; text-decoration: none;">Home</a> / <a href="residential.html" style="color: #64748b; text-decoration: none;">Residential</a> / <span style="color: #0f172a; font-weight: 600;">The Grand Emerald</span>
+      <!-- LEFT SIDE: Deep Forest Emerald Reveal Panel (#132B25) -->
+      <div class="springs-hero-reveal-left" id="heroRevealLeft">
+        <div class="springs-reveal-scrollable" id="heroRevealScrollable">
+          <span class="springs-reveal-eyebrow">ABOUT SKYVIEW RESIDENCY</span>
+          <h2 class="springs-reveal-title">
+            Open the doors<br>
+            of Skyview and step<br>
+            into your true self
+          </h2>
+
+          <p class="springs-reveal-narrative">
+            Enclave of peace and quiet, your personal happy place, where deep relaxation helps you connect to your thoughts and feelings. Here, you will unveil hidden possibilities that the future holds just for you.
+          </p>
+
+          <p class="springs-reveal-narrative springs-reveal-subparagraph">
+            Thoughtfully planned 3 & 4 BHK residences and duplex penthouses set amidst pristine green surrounds in Kothrud, Pune — crafted for effortless elegance, privacy, and panoramic valley horizons.
+          </p>
+
+          <div class="springs-reveal-specs">
+            <div class="springs-spec-item">
+              <span class="springs-spec-label">Configuration</span>
+              <span class="springs-spec-val">3 & 4 BHK &bull; Penthouses</span>
+            </div>
+            <div class="springs-spec-item">
+              <span class="springs-spec-label">Location</span>
+              <span class="springs-spec-val">Kothrud, Pune</span>
+            </div>
+            <div class="springs-spec-item">
+              <span class="springs-spec-label">Possession</span>
+              <span class="springs-spec-val">December 2026</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
-        <div>
-          <span style="display: inline-block; padding: 4px 12px; background: #dbeafe; color: #1e3a8a; border-radius: 6px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Residential Detail 1</span>
-          <h1 style="font-size: 2.3rem; font-weight: 800; color: #0f172a; line-height: 1.2; margin-bottom: 6px;">The Grand Emerald Residences</h1>
-          <div style="font-size: 1rem; color: #64748b; display: flex; align-items: center; gap: 8px;">
-            <i class="fa-solid fa-location-dot" style="color: #d97706;"></i> Sector 65, Metro High-Street Corridor
+      <!-- RIGHT SIDE: Second Tower Perspective -->
+      <div class="springs-hero-second-right" id="heroSecondRight">
+        <img src="assets/opening-3.webp" alt="Skyview Tower Architecture" class="springs-second-img">
+      </div>
+
+      <!-- MAIN HERO LAYER (Clips from 100% to 50% left-to-right on scroll) -->
+      <div class="springs-hero-clip-layer" id="heroClipLayer">
+        <!-- Hero Building Image -->
+        <div class="springs-hero-bg" style="background-image: url('assets/springs-hero-building.webp');"></div>
+        <!-- Low blackish overlay -->
+        <div class="springs-hero-overlay"></div>
+      </div>
+
+      <!-- Initial Hero Typography (Outside clip layer so clip-path NEVER cuts or slices letters!) -->
+      <div class="springs-hero-container" id="heroTextContainer">
+        <div class="container">
+          <div class="springs-hero-content">
+            <h1 class="springs-hero-headline">
+              Skyview Residency
+            </h1>
+            <p class="springs-hero-subtext">
+              Apartments, Terraced Residences, and Duplex Penthouses in a quiet, green neighborhood of Kothrud, Pune.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCROLL TO EXPLORE Pill (from Springs Estate) -->
+      <div class="springs-scroll-to-explore" id="heroScrollBtn" onclick="window.scrollBy({ top: window.innerHeight * 1.5, behavior: 'smooth' });">
+        <span>SCROLL TO EXPLORE</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ===================================================================== -->
+  <!-- 5. PROJECT GALLERY (FULL LENGTH EDGE-TO-EDGE SCREEN SLIDER - NO ARROWS) -->
+  <!-- ===================================================================== -->
+  <section class="section-wrap" id="gallerySection" style="padding-bottom: 36px; padding-top: 30px;">
+    <!-- Only Title and Filter Bar inside container -->
+    <div class="container gallery-header-container">
+      <div class="sec-title-flex">
+        <h2 class="sec-title" style="margin-bottom: 0;">Project Gallery</h2>
+        <div class="gallery-filter-bar">
+          <button class="gal-filter-btn active" onclick="filterGallery('all', this)">All Views</button>
+          <button class="gal-filter-btn" onclick="filterGallery('exterior', this)">Exterior</button>
+          <button class="gal-filter-btn" onclick="filterGallery('interior', this)">Interiors</button>
+          <button class="gal-filter-btn" onclick="filterGallery('amenities', this)">Amenities</button>
+          <button class="gal-filter-btn" onclick="filterGallery('night', this)">Night View</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FULL LENGTH SLIDER - TOUCHES LEFT & RIGHT SCREEN -->
+    <div class="gallery-fullwidth-wrapper">
+      <div class="gal-stage-wrapper" id="galStageWrapper">
+        <!-- Big Image Horizontal Slider Track (Touches Left & Right Screen) -->
+        <div class="big-slider-track" id="bigSliderTrack">
+          <!-- Slide 0: Exterior -->
+          <div class="big-slide-item" data-category="exterior">
+            <img src="assets/about-building.webp" alt="Tower Elevation Facade">
+          </div>
+          <!-- Slide 1: Living Lounge -->
+          <div class="big-slide-item" data-category="interior">
+            <img src="assets/cta-interior-1.jpg" alt="Expansive Living &amp; Dining">
+          </div>
+          <!-- Slide 2: Master Bedroom -->
+          <div class="big-slide-item" data-category="interior">
+            <img src="assets/cta-interior-2.jpg" alt="Master Suite Bedroom">
+          </div>
+          <!-- Slide 3: Kitchen -->
+          <div class="big-slide-item" data-category="interior">
+            <img src="assets/cta-interior-3.jpg" alt="Modular German Kitchen">
+          </div>
+          <!-- Slide 4: Pool Deck -->
+          <div class="big-slide-item" data-category="amenities">
+            <img src="assets/realestate23.webp" alt="Resort Swimming Pool">
+          </div>
+          <!-- Slide 5: High-rise Boulevard -->
+          <div class="big-slide-item" data-category="exterior">
+            <img src="assets/project-5.webp" alt="Towers &amp; Landscaped Boulevard">
+          </div>
+          <!-- Slide 6: Sky Club Pavilion -->
+          <div class="big-slide-item" data-category="amenities">
+            <img src="assets/counter-day.webp" alt="Sky Club Pavilion">
+          </div>
+          <!-- Slide 7: Night Skyline -->
+          <div class="big-slide-item" data-category="night">
+            <img src="assets/counter-night.webp" alt="Illuminated Night Skyline">
           </div>
         </div>
 
-        <div style="text-align: right;">
-          <div style="font-size: 2.4rem; font-weight: 800; color: #1e3a8a;">$850,000 - $1,250,000</div>
-          <span style="color: #16a34a; font-weight: 700; font-size: 0.9rem;"><i class="fa-solid fa-circle-check"></i> RERA Approved & Bank Funded</span>
+        <!-- Scrolling Thumbnail Slider Dock at Bottom (Slides in Sync) -->
+        <div class="gal-slider-dock" id="galSliderDock">
+          <div class="thumb-slider-track" id="thumbSliderTrack">
+            <!-- Thumbnail 0: Exterior -->
+            <div class="gal-thumb-item active" data-index="0" data-category="exterior" onclick="slideToIndex(0)">
+              <img src="assets/about-building.webp" alt="Exterior Facade">
+            </div>
+
+            <!-- Thumbnail 1: Living Lounge -->
+            <div class="gal-thumb-item" data-index="1" data-category="interior" onclick="slideToIndex(1)">
+              <img src="assets/cta-interior-1.jpg" alt="Living Lounge">
+            </div>
+
+            <!-- Thumbnail 2: Master Bedroom -->
+            <div class="gal-thumb-item" data-index="2" data-category="interior" onclick="slideToIndex(2)">
+              <img src="assets/cta-interior-2.jpg" alt="Master Bedroom">
+            </div>
+
+            <!-- Thumbnail 3: Modular Kitchen -->
+            <div class="gal-thumb-item" data-index="3" data-category="interior" onclick="slideToIndex(3)">
+              <img src="assets/cta-interior-3.jpg" alt="Modular Kitchen">
+            </div>
+
+            <!-- Thumbnail 4: Resort Swimming Pool -->
+            <div class="gal-thumb-item" data-index="4" data-category="amenities" onclick="slideToIndex(4)">
+              <img src="assets/realestate23.webp" alt="Resort Pool">
+            </div>
+
+            <!-- Thumbnail 5: High-rise Boulevard -->
+            <div class="gal-thumb-item" data-index="5" data-category="exterior" onclick="slideToIndex(5)">
+              <img src="assets/project-5.webp" alt="Towers &amp; Boulevard">
+            </div>
+
+            <!-- Thumbnail 6: Sky Club Pavilion -->
+            <div class="gal-thumb-item" data-index="6" data-category="amenities" onclick="slideToIndex(6)">
+              <img src="assets/counter-day.webp" alt="Clubhouse Pavilion">
+            </div>
+
+            <!-- Thumbnail 7: Illuminated Night Skyline -->
+            <div class="gal-thumb-item" data-index="7" data-category="night" onclick="slideToIndex(7)">
+              <img src="assets/counter-night.webp" alt="Night Skyline">
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Project Main Content (Inline CSS) -->
-  <main style="max-width: 1280px; margin: 0 auto; padding: 40px 24px 80px;">
-    <div class="details-layout-res" style="display: grid; grid-template-columns: 2fr 1fr; gap: 36px;">
+        <!-- ===================================================================== -->
+  <!-- 6. SPRINGS-STYLE SPLIT OPPOSING CURTAIN AMENITIES SHOWCASE            -->
+  <!-- ===================================================================== -->
+  <section class="springs-infra-section" id="amenitiesSection">
+    <div class="springs-sticky-frame" id="springsStickyFrame">
+      <div class="springs-split-container" id="springsSplitContainer">
+      
+      <!-- LEFT SIDE: Clean Editorial Amenity Title Panel -->
+      <div class="springs-text-panel">
+        <div class="springs-card-stage">
+          <!-- Amenity 1: Landscaped Garden -->
+          <div class="springs-content-card active" id="card0">
+            <h2 class="springs-slide-title">Landscaped Garden</h2>
+            <p class="springs-slide-desc">Lush manicured open green lawns, shaded walkways, and tranquil botanical seating areas to unwind and connect with nature every day.</p>
+          </div>
 
-      <!-- Left Column -->
-      <div>
-        <div style="background: #ffffff; padding: 18px; border-radius: 14px; border: 1px solid #e2e8f0; margin-bottom: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-          <div style="width: 100%; height: 440px; border-radius: 10px; overflow: hidden; margin-bottom: 12px;">
-            <img id="mainEmeraldImg" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80" alt="The Grand Emerald" style="width: 100%; height: 100%; object-fit: cover;">
+          <!-- Amenity 2: Gymnasium -->
+          <div class="springs-content-card from-down" id="card1">
+            <h2 class="springs-slide-title">Gymnasium</h2>
+            <p class="springs-slide-desc">Fully equipped modern fitness center with advanced cardio machines, free weights, and dedicated workout zones for an active routine.</p>
           </div>
-          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
-            <div onclick="document.getElementById('mainEmeraldImg').src='https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80'" style="height: 85px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid #1e3a8a;">
-              <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=300&q=80" alt="Tower" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div onclick="document.getElementById('mainEmeraldImg').src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'" style="height: 85px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent;">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=300&q=80" alt="Living" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div onclick="document.getElementById('mainEmeraldImg').src='https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80'" style="height: 85px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent;">
-              <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=300&q=80" alt="Kitchen" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div onclick="document.getElementById('mainEmeraldImg').src='https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80'" style="height: 85px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent;">
-              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=300&q=80" alt="Clubhouse" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-          </div>
-        </div>
 
-        <!-- Specs -->
-        <div class="specs-grid-res" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; background: #ffffff; padding: 24px; border-radius: 14px; border: 1px solid #e2e8f0; margin-bottom: 28px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-          <div>
-            <i class="fa-solid fa-layer-group" style="font-size: 1.8rem; color: #1e3a8a; margin-bottom: 8px;"></i>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a;">3 & 4 BHK</div>
-            <div style="font-size: 0.85rem; color: #64748b;">Configurations</div>
+          <!-- Amenity 3: Children's Play Area -->
+          <div class="springs-content-card from-down" id="card2">
+            <h2 class="springs-slide-title">Children's Play Area</h2>
+            <p class="springs-slide-desc">A safe, joyful outdoor play arena equipped with modern play equipment, soft-turf safety flooring, and open spaces for kids to thrive.</p>
           </div>
-          <div>
-            <i class="fa-solid fa-ruler-combined" style="font-size: 1.8rem; color: #1e3a8a; margin-bottom: 8px;"></i>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a;">2,450 - 3,200</div>
-            <div style="font-size: 0.85rem; color: #64748b;">Super Built-up Sqft</div>
-          </div>
-          <div>
-            <i class="fa-solid fa-building" style="font-size: 1.8rem; color: #1e3a8a; margin-bottom: 8px;"></i>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a;">G + 34 Floors</div>
-            <div style="font-size: 0.85rem; color: #64748b;">High-Rise Towers</div>
-          </div>
-          <div>
-            <i class="fa-solid fa-calendar-check" style="font-size: 1.8rem; color: #1e3a8a; margin-bottom: 8px;"></i>
-            <div style="font-size: 1.25rem; font-weight: 800; color: #0f172a;">Q4 2027</div>
-            <div style="font-size: 0.85rem; color: #64748b;">Possession Date</div>
-          </div>
-        </div>
 
-        <!-- Description -->
-        <div style="background: #ffffff; padding: 32px; border-radius: 14px; border: 1px solid #e2e8f0; margin-bottom: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-          <h2 style="font-size: 1.4rem; font-weight: 800; color: #0f172a; margin-bottom: 14px;">Architectural Highlights</h2>
-          <p style="color: #475569; font-size: 1rem; line-height: 1.7; margin-bottom: 16px;">
-            The Grand Emerald is meticulously engineered for connoisseurs of fine living. Boasting three towers positioned to maximize natural airflow and uninterrupted 180-degree skyline views, each residence is fitted with German soundproof double-glazed acoustic windows, Italian marble flooring in all formal rooms, and European sanitary fittings.
-          </p>
-          <p style="color: #475569; font-size: 1rem; line-height: 1.7; margin-bottom: 20px;">
-            With only two apartments per lobby floor, your privacy is inviolable. Enjoy private elevator keycards that open directly into your dedicated private foyer.
-          </p>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <span style="background: #f1f5f9; padding: 8px 14px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; color: #1e3a8a;"><i class="fa-solid fa-check"></i> 100% Power Backup</span>
-            <span style="background: #f1f5f9; padding: 8px 14px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; color: #1e3a8a;"><i class="fa-solid fa-check"></i> 3-Tier RFID Access</span>
-            <span style="background: #f1f5f9; padding: 8px 14px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; color: #1e3a8a;"><i class="fa-solid fa-check"></i> 40,000 Sqft Sky Club</span>
+          <!-- Amenity 4: Clubhouse -->
+          <div class="springs-content-card from-down" id="card3">
+            <h2 class="springs-slide-title">Clubhouse</h2>
+            <p class="springs-slide-desc">An expansive resident community lounge designed for society celebrations, private events, indoor leisure, and socializing with neighbors.</p>
+          </div>
+
+          <!-- Amenity 5: High-Speed Elevators -->
+          <div class="springs-content-card from-down" id="card4">
+            <h2 class="springs-slide-title">High-Speed Elevators</h2>
+            <p class="springs-slide-desc">Premium automatic high-speed passenger elevators with full power backup, modern safety systems, and smooth, rapid vertical transit.</p>
+          </div>
+
+          <!-- Amenity 6: Covered Parking -->
+          <div class="springs-content-card from-down" id="card5">
+            <h2 class="springs-slide-title">Covered Parking</h2>
+            <p class="springs-slide-desc">Well-planned, weather-protected covered vehicular parking bays with wide driveways, secure entry points, and dedicated visitor spaces.</p>
+          </div>
+
+          <!-- Amenity 7: 24/7 Security -->
+          <div class="springs-content-card from-down" id="card6">
+            <h2 class="springs-slide-title">24/7 Security</h2>
+            <p class="springs-slide-desc">Round-the-clock gated protection with trained security personnel, continuous CCTV surveillance, perimeter barriers, and intercom access control.</p>
           </div>
         </div>
       </div>
 
-      <!-- Right Column: Booking & Site Visit Form -->
-      <div>
-        <div style="background: #ffffff; padding: 28px; border-radius: 14px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 24px;">
-          <h3 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Schedule Project Walkthrough</h3>
-          <p style="font-size: 0.88rem; color: #64748b; margin-bottom: 20px;">Our relationship director will arrange a VIP site tour and pricing breakdown.</p>
+      <!-- RIGHT SIDE: Vertical Opposing Curtain Image Viewport (7 High-Res Photos) -->
+      <div class="springs-image-panel">
+        <div class="springs-panel-vignette"></div>
 
-          <form onsubmit="event.preventDefault(); alert('Site visit scheduled! An executive will call you with gate access pass.');" style="display: flex; flex-direction: column; gap: 14px;">
-            <input type="text" placeholder="Your Name" required style="padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none;">
-            <input type="email" placeholder="Your Email" required style="padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none;">
-            <input type="tel" placeholder="Phone Number / WhatsApp" required style="padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none;">
-            <select style="padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none; background: #fff;">
-              <option>Interested in 3 BHK (2,450 sqft)</option>
-              <option>Interested in 4 BHK (3,200 sqft)</option>
-            </select>
-            <input type="date" required style="padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem; outline: none;">
-            <button type="submit" style="background: #1e3a8a; color: #ffffff; border: none; padding: 14px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-              <i class="fa-solid fa-calendar-check"></i> Book Site Visit
-            </button>
-          </form>
+        <!-- Slide 0: Landscaped Garden -->
+        <div class="springs-curtain-slide active" id="curtain0">
+          <img src="assets/amenity-garden.jpg" alt="Landscaped Garden">
         </div>
 
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; text-align: center;">
-          <h4 style="font-size: 1.05rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Explore Other Residential</h4>
-          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 14px;">
-            <a href="residential-2.html" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; color: #1e3a8a; text-decoration: none;">
-              Palm Crest Villas (4 BHK) &rarr;
-            </a>
-            <a href="residential-3.html" style="background: #ffffff; border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; color: #1e3a8a; text-decoration: none;">
-              Skyline Imperial Penthouse &rarr;
-            </a>
-          </div>
+        <!-- Slide 1: Gymnasium -->
+        <div class="springs-curtain-slide from-up" id="curtain1">
+          <img src="assets/amenity-gym.jpg" alt="Gymnasium">
         </div>
+
+        <!-- Slide 2: Children's Play Area -->
+        <div class="springs-curtain-slide from-up" id="curtain2">
+          <img src="assets/amenity-playarea.jpg" alt="Children's Play Area">
+        </div>
+
+        <!-- Slide 3: Clubhouse -->
+        <div class="springs-curtain-slide from-up" id="curtain3">
+          <img src="assets/amenity-clubhouse.jpg" alt="Clubhouse">
+        </div>
+
+        <!-- Slide 4: High-Speed Elevators -->
+        <div class="springs-curtain-slide from-up" id="curtain4">
+          <img src="assets/amenity-elevator.jpg" alt="High-Speed Elevators">
+        </div>
+
+        <!-- Slide 5: Covered Parking -->
+        <div class="springs-curtain-slide from-up" id="curtain5">
+          <img src="assets/amenity-parking.jpg" alt="Covered Parking">
+        </div>
+
+        <!-- Slide 6: 24/7 Security -->
+        <div class="springs-curtain-slide from-up" id="curtain6">
+          <img src="assets/amenity-security.jpg" alt="24/7 Security">
+        </div>
+
+
       </div>
 
     </div>
-  </main>
+    </div>
+  </section>
 
-  <!-- Footer (Inline CSS) -->
-  <footer style="background-color: #0b1120; color: #94a3b8; padding-top: 70px; font-size: 0.92rem;">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-      <div class="footer-grid-res" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.08);">
-        <div>
-          <div style="font-size: 1.5rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-            <i class="fa-solid fa-house-chimney" style="color: #d97706;"></i>
-            <div>One<span style="color: #60a5fa;">Roof</span></div>
+  <!-- ===================================================================== -->
+  <!-- 7. ARCHITECTURAL FLOOR PLANS & CONFIGURATIONS                         -->
+  <!-- ===================================================================== -->
+  <section class="section-wrap" style="padding-top: 30px; padding-bottom: 40px;" id="floorPlanSection">
+    <div class="container">
+      <div class="master-card-box">
+        <div class="sec-title-flex">
+          <div>
+            <h2 class="sec-title" style="margin-bottom: 4px;">Architectural Floor Plans</h2>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">MahaRERA verified precision layouts engineered for maximum natural light and optimal cross-ventilation.</p>
           </div>
-          <p style="line-height: 1.7; margin-bottom: 20px;">
-            One Roof Properties is a premier full-service real estate brokerage providing modern residential and commercial property solutions.
+          <div class="floorplan-tab-row" style="margin-bottom: 0;">
+            <button class="plan-pill-tab active" onclick="selectPlan('2bhk', this)">2 BHK Luxury</button>
+            <button class="plan-pill-tab" onclick="selectPlan('3bhk', this)">3 BHK Imperial</button>
+          </div>
+        </div>
+
+        <div class="floorplan-detail-layout" style="margin-top: 24px;">
+          <div class="plan-sketch-frame" style="height: 280px;">
+            <!-- 2D Floor Plan SVG Blueprint -->
+            <svg id="planBlueprintSvg" viewBox="0 0 300 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect x="15" y="15" width="270" height="170" fill="#f8fafc" stroke="#475569" stroke-width="4"/>
+              <rect x="15" y="15" width="130" height="95" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+              <text x="80" y="55" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">BEDROOM 1</text>
+              <text x="80" y="70" font-size="8" fill="#64748b" text-anchor="middle">12'0" x 14'0"</text>
+              <rect x="145" y="15" width="140" height="110" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+              <text x="215" y="65" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">LIVING &amp; DINING</text>
+              <text x="215" y="80" font-size="8" fill="#64748b" text-anchor="middle">18'0" x 12'6"</text>
+              <rect x="15" y="110" width="130" height="75" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+              <text x="80" y="145" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">KITCHEN</text>
+              <text x="80" y="160" font-size="8" fill="#64748b" text-anchor="middle">9'0" x 10'0"</text>
+              <rect x="145" y="125" width="140" height="60" fill="#e0f2fe" stroke="#38bdf8" stroke-width="2"/>
+              <text x="215" y="158" font-size="10" font-weight="700" fill="#0369a1" text-anchor="middle">DECK BALCONY</text>
+            </svg>
+          </div>
+
+          <div class="plan-meta-col" style="padding-left: 10px;">
+            <h4 id="planTypeTitle" style="font-size: 1.35rem; color: var(--navy-primary); margin-bottom: 12px;">2 BHK Type A</h4>
+            <div class="plan-spec-line">
+              <span>Carpet Area</span>
+              <strong id="planCarpetText">850 sq. ft.</strong>
+            </div>
+            <div class="plan-spec-line">
+              <span>Built-up Area</span>
+              <strong id="planBuiltText">980 sq. ft.</strong>
+            </div>
+            <div class="plan-spec-line">
+              <span>Balcony / Sundeck</span>
+              <strong id="planBalconyText">1 Viewing Deck (80 sq. ft.)</strong>
+            </div>
+            <div class="plan-spec-line">
+              <span>Parking Allocation</span>
+              <strong>1 Covered Basement Bay</strong>
+            </div>
+            <div class="plan-spec-line">
+              <span>Starting Investment</span>
+              <strong style="color: #b45309; font-size: 1.05rem;">₹ 1.25 Cr*</strong>
+            </div>
+
+            <a href="#brochureSection" class="btn-download-plan" style="margin-top: 20px;">
+              <i class="fa-solid fa-file-arrow-down"></i> Download Full Dimension PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 8. LOCATION ADVANTAGES  +  9. PROJECT SPECIFICATIONS (SIDE-BY-SIDE)    -->
+  <!-- ===================================================================== -->
+  <section class="section-wrap" style="padding-top: 0;">
+    <div class="container">
+      <div class="two-col-master-grid">
+        <!-- 8. Location Advantages -->
+        <div class="master-card-box">
+          <div>
+            <h2 class="sec-title">Location Advantages</h2>
+            <div class="location-adv-grid">
+              <div class="landmarks-list">
+                <div class="landmark-row-item">
+                  <div class="landmark-icon-sq"><i class="fa-solid fa-cart-shopping"></i></div>
+                  <span>3 min to D'Mart</span>
+                </div>
+                <div class="landmark-row-item">
+                  <div class="landmark-icon-sq"><i class="fa-solid fa-hospital"></i></div>
+                  <span>5 min to City Hospital</span>
+                </div>
+                <div class="landmark-row-item">
+                  <div class="landmark-icon-sq"><i class="fa-solid fa-train-subway"></i></div>
+                  <span>10 min to Metro Station</span>
+                </div>
+                <div class="landmark-row-item">
+                  <div class="landmark-icon-sq"><i class="fa-solid fa-plane-departure"></i></div>
+                  <span>20 min to Pune Airport</span>
+                </div>
+                <div class="landmark-row-item">
+                  <div class="landmark-icon-sq"><i class="fa-solid fa-graduation-cap"></i></div>
+                  <span>15 min to Pune University</span>
+                </div>
+                <div class="landmark-row-item">
+                  <div class="landmark-icon-sq"><i class="fa-solid fa-road"></i></div>
+                  <span>Easy access to Mumbai-Bangalore Highway</span>
+                </div>
+              </div>
+
+              <div class="map-preview-card">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.5684478796856!2d73.80521631536785!3d18.502844374533036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bfbb6d79e86d%3A0xe6dd7d21c5f3b745!2sKothrud%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy">
+                </iframe>
+                <a href="https://maps.google.com/?q=Kothrud,+Pune" target="_blank" class="btn-map-overlay">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> View on Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Project Specifications -->
+        <div class="master-card-box">
+          <div>
+            <h2 class="sec-title">Project Specifications</h2>
+            <div class="specs-layout-flex">
+              <table class="specs-table-compact">
+                <tbody>
+                  <tr>
+                    <td class="spec-label-col">Project Area</td>
+                    <td class="spec-val-col">2.5 Acres</td>
+                  </tr>
+                  <tr>
+                    <td class="spec-label-col">Total Units</td>
+                    <td class="spec-val-col">160 Units</td>
+                  </tr>
+                  <tr>
+                    <td class="spec-label-col">Number of Floors</td>
+                    <td class="spec-val-col">14 Floors</td>
+                  </tr>
+                  <tr>
+                    <td class="spec-label-col">Construction Status</td>
+                    <td class="spec-val-col">Under Construction</td>
+                  </tr>
+                  <tr>
+                    <td class="spec-label-col">Possession Date</td>
+                    <td class="spec-val-col">Dec 2026</td>
+                  </tr>
+                  <tr>
+                    <td class="spec-label-col">RERA Number</td>
+                    <td class="spec-val-col">P52100012345</td>
+                  </tr>
+                  <tr>
+                    <td class="spec-label-col">Developer</td>
+                    <td class="spec-val-col">ABC Developers</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="spec-photo-frame">
+                <img src="assets/project-5.webp" alt="Skyview Residency Architecture Elevation">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 10. BROCHURE & DOWNLOADS  +  11. ENQUIRY / SITE VISIT (SIDE-BY-SIDE) -->
+  <!-- ===================================================================== -->
+  <section class="section-wrap" style="padding-top: 0;" id="brochureSection">
+    <div class="container">
+      <div class="two-col-master-grid" id="enquirySection">
+        <!-- 10. Brochure & Downloads -->
+        <div class="master-card-box">
+          <div>
+            <h2 class="sec-title">Brochure &amp; Downloads</h2>
+            <div class="downloads-3-grid">
+              <div class="download-card-unit">
+                <i class="fa-regular fa-file-pdf"></i>
+                <div class="dl-name">Project Brochure</div>
+                <div class="dl-size">Download PDF (2.5 MB)</div>
+              </div>
+
+              <div class="download-card-unit">
+                <i class="fa-solid fa-layer-group"></i>
+                <div class="dl-name">Floor Plans</div>
+                <div class="dl-size">Download PDF (4.8 MB)</div>
+              </div>
+
+              <div class="download-card-unit">
+                <i class="fa-regular fa-clipboard"></i>
+                <div class="dl-name">Specifications</div>
+                <div class="dl-size">Download PDF (1.2 MB)</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button class="btn-download-all" onclick="alert('Downloading full documentation kit for Skyview Residency...')">
+              <i class="fa-solid fa-cloud-arrow-down"></i> Download All
+            </button>
+          </div>
+        </div>
+
+        <!-- 11. Enquiry / Site Visit -->
+        <div class="master-card-box">
+          <div class="enquiry-card-inner">
+            <h2 class="sec-title" style="margin-bottom: 4px;">Enquiry / Site Visit</h2>
+            <p class="enquiry-subtext">Get in Touch — Fill in your details and our team will get back to you shortly.</p>
+
+            <form onsubmit="handleEnquiryForm(event)">
+              <div class="enquiry-form-grid">
+                <div>
+                  <input type="text" class="enquiryquiry-input enquiry-input" placeholder="Name *" required>
+                </div>
+                <div>
+                  <input type="tel" class="enquiry-input" placeholder="Mobile Number *" required>
+                </div>
+                <div>
+                  <input type="email" class="enquiry-input" placeholder="Email Address *" required>
+                </div>
+                <div>
+                  <select class="enquiry-input">
+                    <option value="" disabled selected>Preferred Configuration</option>
+                    <option value="2bhk">2 BHK (750 - 850 sq. ft.)</option>
+                    <option value="3bhk">3 BHK (1,050 - 1,250 sq. ft.)</option>
+                    <option value="both">Interested in Both</option>
+                  </select>
+                </div>
+                <div class="form-col-full">
+                  <input type="text" class="enquiry-input" placeholder="Message (Optional)">
+                </div>
+              </div>
+
+              <div class="terms-check-row">
+                <input type="checkbox" id="termsCheck" required checked>
+                <label for="termsCheck">I agree to the <a href="privacy-policy.html" style="text-decoration:underline;">Privacy Policy</a> and <a href="privacy-policy.html" style="text-decoration:underline;">Terms &amp; Conditions</a></label>
+              </div>
+
+              <div class="enquiry-btn-row">
+                <button type="submit" class="btn-submit-enquiry">Submit Enquiry</button>
+                <a href="https://wa.me/919876543210?text=Hi%20One%20Roof%20Properties,%20I%20am%20interested%20in%20Skyview%20Residency,%20Kothrud." target="_blank" class="btn-whatsapp-chat">
+                  <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+              </div>
+            </form>
+
+            <div class="whatsapp-float-helper">
+              <i class="fa-brands fa-whatsapp" style="font-size:1.15rem;"></i>
+              <span>Need Help? Chat with us on WhatsApp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 12. SIMILAR RESIDENTIAL PROJECTS  +  13. FAQS (SIDE-BY-SIDE)          -->
+  <!-- ===================================================================== -->
+  <section class="section-wrap" style="padding-top: 0;">
+    <div class="container">
+      <div class="two-col-master-grid">
+        <!-- 12. Similar Residential Projects -->
+        <div class="master-card-box">
+          <div>
+            <div class="sec-title-flex">
+              <h2 class="sec-title" style="margin-bottom: 0;">Similar Residential Projects</h2>
+              <div class="gal-nav-arrows">
+                <button class="gal-arrow-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="gal-arrow-btn"><i class="fa-solid fa-chevron-right"></i></button>
+              </div>
+            </div>
+
+            <div class="similar-projects-row">
+              <!-- Card 1 -->
+              <div class="similar-proj-card">
+                <div class="similar-img-box">
+                  <img src="assets/project-1.jpg" alt="Green Valley Kothrud">
+                </div>
+                <div class="similar-meta-box">
+                  <div>
+                    <div class="similar-title">Green Valley</div>
+                    <div class="similar-loc">Kothrud, Pune</div>
+                    <div class="similar-bhk">2 BHK | 3 BHK</div>
+                    <div class="similar-price">₹ 1.10 Cr* Onwards</div>
+                  </div>
+                  <a href="residential-2.html" class="similar-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="similar-proj-card">
+                <div class="similar-img-box">
+                  <img src="assets/project-2.jpg" alt="Sunshine Heights Baner">
+                </div>
+                <div class="similar-meta-box">
+                  <div>
+                    <div class="similar-title">Sunshine Heights</div>
+                    <div class="similar-loc">Baner, Pune</div>
+                    <div class="similar-bhk">2 BHK | 3 BHK</div>
+                    <div class="similar-price">₹ 1.45 Cr* Onwards</div>
+                  </div>
+                  <a href="residential-3.html" class="similar-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="similar-proj-card">
+                <div class="similar-img-box">
+                  <img src="assets/project-3.jpg" alt="Lakeview Residency Hinjewadi">
+                </div>
+                <div class="similar-meta-box">
+                  <div>
+                    <div class="similar-title">Lakeview Residency</div>
+                    <div class="similar-loc">Hinjewadi, Pune</div>
+                    <div class="similar-bhk">2 BHK | 3 BHK</div>
+                    <div class="similar-price">₹ 1.20 Cr* Onwards</div>
+                  </div>
+                  <a href="residential-2.html" class="similar-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. Frequently Asked Questions -->
+        <div class="master-card-box">
+          <div>
+            <h2 class="sec-title">Frequently Asked Questions</h2>
+            <div class="faq-accordion-container">
+              <div class="faq-item active">
+                <div class="faq-header" onclick="toggleFaq(this)">
+                  <span>What configurations are available?</span>
+                  <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-body">
+                  Skyview Residency offers meticulously crafted 2 BHK (750 - 850 sq.ft.) and 3 BHK (1,050 - 1,250 sq.ft.) luxury apartments with private viewing decks.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-header" onclick="toggleFaq(this)">
+                  <span>What is the starting price?</span>
+                  <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-body">
+                  Pricing begins at ₹ 1.25 Cr* onwards for 2 BHK configurations and ₹ 1.75 Cr* onwards for 3 BHK layouts, exclusive of government taxes and registration.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-header" onclick="toggleFaq(this)">
+                  <span>Is the project ready to move?</span>
+                  <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-body">
+                  Skyview Residency is currently under active construction with MahaRERA-approved milestones. Handover and possession are scheduled for December 2026.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-header" onclick="toggleFaq(this)">
+                  <span>What amenities are available?</span>
+                  <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-body">
+                  Residents enjoy access to a resort swimming pool, high-tech gymnasium, clubhouse, children's play park, landscaped green spaces, 24/7 biometric security, and covered parking.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-header" onclick="toggleFaq(this)">
+                  <span>Where is the project located?</span>
+                  <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-body">
+                  The project is located in central Kothrud, Pune, just 3 minutes from D'Mart, 10 minutes from the nearest Pune Metro station, and 15 minutes from Pune University.
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-header" onclick="toggleFaq(this)">
+                  <span>Can I schedule a site visit?</span>
+                  <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-body">
+                  Yes, complimentary VIP site visits with personalized property consultation can be scheduled online via our enquiry form or via direct WhatsApp concierge.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- FOOTER                                                                -->
+  <!-- ===================================================================== -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <i class="fa-solid fa-hotel" style="color:var(--gold-accent); font-size:1.6rem;"></i>
+            <h3 style="margin-bottom:0;">ONE ROOF PROPERTIES</h3>
+          </div>
+          <p>Your trusted real estate partner in Pune. Transparent guidance, premium residential apartments, and curated plotted developments.</p>
+          <div class="social-links">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Quick Links</div>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html#services">Services</a></li>
+            <li><a href="blog.html">Blog &amp; Insights</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Top Properties</div>
+          <ul class="footer-links-list">
+            <li><a href="residential-1.html">Skyview Residency (Kothrud)</a></li>
+            <li><a href="residential-2.html">Palm Crest Villas (Baner)</a></li>
+            <li><a href="residential-3.html">Skyline Imperial (Kalyani Nagar)</a></li>
+            <li><a href="plotting-1.html">Greenwood Estate (Mulshi)</a></li>
+            <li><a href="plotting-2.html">Emerald Valley (Lonavala)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Pune Contact Desk</div>
+          <p style="margin-bottom: 8px; color: #cbd5e1;">
+            <i class="fa-solid fa-location-dot" style="color: var(--gold-accent); margin-right: 6px;"></i>
+            Level 7, Platinum Tower, Balewadi High Street, Pune 411045
           </p>
-        </div>
-
-        <div>
-          <h4 style="color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;">Quick Links</h4>
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="margin-bottom: 12px;"><a href="index.html" style="color: #94a3b8; text-decoration: none;">Home</a></li>
-            <li style="margin-bottom: 12px;"><a href="about.html" style="color: #94a3b8; text-decoration: none;">About Us</a></li>
-            <li style="margin-bottom: 12px;"><a href="residential.html" style="color: #fff; font-weight: 600; text-decoration: none;">Residential</a></li>
-            <li style="margin-bottom: 12px;"><a href="plotting.html" style="color: #94a3b8; text-decoration: none;">Plotting</a></li>
-            <li style="margin-bottom: 12px;"><a href="nri-corner.html" style="color: #94a3b8; text-decoration: none;">NRI Corner</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 style="color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;">Resources</h4>
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="margin-bottom: 12px;"><a href="services.html" style="color: #94a3b8; text-decoration: none;">Services</a></li>
-            <li style="margin-bottom: 12px;"><a href="blog.html" style="color: #94a3b8; text-decoration: none;">Blogs</a></li>
-            <li style="margin-bottom: 12px;"><a href="contact.html" style="color: #94a3b8; text-decoration: none;">Contact Us</a></li>
-            <li style="margin-bottom: 12px;"><a href="privacy-policy.html" style="color: #94a3b8; text-decoration: none;">Privacy & Policy</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 style="color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;">Contact</h4>
-          <p style="margin-bottom: 10px;"><i class="fa-solid fa-phone" style="color: #d97706;"></i> +1 (800) 555-ROOF</p>
-          <p><i class="fa-solid fa-envelope" style="color: #d97706;"></i> emerald@oneroofproperties.com</p>
+          <p style="margin-bottom: 8px; color: #cbd5e1;">
+            <i class="fa-solid fa-phone" style="color: var(--gold-accent); margin-right: 6px;"></i>
+            +91 98765 43210
+          </p>
+          <p style="color: #cbd5e1;">
+            <i class="fa-solid fa-envelope" style="color: var(--gold-accent); margin-right: 6px;"></i>
+            info@oneroofproperties.com
+          </p>
         </div>
       </div>
 
-      <div style="padding: 24px 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; flex-wrap: wrap; gap: 10px;">
-        <div>&copy; 2026 One Roof Properties LLC. All rights reserved.</div>
-        <div style="display: flex; gap: 20px;">
-          <a href="privacy-policy.html" style="color: #94a3b8; text-decoration: none;">Privacy & Policy</a>
-          <a href="contact.html" style="color: #94a3b8; text-decoration: none;">Contact</a>
+      <div class="footer-bottom-row">
+        <div>&copy; 2026 One Roof Properties. All rights reserved. MahaRERA: P52100012345.</div>
+        <div style="display:flex; gap:16px;">
+          <a href="privacy-policy.html" style="color:#94a3b8;">Privacy Policy</a>
+          <a href="privacy-policy.html" style="color:#94a3b8;">Terms &amp; Conditions</a>
+          <a href="contact.html" style="color:#94a3b8;">Support</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- Video Modal -->
+  <div class="video-modal-backdrop" id="videoModal" onclick="closeVideoModal(event)">
+    <div class="video-modal-box" onclick="event.stopPropagation()">
+      <span class="video-modal-close" onclick="closeVideoModal()">&times;</span>
+      <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+        <iframe 
+          id="videoIframe" 
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+          style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" 
+          allow="autoplay; encrypted-media" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
   <script>
-    const mobileBtn = document.getElementById('mobileBtn');
-    const navLinks = document.getElementById('navLinks');
-    if (mobileBtn && navLinks) {
-      mobileBtn.addEventListener('click', () => {
-        if (navLinks.style.display === 'flex') {
-          navLinks.style.display = 'none';
+    // FAQ Accordion
+    function toggleFaq(headerElement) {
+      const item = headerElement.parentElement;
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    // Floor Plan Switcher
+    const planBlueprints = {
+      '2bhk': {
+        title: '2 BHK Type A',
+        carpet: '850 sq. ft.',
+        built: '980 sq. ft.',
+        balcony: '1 Viewing Deck',
+        svg: `<rect x="15" y="15" width="270" height="170" fill="#f8fafc" stroke="#475569" stroke-width="4"/>
+              <rect x="15" y="15" width="130" height="95" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+              <text x="80" y="55" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">BEDROOM 1</text>
+              <text x="80" y="70" font-size="8" fill="#64748b" text-anchor="middle">12'0" x 14'0"</text>
+              <rect x="145" y="15" width="140" height="110" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+              <text x="215" y="65" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">LIVING &amp; DINING</text>
+              <text x="215" y="80" font-size="8" fill="#64748b" text-anchor="middle">18'0" x 12'6"</text>
+              <rect x="15" y="110" width="130" height="75" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+              <text x="80" y="145" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">KITCHEN</text>
+              <text x="80" y="160" font-size="8" fill="#64748b" text-anchor="middle">9'0" x 10'0"</text>
+              <rect x="145" y="125" width="140" height="60" fill="#e0f2fe" stroke="#38bdf8" stroke-width="2"/>
+              <text x="215" y="158" font-size="10" font-weight="700" fill="#0369a1" text-anchor="middle">DECK BALCONY</text>`
+      },
+      '3bhk': {
+        title: '3 BHK Type B',
+        carpet: '1,180 sq. ft.',
+        built: '1,420 sq. ft.',
+        balcony: '2 Balconies (210 sq. ft.)',
+        svg: `<rect x="15" y="15" width="270" height="170" fill="#f8fafc" stroke="#475569" stroke-width="4"/>
+              <rect x="15" y="15" width="90" height="85" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+              <text x="60" y="50" font-size="9" font-weight="700" fill="#1e293b" text-anchor="middle">BED 1</text>
+              <rect x="105" y="15" width="90" height="85" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+              <text x="150" y="50" font-size="9" font-weight="700" fill="#1e293b" text-anchor="middle">BED 2</text>
+              <rect x="195" y="15" width="90" height="85" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+              <text x="240" y="50" font-size="9" font-weight="700" fill="#78350f" text-anchor="middle">MASTER</text>
+              <rect x="15" y="100" width="180" height="85" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+              <text x="105" y="145" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">GRAND LIVING LOUNGE</text>
+              <rect x="195" y="100" width="90" height="85" fill="#e0f2fe" stroke="#38bdf8" stroke-width="2"/>
+              <text x="240" y="145" font-size="9" font-weight="700" fill="#0369a1" text-anchor="middle">KITCHEN &amp; DECK</text>`
+      }
+    };
+
+    function selectPlan(type, btn) {
+      document.querySelectorAll('.plan-pill-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const data = planBlueprints[type];
+      if (data) {
+        document.getElementById('planTypeTitle').textContent = data.title;
+        document.getElementById('planCarpetText').textContent = data.carpet;
+        document.getElementById('planBuiltText').textContent = data.built;
+        document.getElementById('planBalconyText').textContent = data.balcony;
+        document.getElementById('planBlueprintSvg').innerHTML = data.svg;
+      }
+    }
+
+    // =====================================================================
+    // 5. FAST HORIZONTAL AUTO SLIDER CONTROLLER (BRISK & SMOOTH ANIMATION)
+    // =====================================================================
+    let currentSlide = 0;
+    const totalSlides = 8;
+    let autoSlideInterval = null;
+    let isSliderPaused = false;
+    let currentFilter = 'all';
+
+    const bigTrack = document.getElementById('bigSliderTrack');
+    const thumbTrack = document.getElementById('thumbSliderTrack');
+    const dockContainer = document.getElementById('galSliderDock');
+    const stageBox = document.getElementById('galStageWrapper');
+    const thumbCards = document.querySelectorAll('.gal-thumb-item');
+
+    function slideToIndex(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      currentSlide = index;
+
+      // 1. Fast, fluid horizontal slide on BIG image
+      if (bigTrack) {
+        bigTrack.style.transform = `translateX(-${index * 100}%)`;
+      }
+
+      // 2. Highlight active thumbnail
+      thumbCards.forEach((thumb, idx) => {
+        if (idx === index) {
+          thumb.classList.add('active');
         } else {
-          navLinks.style.display = 'flex';
-          navLinks.style.flexDirection = 'column';
-          navLinks.style.position = 'absolute';
-          navLinks.style.top = '70px';
-          navLinks.style.left = '0';
-          navLinks.style.width = '100%';
-          navLinks.style.backgroundColor = '#ffffff';
-          navLinks.style.padding = '20px';
-          navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+          thumb.classList.remove('active');
         }
       });
+
+      // 3. Fast horizontal slide on THUMBNAIL track to center the active thumbnail
+      if (thumbTrack && dockContainer && thumbCards[index]) {
+        const activeCard = thumbCards[index];
+        const dockWidth = dockContainer.offsetWidth;
+        const cardOffsetLeft = activeCard.offsetLeft;
+        const cardWidth = activeCard.offsetWidth;
+
+        let targetX = (dockWidth / 2) - cardOffsetLeft - (cardWidth / 2);
+        
+        const trackTotalWidth = thumbTrack.scrollWidth;
+        const maxScrollLeft = 14;
+        const minScrollRight = dockWidth - trackTotalWidth - 14;
+
+        if (trackTotalWidth > dockWidth) {
+          if (targetX > maxScrollLeft) targetX = maxScrollLeft;
+          if (targetX < minScrollRight) targetX = minScrollRight;
+        } else {
+          targetX = (dockWidth - trackTotalWidth) / 2;
+        }
+
+        thumbTrack.style.transform = `translateX(${targetX}px)`;
+      }
+    }
+
+    function advanceNextSlide() {
+      let next = currentSlide + 1;
+      if (currentFilter !== 'all') {
+        const validIndices = [];
+        thumbCards.forEach((card, idx) => {
+          if (card.dataset.category === currentFilter) validIndices.push(idx);
+        });
+        if (validIndices.length > 0) {
+          const pos = validIndices.indexOf(currentSlide);
+          next = validIndices[(pos + 1) % validIndices.length];
+        }
+      }
+      if (next >= totalSlides) next = 0;
+      slideToIndex(next);
+    }
+
+    // Fast Auto Slider: advances briskly every 1.8 seconds with 0.42s fluid transition
+    function startAutoSlider() {
+      stopAutoSlider();
+      autoSlideInterval = setInterval(() => {
+        if (!isSliderPaused) {
+          advanceNextSlide();
+        }
+      }, 1800);
+    }
+
+    function stopAutoSlider() {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+      }
+    }
+
+    // Filter categories
+    function filterGallery(category, btnElement) {
+      currentFilter = category;
+      document.querySelectorAll('.gal-filter-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+
+      let firstMatch = -1;
+      thumbCards.forEach((card, i) => {
+        const cat = card.dataset.category;
+        if (category === 'all' || cat === category) {
+          card.style.opacity = '1';
+          card.style.pointerEvents = 'auto';
+          if (firstMatch === -1) firstMatch = i;
+        } else {
+          card.style.opacity = '0.25';
+          card.style.pointerEvents = 'none';
+        }
+      });
+
+      if (firstMatch !== -1) {
+        slideToIndex(firstMatch);
+      }
+    }
+
+    // Pause on hover or touch to inspect, resume fast slide on mouse leave
+    if (stageBox) {
+      stageBox.addEventListener('mouseenter', () => { isSliderPaused = true; });
+      stageBox.addEventListener('mouseleave', () => { isSliderPaused = false; });
+      stageBox.addEventListener('touchstart', () => { isSliderPaused = true; }, { passive: true });
+      stageBox.addEventListener('touchend', () => { isSliderPaused = false; }, { passive: true });
+    }
+
+    // Start fast slider immediately
+    slideToIndex(0);
+    startAutoSlider();
+
+    window.addEventListener('resize', () => {
+      slideToIndex(currentSlide);
+    });
+
+    
+    // =====================================================================
+    // =====================================================================
+    // 0. SPRINGS-STYLE HERO-TO-ABOUT PINNED SCROLL TRANSITION
+    // =====================================================================
+    function syncHeroTransitionWithScroll() {
+      const trackEl = document.getElementById('heroTrack');
+      const stickyEl = document.getElementById('heroStickyFrame');
+      const clipLayerEl = document.getElementById('heroClipLayer');
+      const textContainerEl = document.getElementById('heroTextContainer');
+      const secondRightEl = document.getElementById('heroSecondRight');
+      const revealScrollableEl = document.getElementById('heroRevealScrollable');
+      const scrollBtnEl = document.getElementById('heroScrollBtn');
+
+      if (!trackEl || !stickyEl || !clipLayerEl) return;
+
+      const rect = trackEl.getBoundingClientRect();
+      const headerOffset = 76;
+      const stickyHeight = stickyEl.offsetHeight || (window.innerHeight - headerOffset);
+      const totalTravel = rect.height - stickyHeight;
+
+      if (totalTravel <= 0) return;
+
+      const scrolled = headerOffset - rect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / totalTravel));
+
+      // 1. Hero text & scroll button fade out cleanly before the image shrinks
+      if (textContainerEl) {
+        if (progress <= 0) {
+          textContainerEl.style.opacity = '1';
+          textContainerEl.style.transform = 'translateY(0px)';
+          textContainerEl.style.pointerEvents = 'auto';
+        } else if (progress < 0.12) {
+          const p = progress / 0.12;
+          textContainerEl.style.opacity = (1 - p).toFixed(3);
+          textContainerEl.style.transform = `translateY(-${(p * 35).toFixed(1)}px)`;
+          textContainerEl.style.pointerEvents = 'auto';
+        } else {
+          textContainerEl.style.opacity = '0';
+          textContainerEl.style.transform = 'translateY(-35px)';
+          textContainerEl.style.pointerEvents = 'none';
+        }
+      }
+
+      if (scrollBtnEl) {
+        if (progress <= 0.01) {
+          scrollBtnEl.style.opacity = '1';
+          scrollBtnEl.style.pointerEvents = 'auto';
+        } else if (progress < 0.10) {
+          scrollBtnEl.style.opacity = (1 - (progress - 0.01) / 0.09).toFixed(3);
+          scrollBtnEl.style.pointerEvents = 'none';
+        } else {
+          scrollBtnEl.style.opacity = '0';
+          scrollBtnEl.style.pointerEvents = 'none';
+        }
+      }
+
+      // 2. Hero image shrinks from left to right:
+      // polygon(clipLeft% 0%, 100% 0%, 100% 100%, clipLeft% 100%)
+      // progress 0.06 -> 0.42: clipLeft goes from 0% to 50%
+      let clipLeft = 0;
+      if (progress <= 0.06) {
+        clipLeft = 0;
+      } else if (progress < 0.42) {
+        const p = (progress - 0.06) / (0.42 - 0.06);
+        clipLeft = p * 50;
+      } else {
+        clipLeft = 50;
+      }
+      clipLayerEl.style.clipPath = `polygon(${clipLeft.toFixed(2)}% 0%, 100% 0%, 100% 100%, ${clipLeft.toFixed(2)}% 100%)`;
+
+      // 3. Right side image changes to second perspective (opening-3.webp) as the about content arrives!
+      // Synchronized with progress 0.18 -> 0.65 (curtain reveal from bottom to top)
+      if (secondRightEl) {
+        const secondImgEl = secondRightEl.querySelector('img');
+        if (progress <= 0.18) {
+          secondRightEl.style.clipPath = 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)';
+          if (secondImgEl) secondImgEl.style.transform = 'scale(1.08) translateY(20px)';
+        } else if (progress < 0.65) {
+          const p = (progress - 0.18) / (0.65 - 0.18);
+          const topPercent = (1 - p) * 100;
+          secondRightEl.style.clipPath = `polygon(0% ${topPercent.toFixed(2)}%, 100% ${topPercent.toFixed(2)}%, 100% 100%, 0% 100%)`;
+          if (secondImgEl) {
+            const s = (1.08 - 0.08 * p).toFixed(3);
+            const ty = ((1 - p) * 20).toFixed(1);
+            secondImgEl.style.transform = `scale(${s}) translateY(${ty}px)`;
+          }
+        } else {
+          secondRightEl.style.clipPath = 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)';
+          if (secondImgEl) secondImgEl.style.transform = 'scale(1) translateY(0px)';
+        }
+      }
+
+      // 4. Left About Content glides up from down below:
+      // progress 0.18 -> 0.65
+      if (revealScrollableEl) {
+        if (progress <= 0.18) {
+          revealScrollableEl.style.transform = 'translateY(60px)';
+          revealScrollableEl.style.opacity = '0.2';
+        } else if (progress < 0.65) {
+          const p = (progress - 0.18) / (0.65 - 0.18);
+          const y = (1 - p) * 60;
+          revealScrollableEl.style.transform = `translateY(${y.toFixed(1)}px)`;
+          revealScrollableEl.style.opacity = Math.min(1, 0.2 + p * 0.8).toFixed(3);
+        } else {
+          revealScrollableEl.style.transform = 'translateY(0px)';
+          revealScrollableEl.style.opacity = '1';
+        }
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(syncHeroTransitionWithScroll);
+    }, { passive: true });
+    window.addEventListener('resize', syncHeroTransitionWithScroll, { passive: true });
+    syncHeroTransitionWithScroll();
+
+    // Navbar glass effect on scroll (same as Home Page)
+    const mainHeaderEl = document.getElementById('mainHeader');
+    function updateHeaderGlass() {
+      if (!mainHeaderEl) return;
+      if (window.scrollY >= 60) {
+        mainHeaderEl.classList.add('scrolled');
+      } else {
+        mainHeaderEl.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', updateHeaderGlass, { passive: true });
+    updateHeaderGlass();
+
+
+    // 6. SPRINGS-STYLE SPLIT OPPOSING CURTAIN AMENITIES CONTROLLER (7 SLIDES - STICKY SCROLL)
+    // =====================================================================
+    let currentCurtainIndex = 0;
+    const totalCurtainSlides = 7;
+    let isCurtainTransitioning = false;
+    let pendingSlideIndex = null;
+    let pendingSlideDirection = 0;
+    let isScrollTicking = false;
+
+    const curtainSlideEls = [
+      document.getElementById('curtain0'),
+      document.getElementById('curtain1'),
+      document.getElementById('curtain2'),
+      document.getElementById('curtain3'),
+      document.getElementById('curtain4'),
+      document.getElementById('curtain5'),
+      document.getElementById('curtain6')
+    ];
+    const curtainCardEls = [
+      document.getElementById('card0'),
+      document.getElementById('card1'),
+      document.getElementById('card2'),
+      document.getElementById('card3'),
+      document.getElementById('card4'),
+      document.getElementById('card5'),
+      document.getElementById('card6')
+    ];
+    const amenitiesSectionEl = document.getElementById('amenitiesSection');
+    const stickyFrameEl = document.getElementById('springsStickyFrame');
+    const scrollHintEl = document.getElementById('springsScrollHint');
+    const floorPlanSectionEl = document.getElementById('floorPlanSection');
+
+    function goToCurtainSlide(newIndex, explicitDirection = 0) {
+      if (newIndex === currentCurtainIndex) {
+        pendingSlideIndex = null;
+        return;
+      }
+      if (newIndex < 0 || newIndex >= totalCurtainSlides) return;
+
+      if (isCurtainTransitioning) {
+        pendingSlideIndex = newIndex;
+        pendingSlideDirection = explicitDirection;
+        return;
+      }
+
+      isCurtainTransitioning = true;
+      pendingSlideIndex = null;
+      const oldIndex = currentCurtainIndex;
+      const direction = explicitDirection !== 0 ? explicitDirection : (newIndex > oldIndex ? 1 : -1);
+      currentCurtainIndex = newIndex;
+
+      // 1. Animate Right Side Image (opposing curtain transition)
+      curtainSlideEls.forEach((slide, idx) => {
+        if (!slide) return;
+        if (idx === newIndex) {
+          slide.className = 'springs-curtain-slide active';
+        } else if (idx === oldIndex) {
+          slide.className = direction > 0 ? 'springs-curtain-slide exit-down' : 'springs-curtain-slide exit-up';
+        } else {
+          slide.className = direction > 0 ? 'springs-curtain-slide from-up' : 'springs-curtain-slide from-down';
+        }
+      });
+
+      // 2. Animate Left Side Content Card (opposing: enters from down when advancing next, from up when scrolling prev)
+      curtainCardEls.forEach((card, idx) => {
+        if (!card) return;
+        if (idx === newIndex) {
+          card.className = 'springs-content-card active';
+        } else if (idx === oldIndex) {
+          card.className = direction > 0 ? 'springs-content-card exit-up' : 'springs-content-card exit-down';
+        } else {
+          card.className = direction > 0 ? 'springs-content-card from-down' : 'springs-content-card from-up';
+        }
+      });
+
+      // 3. Update Scroll Hint Button
+      if (scrollHintEl) {
+        if (newIndex === totalCurtainSlides - 1) {
+          scrollHintEl.innerHTML = '<span>Explore Floor Plans &darr;</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>';
+        } else {
+          scrollHintEl.innerHTML = '<span>Scroll to explore</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>';
+        }
+      }
+
+      setTimeout(() => {
+        isCurtainTransitioning = false;
+        if (pendingSlideIndex !== null && pendingSlideIndex !== currentCurtainIndex) {
+          const nextTarget = pendingSlideIndex;
+          const nextDir = pendingSlideDirection;
+          pendingSlideIndex = null;
+          goToCurtainSlide(nextTarget, nextDir);
+        }
+      }, 500);
+    }
+
+    // Scroll-driven sticky synchronization: works both scrolling DOWN and scrolling UP from bottom
+    function syncCurtainWithScroll() {
+      if (!amenitiesSectionEl || !stickyFrameEl) return;
+
+      const rect = amenitiesSectionEl.getBoundingClientRect();
+      const headerOffset = 76;
+      const frameHeight = stickyFrameEl.offsetHeight || (window.innerHeight - headerOffset);
+      const totalTravel = rect.height - frameHeight;
+
+      if (totalTravel <= 0) return;
+
+      // Distance scrolled within the amenities section
+      const scrolled = headerOffset - rect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / totalTravel));
+
+      // Map progress [0, 1] to slide index [0 .. 6]
+      const targetIndex = Math.min(totalCurtainSlides - 1, Math.floor(progress * totalCurtainSlides));
+
+      if (targetIndex !== currentCurtainIndex) {
+        const direction = targetIndex > currentCurtainIndex ? 1 : -1;
+        goToCurtainSlide(targetIndex, direction);
+      }
+    }
+
+    function onCurtainScroll() {
+      if (!isScrollTicking) {
+        requestAnimationFrame(() => {
+          syncCurtainWithScroll();
+          isScrollTicking = false;
+        });
+        isScrollTicking = true;
+      }
+    }
+
+    // Button click: smoothly scroll page to next slide or next section
+    function scrollToNextAmenity() {
+      if (!amenitiesSectionEl || !stickyFrameEl) return;
+      const headerOffset = 76;
+      const frameHeight = stickyFrameEl.offsetHeight || (window.innerHeight - headerOffset);
+      const totalTravel = amenitiesSectionEl.offsetHeight - frameHeight;
+
+      if (currentCurtainIndex < totalCurtainSlides - 1) {
+        const nextIdx = currentCurtainIndex + 1;
+        const targetProgress = (nextIdx + 0.35) / totalCurtainSlides;
+        const targetY = amenitiesSectionEl.offsetTop - headerOffset + (totalTravel * targetProgress);
+        window.scrollTo({
+          top: targetY,
+          behavior: 'smooth'
+        });
+      } else {
+        smoothScrollToFloorPlans();
+      }
+    }
+
+    function smoothScrollToFloorPlans() {
+      if (floorPlanSectionEl) {
+        const headerOffset = 76;
+        const targetPos = floorPlanSectionEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: targetPos,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    if (scrollHintEl) {
+      scrollHintEl.onclick = (e) => {
+        e.stopPropagation();
+        scrollToNextAmenity();
+      };
+    }
+
+    // Passive global scroll and resize listeners for buttery-smooth sticky transitions
+    window.addEventListener('scroll', onCurtainScroll, { passive: true });
+    window.addEventListener('resize', syncCurtainWithScroll, { passive: true });
+
+    // Initial sync in case page loaded or refreshed within the section
+    syncCurtainWithScroll();
+
+    // Video Modal
+    function openVideoModal() {
+      document.getElementById('videoModal').style.display = 'flex';
+    }
+    function closeVideoModal(e) {
+      document.getElementById('videoModal').style.display = 'none';
+      const iframe = document.getElementById('videoIframe');
+      iframe.src = iframe.src; // resets video playback
+    }
+
+    // Enquiry Form
+    function handleEnquiryForm(e) {
+      e.preventDefault();
+      alert('Thank you! Your inquiry for Skyview Residency has been received. Our Pune property advisor will contact you shortly.');
+      e.target.reset();
     }
   </script>
 </body>
 </html>
-

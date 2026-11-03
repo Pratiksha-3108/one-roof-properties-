@@ -2469,6 +2469,134 @@
         border-radius: 9999px 9999px 0 0;
       }
     }
+
+    /* ======================================================== */
+    /* STRATEGIC PARTNERS & ALLIANCES SECTION                   */
+    /* ======================================================== */
+    .partners-section {
+      background: #FAF8EE; /* Architectural cream from home page */
+      padding: clamp(60px, 6.5vw, 95px) 0;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(70, 86, 101, 0.12);
+      border-bottom: 1px solid rgba(70, 86, 101, 0.12);
+    }
+    .partners-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 48px);
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .partners-header {
+      margin-bottom: clamp(32px, 4vw, 46px);
+    }
+    .partners-eyebrow {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: #d97706; /* Home page gold accent */
+      margin-bottom: 10px;
+    }
+    .partners-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.0rem, 3.2vw, 3.0rem);
+      font-weight: 700;
+      color: #465665; /* Home page slate navy heading */
+      line-height: 1.2;
+      margin: 0 0 10px 0;
+      letter-spacing: -0.5px;
+    }
+    .partners-subtitle {
+      font-family: 'Jost', 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(0.95rem, 1.1vw, 1.08rem);
+      font-weight: 400;
+      color: #7b8791; /* Home page subtext */
+      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 540px;
+    }
+    .partners-marquee-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 14px 0 20px 0;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+    .partners-marquee-track {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 2vw, 26px);
+      width: max-content;
+      animation: partnersMarqueeScroll 28s linear infinite;
+    }
+    .partners-marquee-group {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 2vw, 26px);
+      flex-shrink: 0;
+    }
+    .partners-marquee-container:hover .partners-marquee-track {
+      animation-play-state: paused;
+    }
+    @keyframes partnersMarqueeScroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(calc(-100% - clamp(16px, 2vw, 26px)));
+      }
+    }
+    .partner-card {
+      flex-shrink: 0;
+      width: clamp(140px, 13vw, 175px);
+      height: clamp(92px, 8.5vw, 114px);
+      background: #0d1419; /* Luxury deep slate navy matching home dark elements */
+      border: 1px solid rgba(70, 86, 101, 0.3);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      box-sizing: border-box;
+      box-shadow: 0 8px 22px rgba(70, 86, 101, 0.08);
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+    }
+    .partner-card:hover {
+      transform: translateY(-5px);
+      border-color: #d97706; /* Home page gold accent on hover */
+      box-shadow: 0 16px 32px rgba(70, 86, 101, 0.16), 0 0 22px rgba(217, 119, 6, 0.22);
+    }
+    .partner-card img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: brightness(0.96) contrast(1.04);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
+      display: block;
+    }
+    .partner-card:hover img {
+      filter: brightness(1.15) contrast(1.08);
+      transform: scale(1.06);
+    }
+    @media (max-width: 768px) {
+      .partner-card {
+        width: 130px;
+        height: 84px;
+        padding: 8px 12px;
+      }
+      .partners-marquee-track {
+        animation-duration: 20s;
+      }
+    }
+
   </style>
 </head>
 <body class="is-loader" style="background-color: #FAF8EE; color: #334155; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif;">
@@ -2986,6 +3114,67 @@
 
       </div>
 
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- STRATEGIC PARTNERS & ALLIANCES SECTION                   -->
+  <!-- ======================================================== -->
+  <section id="partnersSection" class="partners-section">
+    <div class="partners-inner">
+      <div class="partners-header">
+        <span class="partners-eyebrow">Strategic Alliances</span>
+        <h2 class="partners-title">Our Partners</h2>
+        <p class="partners-subtitle">Trusted by leading brands across the industry</p>
+      </div>
+
+      <div class="partners-marquee-container">
+        <div class="partners-marquee-track">
+          <!-- Group 1 -->
+          <div class="partners-marquee-group">
+            <div class="partner-card" title="In Harmony With Nature">
+              <img src="assets/inside-partner-harmony.png" alt="In Harmony With Nature Partner Logo" loading="lazy">
+            </div>
+            <div class="partner-card" title="Navkar Group - We Build Your Dreams">
+              <img src="assets/inside-partner-navkar.png" alt="Navkar Group Partner Logo" loading="lazy">
+            </div>
+            <div class="partner-card" title="Namrata Group">
+              <img src="assets/inside-partner-namrata.png" alt="Namrata Group Partner Logo" loading="lazy">
+            </div>
+            <div class="partner-card" title="Sanjay Jain Group">
+              <img src="assets/inside-partner-sanjay-jain.png" alt="Sanjay Jain Group Partner Logo" loading="lazy">
+            </div>
+            <div class="partner-card" title="SMP - Creating Energetic Spaces">
+              <img src="assets/inside-partner-smp.png" alt="SMP Partner Logo" loading="lazy">
+            </div>
+            <div class="partner-card" title="TAB - Tejas Arun Bahirat Group">
+              <img src="assets/inside-partner-tab.png" alt="TAB Group Partner Logo" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Group 2 (Duplicate for Seamless Infinite Loop) -->
+          <div class="partners-marquee-group" aria-hidden="true">
+            <div class="partner-card" title="In Harmony With Nature">
+              <img src="assets/inside-partner-harmony.png" alt="In Harmony With Nature Partner Logo" loading="lazy">
+            </div>
+            <div class="partner-card" title="Navkar Group - We Build Your Dreams">
+              <img src="assets/inside-partner-navkar.png" alt="Navkar Group Partner Logo" loading="lazy">
+            </div>
+            <div class="partner-card" title="Namrata Group">
+              <img src="assets/inside-partner-namrata.png" alt="Namrata Group Partner Logo" loading="lazy">
+            </div>
+            <div class="partner-card" title="Sanjay Jain Group">
+              <img src="assets/inside-partner-sanjay-jain.png" alt="Sanjay Jain Group Partner Logo" loading="lazy">
+            </div>
+            <div class="partner-card" title="SMP - Creating Energetic Spaces">
+              <img src="assets/inside-partner-smp.png" alt="SMP Partner Logo" loading="lazy">
+            </div>
+            <div class="partner-card" title="TAB - Tejas Arun Bahirat Group">
+              <img src="assets/inside-partner-tab.png" alt="TAB Group Partner Logo" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

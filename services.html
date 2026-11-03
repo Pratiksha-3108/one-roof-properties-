@@ -311,31 +311,35 @@
       cursor: default;
     }
 
-    .card-top-flame-icon {
+    .card-service-num {
+      font-family: var(--font-serif-head);
+      font-size: clamp(1.45rem, 1.85vw, 2rem);
+      font-weight: 700;
       color: var(--gold-accent);
-      font-size: clamp(1.3rem, 1.6vw, 1.65rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
       margin-bottom: clamp(10px, 1.2vw, 16px);
       display: inline-block;
       flex-shrink: 0;
     }
 
     .card-service-title {
-      color: var(--gold-accent);
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(1.3rem, 1.65vw, 1.8rem);
+      color: var(--navy-primary); /* #465665 from home page */
+      font-family: var(--font-serif-head); /* 'Nanum Myeongjo', Georgia, serif */
+      font-size: clamp(1.35rem, 1.7vw, 1.85rem);
       font-weight: 700;
       letter-spacing: -0.02em;
-      line-height: 1.15;
+      line-height: 1.2;
       margin-bottom: clamp(8px, 1vw, 12px);
       flex-shrink: 0;
     }
 
     .card-service-headline {
-      font-family: var(--font-serif-head);
-      color: var(--navy-primary);
-      font-size: clamp(0.92rem, 1.05vw, 1.12rem);
-      font-weight: 700;
-      line-height: 1.35;
+      font-family: 'Jost', sans-serif;
+      color: var(--navy-dark); /* #1f343f deep contrast subtitle from home page */
+      font-size: clamp(0.94rem, 1.08vw, 1.15rem);
+      font-weight: 600;
+      line-height: 1.4;
       letter-spacing: -0.2px;
       margin-bottom: clamp(8px, 0.9vw, 12px);
       flex-shrink: 0;
@@ -948,7 +952,7 @@
             <img src="assets/service-selling-properties-plots.jpg" alt="Selling Properties &amp; Plots" loading="lazy">
           </div>
           <div class="stagger-content-card">
-            <i class="fa-solid fa-fire-flame-curved card-top-flame-icon"></i>
+            <span class="card-service-num">01</span>
             <h3 class="card-service-title">Selling Properties &amp; Plots</h3>
             <div class="card-service-headline">Strategic Representation to Maximize High-Value Asset Realization.</div>
             <p class="card-service-desc">
@@ -960,7 +964,7 @@
         <!-- ================= ROW 2: Reselling and Purchasing [Content] | [Photo] | [Spacer] ================= -->
         <div class="stagger-row type-left" id="service-row-2">
           <div class="stagger-content-card">
-            <i class="fa-solid fa-fire-flame-curved card-top-flame-icon"></i>
+            <span class="card-service-num">02</span>
             <h3 class="card-service-title">Reselling and Purchasing</h3>
             <div class="card-service-headline">Seamless Secondary Market Acquisitions &amp; Liquidations.</div>
             <p class="card-service-desc">
@@ -980,7 +984,7 @@
             <img src="assets/service-construction-projects.jpg" alt="Construction Projects" loading="lazy">
           </div>
           <div class="stagger-content-card">
-            <i class="fa-solid fa-fire-flame-curved card-top-flame-icon"></i>
+            <span class="card-service-num">03</span>
             <h3 class="card-service-title">Construction Projects</h3>
             <div class="card-service-headline">Turnkey Architectural Execution from Foundation to Key Handover.</div>
             <p class="card-service-desc">
@@ -992,7 +996,7 @@
         <!-- ================= ROW 4: Investment Projects [Content] | [Photo] | [Spacer] ================= -->
         <div class="stagger-row type-left" id="service-row-4">
           <div class="stagger-content-card">
-            <i class="fa-solid fa-fire-flame-curved card-top-flame-icon"></i>
+            <span class="card-service-num">04</span>
             <h3 class="card-service-title">Investment Projects</h3>
             <div class="card-service-headline">Strategic Land &amp; Real Estate Engineered for Wealth Compounding.</div>
             <p class="card-service-desc">
@@ -1012,7 +1016,7 @@
             <img src="assets/service-redevelopment-projects.jpg" alt="Redevelopment Projects" loading="lazy">
           </div>
           <div class="stagger-content-card">
-            <i class="fa-solid fa-fire-flame-curved card-top-flame-icon"></i>
+            <span class="card-service-num">05</span>
             <h3 class="card-service-title">Redevelopment Projects</h3>
             <div class="card-service-headline">Transforming Legacy Housing Societies into Modern Landmarks.</div>
             <p class="card-service-desc">
@@ -1024,7 +1028,7 @@
         <!-- ================= ROW 6: Engineer And Contractor Service [Content] | [Photo] | [Spacer] ================= -->
         <div class="stagger-row type-left" id="service-row-6">
           <div class="stagger-content-card">
-            <i class="fa-solid fa-fire-flame-curved card-top-flame-icon"></i>
+            <span class="card-service-num">06</span>
             <h3 class="card-service-title">Engineer And Contractor Service</h3>
             <div class="card-service-headline">Licensed Engineering, Structural Audits &amp; Civil Contracting.</div>
             <p class="card-service-desc">
@@ -1041,48 +1045,7 @@
     </div>
   </section>
 
-  <!-- ===================== 4-STEP PROCESS ===================== -->
-  <section class="process-section">
-    <div class="container">
-      <div class="section-intro-center">
-        <span class="tracker-pill">PRECISION EXECUTION</span>
-        <h2 class="section-headline">Our 4-Step <span>Client Engagement</span> Model</h2>
-        <p class="section-subtext">
-          A disciplined, institutional approach ensuring zero friction from initial consultation to registry and asset
-          management.
-        </p>
-      </div>
-
-      <div class="process-grid">
-        <div class="process-card">
-          <div class="process-step-num">01</div>
-          <h3 class="process-title">Strategic Mandate Discovery</h3>
-          <p class="process-desc">We map your lifestyle parameters, wealth goals, risk thresholds, and investment
-            horizons to create a tailored property acquisition brief.</p>
-        </div>
-        <div class="process-card">
-          <div class="process-step-num">02</div>
-          <h3 class="process-title">Curated Shortlisting &amp; Due Diligence</h3>
-          <p class="process-desc">Rigorous forensic title scrutiny, MahaRERA verification, and ground-truth valuations
-            before presenting pre-qualified luxury properties.</p>
-        </div>
-        <div class="process-card">
-          <div class="process-step-num">03</div>
-          <h3 class="process-title">Commercial Negotiation &amp; Banking</h3>
-          <p class="process-desc">Direct high-level negotiations, institutional mortgage structuring at preferential
-            rates, and cross-border FEMA/RBI documentation.</p>
-        </div>
-        <div class="process-card">
-          <div class="process-step-num">04</div>
-          <h3 class="process-title">Registry, Key Handover &amp; Asset Care</h3>
-          <p class="process-desc">Frictionless legal deed registration, seamless possession handover, and ongoing
-            property asset management to safeguard long-term yields.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== CTA ===================== -->
+    <!-- ===================== CTA ===================== -->
   <section class="cta-consult-section">
     <div class="container">
       <div class="cta-box">

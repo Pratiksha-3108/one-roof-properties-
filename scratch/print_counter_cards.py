@@ -1,0 +1,9 @@
+with open('index.html', 'r', encoding='utf-8') as f:
+    text = f.read()
+
+import re
+matches = re.findall(r'(\.counter-card[a-zA-Z0-9_-]*\s*\{[^}]+\})', text)
+for m in matches:
+    print(m)
+    print('-'*40)
+

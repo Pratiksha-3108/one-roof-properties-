@@ -456,7 +456,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center bottom;
+      object-position: center center;
     }
 
     /* ======================================================== */
@@ -2197,12 +2197,12 @@
       position: absolute;
       bottom: clamp(10px, 1.4vw, 18px);
       left: 0;
-      font-family: 'Jost', 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
       font-size: clamp(2.6rem, 5.0vw, 5.2rem);
       font-weight: 700;
       color: #465665;
       line-height: 1.15;
-      letter-spacing: -1.5px;
+      letter-spacing: -1px;
       margin: 0;
       padding-bottom: 6px;
       white-space: nowrap;
@@ -2294,41 +2294,41 @@
     .sr-project-node {
       position: relative;
       flex-shrink: 0;
-      width: clamp(480px, 46vw, 680px);
-      height: clamp(480px, 46vw, 680px);
+      width: clamp(340px, 30vw, 430px);
+      height: clamp(430px, 38vw, 530px);
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
       will-change: transform, opacity;
     }
-    /* The large outer circle outside the image circle */
+    /* The large outer ring outside the image */
     .sr-node-ring {
       position: absolute;
       inset: 0;
-      border-radius: 50%;
+      border-radius: 9999px 9999px 0 0;
       border: none !important;
-      display: none !important; /* Removed bluish outer circular outline */
+      display: none !important;
       pointer-events: none;
     }
     .sr-project-node:hover .sr-node-ring {
       display: none !important;
     }
 
-    /* Circular Architectural Window Frame (Inner Image Circle that scales Big <-> Small) */
+    /* Arched Architectural Window Frame (Window Shape like Raheja Vistas Reference) */
     .sr-node-portal {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(1);
       transform-origin: center center;
-      width: clamp(380px, 35vw, 520px);
-      height: clamp(380px, 35vw, 520px);
-      border-radius: 50%;
+      width: clamp(280px, 24vw, 350px);
+      height: clamp(390px, 34vw, 480px);
+      border-radius: 9999px 9999px 0 0; /* Pure Roman Arched Window Shape */
       overflow: hidden;
       background: #111a22;
       box-shadow: 0 20px 45px rgba(70, 86, 101, 0.16);
-      transition: filter 0.3s ease;
+      transition: filter 0.3s ease, box-shadow 0.3s ease;
       will-change: transform;
     }
     .sr-node-portal img {
@@ -2343,63 +2343,68 @@
       transform: scale(1.08);
       filter: brightness(1.04);
     }
+    .sr-project-node:hover .sr-node-portal {
+      box-shadow: 0 30px 60px rgba(70, 86, 101, 0.28);
+    }
 
-    /* Window Overlay Caption (Project Content on Circle) */
+    /* Window Overlay Caption (Project Content on Arch Window) */
     .sr-node-overlay {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(17, 26, 34, 0.25) 0%, rgba(17, 26, 34, 0.78) 100%);
+      background: linear-gradient(180deg, rgba(17, 26, 34, 0.08) 0%, rgba(17, 26, 34, 0.35) 45%, rgba(17, 26, 34, 0.88) 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
       text-align: center;
-      padding: clamp(18px, 3.5vw, 36px);
+      padding: clamp(20px, 3vw, 36px) clamp(16px, 2.5vw, 28px);
       box-sizing: border-box;
-      transition: opacity 0.3s ease;
+      transition: background 0.3s ease, opacity 0.3s ease;
       pointer-events: none;
       z-index: 5;
     }
+    .sr-project-node:hover .sr-node-overlay {
+      background: linear-gradient(180deg, rgba(17, 26, 34, 0.15) 0%, rgba(17, 26, 34, 0.5) 45%, rgba(17, 26, 34, 0.94) 100%);
+    }
     .sr-node-sub {
       font-family: 'Jost', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 600;
-      letter-spacing: 2px;
+      letter-spacing: 2.2px;
       text-transform: uppercase;
-      color: #d97706;
+      color: #d97706; /* Homepage gold accent */
       margin-bottom: 6px;
     }
     .sr-node-name {
-      font-family: 'Nanum Myeongjo', Georgia, serif;
-      font-size: clamp(1.35rem, 1.8vw, 1.95rem);
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.28rem, 1.6vw, 1.8rem);
       font-weight: 700;
-      color: #ffffff;
+      color: #FAF8EE; /* Homepage architectural cream */
       margin: 0 0 6px 0;
-      line-height: 1.25;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+      line-height: 1.22;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
     }
     .sr-node-detail {
       font-family: 'Jost', sans-serif;
       font-size: 0.84rem;
       font-weight: 400;
-      color: rgba(255, 255, 255, 0.92);
-      line-height: 1.5;
-      max-width: 270px;
-      margin: 0 0 12px 0;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+      color: rgba(250, 248, 238, 0.88); /* Homepage cream-tinted body */
+      line-height: 1.55;
+      max-width: 260px;
+      margin: 0 0 14px 0;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
     }
     .sr-node-link {
       font-family: 'Jost', sans-serif;
-      font-size: 0.74rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.6px;
       text-transform: uppercase;
       color: #FAF8EE;
-      background: rgba(217, 119, 6, 0.9);
-      padding: 6px 16px;
+      background: #d97706; /* Homepage gold accent */
+      padding: 7px 18px;
       border-radius: 999px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
       transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
@@ -2452,12 +2457,13 @@
         display: flex;
       }
       .sr-project-node {
-        width: 290px;
-        height: 290px;
+        width: 230px;
+        height: 320px;
       }
       .sr-node-portal {
-        width: 220px;
-        height: 220px;
+        width: 200px;
+        height: 285px;
+        border-radius: 9999px 9999px 0 0;
       }
     }
   </style>
@@ -2663,7 +2669,7 @@
 
       <!-- Right Expanding Circular Image Container -->
       <div class="about-image-expand-box" id="aboutImageExpandBox">
-        <img src="assets/about-building.jpg" alt="Luxury Architectural Living" onerror="this.onerror=null; this.src='https://apilive.origenrealty.in/uploads/pages/1792396151722-689617382.jpg';">
+        <img src="assets/one-roof-office-about.jpg" alt="One Roof Properties Corporate Office" loading="eager" decoding="async">
       </div>
 
     </div>
@@ -4075,8 +4081,8 @@
         if (!train || nodes.length === 0) return;
 
         const firstNode = nodes[0];
-        const nodeWidth = firstNode.offsetWidth || 560;
-        const stride = nodeWidth; // Tangent outer rings touch edge-to-edge
+        const nodeWidth = firstNode.offsetWidth || 380;
+        const stride = nodeWidth; // Clean card stride
         const totalProjects = nodes.length;
 
         const maxScrollDist = (totalProjects - 1) * stride;
@@ -4093,28 +4099,32 @@
           const portal = node.querySelector('.sr-node-portal');
           const overlay = node.querySelector('.sr-node-overlay');
 
-          if (portal) {
-            let scale = 1.0;
-            if (normDist < 0) {
-              // Scrolled past to the left: inner image circle shrinks to SMALL (down to 0.30)
-              scale = Math.max(0.30, 1.0 - 0.70 * Math.abs(normDist));
-            } else {
-              // Coming from the right: starts medium-big (~0.85) and expands to 1.0
-              scale = Math.max(0.85, 1.0 - 0.15 * normDist);
-            }
-            portal.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
+          // Keep full arched window proportions (no miniature shrink)
+          let scale = 1.0;
+          if (normDist > 0) {
+            // Subtle natural depth for incoming cards from right
+            scale = Math.max(0.96, 1.0 - 0.04 * Math.min(normDist, 2));
+          } else {
+            scale = 1.0;
+          }
 
-            // When circle shrinks into small circle, fade out the overlay text smoothly
-            if (overlay) {
-              if (scale < 0.75) {
-                const overlayOpacity = Math.max(0, (scale - 0.40) / 0.35);
-                overlay.style.opacity = overlayOpacity.toFixed(2);
-                overlay.style.pointerEvents = overlayOpacity > 0.3 ? 'auto' : 'none';
-              } else {
-                overlay.style.opacity = '1';
-                overlay.style.pointerEvents = 'auto';
-              }
-            }
+          if (portal) {
+            portal.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
+          }
+
+          // Smoothly fade out card only as it exits past active position into left margin
+          if (normDist < 0) {
+            const exitOpacity = Math.max(0, 1.0 - 1.25 * Math.abs(normDist));
+            node.style.opacity = exitOpacity.toFixed(2);
+            node.style.pointerEvents = exitOpacity > 0.3 ? 'auto' : 'none';
+          } else {
+            node.style.opacity = '1';
+            node.style.pointerEvents = 'auto';
+          }
+
+          if (overlay) {
+            overlay.style.opacity = '1';
+            overlay.style.pointerEvents = 'auto';
           }
         });
       }
@@ -4136,9 +4146,20 @@
 
         const viewportWidth = window.innerWidth;
         const firstNode = resNodes[0] || plotNodes[0];
-        const nodeWidth = firstNode ? firstNode.offsetWidth : 560;
-        // Position of active project: anchored on the right side of the screen
-        const targetCenter = Math.min(viewportWidth * 0.70, viewportWidth - nodeWidth * 0.45);
+        const nodeWidth = firstNode ? firstNode.offsetWidth : 380;
+        
+        // Position active card cleanly right next to brand text block (where small image was, no awkward gap)
+        const stageCenter = section.querySelector('.sr-stage-center');
+        const brandBlock = section.querySelector('.sr-brand-block');
+        let targetCenter;
+        if (stageCenter && brandBlock) {
+          const brandRect = brandBlock.getBoundingClientRect();
+          const stageRect = stageCenter.getBoundingClientRect();
+          const brandRightInStage = brandRect.right - stageRect.left;
+          targetCenter = brandRightInStage + 28 + (nodeWidth / 2);
+        } else {
+          targetCenter = Math.min(viewportWidth * 0.48, viewportWidth - nodeWidth * 0.52);
+        }
 
         // PHASE 1: RESIDENTIAL (progress 0.00 to 0.48)
         // Scrolls through all 3 residential projects one by one

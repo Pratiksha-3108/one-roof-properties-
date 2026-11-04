@@ -30,8 +30,6 @@
       --head-font: 'Nanum Myeongjo', Georgia, serif;
       --body-font: 'Jost', sans-serif;
       --title-font: 'Plus Jakarta Sans', sans-serif;
-      --header-h: 78px;
-      --stage-h: clamp(390px, 54vh, 500px);
     }
 
     html {
@@ -45,7 +43,7 @@
       font-family: var(--body-font);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      overflow-x: clip; /* NOT hidden: 'hidden' on body breaks position: sticky */
     }
 
     a { text-decoration: none; color: inherit; }
@@ -501,10 +499,12 @@
     }
 
     /* ============================================================
-       02 — PROJECT OVERVIEW / ABOUT SECTION — pinned scroll animation
+       ABOUT SECTION  — pinned scroll animation
        JS only writes ONE variable: --p  (0 → 1) on #about
        ============================================================ */
     .about {
+      --header-h: 78px;
+      --stage-h: clamp(390px, 54vh, 500px);
       --p: 0;                       /* scroll progress, set by JS */
       --grow: 0;                    /* cards growth 0→1  (first 70% of scroll) */
       --text-out: 0;                /* text fade-out 0→1 (first 40%) */
@@ -634,7 +634,6 @@
     .sizes-sec {
       padding: clamp(80px, 8vw, 120px) 0;
       background: var(--cream);
-      border-top: 1px solid var(--border-line);
     }
     .size-filter-tabs {
       display: flex;
@@ -1197,58 +1196,57 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 02 — PROJECT OVERVIEW / ABOUT SECTION                    -->
+    <!-- 02 — PROJECT OVERVIEW (PINNED SCROLL TRIPTYCH ANIMATION)  -->
     <!-- ======================================================== -->
     <section class="about" id="about">
-      <div id="overviewSection" style="position: absolute; top: 0;"></div>
-      <div class="about__sticky">
-        <div class="about__inner">
+    <div class="about__sticky">
+      <div class="about__inner">
 
-          <div class="about__stage">
+        <div class="about__stage">
 
-            <!-- Column 1: headline (top) + small card (bottom, grows up) -->
-            <div class="about__col">
-              <div class="about__title">
-                <span class="about__eyebrow">02 &mdash; Project Overview</span>
-                <h2 class="about__headline">Where Rare Land<br>Finds Its Sanctuary</h2>
-              </div>
-              <figure class="card card--left">
-                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80" alt="Township landscape">
-                <span class="card__tag">Artistic Impression</span>
-              </figure>
+          <!-- Column 1: headline (top) + small card (bottom, grows up) -->
+          <div class="about__col">
+            <div class="about__title">
+              <span class="about__eyebrow">02 &mdash; Project Overview</span>
+              <h2 class="about__headline">Where Rare Land Finds Its Sanctuary</h2>
             </div>
-
-            <!-- Column 2: tall centre card -->
-            <div class="about__col">
-              <figure class="card card--center">
-                <img src="assets/pune-luxury-villas.jpg" alt="Demarcated Roads and Villa Infrastructure">
-                <span class="card__tag">Actual Site View</span>
-              </figure>
-            </div>
-
-            <!-- Column 3: small card (top, grows down) + paragraph (bottom) -->
-            <div class="about__col">
-              <figure class="card card--right">
-                <img src="assets/amenity-garden.jpg" alt="Leisure waters and gardens">
-                <span class="card__tag">Artistic Impression</span>
-              </figure>
-              <div class="about__text">
-                <p>Green Valley Township is an 80-acre master-planned residential plotting enclave along Pune's North Expressway corridor, with 420+ demarcated freehold plots, 80% bank loan approval and vast landscaped parks. Designed for generational legacy and complete peace of mind.</p>
-              </div>
-            </div>
-
+            <figure class="card card--left">
+              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80" alt="Township landscape">
+              <span class="card__tag">Artistic Impression</span>
+            </figure>
           </div>
 
-          <!-- Stats — appear when the cards have aligned -->
-          <div class="about__stats">
-            <div class="stat"><div class="stat__num">80 Acres</div><div class="stat__label">Total Land Area</div></div>
-            <div class="stat"><div class="stat__num">420+</div><div class="stat__label">Freehold Plots</div></div>
-            <div class="stat"><div class="stat__num">80%</div><div class="stat__label">Landscaped Greens</div></div>
+          <!-- Column 2: tall centre card -->
+          <div class="about__col">
+            <figure class="card card--center">
+              <img src="assets/pune-luxury-villas.jpg" alt="Residential architecture">
+              <span class="card__tag">Actual Site View</span>
+            </figure>
+          </div>
+
+          <!-- Column 3: small card (top, grows down) + paragraph (bottom) -->
+          <div class="about__col">
+            <figure class="card card--right">
+              <img src="assets/amenity-garden.jpg" alt="Leisure waters and gardens">
+              <span class="card__tag">Artistic Impression</span>
+            </figure>
+            <div class="about__text">
+              <p>Green Valley Township is an 80-acre master-planned residential enclave along Pune's North Expressway corridor, with 420+ demarcated freehold plots, 80% bank loan approval and vast landscaped parks. Designed for generational legacy and complete peace of mind.</p>
+            </div>
           </div>
 
         </div>
+
+        <!-- Stats — appear when the cards have aligned -->
+        <div class="about__stats">
+          <div class="stat"><div class="stat__num">80 Acres</div><div class="stat__label">Total Land Area</div></div>
+          <div class="stat"><div class="stat__num">420+</div><div class="stat__label">Freehold Plots</div></div>
+          <div class="stat"><div class="stat__num">80%</div><div class="stat__label">Landscaped Greens</div></div>
+        </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- ======================================================== -->
     <!-- 03 — PLOT LAYOUT & AVAILABLE SIZES                       -->
@@ -1805,10 +1803,10 @@
       window.scrollTo(0, 0);
     }
 
-    (function initAboutTriptych() {
+    // Project Overview — pinned scroll triptych
+    (function () {
       const section = document.getElementById('about');
-      if (!section) return;
-      const header  = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 78;
+      const header  = 78;                                     // fixed header height
       const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
       const smooth = t => t * t * (3 - 2 * t);               // smoothstep easing
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;

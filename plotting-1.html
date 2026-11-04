@@ -504,13 +504,13 @@
     /* ======================================================== */
     .overview-scroll-track {
       position: relative;
-      height: 250vh; /* Smooth pinned scroll distance */
+      height: 220vh; /* Smooth pinned scroll distance */
       background: var(--cream);
     }
     .overview-sticky-frame {
       position: sticky;
-      top: 0;
-      height: 100vh;
+      top: 78px; /* Offset for fixed header bar so title is never overlapped */
+      height: calc(100vh - 78px);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -521,7 +521,7 @@
       width: 100%;
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 clamp(20px, 4vw, 40px);
+      padding: 16px clamp(20px, 4vw, 40px) 24px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -529,13 +529,13 @@
       position: relative;
     }
 
-    /* Staggered Triptych Grid: Unified Height of 540px */
+    /* Staggered Triptych Grid: Unified Height */
     .triptych-stage {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: clamp(18px, 2.6vw, 32px);
       position: relative;
-      height: clamp(480px, 58vh, 550px);
+      height: clamp(390px, 52vh, 480px);
       width: 100%;
     }
 
@@ -581,8 +581,8 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 310px; /* Expands to 100% on scroll */
-      border-radius: 22px;
+      height: 60%; /* Expands smoothly to 100% on scroll */
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 14px 36px rgba(70, 86, 101, 0.1);
       background: #111e26;
@@ -595,7 +595,7 @@
       position: relative;
       height: 100%;
       width: 100%;
-      border-radius: 22px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 16px 40px rgba(70, 86, 101, 0.12);
       background: #111e26;
@@ -608,8 +608,8 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 310px; /* Expands to 100% on scroll */
-      border-radius: 22px;
+      height: 60%; /* Expands smoothly to 100% on scroll */
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 14px 36px rgba(70, 86, 101, 0.1);
       background: #111e26;
@@ -1929,7 +1929,15 @@
       document.getElementById('enquirySuccessState').style.display = 'block';
     }
 
-    // Triptych Pinned Scroll Animation Controller (Buttery Smooth rAF Lerp & Exact Height Match)
+    // Prevent browser auto-scrolling down on reload / keep page at top
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+
+    // Triptych Pinned Scroll Animation Controller (Silky Smooth rAF Lerp & Exact Height Match)
     (function initTriptychAnimation() {
       const track = document.getElementById('overviewSection');
       const textLeft = document.getElementById('tripTextLeft');
@@ -1950,42 +1958,42 @@
 
       function renderFrame(p) {
         // Measure exact middle image height dynamically
-        const centerH = cardCenter.offsetHeight || 540;
-        const startH = Math.round(centerH * 0.58); // initial height of left & right cards (~310px)
+        const centerH = cardCenter.offsetHeight || stage.offsetHeight || 460;
+        const startH = Math.round(centerH * 0.60); // initial height of left & right cards
 
-        // Ease curve for natural silky expansion
+        // Ease curve for natural silky progressive expansion
         // Left & right cards smoothly expand to EXACTLY equal the middle image height
-        const growthEase = Math.min(1, Math.pow(p, 0.85)); // smooth progressive curve
+        const growthEase = Math.min(1, Math.pow(p, 0.9));
         const dynamicH = startH + (centerH - startH) * growthEase;
 
         // Apply exact height to left & right cards
         cardLeft.style.height = `${dynamicH}px`;
         cardRight.style.height = `${dynamicH}px`;
 
-        // Text fade out smoothly
-        const textFade = Math.max(0, 1 - (p * 2.4));
-        const textShift = p * 42;
+        // Text fade out smoothly as cards grow
+        const textFade = Math.max(0, 1 - (p * 2.2));
+        const textShift = p * 38;
         textLeft.style.opacity = textFade.toFixed(3);
         textLeft.style.transform = `translate3d(0, -${textShift.toFixed(1)}px, 0)`;
         textRight.style.opacity = textFade.toFixed(3);
         textRight.style.transform = `translate3d(0, ${textShift.toFixed(1)}px, 0)`;
 
         // Stats strip below cards fades in smoothly as cards become big
-        if (p > 0.42) {
-          const statP = Math.min(1, (p - 0.42) / 0.5);
+        if (p > 0.35) {
+          const statP = Math.min(1, (p - 0.35) / 0.55);
           statsStrip.style.opacity = statP.toFixed(3);
-          statsStrip.style.transform = `translate3d(0, ${((1 - statP) * 22).toFixed(1)}px, 0)`;
+          statsStrip.style.transform = `translate3d(0, ${((1 - statP) * 20).toFixed(1)}px, 0)`;
           statsStrip.style.pointerEvents = statP > 0.5 ? 'auto' : 'none';
         } else {
           statsStrip.style.opacity = '0';
-          statsStrip.style.transform = 'translate3d(0, 22px, 0)';
+          statsStrip.style.transform = 'translate3d(0, 20px, 0)';
           statsStrip.style.pointerEvents = 'none';
         }
       }
 
       function loop() {
-        // Smooth lerp (linear interpolation) for buttery-smooth 60fps/120fps motion
-        currentProgress += (targetProgress - currentProgress) * 0.15;
+        // Responsive smooth lerp
+        currentProgress += (targetProgress - currentProgress) * 0.18;
         if (Math.abs(targetProgress - currentProgress) < 0.0008) {
           currentProgress = targetProgress;
         }
@@ -2002,12 +2010,14 @@
       function onScroll() {
         if (isMobile()) return;
 
+        const headerOffset = 78;
         const rect = track.getBoundingClientRect();
         const totalScroll = track.offsetHeight - window.innerHeight;
         if (totalScroll <= 0) return;
 
-        // Progress strictly during this section: 0 when entering sticky top, 1 at bottom of track
-        targetProgress = Math.min(1, Math.max(0, -rect.top / totalScroll));
+        // Progress calculates cleanly from when section pins below the header
+        const scrolledIntoTrack = headerOffset - rect.top;
+        targetProgress = Math.min(1, Math.max(0, scrolledIntoTrack / totalScroll));
 
         if (!rafId) {
           rafId = requestAnimationFrame(loop);
@@ -2019,7 +2029,7 @@
         if (!isMobile()) onScroll();
       }, { passive: true });
 
-      // Initial call
+      // Run on page ready
       onScroll();
     })();
 

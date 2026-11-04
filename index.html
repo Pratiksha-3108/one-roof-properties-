@@ -2554,44 +2554,41 @@
     }
     .partner-card {
       flex-shrink: 0;
-      width: clamp(140px, 13vw, 175px);
-      height: clamp(92px, 8.5vw, 114px);
-      background: #0d1419; /* Luxury deep slate navy matching home dark elements */
-      border: 1px solid rgba(70, 86, 101, 0.3);
-      border-radius: 12px;
+      width: clamp(140px, 13vw, 185px);
+      height: clamp(64px, 5.8vw, 80px);
+      background: transparent; /* Removed black background box */
+      border: none; /* Removed border */
+      box-shadow: none; /* Removed box shadow */
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 18px;
+      padding: 6px 14px;
       box-sizing: border-box;
-      box-shadow: 0 8px 22px rgba(70, 86, 101, 0.08);
-      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
       cursor: pointer;
     }
     .partner-card:hover {
-      transform: translateY(-5px);
-      border-color: #d97706; /* Home page gold accent on hover */
-      box-shadow: 0 16px 32px rgba(70, 86, 101, 0.16), 0 0 22px rgba(217, 119, 6, 0.22);
+      transform: translateY(-4px) scale(1.06);
     }
     .partner-card img {
       max-width: 100%;
-      max-height: 100%;
+      max-height: clamp(46px, 4.2vw, 60px);
       width: auto;
       height: auto;
       object-fit: contain;
-      filter: brightness(0.96) contrast(1.04);
+      filter: drop-shadow(0 2px 8px rgba(70, 86, 101, 0.08));
       transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
       display: block;
     }
     .partner-card:hover img {
-      filter: brightness(1.15) contrast(1.08);
-      transform: scale(1.06);
+      filter: drop-shadow(0 6px 14px rgba(70, 86, 101, 0.18));
+      transform: scale(1.05);
     }
     @media (max-width: 768px) {
       .partner-card {
-        width: 130px;
-        height: 84px;
-        padding: 8px 12px;
+        width: 120px;
+        height: 56px;
+        padding: 4px 8px;
       }
       .partners-marquee-track {
         animation-duration: 20s;
@@ -3134,84 +3131,84 @@
           <!-- Half 1: Groups 1 & 2 -->
           <div class="partners-marquee-group">
             <div class="partner-card" title="In Harmony With Nature">
-              <img src="assets/inside-partner-harmony.png" alt="In Harmony With Nature Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-harmony.png" alt="In Harmony With Nature Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="Navkar Group - We Build Your Dreams">
-              <img src="assets/inside-partner-navkar.png" alt="Navkar Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-navkar.png" alt="Navkar Group Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="Namrata Group">
-              <img src="assets/inside-partner-namrata.png" alt="Namrata Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-namrata.png" alt="Namrata Group Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="Sanjay Jain Group">
-              <img src="assets/inside-partner-sanjay-jain.png" alt="Sanjay Jain Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-sanjay.png" alt="Sanjay Jain Group Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="SMP - Creating Energetic Spaces">
-              <img src="assets/inside-partner-smp.png" alt="SMP Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-smp.png" alt="SMP Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="TAB - Tejas Arun Bahirat Group">
-              <img src="assets/inside-partner-tab.png" alt="TAB Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-tab.png" alt="TAB Group Partner Logo" loading="lazy">
             </div>
           </div>
           <div class="partners-marquee-group">
             <div class="partner-card" title="In Harmony With Nature">
-              <img src="assets/inside-partner-harmony.png" alt="In Harmony With Nature Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-harmony.png" alt="In Harmony With Nature Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="Navkar Group - We Build Your Dreams">
-              <img src="assets/inside-partner-navkar.png" alt="Navkar Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-navkar.png" alt="Navkar Group Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="Namrata Group">
-              <img src="assets/inside-partner-namrata.png" alt="Namrata Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-namrata.png" alt="Namrata Group Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="Sanjay Jain Group">
-              <img src="assets/inside-partner-sanjay-jain.png" alt="Sanjay Jain Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-sanjay.png" alt="Sanjay Jain Group Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="SMP - Creating Energetic Spaces">
-              <img src="assets/inside-partner-smp.png" alt="SMP Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-smp.png" alt="SMP Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="TAB - Tejas Arun Bahirat Group">
-              <img src="assets/inside-partner-tab.png" alt="TAB Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-tab.png" alt="TAB Group Partner Logo" loading="lazy">
             </div>
           </div>
 
           <!-- Half 2: Groups 3 & 4 (Identical 50% duplicate for zero-gap seamless infinite loop) -->
           <div class="partners-marquee-group" aria-hidden="true">
             <div class="partner-card" title="In Harmony With Nature">
-              <img src="assets/inside-partner-harmony.png" alt="In Harmony With Nature Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-harmony.png" alt="In Harmony With Nature Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="Navkar Group - We Build Your Dreams">
-              <img src="assets/inside-partner-navkar.png" alt="Navkar Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-navkar.png" alt="Navkar Group Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="Namrata Group">
-              <img src="assets/inside-partner-namrata.png" alt="Namrata Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-namrata.png" alt="Namrata Group Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="Sanjay Jain Group">
-              <img src="assets/inside-partner-sanjay-jain.png" alt="Sanjay Jain Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-sanjay.png" alt="Sanjay Jain Group Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="SMP - Creating Energetic Spaces">
-              <img src="assets/inside-partner-smp.png" alt="SMP Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-smp.png" alt="SMP Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="TAB - Tejas Arun Bahirat Group">
-              <img src="assets/inside-partner-tab.png" alt="TAB Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-tab.png" alt="TAB Group Partner Logo" loading="lazy">
             </div>
           </div>
           <div class="partners-marquee-group" aria-hidden="true">
             <div class="partner-card" title="In Harmony With Nature">
-              <img src="assets/inside-partner-harmony.png" alt="In Harmony With Nature Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-harmony.png" alt="In Harmony With Nature Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="Navkar Group - We Build Your Dreams">
-              <img src="assets/inside-partner-navkar.png" alt="Navkar Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-navkar.png" alt="Navkar Group Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="Namrata Group">
-              <img src="assets/inside-partner-namrata.png" alt="Namrata Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-namrata.png" alt="Namrata Group Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="Sanjay Jain Group">
-              <img src="assets/inside-partner-sanjay-jain.png" alt="Sanjay Jain Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-sanjay.png" alt="Sanjay Jain Group Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="SMP - Creating Energetic Spaces">
-              <img src="assets/inside-partner-smp.png" alt="SMP Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-smp.png" alt="SMP Partner Logo" loading="lazy">
             </div>
             <div class="partner-card" title="TAB - Tejas Arun Bahirat Group">
-              <img src="assets/inside-partner-tab.png" alt="TAB Group Partner Logo" loading="lazy">
+              <img src="assets/clean-logo-tab.png" alt="TAB Group Partner Logo" loading="lazy">
             </div>
           </div>
         </div>

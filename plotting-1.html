@@ -3,231 +3,1411 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Green Valley Township Plots | RERA Approved Plotting | One Roof Properties</title>
-  <meta name="description" content="Green Valley Township: 80 acres of RERA approved residential plots, 150 to 500 sq yards, on the North Expressway growth hub. Immediate registry and possession.">
-  <meta name="theme-color" content="#070e0a">
+  <title>Green Valley Township Plots | PMRDA &amp; MahaRERA Approved | One Roof Properties</title>
+  <meta name="description" content="Green Valley Township: 80-acre master-planned residential plotting project on Pune's North Expressway Corridor. 150 to 500 Sq. Yds. Freehold registry, immediate possession &amp; 80% bank loan approval.">
+  <meta name="theme-color" content="#1f343f">
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
     :root {
-      --ink: #070e0a;
-      --ink-2: #0d1a13;
       --cream: #FAF8EE;
-      --cream-2: #F3EFE2;
+      --cream-soft: #F3EFE2;
+      --cream-alt: #F5F2E6;
       --navy: #465665;
       --navy-deep: #1f343f;
+      --navy-darkest: #111e26;
       --muted: #7b8791;
       --gold: #d97706;
-      --gold-soft: rgba(217,119,6,.14);
-      --line: rgba(70,86,101,.16);
-      --ease: cubic-bezier(.22,1,.36,1);
-      --ease-io: cubic-bezier(.65,0,.35,1);
-      --head: 'Nanum Myeongjo', Georgia, serif;
-      --body: 'Jost', sans-serif;
+      --gold-dark: #b45309;
+      --gold-soft: rgba(217, 119, 6, 0.12);
+      --border-line: rgba(70, 86, 101, 0.16);
+      --card-bg: #ffffff;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --head-font: 'Nanum Myeongjo', Georgia, serif;
+      --body-font: 'Jost', sans-serif;
+      --title-font: 'Plus Jakarta Sans', sans-serif;
     }
-    html { overflow-x: hidden; overflow-x: clip; }
-    body { background: var(--cream); color: var(--navy); font-family: var(--body); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; overflow-x: clip; }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--navy);
+      font-family: var(--body-font);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
     img { max-width: 100%; display: block; }
-    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-    .skip { position: absolute; left: -999px; top: 8px; background: var(--gold); color: #fff; padding: 8px 14px; z-index: 3000; }
-    .skip:focus { left: 8px; }
+    button, input, select, textarea { font-family: inherit; }
 
-    /* ---------- Header (same as index.html) ---------- */
-    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1500; padding: 30px 0 0; background: transparent; transition: background-color .3s ease, padding .3s ease, box-shadow .3s ease; }
-    .header.scrolled { background: rgba(23,34,45,.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); padding: 14px 0; box-shadow: 0 10px 30px rgba(0,0,0,.35); border-bottom: 1px solid rgba(255,255,255,.1); }
-    .holder { padding: 0 max(24px, 4.5vw); max-width: 1820px; margin: 0 auto; width: 100%; }
-    .header-block { position: relative; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 58px; gap: 24px; }
-    .header-logo { display: flex; justify-content: center; align-items: center; z-index: 20; }
-    .header-logo img { height: 48px; width: auto; object-fit: contain; }
-    .header-nav-list { display: flex; gap: clamp(18px, 2.2vw, 36px); align-items: center; }
-    .header-nav-right { display: flex; justify-content: flex-end; }
-    .header-nav-list li { font-size: clamp(13px, .88vw, 15px); font-weight: 400; letter-spacing: 1.4px; text-transform: uppercase; }
-    .header-nav-list a { color: #fff; position: relative; transition: color .2s ease; }
-    .header-nav-list a::before { content: ''; position: absolute; left: 0; bottom: -3px; width: 100%; height: 1px; background: #fff; transform: scaleX(0); transform-origin: left; transition: transform .4s ease; }
+    .skip-to-content {
+      position: absolute;
+      left: -999px;
+      top: 10px;
+      background: var(--gold);
+      color: #fff;
+      padding: 10px 18px;
+      z-index: 9999;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .skip-to-content:focus { left: 16px; }
+
+    /* ======================================================== */
+    /* SHARED UTILITY STYLES                                   */
+    /* ======================================================== */
+    .sec-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 40px);
+      box-sizing: border-box;
+    }
+
+    .sec-header {
+      margin-bottom: clamp(36px, 5vw, 56px);
+    }
+    .sec-header.center {
+      text-align: center;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .sec-num-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--body-font);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .sec-num-eyebrow span.dash {
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      display: inline-block;
+    }
+
+    .sec-headline {
+      font-family: var(--head-font);
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy-deep);
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .sec-lead {
+      font-family: var(--body-font);
+      font-size: clamp(0.96rem, 1.1vw, 1.08rem);
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* Reveal Transitions */
+    .plot-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+      will-change: opacity, transform;
+    }
+    .plot-reveal.is-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Standard Button */
+    .btn-gold-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 28px;
+      background: var(--gold);
+      color: #ffffff;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.28);
+    }
+    .btn-gold-action:hover {
+      background: var(--gold-dark);
+      border-color: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(217, 119, 6, 0.38);
+    }
+
+    .btn-outline-navy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 28px;
+      background: transparent;
+      color: var(--navy-deep);
+      border: 1.5px solid var(--navy-deep);
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+    }
+    .btn-outline-navy:hover {
+      background: var(--navy-deep);
+      color: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    /* ======================================================== */
+    /* HEADER (IDENTICAL NAVIGATION AS SITE)                   */
+    /* ======================================================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1500;
+      padding: 24px 0;
+      background: transparent;
+      transition: all 0.35s ease;
+    }
+    .header.scrolled {
+      background: rgba(23, 34, 45, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 12px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .holder {
+      padding: 0 max(24px, 4.5vw);
+      max-width: 1820px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .header-block {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 54px;
+      gap: 24px;
+    }
+    .header-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .header-logo img {
+      height: 46px;
+      width: auto;
+      object-fit: contain;
+    }
+    .header-nav-list {
+      display: flex;
+      gap: clamp(18px, 2.2vw, 36px);
+      align-items: center;
+    }
+    .header-nav-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .header-nav-list li {
+      font-size: clamp(13px, 0.88vw, 15px);
+      font-weight: 500;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+    .header-nav-list a {
+      color: #ffffff;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .header-nav-list a::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
     .header-nav-list a:hover::before { transform: scaleX(1); }
+    .header-nav-list a:hover { color: #f3d9b0; }
+
     .dd-parent { position: relative; padding: 6px 0; }
-    .dd { display: none; position: absolute; top: 100%; min-width: 300px; background: rgba(10,18,14,.96); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,.5); padding: 14px; z-index: 1200; text-transform: none; letter-spacing: 0; }
-    .dd.left { left: 0; } .dd.right { right: 0; }
+    .dd {
+      display: none;
+      position: absolute;
+      top: 100%;
+      min-width: 290px;
+      background: rgba(15, 27, 21, 0.97);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      padding: 14px;
+      z-index: 1200;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .dd.left { left: 0; }
+    .dd.right { right: 0; }
     .dd-parent:hover .dd, .dd-parent:focus-within .dd { display: block; }
-    .dd a { display: block; padding: 7px 10px; border-radius: 8px; color: #cbd5e1; font-size: .86rem; }
-    .dd a:hover { background: rgba(255,255,255,.08); color: #fff; }
-    .dd a::before { display: none; }
-    .dd .dd-h { color: #fff; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: .8rem; display: flex; align-items: center; gap: 8px; }
-    .dd .sub { padding-left: 26px; margin-bottom: 8px; }
+    .dd a {
+      display: block;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: #cbd5e1;
+      font-size: 0.88rem;
+    }
+    .dd a:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+    }
+    .dd a::before { display: none !important; }
+    .dd .dd-h {
+      color: #ffffff;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .dd .sub { padding-left: 24px; margin-bottom: 8px; }
     .dd .sub a.on { color: var(--gold); font-weight: 600; }
-    .nav-mobile-btn { display: none; background: transparent; border: none; font-size: 1.5rem; color: #fff; cursor: pointer; justify-self: end; grid-column: 3; }
-    .drawer { display: none; position: fixed; top: 76px; left: 0; width: 100%; background: rgba(7,14,10,.98); backdrop-filter: blur(14px); padding: 20px 24px 28px; z-index: 1400; border-bottom: 1px solid rgba(255,255,255,.1); max-height: calc(100vh - 76px); overflow: auto; }
+
+    .nav-mobile-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: #ffffff;
+      cursor: pointer;
+      justify-self: end;
+      grid-column: 3;
+    }
+    .drawer {
+      display: none;
+      position: fixed;
+      top: 76px;
+      left: 0;
+      width: 100%;
+      background: rgba(17, 30, 38, 0.98);
+      backdrop-filter: blur(14px);
+      padding: 20px 24px 28px;
+      z-index: 1400;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      max-height: calc(100vh - 76px);
+      overflow: auto;
+    }
     .drawer.open { display: block; }
-    .drawer a { display: block; padding: 11px 0; color: #fff; font-size: .95rem; letter-spacing: 1.4px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .drawer a {
+      display: block;
+      padding: 12px 0;
+      color: #ffffff;
+      font-size: 0.95rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
     .drawer a.on { color: var(--gold); }
 
-    /* ---------- Scroll journey: scenes that switch ---------- */
-    .journey { position: relative; height: 620vh; background: var(--ink); }
-    .stage { position: sticky; top: 0; height: 100vh; overflow: hidden; background: var(--ink); isolation: isolate; }
-    .scene { position: absolute; inset: 0; overflow: hidden; will-change: clip-path; }
-    .scene:first-child { clip-path: none; }
-    .scene-img { position: absolute; inset: -4%; width: 108%; max-width: none; height: 108%; object-fit: cover; will-change: transform, filter; }
-    .scene::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(7,14,10,.55) 0%, rgba(7,14,10,.08) 32%, rgba(7,14,10,.18) 55%, rgba(7,14,10,.82) 100%), radial-gradient(ellipse 80% 70% at 22% 62%, rgba(7,14,10,.62) 0%, rgba(7,14,10,0) 70%); }
-    .scene-copy { position: absolute; left: max(24px, 6vw); bottom: clamp(70px, 13vh, 140px); width: min(780px, 88vw); z-index: 5; color: #fff; will-change: opacity, transform; }
-    .scene-copy > * { text-shadow: 0 2px 18px rgba(0,0,0,.55); }
-    .kicker { display: inline-flex; align-items: center; gap: 12px; font-size: .78rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: #f3d9b0; margin-bottom: 18px; }
-    .kicker::before { content: ''; width: 36px; height: 1px; background: var(--gold); }
-    .scene-title { font-family: var(--head); font-weight: 700; font-size: clamp(2.3rem, 5.4vw, 5rem); line-height: 1.04; letter-spacing: -1.5px; color: #fff; margin-bottom: 18px; }
-    .scene-title .ln { display: block; overflow: hidden; padding: .06em 0 .14em; margin: -.06em 0 -.14em; }
-    .scene-title .ln > span { display: block; will-change: transform; }
-    .scene-sub { font-size: clamp(.98rem, 1.15vw, 1.12rem); font-weight: 300; line-height: 1.7; color: rgba(255,255,255,.88); max-width: 520px; }
-    .scene-tag { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 11px 20px; border: 1px solid rgba(255,255,255,.55); font-size: .82rem; letter-spacing: 1.6px; text-transform: uppercase; background: rgba(7,14,10,.35); backdrop-filter: blur(6px); }
-    .scene-tag i { color: var(--gold); }
-    .scene-price { position: absolute; right: max(24px, 6vw); bottom: clamp(70px, 13vh, 140px); z-index: 5; text-align: right; color: #fff; will-change: opacity, transform; }
-    .scene-price small { display: block; font-size: .74rem; letter-spacing: 2.4px; text-transform: uppercase; color: rgba(255,255,255,.75); margin-bottom: 6px; }
-    .scene-price strong { font-family: var(--head); font-size: clamp(1.6rem, 3vw, 2.7rem); font-weight: 700; letter-spacing: -.5px; }
+    /* ======================================================== */
+    /* 01 — PROJECT HERO                                        */
+    /* ======================================================== */
+    .hero-project-sec {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 80px;
+      background: #0f1c24;
+      overflow: hidden;
+      color: #ffffff;
+    }
+    .hero-project-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      opacity: 0.42;
+      transform: scale(1.05);
+      animation: heroZoom 14s ease-out forwards;
+    }
+    @keyframes heroZoom {
+      to { transform: scale(1); }
+    }
+    .hero-project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 28, 36, 0.72) 0%, rgba(15, 28, 36, 0.3) 40%, rgba(15, 28, 36, 0.88) 85%, #0f1c24 100%),
+                  radial-gradient(circle at 75% 50%, rgba(217, 119, 6, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-project-content {
+      position: relative;
+      z-index: 5;
+      max-width: 900px;
+    }
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .hero-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #f3d9b0;
+    }
+    .hero-pill-badge i { color: var(--gold); }
+    .hero-pill-badge.highlight {
+      background: rgba(217, 119, 6, 0.25);
+      border-color: var(--gold);
+      color: #ffffff;
+    }
+    .hero-h1-title {
+      font-family: var(--head-font);
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -1px;
+      color: #ffffff;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    .hero-sub-narrative {
+      font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 680px;
+      margin-bottom: 36px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 50px;
+    }
+    .btn-hero-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 32px;
+      background: var(--gold);
+      color: #ffffff;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      box-shadow: 0 8px 25px rgba(217, 119, 6, 0.35);
+      transition: all 0.3s ease;
+    }
+    .btn-hero-primary:hover {
+      background: #b45309;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(217, 119, 6, 0.48);
+    }
+    .btn-hero-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 30px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      color: #ffffff;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+    }
+    .btn-hero-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: #ffffff;
+      transform: translateY(-2px);
+    }
 
-    .rail { position: absolute; right: max(18px, 2.4vw); top: 50%; transform: translateY(-50%); z-index: 20; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
-    .rail button { display: flex; align-items: center; gap: 12px; background: none; border: none; cursor: pointer; color: rgba(255,255,255,.6); font-family: var(--body); font-size: .72rem; letter-spacing: 2px; text-transform: uppercase; padding: 4px 0; transition: color .4s var(--ease); }
-    .rail button span.lbl { opacity: 0; transform: translateX(8px); transition: opacity .4s var(--ease), transform .4s var(--ease); white-space: nowrap; }
-    .rail button:hover span.lbl, .rail button.on span.lbl, .rail button:focus-visible span.lbl { opacity: 1; transform: none; }
-    .rail button i { display: block; width: 8px; height: 8px; border-radius: 50%; border: 1px solid rgba(255,255,255,.75); transition: background .4s var(--ease), transform .4s var(--ease), border-color .4s var(--ease); }
-    .rail button.on { color: #fff; }
-    .rail button.on i { background: var(--gold); border-color: var(--gold); transform: scale(1.5); }
-    .counter { position: absolute; left: max(24px, 6vw); top: clamp(100px, 16vh, 150px); z-index: 20; color: rgba(255,255,255,.85); font-size: .8rem; letter-spacing: 3px; display: flex; align-items: center; gap: 14px; }
-    .counter b { font-family: var(--head); font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: 0; display: inline-block; min-width: 1.4em; }
-    .counter .bar { width: 90px; height: 1px; background: rgba(255,255,255,.28); position: relative; overflow: hidden; }
-    .counter .bar i { position: absolute; inset: 0; background: var(--gold); transform-origin: left; transform: scaleX(0); will-change: transform; }
-    .cue { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 20; color: rgba(255,255,255,.8); font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 8px; transition: opacity .5s var(--ease); }
-    .cue i { width: 1px; height: 30px; background: linear-gradient(var(--gold), transparent); animation: cue 2.4s ease-in-out infinite; transform-origin: top; }
-    @keyframes cue { 0%, 100% { transform: scaleY(.3); opacity: .5; } 50% { transform: scaleY(1); opacity: 1; } }
+    /* Hero Quick Spec Strip */
+    .hero-spec-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 24px 28px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 18px;
+      backdrop-filter: blur(14px);
+    }
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+      padding-right: 16px;
+    }
+    .spec-item:last-child { border-right: none; padding-right: 0; }
+    .spec-label {
+      font-size: 0.74rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+    }
+    .spec-value {
+      font-family: var(--head-font);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .spec-sub {
+      font-size: 0.8rem;
+      color: #f3d9b0;
+    }
 
-    /* ---------- Content sections ---------- */
-    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-    .eyebrow { font-size: .8rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
-    .eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
-    h2.title { font-family: var(--head); font-size: clamp(2rem, 3.6vw, 3.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -.5px; color: var(--navy); margin-bottom: 18px; }
-    .lead { color: var(--muted); font-size: 1.04rem; line-height: 1.75; max-width: 560px; }
+    /* ======================================================== */
+    /* 02 — PROJECT OVERVIEW                                    */
+    /* ======================================================== */
+    .overview-sec {
+      padding: clamp(80px, 8vw, 120px) 0;
+      background: var(--cream);
+      position: relative;
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: center;
+    }
+    .overview-text-col p {
+      font-size: 1.05rem;
+      line-height: 1.78;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .overview-highlight-box {
+      margin-top: 32px;
+      padding: 26px 30px;
+      background: var(--cream-soft);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 16px 16px 0;
+    }
+    .overview-highlight-box h4 {
+      font-family: var(--head-font);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin-bottom: 8px;
+    }
+    .overview-highlight-box p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
 
-    .reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--d, 0) * 1ms); }
-    .reveal.in { opacity: 1; transform: none; }
+    .overview-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .stat-metric-card {
+      background: #ffffff;
+      padding: 28px 24px;
+      border-radius: 18px;
+      border: 1px solid var(--border-line);
+      box-shadow: 0 8px 24px rgba(70, 86, 101, 0.06);
+      transition: all 0.3s ease;
+    }
+    .stat-metric-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 36px rgba(70, 86, 101, 0.12);
+      border-color: var(--gold);
+    }
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--gold-soft);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+    .stat-num-val {
+      font-family: var(--head-font);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .stat-cap-title {
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
-    .stats { background: var(--cream); padding: clamp(60px, 9vw, 110px) 0 clamp(40px, 6vw, 70px); }
-    .stats-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; margin-bottom: 44px; }
-    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
-    .stat { padding: 34px 26px 30px 0; border-right: 1px solid var(--line); margin-right: 26px; }
-    .stat:last-child { border-right: 0; margin-right: 0; }
-    .stat i { color: var(--gold); font-size: 1.3rem; margin-bottom: 18px; display: block; }
-    .stat .num { font-family: var(--head); font-size: clamp(1.7rem, 2.6vw, 2.5rem); font-weight: 700; color: var(--navy); line-height: 1.1; }
-    .stat .cap { font-size: .86rem; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+    /* ======================================================== */
+    /* 03 — PLOT LAYOUT & AVAILABLE SIZES                       */
+    /* ======================================================== */
+    .sizes-sec {
+      padding: clamp(80px, 8vw, 120px) 0;
+      background: radial-gradient(circle at 18% 50%, #F3EFE2 0%, #FAF8EE 70%, #F5F2E6 100%);
+      border-top: 1px solid var(--border-line);
+      border-bottom: 1px solid var(--border-line);
+    }
+    .size-filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 42px;
+    }
+    .size-filter-btn {
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border-line);
+      background: #ffffff;
+      color: var(--navy);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .size-filter-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .size-filter-btn.active {
+      background: var(--navy-deep);
+      border-color: var(--navy-deep);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(31, 52, 63, 0.25);
+    }
 
-    .layout { background: var(--cream-2); padding: clamp(70px, 9vw, 120px) 0; }
-    .layout-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(36px, 6vw, 90px); align-items: center; }
-    .viewer { position: relative; }
-    .viewer-main { position: relative; aspect-ratio: 4/3; border-radius: 22px; overflow: hidden; background: #dfe5dc; box-shadow: 0 30px 60px rgba(31,52,63,.16); }
-    .viewer-main img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.08); transition: opacity 1s var(--ease-io), transform 1.6s var(--ease); }
-    .viewer-main img.on { opacity: 1; transform: scale(1); }
-    .viewer-cap { position: absolute; left: 18px; bottom: 16px; z-index: 3; background: rgba(7,14,10,.55); backdrop-filter: blur(8px); color: #fff; font-size: .78rem; letter-spacing: 1.8px; text-transform: uppercase; padding: 8px 14px; border-radius: 999px; }
-    .thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
-    .thumbs button { position: relative; height: 82px; border-radius: 12px; overflow: hidden; border: 0; padding: 0; cursor: pointer; background: #ccd; opacity: .6; transition: opacity .5s var(--ease), transform .5s var(--ease); }
-    .thumbs button img { width: 100%; height: 100%; object-fit: cover; }
-    .thumbs button::after { content: ''; position: absolute; inset: 0; border-radius: 12px; border: 2px solid transparent; transition: border-color .4s var(--ease); }
-    .thumbs button:hover { opacity: 1; transform: translateY(-3px); }
-    .thumbs button.on { opacity: 1; }
-    .thumbs button.on::after { border-color: var(--gold); }
-    .tick-list { margin-top: 26px; display: flex; flex-direction: column; gap: 12px; }
-    .tick-list li { display: flex; gap: 14px; align-items: flex-start; color: var(--navy); font-size: 1rem; }
-    .tick-list i { color: var(--gold); margin-top: 5px; font-size: .9rem; }
+    .sizes-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+    .size-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid var(--border-line);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 28px rgba(70, 86, 101, 0.06);
+      transition: all 0.35s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .size-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 42px rgba(70, 86, 101, 0.15);
+      border-color: var(--gold);
+    }
+    .size-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: 16px;
+      right: -36px;
+      background: var(--gold);
+      color: #ffffff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      padding: 4px 40px;
+      transform: rotate(45deg);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    .size-header-tag {
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .size-card-title {
+      font-family: var(--head-font);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin-bottom: 4px;
+    }
+    .size-sqft-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border-line);
+    }
+    .size-spec-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .size-spec-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+    }
+    .size-spec-row .k { color: var(--muted); }
+    .size-spec-row .v { font-weight: 600; color: var(--navy-deep); }
 
-    .reserve { background: var(--ink); color: #fff; padding: clamp(70px, 9vw, 120px) 0; position: relative; overflow: hidden; }
-    .reserve::before { content: ''; position: absolute; width: 900px; height: 900px; border-radius: 50%; border: 1px solid rgba(255,255,255,.07); right: -260px; top: -300px; }
-    .reserve::after { content: ''; position: absolute; width: 640px; height: 640px; border-radius: 50%; border: 1px solid rgba(217,119,6,.18); right: -130px; top: -170px; }
-    .reserve-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 90px); align-items: center; }
-    .reserve h2.title { color: #fff; }
-    .reserve .eyebrow { color: #c9b995; }
-    .reserve .lead { color: #aebcb3; }
-    .form-card { background: #fff; color: var(--navy); border-radius: 22px; padding: clamp(26px, 3vw, 40px); box-shadow: 0 30px 70px rgba(0,0,0,.45); }
-    .form-card h3 { font-family: var(--head); font-size: 1.5rem; margin-bottom: 6px; color: var(--navy); }
-    .form-card p.sm { font-size: .92rem; color: var(--muted); margin-bottom: 20px; }
-    .form-card form { display: flex; flex-direction: column; gap: 14px; }
-    .form-card input, .form-card select { font-family: var(--body); padding: 14px 16px; border: 1.5px solid #cfd6db; border-radius: 10px; font-size: .96rem; color: var(--navy); background: #fff; transition: border-color .3s var(--ease), box-shadow .3s var(--ease); }
-    .form-card input:focus, .form-card select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px var(--gold-soft); }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--navy); color: #fff; border: 0; padding: 16px 28px; border-radius: 10px; font-family: var(--body); font-size: .88rem; font-weight: 500; letter-spacing: 1.6px; text-transform: uppercase; cursor: pointer; transition: background .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease); box-shadow: 0 8px 20px rgba(70,86,101,.25); min-height: 44px; }
-    .btn:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 12px 26px rgba(217,119,6,.35); }
-    .btn.gold { background: var(--gold); } .btn.gold:hover { background: #b45309; }
-    .form-ok { display: none; text-align: center; padding: 26px 8px; }
-    .form-ok i { font-size: 2.2rem; color: #15803d; margin-bottom: 10px; }
-    .form-ok h3 { margin-bottom: 8px; }
-    .form-card.sent form, .form-card.sent .head { display: none; }
-    .form-card.sent .form-ok { display: block; animation: pop .7s var(--ease); }
-    @keyframes pop { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    .size-price-tag {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-line);
+      margin-bottom: 18px;
+    }
+    .size-price-tag small {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .size-price-tag strong {
+      font-family: var(--head-font);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+    }
 
-    .others { background: var(--cream); padding: clamp(60px, 8vw, 100px) 0; }
-    .others-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 30px; }
-    .other { position: relative; display: block; border-radius: 20px; overflow: hidden; min-height: 280px; color: #fff; isolation: isolate; }
-    .other img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.2s var(--ease); }
-    .other::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(7,14,10,.1), rgba(7,14,10,.82)); }
-    .other:hover img { transform: scale(1.07); }
-    .other .in-copy { position: absolute; left: 26px; right: 26px; bottom: 24px; }
-    .other small { font-size: .74rem; letter-spacing: 2.4px; text-transform: uppercase; color: #f3d9b0; }
-    .other h3 { font-family: var(--head); font-size: 1.5rem; color: #fff; margin: 6px 0 8px; }
-    .other span.go { font-size: .84rem; letter-spacing: 1.6px; text-transform: uppercase; display: inline-flex; gap: 8px; align-items: center; transition: gap .4s var(--ease); }
-    .other:hover span.go { gap: 14px; }
+    /* Master Plan Banner */
+    .master-plan-box {
+      background: var(--navy-deep);
+      border-radius: 24px;
+      color: #ffffff;
+      padding: clamp(32px, 5vw, 48px);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .master-plan-box h3 {
+      font-family: var(--head-font);
+      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+      margin-bottom: 14px;
+    }
+    .master-plan-box p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      margin-bottom: 24px;
+    }
+    .master-plan-preview-img {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      position: relative;
+    }
+    .master-plan-preview-img img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
 
-    /* ---------- Footer (same as index.html) ---------- */
-    .nw-footer { position: relative; padding: 110px 24px 36px; background: radial-gradient(ellipse at 50% 0%, rgba(70,86,101,.14) 0%, rgba(70,86,101,.04) 45%, transparent 75%), linear-gradient(180deg, #E3EAE8 0%, #EFF2EC 42%, #FAF8EE 100%); color: var(--navy); overflow: hidden; border-top: 1px solid rgba(70,86,101,.14); }
-    .nw-footer-inner { position: relative; z-index: 2; max-width: 1240px; margin: 0 auto; }
-    .nw-footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; margin-bottom: 56px; gap: 24px; }
+    /* ======================================================== */
+    /* 04 — AMENITIES & INFRASTRUCTURE                          */
+    /* ======================================================== */
+    .amenities-sec {
+      padding: clamp(80px, 8vw, 120px) 0;
+      background: var(--cream);
+    }
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .amenity-card {
+      background: #ffffff;
+      border: 1px solid var(--border-line);
+      border-radius: 20px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(70, 86, 101, 0.05);
+      transition: all 0.35s ease;
+      position: relative;
+    }
+    .amenity-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 42px rgba(70, 86, 101, 0.12);
+      border-color: var(--gold);
+    }
+    .amenity-icon-bubble {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      background: var(--cream-soft);
+      border: 1px solid var(--border-line);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.45rem;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    .amenity-card:hover .amenity-icon-bubble {
+      background: var(--gold);
+      color: #ffffff;
+      border-color: var(--gold);
+      transform: scale(1.08);
+    }
+    .amenity-title {
+      font-family: var(--head-font);
+      font-size: 1.28rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin-bottom: 10px;
+    }
+    .amenity-desc {
+      font-size: 0.94rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ======================================================== */
+    /* 05 — LOCATION ADVANTAGES                                 */
+    /* ======================================================== */
+    .location-sec {
+      padding: clamp(80px, 8vw, 120px) 0;
+      background: var(--cream-soft);
+      border-top: 1px solid var(--border-line);
+      border-bottom: 1px solid var(--border-line);
+    }
+    .location-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(36px, 5vw, 70px);
+      align-items: center;
+    }
+    .location-categories-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .loc-cat-box {
+      background: #ffffff;
+      border: 1px solid var(--border-line);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 6px 20px rgba(70, 86, 101, 0.05);
+    }
+    .loc-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-line);
+    }
+    .loc-cat-header i {
+      color: var(--gold);
+      font-size: 1.15rem;
+    }
+    .loc-cat-header h4 {
+      font-family: var(--head-font);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin: 0;
+    }
+    .loc-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .loc-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.92rem;
+    }
+    .loc-item-name { color: var(--navy); font-weight: 500; }
+    .loc-item-time {
+      font-weight: 700;
+      color: var(--gold);
+      background: var(--gold-soft);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.5px;
+    }
+
+    .location-map-wrap {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border-line);
+      box-shadow: 0 20px 50px rgba(70, 86, 101, 0.12);
+      background: #ffffff;
+    }
+    .location-map-img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+    }
+    .location-map-overlay-card {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(70, 86, 101, 0.15);
+    }
+    .map-overlay-title {
+      font-weight: 700;
+      color: var(--navy-deep);
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+    .map-overlay-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ======================================================== */
+    /* 06 — PROJECT GALLERY                                     */
+    /* ======================================================== */
+    .gallery-sec {
+      padding: clamp(80px, 8vw, 120px) 0;
+      background: var(--cream);
+    }
+    .gallery-filter-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 38px;
+    }
+    .gal-filter-btn {
+      padding: 9px 20px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border-line);
+      background: #ffffff;
+      color: var(--navy);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .gal-filter-btn.active, .gal-filter-btn:hover {
+      background: var(--navy-deep);
+      color: #ffffff;
+      border-color: var(--navy-deep);
+    }
+
+    .gallery-masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .gal-item {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: var(--navy-darkest);
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(70, 86, 101, 0.08);
+    }
+    .gal-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+    .gal-item:hover img {
+      transform: scale(1.08);
+    }
+    .gal-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(17, 30, 38, 0.85) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px;
+      opacity: 0.95;
+      transition: opacity 0.3s ease;
+    }
+    .gal-item-tag {
+      font-size: 0.72rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #f3d9b0;
+      margin-bottom: 4px;
+    }
+    .gal-item-name {
+      font-family: var(--head-font);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* ======================================================== */
+    /* 07 — LEGAL INFORMATION & PROJECT DETAILS                 */
+    /* ======================================================== */
+    .legal-sec {
+      padding: clamp(80px, 8vw, 120px) 0;
+      background: #17242e;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+    .legal-sec::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(217, 119, 6, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .legal-sec .sec-headline { color: #ffffff; }
+    .legal-sec .sec-lead { color: #cbd5e1; }
+    .legal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .legal-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 30px 26px;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+    .legal-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+    .legal-card-icon {
+      color: var(--gold);
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+    .legal-card-title {
+      font-family: var(--head-font);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .legal-card-detail {
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .legal-meta-badge {
+      display: inline-block;
+      padding: 5px 12px;
+      background: rgba(217, 119, 6, 0.2);
+      border: 1px solid rgba(217, 119, 6, 0.4);
+      border-radius: 6px;
+      color: #f3d9b0;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+    }
+
+    .legal-action-bar {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .legal-bar-text h4 {
+      font-family: var(--head-font);
+      font-size: 1.25rem;
+      margin-bottom: 4px;
+    }
+    .legal-bar-text p {
+      color: #cbd5e1;
+      font-size: 0.92rem;
+      margin: 0;
+    }
+
+    /* ======================================================== */
+    /* 08 — ENQUIRY & SITE VISIT                                */
+    /* ======================================================== */
+    .enquiry-sec {
+      padding: clamp(80px, 8vw, 120px) 0;
+      background: var(--cream);
+      position: relative;
+    }
+    .enquiry-split-box {
+      background: #ffffff;
+      border: 1px solid var(--border-line);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(70, 86, 101, 0.1);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+    }
+    .enquiry-info-pane {
+      background: radial-gradient(circle at 10% 20%, #263c48 0%, #17242e 100%);
+      color: #ffffff;
+      padding: clamp(36px, 5vw, 60px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .enquiry-info-pane h3 {
+      font-family: var(--head-font);
+      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .enquiry-info-pane p {
+      color: #cbd5e1;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+    .site-visit-perks {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .perk-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.94rem;
+    }
+    .perk-row i {
+      color: var(--gold);
+      font-size: 1.1rem;
+      width: 24px;
+    }
+    .enquiry-direct-contacts {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .direct-c-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #f3d9b0;
+      font-size: 0.96rem;
+      font-weight: 500;
+    }
+    .direct-c-item i { color: var(--gold); }
+
+    .enquiry-form-pane {
+      padding: clamp(36px, 5vw, 60px);
+      background: #ffffff;
+    }
+    .enquiry-form-pane h3 {
+      font-family: var(--head-font);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin-bottom: 6px;
+    }
+    .enquiry-form-pane p.sub {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 28px;
+    }
+    .form-grid-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .form-col-full { grid-column: span 2; }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--navy-deep);
+      margin-bottom: 6px;
+    }
+    .form-input-ctrl {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid var(--border-line);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: var(--navy-deep);
+      background: #FAF8EE;
+      transition: all 0.3s ease;
+    }
+    .form-input-ctrl:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px var(--gold-soft);
+    }
+    .terms-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 24px;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    .terms-row input { margin-top: 3px; accent-color: var(--gold); }
+
+    .form-success-alert {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .form-success-alert i {
+      font-size: 3rem;
+      color: #16a34a;
+      margin-bottom: 16px;
+    }
+    .form-success-alert h4 {
+      font-family: var(--head-font);
+      font-size: 1.6rem;
+      color: var(--navy-deep);
+      margin-bottom: 8px;
+    }
+    .form-success-alert p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    /* ======================================================== */
+    /* 09 — FOOTER (SITE WIDE FOOTER)                           */
+    /* ======================================================== */
+    .nw-footer {
+      position: relative;
+      padding: 110px 24px 36px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(70, 86, 101, 0.14) 0%, rgba(70, 86, 101, 0.04) 45%, transparent 75%),
+                  linear-gradient(180deg, #E3EAE8 0%, #EFF2EC 42%, #FAF8EE 100%);
+      color: var(--navy);
+      overflow: hidden;
+      border-top: 1px solid var(--border-line);
+    }
+    .nw-footer-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .nw-footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      margin-bottom: 56px;
+      gap: 24px;
+    }
     .nw-footer-brand { display: flex; justify-content: center; }
     .nw-footer-socials { display: flex; justify-content: center; gap: 16px; }
-    .nw-social-pill { width: 58px; height: 40px; border-radius: 11px; border: 1px solid rgba(70,86,101,.48); background: rgba(255,255,255,.35); color: var(--navy); display: inline-flex; align-items: center; justify-content: center; transition: all .25s ease; }
-    .nw-social-pill:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
-    .nw-footer-member { display: flex; flex-direction: column; align-items: center; }
-    .nw-member-label { font-family: var(--head); font-size: .92rem; font-weight: 700; margin-bottom: 6px; }
-    .nw-credai-badge { font-size: 1.45rem; font-weight: 700; letter-spacing: 2.5px; display: inline-flex; gap: 4px; }
-    .nw-credai-roof { color: #c05640; font-size: .95rem; transform: translateY(-7px); }
-    .nw-footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; padding-bottom: 50px; }
-    .nw-col-title { font-family: var(--head); font-size: 1.38rem; font-weight: 700; margin-bottom: 22px; }
-    .nw-col-list { display: flex; flex-direction: column; gap: 12px; align-items: center; }
-    .nw-col-list a, .nw-contact-item { font-size: .95rem; color: var(--muted); transition: color .22s ease; }
-    .nw-col-list a:hover { color: var(--navy); }
+    .nw-social-pill {
+      width: 58px;
+      height: 40px;
+      border-radius: 11px;
+      border: 1px solid rgba(70, 86, 101, 0.48);
+      background: rgba(255, 255, 255, 0.35);
+      color: var(--navy);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+    .nw-social-pill:hover {
+      background: var(--navy-deep);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    .nw-footer-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .nw-member-label {
+      font-family: var(--head-font);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .nw-credai-badge {
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      display: inline-flex;
+      gap: 4px;
+    }
+    .nw-credai-roof {
+      color: #c05640;
+      font-size: 0.95rem;
+      transform: translateY(-7px);
+    }
+    .nw-footer-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      text-align: center;
+      padding-bottom: 50px;
+    }
+    .nw-col-title {
+      font-family: var(--head-font);
+      font-size: 1.38rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+      color: var(--navy-deep);
+    }
+    .nw-col-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+    .nw-col-list a, .nw-contact-item {
+      font-size: 0.95rem;
+      color: var(--muted);
+      transition: color 0.22s ease;
+    }
+    .nw-col-list a:hover { color: var(--navy-deep); }
     .nw-contact-address { max-width: 240px; }
-    .nw-footer-bottom { border-top: 1px solid rgba(70,86,101,.14); padding-top: 22px; text-align: center; font-size: .86rem; color: var(--muted); display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .nw-footer-bottom a:hover { color: var(--navy); }
+    .nw-footer-bottom {
+      border-top: 1px solid rgba(70, 86, 101, 0.14);
+      padding-top: 22px;
+      text-align: center;
+      font-size: 0.86rem;
+      color: var(--muted);
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .nw-footer-bottom a:hover { color: var(--navy-deep); }
 
-    /* ---------- Responsive / reduced motion: scenes stack as calm full-screen cards ---------- */
+    /* ======================================================== */
+    /* RESPONSIVE BREAKPOINTS                                   */
+    /* ======================================================== */
+    @media (max-width: 1080px) {
+      .sizes-cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+      .legal-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-spec-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 900px) {
       .header-nav-list { display: none; }
       .nav-mobile-btn { display: block; }
-      .header-block { grid-template-columns: 1fr auto 1fr; }
-      .layout-grid, .reserve-grid, .others-grid { grid-template-columns: 1fr; }
-      .stat-grid { grid-template-columns: 1fr 1fr; }
-      .stat { border-right: 0; margin-right: 0; border-bottom: 1px solid var(--line); }
+      .overview-grid, .location-split-grid, .master-plan-box, .enquiry-split-box {
+        grid-template-columns: 1fr;
+      }
+      .gallery-masonry-grid { grid-template-columns: repeat(2, 1fr); }
       .nw-footer-top, .nw-footer-cols { grid-template-columns: 1fr; }
-      .rail, .cue, .counter { display: none; }
     }
-    @media (max-width: 900px), (prefers-reduced-motion: reduce) {
-      .journey { height: auto; }
-      .stage { position: relative; height: auto; overflow: visible; }
-      .scene { position: relative; height: 88vh; min-height: 520px; clip-path: none !important; }
-      .scene-img { transform: none !important; filter: none !important; inset: 0; width: 100%; height: 100%; }
-      .scene-copy, .scene-price { opacity: 1 !important; transform: none !important; }
-      .scene-title .ln > span { transform: none !important; }
-      .scene-price { left: max(24px, 6vw); right: auto; text-align: left; bottom: 24px; }
-      .scene-copy { bottom: 130px; }
-      .scene:not(:first-child) .scene-price { display: none; }
-      .rail, .cue, .counter { display: none; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
-      .reveal { opacity: 1; transform: none; }
-      .viewer-main img { transform: none; }
+
+    @media (max-width: 600px) {
+      .sizes-cards-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .legal-grid { grid-template-columns: 1fr; }
+      .gallery-masonry-grid { grid-template-columns: 1fr; }
+      .hero-spec-strip { grid-template-columns: 1fr; }
+      .spec-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 12px; }
+      .form-grid-fields { grid-template-columns: 1fr; }
+      .form-col-full { grid-column: span 1; }
+      .overview-stats-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; width: 100%; }
+      .btn-hero-primary, .btn-hero-secondary { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
-  <a href="#main" class="skip">Skip to content</a>
+  <a href="#main" class="skip-to-content">Skip to content</a>
 
+  <!-- ======================================================== -->
+  <!-- NAVIGATION BAR (TRANSPARENT ON HERO, GLASS ON SCROLL)     -->
+  <!-- ======================================================== -->
   <header class="header" id="mainHeader">
     <div class="holder">
       <div class="header-block">
@@ -288,178 +1468,728 @@
     <a href="contact.html">Contact Us</a>
   </nav>
 
-  <main id="main" tabindex="-1">
+  <main id="main">
 
-    <!-- ===== Scroll journey: five scenes that switch as you scroll ===== -->
-    <section class="journey" id="journey" aria-label="Green Valley Township tour">
-      <div class="stage" id="stage">
+    <!-- ======================================================== -->
+    <!-- 01 — PROJECT HERO                                        -->
+    <!-- ======================================================== -->
+    <section class="hero-project-sec" id="heroProject">
+      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=80" alt="Green Valley Township Plots" class="hero-project-bg">
+      <div class="hero-project-overlay"></div>
 
-        <article class="scene" data-label="Arrival">
-          <img class="scene-img" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=80" alt="Green Valley Township open land at the North Expressway">
-          <div class="scene-copy">
-            <div class="kicker">Plotting Project 01</div>
-            <h1 class="scene-title"><span class="ln"><span>Green Valley</span></span><span class="ln"><span>Township Plots</span></span></h1>
-            <p class="scene-sub">80 acres of planned plots on the North Expressway growth hub. Fifteen minutes from the metro.</p>
-            <div class="scene-tag"><i class="fa-solid fa-location-dot"></i> North Expressway Growth Hub</div>
+      <div class="sec-container" style="width: 100%;">
+        <div class="hero-project-content">
+          <div class="hero-badge-row">
+            <span class="hero-pill-badge"><i class="fa-solid fa-location-dot"></i> North Expressway Corridor, Pune</span>
+            <span class="hero-pill-badge highlight"><i class="fa-solid fa-stamp"></i> MahaRERA: P52100054321</span>
+            <span class="hero-pill-badge"><i class="fa-solid fa-circle-check"></i> PMRDA Sanctioned</span>
           </div>
-          <div class="scene-price"><small>Plots from</small><strong>$75,000 - $210,000</strong></div>
-        </article>
 
-        <article class="scene" data-label="Roads">
-          <img class="scene-img" src="assets/pune-luxury-villas.jpg" alt="Paved lane with street lighting and landscaped edges">
-          <div class="scene-copy">
-            <div class="kicker">02 &nbsp;Roads and utilities</div>
-            <h2 class="scene-title"><span class="ln"><span>Wide roads.</span></span><span class="ln"><span>Wires underground.</span></span></h2>
-            <p class="scene-sub">40 and 60 feet blacktop roads, stormwater drains, LED streetlights and underground electric ducts, all laid before you build.</p>
-            <div class="scene-tag"><i class="fa-solid fa-road"></i> 40 &amp; 60 ft roads</div>
-          </div>
-        </article>
+          <h1 class="hero-h1-title">Green Valley<br>Township Plots</h1>
+          
+          <p class="hero-sub-narrative">
+            An 80-acre master-planned residential plotting enclave with 40 &amp; 60 ft. wide blacktop roads, underground utilities, and clear individual 7/12 land titles — ready for immediate registry and villa construction.
+          </p>
 
-        <article class="scene" data-label="Gardens">
-          <img class="scene-img" src="assets/amenity-garden.jpg" alt="Landscaped garden walk in the township">
-          <div class="scene-copy">
-            <div class="kicker">03 &nbsp;Green space</div>
-            <h2 class="scene-title"><span class="ln"><span>Five parks</span></span><span class="ln"><span>at the centre.</span></span></h2>
-            <p class="scene-sub">Walking paths, shaded seating and open lawns sit in the middle of the layout, so every plot is a short walk from green.</p>
-            <div class="scene-tag"><i class="fa-solid fa-tree"></i> 5 central theme parks</div>
+          <div class="hero-actions">
+            <a href="#enquirySection" class="btn-hero-primary"><i class="fa-solid fa-calendar-check"></i> Book Site Visit</a>
+            <a href="#sizesSection" class="btn-hero-secondary"><i class="fa-solid fa-ruler-combined"></i> View Available Sizes</a>
+            <a href="#legalSection" class="btn-hero-secondary"><i class="fa-solid fa-file-shield"></i> Legal Credentials</a>
           </div>
-        </article>
 
-        <article class="scene" data-label="Clubhouse">
-          <img class="scene-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80" alt="Township clubhouse area">
-          <div class="scene-copy">
-            <div class="kicker">04 &nbsp;Safe and gated</div>
-            <h2 class="scene-title"><span class="ln"><span>Watched, lit,</span></span><span class="ln"><span>and gated.</span></span></h2>
-            <p class="scene-sub">24/7 CCTV checkpoints, a managed entrance and a clubhouse for residents, so land you hold stays looked after.</p>
-            <div class="scene-tag"><i class="fa-solid fa-shield-halved"></i> 24/7 surveillance</div>
-          </div>
-        </article>
-
-        <article class="scene" data-label="Registry">
-          <img class="scene-img" src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=2000&q=80" alt="Tall trees at the edge of the township">
-          <div class="scene-copy">
-            <div class="kicker">05 &nbsp;Clear title</div>
-            <h2 class="scene-title"><span class="ln"><span>Registry and</span></span><span class="ln"><span>possession, now.</span></span></h2>
-            <p class="scene-sub">RERA approved. Freehold registry and clear mutation records, with up to 80% bank loan approved on your plot.</p>
-            <a class="scene-tag" href="#reserve"><i class="fa-solid fa-map-location-dot"></i> Reserve your plot</a>
-          </div>
-        </article>
-
-        <div class="counter" aria-hidden="true"><b id="cnt">01</b><span>/ 05</span><span class="bar"><i id="bar"></i></span></div>
-        <div class="rail" id="rail" role="group" aria-label="Tour scenes"></div>
-        <div class="cue" id="cue" aria-hidden="true">Scroll<i></i></div>
-      </div>
-    </section>
-
-    <!-- ===== Numbers ===== -->
-    <section class="stats" aria-labelledby="statsTitle">
-      <div class="wrap">
-        <div class="stats-head">
-          <div class="reveal">
-            <div class="eyebrow">At a glance</div>
-            <h2 class="title" id="statsTitle">The plot, in four numbers.</h2>
-          </div>
-          <p class="lead reveal" style="--d:120">Pick a size from 150 to 500 square yards. Every plot is demarcated, registered and ready for you to build or hold.</p>
-        </div>
-        <div class="stat-grid">
-          <div class="stat reveal" style="--d:0"><i class="fa-solid fa-vector-square"></i><div class="num"><span class="count" data-to="150">150</span> - <span class="count" data-to="500">500</span></div><div class="cap">Square yards</div></div>
-          <div class="stat reveal" style="--d:100"><i class="fa-solid fa-road"></i><div class="num">40 &amp; 60 ft</div><div class="cap">Blacktop roads</div></div>
-          <div class="stat reveal" style="--d:200"><i class="fa-solid fa-stamp"></i><div class="num">RERA</div><div class="cap">Sanctioned township</div></div>
-          <div class="stat reveal" style="--d:300"><i class="fa-solid fa-hand-holding-hand"></i><div class="num">Immediate</div><div class="cap">Registry &amp; mutation</div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Layout and infrastructure ===== -->
-    <section class="layout" aria-labelledby="layoutTitle">
-      <div class="wrap layout-grid">
-        <div class="viewer reveal">
-          <div class="viewer-main" id="viewerMain">
-            <img class="on" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Township entrance" data-cap="Township entrance">
-            <img src="assets/pune-luxury-villas.jpg" alt="Wide roads" data-cap="Wide roads" loading="lazy">
-            <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80" alt="Tree-lined edge" data-cap="Tree-lined edge" loading="lazy">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Clubhouse area" data-cap="Clubhouse area" loading="lazy">
-            <span class="viewer-cap" id="viewerCap">Township entrance</span>
-          </div>
-          <div class="thumbs" id="thumbs">
-            <button class="on" aria-label="Township entrance"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=300&q=80" alt=""></button>
-            <button aria-label="Wide roads"><img src="assets/pune-luxury-villas.jpg" alt="" loading="lazy"></button>
-            <button aria-label="Tree-lined edge"><img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy"></button>
-            <button aria-label="Clubhouse area"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy"></button>
-          </div>
-        </div>
-        <div>
-          <div class="eyebrow reveal">Layout and infrastructure</div>
-          <h2 class="title reveal" id="layoutTitle" style="--d:80">A planned township, not just open land.</h2>
-          <p class="lead reveal" style="--d:160">Green Valley is an 80-acre master-planned community on the high-speed expansion expressway. The layout follows international urban planning guidelines, with underground electric ducts, modern stormwater drainage, LED streetlights and 24/7 CCTV checkpoints.</p>
-          <p class="lead reveal" style="--d:220;margin-top:14px;">You get instant demarcation, freehold registry and clear mutation records. Build your own multi-storey villa, or hold the land as it grows in value.</p>
-          <ul class="tick-list">
-            <li class="reveal" style="--d:280"><i class="fa-solid fa-check"></i> Underground utilities</li>
-            <li class="reveal" style="--d:340"><i class="fa-solid fa-check"></i> 5 central theme parks</li>
-            <li class="reveal" style="--d:400"><i class="fa-solid fa-check"></i> 80% bank loan approved</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Reserve ===== -->
-    <section class="reserve" id="reserve" aria-labelledby="reserveTitle">
-      <div class="wrap reserve-grid">
-        <div>
-          <div class="eyebrow reveal">Reserve your plot</div>
-          <h2 class="title reveal" id="reserveTitle" style="--d:80">Pick your size. We confirm the number.</h2>
-          <p class="lead reveal" style="--d:160">Choose a plot size and we will schedule an on-ground boundary check with you. Our land manager sends the master layout map with your available plot numbers.</p>
-          <p class="reveal" style="--d:240;margin-top:26px;color:#c9b995;font-size:.95rem;"><i class="fa-solid fa-phone" style="color:var(--gold);margin-right:8px;"></i> +91-949 416 8733 &nbsp;&middot;&nbsp; greenvalley@oneroofproperties.com</p>
-        </div>
-        <div class="form-card reveal" id="formCard" style="--d:120">
-          <div class="head">
-            <h3>Reserve Your Plot</h3>
-            <p class="sm">Select your preferred plot size and schedule on-ground boundary verification.</p>
-          </div>
-          <form id="plotForm">
-            <input type="text" placeholder="Investor name" aria-label="Investor name" required>
-            <input type="email" placeholder="Email address" aria-label="Email address" required>
-            <input type="tel" placeholder="Mobile / WhatsApp" aria-label="Mobile or WhatsApp" required>
-            <select aria-label="Plot size">
-              <option>150 Sq Yards (Corner Option)</option>
-              <option>250 Sq Yards (Park Facing)</option>
-              <option>350 Sq Yards (Wide Road)</option>
-              <option>500 Sq Yards (Grand Plot)</option>
-            </select>
-            <button type="submit" class="btn gold"><i class="fa-solid fa-map-location-dot"></i> Check Available Numbers</button>
-          </form>
-          <div class="form-ok" role="status" aria-live="polite">
-            <i class="fa-solid fa-circle-check"></i>
-            <h3>Request received</h3>
-            <p class="sm" style="margin:0;">Our land acquisition manager will contact you with the master layout map.</p>
+          <!-- Hero Quick Spec Strip -->
+          <div class="hero-spec-strip">
+            <div class="spec-item">
+              <span class="spec-label">Plot Dimensions</span>
+              <span class="spec-value">150 – 500</span>
+              <span class="spec-sub">Sq. Yards (1,350 – 4,500 Sq. Ft.)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Starting Investment</span>
+              <span class="spec-value">&#8377;45 Lakhs*</span>
+              <span class="spec-sub">Attractive 20:80 Payment Scheme</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Internal Roads</span>
+              <span class="spec-value">40 &amp; 60 Ft.</span>
+              <span class="spec-sub">Heavy Blacktop with LED Lighting</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Possession Status</span>
+              <span class="spec-value">Immediate</span>
+              <span class="spec-sub">Demarcated with Boundary Stones</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Other projects ===== -->
-    <section class="others" aria-labelledby="othersTitle">
-      <div class="wrap">
-        <div class="eyebrow reveal">Keep exploring</div>
-        <h2 class="title reveal" id="othersTitle" style="--d:80">Other land projects.</h2>
-        <div class="others-grid">
-          <a class="other reveal" href="plotting-2.html" style="--d:0">
-            <img src="assets/amenity-garden.jpg" alt="" loading="lazy">
-            <div class="in-copy"><small>Plotting Project 02</small><h3>Royal Meadows Farmhouse Plots</h3><span class="go">View project <i class="fa-solid fa-arrow-right"></i></span></div>
-          </a>
-          <a class="other reveal" href="plotting-3.html" style="--d:120">
-            <img src="assets/pune-luxury-tower.jpg" alt="" loading="lazy">
-            <div class="in-copy"><small>Plotting Project 03</small><h3>Metro Boulevard Commercial Plots</h3><span class="go">View project <i class="fa-solid fa-arrow-right"></i></span></div>
-          </a>
+    <!-- ======================================================== -->
+    <!-- 02 — PROJECT OVERVIEW                                    -->
+    <!-- ======================================================== -->
+    <section class="overview-sec" id="overviewSection">
+      <div class="sec-container">
+        <div class="overview-grid">
+          
+          <div class="overview-text-col plot-reveal">
+            <div class="sec-num-eyebrow">
+              <span class="dash"></span> 02 &mdash; Project Overview
+            </div>
+            <h2 class="sec-headline">
+              A Master-Planned 80-Acre Township Engineered for Generational Value
+            </h2>
+            <p>
+              Green Valley Township is Pune's landmark plotting development situated along the high-appreciation North Expressway corridor. Conceptualized as an eco-sustainable gated community, the project harmoniously marries urban infrastructure with serene natural surroundings.
+            </p>
+            <p>
+              Unlike raw unapproved agricultural subdivisions, every single plot in Green Valley is PMRDA sanctioned, RERA registered, and has an independent Non-Agricultural (NA 44) Collector Sanction with demarcated brass-pin survey markers.
+            </p>
+
+            <div class="overview-highlight-box">
+              <h4>Institutional Precision &amp; Freehold Security</h4>
+              <p>
+                Complete infrastructure — including stormwater drainage, subterranean power cabling, high-pressure water loops, and landscaped avenues — is fully commissioned on-ground before plot possession.
+              </p>
+            </div>
+          </div>
+
+          <div class="overview-stats-grid plot-reveal">
+            <div class="stat-metric-card">
+              <div class="stat-icon"><i class="fa-solid fa-tree"></i></div>
+              <div class="stat-num-val">80</div>
+              <div class="stat-cap-title">Acres Expanse</div>
+            </div>
+            <div class="stat-metric-card">
+              <div class="stat-icon"><i class="fa-solid fa-map"></i></div>
+              <div class="stat-num-val">420+</div>
+              <div class="stat-cap-title">Sanctioned Plots</div>
+            </div>
+            <div class="stat-metric-card">
+              <div class="stat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="stat-num-val">100%</div>
+              <div class="stat-cap-title">Clear 7/12 Title</div>
+            </div>
+            <div class="stat-metric-card">
+              <div class="stat-icon"><i class="fa-solid fa-landmark"></i></div>
+              <div class="stat-num-val">80%</div>
+              <div class="stat-cap-title">Bank Loan Approved</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
+
+    <!-- ======================================================== -->
+    <!-- 03 — PLOT LAYOUT & AVAILABLE SIZES                       -->
+    <!-- ======================================================== -->
+    <section class="sizes-sec" id="sizesSection">
+      <div class="sec-container">
+        
+        <div class="sec-header center plot-reveal">
+          <div class="sec-num-eyebrow">
+            <span class="dash"></span> 03 &mdash; Plot Layout &amp; Available Sizes
+          </div>
+          <h2 class="sec-headline">
+            Tailored Dimensions for Custom Villas, Weekend Estates &amp; Long-Term Wealth
+          </h2>
+          <p class="sec-lead">
+            Select from standard villa footprints to sprawling corner parcels. Every plot enjoys direct road frontage, independent water/power tapping points, and G+2 residential villa sanction.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="size-filter-tabs plot-reveal">
+          <button class="size-filter-btn active" onclick="filterPlotSizes('all', this)">All Configurations</button>
+          <button class="size-filter-btn" onclick="filterPlotSizes('150', this)">150 Sq. Yds</button>
+          <button class="size-filter-btn" onclick="filterPlotSizes('250', this)">250 Sq. Yds</button>
+          <button class="size-filter-btn" onclick="filterPlotSizes('350', this)">350 Sq. Yds</button>
+          <button class="size-filter-btn" onclick="filterPlotSizes('500', this)">500 Sq. Yds</button>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="sizes-cards-grid">
+          
+          <!-- Card 1: 150 Sq Yds -->
+          <div class="size-card plot-reveal" data-size="150">
+            <span class="size-header-tag">Executive Villa</span>
+            <h3 class="size-card-title">150 Sq. Yards</h3>
+            <p class="size-sqft-subtitle">1,350 Sq. Ft. &bull; 30' &times; 45' Footprint</p>
+            
+            <div class="size-spec-list">
+              <div class="size-spec-row"><span class="k">Road Width:</span><span class="v">40 Ft. Blacktop</span></div>
+              <div class="size-spec-row"><span class="k">Orientation:</span><span class="v">East / North Facing</span></div>
+              <div class="size-spec-row"><span class="k">Permissible:</span><span class="v">G + 2 Floors</span></div>
+              <div class="size-spec-row"><span class="k">FSI Potential:</span><span class="v">Up to 2,400 Sq. Ft.</span></div>
+              <div class="size-spec-row"><span class="k">Possession:</span><span class="v">Immediate</span></div>
+            </div>
+
+            <div class="size-price-tag">
+              <small>Starting Price</small>
+              <strong>&#8377;45.00 Lakhs*</strong>
+            </div>
+
+            <a href="#enquirySection" class="btn-gold-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
+          </div>
+
+          <!-- Card 2: 250 Sq Yds (Featured) -->
+          <div class="size-card featured plot-reveal" data-size="250">
+            <span class="size-header-tag">Park Facing Villa</span>
+            <h3 class="size-card-title">250 Sq. Yards</h3>
+            <p class="size-sqft-subtitle">2,250 Sq. Ft. &bull; 35' &times; 64' Footprint</p>
+            
+            <div class="size-spec-list">
+              <div class="size-spec-row"><span class="k">Road Width:</span><span class="v">40 Ft. Tree-Lined</span></div>
+              <div class="size-spec-row"><span class="k">Orientation:</span><span class="v">Garden Facing</span></div>
+              <div class="size-spec-row"><span class="k">Permissible:</span><span class="v">G + 2 with Terrace</span></div>
+              <div class="size-spec-row"><span class="k">FSI Potential:</span><span class="v">Up to 3,800 Sq. Ft.</span></div>
+              <div class="size-spec-row"><span class="k">Possession:</span><span class="v">Immediate</span></div>
+            </div>
+
+            <div class="size-price-tag">
+              <small>Starting Price</small>
+              <strong>&#8377;72.50 Lakhs*</strong>
+            </div>
+
+            <a href="#enquirySection" class="btn-gold-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
+          </div>
+
+          <!-- Card 3: 350 Sq Yds -->
+          <div class="size-card plot-reveal" data-size="350">
+            <span class="size-header-tag">Corner Boulevard</span>
+            <h3 class="size-card-title">350 Sq. Yards</h3>
+            <p class="size-sqft-subtitle">3,150 Sq. Ft. &bull; 42' &times; 75' Footprint</p>
+            
+            <div class="size-spec-list">
+              <div class="size-spec-row"><span class="k">Road Width:</span><span class="v">60 Ft. Main Boulevard</span></div>
+              <div class="size-spec-row"><span class="k">Orientation:</span><span class="v">Dual Corner Access</span></div>
+              <div class="size-spec-row"><span class="k">Permissible:</span><span class="v">G + 2 Independent</span></div>
+              <div class="size-spec-row"><span class="k">FSI Potential:</span><span class="v">Up to 5,200 Sq. Ft.</span></div>
+              <div class="size-spec-row"><span class="k">Possession:</span><span class="v">Immediate</span></div>
+            </div>
+
+            <div class="size-price-tag">
+              <small>Starting Price</small>
+              <strong>&#8377;1.05 Crores*</strong>
+            </div>
+
+            <a href="#enquirySection" class="btn-gold-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
+          </div>
+
+          <!-- Card 4: 500 Sq Yds -->
+          <div class="size-card plot-reveal" data-size="500">
+            <span class="size-header-tag">Grand Estate Parcel</span>
+            <h3 class="size-card-title">500 Sq. Yards</h3>
+            <p class="size-sqft-subtitle">4,500 Sq. Ft. &bull; 50' &times; 90' Footprint</p>
+            
+            <div class="size-spec-list">
+              <div class="size-spec-row"><span class="k">Road Width:</span><span class="v">60 Ft. Arterial</span></div>
+              <div class="size-spec-row"><span class="k">Orientation:</span><span class="v">Prime Vastu North-East</span></div>
+              <div class="size-spec-row"><span class="k">Permissible:</span><span class="v">Luxury Bungalow &bull; Pool</span></div>
+              <div class="size-spec-row"><span class="k">FSI Potential:</span><span class="v">Up to 7,500 Sq. Ft.</span></div>
+              <div class="size-spec-row"><span class="k">Possession:</span><span class="v">Immediate</span></div>
+            </div>
+
+            <div class="size-price-tag">
+              <small>Starting Price</small>
+              <strong>&#8377;1.48 Crores*</strong>
+            </div>
+
+            <a href="#enquirySection" class="btn-gold-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
+          </div>
+
+        </div>
+
+        <!-- Master Plan Download Box -->
+        <div class="master-plan-box plot-reveal">
+          <div>
+            <div class="sec-num-eyebrow" style="color: #f3d9b0;">
+              <span class="dash" style="background:#f3d9b0;"></span> MASTER LAYOUT MAP
+            </div>
+            <h3>Download High-Resolution PMRDA Sanctioned Layout Map</h3>
+            <p>
+              Get the complete demarcated plotting blueprint with plot numbers, directional bearings, road widths, and open amenity reservation zones.
+            </p>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;">
+              <a href="#enquirySection" class="btn-gold-action"><i class="fa-solid fa-download"></i> Download PDF Map (6.4 MB)</a>
+              <a href="tel:+919494168733" class="btn-outline-navy" style="color:#ffffff;border-color:rgba(255,255,255,0.4);"><i class="fa-solid fa-phone"></i> Call Plot Manager</a>
+            </div>
+          </div>
+          <div class="master-plan-preview-img">
+            <img src="https://images.unsplash.com/photo-1524813686514-a57563d77d66?auto=format&fit=crop&w=800&q=80" alt="Master Plan Preview">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 04 — AMENITIES & INFRASTRUCTURE                          -->
+    <!-- ======================================================== -->
+    <section class="amenities-sec" id="amenitiesSection">
+      <div class="sec-container">
+        
+        <div class="sec-header center plot-reveal">
+          <div class="sec-num-eyebrow">
+            <span class="dash"></span> 04 &mdash; Amenities &amp; Infrastructure
+          </div>
+          <h2 class="sec-headline">
+            Institutional Infrastructure Delivered Before You Lay the First Brick
+          </h2>
+          <p class="sec-lead">
+            Every element is engineered to institutional civic standards so you and your family enjoy seamless living without the typical delays of standalone land purchases.
+          </p>
+        </div>
+
+        <div class="amenities-grid">
+          
+          <div class="amenity-card plot-reveal">
+            <div class="amenity-icon-bubble"><i class="fa-solid fa-road"></i></div>
+            <h3 class="amenity-title">40 &amp; 60 Ft. Blacktop Roads</h3>
+            <p class="amenity-desc">
+              Reinforced bitumen internal roads engineered for heavy construction transit, complete with concrete curbs and stormwater channels.
+            </p>
+          </div>
+
+          <div class="amenity-card plot-reveal">
+            <div class="amenity-icon-bubble"><i class="fa-solid fa-bolt"></i></div>
+            <h3 class="amenity-title">Underground Power &amp; Cabling</h3>
+            <p class="amenity-desc">
+              100% subterranean electric trenches, optical fiber conduits, and dedicated step-down transformers ensuring zero unsightly overhead wires.
+            </p>
+          </div>
+
+          <div class="amenity-card plot-reveal">
+            <div class="amenity-icon-bubble"><i class="fa-solid fa-shield-cat"></i></div>
+            <h3 class="amenity-title">24/7 Gated Security &amp; CCTV</h3>
+            <p class="amenity-desc">
+              Grand guarded entry portal with RFID automated boom barriers, perimeter CCTV cameras, and round-the-clock physical security patrols.
+            </p>
+          </div>
+
+          <div class="amenity-card plot-reveal">
+            <div class="amenity-icon-bubble"><i class="fa-solid fa-faucet-drip"></i></div>
+            <h3 class="amenity-title">Central Water Supply Network</h3>
+            <p class="amenity-desc">
+              Overhead master reservoir and hydro-pneumatic pressurized water pipelines directly stubbed into the boundary of every individual plot.
+            </p>
+          </div>
+
+          <div class="amenity-card plot-reveal">
+            <div class="amenity-icon-bubble"><i class="fa-solid fa-champagne-glasses"></i></div>
+            <h3 class="amenity-title">Clubhouse &amp; Swimming Pool</h3>
+            <p class="amenity-desc">
+              Exclusive 12,000 sq. ft. community clubhouse featuring a lap pool, modern fitness gymnasium, indoor games lounge, and banquet deck.
+            </p>
+          </div>
+
+          <div class="amenity-card plot-reveal">
+            <div class="amenity-icon-bubble"><i class="fa-solid fa-tree"></i></div>
+            <h3 class="amenity-title">5 Theme Botanical Gardens</h3>
+            <p class="amenity-desc">
+              Lush landscaped green parks with jogging loops, senior citizen reflexology pathways, meditation gazebos, and children's adventure play zones.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 05 — LOCATION ADVANTAGES                                 -->
+    <!-- ======================================================== -->
+    <section class="location-sec" id="locationSection">
+      <div class="sec-container">
+        
+        <div class="sec-header center plot-reveal">
+          <div class="sec-num-eyebrow">
+            <span class="dash"></span> 05 &mdash; Location Advantages
+          </div>
+          <h2 class="sec-headline">
+            Strategic Growth Corridor at Pune's Fast-Tracking Junction
+          </h2>
+          <p class="sec-lead">
+            Strategically located directly off the North Expressway Corridor, bridging Pune's prime business hubs, upcoming ring roads, and premier education institutes.
+          </p>
+        </div>
+
+        <div class="location-split-grid">
+          
+          <div class="location-categories-stack plot-reveal">
+            
+            <!-- Category 1: Highways & Transit -->
+            <div class="loc-cat-box">
+              <div class="loc-cat-header">
+                <i class="fa-solid fa-route"></i>
+                <h4>Highways &amp; Transit Corridors</h4>
+              </div>
+              <div class="loc-items-list">
+                <div class="loc-item-row"><span class="loc-item-name">North Expressway Main Access</span><span class="loc-item-time">2 Mins</span></div>
+                <div class="loc-item-row"><span class="loc-item-name">Proposed Pune Ring Road Junction</span><span class="loc-item-time">7 Mins</span></div>
+                <div class="loc-item-row"><span class="loc-item-name">Upcoming Metro Line Extension</span><span class="loc-item-time">12 Mins</span></div>
+                <div class="loc-item-row"><span class="loc-item-name">Pune International Airport</span><span class="loc-item-time">35 Mins</span></div>
+              </div>
+            </div>
+
+            <!-- Category 2: Tech Parks & Employment -->
+            <div class="loc-cat-box">
+              <div class="loc-cat-header">
+                <i class="fa-solid fa-briefcase"></i>
+                <h4>Tech Parks &amp; Employment Clusters</h4>
+              </div>
+              <div class="loc-items-list">
+                <div class="loc-item-row"><span class="loc-item-name">Hinjawadi IT Park Phase 1 &amp; 2</span><span class="loc-item-time">20 Mins</span></div>
+                <div class="loc-item-row"><span class="loc-item-name">Talawade Software Tech Hub</span><span class="loc-item-time">15 Mins</span></div>
+                <div class="loc-item-row"><span class="loc-item-name">Chakan Industrial &amp; Auto Zone</span><span class="loc-item-time">18 Mins</span></div>
+              </div>
+            </div>
+
+            <!-- Category 3: Schools & Hospitals -->
+            <div class="loc-cat-box">
+              <div class="loc-cat-header">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h4>Education &amp; Healthcare</h4>
+              </div>
+              <div class="loc-items-list">
+                <div class="loc-item-row"><span class="loc-item-name">Symbiosis International Campus</span><span class="loc-item-time">14 Mins</span></div>
+                <div class="loc-item-row"><span class="loc-item-name">DY Patil University &amp; Medical College</span><span class="loc-item-time">12 Mins</span></div>
+                <div class="loc-item-row"><span class="loc-item-name">Aditya Birla Memorial Hospital</span><span class="loc-item-time">18 Mins</span></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Location Map Visual -->
+          <div class="location-map-wrap plot-reveal">
+            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1000&q=80" alt="Green Valley Township Strategic Location Map" class="location-map-img">
+            <div class="location-map-overlay-card">
+              <div>
+                <div class="map-overlay-title">Green Valley Township Gate</div>
+                <div class="map-overlay-sub">North Expressway Exit 4B, Pune &bull; 18.5793&deg; N, 73.7438&deg; E</div>
+              </div>
+              <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-gold-action" style="padding: 10px 18px; font-size: 0.8rem;">
+                <i class="fa-solid fa-diamond-turn-right"></i> Navigate
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 06 — PROJECT GALLERY                                     -->
+    <!-- ======================================================== -->
+    <section class="gallery-sec" id="gallerySection">
+      <div class="sec-container">
+        
+        <div class="sec-header center plot-reveal">
+          <div class="sec-num-eyebrow">
+            <span class="dash"></span> 06 &mdash; Project Gallery
+          </div>
+          <h2 class="sec-headline">
+            Visual Tour of Green Valley Township
+          </h2>
+          <p class="sec-lead">
+            Explore authentic aerial viewpoints, internal road infrastructure, completed theme parks, and architectural villa concepts.
+          </p>
+        </div>
+
+        <!-- Filter Nav -->
+        <div class="gallery-filter-nav plot-reveal">
+          <button class="gal-filter-btn active" onclick="filterGallery('all', this)">All Views</button>
+          <button class="gal-filter-btn" onclick="filterGallery('infra', this)">Roads &amp; Infra</button>
+          <button class="gal-filter-btn" onclick="filterGallery('parks', this)">Parks &amp; Nature</button>
+          <button class="gal-filter-btn" onclick="filterGallery('clubhouse', this)">Clubhouse</button>
+          <button class="gal-filter-btn" onclick="filterGallery('villas', this)">Villa Concepts</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-masonry-grid">
+          
+          <div class="gal-item plot-reveal" data-cat="infra">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80" alt="Grand Entrance Boulevard" loading="lazy">
+            <div class="gal-item-overlay">
+              <span class="gal-item-tag">Township Boulevard</span>
+              <h4 class="gal-item-name">60 Ft. Tree-Lined Entrance</h4>
+            </div>
+          </div>
+
+          <div class="gal-item plot-reveal" data-cat="parks">
+            <img src="assets/amenity-garden.jpg" alt="Central Theme Park" loading="lazy">
+            <div class="gal-item-overlay">
+              <span class="gal-item-tag">Theme Parks</span>
+              <h4 class="gal-item-name">Central Botanical Garden</h4>
+            </div>
+          </div>
+
+          <div class="gal-item plot-reveal" data-cat="clubhouse">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Clubhouse &amp; Pool" loading="lazy">
+            <div class="gal-item-overlay">
+              <span class="gal-item-tag">Clubhouse</span>
+              <h4 class="gal-item-name">Community Leisure Deck</h4>
+            </div>
+          </div>
+
+          <div class="gal-item plot-reveal" data-cat="infra">
+            <img src="assets/pune-luxury-villas.jpg" alt="Demarcated Plot Lanes" loading="lazy">
+            <div class="gal-item-overlay">
+              <span class="gal-item-tag">Plot Infrastructure</span>
+              <h4 class="gal-item-name">Internal 40 Ft. Paved Lanes</h4>
+            </div>
+          </div>
+
+          <div class="gal-item plot-reveal" data-cat="villas">
+            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80" alt="Independent Villa Elevation Concept" loading="lazy">
+            <div class="gal-item-overlay">
+              <span class="gal-item-tag">Villa Architecture</span>
+              <h4 class="gal-item-name">Custom G+2 Villa Elevation</h4>
+            </div>
+          </div>
+
+          <div class="gal-item plot-reveal" data-cat="parks">
+            <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=900&q=80" alt="Walking Trails" loading="lazy">
+            <div class="gal-item-overlay">
+              <span class="gal-item-tag">Landscape</span>
+              <h4 class="gal-item-name">Shaded Reflexology Trail</h4>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 07 — LEGAL INFORMATION & PROJECT DETAILS                 -->
+    <!-- ======================================================== -->
+    <section class="legal-sec" id="legalSection">
+      <div class="sec-container">
+        
+        <div class="sec-header center plot-reveal">
+          <div class="sec-num-eyebrow" style="color: #f3d9b0;">
+            <span class="dash" style="background:#f3d9b0;"></span> 07 &mdash; Legal Information &amp; Project Details
+          </div>
+          <h2 class="sec-headline">
+            100% Institutional Transparency, Title Clarity &amp; Sanctions
+          </h2>
+          <p class="sec-lead">
+            Every legal document, sanction order, and revenue extract is open for your solicitor's independent verification. We guarantee unencumbered freehold land ownership.
+          </p>
+        </div>
+
+        <div class="legal-grid">
+          
+          <div class="legal-card plot-reveal">
+            <div class="legal-card-icon"><i class="fa-solid fa-stamp"></i></div>
+            <h3 class="legal-card-title">MahaRERA Registration</h3>
+            <p class="legal-card-detail">
+              Officially sanctioned and registered under MahaRERA with all phase-wise escrow and construction compliance disclosures logged.
+            </p>
+            <span class="legal-meta-badge">RERA No: P52100054321</span>
+          </div>
+
+          <div class="legal-card plot-reveal">
+            <div class="legal-card-icon"><i class="fa-solid fa-building-columns"></i></div>
+            <h3 class="legal-card-title">PMRDA Layout Sanction</h3>
+            <p class="legal-card-detail">
+              Comprehensive planning clearance issued by Pune Metropolitan Region Development Authority under final town planning approval.
+            </p>
+            <span class="legal-meta-badge">Order: PMRDA/TPS/2024/098</span>
+          </div>
+
+          <div class="legal-card plot-reveal">
+            <div class="legal-card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <h3 class="legal-card-title">30-Year Clear Title Search</h3>
+            <p class="legal-card-detail">
+              Unblemished title search certificate from Adv. Sneha P. Jadhav certifying zero litigations, mortgage releases, and ancestral clearances.
+            </p>
+            <span class="legal-meta-badge">Certificate Verified &bull; Freehold</span>
+          </div>
+
+          <div class="legal-card plot-reveal">
+            <div class="legal-card-icon"><i class="fa-solid fa-file-contract"></i></div>
+            <h3 class="legal-card-title">Collector NA Residential (NA 44)</h3>
+            <p class="legal-card-detail">
+              Permanent Non-Agricultural Collector Order for residential usage. No further land conversion or zoning clearances required to construct.
+            </p>
+            <span class="legal-meta-badge">Collector NA 44 Clear</span>
+          </div>
+
+          <div class="legal-card plot-reveal">
+            <div class="legal-card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+            <h3 class="legal-card-title">DLR Total Station Demarcation</h3>
+            <p class="legal-card-detail">
+              District Inspector of Land Records (DILR) certified boundary demarcation with permanent brass-pin survey pegs at every plot corner.
+            </p>
+            <span class="legal-meta-badge">DLR Survey Stones Laid</span>
+          </div>
+
+          <div class="legal-card plot-reveal">
+            <div class="legal-card-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+            <h3 class="legal-card-title">Bank Project Approvals</h3>
+            <p class="legal-card-detail">
+              Empanelled and pre-approved for up to 80% composite plot purchase and villa construction loans by leading public and private banks.
+            </p>
+            <span class="legal-meta-badge">SBI &bull; HDFC &bull; ICICI &bull; BoM</span>
+          </div>
+
+        </div>
+
+        <!-- Download Legal Kit Bar -->
+        <div class="legal-action-bar plot-reveal">
+          <div class="legal-bar-text">
+            <h4>Request Complete Legal Verification Dossier</h4>
+            <p>Includes 7/12 extract sample, MahaRERA certificate, title report, and layout sanction order.</p>
+          </div>
+          <a href="#enquirySection" class="btn-gold-action"><i class="fa-solid fa-file-pdf"></i> Request Legal Kit</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 08 — ENQUIRY & SITE VISIT                                -->
+    <!-- ======================================================== -->
+    <section class="enquiry-sec" id="enquirySection">
+      <div class="sec-container">
+        
+        <div class="enquiry-split-box plot-reveal">
+          
+          <!-- Left Info Pane -->
+          <div class="enquiry-info-pane">
+            <div>
+              <div class="sec-num-eyebrow" style="color: #f3d9b0;">
+                <span class="dash" style="background:#f3d9b0;"></span> 08 &mdash; Enquiry &amp; Site Visit
+              </div>
+              <h3>Experience Green Valley On-Ground</h3>
+              <p>
+                Walking the land is the only true way to understand its elevation, wind currents, and panoramic horizons. Schedule a complimentary private chauffeur-driven site tour today.
+              </p>
+
+              <div class="site-visit-perks">
+                <div class="perk-row">
+                  <i class="fa-solid fa-car-side"></i>
+                  <span>Free Chauffeur Pickup &amp; Drop across Pune</span>
+                </div>
+                <div class="perk-row">
+                  <i class="fa-solid fa-compass-drafting"></i>
+                  <span>On-ground physical plot demarcation walkthrough</span>
+                </div>
+                <div class="perk-row">
+                  <i class="fa-solid fa-file-invoice-dollar"></i>
+                  <span>Transparent unit-by-unit price &amp; FSI breakdown</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="enquiry-direct-contacts">
+              <a href="tel:+919494168733" class="direct-c-item">
+                <i class="fa-solid fa-phone"></i> +91-949 416 8733
+              </a>
+              <a href="https://wa.me/919494168733?text=Hi%20One%20Roof%20Properties,%20I%20am%20interested%20in%20visiting%20Green%20Valley%20Township%20Plots." target="_blank" class="direct-c-item">
+                <i class="fa-brands fa-whatsapp"></i> Chat with Senior Land Advisor
+              </a>
+              <div class="direct-c-item">
+                <i class="fa-solid fa-envelope"></i> greenvalley@oneroofproperties.in
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Form Pane -->
+          <div class="enquiry-form-pane">
+            <div id="enquiryFormWrap">
+              <h3>Schedule Your Site Visit</h3>
+              <p class="sub">Fill in your preferences and our land acquisition director will connect within 15 minutes.</p>
+
+              <form id="projectEnquiryForm" onsubmit="handlePlotEnquiry(event)">
+                <div class="form-grid-fields">
+                  
+                  <div class="form-group">
+                    <label for="fName">Full Name *</label>
+                    <input type="text" id="fName" class="form-input-ctrl" placeholder="e.g. Vikram Bhosale" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="fPhone">Phone / WhatsApp *</label>
+                    <input type="tel" id="fPhone" class="form-input-ctrl" placeholder="+91 98765 43210" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="fEmail">Email Address *</label>
+                    <input type="email" id="fEmail" class="form-input-ctrl" placeholder="name@domain.com" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="fSize">Preferred Plot Size</label>
+                    <select id="fSize" class="form-input-ctrl">
+                      <option value="150">150 Sq. Yards (Executive Villa)</option>
+                      <option value="250" selected>250 Sq. Yards (Park Facing)</option>
+                      <option value="350">350 Sq. Yards (Corner Boulevard)</option>
+                      <option value="500">500 Sq. Yards (Grand Estate)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="fDate">Preferred Visit Date</label>
+                    <input type="date" id="fDate" class="form-input-ctrl">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="fTimeSlot">Preferred Time</label>
+                    <select id="fTimeSlot" class="form-input-ctrl">
+                      <option value="morning">Morning (10:00 AM)</option>
+                      <option value="afternoon">Afternoon (02:00 PM)</option>
+                      <option value="evening">Sunset Tour (04:30 PM)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group form-col-full">
+                    <label for="fMessage">Specific Requirements (Optional)</label>
+                    <input type="text" id="fMessage" class="form-input-ctrl" placeholder="e.g. Vastu compliant East entrance, near clubhouse">
+                  </div>
+
+                </div>
+
+                <div class="terms-row">
+                  <input type="checkbox" id="agreeTerms" required checked>
+                  <label for="agreeTerms">I authorize One Roof Properties to contact me with master plans and site visit arrangements.</label>
+                </div>
+
+                <button type="submit" class="btn-gold-action" style="width: 100%; padding: 15px; font-size: 0.95rem;">
+                  <i class="fa-solid fa-paper-plane"></i> Confirm Site Visit &amp; Inquire Plots
+                </button>
+              </form>
+            </div>
+
+            <!-- Success State -->
+            <div id="enquirySuccessState" class="form-success-alert">
+              <i class="fa-solid fa-circle-check"></i>
+              <h4>Site Visit Request Confirmed!</h4>
+              <p>
+                Thank you! Our senior land advisor has received your request. We will contact you immediately with the master layout blueprint and confirm your private visit schedule.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
+  <!-- ======================================================== -->
+  <!-- 09 — FOOTER (SITE WIDE FOOTER)                           -->
+  <!-- ======================================================== -->
   <footer class="nw-footer">
     <div class="nw-footer-inner">
       <div class="nw-footer-top">
-        <a href="index.html" class="nw-footer-brand"><img src="assets/one-roof-logo-dark.png" alt="One Roof Properties" style="height:54px;width:auto;object-fit:contain;"></a>
+        <a href="index.html" class="nw-footer-brand">
+          <img src="assets/one-roof-logo-dark.png" alt="One Roof Properties" style="height:54px;width:auto;object-fit:contain;">
+        </a>
         <div class="nw-footer-socials">
           <a href="https://linkedin.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
           <a href="https://youtube.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
@@ -471,6 +2201,7 @@
           <div class="nw-credai-badge"><span>CREDAI</span><i class="fa-solid fa-caret-up nw-credai-roof"></i></div>
         </div>
       </div>
+
       <div class="nw-footer-cols">
         <div>
           <h4 class="nw-col-title">Quick Links</h4>
@@ -505,6 +2236,7 @@
           </ul>
         </div>
       </div>
+
       <div class="nw-footer-bottom">
         <span>&copy; 2026 One Roof Properties. All rights reserved. |</span>
         <a href="privacy-policy.html">Privacy Policy</a>
@@ -515,189 +2247,82 @@
   </footer>
 
   <script>
-  (function () {
-    var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
-    var smooth = function (t) { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
-
-    /* ----- Header glass + mobile drawer ----- */
-    var header = document.getElementById('mainHeader');
-    function headerGlass() { header.classList.toggle('scrolled', window.scrollY >= 60); }
-    addEventListener('scroll', headerGlass, { passive: true }); headerGlass();
-    var mBtn = document.getElementById('mobileBtn'), drawer = document.getElementById('drawer');
-    mBtn.addEventListener('click', function () {
-      var open = drawer.classList.toggle('open');
-      mBtn.setAttribute('aria-expanded', open);
-      mBtn.firstElementChild.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-    });
-
-    /* ----- Scene journey ----- */
-    var journey = document.getElementById('journey');
-    var scenes = Array.prototype.slice.call(journey.querySelectorAll('.scene'));
-    var N = scenes.length;
-    var imgs = scenes.map(function (s) { return s.querySelector('.scene-img'); });
-    var copies = scenes.map(function (s) { return s.querySelector('.scene-copy'); });
-    var lines = scenes.map(function (s) { return Array.prototype.slice.call(s.querySelectorAll('.scene-title .ln > span')); });
-    var subs = scenes.map(function (s) { return Array.prototype.slice.call(s.querySelectorAll('.kicker, .scene-sub, .scene-tag')); });
-    var price = scenes[0].querySelector('.scene-price');
-    var cnt = document.getElementById('cnt'), bar = document.getElementById('bar');
-    var cue = document.getElementById('cue'), rail = document.getElementById('rail');
-    var STATIC = matchMedia('(max-width: 900px), (prefers-reduced-motion: reduce)');
-
-    var railBtns = scenes.map(function (s, i) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', 'Go to ' + s.dataset.label);
-      b.innerHTML = '<span class="lbl">' + s.dataset.label + '</span><i></i>';
-      b.addEventListener('click', function () { scrollToScene(i); });
-      rail.appendChild(b);
-      return b;
-    });
-
-    function range() { return journey.offsetHeight - innerHeight; }
-    function top() { return journey.getBoundingClientRect().top + scrollY; }
-    function scrollToScene(i) {
-      var p = i / (N - 1);
-      scrollTo({ top: top() + p * range(), behavior: 'smooth' });
-    }
-    function rawProgress() { return clamp((scrollY - top()) / Math.max(1, range()), 0, 1); }
-
-    var target = 0, shown = 0, raf = null, last = 0, cache = {};
-    function setStyle(el, key, prop, val) {
-      if (cache[key] === val) return;
-      cache[key] = val; el.style[prop] = val;
-    }
-
-    /* Each scene owns a slot of scroll. Inside the slot the picture holds first,
-       then switches in the middle, then holds again, so words can be read. */
-    function render(p) {
-      var s = p * (N - 1);              // 0 .. N-1
-      var seg = Math.min(N - 2, Math.floor(s));
-      var t = s - seg;                  // 0..1 inside this switch
-      var e = smooth((t - 0.22) / 0.56); // eased switch, with holds at both ends
-      if (s >= N - 1) { seg = N - 2; e = 1; }
-
-      for (var i = 0; i < N; i++) {
-        var reveal;                     // how much of scene i is uncovered
-        if (i === 0) reveal = 1;
-        else if (i <= seg) reveal = 1;
-        else if (i === seg + 1) reveal = e;
-        else reveal = 0;
-
-        var clip = reveal >= 1 ? 'inset(0% 0% 0% 0%)' : 'inset(' + ((1 - reveal) * 100).toFixed(2) + '% 0% 0% 0%)';
-        if (i > 0) setStyle(scenes[i], 'c' + i, 'clipPath', clip);
-        setStyle(scenes[i], 'z' + i, 'zIndex', String(i + 1));
-
-        // picture motion: incoming settles from a push-in, outgoing drifts up and dims
-        var scale, ty = 0, dim = 1;
-        if (i === seg + 1 && seg + 1 <= N - 1 && reveal < 1) {
-          scale = 1.22 - 0.22 * e; ty = (1 - e) * 4;
-        } else if (i === seg && seg + 1 <= N - 1) {
-          scale = 1 + 0.06 * e; ty = -6 * e; dim = 1 - 0.45 * e;
-        } else if (i < seg) { scale = 1.06; ty = -6; dim = 0.55; }
-        else if (i === seg + 1) { scale = 1; }
-        else { scale = 1.22; ty = 4; }
-        // gentle drift while a scene is on show
-        var local = s - i; var drift = clamp(local, -1, 1) * -2.2;
-        setStyle(imgs[i], 'i' + i, 'transform', 'translate3d(0,' + (ty + drift).toFixed(2) + '%,0) scale(' + scale.toFixed(4) + ')');
-        setStyle(imgs[i], 'f' + i, 'filter', 'brightness(' + dim.toFixed(3) + ')');
-
-        // words: visible near their own scene, fade and slip out when the switch begins
-        var dist = Math.abs(s - i);
-        var vis = 1 - smooth((dist - 0.12) / 0.2);   // 1 inside the hold, 0 mid-switch
-        if (i === 0 && s < 0.12) vis = 1;
-        setStyle(copies[i], 'o' + i, 'opacity', vis.toFixed(3));
-        setStyle(copies[i], 'p' + i, 'pointerEvents', vis > 0.6 ? 'auto' : 'none');
-        var dir = s >= i ? -1 : 1;                    // leaving upward, arriving from below
-        var shift = (1 - vis) * 26 * dir;
-        setStyle(copies[i], 'y' + i, 'transform', 'translate3d(0,' + shift.toFixed(2) + 'px,0)');
-        for (var k = 0; k < lines[i].length; k++) {
-          var lv = clamp((vis - 0.12 * k) / (1 - 0.12 * k), 0, 1);
-          lv = lv * lv * (3 - 2 * lv);
-          setStyle(lines[i][k], 'l' + i + '_' + k, 'transform', 'translate3d(0,' + ((1 - lv) * 105 * (s >= i ? -1 : 1)).toFixed(1) + '%,0)');
+    // Header Scroll Effect & Mobile Drawer
+    (function initNav() {
+      const header = document.getElementById('mainHeader');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
         }
-        for (var m = 0; m < subs[i].length; m++) {
-          setStyle(subs[i][m], 's' + i + '_' + m, 'opacity', clamp((vis - 0.18 - 0.1 * m) / 0.5, 0, 1).toFixed(3));
-        }
+      }, { passive: true });
+
+      const mobileBtn = document.getElementById('mobileBtn');
+      const drawer = document.getElementById('drawer');
+      if (mobileBtn && drawer) {
+        mobileBtn.addEventListener('click', () => {
+          const isOpen = drawer.classList.toggle('open');
+          mobileBtn.setAttribute('aria-expanded', isOpen);
+          mobileBtn.firstElementChild.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        });
       }
+    })();
 
-      // price tag belongs to scene one only
-      var pv = 1 - smooth(s / 0.35);
-      setStyle(price, 'pr', 'opacity', pv.toFixed(3));
-      setStyle(price, 'prt', 'transform', 'translate3d(0,' + ((1 - pv) * -20).toFixed(1) + 'px,0)');
+    // Reveal animations on scroll
+    (function initReveals() {
+      const elements = document.querySelectorAll('.plot-reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-in');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        elements.forEach(el => observer.observe(el));
+      } else {
+        elements.forEach(el => el.classList.add('is-in'));
+      }
+    })();
 
-      var cur = clamp(Math.round(s), 0, N - 1);
-      var txt = '0' + (cur + 1);
-      if (cache.cnt !== txt) { cache.cnt = txt; cnt.textContent = txt; railBtns.forEach(function (b, bi) { b.classList.toggle('on', bi === cur); }); }
-      setStyle(bar, 'bar', 'transform', 'scaleX(' + p.toFixed(3) + ')');
-      setStyle(cue, 'cue', 'opacity', s < 0.15 ? '1' : '0');
-    }
+    // Plot Size Filter
+    function filterPlotSizes(size, btn) {
+      document.querySelectorAll('.size-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-    function tick(now) {
-      var dt = Math.min(100, now - (last || now)); last = now;
-      var k = 0.12;
-      shown += (target - shown) * (1 - Math.pow(1 - k, dt / 16.667));
-      if (Math.abs(target - shown) < 0.0004) { shown = target; raf = null; last = 0; render(shown); return; }
-      render(shown);
-      raf = requestAnimationFrame(tick);
-    }
-    var onScreen = true;
-    new IntersectionObserver(function (en) { onScreen = en[0].isIntersecting; if (onScreen) onScroll(); }, { rootMargin: '20% 0px' }).observe(journey);
-    function onScroll() {
-      if (STATIC.matches) return;
-      target = rawProgress();
-      if (raf === null && onScreen) raf = requestAnimationFrame(tick);
-    }
-    function clearInline() {
-      cache = {};
-      scenes.forEach(function (s, i) { s.style.clipPath = ''; s.style.zIndex = ''; imgs[i].style.transform = ''; imgs[i].style.filter = ''; copies[i].style.opacity = ''; copies[i].style.transform = ''; copies[i].style.pointerEvents = ''; lines[i].forEach(function (l) { l.style.transform = ''; }); subs[i].forEach(function (x) { x.style.opacity = ''; }); });
-      price.style.opacity = ''; price.style.transform = '';
-    }
-    function applyMode() {
-      if (STATIC.matches) { if (raf) cancelAnimationFrame(raf); raf = null; clearInline(); }
-      else { cache = {}; shown = target = rawProgress(); render(shown); }
-    }
-    addEventListener('scroll', onScroll, { passive: true });
-    addEventListener('resize', onScroll, { passive: true });
-    STATIC.addEventListener('change', applyMode);
-    applyMode();
-
-    /* ----- Reveal on scroll ----- */
-    var io = new IntersectionObserver(function (en) {
-      en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } });
-    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
-    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-
-    /* ----- Count-up for the size range ----- */
-    var counted = false;
-    var cio = new IntersectionObserver(function (en) {
-      if (!en[0].isIntersecting || counted) return; counted = true; cio.disconnect();
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      document.querySelectorAll('.count').forEach(function (el) {
-        var to = +el.dataset.to, t0 = performance.now(), dur = 1400;
-        (function step(now) {
-          var p = clamp((now - t0) / dur, 0, 1), v = Math.round(to * (1 - Math.pow(1 - p, 3)));
-          el.textContent = v; if (p < 1) requestAnimationFrame(step);
-        })(t0);
+      const cards = document.querySelectorAll('.size-card');
+      cards.forEach(card => {
+        if (size === 'all' || card.dataset.size === size) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
       });
-    }, { threshold: 0.4 });
-    cio.observe(document.querySelector('.stat-grid'));
+    }
 
-    /* ----- Gallery crossfade ----- */
-    var vImgs = document.querySelectorAll('#viewerMain img'), thumbs = document.querySelectorAll('#thumbs button'), vCap = document.getElementById('viewerCap');
-    thumbs.forEach(function (b, i) {
-      b.addEventListener('click', function () {
-        vImgs.forEach(function (im, j) { im.classList.toggle('on', i === j); });
-        thumbs.forEach(function (t, j) { t.classList.toggle('on', i === j); });
-        vCap.textContent = vImgs[i].dataset.cap;
+    // Gallery Filter
+    function filterGallery(category, btn) {
+      document.querySelectorAll('.gal-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const items = document.querySelectorAll('.gal-item');
+      items.forEach(item => {
+        if (category === 'all' || item.dataset.cat === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
       });
-    });
+    }
 
-    /* ----- Form: shows a thank-you state ----- */
-    document.getElementById('plotForm').addEventListener('submit', function (e) {
+    // Enquiry Form Submission Handler
+    function handlePlotEnquiry(e) {
       e.preventDefault();
-      document.getElementById('formCard').classList.add('sent');
-    });
-  })();
+      document.getElementById('enquiryFormWrap').style.display = 'none';
+      document.getElementById('enquirySuccessState').style.display = 'block';
+    }
   </script>
 </body>
 </html>

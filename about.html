@@ -1275,12 +1275,13 @@
 
     /* ======================================================== */
     /* 7. REDESIGNED TEAM SECTION (2x2 SPLIT ARCHITECTURAL LAYOUT) */
+    /* COLORING FROM HOME PAGE ABOUT SECTION (#aboutExpandSection) */
     /* ======================================================== */
     .team-split-section {
-      background: #FAF8EE; /* Signature architectural cream */
+      background: radial-gradient(circle at 18% 50%, #F3EFE2 0%, #FAF8EE 70%, #F5F2E6 100%);
       padding: clamp(70px, 7vw, 110px) 0;
       position: relative;
-      border-top: 1px solid rgba(70, 86, 101, 0.1);
+      border-top: 1px solid rgba(70, 86, 101, 0.16);
       overflow: hidden;
     }
     .team-split-container {
@@ -1306,14 +1307,31 @@
       transform: translateX(0);
     }
 
-    /* Accent slanted dashes */
+    /* Breadcrumb matching Home Page About Section */
+    .team-breadcrumb {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #7b8791;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .team-breadcrumb span {
+      color: #465665;
+    }
+
+    /* Accent slanted dashes in Home About Slate Navy */
     .team-accent-dashes {
       display: flex;
       gap: 5px;
       align-items: center;
     }
     .team-accent-dashes.top {
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .team-accent-dashes.mid {
       margin: 18px 0 20px;
@@ -1322,12 +1340,12 @@
       display: inline-block;
       width: 16px;
       height: 4px;
-      background: #d97706;
+      background: #465665;
       border-radius: 2px;
       transform: skewX(-32deg);
     }
     .team-accent-dashes.mid span:nth-child(even) {
-      background: #cbd5e1;
+      background: rgba(70, 86, 101, 0.28);
     }
 
     /* Heading Lockup */
@@ -1343,11 +1361,11 @@
       align-items: baseline;
     }
     .team-hardhat-icon {
-      color: #eab308;
+      color: #465665;
       font-size: clamp(1.4rem, 2.2vw, 1.9rem);
       margin-right: 8px;
       transform: rotate(-18deg) translateY(-2px);
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+      filter: drop-shadow(0 2px 4px rgba(70, 86, 101, 0.15));
     }
     .team-text-meet {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -1355,7 +1373,7 @@
       font-weight: 800;
       letter-spacing: -1px;
       line-height: 1;
-      color: #1f343f; /* Dark slate navy */
+      color: #1f343f; /* Deep slate navy */
       text-transform: uppercase;
     }
     .team-text-ourteam {
@@ -1364,32 +1382,33 @@
       font-weight: 800;
       letter-spacing: -1px;
       line-height: 1;
-      color: #d97706; /* Warm gold/terracotta */
+      color: #465665; /* Home page about section signature slate */
       text-transform: uppercase;
     }
 
     .team-left-desc {
       font-family: 'Jost', sans-serif;
       font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-      line-height: 1.7;
-      color: #5A6578;
+      line-height: 1.75;
+      color: #7b8791; /* Exact match to .about-p */
       margin: 0 0 28px;
       max-width: 480px;
     }
 
-    /* Pill Button */
+    /* Pill Button styled with Home About palette */
     .team-cta-pill {
       display: inline-flex;
       align-items: center;
       gap: 12px;
       padding: 11px 28px;
-      border: 1.5px solid #d97706;
+      border: 1.5px solid #465665;
       border-radius: 999px;
-      color: #d97706;
+      color: #465665;
       font-family: 'Jost', sans-serif;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 600;
-      letter-spacing: 0.4px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       text-decoration: none;
       background: transparent;
       transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1397,15 +1416,17 @@
     }
     .team-cta-pill i {
       transition: transform 0.3s ease;
+      color: #465665;
     }
     .team-cta-pill:hover {
-      background: #d97706;
-      color: #ffffff;
-      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.28);
+      background: #465665;
+      color: #FAF8EE;
+      box-shadow: 0 8px 24px rgba(70, 86, 101, 0.25);
       transform: translateY(-2px);
     }
     .team-cta-pill:hover i {
       transform: translateX(4px);
+      color: #FAF8EE;
     }
 
     /* Right Column 2x2 Grid */
@@ -1415,14 +1436,14 @@
       gap: clamp(16px, 2.2vw, 24px);
     }
 
-    /* Geometric Cut Card matching reference screenshot */
+    /* Geometric Cut Card */
     .team-cut-card {
       position: relative;
       height: clamp(250px, 26vw, 305px);
       border-radius: 14px 50px 14px 14px;
       overflow: hidden;
       background: #111a22;
-      box-shadow: 0 10px 25px rgba(31, 52, 63, 0.08);
+      box-shadow: 0 10px 28px rgba(70, 86, 101, 0.12);
       opacity: 0;
       transform: translateY(35px) scale(0.96);
       transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s),
@@ -1436,7 +1457,7 @@
     }
     .team-split-section.is-visible .team-cut-card:hover {
       transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(31, 52, 63, 0.18), 0 0 20px rgba(217, 119, 6, 0.2);
+      box-shadow: 0 20px 42px rgba(70, 86, 101, 0.24);
     }
 
     .team-cut-photo {
@@ -1454,14 +1475,14 @@
       transform: scale(1.08);
     }
 
-    /* Orange / Gold Lower Banner with Curved Notch */
+    /* Lower Banner in Home Page About Deep Slate Navy (#465665 / #1f343f) */
     .team-cut-banner {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
       height: 44%;
-      background: linear-gradient(135deg, rgba(217, 119, 6, 0.96) 0%, rgba(180, 83, 9, 0.98) 100%);
+      background: linear-gradient(135deg, rgba(70, 86, 101, 0.95) 0%, rgba(31, 52, 63, 0.98) 100%);
       border-radius: 0 34px 0 0;
       display: flex;
       align-items: center;
@@ -1470,7 +1491,8 @@
       box-sizing: border-box;
       z-index: 2;
       backdrop-filter: blur(4px);
-      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 -4px 16px rgba(31, 52, 63, 0.16);
+      border-top: 1px solid rgba(250, 248, 238, 0.12);
     }
 
     .team-member-meta {
@@ -1482,7 +1504,7 @@
       font-family: 'Nanum Myeongjo', Georgia, serif;
       font-size: clamp(1.05rem, 1.3vw, 1.25rem);
       font-weight: 700;
-      color: #ffffff;
+      color: #FAF8EE; /* Warm cream */
       margin: 0 0 3px;
       line-height: 1.2;
       white-space: nowrap;
@@ -1493,7 +1515,7 @@
       font-family: 'Jost', sans-serif;
       font-size: clamp(0.72rem, 0.85vw, 0.82rem);
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.88);
+      color: rgba(250, 248, 238, 0.82);
       margin: 0;
       line-height: 1.3;
       white-space: nowrap;
@@ -1511,19 +1533,20 @@
       flex-shrink: 0;
     }
     .team-soc-link {
-      color: #ffffff;
+      color: #FAF8EE;
       width: 22px;
       height: 22px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.82rem;
-      opacity: 0.88;
+      opacity: 0.85;
       text-decoration: none;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
     }
     .team-soc-link:hover {
       opacity: 1;
+      color: #ffffff;
       transform: scale(1.22);
     }
 
@@ -1551,6 +1574,9 @@
       .team-heading-line1 {
         justify-content: center;
       }
+      .team-breadcrumb {
+        justify-content: center;
+      }
       .team-cut-card {
         height: 290px;
       }
@@ -1567,10 +1593,7 @@
         border-radius: 12px 44px 12px 12px;
       }
     }
-.team-photo-wrapper {
-        height: 320px;
-      }
-    }
+
 
   </style>
 </head>
@@ -2136,6 +2159,11 @@
       
       <!-- Left Column: Branding, Title, Narrative, CTA -->
       <div class="team-left-col">
+        <!-- Breadcrumb matching Home Page About Section -->
+        <div class="team-breadcrumb">
+          One Roof <span>/</span> Leadership &amp; Expertise
+        </div>
+
         <!-- Top decorative slanted slashes -->
         <div class="team-accent-dashes top">
           <span></span>

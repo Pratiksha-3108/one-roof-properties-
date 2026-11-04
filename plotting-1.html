@@ -17,6 +17,7 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     
     :root {
+      /* HOME PAGE ABOUT SECTION PALETTE (#aboutExpandSection) */
       --cream: #FAF8EE;
       --cream-soft: #F3EFE2;
       --cream-alt: #F5F2E6;
@@ -24,10 +25,8 @@
       --navy-deep: #1f343f;
       --navy-darkest: #111e26;
       --muted: #7b8791;
-      --gold: #d97706;
-      --gold-dark: #b45309;
-      --gold-soft: rgba(217, 119, 6, 0.12);
       --border-line: rgba(70, 86, 101, 0.16);
+      --border-line-subtle: rgba(70, 86, 101, 0.28);
       --card-bg: #ffffff;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
       --head-font: 'Nanum Myeongjo', Georgia, serif;
@@ -58,8 +57,8 @@
       position: absolute;
       left: -999px;
       top: 10px;
-      background: var(--gold);
-      color: #fff;
+      background: var(--navy-deep);
+      color: var(--cream);
       padding: 10px 18px;
       z-index: 9999;
       border-radius: 6px;
@@ -68,7 +67,7 @@
     .skip-to-content:focus { left: 16px; }
 
     /* ======================================================== */
-    /* SHARED UTILITY STYLES                                   */
+    /* SHARED UTILITY STYLES (ALL TITLES STRICTLY LEFT-ALIGNED) */
     /* ======================================================== */
     .sec-container {
       max-width: 1280px;
@@ -77,16 +76,22 @@
       box-sizing: border-box;
     }
 
+    /* ALL SECTION HEADERS ARE STRICTLY LEFT-ALIGNED */
     .sec-header {
       margin-bottom: clamp(36px, 5vw, 56px);
+      text-align: left !important;
+      max-width: 860px;
+      margin-left: 0 !important;
+      margin-right: auto !important;
     }
     .sec-header.center {
-      text-align: center;
-      max-width: 780px;
-      margin-left: auto;
-      margin-right: auto;
+      text-align: left !important;
+      max-width: 860px !important;
+      margin-left: 0 !important;
+      margin-right: auto !important;
     }
 
+    /* Eyebrow matching Home Page About Section Breadcrumb */
     .sec-num-eyebrow {
       display: inline-flex;
       align-items: center;
@@ -96,31 +101,40 @@
       font-weight: 600;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      text-align: left;
     }
     .sec-num-eyebrow span.dash {
       width: 24px;
       height: 2px;
-      background: var(--gold);
+      background: var(--navy);
       display: inline-block;
     }
-
-    .sec-headline {
-      font-family: var(--head-font);
-      font-size: clamp(2rem, 3.2vw, 3rem);
+    .sec-num-eyebrow span.num-highlight {
+      color: var(--navy);
       font-weight: 700;
-      line-height: 1.2;
-      color: var(--navy-deep);
-      margin-bottom: 16px;
-      letter-spacing: -0.5px;
     }
 
+    /* Section Headline matching .about-h2 */
+    .sec-headline {
+      font-family: var(--head-font);
+      font-size: clamp(2.1rem, 3.4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 18px;
+      letter-spacing: -0.5px;
+      text-align: left;
+    }
+
+    /* Section Lead matching .about-p */
     .sec-lead {
       font-family: var(--body-font);
       font-size: clamp(0.96rem, 1.1vw, 1.08rem);
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.75;
+      text-align: left;
     }
 
     /* Reveal Transitions */
@@ -135,16 +149,16 @@
       transform: translateY(0);
     }
 
-    /* Standard Button */
-    .btn-gold-action {
+    /* Primary Action Button in Home Slate Navy */
+    .btn-slate-action {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       padding: 13px 28px;
-      background: var(--gold);
-      color: #ffffff;
-      border: 1px solid var(--gold);
+      background: var(--navy);
+      color: var(--cream);
+      border: 1.5px solid var(--navy);
       border-radius: 999px;
       font-size: 0.88rem;
       font-weight: 600;
@@ -152,24 +166,26 @@
       text-transform: uppercase;
       cursor: pointer;
       transition: all 0.3s var(--ease);
-      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.28);
+      box-shadow: 0 6px 20px rgba(70, 86, 101, 0.22);
     }
-    .btn-gold-action:hover {
-      background: var(--gold-dark);
-      border-color: var(--gold-dark);
+    .btn-slate-action:hover {
+      background: var(--navy-deep);
+      border-color: var(--navy-deep);
+      color: #ffffff;
       transform: translateY(-2px);
-      box-shadow: 0 10px 26px rgba(217, 119, 6, 0.38);
+      box-shadow: 0 10px 26px rgba(31, 52, 63, 0.32);
     }
 
-    .btn-outline-navy {
+    /* Outline Button in Home Slate Navy */
+    .btn-outline-slate {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       padding: 13px 28px;
       background: transparent;
-      color: var(--navy-deep);
-      border: 1.5px solid var(--navy-deep);
+      color: var(--navy);
+      border: 1.5px solid rgba(70, 86, 101, 0.45);
       border-radius: 999px;
       font-size: 0.88rem;
       font-weight: 600;
@@ -178,9 +194,10 @@
       cursor: pointer;
       transition: all 0.3s var(--ease);
     }
-    .btn-outline-navy:hover {
-      background: var(--navy-deep);
+    .btn-outline-slate:hover {
+      background: var(--navy);
       color: var(--cream);
+      border-color: var(--navy);
       transform: translateY(-2px);
     }
 
@@ -255,13 +272,13 @@
       bottom: -3px;
       width: 100%;
       height: 1px;
-      background: var(--gold);
+      background: var(--cream);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.35s ease;
     }
     .header-nav-list a:hover::before { transform: scaleX(1); }
-    .header-nav-list a:hover { color: #f3d9b0; }
+    .header-nav-list a:hover { color: var(--cream); }
 
     .dd-parent { position: relative; padding: 6px 0; }
     .dd {
@@ -269,7 +286,7 @@
       position: absolute;
       top: 100%;
       min-width: 290px;
-      background: rgba(15, 27, 21, 0.97);
+      background: rgba(17, 30, 38, 0.97);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 12px;
@@ -306,7 +323,7 @@
       margin-top: 4px;
     }
     .dd .sub { padding-left: 24px; margin-bottom: 8px; }
-    .dd .sub a.on { color: var(--gold); font-weight: 600; }
+    .dd .sub a.on { color: var(--cream); font-weight: 600; }
 
     .nav-mobile-btn {
       display: none;
@@ -342,7 +359,7 @@
       text-transform: uppercase;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .drawer a.on { color: var(--gold); }
+    .drawer a.on { color: var(--cream); }
 
     /* ======================================================== */
     /* 01 — PROJECT HERO                                        */
@@ -353,7 +370,7 @@
       display: flex;
       align-items: center;
       padding: 140px 0 80px;
-      background: #0f1c24;
+      background: #111e26;
       overflow: hidden;
       color: #ffffff;
     }
@@ -364,7 +381,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center 30%;
-      opacity: 0.42;
+      opacity: 0.38;
       transform: scale(1.05);
       animation: heroZoom 14s ease-out forwards;
     }
@@ -374,40 +391,42 @@
     .hero-project-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(15, 28, 36, 0.72) 0%, rgba(15, 28, 36, 0.3) 40%, rgba(15, 28, 36, 0.88) 85%, #0f1c24 100%),
-                  radial-gradient(circle at 75% 50%, rgba(217, 119, 6, 0.12) 0%, transparent 60%);
+      background: linear-gradient(180deg, rgba(17, 30, 38, 0.72) 0%, rgba(17, 30, 38, 0.3) 40%, rgba(17, 30, 38, 0.9) 85%, #111e26 100%),
+                  radial-gradient(circle at 75% 50%, rgba(70, 86, 101, 0.25) 0%, transparent 60%);
       pointer-events: none;
     }
     .hero-project-content {
       position: relative;
       z-index: 5;
       max-width: 900px;
+      text-align: left;
     }
     .hero-badge-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       margin-bottom: 22px;
+      justify-content: flex-start;
     }
     .hero-pill-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 6px 16px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 999px;
       backdrop-filter: blur(8px);
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 1.8px;
       text-transform: uppercase;
-      color: #f3d9b0;
+      color: var(--cream);
     }
-    .hero-pill-badge i { color: var(--gold); }
+    .hero-pill-badge i { color: #60a5fa; }
     .hero-pill-badge.highlight {
-      background: rgba(217, 119, 6, 0.25);
-      border-color: var(--gold);
+      background: rgba(70, 86, 101, 0.45);
+      border-color: rgba(255, 255, 255, 0.35);
       color: #ffffff;
     }
     .hero-h1-title {
@@ -418,15 +437,17 @@
       letter-spacing: -1px;
       color: #ffffff;
       margin-bottom: 20px;
+      text-align: left;
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     }
     .hero-sub-narrative {
       font-size: clamp(1.05rem, 1.3vw, 1.25rem);
       font-weight: 300;
       line-height: 1.7;
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(250, 248, 238, 0.9);
       max-width: 680px;
       margin-bottom: 36px;
+      text-align: left;
     }
     .hero-actions {
       display: flex;
@@ -434,26 +455,30 @@
       align-items: center;
       gap: 18px;
       margin-bottom: 50px;
+      justify-content: flex-start;
     }
     .btn-hero-primary {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 15px 32px;
-      background: var(--gold);
-      color: #ffffff;
+      background: var(--navy);
+      color: var(--cream);
+      border: 1.5px solid var(--navy);
       border-radius: 999px;
       font-size: 0.92rem;
       font-weight: 600;
       letter-spacing: 1.4px;
       text-transform: uppercase;
-      box-shadow: 0 8px 25px rgba(217, 119, 6, 0.35);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
     }
     .btn-hero-primary:hover {
-      background: #b45309;
+      background: #2a3a46;
+      border-color: #2a3a46;
+      color: #ffffff;
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(217, 119, 6, 0.48);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     }
     .btn-hero-secondary {
       display: inline-flex;
@@ -494,13 +519,14 @@
       gap: 4px;
       border-right: 1px solid rgba(255, 255, 255, 0.12);
       padding-right: 16px;
+      text-align: left;
     }
     .spec-item:last-child { border-right: none; padding-right: 0; }
     .spec-label {
       font-size: 0.74rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.65);
+      color: rgba(250, 248, 238, 0.65);
     }
     .spec-value {
       font-family: var(--head-font);
@@ -510,7 +536,7 @@
     }
     .spec-sub {
       font-size: 0.8rem;
-      color: #f3d9b0;
+      color: var(--cream);
     }
 
     /* ======================================================== */
@@ -530,21 +556,23 @@
     .overview-text-col p {
       font-size: 1.05rem;
       line-height: 1.78;
-      color: var(--navy);
+      color: var(--muted);
       margin-bottom: 20px;
+      text-align: left;
     }
     .overview-highlight-box {
       margin-top: 32px;
       padding: 26px 30px;
       background: var(--cream-soft);
-      border-left: 4px solid var(--gold);
+      border-left: 4px solid var(--navy);
       border-radius: 0 16px 16px 0;
+      text-align: left;
     }
     .overview-highlight-box h4 {
       font-family: var(--head-font);
       font-size: 1.25rem;
       font-weight: 700;
-      color: var(--navy-deep);
+      color: var(--navy);
       margin-bottom: 8px;
     }
     .overview-highlight-box p {
@@ -565,18 +593,19 @@
       border: 1px solid var(--border-line);
       box-shadow: 0 8px 24px rgba(70, 86, 101, 0.06);
       transition: all 0.3s ease;
+      text-align: left;
     }
     .stat-metric-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 16px 36px rgba(70, 86, 101, 0.12);
-      border-color: var(--gold);
+      border-color: var(--navy);
     }
     .stat-icon {
       width: 44px;
       height: 44px;
       border-radius: 10px;
-      background: var(--gold-soft);
-      color: var(--gold);
+      background: rgba(70, 86, 101, 0.08);
+      color: var(--navy);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -587,7 +616,7 @@
       font-family: var(--head-font);
       font-size: 2.2rem;
       font-weight: 700;
-      color: var(--navy-deep);
+      color: var(--navy);
       line-height: 1.1;
       margin-bottom: 4px;
     }
@@ -611,7 +640,7 @@
     .size-filter-tabs {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 12px;
       margin-bottom: 42px;
     }
@@ -628,14 +657,14 @@
       transition: all 0.25s ease;
     }
     .size-filter-btn:hover {
-      border-color: var(--gold);
-      color: var(--gold);
+      border-color: var(--navy);
+      color: var(--navy-deep);
     }
     .size-filter-btn.active {
-      background: var(--navy-deep);
-      border-color: var(--navy-deep);
-      color: #ffffff;
-      box-shadow: 0 4px 14px rgba(31, 52, 63, 0.25);
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--cream);
+      box-shadow: 0 4px 14px rgba(70, 86, 101, 0.25);
     }
 
     .sizes-cards-grid {
@@ -655,19 +684,20 @@
       transition: all 0.35s var(--ease);
       position: relative;
       overflow: hidden;
+      text-align: left;
     }
     .size-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 20px 42px rgba(70, 86, 101, 0.15);
-      border-color: var(--gold);
+      border-color: var(--navy);
     }
     .size-card.featured::before {
       content: 'MOST POPULAR';
       position: absolute;
       top: 16px;
       right: -36px;
-      background: var(--gold);
-      color: #ffffff;
+      background: var(--navy);
+      color: var(--cream);
       font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 1.8px;
@@ -680,14 +710,14 @@
       font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--muted);
       margin-bottom: 6px;
     }
     .size-card-title {
       font-family: var(--head-font);
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--navy-deep);
+      color: var(--navy);
       margin-bottom: 4px;
     }
     .size-sqft-subtitle {
@@ -710,7 +740,7 @@
       font-size: 0.88rem;
     }
     .size-spec-row .k { color: var(--muted); }
-    .size-spec-row .v { font-weight: 600; color: var(--navy-deep); }
+    .size-spec-row .v { font-weight: 600; color: var(--navy); }
 
     .size-price-tag {
       margin-top: auto;
@@ -729,29 +759,33 @@
       font-family: var(--head-font);
       font-size: 1.45rem;
       font-weight: 700;
-      color: var(--navy-deep);
+      color: var(--navy);
     }
 
     /* Master Plan Banner */
     .master-plan-box {
-      background: var(--navy-deep);
+      background: linear-gradient(135deg, rgba(70, 86, 101, 0.96) 0%, rgba(31, 52, 63, 0.98) 100%);
       border-radius: 24px;
-      color: #ffffff;
+      color: var(--cream);
       padding: clamp(32px, 5vw, 48px);
       display: grid;
       grid-template-columns: 1.2fr 1fr;
       gap: 40px;
       align-items: center;
+      text-align: left;
     }
     .master-plan-box h3 {
       font-family: var(--head-font);
       font-size: clamp(1.8rem, 2.5vw, 2.4rem);
       margin-bottom: 14px;
+      color: #ffffff;
+      text-align: left;
     }
     .master-plan-box p {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(250, 248, 238, 0.82);
       font-size: 1rem;
       margin-bottom: 24px;
+      text-align: left;
     }
     .master-plan-preview-img {
       border-radius: 16px;
@@ -788,11 +822,12 @@
       box-shadow: 0 8px 24px rgba(70, 86, 101, 0.05);
       transition: all 0.35s ease;
       position: relative;
+      text-align: left;
     }
     .amenity-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 42px rgba(70, 86, 101, 0.12);
-      border-color: var(--gold);
+      border-color: var(--navy);
     }
     .amenity-icon-bubble {
       width: 58px;
@@ -800,7 +835,7 @@
       border-radius: 14px;
       background: var(--cream-soft);
       border: 1px solid var(--border-line);
-      color: var(--gold);
+      color: var(--navy);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -809,22 +844,24 @@
       transition: all 0.3s ease;
     }
     .amenity-card:hover .amenity-icon-bubble {
-      background: var(--gold);
-      color: #ffffff;
-      border-color: var(--gold);
+      background: var(--navy);
+      color: var(--cream);
+      border-color: var(--navy);
       transform: scale(1.08);
     }
     .amenity-title {
       font-family: var(--head-font);
       font-size: 1.28rem;
       font-weight: 700;
-      color: var(--navy-deep);
+      color: var(--navy);
       margin-bottom: 10px;
+      text-align: left;
     }
     .amenity-desc {
       font-size: 0.94rem;
       color: var(--muted);
       line-height: 1.65;
+      text-align: left;
     }
 
     /* ======================================================== */
@@ -853,6 +890,7 @@
       border-radius: 18px;
       padding: 24px;
       box-shadow: 0 6px 20px rgba(70, 86, 101, 0.05);
+      text-align: left;
     }
     .loc-cat-header {
       display: flex;
@@ -863,15 +901,16 @@
       border-bottom: 1px solid var(--border-line);
     }
     .loc-cat-header i {
-      color: var(--gold);
+      color: var(--navy);
       font-size: 1.15rem;
     }
     .loc-cat-header h4 {
       font-family: var(--head-font);
       font-size: 1.15rem;
       font-weight: 700;
-      color: var(--navy-deep);
+      color: var(--navy);
       margin: 0;
+      text-align: left;
     }
     .loc-items-list {
       display: flex;
@@ -887,8 +926,8 @@
     .loc-item-name { color: var(--navy); font-weight: 500; }
     .loc-item-time {
       font-weight: 700;
-      color: var(--gold);
-      background: var(--gold-soft);
+      color: var(--navy);
+      background: rgba(70, 86, 101, 0.1);
       padding: 3px 10px;
       border-radius: 999px;
       font-size: 0.78rem;
@@ -914,7 +953,7 @@
       bottom: 24px;
       left: 24px;
       right: 24px;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(250, 248, 238, 0.96);
       backdrop-filter: blur(10px);
       border-radius: 16px;
       padding: 18px 22px;
@@ -922,17 +961,20 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      border: 1px solid rgba(70, 86, 101, 0.15);
+      border: 1px solid rgba(70, 86, 101, 0.18);
+      text-align: left;
     }
     .map-overlay-title {
       font-weight: 700;
-      color: var(--navy-deep);
+      color: var(--navy);
       font-size: 1rem;
       margin-bottom: 2px;
+      text-align: left;
     }
     .map-overlay-sub {
       font-size: 0.82rem;
       color: var(--muted);
+      text-align: left;
     }
 
     /* ======================================================== */
@@ -945,7 +987,7 @@
     .gallery-filter-nav {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 12px;
       margin-bottom: 38px;
     }
@@ -961,9 +1003,9 @@
       transition: all 0.25s ease;
     }
     .gal-filter-btn.active, .gal-filter-btn:hover {
-      background: var(--navy-deep);
-      color: #ffffff;
-      border-color: var(--navy-deep);
+      background: var(--navy);
+      color: var(--cream);
+      border-color: var(--navy);
     }
 
     .gallery-masonry-grid {
@@ -979,6 +1021,7 @@
       background: var(--navy-darkest);
       cursor: pointer;
       box-shadow: 0 10px 25px rgba(70, 86, 101, 0.08);
+      text-align: left;
     }
     .gal-item img {
       width: 100%;
@@ -992,26 +1035,29 @@
     .gal-item-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 40%, rgba(17, 30, 38, 0.85) 100%);
+      background: linear-gradient(180deg, transparent 40%, rgba(17, 30, 38, 0.88) 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       padding: 22px;
       opacity: 0.95;
       transition: opacity 0.3s ease;
+      text-align: left;
     }
     .gal-item-tag {
       font-size: 0.72rem;
       letter-spacing: 1.8px;
       text-transform: uppercase;
-      color: #f3d9b0;
+      color: var(--cream);
       margin-bottom: 4px;
+      text-align: left;
     }
     .gal-item-name {
       font-family: var(--head-font);
       font-size: 1.15rem;
       font-weight: 700;
       color: #ffffff;
+      text-align: left;
     }
 
     /* ======================================================== */
@@ -1019,7 +1065,7 @@
     /* ======================================================== */
     .legal-sec {
       padding: clamp(80px, 8vw, 120px) 0;
-      background: #17242e;
+      background: linear-gradient(180deg, #1f343f 0%, #17242e 100%);
       color: #ffffff;
       position: relative;
       overflow: hidden;
@@ -1032,7 +1078,7 @@
       width: 500px;
       height: 500px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(217, 119, 6, 0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(70, 86, 101, 0.3) 0%, transparent 70%);
       pointer-events: none;
     }
     .legal-sec .sec-headline { color: #ffffff; }
@@ -1050,14 +1096,15 @@
       padding: 30px 26px;
       backdrop-filter: blur(8px);
       transition: all 0.3s ease;
+      text-align: left;
     }
     .legal-card:hover {
       background: rgba(255, 255, 255, 0.08);
-      border-color: var(--gold);
+      border-color: rgba(255, 255, 255, 0.3);
       transform: translateY(-4px);
     }
     .legal-card-icon {
-      color: var(--gold);
+      color: var(--cream);
       font-size: 1.8rem;
       margin-bottom: 16px;
     }
@@ -1067,20 +1114,22 @@
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 10px;
+      text-align: left;
     }
     .legal-card-detail {
       font-size: 0.92rem;
       color: #cbd5e1;
       line-height: 1.6;
       margin-bottom: 14px;
+      text-align: left;
     }
     .legal-meta-badge {
       display: inline-block;
       padding: 5px 12px;
-      background: rgba(217, 119, 6, 0.2);
-      border: 1px solid rgba(217, 119, 6, 0.4);
+      background: rgba(70, 86, 101, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 6px;
-      color: #f3d9b0;
+      color: var(--cream);
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.8px;
@@ -1096,16 +1145,20 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 20px;
+      text-align: left;
     }
     .legal-bar-text h4 {
       font-family: var(--head-font);
       font-size: 1.25rem;
       margin-bottom: 4px;
+      color: #ffffff;
+      text-align: left;
     }
     .legal-bar-text p {
       color: #cbd5e1;
       font-size: 0.92rem;
       margin: 0;
+      text-align: left;
     }
 
     /* ======================================================== */
@@ -1132,18 +1185,22 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      text-align: left;
     }
     .enquiry-info-pane h3 {
       font-family: var(--head-font);
       font-size: clamp(1.8rem, 2.5vw, 2.4rem);
       margin-bottom: 14px;
       line-height: 1.2;
+      color: #ffffff;
+      text-align: left;
     }
     .enquiry-info-pane p {
       color: #cbd5e1;
       font-size: 0.98rem;
       line-height: 1.7;
       margin-bottom: 30px;
+      text-align: left;
     }
     .site-visit-perks {
       display: flex;
@@ -1156,9 +1213,10 @@
       align-items: center;
       gap: 14px;
       font-size: 0.94rem;
+      text-align: left;
     }
     .perk-row i {
-      color: var(--gold);
+      color: var(--cream);
       font-size: 1.1rem;
       width: 24px;
     }
@@ -1168,38 +1226,43 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      text-align: left;
     }
     .direct-c-item {
       display: flex;
       align-items: center;
       gap: 12px;
-      color: #f3d9b0;
+      color: var(--cream);
       font-size: 0.96rem;
       font-weight: 500;
     }
-    .direct-c-item i { color: var(--gold); }
+    .direct-c-item i { color: #60a5fa; }
 
     .enquiry-form-pane {
       padding: clamp(36px, 5vw, 60px);
       background: #ffffff;
+      text-align: left;
     }
     .enquiry-form-pane h3 {
       font-family: var(--head-font);
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--navy-deep);
+      color: var(--navy);
       margin-bottom: 6px;
+      text-align: left;
     }
     .enquiry-form-pane p.sub {
       color: var(--muted);
       font-size: 0.92rem;
       margin-bottom: 28px;
+      text-align: left;
     }
     .form-grid-fields {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
       margin-bottom: 18px;
+      text-align: left;
     }
     .form-col-full { grid-column: span 2; }
     .form-group label {
@@ -1208,24 +1271,25 @@
       font-weight: 600;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      color: var(--navy-deep);
+      color: var(--navy);
       margin-bottom: 6px;
+      text-align: left;
     }
     .form-input-ctrl {
       width: 100%;
       padding: 13px 16px;
-      border: 1.5px solid var(--border-line);
+      border: 1.5px solid var(--border-line-subtle);
       border-radius: 10px;
       font-size: 0.95rem;
-      color: var(--navy-deep);
+      color: var(--navy);
       background: #FAF8EE;
       transition: all 0.3s ease;
     }
     .form-input-ctrl:focus {
       outline: none;
-      border-color: var(--gold);
+      border-color: var(--navy);
       background: #ffffff;
-      box-shadow: 0 0 0 4px var(--gold-soft);
+      box-shadow: 0 0 0 4px rgba(70, 86, 101, 0.12);
     }
     .terms-row {
       display: flex;
@@ -1234,8 +1298,9 @@
       margin-bottom: 24px;
       font-size: 0.84rem;
       color: var(--muted);
+      text-align: left;
     }
-    .terms-row input { margin-top: 3px; accent-color: var(--gold); }
+    .terms-row input { margin-top: 3px; accent-color: var(--navy); }
 
     .form-success-alert {
       display: none;
@@ -1250,7 +1315,7 @@
     .form-success-alert h4 {
       font-family: var(--head-font);
       font-size: 1.6rem;
-      color: var(--navy-deep);
+      color: var(--navy);
       margin-bottom: 8px;
     }
     .form-success-alert p {
@@ -1339,7 +1404,7 @@
       font-size: 1.38rem;
       font-weight: 700;
       margin-bottom: 22px;
-      color: var(--navy-deep);
+      color: var(--navy);
     }
     .nw-col-list {
       display: flex;
@@ -1352,7 +1417,7 @@
       color: var(--muted);
       transition: color 0.22s ease;
     }
-    .nw-col-list a:hover { color: var(--navy-deep); }
+    .nw-col-list a:hover { color: var(--navy); }
     .nw-contact-address { max-width: 240px; }
     .nw-footer-bottom {
       border-top: 1px solid rgba(70, 86, 101, 0.14);
@@ -1365,7 +1430,7 @@
       justify-content: center;
       flex-wrap: wrap;
     }
-    .nw-footer-bottom a:hover { color: var(--navy-deep); }
+    .nw-footer-bottom a:hover { color: var(--navy); }
 
     /* ======================================================== */
     /* RESPONSIVE BREAKPOINTS                                   */
@@ -1415,7 +1480,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li class="dd-parent">
-            <a href="properties.html" style="display:flex;align-items:center;gap:6px;color:#d97706;">Properties <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+            <a href="properties.html" style="display:flex;align-items:center;gap:6px;color:#cbd5e1;">Properties <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
             <div class="dd left">
               <a class="dd-h" href="residential.html"><i class="fa-solid fa-building-user" style="color:#60a5fa;"></i> Residential Properties</a>
               <div class="sub">
@@ -1423,7 +1488,7 @@
                 <a href="residential-2.html">Palm Crest Villas (4 BHK)</a>
                 <a href="residential-3.html">Skyline Imperial (5 BHK)</a>
               </div>
-              <a class="dd-h" href="plotting.html"><i class="fa-solid fa-map-location-dot" style="color:#d97706;"></i> Plotting Developments</a>
+              <a class="dd-h" href="plotting.html"><i class="fa-solid fa-map-location-dot" style="color:#cbd5e1;"></i> Plotting Developments</a>
               <div class="sub" style="margin-bottom:0;">
                 <a class="on" href="plotting-1.html">Green Valley Township Plots</a>
                 <a href="plotting-2.html">Royal Meadows Farmhouse Plots</a>
@@ -1442,9 +1507,9 @@
             <li><a href="services.html">Services</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li class="dd-parent">
-              <a href="nri-corner.html" style="display:flex;align-items:center;gap:6px;">NRI Support <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:#d97706;"></i></a>
+              <a href="nri-corner.html" style="display:flex;align-items:center;gap:6px;">NRI Support <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:#cbd5e1;"></i></a>
               <div class="dd right" style="min-width:270px;">
-                <a href="legal-information.html"><i class="fa-solid fa-scale-balanced" style="color:#d97706;margin-right:8px;"></i>Legal Information</a>
+                <a href="legal-information.html"><i class="fa-solid fa-scale-balanced" style="color:#cbd5e1;margin-right:8px;"></i>Legal Information</a>
                 <a href="loan-help.html"><i class="fa-solid fa-hand-holding-dollar" style="color:#60a5fa;margin-right:8px;"></i>Loan Help</a>
               </div>
             </li>
@@ -1529,20 +1594,27 @@
     <!-- ======================================================== -->
     <section class="overview-sec" id="overviewSection">
       <div class="sec-container">
+        
+        <div class="sec-header plot-reveal">
+          <div class="sec-num-eyebrow">
+            <span class="dash"></span> <span class="num-highlight">02</span> &mdash; Project Overview
+          </div>
+          <h2 class="sec-headline">
+            A Master-Planned 80-Acre Township Engineered for Generational Value
+          </h2>
+          <p class="sec-lead">
+            Green Valley Township is Pune's landmark plotting development situated along the high-appreciation North Expressway corridor. Conceptualized as an eco-sustainable gated community, the project harmoniously marries urban infrastructure with serene natural surroundings.
+          </p>
+        </div>
+
         <div class="overview-grid">
           
           <div class="overview-text-col plot-reveal">
-            <div class="sec-num-eyebrow">
-              <span class="dash"></span> 02 &mdash; Project Overview
-            </div>
-            <h2 class="sec-headline">
-              A Master-Planned 80-Acre Township Engineered for Generational Value
-            </h2>
-            <p>
-              Green Valley Township is Pune's landmark plotting development situated along the high-appreciation North Expressway corridor. Conceptualized as an eco-sustainable gated community, the project harmoniously marries urban infrastructure with serene natural surroundings.
-            </p>
             <p>
               Unlike raw unapproved agricultural subdivisions, every single plot in Green Valley is PMRDA sanctioned, RERA registered, and has an independent Non-Agricultural (NA 44) Collector Sanction with demarcated brass-pin survey markers.
+            </p>
+            <p>
+              The layout follows international urban planning guidelines, incorporating wide blacktop avenues, dedicated pedestrian greenways, subterranean utility corridors, and independent water/power metering infrastructure directly stubbed to each plot's boundary.
             </p>
 
             <div class="overview-highlight-box">
@@ -1586,9 +1658,9 @@
     <section class="sizes-sec" id="sizesSection">
       <div class="sec-container">
         
-        <div class="sec-header center plot-reveal">
+        <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> 03 &mdash; Plot Layout &amp; Available Sizes
+            <span class="dash"></span> <span class="num-highlight">03</span> &mdash; Plot Layout &amp; Available Sizes
           </div>
           <h2 class="sec-headline">
             Tailored Dimensions for Custom Villas, Weekend Estates &amp; Long-Term Wealth
@@ -1598,7 +1670,7 @@
           </p>
         </div>
 
-        <!-- Filter Tabs -->
+        <!-- Filter Tabs (Left Aligned) -->
         <div class="size-filter-tabs plot-reveal">
           <button class="size-filter-btn active" onclick="filterPlotSizes('all', this)">All Configurations</button>
           <button class="size-filter-btn" onclick="filterPlotSizes('150', this)">150 Sq. Yds</button>
@@ -1629,7 +1701,7 @@
               <strong>&#8377;45.00 Lakhs*</strong>
             </div>
 
-            <a href="#enquirySection" class="btn-gold-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
+            <a href="#enquirySection" class="btn-slate-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
           </div>
 
           <!-- Card 2: 250 Sq Yds (Featured) -->
@@ -1651,7 +1723,7 @@
               <strong>&#8377;72.50 Lakhs*</strong>
             </div>
 
-            <a href="#enquirySection" class="btn-gold-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
+            <a href="#enquirySection" class="btn-slate-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
           </div>
 
           <!-- Card 3: 350 Sq Yds -->
@@ -1673,7 +1745,7 @@
               <strong>&#8377;1.05 Crores*</strong>
             </div>
 
-            <a href="#enquirySection" class="btn-gold-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
+            <a href="#enquirySection" class="btn-slate-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
           </div>
 
           <!-- Card 4: 500 Sq Yds -->
@@ -1695,7 +1767,7 @@
               <strong>&#8377;1.48 Crores*</strong>
             </div>
 
-            <a href="#enquirySection" class="btn-gold-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
+            <a href="#enquirySection" class="btn-slate-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
           </div>
 
         </div>
@@ -1703,16 +1775,16 @@
         <!-- Master Plan Download Box -->
         <div class="master-plan-box plot-reveal">
           <div>
-            <div class="sec-num-eyebrow" style="color: #f3d9b0;">
-              <span class="dash" style="background:#f3d9b0;"></span> MASTER LAYOUT MAP
+            <div class="sec-num-eyebrow" style="color: var(--cream);">
+              <span class="dash" style="background:var(--cream);"></span> MASTER LAYOUT MAP
             </div>
             <h3>Download High-Resolution PMRDA Sanctioned Layout Map</h3>
             <p>
               Get the complete demarcated plotting blueprint with plot numbers, directional bearings, road widths, and open amenity reservation zones.
             </p>
             <div style="display:flex;gap:14px;flex-wrap:wrap;">
-              <a href="#enquirySection" class="btn-gold-action"><i class="fa-solid fa-download"></i> Download PDF Map (6.4 MB)</a>
-              <a href="tel:+919494168733" class="btn-outline-navy" style="color:#ffffff;border-color:rgba(255,255,255,0.4);"><i class="fa-solid fa-phone"></i> Call Plot Manager</a>
+              <a href="#enquirySection" class="btn-slate-action" style="background:#FAF8EE;color:#1f343f;border-color:#FAF8EE;"><i class="fa-solid fa-download"></i> Download PDF Map (6.4 MB)</a>
+              <a href="tel:+919494168733" class="btn-outline-slate" style="color:#FAF8EE;border-color:rgba(250,248,238,0.4);"><i class="fa-solid fa-phone"></i> Call Plot Manager</a>
             </div>
           </div>
           <div class="master-plan-preview-img">
@@ -1729,9 +1801,9 @@
     <section class="amenities-sec" id="amenitiesSection">
       <div class="sec-container">
         
-        <div class="sec-header center plot-reveal">
+        <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> 04 &mdash; Amenities &amp; Infrastructure
+            <span class="dash"></span> <span class="num-highlight">04</span> &mdash; Amenities &amp; Infrastructure
           </div>
           <h2 class="sec-headline">
             Institutional Infrastructure Delivered Before You Lay the First Brick
@@ -1802,9 +1874,9 @@
     <section class="location-sec" id="locationSection">
       <div class="sec-container">
         
-        <div class="sec-header center plot-reveal">
+        <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> 05 &mdash; Location Advantages
+            <span class="dash"></span> <span class="num-highlight">05</span> &mdash; Location Advantages
           </div>
           <h2 class="sec-headline">
             Strategic Growth Corridor at Pune's Fast-Tracking Junction
@@ -1868,7 +1940,7 @@
                 <div class="map-overlay-title">Green Valley Township Gate</div>
                 <div class="map-overlay-sub">North Expressway Exit 4B, Pune &bull; 18.5793&deg; N, 73.7438&deg; E</div>
               </div>
-              <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-gold-action" style="padding: 10px 18px; font-size: 0.8rem;">
+              <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-slate-action" style="padding: 10px 18px; font-size: 0.8rem;">
                 <i class="fa-solid fa-diamond-turn-right"></i> Navigate
               </a>
             </div>
@@ -1885,9 +1957,9 @@
     <section class="gallery-sec" id="gallerySection">
       <div class="sec-container">
         
-        <div class="sec-header center plot-reveal">
+        <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> 06 &mdash; Project Gallery
+            <span class="dash"></span> <span class="num-highlight">06</span> &mdash; Project Gallery
           </div>
           <h2 class="sec-headline">
             Visual Tour of Green Valley Township
@@ -1897,7 +1969,7 @@
           </p>
         </div>
 
-        <!-- Filter Nav -->
+        <!-- Filter Nav (Left Aligned) -->
         <div class="gallery-filter-nav plot-reveal">
           <button class="gal-filter-btn active" onclick="filterGallery('all', this)">All Views</button>
           <button class="gal-filter-btn" onclick="filterGallery('infra', this)">Roads &amp; Infra</button>
@@ -1968,9 +2040,9 @@
     <section class="legal-sec" id="legalSection">
       <div class="sec-container">
         
-        <div class="sec-header center plot-reveal">
-          <div class="sec-num-eyebrow" style="color: #f3d9b0;">
-            <span class="dash" style="background:#f3d9b0;"></span> 07 &mdash; Legal Information &amp; Project Details
+        <div class="sec-header plot-reveal">
+          <div class="sec-num-eyebrow" style="color: var(--cream);">
+            <span class="dash" style="background:var(--cream);"></span> <span class="num-highlight" style="color:#ffffff;">07</span> &mdash; Legal Information &amp; Project Details
           </div>
           <h2 class="sec-headline">
             100% Institutional Transparency, Title Clarity &amp; Sanctions
@@ -2044,7 +2116,7 @@
             <h4>Request Complete Legal Verification Dossier</h4>
             <p>Includes 7/12 extract sample, MahaRERA certificate, title report, and layout sanction order.</p>
           </div>
-          <a href="#enquirySection" class="btn-gold-action"><i class="fa-solid fa-file-pdf"></i> Request Legal Kit</a>
+          <a href="#enquirySection" class="btn-slate-action" style="background:#FAF8EE;color:#1f343f;border-color:#FAF8EE;"><i class="fa-solid fa-file-pdf"></i> Request Legal Kit</a>
         </div>
 
       </div>
@@ -2056,14 +2128,23 @@
     <section class="enquiry-sec" id="enquirySection">
       <div class="sec-container">
         
+        <div class="sec-header plot-reveal">
+          <div class="sec-num-eyebrow">
+            <span class="dash"></span> <span class="num-highlight">08</span> &mdash; Enquiry &amp; Site Visit
+          </div>
+          <h2 class="sec-headline">
+            Schedule an On-Ground Site Verification or Request Plot Inventory
+          </h2>
+          <p class="sec-lead">
+            Select your preferred day and time for a private walkthrough with our Senior Land Acquisition Director.
+          </p>
+        </div>
+
         <div class="enquiry-split-box plot-reveal">
           
           <!-- Left Info Pane -->
           <div class="enquiry-info-pane">
             <div>
-              <div class="sec-num-eyebrow" style="color: #f3d9b0;">
-                <span class="dash" style="background:#f3d9b0;"></span> 08 &mdash; Enquiry &amp; Site Visit
-              </div>
               <h3>Experience Green Valley On-Ground</h3>
               <p>
                 Walking the land is the only true way to understand its elevation, wind currents, and panoramic horizons. Schedule a complimentary private chauffeur-driven site tour today.
@@ -2158,7 +2239,7 @@
                   <label for="agreeTerms">I authorize One Roof Properties to contact me with master plans and site visit arrangements.</label>
                 </div>
 
-                <button type="submit" class="btn-gold-action" style="width: 100%; padding: 15px; font-size: 0.95rem;">
+                <button type="submit" class="btn-slate-action" style="width: 100%; padding: 15px; font-size: 0.95rem;">
                   <i class="fa-solid fa-paper-plane"></i> Confirm Site Visit &amp; Inquire Plots
                 </button>
               </form>

@@ -944,12 +944,42 @@
       user-select: none;
     }
 
+.coverflow-card {
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  filter 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.8s ease;
+    }
+
     .coverflow-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
       pointer-events: none;
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .coverflow-card.pos-0 img {
+      transform: scale(1.06);
+    }
+
+    /* Auto Slider Progress Bar */
+    .coverflow-progress {
+      width: clamp(140px, 18vw, 220px);
+      height: 3px;
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      margin: 20px auto 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .coverflow-progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #b4832c, #d4af37, #fef08a);
+      border-radius: 999px;
     }
 
     /* Subtle inner depth border */
@@ -2513,6 +2543,8 @@
 
     <!-- Dots Navigation -->
     <div class="coverflow-dots" id="coverflowDots"></div>
+    <!-- Auto Slider Visual Progress Indicator -->
+    <div class="coverflow-progress"><div class="coverflow-progress-bar" id="coverflowProgressBar"></div></div>
   </section>
 
   <!-- ===================================================================== -->
@@ -3188,7 +3220,7 @@
     }
 
     // =====================================================================
-    // 5. 3D COVERFLOW IMAGE SLIDER CONTROLLER
+    // 5. 3D COVERFLOW IMAGE SLIDER CONTROLLER (CONTINUOUS AUTO SLIDER)
     // =====================================================================
     (function init3DCoverflow() {
       const stage = document.getElementById('coverflowStage');
@@ -3196,13 +3228,15 @@
       const prevBtn = document.getElementById('coverflowPrev');
       const nextBtn = document.getElementById('coverflowNext');
       const dotsContainer = document.getElementById('coverflowDots');
+      const progressBar = document.getElementById('coverflowProgressBar');
       if (!stage) return;
 
       const cards = Array.from(stage.querySelectorAll('.coverflow-card'));
       const total = cards.length;
       let currentIndex = 0;
       let autoplayTimer = null;
-      let isPaused = false;
+      let pauseTimeout = null;
+      const SLIDE_DURATION = 2600; // 2.6 seconds per slide for lively smooth auto motion
 
       // Build pagination dots
       if (dotsContainer) {
@@ -3210,18 +3244,17 @@
         dotsContainer.querySelectorAll('.coverflow-dot').forEach(dot => {
           dot.addEventListener('click', () => {
             goToSlide(parseInt(dot.dataset.i, 10));
+            triggerInteractionPause();
           });
         });
       }
 
       function updateCoverflow() {
         cards.forEach((card, index) => {
-          // Calculate relative circular distance (-total/2 ... total/2)
           let diff = index - currentIndex;
           if (diff > total / 2) diff -= total;
           if (diff < -total / 2) diff += total;
 
-          // Remove old position classes
           card.className = 'coverflow-card';
 
           if (diff === 0) {
@@ -3241,12 +3274,21 @@
           }
         });
 
-        // Update dots
         if (dotsContainer) {
           const dots = dotsContainer.querySelectorAll('.coverflow-dot');
           dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === currentIndex);
           });
+        }
+
+        // Animate auto-slider progress bar
+        if (progressBar) {
+          progressBar.style.transition = 'none';
+          progressBar.style.width = '0%';
+          // force reflow
+          void progressBar.offsetWidth;
+          progressBar.style.transition = `width ${SLIDE_DURATION}ms linear`;
+          progressBar.style.width = '100%';
         }
       }
 
@@ -3263,15 +3305,30 @@
         goToSlide(currentIndex - 1);
       }
 
-      // Arrow clicks
-      if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-      if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+      function triggerInteractionPause() {
+        stopAutoplay();
+        if (pauseTimeout) clearTimeout(pauseTimeout);
+        pauseTimeout = setTimeout(() => {
+          startAutoplay();
+        }, 1800);
+      }
 
-      // Card direct click: click any card to bring it to center
+      // Arrow clicks
+      if (nextBtn) nextBtn.addEventListener('click', () => {
+        nextSlide();
+        triggerInteractionPause();
+      });
+      if (prevBtn) prevBtn.addEventListener('click', () => {
+        prevSlide();
+        triggerInteractionPause();
+      });
+
+      // Card direct click
       cards.forEach((card, i) => {
         card.addEventListener('click', () => {
           if (currentIndex !== i) {
             goToSlide(i);
+            triggerInteractionPause();
           }
         });
       });
@@ -3280,8 +3337,8 @@
       window.addEventListener('keydown', (e) => {
         const rect = stage.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
-          if (e.key === 'ArrowRight') nextSlide();
-          if (e.key === 'ArrowLeft') prevSlide();
+          if (e.key === 'ArrowRight') { nextSlide(); triggerInteractionPause(); }
+          if (e.key === 'ArrowLeft') { prevSlide(); triggerInteractionPause(); }
         }
       });
 
@@ -3289,7 +3346,7 @@
       let touchStartX = 0;
       stage.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].clientX;
-        isPaused = true;
+        stopAutoplay();
       }, { passive: true });
 
       stage.addEventListener('touchend', (e) => {
@@ -3299,17 +3356,15 @@
           if (diffX < 0) nextSlide();
           else prevSlide();
         }
-        setTimeout(() => { isPaused = false; }, 1000);
+        triggerInteractionPause();
       }, { passive: true });
 
-      // Autoplay
+      // Continuous Auto-Slider Engine
       function startAutoplay() {
         stopAutoplay();
         autoplayTimer = setInterval(() => {
-          if (!isPaused) {
-            nextSlide();
-          }
-        }, 3600);
+          nextSlide();
+        }, SLIDE_DURATION);
       }
 
       function stopAutoplay() {
@@ -3319,9 +3374,26 @@
         }
       }
 
+      // Briefly pause on mouse hover, resume immediately on mouseleave
       if (wrap) {
-        wrap.addEventListener('mouseenter', () => { isPaused = true; });
-        wrap.addEventListener('mouseleave', () => { isPaused = false; });
+        wrap.addEventListener('mouseenter', stopAutoplay);
+        wrap.addEventListener('mouseleave', startAutoplay);
+      }
+
+      // Intersection Observer: ensure autoplay starts and keeps running smoothly when visible
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              startAutoplay();
+            } else {
+              stopAutoplay();
+            }
+          });
+        }, { threshold: 0.15 });
+        observer.observe(stage);
+      } else {
+        startAutoplay();
       }
 
       updateCoverflow();

@@ -952,65 +952,14 @@
       pointer-events: none;
     }
 
-    /* Gradient Overlay */
+    /* Subtle inner depth border */
     .coverflow-card::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.72) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 14px;
       pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-
-    /* Text Overlay matching reference */
-    .coverflow-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 24px;
-      z-index: 3;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s;
-      pointer-events: none;
-    }
-
-    .coverflow-card.pos-0 .coverflow-overlay {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .coverflow-card-title {
-      font-family: 'Nanum Myeongjo', Georgia, serif;
-      font-size: clamp(1.15rem, 1.6vw, 1.55rem);
-      font-weight: 700;
-      color: #ffffff;
-      letter-spacing: 2.2px;
-      text-transform: uppercase;
-      margin: 0;
-      text-shadow: 0 2px 14px rgba(0,0,0,0.85);
-      line-height: 1.25;
-    }
-
-    .coverflow-card-line {
-      width: 38px;
-      height: 2px;
-      background: #d4af37;
-      margin: 10px 0;
-    }
-
-    .coverflow-card-subtitle {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-      color: rgba(250, 248, 238, 0.9);
-      margin: 0;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.85);
     }
 
     /* 3D Relative Transforms */
@@ -2518,81 +2467,41 @@
         <!-- Slide 0 -->
         <div class="coverflow-card" data-index="0">
           <img src="assets/about-building.webp" alt="Tower Elevation & Architecture">
-          <div class="coverflow-overlay">
-            <h3 class="coverflow-card-title">Skyview Residency</h3>
-            <div class="coverflow-card-line"></div>
-            <p class="coverflow-card-subtitle">Tower Elevation</p>
-          </div>
         </div>
 
         <!-- Slide 1 -->
         <div class="coverflow-card" data-index="1">
           <img src="assets/cta-interior-1.jpg" alt="Living & Dining Lounge">
-          <div class="coverflow-overlay">
-            <h3 class="coverflow-card-title">Grand Living</h3>
-            <div class="coverflow-card-line"></div>
-            <p class="coverflow-card-subtitle">Sunlit Living &amp; Dining</p>
-          </div>
         </div>
 
         <!-- Slide 2 -->
         <div class="coverflow-card" data-index="2">
           <img src="assets/cta-interior-2.jpg" alt="Master Bedroom Suite">
-          <div class="coverflow-overlay">
-            <h3 class="coverflow-card-title">Master Suite</h3>
-            <div class="coverflow-card-line"></div>
-            <p class="coverflow-card-subtitle">Panoramic Balcony Views</p>
-          </div>
         </div>
 
         <!-- Slide 3 -->
         <div class="coverflow-card" data-index="3">
           <img src="assets/cta-interior-3.jpg" alt="Modular Designer Kitchen">
-          <div class="coverflow-overlay">
-            <h3 class="coverflow-card-title">Gourmet Kitchen</h3>
-            <div class="coverflow-card-line"></div>
-            <p class="coverflow-card-subtitle">German Fitted Cabinetry</p>
-          </div>
         </div>
 
         <!-- Slide 4 -->
         <div class="coverflow-card" data-index="4">
           <img src="assets/realestate23.webp" alt="Resort Swimming Pool">
-          <div class="coverflow-overlay">
-            <h3 class="coverflow-card-title">Resort Pool</h3>
-            <div class="coverflow-card-line"></div>
-            <p class="coverflow-card-subtitle">Temperature Controlled</p>
-          </div>
         </div>
 
         <!-- Slide 5 -->
         <div class="coverflow-card" data-index="5">
           <img src="assets/project-5.webp" alt="Boulevard & High-rise Towers">
-          <div class="coverflow-overlay">
-            <h3 class="coverflow-card-title">Grand Boulevard</h3>
-            <div class="coverflow-card-line"></div>
-            <p class="coverflow-card-subtitle">Landscaped Avenues</p>
-          </div>
         </div>
 
         <!-- Slide 6 -->
         <div class="coverflow-card" data-index="6">
           <img src="assets/counter-day.webp" alt="Sky Club Pavilion">
-          <div class="coverflow-overlay">
-            <h3 class="coverflow-card-title">Sky Club</h3>
-            <div class="coverflow-card-line"></div>
-            <p class="coverflow-card-subtitle">Wellness &amp; Leisure Hub</p>
-          </div>
         </div>
 
         <!-- Slide 7 -->
         <div class="coverflow-card" data-index="7">
           <img src="assets/counter-night.webp" alt="Illuminated Night Skyline">
-          <div class="coverflow-overlay">
-            <h3 class="coverflow-card-title">Night Horizon</h3>
-            <div class="coverflow-card-line"></div>
-            <p class="coverflow-card-subtitle">Illuminated Sky Deck</p>
-          </div>
         </div>
       </div>
 

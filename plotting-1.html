@@ -629,7 +629,83 @@
     }
 
     /* ======================================================== */
-    /* 03 — PLOT LAYOUT & AVAILABLE SIZES                       */
+    /* 02 — PROJECT HIGHLIGHTS                                  */
+    /* ======================================================== */
+    .highlights-sec {
+      padding: clamp(80px, 8vw, 120px) 0;
+      background: var(--cream);
+      border-top: 1px solid var(--border-line);
+    }
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .highlight-card {
+      background: #ffffff;
+      border: 1px solid var(--border-line);
+      border-radius: 20px;
+      padding: 34px 28px;
+      box-shadow: 0 8px 24px rgba(70, 86, 101, 0.05);
+      transition: all 0.35s var(--ease);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .highlight-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 38px rgba(70, 86, 101, 0.12);
+      border-color: var(--navy);
+    }
+    .highlight-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--cream-soft);
+      border: 1px solid var(--border-line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      color: var(--navy-deep);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    .highlight-card:hover .highlight-icon-wrap {
+      background: var(--navy-deep);
+      color: #ffffff;
+      border-color: var(--navy-deep);
+    }
+    .highlight-tag {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--cream-alt);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-line);
+    }
+    .highlight-title {
+      font-family: var(--head-font);
+      font-size: 1.32rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .highlight-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ======================================================== */
+    /* 03 — PLOT LAYOUT & CONFIGURATIONS                        */
     /* ======================================================== */
     .sizes-sec {
       padding: clamp(80px, 8vw, 120px) 0;
@@ -860,7 +936,7 @@
     }
 
     /* ======================================================== */
-    /* 07 — LEGAL INFORMATION & PROJECT DETAILS                 */
+    /* 07 — SPECIFICATIONS & LEGAL CREDENTIALS                  */
     /* ======================================================== */
     .legal-sec {
       padding: clamp(80px, 8vw, 120px) 0;
@@ -898,8 +974,152 @@
       margin-top: 14px;
     }
 
+    /* Specifications Matrix */
+    .specs-matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 10px;
+    }
+    .specs-matrix-card {
+      background: #ffffff;
+      border: 1px solid var(--border-line);
+      border-radius: 18px;
+      padding: 26px 28px;
+      box-shadow: 0 6px 20px rgba(70, 86, 101, 0.04);
+      transition: all 0.3s ease;
+    }
+    .specs-matrix-card:hover {
+      border-color: var(--navy);
+      box-shadow: 0 12px 30px rgba(70, 86, 101, 0.09);
+    }
+    .specs-matrix-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-line);
+    }
+    .specs-matrix-head i {
+      font-size: 1.2rem;
+      color: var(--navy);
+    }
+    .specs-matrix-head h4 {
+      font-family: var(--head-font);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin: 0;
+    }
+    .specs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .specs-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.9rem;
+      gap: 12px;
+    }
+    .specs-list-item .prop {
+      color: var(--muted);
+      flex: 1;
+    }
+    .specs-list-item .val {
+      color: var(--navy-deep);
+      font-weight: 600;
+      text-align: right;
+    }
+
     /* ======================================================== */
-    /* 08 — ENQUIRY & SITE VISIT                                */
+    /* 08 — FAQS ACCORDION                                      */
+    /* ======================================================== */
+    .faq-sec {
+      padding: clamp(80px, 8vw, 120px) 0;
+      background: var(--cream);
+      border-top: 1px solid var(--border-line);
+    }
+    .faq-accordion-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .faq-acc-item {
+      background: #ffffff;
+      border: 1.5px solid var(--border-line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(70, 86, 101, 0.04);
+      transition: all 0.3s var(--ease);
+    }
+    .faq-acc-item.open {
+      border-color: var(--navy);
+      box-shadow: 0 10px 30px rgba(70, 86, 101, 0.1);
+    }
+    .faq-acc-trigger {
+      width: 100%;
+      text-align: left;
+      padding: 22px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      gap: 16px;
+      font-family: var(--head-font);
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      transition: color 0.25s ease;
+    }
+    .faq-acc-trigger:hover {
+      color: var(--navy);
+    }
+    .faq-acc-icon {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      background: var(--cream-soft);
+      border: 1px solid var(--border-line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      color: var(--navy);
+      transition: all 0.35s var(--ease);
+    }
+    .faq-acc-item.open .faq-acc-icon {
+      background: var(--navy-deep);
+      color: #ffffff;
+      transform: rotate(180deg);
+      border-color: var(--navy-deep);
+    }
+    .faq-acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), padding 0.35s ease;
+      padding: 0 28px;
+    }
+    .faq-acc-item.open .faq-acc-body {
+      padding: 0 28px 24px 28px;
+    }
+    .faq-acc-body p {
+      font-family: var(--body-font);
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* ======================================================== */
+    /* 09 — ENQUIRY & SITE VISIT                                */
     /* ======================================================== */
     .enquiry-sec {
       padding: clamp(80px, 8vw, 120px) 0;
@@ -1083,7 +1303,7 @@
     @media (max-width: 991px) {
       .header-nav-list { display: none; }
       .nav-mobile-btn { display: block; }
-      .ref-triad-grid, .sizes-cards-grid, .amenities-triad-grid, .gal-masonry-3col, .legal-triad-grid {
+      .ref-triad-grid, .sizes-cards-grid, .amenities-triad-grid, .gal-masonry-3col, .legal-triad-grid, .highlights-grid, .specs-matrix-grid {
         grid-template-columns: repeat(2, 1fr);
       }
       .overview-narrative-split, .enquiry-split-box {
@@ -1097,7 +1317,7 @@
     }
 
     @media (max-width: 600px) {
-      .ref-triad-grid, .sizes-cards-grid, .amenities-triad-grid, .gal-masonry-3col, .legal-triad-grid {
+      .ref-triad-grid, .sizes-cards-grid, .amenities-triad-grid, .gal-masonry-3col, .legal-triad-grid, .highlights-grid, .specs-matrix-grid {
         grid-template-columns: 1fr;
       }
       .form-grid-fields { grid-template-columns: 1fr; }
@@ -1196,7 +1416,7 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 02 — PROJECT OVERVIEW (PINNED SCROLL TRIPTYCH ANIMATION)  -->
+    <!-- 01 — PROJECT OVERVIEW (PINNED SCROLL TRIPTYCH ANIMATION)  -->
     <!-- ======================================================== -->
     <section class="about" id="about">
     <div class="about__sticky">
@@ -1207,8 +1427,8 @@
           <!-- Column 1: headline (top) + small card (bottom, grows up) -->
           <div class="about__col">
             <div class="about__title">
-              <span class="about__eyebrow">02 &mdash; Project Overview</span>
-              <h2 class="about__headline">Where Rare Land Finds Its Sanctuary</h2>
+              <span class="about__eyebrow">01 &mdash; Project Overview</span>
+              <h2 class="about__headline">Discover Your Next Address</h2>
             </div>
             <figure class="card card--left">
               <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80" alt="Township landscape">
@@ -1249,17 +1469,84 @@
   </section>
 
     <!-- ======================================================== -->
-    <!-- 03 — PLOT LAYOUT & AVAILABLE SIZES                       -->
+    <!-- 02 — PROJECT HIGHLIGHTS                                  -->
+    <!-- ======================================================== -->
+    <section class="highlights-sec" id="highlightsSection">
+      <div class="sec-container">
+        
+        <div class="sec-header plot-reveal">
+          <div class="sec-num-eyebrow">
+            <span class="dash"></span> <span class="num-highlight">02</span> &mdash; Project Highlights
+          </div>
+          <h2 class="sec-headline">
+            A Vision of Thoughtful Planning
+          </h2>
+          <p class="sec-lead">
+            An expansive, fully sanctioned plotted enclave crafted with institutional discipline, generational foresight, and integrated civil infrastructure.
+          </p>
+        </div>
+
+        <div class="highlights-grid">
+          
+          <div class="highlight-card plot-reveal">
+            <div class="highlight-icon-wrap"><i class="fa-solid fa-tree-city"></i></div>
+            <span class="highlight-tag">80 ACRES</span>
+            <h3 class="highlight-title">Master-Planned Enclave</h3>
+            <p class="highlight-desc">80 acres of meticulously designed low-density land with 80% open landscaped spaces, wide avenues, and independent villa clusters.</p>
+          </div>
+
+          <div class="highlight-card plot-reveal">
+            <div class="highlight-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+            <span class="highlight-tag">CLEAR 7/12</span>
+            <h3 class="highlight-title">100% Freehold Title</h3>
+            <p class="highlight-desc">Absolute title clarity with independent 7/12 extract for each plot, comprehensive 30-year search report, and zero legal encumbrances.</p>
+          </div>
+
+          <div class="highlight-card plot-reveal">
+            <div class="highlight-icon-wrap"><i class="fa-solid fa-stamp"></i></div>
+            <span class="highlight-tag">SANCTIONED</span>
+            <h3 class="highlight-title">PMRDA &amp; MahaRERA Approved</h3>
+            <p class="highlight-desc">Registered under MahaRERA (P52100054321) and sanctioned by PMRDA under final town planning clearance with verified demarcations.</p>
+          </div>
+
+          <div class="highlight-card plot-reveal">
+            <div class="highlight-icon-wrap"><i class="fa-solid fa-bolt-lightning"></i></div>
+            <span class="highlight-tag">PLUG &amp; PLAY</span>
+            <h3 class="highlight-title">Underground Infrastructure</h3>
+            <p class="highlight-desc">100% underground high-tension electricity conduits, dedicated municipal water tapping lines, and concealed stormwater drainage.</p>
+          </div>
+
+          <div class="highlight-card plot-reveal">
+            <div class="highlight-icon-wrap"><i class="fa-solid fa-building-columns"></i></div>
+            <span class="highlight-tag">UP TO 80%</span>
+            <h3 class="highlight-title">Pre-Approved Bank Loans</h3>
+            <p class="highlight-desc">Pre-approved by leading national and private banking partners (SBI, HDFC, ICICI, Axis) for hassle-free plot loan and composite villa sanction.</p>
+          </div>
+
+          <div class="highlight-card plot-reveal">
+            <div class="highlight-icon-wrap"><i class="fa-solid fa-compass-drafting"></i></div>
+            <span class="highlight-tag">G+2 FLOORS</span>
+            <h3 class="highlight-title">Immediate Villa Construction</h3>
+            <p class="highlight-desc">Sanctioned for G+2 storey independent villas with private terraces. Immediate physical possession and registry available today.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 03 — PLOT LAYOUT & CONFIGURATIONS                        -->
     <!-- ======================================================== -->
     <section class="sizes-sec" id="sizesSection">
       <div class="sec-container">
         
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">03</span> &mdash; Plot Layout &amp; Available Sizes
+            <span class="dash"></span> <span class="num-highlight">03</span> &mdash; Plot Layout &amp; Configurations
           </div>
           <h2 class="sec-headline">
-            Curated Dimensions for Custom Bungalows, Weekend Villas &amp; Long-Term Wealth
+            Explore Your Perfect Plot
           </h2>
           <p class="sec-lead">
             Select from standard villa footprints to sprawling corner parcels. Every plot enjoys direct road frontage, independent water/power tapping points, and G+2 residential villa sanction.
@@ -1352,17 +1639,17 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 04 — AMENITIES & INFRASTRUCTURE (3-COL PHOTO CARDS)      -->
+    <!-- 04 — INFRASTRUCTURE & AMENITIES                          -->
     <!-- ======================================================== -->
     <section class="amenities-sec" id="amenitiesSection">
       <div class="sec-container">
         
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">04</span> &mdash; Amenities &amp; Infrastructure
+            <span class="dash"></span> <span class="num-highlight">04</span> &mdash; Infrastructure &amp; Amenities
           </div>
           <h2 class="sec-headline">
-            World-Class Infrastructure Delivered Before You Lay the First Brick
+            Designed for Better Living
           </h2>
           <p class="sec-lead">
             Every element is engineered to institutional civic standards so you and your family enjoy seamless living without the typical delays of standalone land purchases.
@@ -1404,66 +1691,17 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 05 — LOCATION ADVANTAGES (TRIAD METRICS + MAP CARD)      -->
-    <!-- ======================================================== -->
-    <section class="location-sec" id="locationSection">
-      <div class="sec-container">
-        
-        <div class="sec-header plot-reveal">
-          <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">05</span> &mdash; Location Advantages
-          </div>
-          <h2 class="sec-headline">
-            Strategic Growth Corridor at Pune's Fast-Tracking Junction
-          </h2>
-          <p class="sec-lead">
-            Convenient transit access to the North Expressway, upcoming ring road hubs, and major IT tech parks.
-          </p>
-        </div>
-
-        <!-- 3 Location Metrics (Matching Triad Style) -->
-        <div class="ref-triad-dividers plot-reveal">
-          <div>
-            <div class="ref-triad-num">2 Mins</div>
-            <div class="ref-triad-cap">North Expressway</div>
-          </div>
-          <div>
-            <div class="ref-triad-num">12 Mins</div>
-            <div class="ref-triad-cap">Metro Station</div>
-          </div>
-          <div>
-            <div class="ref-triad-num">20 Mins</div>
-            <div class="ref-triad-cap">Hinjawadi IT Park</div>
-          </div>
-        </div>
-
-        <!-- Location Map Card -->
-        <div class="location-map-card plot-reveal">
-          <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80" alt="Green Valley Location Map" loading="lazy">
-          <div class="location-map-foot">
-            <div>
-              <div style="font-weight: 700; color: var(--navy-deep); font-size: 1.05rem;">Green Valley Township Gate</div>
-              <div style="font-size: 0.85rem; color: var(--muted);">North Expressway Exit 4B, Pune &bull; 18.5793&deg; N, 73.7438&deg; E</div>
-            </div>
-            <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-slate-action"><i class="fa-solid fa-location-arrow"></i> Google Maps Navigation</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- 06 — PROJECT GALLERY (3-COL PORTRAIT PHOTO CARDS)        -->
+    <!-- 05 — PROJECT GALLERY                                     -->
     <!-- ======================================================== -->
     <section class="gallery-sec" id="gallerySection">
       <div class="sec-container">
         
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">06</span> &mdash; Project Gallery
+            <span class="dash"></span> <span class="num-highlight">05</span> &mdash; Project Gallery
           </div>
           <h2 class="sec-headline">
-            Visual Walkthrough of Green Valley Township
+            A Closer Look at the Project
           </h2>
           <p class="sec-lead">
             Actual on-ground infrastructure captures and master-planned lifestyle amenities.
@@ -1505,20 +1743,69 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 07 — LEGAL INFORMATION & PROJECT DETAILS                 -->
+    <!-- 06 — LOCATION & CONNECTIVITY                             -->
     <!-- ======================================================== -->
-    <section class="legal-sec" id="legalSection">
+    <section class="location-sec" id="locationSection">
       <div class="sec-container">
         
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">07</span> &mdash; Legal Information &amp; Project Details
+            <span class="dash"></span> <span class="num-highlight">06</span> &mdash; Location &amp; Connectivity
           </div>
           <h2 class="sec-headline">
-            100% Institutional Transparency, Title Clarity &amp; Sanctions
+            Connected to What Matters
           </h2>
           <p class="sec-lead">
-            Every legal document and revenue extract is available for your solicitor's independent verification.
+            Convenient transit access to the North Expressway, upcoming ring road hubs, and major IT tech parks.
+          </p>
+        </div>
+
+        <!-- 3 Location Metrics (Matching Triad Style) -->
+        <div class="ref-triad-dividers plot-reveal">
+          <div>
+            <div class="ref-triad-num">2 Mins</div>
+            <div class="ref-triad-cap">North Expressway</div>
+          </div>
+          <div>
+            <div class="ref-triad-num">12 Mins</div>
+            <div class="ref-triad-cap">Metro Station</div>
+          </div>
+          <div>
+            <div class="ref-triad-num">20 Mins</div>
+            <div class="ref-triad-cap">Hinjawadi IT Park</div>
+          </div>
+        </div>
+
+        <!-- Location Map Card -->
+        <div class="location-map-card plot-reveal">
+          <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80" alt="Green Valley Location Map" loading="lazy">
+          <div class="location-map-foot">
+            <div>
+              <div style="font-weight: 700; color: var(--navy-deep); font-size: 1.05rem;">Green Valley Township Gate</div>
+              <div style="font-size: 0.85rem; color: var(--muted);">North Expressway Exit 4B, Pune &bull; 18.5793&deg; N, 73.7438&deg; E</div>
+            </div>
+            <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-slate-action"><i class="fa-solid fa-location-arrow"></i> Google Maps Navigation</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 07 — SPECIFICATIONS                                      -->
+    <!-- ======================================================== -->
+    <section class="legal-sec" id="specsSection">
+      <div class="sec-container">
+        
+        <div class="sec-header plot-reveal">
+          <div class="sec-num-eyebrow">
+            <span class="dash"></span> <span class="num-highlight">07</span> &mdash; Specifications
+          </div>
+          <h2 class="sec-headline">
+            Project Details at a Glance
+          </h2>
+          <p class="sec-lead">
+            Statutory certifications, development clearances, and engineered civic specifications governing Green Valley Township.
           </p>
         </div>
 
@@ -1547,21 +1834,163 @@
 
         </div>
 
+        <!-- Specifications Matrix Grid -->
+        <div class="specs-matrix-grid plot-reveal">
+          
+          <div class="specs-matrix-card">
+            <div class="specs-matrix-head">
+              <i class="fa-solid fa-road"></i>
+              <h4>Avenues &amp; Road Infrastructure</h4>
+            </div>
+            <div class="specs-list">
+              <div class="specs-list-item"><span class="prop">Main Spine Boulevard:</span><span class="val">60 Ft. Bitumen Macadam</span></div>
+              <div class="specs-list-item"><span class="prop">Internal Sector Roads:</span><span class="val">40 Ft. Tree-Lined Blacktop</span></div>
+              <div class="specs-list-item"><span class="prop">Pedestrian Pathways:</span><span class="val">Paver-Finished Curb Walkways</span></div>
+              <div class="specs-list-item"><span class="prop">Street Lighting:</span><span class="val">Integrated Solar LED Poles</span></div>
+            </div>
+          </div>
+
+          <div class="specs-matrix-card">
+            <div class="specs-matrix-head">
+              <i class="fa-solid fa-faucet-drip"></i>
+              <h4>Water Supply &amp; Drainage</h4>
+            </div>
+            <div class="specs-list">
+              <div class="specs-list-item"><span class="prop">Plot Tapping Points:</span><span class="val">Dual Overhead/Ground Valves</span></div>
+              <div class="specs-list-item"><span class="prop">Stormwater Drains:</span><span class="val">Concealed RCC Box Culverts</span></div>
+              <div class="specs-list-item"><span class="prop">Sewage Treatment:</span><span class="val">Central Eco STP Plant</span></div>
+              <div class="specs-list-item"><span class="prop">Rainwater Harvesting:</span><span class="val">Groundwater Recharge Pits</span></div>
+            </div>
+          </div>
+
+          <div class="specs-matrix-card">
+            <div class="specs-matrix-head">
+              <i class="fa-solid fa-bolt"></i>
+              <h4>Power &amp; Connectivity</h4>
+            </div>
+            <div class="specs-list">
+              <div class="specs-list-item"><span class="prop">Electrical Network:</span><span class="val">100% Concealed Underground</span></div>
+              <div class="specs-list-item"><span class="prop">Feeder Pillars:</span><span class="val">Independent Sector Junctions</span></div>
+              <div class="specs-list-item"><span class="prop">High-Speed Telecom:</span><span class="val">Pre-Laid Optical Fibre Conduits</span></div>
+              <div class="specs-list-item"><span class="prop">Common Power Backup:</span><span class="val">DG Backup for Street &amp; Pumps</span></div>
+            </div>
+          </div>
+
+          <div class="specs-matrix-card">
+            <div class="specs-matrix-head">
+              <i class="fa-solid fa-shield-halved"></i>
+              <h4>Security &amp; Demarcation</h4>
+            </div>
+            <div class="specs-list">
+              <div class="specs-list-item"><span class="prop">Township Boundary:</span><span class="val">9 Ft. Reinforced Compound Wall</span></div>
+              <div class="specs-list-item"><span class="prop">Entry Security:</span><span class="val">RFID Boom Barrier &amp; Guard Post</span></div>
+              <div class="specs-list-item"><span class="prop">Surveillance:</span><span class="val">24/7 HD CCTV Along Boulevards</span></div>
+              <div class="specs-list-item"><span class="prop">Plot Demarcation:</span><span class="val">Concrete Marker Corner Stones</span></div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- 08 — ENQUIRY & SITE VISIT                                -->
+    <!-- 08 — FAQS                                                -->
+    <!-- ======================================================== -->
+    <section class="faq-sec" id="faqSection">
+      <div class="sec-container">
+        
+        <div class="sec-header plot-reveal">
+          <div class="sec-num-eyebrow">
+            <span class="dash"></span> <span class="num-highlight">08</span> &mdash; FAQs
+          </div>
+          <h2 class="sec-headline">
+            Everything You Need to Know
+          </h2>
+          <p class="sec-lead">
+            Clear, transparent answers regarding title certifications, development sanctions, loan eligibility, and custom bungalow construction.
+          </p>
+        </div>
+
+        <div class="faq-accordion-wrap plot-reveal">
+          
+          <div class="faq-acc-item open">
+            <button type="button" class="faq-acc-trigger" onclick="togglePlotFaq(this)">
+              <span>Are the plots registered under MahaRERA and approved by PMRDA?</span>
+              <span class="faq-acc-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-acc-body" style="max-height: 200px;">
+              <p>Yes. Green Valley Township is fully sanctioned by the Pune Metropolitan Region Development Authority (PMRDA Layout Order: PMRDA/TPS/2024/098) and registered under MahaRERA (Registration No: P52100054321). All title clearances, layout approvals, and escrow account details are officially documented and available for solicitor verification.</p>
+            </div>
+          </div>
+
+          <div class="faq-acc-item">
+            <button type="button" class="faq-acc-trigger" onclick="togglePlotFaq(this)">
+              <span>Can I avail a bank loan for purchasing a residential plot?</span>
+              <span class="faq-acc-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-acc-body">
+              <p>Yes. Green Valley Township is pre-approved by leading financial institutions including State Bank of India (SBI), HDFC Bank, ICICI Bank, and Axis Bank. Eligible buyers can secure up to 75% to 80% funding on the plot value as well as composite plot-plus-construction loans at attractive home loan interest rates.</p>
+            </div>
+          </div>
+
+          <div class="faq-acc-item">
+            <button type="button" class="faq-acc-trigger" onclick="togglePlotFaq(this)">
+              <span>What is the permissible construction limit (FSI) on each plot?</span>
+              <span class="faq-acc-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-acc-body">
+              <p>Every plot enjoys sanctioned permission for G+2 residential villa construction with an independent terrace. You have full architectural freedom to build your bespoke bungalow within PMRDA development control rules, or you may utilize our pre-approved architect floor plans for accelerated development.</p>
+            </div>
+          </div>
+
+          <div class="faq-acc-item">
+            <button type="button" class="faq-acc-trigger" onclick="togglePlotFaq(this)">
+              <span>When will I get physical possession and registry of my plot?</span>
+              <span class="faq-acc-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-acc-body">
+              <p>Possession and registry are immediate. The township infrastructure—including asphalt blacktop roads, boundary demarcation stones, water supply tapping valves, and underground power conduits—is already delivered on-ground. Registry is executed at the sub-registrar office within 15–30 days of statutory agreement.</p>
+            </div>
+          </div>
+
+          <div class="faq-acc-item">
+            <button type="button" class="faq-acc-trigger" onclick="togglePlotFaq(this)">
+              <span>What civic infrastructure and ongoing maintenance are provided?</span>
+              <span class="faq-acc-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-acc-body">
+              <p>The township provides 40 and 60 ft. wide asphalt roads, concealed storm drainage, dedicated underground electrical conduits, central water supply, 24/7 security with CCTV surveillance, and landscaped botanical gardens. A professional facilities management agency oversees road sweeping, street lighting, and green maintenance.</p>
+            </div>
+          </div>
+
+          <div class="faq-acc-item">
+            <button type="button" class="faq-acc-trigger" onclick="togglePlotFaq(this)">
+              <span>Can Non-Resident Indians (NRIs) purchase plots in Green Valley Township?</span>
+              <span class="faq-acc-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-acc-body">
+              <p>Absolutely. Under RBI general permissions, NRIs and OCIs can freely invest in residential plots in India using standard NRE/NRO banking channels. Our specialized One Roof NRI Advisory team provides seamless remote video verification, Power of Attorney (POA) documentation, and repatriation assistance.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 09 — ENQUIRY & SITE VISIT                                -->
     <!-- ======================================================== -->
     <section class="enquiry-sec" id="enquirySection">
       <div class="sec-container">
         
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">08</span> &mdash; Enquiry &amp; Site Visit
+            <span class="dash"></span> <span class="num-highlight">09</span> &mdash; Enquiry
           </div>
           <h2 class="sec-headline">
-            Schedule an On-Ground Site Verification or Request Plot Inventory
+            Let's Find Your Perfect Plot
           </h2>
           <p class="sec-lead">
             Select your preferred day and time for a private walkthrough with our Senior Land Acquisition Director.
@@ -1786,6 +2215,30 @@
           card.style.display = 'none';
         }
       });
+    }
+
+    // FAQ Accordion Toggle
+    function togglePlotFaq(btn) {
+      const item = btn.closest('.faq-acc-item');
+      const body = item.querySelector('.faq-acc-body');
+      const isOpen = item.classList.contains('open');
+
+      // Optional accordion behavior: close other open items
+      document.querySelectorAll('.faq-acc-item').forEach(other => {
+        if (other !== item && other.classList.contains('open')) {
+          other.classList.remove('open');
+          const otherBody = other.querySelector('.faq-acc-body');
+          if (otherBody) otherBody.style.maxHeight = null;
+        }
+      });
+
+      if (isOpen) {
+        item.classList.remove('open');
+        body.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        body.style.maxHeight = (body.scrollHeight + 30) + 'px';
+      }
     }
 
     // Enquiry Form Submission Handler

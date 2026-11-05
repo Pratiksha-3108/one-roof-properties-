@@ -1241,10 +1241,9 @@
           <div class="filter-field-cell">
             <span class="filter-field-label">Type</span>
             <select class="filter-select" id="filterType" aria-label="Select Property Type">
-              <option value="all">Residential &amp; Plots</option>
-              <option value="residential">Residential</option>
-              <option value="plotting">Plotting Enclaves</option>
-              <option value="commercial">Commercial Hub</option>
+              <option value="all">All Properties (Residential &amp; Plotting)</option>
+              <option value="residential">Residential Properties</option>
+              <option value="plotting">Plotting Developments</option>
             </select>
           </div>
 
@@ -1306,9 +1305,8 @@
         <!-- Quick Filter Category Pills -->
         <div class="quick-filter-pills">
           <button class="quick-pill active" data-type="all">All Developments (<span id="countAll">6</span>)</button>
-          <button class="quick-pill" data-type="residential">Residential Apartments (<span id="countRes">3</span>)</button>
-          <button class="quick-pill" data-type="plotting">Plotting Townships (<span id="countPlot">2</span>)</button>
-          <button class="quick-pill" data-type="commercial">Commercial Hubs (<span id="countComm">1</span>)</button>
+          <button class="quick-pill" data-type="residential">Residential Properties (<span id="countRes">3</span>)</button>
+          <button class="quick-pill" data-type="plotting">Plotting Developments (<span id="countPlot">3</span>)</button>
         </div>
       </div>
 
@@ -1512,28 +1510,28 @@
           </div>
         </article>
 
-        <!-- Project 6: Metro Boulevard Commercial Hub (Financial District) -->
-        <article class="project-card" data-type="commercial" data-locality="financial-district" data-bedroom="plots" data-possession="under-construction ready" data-budget="75l-1.5cr 1.5cr-3cr" data-title="metro boulevard commercial hub financial district pune">
+        <!-- Project 6: Metro Boulevard Plots (Financial District) -->
+        <article class="project-card" data-type="plotting" data-locality="financial-district" data-bedroom="plots" data-possession="under-construction ready" data-budget="75l-1.5cr 1.5cr-3cr" data-title="metro boulevard plots financial district pune">
           <div class="card-photo-wrap">
-            <img src="assets/project-4.jpg" alt="Metro Boulevard Commercial Hub" class="card-img">
+            <img src="assets/project-4.jpg" alt="Metro Boulevard Plots" class="card-img">
           </div>
           <div class="card-body">
             <span class="card-location-sub"><i class="fa-solid fa-location-dot"></i> Financial District, Pune</span>
-            <h3 class="card-title">Metro Boulevard Hub</h3>
+            <h3 class="card-title">Metro Boulevard Plots</h3>
             <p class="card-desc-brief">
-              High-street commercial plots and premium boutique showrooms with 120-ft arterial road frontage and high daily footfall potential.
+              Prime demarcated commercial &amp; mixed-use investment plots with 120-ft arterial road frontage and immediate business potential.
             </p>
             <div class="card-specs-row">
               <div class="spec-item">
-                <span class="spec-val">Retail &amp; Office</span>
-                <span class="spec-label">Commercial</span>
+                <span class="spec-val">Prime Plots</span>
+                <span class="spec-label">Development</span>
               </div>
               <div class="spec-item">
                 <span class="spec-val">1,200 - 4,500</span>
                 <span class="spec-label">Sq. Ft.</span>
               </div>
               <div class="spec-item">
-                <span class="spec-val">Late 2026</span>
+                <span class="spec-val">Ready</span>
                 <span class="spec-label">Possession</span>
               </div>
             </div>
@@ -1732,17 +1730,14 @@
       const totalAll = cards.length;
       const totalRes = cards.filter(c => c.dataset.type === 'residential').length;
       const totalPlot = cards.filter(c => c.dataset.type === 'plotting').length;
-      const totalComm = cards.filter(c => c.dataset.type === 'commercial').length;
 
       const countAllEl = document.getElementById('countAll');
       const countResEl = document.getElementById('countRes');
       const countPlotEl = document.getElementById('countPlot');
-      const countCommEl = document.getElementById('countComm');
 
       if (countAllEl) countAllEl.textContent = totalAll;
       if (countResEl) countResEl.textContent = totalRes;
       if (countPlotEl) countPlotEl.textContent = totalPlot;
-      if (countCommEl) countCommEl.textContent = totalComm;
 
       function applyFilters() {
         const selectedType = typeSelect.value;
@@ -1837,7 +1832,7 @@
       const urlParams = new URLSearchParams(window.location.search);
       const qType = urlParams.get('type');
       const qLoc = urlParams.get('locality');
-      if (qType && ['residential', 'plotting', 'commercial'].includes(qType)) {
+      if (qType && ['residential', 'plotting'].includes(qType)) {
         typeSelect.value = qType;
       }
       if (qLoc) {

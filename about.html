@@ -1274,323 +1274,272 @@
     }
 
     /* ======================================================== */
-    /* 7. REDESIGNED TEAM SECTION (2x2 SPLIT ARCHITECTURAL LAYOUT) */
-    /* COLORING FROM HOME PAGE ABOUT SECTION (#aboutExpandSection) */
+    /* 7. OUR TEAM SECTION (MATCHING REFERENCE DESIGN & HOMEPAGE PALETTE) */
     /* ======================================================== */
     .team-split-section {
       background: radial-gradient(circle at 18% 50%, #F3EFE2 0%, #FAF8EE 70%, #F5F2E6 100%);
-      padding: clamp(70px, 7vw, 110px) 0;
+      padding: clamp(80px, 9vh, 120px) 0;
       position: relative;
-      border-top: 1px solid rgba(70, 86, 101, 0.16);
+      border-top: 1px solid rgba(70, 86, 101, 0.14);
       overflow: hidden;
     }
     .team-split-container {
-      max-width: 1280px;
+      max-width: 1320px;
       margin: 0 auto;
       padding: 0 clamp(20px, 4vw, 40px);
       box-sizing: border-box;
-      display: grid;
-      grid-template-columns: 1fr 1.35fr;
-      align-items: center;
-      gap: clamp(36px, 5vw, 68px);
     }
 
-    /* Left Column */
-    .team-left-col {
+    /* Centered Header matching reference */
+    .team-header-center {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto clamp(44px, 6vw, 68px);
       opacity: 0;
-      transform: translateX(-35px);
-      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(24px);
+      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
       will-change: opacity, transform;
     }
-    .team-split-section.is-visible .team-left-col {
+    .team-split-section.is-visible .team-header-center {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
 
-    /* Breadcrumb matching Home Page About Section */
-    .team-breadcrumb {
+    .team-header-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-family: 'Jost', sans-serif;
       font-size: 0.82rem;
       font-weight: 600;
       letter-spacing: 2.5px;
       text-transform: uppercase;
       color: #7b8791;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .team-breadcrumb span {
-      color: #465665;
-    }
-
-    /* Accent slanted dashes in Home About Slate Navy */
-    .team-accent-dashes {
-      display: flex;
-      gap: 5px;
-      align-items: center;
-    }
-    .team-accent-dashes.top {
       margin-bottom: 12px;
     }
-    .team-accent-dashes.mid {
-      margin: 18px 0 20px;
-    }
-    .team-accent-dashes span {
-      display: inline-block;
-      width: 16px;
-      height: 4px;
-      background: #465665;
-      border-radius: 2px;
-      transform: skewX(-32deg);
-    }
-    .team-accent-dashes.mid span:nth-child(even) {
-      background: rgba(70, 86, 101, 0.28);
+    .team-header-eyebrow span {
+      color: #465665;
     }
 
-    /* Heading Lockup */
-    .team-heading-lockup {
+    .team-title-hero {
+      font-family: 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+      font-weight: 700;
+      color: #1f343f;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin: 0 0 16px;
+    }
+
+    .team-subtitle-lead {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.96rem, 1.1vw, 1.05rem);
+      font-weight: 300;
+      line-height: 1.75;
+      color: #64748b;
+      margin: 0 auto;
+      max-width: 660px;
+    }
+
+    /* 4-Card Horizontal Row Grid matching reference */
+    .team-grid-4col {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(18px, 2.2vw, 28px);
+    }
+
+    /* Team Member Card */
+    .team-card-unit {
+      background: #ffffff;
+      border: 1px solid rgba(70, 86, 101, 0.14);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(70, 86, 101, 0.06);
       display: flex;
       flex-direction: column;
-      gap: 2px;
-      margin-bottom: 6px;
-    }
-    .team-heading-line1 {
-      position: relative;
-      display: inline-flex;
-      align-items: baseline;
-    }
-    .team-hardhat-icon {
-      color: #465665;
-      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
-      margin-right: 8px;
-      transform: rotate(-18deg) translateY(-2px);
-      filter: drop-shadow(0 2px 4px rgba(70, 86, 101, 0.15));
-    }
-    .team-text-meet {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(2.6rem, 4.4vw, 4.2rem);
-      font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1;
-      color: #1f343f; /* Deep slate navy */
-      text-transform: uppercase;
-    }
-    .team-text-ourteam {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(2.6rem, 4.4vw, 4.2rem);
-      font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1;
-      color: #465665; /* Home page about section signature slate */
-      text-transform: uppercase;
-    }
-
-    .team-left-desc {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-      line-height: 1.75;
-      color: #7b8791; /* Exact match to .about-p */
-      margin: 0 0 28px;
-      max-width: 480px;
-    }
-
-    /* Pill Button styled with Home About palette */
-    .team-cta-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 11px 28px;
-      border: 1.5px solid #465665;
-      border-radius: 999px;
-      color: #465665;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
       text-decoration: none;
-      background: transparent;
-      transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-      width: fit-content;
-    }
-    .team-cta-pill i {
-      transition: transform 0.3s ease;
-      color: #465665;
-    }
-    .team-cta-pill:hover {
-      background: #465665;
-      color: #FAF8EE;
-      box-shadow: 0 8px 24px rgba(70, 86, 101, 0.25);
-      transform: translateY(-2px);
-    }
-    .team-cta-pill:hover i {
-      transform: translateX(4px);
-      color: #FAF8EE;
-    }
-
-    /* Right Column 2x2 Grid */
-    .team-right-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: clamp(16px, 2.2vw, 24px);
-    }
-
-    /* Geometric Cut Card */
-    .team-cut-card {
+      color: inherit;
       position: relative;
-      height: clamp(250px, 26vw, 305px);
-      border-radius: 14px 50px 14px 14px;
-      overflow: hidden;
-      background: #111a22;
-      box-shadow: 0 10px 28px rgba(70, 86, 101, 0.12);
       opacity: 0;
-      transform: translateY(35px) scale(0.96);
+      transform: translateY(35px);
       transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s),
                   transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s),
-                  box-shadow 0.4s ease;
+                  box-shadow 0.35s ease;
       will-change: opacity, transform;
     }
-    .team-split-section.is-visible .team-cut-card {
+    .team-split-section.is-visible .team-card-unit {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
     }
-    .team-split-section.is-visible .team-cut-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 42px rgba(70, 86, 101, 0.24);
+    .team-split-section.is-visible .team-card-unit:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 42px rgba(31, 52, 63, 0.16);
+      border-color: rgba(31, 52, 63, 0.28);
     }
 
-    .team-cut-photo {
-      position: absolute;
-      top: 0;
-      left: 0;
+    /* Portrait Image Frame */
+    .team-photo-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1.08;
+      overflow: hidden;
+      background: #111e26;
+      position: relative;
+    }
+    .team-photo-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: grayscale(14%) contrast(105%);
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  filter 0.45s ease;
       display: block;
     }
-    .team-cut-card:hover .team-cut-photo {
-      transform: scale(1.08);
+    .team-card-unit:hover .team-photo-img {
+      transform: scale(1.07);
+      filter: grayscale(0%) contrast(100%);
     }
 
-    /* Lower Banner in Home Page About Deep Slate Navy (#465665 / #1f343f) */
-    .team-cut-banner {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 44%;
-      background: linear-gradient(135deg, rgba(70, 86, 101, 0.95) 0%, rgba(31, 52, 63, 0.98) 100%);
-      border-radius: 0 34px 0 0;
+    /* Social Strip: Square LinkedIn box on left + handle */
+    .team-social-strip {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 12px 18px 12px 20px;
-      box-sizing: border-box;
-      z-index: 2;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 -4px 16px rgba(31, 52, 63, 0.16);
-      border-top: 1px solid rgba(250, 248, 238, 0.12);
+      background: #f8fafc;
+      border-top: 1px solid rgba(70, 86, 101, 0.08);
+      border-bottom: 1px solid rgba(70, 86, 101, 0.1);
+      transition: background 0.3s ease;
     }
-
-    .team-member-meta {
-      flex: 1;
-      min-width: 0;
-      padding-right: 10px;
-    }
-    .team-member-name {
-      font-family: 'Nanum Myeongjo', Georgia, serif;
-      font-size: clamp(1.05rem, 1.3vw, 1.25rem);
-      font-weight: 700;
-      color: #FAF8EE; /* Warm cream */
-      margin: 0 0 3px;
-      line-height: 1.2;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .team-member-role {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(0.72rem, 0.85vw, 0.82rem);
-      font-weight: 500;
-      color: rgba(250, 248, 238, 0.82);
-      margin: 0;
-      line-height: 1.3;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      letter-spacing: 0.3px;
-    }
-
-    /* Right-aligned vertical social stack */
-    .team-member-socials {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      align-items: center;
-      flex-shrink: 0;
-    }
-    .team-soc-link {
-      color: #FAF8EE;
-      width: 22px;
-      height: 22px;
+    .team-social-icon-box {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background: #1f343f;
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.82rem;
-      opacity: 0.85;
-      text-decoration: none;
-      transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+      font-size: 1.18rem;
+      transition: background 0.3s ease, color 0.3s ease;
     }
-    .team-soc-link:hover {
-      opacity: 1;
+    .team-card-unit:hover .team-social-icon-box {
+      background: #0077b5; /* LinkedIn Signature Blue */
       color: #ffffff;
-      transform: scale(1.22);
+    }
+    .team-social-text {
+      padding: 0 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #64748b;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+      transition: color 0.3s ease;
+    }
+    .team-card-unit:hover .team-social-text {
+      color: #1f343f;
+    }
+
+    /* Bottom Info Card */
+    .team-info-box {
+      padding: 24px 22px 22px;
+      background: #ffffff;
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: background 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .team-person-name {
+      font-family: 'Plus Jakarta Sans', Georgia, sans-serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #1f343f;
+      margin: 0 0 5px;
+      line-height: 1.25;
+      padding-right: 36px;
+      transition: color 0.3s ease;
+    }
+    .team-person-role {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      color: #7b8791;
+      margin: 0;
+      font-weight: 400;
+      line-height: 1.4;
+      padding-right: 36px;
+      transition: color 0.3s ease;
+    }
+
+    /* Arrow in Bottom Right Corner */
+    .team-arrow-btn {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      font-size: 1.28rem;
+      color: #1f343f;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  color 0.3s ease;
+    }
+    .team-card-unit:hover .team-arrow-btn {
+      transform: translateX(6px);
+      color: #d4af37;
+    }
+
+    /* Hover Transformation (Homepage Deep Navy Palette) */
+    .team-card-unit:hover .team-info-box {
+      background: #1f343f;
+    }
+    .team-card-unit:hover .team-person-name {
+      color: #FAF8EE;
+    }
+    .team-card-unit:hover .team-person-role {
+      color: rgba(250, 248, 238, 0.82);
+    }
+    .team-card-unit:hover .team-arrow-btn {
+      color: #ffffff;
+    }
+
+    /* Highlighted / Featured Card Style (Matching 3rd card in reference) */
+    .team-card-unit.is-highlighted .team-info-box {
+      background: #1f343f;
+    }
+    .team-card-unit.is-highlighted .team-person-name {
+      color: #FAF8EE;
+    }
+    .team-card-unit.is-highlighted .team-person-role {
+      color: rgba(250, 248, 238, 0.85);
+    }
+    .team-card-unit.is-highlighted .team-arrow-btn {
+      color: #ffffff;
+    }
+    .team-card-unit.is-highlighted .team-social-icon-box {
+      background: #0077b5;
+    }
+    .team-card-unit.is-highlighted .team-social-strip {
+      background: #eef4f8;
+    }
+    .team-card-unit.is-highlighted .team-social-text {
+      color: #1f343f;
+      font-weight: 600;
     }
 
     /* Responsive Breakpoints */
-    @media (max-width: 991px) {
-      .team-split-container {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-      .team-left-col {
-        text-align: center;
-        max-width: 620px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transform: translateY(30px);
-      }
-      .team-split-section.is-visible .team-left-col {
-        transform: translateY(0);
-      }
-      .team-accent-dashes {
-        justify-content: center;
-      }
-      .team-heading-line1 {
-        justify-content: center;
-      }
-      .team-breadcrumb {
-        justify-content: center;
-      }
-      .team-cut-card {
-        height: 290px;
+    @media (max-width: 1080px) {
+      .team-grid-4col {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
       }
     }
-
     @media (max-width: 580px) {
-      .team-right-grid {
+      .team-grid-4col {
         grid-template-columns: 1fr;
-        max-width: 360px;
+        max-width: 380px;
         margin: 0 auto;
-      }
-      .team-cut-card {
-        height: 310px;
-        border-radius: 12px 44px 12px 12px;
       }
     }
 
@@ -2152,119 +2101,96 @@
 
 
   <!-- ======================================================== -->
-  <!-- 7. OUR LEADERSHIP & EXPERT TEAM (2x2 SPLIT LAYOUT)        -->
+  <!-- 7. OUR TEAM SECTION (MATCHING REFERENCE DESIGN & HOMEPAGE PALETTE) -->
   <!-- ======================================================== -->
   <section id="teamSection" class="team-split-section">
     <div class="team-split-container">
       
-      <!-- Left Column: Branding, Title, Narrative, CTA -->
-      <div class="team-left-col">
-        <!-- Breadcrumb matching Home Page About Section -->
-        <div class="team-breadcrumb">
+      <!-- Centered Header matching reference -->
+      <div class="team-header-center">
+        <div class="team-header-eyebrow">
           One Roof <span>/</span> Leadership &amp; Expertise
         </div>
-
-        <!-- Top decorative slanted slashes -->
-        <div class="team-accent-dashes top">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <div class="team-heading-lockup">
-          <div class="team-heading-line1">
-            <i class="fa-solid fa-helmet-safety team-hardhat-icon" aria-hidden="true"></i>
-            <span class="team-text-meet">MEET</span>
-          </div>
-          <div class="team-heading-line2">
-            <span class="team-text-ourteam">OUR TEAM</span>
-          </div>
-        </div>
-
-        <!-- Mid decorative slanted dashes -->
-        <div class="team-accent-dashes mid">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <p class="team-left-desc">
-          A distinguished coalition of senior PMRDA land strategists, certified legal evaluators, and structural engineering directors — combining institutional precision with three decades of Pune real estate expertise to safeguard and grow your portfolio.
+        <h2 class="team-title-hero">Our Team</h2>
+        <p class="team-subtitle-lead">
+          A distinguished coalition of senior PMRDA land strategists, certified legal evaluators, and structural engineering directors guiding every real estate investment with generational integrity.
         </p>
-
-        <a href="#contact" class="team-cta-pill">
-          <span>Connect With Us</span>
-          <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
-        </a>
       </div>
 
-      <!-- Right Column: 2x2 Grid of 4 Team Member Cards -->
-      <div class="team-right-grid">
+      <!-- 4-Card Horizontal Row Grid matching reference -->
+      <div class="team-grid-4col">
         
         <!-- Member 1: Vikramaditya R. Bhosale -->
-        <div class="team-cut-card" style="--delay: 0.08s;">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" alt="Vikramaditya R. Bhosale" class="team-cut-photo" loading="lazy">
-          <div class="team-cut-banner">
-            <div class="team-member-meta">
-              <h3 class="team-member-name">Vikramaditya Bhosale</h3>
-              <p class="team-member-role">Managing Director &bull; Land &amp; PMRDA</p>
-            </div>
-            <div class="team-member-socials">
-              <a href="#" class="team-soc-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="mailto:contact@oneroofproperties.in" class="team-soc-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-              <a href="tel:+919494168733" class="team-soc-link" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
-            </div>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card-unit" style="--delay: 0.08s;">
+          <div class="team-photo-wrap">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" alt="Vikramaditya Bhosale" class="team-photo-img" loading="lazy">
           </div>
-        </div>
+          <div class="team-social-strip">
+            <div class="team-social-icon-box" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+            <span class="team-social-text">LinkedIn/vikramaditya-bhosale</span>
+          </div>
+          <div class="team-info-box">
+            <h3 class="team-person-name">Vikramaditya Bhosale</h3>
+            <p class="team-person-role">Managing Director &bull; Land &amp; PMRDA</p>
+            <i class="fa-solid fa-arrow-right-long team-arrow-btn" aria-hidden="true"></i>
+          </div>
+        </a>
 
         <!-- Member 2: Ananya Deshmukh -->
-        <div class="team-cut-card" style="--delay: 0.18s;">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80" alt="Ananya Deshmukh" class="team-cut-photo" loading="lazy">
-          <div class="team-cut-banner">
-            <div class="team-member-meta">
-              <h3 class="team-member-name">Ananya Deshmukh</h3>
-              <p class="team-member-role">Partner &bull; Koregaon Park Estates</p>
-            </div>
-            <div class="team-member-socials">
-              <a href="#" class="team-soc-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="mailto:contact@oneroofproperties.in" class="team-soc-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-              <a href="tel:+919494168733" class="team-soc-link" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
-            </div>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card-unit" style="--delay: 0.18s;">
+          <div class="team-photo-wrap">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80" alt="Ananya Deshmukh" class="team-photo-img" loading="lazy">
           </div>
-        </div>
+          <div class="team-social-strip">
+            <div class="team-social-icon-box" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+            <span class="team-social-text">LinkedIn/ananya-deshmukh</span>
+          </div>
+          <div class="team-info-box">
+            <h3 class="team-person-name">Ananya Deshmukh</h3>
+            <p class="team-person-role">Partner &bull; Luxury Estates Director</p>
+            <i class="fa-solid fa-arrow-right-long team-arrow-btn" aria-hidden="true"></i>
+          </div>
+        </a>
 
-        <!-- Member 3: Er. Rohan S. Kulkarni -->
-        <div class="team-cut-card" style="--delay: 0.28s;">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80" alt="Er. Rohan S. Kulkarni" class="team-cut-photo" loading="lazy">
-          <div class="team-cut-banner">
-            <div class="team-member-meta">
-              <h3 class="team-member-name">Er. Rohan Kulkarni</h3>
-              <p class="team-member-role">Director &bull; Civil Contracting &amp; PMC</p>
-            </div>
-            <div class="team-member-socials">
-              <a href="#" class="team-soc-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="mailto:contact@oneroofproperties.in" class="team-soc-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-              <a href="tel:+919494168733" class="team-soc-link" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
-            </div>
+        <!-- Member 3: Er. Rohan S. Kulkarni (Highlighted like card 3 in reference) -->
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card-unit is-highlighted" style="--delay: 0.28s;">
+          <div class="team-photo-wrap">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80" alt="Er. Rohan Kulkarni" class="team-photo-img" loading="lazy">
           </div>
-        </div>
+          <div class="team-social-strip">
+            <div class="team-social-icon-box" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+            <span class="team-social-text">LinkedIn/rohan-kulkarni</span>
+          </div>
+          <div class="team-info-box">
+            <h3 class="team-person-name">Er. Rohan Kulkarni</h3>
+            <p class="team-person-role">Director &bull; Civil Contracting &amp; PMC</p>
+            <i class="fa-solid fa-arrow-right-long team-arrow-btn" aria-hidden="true"></i>
+          </div>
+        </a>
 
         <!-- Member 4: Adv. Sneha P. Jadhav -->
-        <div class="team-cut-card" style="--delay: 0.38s;">
-          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=700&q=80" alt="Adv. Sneha P. Jadhav" class="team-cut-photo" loading="lazy">
-          <div class="team-cut-banner">
-            <div class="team-member-meta">
-              <h3 class="team-member-name">Adv. Sneha Jadhav</h3>
-              <p class="team-member-role">Legal Counsel &bull; Title &amp; MahaRERA</p>
-            </div>
-            <div class="team-member-socials">
-              <a href="#" class="team-soc-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="mailto:contact@oneroofproperties.in" class="team-soc-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-              <a href="tel:+919494168733" class="team-soc-link" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
-            </div>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card-unit" style="--delay: 0.38s;">
+          <div class="team-photo-wrap">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=700&q=80" alt="Adv. Sneha Jadhav" class="team-photo-img" loading="lazy">
           </div>
-        </div>
+          <div class="team-social-strip">
+            <div class="team-social-icon-box" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+            <span class="team-social-text">LinkedIn/sneha-jadhav</span>
+          </div>
+          <div class="team-info-box">
+            <h3 class="team-person-name">Adv. Sneha Jadhav</h3>
+            <p class="team-person-role">Legal Counsel &bull; Title &amp; MahaRERA</p>
+            <i class="fa-solid fa-arrow-right-long team-arrow-btn" aria-hidden="true"></i>
+          </div>
+        </a>
 
       </div>
 

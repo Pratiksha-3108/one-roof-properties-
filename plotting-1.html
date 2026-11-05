@@ -887,52 +887,350 @@
     }
 
     /* ======================================================== */
-    /* 06 — PROJECT GALLERY (3-COL PORTRAIT MASONRY)            */
+    /* 05 — PREMIUM DIAGONAL SCROLLING GALLERY                  */
     /* ======================================================== */
-    .gallery-sec {
-      padding: clamp(80px, 8vw, 120px) 0;
-      background: var(--cream);
-      border-top: 1px solid var(--border-line);
-    }
-    .gal-masonry-3col {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(20px, 3.5vw, 36px);
-    }
-    .gal-photo-item {
-      display: flex;
-      flex-direction: column;
-    }
-    .gal-photo-box {
-      aspect-ratio: 1 / 1.08;
-      border-radius: 20px;
+    .gx {
+      --ink: #0b141a;
+      --gold: #d4af37;
+      --cream: #FAF8EE;
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      position: relative;
+      background: var(--ink);
+      color: var(--cream);
       overflow: hidden;
-      box-shadow: 0 12px 32px rgba(70, 86, 101, 0.08);
-      background: #111e26;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .gx-pin {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      min-height: 620px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .gx-pin::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(60% 50% at 18% 20%, rgba(212, 175, 55, 0.12), transparent 70%),
+                  radial-gradient(50% 60% at 92% 90%, rgba(70, 86, 101, 0.22), transparent 70%);
+      pointer-events: none;
+    }
+    .gx-track {
+      display: flex;
+      align-items: center;
+      gap: clamp(40px, 5.5vw, 90px);
+      padding: 0 14vw 0 8vw;
+      will-change: transform;
+      height: 100%;
+    }
+    .gx-intro {
+      flex: 0 0 min(38vw, 500px);
+    }
+    .gx-intro .gx-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--body-font);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .gx-intro .gx-eyebrow span.dash {
+      width: 22px;
+      height: 2px;
+      background: var(--gold);
+      display: inline-block;
+    }
+    .gx-intro h2 {
+      font: 700 clamp(2.2rem, 4.2vw, 3.8rem)/1.15 'Nanum Myeongjo', Georgia, serif;
+      color: var(--cream);
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+    .gx-intro p {
+      font: 300 0.98rem/1.75 'Jost', sans-serif;
+      color: rgba(250, 248, 238, 0.72);
+      margin-top: 18px;
+      max-width: 400px;
+    }
+    .gx-intro i {
+      display: block;
+      width: 72px;
+      height: 2px;
+      background: var(--gold);
+      margin-top: 28px;
+      transform-origin: left;
+      animation: gxLine 2.4s var(--ease) infinite;
+    }
+    @keyframes gxLine {
+      0% { transform: scaleX(0); }
+      55% { transform: scaleX(1); }
+      100% { transform: scaleX(1); opacity: 0.2; }
+    }
+
+    /* Staggered Diagonal Alignment matching reference */
+    .gx-card {
+      flex: 0 0 auto;
+      cursor: pointer;
       position: relative;
     }
-    .gal-photo-box img {
-      width: 100%;
+    .gx-card:nth-of-type(3n+1) {
+      align-self: flex-end;
+      margin-bottom: 14vh;
+    }
+    .gx-card:nth-of-type(3n+2) {
+      align-self: center;
+      margin-top: 0;
+    }
+    .gx-card:nth-of-type(3n) {
+      align-self: flex-start;
+      margin-top: 14vh;
+    }
+
+    .gx-a { width: min(30vw, 420px); aspect-ratio: 4/5; }
+    .gx-b { width: min(42vw, 620px); aspect-ratio: 16/10.5; }
+    .gx-c { width: min(28vw, 380px); aspect-ratio: 3/4; }
+
+    .gx-frame {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #142028;
+      clip-path: inset(100% 0 0 0);
+      transition: clip-path 1.3s var(--ease);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+    }
+    .gx-frame img {
+      position: absolute;
+      top: 0;
+      left: -9%;
+      width: 118%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.65s var(--ease);
+      transform: scale(1.22);
+      transition: transform 1.8s var(--ease);
+      will-change: transform;
+    }
+    .gx-card.seen .gx-frame {
+      clip-path: inset(0);
+    }
+    .gx-card.seen .gx-frame img {
+      transform: scale(1);
+    }
+    .gx-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+    .gx-cap {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 14px);
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.85s 0.3s, transform 0.85s 0.3s var(--ease);
+      white-space: nowrap;
+    }
+    .gx-card.seen .gx-cap {
+      opacity: 1;
+      transform: none;
+    }
+    .gx-cap b {
+      font: 600 0.8rem 'Jost', sans-serif;
+      letter-spacing: 2px;
+      color: var(--gold);
+    }
+    .gx-cap span {
+      font: 400 1.15rem 'Nanum Myeongjo', Georgia, serif;
+      color: var(--cream);
+    }
+    .gx-card:nth-of-type(3n+1) .gx-cap {
+      top: auto;
+      bottom: calc(100% + 14px);
+    }
+
+    /* HUD Bar matching reference */
+    .gx-hud {
+      position: absolute;
+      left: 8vw;
+      right: 8vw;
+      bottom: clamp(22px, 5vh, 44px);
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font: 400 0.78rem 'Jost', sans-serif;
+      letter-spacing: 2px;
+      pointer-events: none;
+    }
+    .gx-count {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      min-width: 96px;
+    }
+    .gx-roll {
+      display: inline-block;
+      height: 1.9rem;
+      overflow: hidden;
+      font: 400 1.7rem/1.9rem 'Nanum Myeongjo', serif;
+      color: var(--cream);
+    }
+    .gx-roll span {
       display: block;
+      transition: transform 0.7s var(--ease);
     }
-    .gal-photo-item:hover .gal-photo-box img {
-      transform: scale(1.06);
+    .gx-roll span em {
+      display: block;
+      height: 1.9rem;
+      font-style: normal;
     }
-    .gal-cap-serif {
-      margin-top: 14px;
-      font-family: var(--head-font);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--navy-deep);
+    .gx-bar {
+      flex: 1;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.18);
+      position: relative;
+      border-radius: 999px;
     }
-    .gal-sub-tag {
-      font-size: 0.8rem;
-      letter-spacing: 1.5px;
+    .gx-bar span {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #b4832c, var(--gold));
+      transform-origin: left;
+      transform: scaleX(0);
+      border-radius: 999px;
+    }
+    .gx-hint {
+      color: rgba(250, 248, 238, 0.65);
       text-transform: uppercase;
-      color: var(--muted);
+      font-size: 0.76rem;
+      letter-spacing: 2px;
+    }
+
+    /* Custom Floating Cursor */
+    .gx-cursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 2500;
+      width: 80px;
+      height: 80px;
+      margin: -40px 0 0 -40px;
+      border-radius: 50%;
+      background: rgba(250, 248, 238, 0.94);
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font: 600 0.74rem 'Jost', sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.4);
+      transition: opacity 0.3s, transform 0.35s var(--ease);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+    .gx-cursor.on {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Lightbox Modal */
+    .gx-lb {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      background: rgba(6, 11, 14, 0.96);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      padding: 5vh 5vw;
+    }
+    .gx-lb.open {
+      display: flex;
+      animation: gxFade 0.4s ease;
+    }
+    @keyframes gxFade { from { opacity: 0; } }
+    .gx-lb img {
+      max-width: 90vw;
+      max-height: 78vh;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      object-fit: contain;
+    }
+    .gx-lb p {
+      font: 400 1.25rem 'Nanum Myeongjo', serif;
+      color: var(--cream);
+      margin: 0;
+    }
+    .gx-lb button {
+      position: absolute;
+      background: none;
+      border: none;
+      color: var(--cream);
+      font-size: 2.2rem;
+      cursor: pointer;
+      padding: 12px;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .gx-lb button:hover {
+      color: var(--gold);
+      transform: scale(1.15);
+    }
+    .gx-lb .x { top: 22px; right: 28px; }
+    .gx-lb .p { left: 24px; top: 50%; transform: translateY(-50%); }
+    .gx-lb .n { right: 24px; top: 50%; transform: translateY(-50%); }
+    .gx-lb .p:hover { transform: translateY(-50%) scale(1.15); }
+    .gx-lb .n:hover { transform: translateY(-50%) scale(1.15); }
+
+    @media (max-width: 800px), (prefers-reduced-motion: reduce) {
+      .gx-pin {
+        position: relative;
+        height: auto;
+        display: block;
+        padding: 80px 0 60px;
+      }
+      .gx-track {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        transform: none !important;
+        padding: 0 6vw 50px;
+        height: auto;
+        align-items: flex-start;
+      }
+      .gx-card {
+        scroll-snap-align: center;
+        margin: 0 !important;
+        align-self: flex-start !important;
+        cursor: pointer;
+      }
+      .gx-intro { flex-basis: 80vw; }
+      .gx-a, .gx-b, .gx-c { width: 78vw; }
+      .gx-card .gx-cap {
+        top: calc(100% + 12px) !important;
+        bottom: auto !important;
+        opacity: 1;
+        transform: none;
+      }
+      .gx-frame { clip-path: inset(0); }
+      .gx-frame img { transform: none; }
+      .gx-hud { display: none; }
+      .gx-cursor { display: none; }
     }
 
     /* ======================================================== */
@@ -1691,54 +1989,111 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 05 — PROJECT GALLERY                                     -->
+    <!-- 05 — PROJECT GALLERY (DIAGONAL SCROLLING PINNED REEL)     -->
     <!-- ======================================================== -->
-    <section class="gallery-sec" id="gallerySection">
-      <div class="sec-container">
-        
-        <div class="sec-header plot-reveal">
-          <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">05</span> &mdash; Project Gallery
-          </div>
-          <h2 class="sec-headline">
-            A Closer Look at the Project
-          </h2>
-          <p class="sec-lead">
-            Actual on-ground infrastructure captures and master-planned lifestyle amenities.
-          </p>
-        </div>
-
-        <div class="gal-masonry-3col">
+    <section class="gx" id="gallerySection" aria-label="Project gallery">
+      <div class="gx-pin" id="gxPin">
+        <div class="gx-track" id="gxTrack">
           
-          <div class="gal-photo-item plot-reveal">
-            <div class="gal-photo-box">
-              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" alt="Township Entrance" loading="lazy">
-              <span class="ref-watermark">ACTUAL SITE</span>
+          <div class="gx-intro">
+            <div class="gx-eyebrow">
+              <span class="dash"></span> <span>05 &mdash; Project Gallery</span>
             </div>
-            <div class="gal-cap-serif">60 Ft. Tree-Lined Entrance</div>
-            <div class="gal-sub-tag">Arterial Avenue</div>
+            <h2>A Closer Look at the Project</h2>
+            <p>
+              Light-filled avenues, manicured botanical parks, and generational land. Scroll to move through Green Valley Township.
+            </p>
+            <i></i>
           </div>
 
-          <div class="gal-photo-item plot-reveal">
-            <div class="gal-photo-box">
-              <img src="assets/amenity-garden.jpg" alt="Botanical Greens" loading="lazy">
-              <span class="ref-watermark">LANDSCAPE</span>
+          <!-- Card 1 (Diagonal Step 1: Low) -->
+          <figure class="gx-card gx-a" data-t="Township Entrance Avenue">
+            <div class="gx-frame">
+              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Township Entrance Avenue">
             </div>
-            <div class="gal-cap-serif">Central Botanical Walk</div>
-            <div class="gal-sub-tag">Theme Park 01</div>
-          </div>
+            <figcaption class="gx-cap"><b>01</b><span>Township Entrance Avenue</span></figcaption>
+          </figure>
 
-          <div class="gal-photo-item plot-reveal">
-            <div class="gal-photo-box">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Clubhouse Pool" loading="lazy">
-              <span class="ref-watermark">AMENITY</span>
+          <!-- Card 2 (Diagonal Step 2: Center) -->
+          <figure class="gx-card gx-b" data-t="Executive Villa Enclave">
+            <div class="gx-frame">
+              <img src="assets/pune-luxury-villas.jpg" alt="Executive Villa Enclave">
             </div>
-            <div class="gal-cap-serif">Clubhouse Leisure Pool</div>
-            <div class="gal-sub-tag">Club Green Valley</div>
-          </div>
+            <figcaption class="gx-cap"><b>02</b><span>Executive Villa Enclave</span></figcaption>
+          </figure>
+
+          <!-- Card 3 (Diagonal Step 3: High) -->
+          <figure class="gx-card gx-c" data-t="Clubhouse &amp; Leisure Pool">
+            <div class="gx-frame">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="Clubhouse &amp; Leisure Pool">
+            </div>
+            <figcaption class="gx-cap"><b>03</b><span>Clubhouse &amp; Leisure Pool</span></figcaption>
+          </figure>
+
+          <!-- Card 4 (Diagonal Step 1: Low) -->
+          <figure class="gx-card gx-b" data-t="Central Botanical Gardens">
+            <div class="gx-frame">
+              <img src="assets/amenity-garden.jpg" alt="Central Botanical Gardens">
+            </div>
+            <figcaption class="gx-cap"><b>04</b><span>Central Botanical Gardens</span></figcaption>
+          </figure>
+
+          <!-- Card 5 (Diagonal Step 2: Center) -->
+          <figure class="gx-card gx-a" data-t="Curated Villa Footprints">
+            <div class="gx-frame">
+              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80" alt="Curated Villa Footprints">
+            </div>
+            <figcaption class="gx-cap"><b>05</b><span>Demarcated Villa Footprints</span></figcaption>
+          </figure>
+
+          <!-- Card 6 (Diagonal Step 3: High) -->
+          <figure class="gx-card gx-b" data-t="Grand Boulevard Avenue">
+            <div class="gx-frame">
+              <img src="assets/project-5.webp" alt="Grand Boulevard Avenue">
+            </div>
+            <figcaption class="gx-cap"><b>06</b><span>Grand Boulevard Avenue</span></figcaption>
+          </figure>
+
+          <!-- Card 7 (Diagonal Step 1: Low) -->
+          <figure class="gx-card gx-c" data-t="Sky Club Pavilion">
+            <div class="gx-frame">
+              <img src="assets/counter-day.webp" alt="Sky Club Pavilion">
+            </div>
+            <figcaption class="gx-cap"><b>07</b><span>Sky Club Pavilion</span></figcaption>
+          </figure>
+
+          <!-- Card 8 (Diagonal Step 2: Center) -->
+          <figure class="gx-card gx-b" data-t="Illuminated Night Skyline">
+            <div class="gx-frame">
+              <img src="assets/counter-night.webp" alt="Illuminated Night Skyline">
+            </div>
+            <figcaption class="gx-cap"><b>08</b><span>Illuminated Night Skyline</span></figcaption>
+          </figure>
 
         </div>
 
+        <!-- HUD Bar with live roll counter & gold progress bar -->
+        <div class="gx-hud">
+          <div class="gx-count">
+            <span class="gx-roll"><span id="gxRoll"></span></span>
+            <span id="gxTotal"></span>
+          </div>
+          <div class="gx-bar"><span id="gxBar"></span></div>
+          <div class="gx-hint">Scroll</div>
+        </div>
+
+      </div>
+
+      <!-- Custom Circular Cursor -->
+      <div class="gx-cursor" id="gxCursor">View</div>
+
+      <!-- Modal Lightbox -->
+      <div class="gx-lb" id="gxLb">
+        <button class="x" aria-label="Close">&times;</button>
+        <button class="p" aria-label="Previous">&#8592;</button>
+        <img alt="">
+        <p></p>
+        <button class="n" aria-label="Next">&#8594;</button>
       </div>
     </section>
 
@@ -2299,6 +2654,145 @@
         section.style.setProperty('--text-out', 0);
         section.style.setProperty('--stats-in', 1);
       } else if (!mobile()) onScroll();
+    })();
+
+    // 05 — Diagonal Scrolling Gallery (Scroll-Pinned Reel with HUD & Lightbox)
+    (function initDiagonalGallery() {
+      const sec = document.getElementById('gallerySection');
+      const pin = document.getElementById('gxPin');
+      const track = document.getElementById('gxTrack');
+      if (!sec || !track || !pin) return;
+
+      const cards = Array.from(track.querySelectorAll('.gx-card'));
+      const n = cards.length;
+      const roll = document.getElementById('gxRoll');
+      const bar = document.getElementById('gxBar');
+      const cur = document.getElementById('gxCursor');
+      const lb = document.getElementById('gxLb');
+      const mq = matchMedia('(max-width:800px),(prefers-reduced-motion:reduce)');
+
+      let total = 0, travel = 0, pos = 0, target = 0, active = -1, raf = 0, lbI = 0;
+
+      function pad(i) { return (i < 10 ? '0' : '') + i; }
+      if (roll) {
+        roll.innerHTML = cards.map((_, i) => '<em>' + pad(i + 1) + '</em>').join('');
+      }
+      const gxTotal = document.getElementById('gxTotal');
+      if (gxTotal) gxTotal.textContent = '/ ' + pad(n);
+
+      function measure() {
+        if (mq.matches) {
+          sec.style.height = '';
+          return;
+        }
+        total = track.scrollWidth;
+        travel = Math.max(0, total - window.innerWidth);
+        sec.style.height = (travel + pin.offsetHeight) + 'px';
+      }
+
+      function frame() {
+        raf = 0;
+        if (!mq.matches) {
+          const r = sec.getBoundingClientRect();
+          const max = Math.max(1, sec.offsetHeight - pin.offsetHeight);
+          const p = Math.min(1, Math.max(0, -r.top / max));
+          target = p * travel;
+          pos += (target - pos) * 0.085;
+          track.style.transform = 'translate3d(' + (-pos).toFixed(1) + 'px, 0, 0)';
+          if (bar && bar.firstElementChild) bar.firstElementChild.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+
+          let best = 0, bd = 1e9;
+          cards.forEach((c, i) => {
+            const b = c.getBoundingClientRect();
+            const mid = b.left + b.width / 2;
+            const off = (mid - window.innerWidth / 2) / window.innerWidth;
+            const img = c.querySelector('img');
+            if (img && c.classList.contains('seen')) {
+              img.style.transform = 'translate3d(' + (-off * 7).toFixed(2) + '%, 0, 0)';
+            }
+            if (b.left < window.innerWidth * 0.9) c.classList.add('seen');
+            const d = Math.abs(mid - window.innerWidth / 2);
+            if (d < bd) { bd = d; best = i; }
+          });
+
+          if (best !== active && roll) {
+            active = best;
+            roll.style.transform = 'translateY(' + (-best * 1.9) + 'rem)';
+          }
+
+          if (Math.abs(target - pos) > 0.5) {
+            raf = requestAnimationFrame(frame);
+          }
+        }
+      }
+
+      function kick() {
+        if (!raf) raf = requestAnimationFrame(frame);
+      }
+
+      window.addEventListener('scroll', kick, { passive: true });
+      window.addEventListener('resize', () => { measure(); kick(); });
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => { measure(); kick(); });
+      }
+      window.addEventListener('load', () => { measure(); kick(); });
+      measure();
+      kick();
+
+      // Mobile / Reduced motion reveal
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('seen');
+          });
+        }, { threshold: 0.15 });
+        cards.forEach(c => io.observe(c));
+      } else {
+        cards.forEach(c => c.classList.add('seen'));
+      }
+
+      // Cursor movement
+      if (cur) {
+        window.addEventListener('mousemove', (e) => {
+          cur.style.left = e.clientX + 'px';
+          cur.style.top = e.clientY + 'px';
+        }, { passive: true });
+
+        cards.forEach((c, i) => {
+          c.addEventListener('mouseenter', () => cur.classList.add('on'));
+          c.addEventListener('mouseleave', () => cur.classList.remove('on'));
+          c.addEventListener('click', () => openLb(i));
+        });
+      }
+
+      // Lightbox
+      function openLb(i) {
+        if (!lb) return;
+        lbI = (i + n) % n;
+        const c = cards[lbI];
+        const img = c.querySelector('img');
+        const cap = c.querySelector('.gx-cap span');
+        if (img) lb.querySelector('img').src = img.src;
+        if (cap) lb.querySelector('p').textContent = pad(lbI + 1) + ' — ' + (c.dataset.t || cap.textContent);
+        lb.classList.add('open');
+        if (cur) cur.classList.remove('on');
+      }
+
+      if (lb) {
+        const btnX = lb.querySelector('.x');
+        const btnP = lb.querySelector('.p');
+        const btnN = lb.querySelector('.n');
+        if (btnX) btnX.onclick = () => lb.classList.remove('open');
+        if (btnP) btnP.onclick = (e) => { e.stopPropagation(); openLb(lbI - 1); };
+        if (btnN) btnN.onclick = (e) => { e.stopPropagation(); openLb(lbI + 1); };
+        lb.addEventListener('click', (e) => { if (e.target === lb) lb.classList.remove('open'); });
+        window.addEventListener('keydown', (e) => {
+          if (!lb.classList.contains('open')) return;
+          if (e.key === 'Escape') lb.classList.remove('open');
+          if (e.key === 'ArrowRight') openLb(lbI + 1);
+          if (e.key === 'ArrowLeft') openLb(lbI - 1);
+        });
+      }
     })();
 
   </script>

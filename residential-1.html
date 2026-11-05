@@ -1935,297 +1935,358 @@
     }
 
     /* ===================================================================== */
-    /* SECTION 6: SPRINGS-STYLE SPLIT OPPOSING CURTAIN AMENITIES SHOWCASE    */
-    /* MINIMALIST LUXURY: ONLY AMENITY TITLE ON WARM CREAM #FAF8EE PANEL     */
+    /* 6. AMENITIES — COLOUR-STAGE ROLLING-TITLE SHOWCASE (scroll driven)     */
     /* ===================================================================== */
-    .springs-infra-section {
+    .amen-track {
       position: relative;
       width: 100%;
-      height: 480vh;
-      /* Generous sticky scroll track for 7 amenities */
+      height: 560vh;
       background: #FAF8EE;
-      user-select: none;
-      scroll-margin-top: 76px;
     }
 
-    /* Sticky Viewport Frame: Locks cleanly below header at top: 76px */
-    .springs-sticky-frame {
+    .amen-sticky {
       position: sticky;
-      top: 76px;
-      left: 0;
-      width: 100%;
-      height: calc(100vh - 76px);
-      min-height: 560px;
-      max-height: 850px;
-      overflow: hidden;
-      background: #FAF8EE;
-      z-index: 20;
-    }
-
-    /* Full-Screen 50/50 Split Grid */
-    .springs-split-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 100%;
-      height: 100%;
-      min-height: 100%;
-      position: relative;
-      overflow: hidden;
-      background: #FAF8EE;
-    }
-
-    /* LEFT SIDE: Warm Architectural Cream & Slate Panel (Only Title) */
-    .springs-text-panel {
-      background: radial-gradient(circle at 18% 50%, #F3EFE2 0%, #FAF8EE 70%, #F5F2E6 100%);
-      color: #465665;
-      padding: clamp(35px, 6vw, 90px) clamp(30px, 5vw, 75px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      position: relative;
-      z-index: 10;
-      border-right: 1px solid rgba(70, 86, 101, 0.12);
-      height: 100%;
-    }
-
-    /* Middle: Unified Content Card Stage */
-    .springs-card-stage {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      min-height: 180px;
-      display: flex;
-      align-items: center;
-      margin: 0;
-      overflow: hidden;
-    }
-
-    /* Individual Content Card (Title Only - Centered & Majestic) */
-    .springs-content-card {
-      position: absolute;
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(60px);
-      transition: transform 1.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.15s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.25s;
-      will-change: transform, opacity;
+      height: 100vh;
+      min-height: 620px;
+      overflow: hidden;
+      background: var(--amen-bg, #7f9a8a);
+      transition: background-color 1.1s cubic-bezier(0.65, 0, 0.35, 1);
+      color: #fff;
+      isolation: isolate;
+    }
+
+    /* soft light vignette like the reference's blurred backdrop */
+    .amen-sticky::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(70% 60% at 85% 10%, rgba(255, 255, 255, 0.14), transparent 70%),
+        radial-gradient(60% 50% at 10% 100%, rgba(0, 0, 0, 0.18), transparent 70%);
       pointer-events: none;
+      z-index: 0;
     }
 
-    .springs-content-card.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-      pointer-events: auto;
-      z-index: 2;
-    }
-
-    /* When advancing down/next: card enters slowly from DOWN */
-    .springs-content-card.from-down {
-      transform: translateY(75px);
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    /* When advancing down/next: old card exits UP */
-    .springs-content-card.exit-up {
-      transform: translateY(-60px);
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    /* When advancing up/prev: card enters slowly from UP */
-    .springs-content-card.from-up {
-      transform: translateY(-60px);
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    /* When advancing up/prev: old card exits DOWN */
-    .springs-content-card.exit-down {
-      transform: translateY(75px);
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    /* Big Headline: Exact Home Page Editorial Serif Typography */
-
-    /* Amenity Description Typography */
-    .springs-slide-desc {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(0.96rem, 1.15vw, 1.08rem);
-      line-height: 1.72;
-      color: #7b8791;
-      font-weight: 400;
-      max-width: 520px;
-      margin-top: 16px;
-    }
-
-    .springs-slide-title {
-      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
-      font-size: clamp(2.4rem, 4.2vw, 4rem);
-      font-weight: 700;
-      color: #465665;
-      line-height: 1.15;
-      letter-spacing: -0.5px;
-      margin: 0;
-      max-width: 540px;
-    }
-
-    /* RIGHT SIDE: Vertical Opposing Curtain-Wipe Image Viewport - SLOW & CINEMATIC */
-    .springs-image-panel {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      min-height: clamp(560px, calc(100vh - 76px), 820px);
-      overflow: hidden;
-      background: #FAF8EE;
-    }
-
-    .springs-curtain-slide {
+    /* top meta row */
+    .amen-top-meta {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform;
-      z-index: 1;
-    }
-
-    .springs-curtain-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      transition: transform 1.9s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* OPPOSING SLIDE STATES: */
-    .springs-curtain-slide.active {
-      transform: translateY(0);
+      top: 112px;
+      left: max(24px, 4.5vw);
+      right: max(24px, 4.5vw);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.74rem;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.82);
       z-index: 5;
     }
 
-    .springs-curtain-slide.active img {
-      transform: scale(1);
+    .amen-top-meta .amen-count b {
+      font-weight: 600;
+      color: #fff;
     }
 
-    /* Advancing Next (Down): Incoming Image slides slowly IN FROM UP */
-    .springs-curtain-slide.from-up {
-      transform: translateY(-100%);
+    /* ghost (blurred, tilted) photos */
+    .amen-ghost {
+      position: absolute;
+      width: clamp(200px, 24vw, 360px);
+      aspect-ratio: 4 / 3;
+      background-size: cover;
+      background-position: center;
+      border-radius: 6px;
+      filter: blur(7px) saturate(0.8);
+      opacity: 0.32;
+      z-index: 1;
+      transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease;
+      will-change: transform;
+    }
+
+    .amen-ghost.g1 {
+      top: 4%;
+      right: 24%;
+      transform: rotate(-24deg);
+    }
+
+    .amen-ghost.g2 {
+      bottom: -6%;
+      right: 6%;
+      transform: rotate(16deg);
+    }
+
+    .amen-ghost.swap {
+      opacity: 0;
+    }
+
+    /* giant rolling title */
+    .amen-title-stage {
+      position: absolute;
+      left: max(24px, 4.5vw);
+      top: 50%;
+      width: min(56vw, 920px);
+      height: 0;
       z-index: 4;
     }
 
-    .springs-curtain-slide.from-up img {
-      transform: scale(1.06);
+    .amen-title {
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateY(-50%);
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', 'Jost', Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      font-size: clamp(3.2rem, 9.2vw, 9.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+      color: #fff;
+      pointer-events: none;
+      width: 100%;
     }
 
-    /* Advancing Next (Down): Outgoing Image slides DOWN */
-    .springs-curtain-slide.exit-down {
-      transform: translateY(100%);
+    .amen-title.long {
+      font-size: clamp(2.8rem, 7.2vw, 7.4rem);
+    }
+
+    .amen-word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: top;
+      padding: 0.06em 0.04em 0.16em;
+      clip-path: inset(0 0 0 0);
+    }
+
+    .amen-ch {
+      display: inline-block;
+      transform: translateY(160%);
+      opacity: 0;
+      transition: transform 1.05s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.45s ease;
+      transition-delay: var(--d, 0s);
+      will-change: transform, opacity;
+    }
+
+    .amen-title.is-active .amen-ch {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .amen-title.is-prev .amen-ch {
+      transform: translateY(-160%);
+      opacity: 0;
+    }
+
+    .amen-title.is-next .amen-ch {
+      transform: translateY(160%);
+      opacity: 0;
+    }
+
+    /* tilting framed photo */
+    .amen-photo-stage {
+      position: absolute;
+      right: max(24px, 6vw);
+      top: 54%;
+      width: clamp(260px, 31vw, 520px);
+      aspect-ratio: 16 / 11;
+      transform: translateY(-50%);
       z-index: 3;
     }
 
-    /* Advancing Prev (Up): Incoming Image slides slowly IN FROM DOWN */
-    .springs-curtain-slide.from-down {
-      transform: translateY(100%);
-      z-index: 4;
-    }
-
-    .springs-curtain-slide.from-down img {
-      transform: scale(1.06);
-    }
-
-    /* Advancing Prev (Up): Outgoing Image slides UP */
-    .springs-curtain-slide.exit-up {
-      transform: translateY(-100%);
-      z-index: 3;
-    }
-
-    .springs-panel-vignette {
+    .amen-photo {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, rgba(243, 239, 226, 0.3) 0%, transparent 18%),
-        linear-gradient(to top, rgba(7, 14, 10, 0.25) 0%, transparent 22%);
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      transform: translate3d(0, 70%, 0) rotate(16deg) scale(0.86);
+      filter: blur(10px);
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.9s ease,
+        filter 1s ease;
+      will-change: transform, opacity, filter;
+    }
+
+    .amen-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .amen-photo.is-active {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+      filter: blur(0);
+      transition-delay: 0.15s;
+    }
+
+    .amen-photo.is-prev {
+      opacity: 0;
+      transform: translate3d(0, -70%, 0) rotate(-16deg) scale(0.86);
+      filter: blur(10px);
+    }
+
+    .amen-photo.is-next {
+      opacity: 0;
+      transform: translate3d(0, 70%, 0) rotate(16deg) scale(0.86);
+      filter: blur(10px);
+    }
+
+    /* caption bottom-left */
+    .amen-caption-stage {
+      position: absolute;
+      left: max(24px, 4.5vw);
+      bottom: clamp(60px, 11vh, 110px);
+      width: min(340px, 80vw);
+      height: 110px;
+      z-index: 5;
+    }
+
+    .amen-caption {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      line-height: 1.75;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.92);
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: none;
+    }
+
+    .amen-caption.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.45s;
+    }
+
+    .amen-caption.is-prev {
+      transform: translateY(-18px);
+    }
+
+    /* progress ticks (right edge) */
+    .amen-progress {
+      position: absolute;
+      right: max(14px, 2vw);
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       z-index: 6;
     }
 
-    /* Scroll Prompt Hint - Warm Cream Glass Pill */
-    .springs-scroll-hint {
-      position: absolute;
-      bottom: 25px;
-      right: 30px;
-      z-index: 12;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 16px;
-      background: rgba(250, 248, 238, 0.92);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(70, 86, 101, 0.18);
-      border-radius: var(--radius-pill);
-      color: #465665;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      font-weight: 600;
-      pointer-events: auto;
+    .amen-tick {
+      width: 2px;
+      height: 22px;
+      background: rgba(255, 255, 255, 0.35);
+      border: none;
+      padding: 0;
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(70, 86, 101, 0.12);
-      transition: opacity 0.5s ease;
+      transition: background 0.3s, height 0.4s;
     }
 
-    .springs-scroll-hint svg {
-      width: 14px;
-      height: 14px;
+    .amen-tick.active {
+      background: #fff;
+      height: 40px;
+    }
+
+    /* scroll pill */
+    .amen-scroll-pill {
+      position: absolute;
+      bottom: clamp(22px, 4vh, 38px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 6;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 20px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #fff;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+
+    .amen-scroll-pill:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .amen-scroll-pill svg {
+      width: 13px;
+      height: 13px;
       animation: bounceHint 2.2s infinite ease-in-out;
     }
 
-    @keyframes bounceHint {
-
-      0%,
-      100% {
-        transform: translateY(0);
+    @media (max-width: 900px) {
+      .amen-track {
+        height: 520vh;
       }
 
-      50% {
-        transform: translateY(4px);
+      .amen-top-meta {
+        top: 92px;
+      }
+
+      .amen-title-stage {
+        top: 30%;
+        width: calc(100vw - 48px);
+      }
+
+      .amen-title {
+        font-size: clamp(2.6rem, 14vw, 5rem);
+      }
+
+      .amen-title.long {
+        font-size: clamp(2.3rem, 11.5vw, 4.2rem);
+      }
+
+      .amen-photo-stage {
+        right: 50%;
+        transform: translate(50%, 0);
+        top: auto;
+        bottom: 150px;
+        width: min(78vw, 420px);
+      }
+
+      .amen-caption-stage {
+        bottom: 104px;
+      }
+
+      .amen-ghost.g1 {
+        right: 4%;
+        top: 40%;
+      }
+
+      .amen-progress {
+        display: none;
       }
     }
 
-    @media (max-width: 960px) {
-      .springs-infra-section {
-        height: auto;
-        min-height: auto;
-      }
+    @media (prefers-reduced-motion: reduce) {
 
-      .springs-split-container {
-        grid-template-columns: 1fr;
-        height: auto;
-      }
-
-      .springs-text-panel {
-        height: auto;
-        min-height: 440px;
-      }
-
-      .springs-image-panel {
-        height: 55vh;
-        min-height: 380px;
+      .amen-ch,
+      .amen-photo,
+      .amen-sticky {
+        transition-duration: 0.01s !important;
       }
     }
   </style>
@@ -2543,108 +2604,60 @@
   </section>
 
   <!-- ===================================================================== -->
-  <!-- 6. SPRINGS-STYLE SPLIT OPPOSING CURTAIN AMENITIES SHOWCASE            -->
+  <!-- 6. AMENITIES — COLOUR-STAGE ROLLING-TITLE SHOWCASE                    -->
   <!-- ===================================================================== -->
-  <section class="springs-infra-section" id="amenitiesSection">
-    <div class="springs-sticky-frame" id="springsStickyFrame">
-      <div class="springs-split-container" id="springsSplitContainer">
+  <section class="amen-track" id="amenitiesSection">
+    <div class="amen-sticky" id="amenSticky">
 
-        <!-- LEFT SIDE: Clean Editorial Amenity Title Panel -->
-        <div class="springs-text-panel">
-          <div class="springs-card-stage">
-            <!-- Amenity 1: Landscaped Garden -->
-            <div class="springs-content-card active" id="card0">
-              <h2 class="springs-slide-title">Landscaped Garden</h2>
-              <p class="springs-slide-desc">Lush manicured open green lawns, shaded walkways, and tranquil botanical
-                seating areas to unwind and connect with nature every day.</p>
-            </div>
+      <div class="amen-top-meta">
+        <span>Amenities &mdash; Skyview Residency</span>
+        <span class="amen-count"><b id="amenCurrent">01</b> / 07</span>
+      </div>
 
-            <!-- Amenity 2: Gymnasium -->
-            <div class="springs-content-card from-down" id="card1">
-              <h2 class="springs-slide-title">Gymnasium</h2>
-              <p class="springs-slide-desc">Fully equipped modern fitness center with advanced cardio machines, free
-                weights, and dedicated workout zones for an active routine.</p>
-            </div>
+      <!-- blurred drifting ghost photos -->
+      <div class="amen-ghost g1" id="amenGhost1"></div>
+      <div class="amen-ghost g2" id="amenGhost2"></div>
 
-            <!-- Amenity 3: Children's Play Area -->
-            <div class="springs-content-card from-down" id="card2">
-              <h2 class="springs-slide-title">Children's Play Area</h2>
-              <p class="springs-slide-desc">A safe, joyful outdoor play arena equipped with modern play equipment,
-                soft-turf safety flooring, and open spaces for kids to thrive.</p>
-            </div>
+      <!-- Giant rolling titles (letters built by JS from data-title) -->
+      <div class="amen-title-stage" id="amenTitleStage">
+        <h2 class="amen-title is-active" data-title="Landscaped Garden"></h2>
+        <h2 class="amen-title is-next" data-title="Gymnasium"></h2>
+        <h2 class="amen-title is-next" data-title="Children's Play Area"></h2>
+        <h2 class="amen-title is-next" data-title="Clubhouse"></h2>
+        <h2 class="amen-title is-next" data-title="High-Speed Elevators"></h2>
+        <h2 class="amen-title is-next" data-title="Covered Parking"></h2>
+        <h2 class="amen-title is-next" data-title="24/7 Security"></h2>
+      </div>
 
-            <!-- Amenity 4: Clubhouse -->
-            <div class="springs-content-card from-down" id="card3">
-              <h2 class="springs-slide-title">Clubhouse</h2>
-              <p class="springs-slide-desc">An expansive resident community lounge designed for society celebrations,
-                private events, indoor leisure, and socializing with neighbors.</p>
-            </div>
+      <!-- Tilting framed photo -->
+      <div class="amen-photo-stage" id="amenPhotoStage">
+        <div class="amen-photo is-active"><img src="assets/amenity-garden.jpg" alt="Landscaped Garden"></div>
+        <div class="amen-photo is-next"><img src="assets/amenity-gym.jpg" alt="Gymnasium"></div>
+        <div class="amen-photo is-next"><img src="assets/amenity-playarea.jpg" alt="Children's Play Area"></div>
+        <div class="amen-photo is-next"><img src="assets/amenity-clubhouse.jpg" alt="Clubhouse"></div>
+        <div class="amen-photo is-next"><img src="assets/amenity-elevator.jpg" alt="High-Speed Elevators"></div>
+        <div class="amen-photo is-next"><img src="assets/amenity-parking.jpg" alt="Covered Parking"></div>
+        <div class="amen-photo is-next"><img src="assets/amenity-security.jpg" alt="24/7 Security"></div>
+      </div>
 
-            <!-- Amenity 5: High-Speed Elevators -->
-            <div class="springs-content-card from-down" id="card4">
-              <h2 class="springs-slide-title">High-Speed Elevators</h2>
-              <p class="springs-slide-desc">Premium automatic high-speed passenger elevators with full power backup,
-                modern safety systems, and smooth, rapid vertical transit.</p>
-            </div>
+      <!-- Small caption bottom-left -->
+      <div class="amen-caption-stage">
+        <p class="amen-caption is-active">Lush manicured open lawns, shaded walkways and tranquil botanical seating to unwind every day.</p>
+        <p class="amen-caption is-next">Modern fitness centre with advanced cardio machines, free weights and dedicated workout zones.</p>
+        <p class="amen-caption is-next">A safe, joyful play arena with modern equipment, soft-turf flooring and open space for kids to thrive.</p>
+        <p class="amen-caption is-next">An expansive resident lounge for celebrations, private events, indoor leisure and neighbourly moments.</p>
+        <p class="amen-caption is-next">Automatic high-speed elevators with full power backup, modern safety systems and smooth, rapid transit.</p>
+        <p class="amen-caption is-next">Weather-protected covered bays with wide driveways, secure entry points and dedicated visitor spaces.</p>
+        <p class="amen-caption is-next">Round-the-clock gated protection with trained personnel, CCTV surveillance and intercom access control.</p>
+      </div>
 
-            <!-- Amenity 6: Covered Parking -->
-            <div class="springs-content-card from-down" id="card5">
-              <h2 class="springs-slide-title">Covered Parking</h2>
-              <p class="springs-slide-desc">Well-planned, weather-protected covered vehicular parking bays with wide
-                driveways, secure entry points, and dedicated visitor spaces.</p>
-            </div>
+      <!-- Progress ticks -->
+      <div class="amen-progress" id="amenProgress"></div>
 
-            <!-- Amenity 7: 24/7 Security -->
-            <div class="springs-content-card from-down" id="card6">
-              <h2 class="springs-slide-title">24/7 Security</h2>
-              <p class="springs-slide-desc">Round-the-clock gated protection with trained security personnel, continuous
-                CCTV surveillance, perimeter barriers, and intercom access control.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- RIGHT SIDE: Vertical Opposing Curtain Image Viewport (7 High-Res Photos) -->
-        <div class="springs-image-panel">
-          <div class="springs-panel-vignette"></div>
-
-          <!-- Slide 0: Landscaped Garden -->
-          <div class="springs-curtain-slide active" id="curtain0">
-            <img src="assets/amenity-garden.jpg" alt="Landscaped Garden">
-          </div>
-
-          <!-- Slide 1: Gymnasium -->
-          <div class="springs-curtain-slide from-up" id="curtain1">
-            <img src="assets/amenity-gym.jpg" alt="Gymnasium">
-          </div>
-
-          <!-- Slide 2: Children's Play Area -->
-          <div class="springs-curtain-slide from-up" id="curtain2">
-            <img src="assets/amenity-playarea.jpg" alt="Children's Play Area">
-          </div>
-
-          <!-- Slide 3: Clubhouse -->
-          <div class="springs-curtain-slide from-up" id="curtain3">
-            <img src="assets/amenity-clubhouse.jpg" alt="Clubhouse">
-          </div>
-
-          <!-- Slide 4: High-Speed Elevators -->
-          <div class="springs-curtain-slide from-up" id="curtain4">
-            <img src="assets/amenity-elevator.jpg" alt="High-Speed Elevators">
-          </div>
-
-          <!-- Slide 5: Covered Parking -->
-          <div class="springs-curtain-slide from-up" id="curtain5">
-            <img src="assets/amenity-parking.jpg" alt="Covered Parking">
-          </div>
-
-          <!-- Slide 6: 24/7 Security -->
-          <div class="springs-curtain-slide from-up" id="curtain6">
-            <img src="assets/amenity-security.jpg" alt="24/7 Security">
-          </div>
-
-
-        </div>
-
+      <!-- Scroll pill -->
+      <div class="amen-scroll-pill" id="amenScrollHint">
+        <span>Scroll to explore</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7" /></svg>
       </div>
     </div>
   </section>
@@ -3524,179 +3537,136 @@
     updateHeaderGlass();
 
 
-    // 6. SPRINGS-STYLE SPLIT OPPOSING CURTAIN AMENITIES CONTROLLER (7 SLIDES - STICKY SCROLL)
     // =====================================================================
-    let currentCurtainIndex = 0;
-    const totalCurtainSlides = 7;
-    let isCurtainTransitioning = false;
-    let pendingSlideIndex = null;
-    let pendingSlideDirection = 0;
-    let isScrollTicking = false;
+    // 6. AMENITIES — COLOUR-STAGE ROLLING-TITLE CONTROLLER (SCROLL DRIVEN)
+    // =====================================================================
+    (function initAmenities() {
+      const section = document.getElementById('amenitiesSection');
+      const sticky = document.getElementById('amenSticky');
+      if (!section || !sticky) return;
 
-    const curtainSlideEls = [
-      document.getElementById('curtain0'),
-      document.getElementById('curtain1'),
-      document.getElementById('curtain2'),
-      document.getElementById('curtain3'),
-      document.getElementById('curtain4'),
-      document.getElementById('curtain5'),
-      document.getElementById('curtain6')
-    ];
-    const curtainCardEls = [
-      document.getElementById('card0'),
-      document.getElementById('card1'),
-      document.getElementById('card2'),
-      document.getElementById('card3'),
-      document.getElementById('card4'),
-      document.getElementById('card5'),
-      document.getElementById('card6')
-    ];
-    const amenitiesSectionEl = document.getElementById('amenitiesSection');
-    const stickyFrameEl = document.getElementById('springsStickyFrame');
-    const scrollHintEl = document.getElementById('springsScrollHint');
-    const floorPlanSectionEl = document.getElementById('floorPlanSection');
+      const titles = Array.from(section.querySelectorAll('.amen-title'));
+      const photos = Array.from(section.querySelectorAll('.amen-photo'));
+      const captions = Array.from(section.querySelectorAll('.amen-caption'));
+      const ghost1 = document.getElementById('amenGhost1');
+      const ghost2 = document.getElementById('amenGhost2');
+      const progressEl = document.getElementById('amenProgress');
+      const currentEl = document.getElementById('amenCurrent');
+      const hintEl = document.getElementById('amenScrollHint');
+      const total = titles.length;
 
-    function goToCurtainSlide(newIndex, explicitDirection = 0) {
-      if (newIndex === currentCurtainIndex) {
-        pendingSlideIndex = null;
-        return;
+      const palette = ['#7f9a8a', '#5f7080', '#c29a5c', '#8c6259', '#6f8289', '#9a9484', '#46535f'];
+      const images = photos.map(p => p.querySelector('img').getAttribute('src'));
+
+      // Split every title into masked, staggered letters
+      titles.forEach(t => {
+        const text = t.dataset.title;
+        if (text.length > 13) t.classList.add('long');
+        let n = 0;
+        t.setAttribute('aria-label', text);
+        t.innerHTML = text.split(' ').map(word => {
+          const letters = Array.from(word).map(ch => {
+            const d = (n++ * 0.035).toFixed(3);
+            return `<span class="amen-ch" aria-hidden="true" style="--d:${d}s">${ch}</span>`;
+          }).join('');
+          return `<span class="amen-word">${letters}</span>`;
+        }).join(' ');
+      });
+
+      // Progress ticks
+      progressEl.innerHTML = titles.map((_, i) =>
+        `<button class="amen-tick${i === 0 ? ' active' : ''}" aria-label="Amenity ${i + 1}" data-i="${i}"></button>`).join('');
+      const ticks = Array.from(progressEl.querySelectorAll('.amen-tick'));
+
+      let current = -1;
+
+      function setGhost(el, src) {
+        el.classList.add('swap');
+        setTimeout(() => {
+          el.style.backgroundImage = `url('${src}')`;
+          el.classList.remove('swap');
+        }, 350);
       }
-      if (newIndex < 0 || newIndex >= totalCurtainSlides) return;
 
-      if (isCurtainTransitioning) {
-        pendingSlideIndex = newIndex;
-        pendingSlideDirection = explicitDirection;
-        return;
+      function setState(list, i) {
+        list.forEach((el, idx) => {
+          el.classList.remove('is-active', 'is-prev', 'is-next');
+          el.classList.add(idx === i ? 'is-active' : (idx < i ? 'is-prev' : 'is-next'));
+        });
       }
 
-      isCurtainTransitioning = true;
-      pendingSlideIndex = null;
-      const oldIndex = currentCurtainIndex;
-      const direction = explicitDirection !== 0 ? explicitDirection : (newIndex > oldIndex ? 1 : -1);
-      currentCurtainIndex = newIndex;
+      function goTo(i) {
+        if (i === current) return;
+        const first = current === -1;
+        current = i;
 
-      // 1. Animate Right Side Image (opposing curtain transition)
-      curtainSlideEls.forEach((slide, idx) => {
-        if (!slide) return;
-        if (idx === newIndex) {
-          slide.className = 'springs-curtain-slide active';
-        } else if (idx === oldIndex) {
-          slide.className = direction > 0 ? 'springs-curtain-slide exit-down' : 'springs-curtain-slide exit-up';
+        setState(titles, i);
+        setState(photos, i);
+        setState(captions, i);
+
+        sticky.style.setProperty('--amen-bg', palette[i % palette.length]);
+        sticky.style.backgroundColor = palette[i % palette.length];
+
+        currentEl.textContent = String(i + 1).padStart(2, '0');
+        ticks.forEach((t, idx) => t.classList.toggle('active', idx === i));
+
+        const nextSrc = images[(i + 1) % total];
+        const prevSrc = images[(i - 1 + total) % total];
+        if (first) {
+          ghost1.style.backgroundImage = `url('${nextSrc}')`;
+          ghost2.style.backgroundImage = `url('${prevSrc}')`;
         } else {
-          slide.className = direction > 0 ? 'springs-curtain-slide from-up' : 'springs-curtain-slide from-down';
+          setGhost(ghost1, nextSrc);
+          setGhost(ghost2, prevSrc);
+        }
+        // gentle drift per slide
+        ghost1.style.transform = `rotate(${-24 + (i % 2 ? 8 : 0)}deg) translate(${(i % 3) * 14}px, ${(i % 2) * 18}px)`;
+        ghost2.style.transform = `rotate(${16 - (i % 2 ? 10 : 0)}deg) translate(${-(i % 3) * 12}px, ${-(i % 2) * 16}px)`;
+
+        const label = hintEl.querySelector('span');
+        if (label) label.textContent = i === total - 1 ? 'Explore floor plans' : 'Scroll to explore';
+      }
+
+      function trackProgress() {
+        const rect = section.getBoundingClientRect();
+        const travel = rect.height - sticky.offsetHeight;
+        if (travel <= 0) return 0;
+        return Math.max(0, Math.min(1, -rect.top / travel));
+      }
+
+      function sync() {
+        const p = trackProgress();
+        goTo(Math.min(total - 1, Math.floor(p * total)));
+      }
+
+      function scrollToSlide(i) {
+        const travel = section.offsetHeight - sticky.offsetHeight;
+        const y = section.getBoundingClientRect().top + window.pageYOffset + travel * ((i + 0.5) / total);
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+
+      ticks.forEach(t => t.addEventListener('click', () => scrollToSlide(parseInt(t.dataset.i, 10))));
+
+      hintEl.addEventListener('click', () => {
+        if (current < total - 1) {
+          scrollToSlide(current + 1);
+        } else {
+          const fp = document.getElementById('floorPlanSection');
+          if (fp) window.scrollTo({ top: fp.getBoundingClientRect().top + window.pageYOffset - 76, behavior: 'smooth' });
         }
       });
 
-      // 2. Animate Left Side Content Card (opposing: enters from down when advancing next, from up when scrolling prev)
-      curtainCardEls.forEach((card, idx) => {
-        if (!card) return;
-        if (idx === newIndex) {
-          card.className = 'springs-content-card active';
-        } else if (idx === oldIndex) {
-          card.className = direction > 0 ? 'springs-content-card exit-up' : 'springs-content-card exit-down';
-        } else {
-          card.className = direction > 0 ? 'springs-content-card from-down' : 'springs-content-card from-up';
-        }
-      });
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { sync(); ticking = false; });
+      }, { passive: true });
+      window.addEventListener('resize', sync, { passive: true });
 
-      // 3. Update Scroll Hint Button
-      if (scrollHintEl) {
-        if (newIndex === totalCurtainSlides - 1) {
-          scrollHintEl.innerHTML = '<span>Explore Floor Plans &darr;</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>';
-        } else {
-          scrollHintEl.innerHTML = '<span>Scroll to explore</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>';
-        }
-      }
-
-      setTimeout(() => {
-        isCurtainTransitioning = false;
-        if (pendingSlideIndex !== null && pendingSlideIndex !== currentCurtainIndex) {
-          const nextTarget = pendingSlideIndex;
-          const nextDir = pendingSlideDirection;
-          pendingSlideIndex = null;
-          goToCurtainSlide(nextTarget, nextDir);
-        }
-      }, 500);
-    }
-
-    // Scroll-driven sticky synchronization: works both scrolling DOWN and scrolling UP from bottom
-    function syncCurtainWithScroll() {
-      if (!amenitiesSectionEl || !stickyFrameEl) return;
-
-      const rect = amenitiesSectionEl.getBoundingClientRect();
-      const headerOffset = 76;
-      const frameHeight = stickyFrameEl.offsetHeight || (window.innerHeight - headerOffset);
-      const totalTravel = rect.height - frameHeight;
-
-      if (totalTravel <= 0) return;
-
-      // Distance scrolled within the amenities section
-      const scrolled = headerOffset - rect.top;
-      const progress = Math.max(0, Math.min(1, scrolled / totalTravel));
-
-      // Map progress [0, 1] to slide index [0 .. 6]
-      const targetIndex = Math.min(totalCurtainSlides - 1, Math.floor(progress * totalCurtainSlides));
-
-      if (targetIndex !== currentCurtainIndex) {
-        const direction = targetIndex > currentCurtainIndex ? 1 : -1;
-        goToCurtainSlide(targetIndex, direction);
-      }
-    }
-
-    function onCurtainScroll() {
-      if (!isScrollTicking) {
-        requestAnimationFrame(() => {
-          syncCurtainWithScroll();
-          isScrollTicking = false;
-        });
-        isScrollTicking = true;
-      }
-    }
-
-    // Button click: smoothly scroll page to next slide or next section
-    function scrollToNextAmenity() {
-      if (!amenitiesSectionEl || !stickyFrameEl) return;
-      const headerOffset = 76;
-      const frameHeight = stickyFrameEl.offsetHeight || (window.innerHeight - headerOffset);
-      const totalTravel = amenitiesSectionEl.offsetHeight - frameHeight;
-
-      if (currentCurtainIndex < totalCurtainSlides - 1) {
-        const nextIdx = currentCurtainIndex + 1;
-        const targetProgress = (nextIdx + 0.35) / totalCurtainSlides;
-        const targetY = amenitiesSectionEl.offsetTop - headerOffset + (totalTravel * targetProgress);
-        window.scrollTo({
-          top: targetY,
-          behavior: 'smooth'
-        });
-      } else {
-        smoothScrollToFloorPlans();
-      }
-    }
-
-    function smoothScrollToFloorPlans() {
-      if (floorPlanSectionEl) {
-        const headerOffset = 76;
-        const targetPos = floorPlanSectionEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-        window.scrollTo({
-          top: targetPos,
-          behavior: 'smooth'
-        });
-      }
-    }
-
-    if (scrollHintEl) {
-      scrollHintEl.onclick = (e) => {
-        e.stopPropagation();
-        scrollToNextAmenity();
-      };
-    }
-
-    // Passive global scroll and resize listeners for buttery-smooth sticky transitions
-    window.addEventListener('scroll', onCurtainScroll, { passive: true });
-    window.addEventListener('resize', syncCurtainWithScroll, { passive: true });
-
-    // Initial sync in case page loaded or refreshed within the section
-    syncCurtainWithScroll();
+      goTo(0);
+      sync();
+    })();
 
     // Video Modal
     function openVideoModal() {

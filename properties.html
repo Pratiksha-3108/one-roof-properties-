@@ -16,28 +16,21 @@ html{scroll-behavior:smooth}
 body{background:#fff;color:var(--navy);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
 a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;display:block}button,select{font-family:inherit}
 
-/* HEADER: menu | nav | centered logo | nav | CTA */
-.header{position:fixed;inset:0 0 auto 0;z-index:1500;padding:18px 0;transition:background .35s,padding .35s,box-shadow .35s}
-.header.scrolled{background:rgba(17,30,38,.96);backdrop-filter:blur(14px);padding:10px 0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-.holder{padding:0 max(24px,4vw);max-width:1820px;margin:0 auto}
-.header-block{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;min-height:54px}
-.nav-left,.nav-right{display:flex;align-items:center;gap:clamp(16px,2vw,32px)}
-.nav-right{justify-content:flex-end}
-.nav-left a,.nav-right>a:not(.btn-connect):not(.btn-login){color:#fff;font-size:.8rem;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;position:relative;transition:color .2s}
-.nav-left a:hover,.nav-left a.active,.nav-right>a:hover{color:var(--gold-l)}
-.menu-trigger{display:inline-flex;align-items:center;gap:12px;color:#fff;background:none;border:none;cursor:pointer;font-size:.8rem;letter-spacing:1.6px;text-transform:uppercase}
-.menu-trigger i{display:block;width:36px;height:1.5px;background:#fff;position:relative}
-.menu-trigger i::after{content:'';position:absolute;left:8px;right:0;top:5px;height:1.5px;background:#fff}
-.header-logo img{height:46px;width:auto}
-.btn-connect{padding:9px 20px;border-radius:8px;background:linear-gradient(135deg,#d4af37,#b4832c);color:#fff;font-size:.74rem;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;transition:transform .3s,box-shadow .3s}
-.btn-connect:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(180,131,44,.4)}
-.btn-login{padding:8px 20px;border:1.5px solid #fff;border-radius:8px;color:#fff;font-size:.74rem;letter-spacing:1.4px;text-transform:uppercase;transition:all .3s}
-.btn-login:hover{background:#fff;color:var(--dark)}
-.drawer{position:fixed;inset:0 auto 0 0;width:min(340px,86vw);background:var(--dark);z-index:1600;padding:90px 32px 32px;display:flex;flex-direction:column;gap:6px;transform:translateX(-100%);transition:transform .5s var(--ease)}
-.drawer.open{transform:none}
-.drawer a{color:#fff;font-size:1rem;letter-spacing:1.5px;text-transform:uppercase;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)}
-.drawer a:hover{color:var(--gold-l)}
-.drawer-close{position:absolute;top:24px;right:24px;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+/* HEADER & NAVIGATION MATCHING HOMEPAGE */
+.header{position:absolute;top:0;left:0;right:0;z-index:1500;padding:34px 0 0;background:transparent;transition:background-color .3s ease,padding .3s ease,box-shadow .3s ease}
+.header.scrolled{position:fixed;top:0;background:rgba(17,30,38,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:14px 0;box-shadow:0 10px 30px rgba(0,0,0,.3);border-bottom:1px solid rgba(255,255,255,.08)}
+.holder{padding:0 max(24px,4.5vw);max-width:1820px;margin:0 auto;width:100%}
+.header-block{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:58px;gap:24px}
+.header-logo{position:relative;text-align:center;z-index:20;display:flex;justify-content:center;align-items:center}
+.header-logo img{height:48px;width:auto;display:block;object-fit:contain}
+.header-nav-list{display:flex;gap:clamp(18px,2.2vw,36px);list-style:none;align-items:center;margin:0;padding:0}
+.header-nav-right{display:flex;align-items:center;justify-content:flex-end}
+.header-nav-list li{font-family:'Jost',sans-serif;font-size:clamp(13px,.88vw,15px);font-weight:400;letter-spacing:1.4px;text-transform:uppercase}
+.header-nav-list a{color:#ffffff;text-decoration:none;position:relative;transition:color .2s ease}
+.header-nav-list a::before{content:'';position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:#ffffff;transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.header-nav-list a:hover::before,.header-nav-list a.active::before{transform:scaleX(1)}
+.header-nav-list a:hover{color:#d4af37}
+@media(max-width:900px){.header-nav-list{display:none !important}.nav-mobile-btn{display:block !important}}
 
 /* HERO */
 .hero{position:relative;height:clamp(420px,56vh,560px);display:flex;align-items:flex-end;background:#0f1a20;overflow:hidden}
@@ -111,38 +104,136 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
 .foot li{margin-bottom:9px}.foot li a:hover{color:var(--gold-l)}
 .foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:22px;font-size:.8rem;color:rgba(255,255,255,.5)}
 
-@media(max-width:1000px){.nav-left a:not(.menu-trigger),.nav-right>a:not(.btn-connect):not(.btn-login){display:none}.foot-cols{grid-template-columns:1fr 1fr}.pill{flex-wrap:wrap;border-radius:22px;padding:14px 16px;gap:8px}.pill>i{display:none}.pill select{flex:1 1 40%}.btn-search{flex:1 1 100%;justify-content:center}}
-@media(max-width:720px){.grid{grid-template-columns:1fr;max-width:380px;gap:44px}.card.mid{margin-top:0}.btn-login{display:none}.foot-cols{grid-template-columns:1fr}}
+@media(max-width:1000px){.foot-cols{grid-template-columns:1fr 1fr}.pill{flex-wrap:wrap;border-radius:22px;padding:14px 16px;gap:8px}.pill>i{display:none}.pill select{flex:1 1 40%}.btn-search{flex:1 1 100%;justify-content:center}}
+@media(max-width:720px){.grid{grid-template-columns:1fr;max-width:380px;gap:44px}.card.mid{margin-top:0}.foot-cols{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.reveal,.title-rise{opacity:1;filter:none;transform:none;transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
-<header class="header" id="hdr">
-  <div class="holder"><div class="header-block">
-    <div class="nav-left">
-      <button class="menu-trigger" id="menuBtn" aria-label="Open menu"><i></i>Menu</button>
-      <a href="about.html">About</a>
-      <a href="properties.html" class="active">Projects</a>
-      <a href="services.html">Services</a>
-    </div>
-    <a href="index.html" class="header-logo" aria-label="One Roof Properties home"><img src="assets/logo.png" alt="One Roof Properties"></a>
-    <div class="nav-right">
-      <a href="blog.html">Blog</a>
-      <a href="nri-corner.html">NRI</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="contact.html" class="btn-connect">Let’s Connect</a>
-      <a href="tel:+919494168733" class="btn-login">Call Us</a>
-    </div>
-  </div></div>
-</header>
+  <header class="header" id="mainHeader">
+    <div class="holder">
+      <div class="header-block">
+        <!-- Left Nav Items: Home | About | Properties -->
+        <ul class="header-nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
 
-<nav class="drawer" id="drawer" aria-label="Menu">
-  <button class="drawer-close" id="drawerClose" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
-  <a href="index.html">Home</a><a href="about.html">About</a><a href="properties.html">All Projects</a>
-  <a href="residential.html">Residential Properties</a><a href="plotting.html">Plotting Developments</a>
-  <a href="services.html">Services</a><a href="blog.html">Blog</a><a href="nri-corner.html">NRI Support</a><a href="contact.html">Contact Us</a>
-</nav>
+          <!-- Properties Dropdown with Caret Icon -->
+          <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(0deg)';">
+            <a href="properties.html" onclick="const m=this.parentElement.querySelector('.prop-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.prop-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px; color: #d97706;">
+              Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+            </a>
+
+            <!-- Dropdown Card (Residential & Plotting) -->
+            <div class="prop-dropdown" style="display: none; position: absolute; top: 100%; left: 0; min-width: 320px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 14px; z-index: 1200; text-transform: none;">
+              <!-- Residential Section -->
+              <div style="padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                <a href="residential.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
+                  <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; letter-spacing: 1px;">
+                    <i class="fa-solid fa-building-user" style="color: #60a5fa;"></i> Residential Properties
+                  </span>
+                  <span style="font-size: 0.72rem; color: #60a5fa; font-weight: 600;">(3) &rarr;</span>
+                </a>
+                <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+                  <a href="residential-1.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; The Grand Emerald (3-4 BHK)</a>
+                  <a href="residential-2.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Palm Crest Villas (4 BHK)</a>
+                  <a href="residential-3.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Skyline Imperial (5 BHK)</a>
+                </div>
+              </div>
+
+              <!-- Plotting Section -->
+              <div style="padding-top: 10px;">
+                <a href="plotting.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
+                  <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; letter-spacing: 1px;">
+                    <i class="fa-solid fa-map-location-dot" style="color: #d97706;"></i> Plotting Developments
+                  </span>
+                  <span style="font-size: 0.72rem; color: #d97706; font-weight: 600;">(3) &rarr;</span>
+                </a>
+                <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+                  <a href="plotting-1.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Green Valley Township Plots</a>
+                  <a href="plotting-2.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Royal Meadows Farmhouse Plots</a>
+                  <a href="plotting-3.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Metro Boulevard Commercial Plots</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Center Uploaded One Roof Properties Logo -->
+        <div class="header-logo">
+          <a href="index.html">
+            <img src="assets/one-roof-logo-white.png" alt="One Roof Properties">
+          </a>
+        </div>
+
+        <!-- Right Nav Items: Services | Blog | NRI Support | Contact Us -->
+        <div class="header-nav-right">
+          <ul class="header-nav-list">
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+
+            <!-- NRI Support Dropdown with Caret Icon -->
+            <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(0deg)';">
+              <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.nri-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.nri-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px;">
+                NRI Support <i class="fa-solid fa-chevron-down nri-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+              </a>
+
+              <!-- Dropdown Card (Legal Information & Loan Help) -->
+              <div class="nri-dropdown" style="display: none; position: absolute; top: 100%; right: 0; min-width: 290px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 12px; z-index: 1200; text-transform: none;">
+                <!-- Legal Information -->
+                <a href="legal-information.html" style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: #ffffff; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
+                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(217, 119, 6, 0.2); display: flex; align-items: center; justify-content: center; color: #d97706; font-size: 1.05rem; flex-shrink: 0;">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                  </div>
+                  <div>
+                    <div style="font-weight: 700; font-size: 0.88rem; color: #ffffff; letter-spacing: 0.5px;">Legal Information</div>
+                    <div style="font-size: 0.74rem; color: #94a3b8; font-weight: 400; margin-top: 2px;">FEMA, RBI, Title &amp; RERA Guidance</div>
+                  </div>
+                </a>
+
+                <!-- Separator -->
+                <div style="height: 1px; background: rgba(255,255,255,0.08); margin: 6px 0;"></div>
+
+                <!-- Loan Help -->
+                <a href="loan-help.html" style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: #ffffff; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
+                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(96, 165, 250, 0.15); display: flex; align-items: center; justify-content: center; color: #60a5fa; font-size: 1.05rem; flex-shrink: 0;">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                  </div>
+                  <div>
+                    <div style="font-weight: 700; font-size: 0.88rem; color: #ffffff; letter-spacing: 0.5px;">Loan Help</div>
+                    <div style="font-size: 0.74rem; color: #94a3b8; font-weight: 400; margin-top: 2px;">NRI Home Loans, Eligibility &amp; Banking</div>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Mobile Toggle Button -->
+        <button id="mobileBtn" class="nav-mobile-btn" aria-label="Toggle navigation" style="display: none; background: transparent; border: none; font-size: 1.5rem; color: #ffffff; cursor: pointer;">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileDrawer" style="display: none; position: fixed; top: 80px; left: 0; width: 100%; background: rgba(7,14,10,0.98); backdrop-filter: blur(14px); padding: 24px; z-index: 9999; border-bottom: 1px solid rgba(255,255,255,0.1);">
+    <ul style="display: flex; flex-direction: column; gap: 16px; margin: 0; padding: 0;">
+      <li><a href="index.html" style="color: #ffffff; font-size: 1.05rem;">Home</a></li>
+      <li><a href="about.html" style="color: #ffffff; font-size: 1rem;">About</a></li>
+      <li><a href="properties.html" style="color: #d97706; font-weight: 700; font-size: 1rem;">All Projects</a></li>
+      <li><a href="residential.html" style="color: #ffffff; font-size: 1rem;">Residential Properties (3)</a></li>
+      <li><a href="plotting.html" style="color: #ffffff; font-size: 1rem;">Plotting Developments (3)</a></li>
+      <li><a href="services.html" style="color: #ffffff; font-size: 1rem;">Services</a></li>
+      <li><a href="nri-corner.html" style="color: #ffffff; font-size: 1rem;">NRI Corner</a></li>
+      <li><a href="blog.html" style="color: #ffffff; font-size: 1rem;">Blogs</a></li>
+      <li><a href="contact.html" style="color: #ffffff; font-size: 1rem;">Contact</a></li>
+      <li><a href="tel:9494168733" style="color: #d97706; font-size: 1rem; font-weight: 600;">949-416-8733</a></li>
+    </ul>
+  </div>
 
 <section class="hero">
   <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=2000&q=80" alt="Family enjoying time at home">
@@ -222,10 +313,18 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
 
 <script>
 (function(){
-  var hdr=document.getElementById('hdr'),drawer=document.getElementById('drawer');
-  addEventListener('scroll',function(){hdr.classList.toggle('scrolled',scrollY>40)},{passive:true});
-  document.getElementById('menuBtn').onclick=function(){drawer.classList.add('open')};
-  document.getElementById('drawerClose').onclick=function(){drawer.classList.remove('open')};
+  var hdr=document.getElementById('mainHeader'),mobileBtn=document.getElementById('mobileBtn'),mobileDrawer=document.getElementById('mobileDrawer');
+  addEventListener('scroll',function(){if(hdr)hdr.classList.toggle('scrolled',window.scrollY>40)},{passive:true});
+  if(mobileBtn&&mobileDrawer){
+    mobileBtn.onclick=function(){
+      var open=mobileDrawer.style.display==='block';
+      mobileDrawer.style.display=open?'none':'block';
+      if(mobileBtn.firstElementChild)mobileBtn.firstElementChild.className=open?'fa-solid fa-bars':'fa-solid fa-xmark';
+    };
+    mobileDrawer.querySelectorAll('a').forEach(function(a){
+      a.onclick=function(){mobileDrawer.style.display='none';if(mobileBtn.firstElementChild)mobileBtn.firstElementChild.className='fa-solid fa-bars';};
+    });
+  }
 
   var cards=[].slice.call(document.querySelectorAll('.card')),grid=document.getElementById('grid'),
       empty=document.getElementById('empty'),shown=document.getElementById('shown'),

@@ -1061,52 +1061,6 @@
       right: clamp(16px, 3.5vw, 48px);
     }
 
-    /* Dots */
-    .coverflow-dots {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
-      position: relative;
-      z-index: 5;
-    }
-
-    .coverflow-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: rgba(70, 86, 101, 0.22);
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .coverflow-dot.active {
-      background: #b4832c;
-      transform: scale(1.4);
-      box-shadow: 0 0 10px rgba(180, 131, 44, 0.5);
-    }
-
-    /* Auto Slider Progress Bar */
-    .coverflow-progress {
-      width: clamp(140px, 18vw, 220px);
-      height: 3px;
-      background: rgba(70, 86, 101, 0.14);
-      border-radius: 999px;
-      margin: 20px auto 0;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .coverflow-progress-bar {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, #b4832c, #d4af37);
-      border-radius: 999px;
-    }
-
     @media (max-width: 768px) {
       .coverflow-stage {
         height: 440px;
@@ -2560,11 +2514,6 @@
         <i class="fa-solid fa-chevron-right"></i>
       </button>
     </div>
-
-    <!-- Dots Navigation -->
-    <div class="coverflow-dots" id="coverflowDots"></div>
-    <!-- Auto Slider Visual Progress Indicator -->
-    <div class="coverflow-progress"><div class="coverflow-progress-bar" id="coverflowProgressBar"></div></div>
   </section>
 
   <!-- ===================================================================== -->

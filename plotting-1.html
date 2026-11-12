@@ -897,7 +897,9 @@
       position: relative;
       background: var(--ink);
       color: var(--cream);
-      overflow: hidden;
+      /* FIX: 'overflow: hidden' here broke the sticky pin and left a blank gap.
+         'clip' still hides overflow but keeps position: sticky working. */
+      overflow: clip;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
@@ -1937,59 +1939,7 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 04 — INFRASTRUCTURE & AMENITIES                          -->
-    <!-- ======================================================== -->
-    <section class="amenities-sec" id="amenitiesSection">
-      <div class="sec-container">
-        
-        <div class="sec-header plot-reveal">
-          <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">04</span> &mdash; Infrastructure &amp; Amenities
-          </div>
-          <h2 class="sec-headline">
-            Designed for Better Living
-          </h2>
-          <p class="sec-lead">
-            Every element is engineered to institutional civic standards so you and your family enjoy seamless living without the typical delays of standalone land purchases.
-          </p>
-        </div>
-
-        <div class="amenities-triad-grid">
-          
-          <div class="amenity-ref-card plot-reveal">
-            <div class="amenity-img-box">
-              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" alt="40 & 60 Ft. Roads" class="amenity-img">
-              <span class="ref-watermark">INFRASTRUCTURE</span>
-            </div>
-            <h3 class="amenity-title-serif">40 &amp; 60 Ft. Blacktop Roads</h3>
-            <p class="amenity-desc-text">Heavy-load bitumen internal roads with concrete curbs and integrated stormwater channels.</p>
-          </div>
-
-          <div class="amenity-ref-card plot-reveal">
-            <div class="amenity-img-box">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Clubhouse & Swimming Pool" class="amenity-img">
-              <span class="ref-watermark">COMMUNITY</span>
-            </div>
-            <h3 class="amenity-title-serif">Clubhouse &amp; Swimming Pool</h3>
-            <p class="amenity-desc-text">12,000 sq. ft. leisure facility featuring a lap pool, modern gym, and banquet hall.</p>
-          </div>
-
-          <div class="amenity-ref-card plot-reveal">
-            <div class="amenity-img-box">
-              <img src="assets/amenity-garden.jpg" alt="Botanical Parks" class="amenity-img">
-              <span class="ref-watermark">NATURE</span>
-            </div>
-            <h3 class="amenity-title-serif">5 Theme Botanical Parks</h3>
-            <p class="amenity-desc-text">Lush central landscaped gardens with reflexology tracks and shaded pergolas.</p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- 05 — PROJECT GALLERY (DIAGONAL SCROLLING PINNED REEL)     -->
+    <!-- 04 — PROJECT GALLERY (DIAGONAL SCROLLING PINNED REEL)     -->
     <!-- ======================================================== -->
     <section class="gx" id="gallerySection" aria-label="Project gallery">
       <div class="gx-pin" id="gxPin">
@@ -1997,7 +1947,7 @@
           
           <div class="gx-intro">
             <div class="gx-eyebrow">
-              <span class="dash"></span> <span>05 &mdash; Project Gallery</span>
+              <span class="dash"></span> <span>04 &mdash; Project Gallery</span>
             </div>
             <h2>A Closer Look at the Project</h2>
             <p>
@@ -2098,14 +2048,14 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 06 — LOCATION & CONNECTIVITY                             -->
+    <!-- 05 — LOCATION & CONNECTIVITY                             -->
     <!-- ======================================================== -->
     <section class="location-sec" id="locationSection">
       <div class="sec-container">
         
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">06</span> &mdash; Location &amp; Connectivity
+            <span class="dash"></span> <span class="num-highlight">05</span> &mdash; Location &amp; Connectivity
           </div>
           <h2 class="sec-headline">
             Connected to What Matters
@@ -2147,14 +2097,14 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 07 — SPECIFICATIONS                                      -->
+    <!-- 06 — SPECIFICATIONS                                      -->
     <!-- ======================================================== -->
     <section class="legal-sec" id="specsSection">
       <div class="sec-container">
         
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">07</span> &mdash; Specifications
+            <span class="dash"></span> <span class="num-highlight">06</span> &mdash; Specifications
           </div>
           <h2 class="sec-headline">
             Project Details at a Glance
@@ -2250,14 +2200,14 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 08 — FAQS                                                -->
+    <!-- 07 — FAQS                                                -->
     <!-- ======================================================== -->
     <section class="faq-sec" id="faqSection">
       <div class="sec-container">
         
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">08</span> &mdash; FAQs
+            <span class="dash"></span> <span class="num-highlight">07</span> &mdash; FAQs
           </div>
           <h2 class="sec-headline">
             Everything You Need to Know
@@ -2335,14 +2285,14 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 09 — ENQUIRY & SITE VISIT                                -->
+    <!-- 08 — ENQUIRY & SITE VISIT                                -->
     <!-- ======================================================== -->
     <section class="enquiry-sec" id="enquirySection">
       <div class="sec-container">
         
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">09</span> &mdash; Enquiry
+            <span class="dash"></span> <span class="num-highlight">08</span> &mdash; Enquiry
           </div>
           <h2 class="sec-headline">
             Let's Find Your Perfect Plot
@@ -2671,6 +2621,11 @@
       const lb = document.getElementById('gxLb');
       const mq = matchMedia('(max-width:800px),(prefers-reduced-motion:reduce)');
 
+      // Vertical scroll length = horizontal travel × SCROLL_RATIO.
+      // Lower value = shorter gallery section (faster to scroll through).
+      // 1 = original length. Try 0.4 – 0.7.
+      const SCROLL_RATIO = 0.55;
+
       let total = 0, travel = 0, pos = 0, target = 0, active = -1, raf = 0, lbI = 0;
 
       function pad(i) { return (i < 10 ? '0' : '') + i; }
@@ -2687,7 +2642,7 @@
         }
         total = track.scrollWidth;
         travel = Math.max(0, total - window.innerWidth);
-        sec.style.height = (travel + pin.offsetHeight) + 'px';
+        sec.style.height = (travel * SCROLL_RATIO + pin.offsetHeight) + 'px';
       }
 
       function frame() {

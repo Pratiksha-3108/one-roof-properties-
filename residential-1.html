@@ -1996,21 +1996,6 @@
       color: #d4af37;
     }
 
-    .amen-top-meta .amen-count {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      color: #7b8791;
-    }
-
-    .amen-top-meta .amen-count b {
-      font-family: 'Nanum Myeongjo', Georgia, serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #1f343f;
-      margin-right: 4px;
-    }
-
     /* ghost (two tilted, slightly blurred background photos matching Pinterest reference) */
     .amen-ghost {
       position: absolute;
@@ -2198,34 +2183,6 @@
       transform: translateY(-18px);
     }
 
-    /* progress ticks (right edge) — gold active state */
-    .amen-progress {
-      position: absolute;
-      right: max(14px, 2vw);
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 6;
-    }
-
-    .amen-tick {
-      width: 2px;
-      height: 22px;
-      background: rgba(70, 86, 101, 0.22);
-      border: none;
-      border-radius: 2px;
-      padding: 0;
-      cursor: pointer;
-      transition: background 0.3s, height 0.4s;
-    }
-
-    .amen-tick.active {
-      background: #d4af37;
-      height: 40px;
-    }
-
     @media (max-width: 900px) {
       .amen-track {
         height: 520vh;
@@ -2285,10 +2242,6 @@
         left: 4%;
         right: auto;
         transform: rotate(12deg);
-      }
-
-      .amen-progress {
-        display: none;
       }
     }
 
@@ -2622,7 +2575,6 @@
 
       <div class="amen-top-meta">
         <span class="amen-brand-tag">Amenities <span>/</span> Skyview Residency</span>
-        <span class="amen-count"><b id="amenCurrent">01</b> / 07</span>
       </div>
 
       <!-- blurred drifting ghost photos -->
@@ -2661,9 +2613,6 @@
         <p class="amen-caption is-next">Weather-protected covered bays with wide driveways, secure entry points and dedicated visitor spaces.</p>
         <p class="amen-caption is-next">Round-the-clock gated protection with trained personnel, CCTV surveillance and intercom access control.</p>
       </div>
-
-      <!-- Progress ticks -->
-      <div class="amen-progress" id="amenProgress"></div>
     </div>
   </section>
 
@@ -3555,8 +3504,6 @@
       const captions = Array.from(section.querySelectorAll('.amen-caption'));
       const ghost1 = document.getElementById('amenGhost1');
       const ghost2 = document.getElementById('amenGhost2');
-      const progressEl = document.getElementById('amenProgress');
-      const currentEl = document.getElementById('amenCurrent');
       const total = titles.length;
       const images = photos.map(p => p.querySelector('img').getAttribute('src'));
 
@@ -3574,11 +3521,6 @@
           return `<span class="amen-word">${letters}</span>`;
         }).join(' ');
       });
-
-      // Progress ticks
-      progressEl.innerHTML = titles.map((_, i) =>
-        `<button class="amen-tick${i === 0 ? ' active' : ''}" aria-label="Amenity ${i + 1}" data-i="${i}"></button>`).join('');
-      const ticks = Array.from(progressEl.querySelectorAll('.amen-tick'));
 
       let current = -1;
 
@@ -3606,9 +3548,6 @@
         setState(photos, i);
         setState(captions, i);
 
-        currentEl.textContent = String(i + 1).padStart(2, '0');
-        ticks.forEach((t, idx) => t.classList.toggle('active', idx === i));
-
         const nextSrc = images[(i + 1) % total];
         const prevSrc = images[(i - 1 + total) % total];
         if (first) {
@@ -3634,14 +3573,6 @@
         const p = trackProgress();
         goTo(Math.min(total - 1, Math.floor(p * total)));
       }
-
-      function scrollToSlide(i) {
-        const travel = section.offsetHeight - sticky.offsetHeight;
-        const y = section.getBoundingClientRect().top + window.pageYOffset + travel * ((i + 0.5) / total);
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-
-      ticks.forEach(t => t.addEventListener('click', () => scrollToSlide(parseInt(t.dataset.i, 10))));
 
       let ticking = false;
       window.addEventListener('scroll', () => {

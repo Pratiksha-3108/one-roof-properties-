@@ -2011,31 +2011,35 @@
       margin-right: 4px;
     }
 
-    /* ghost (blurred, tilted) photos */
+    /* ghost (two tilted, slightly blurred background photos matching Pinterest reference) */
     .amen-ghost {
       position: absolute;
-      width: clamp(200px, 24vw, 360px);
-      aspect-ratio: 4 / 3;
+      width: clamp(240px, 28vw, 460px);
+      aspect-ratio: 16 / 11;
       background-size: cover;
       background-position: center;
-      border-radius: 8px;
-      filter: blur(14px) saturate(0.85);
-      opacity: 0.14;
-      z-index: 1;
-      transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease;
-      will-change: transform;
+      border-radius: 6px;
+      filter: blur(5px) saturate(0.95);
+      -webkit-filter: blur(5px) saturate(0.95);
+      opacity: 0.65;
+      box-shadow: 0 18px 42px -10px rgba(31, 52, 63, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      z-index: 2;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+      will-change: transform, opacity;
+      pointer-events: none;
     }
 
     .amen-ghost.g1 {
-      top: 4%;
-      right: 24%;
-      transform: rotate(-24deg);
+      top: 7%;
+      right: calc(max(24px, 6vw) + 10vw);
+      transform: rotate(-20deg);
     }
 
     .amen-ghost.g2 {
-      bottom: -6%;
-      right: 6%;
-      transform: rotate(16deg);
+      bottom: 7%;
+      right: calc(max(24px, 6vw) + 6vw);
+      transform: rotate(14deg);
     }
 
     .amen-ghost.swap {
@@ -2263,9 +2267,24 @@
         line-height: 1.6;
       }
 
+      .amen-ghost {
+        width: clamp(170px, 40vw, 260px);
+        opacity: 0.45;
+        filter: blur(4px);
+        -webkit-filter: blur(4px);
+      }
+
       .amen-ghost.g1 {
         right: 4%;
-        top: 40%;
+        top: 38%;
+        transform: rotate(-16deg);
+      }
+
+      .amen-ghost.g2 {
+        bottom: 4%;
+        left: 4%;
+        right: auto;
+        transform: rotate(12deg);
       }
 
       .amen-progress {
@@ -3599,9 +3618,9 @@
           setGhost(ghost1, nextSrc);
           setGhost(ghost2, prevSrc);
         }
-        // gentle drift per slide
-        ghost1.style.transform = `rotate(${-24 + (i % 2 ? 8 : 0)}deg) translate(${(i % 3) * 14}px, ${(i % 2) * 18}px)`;
-        ghost2.style.transform = `rotate(${16 - (i % 2 ? 10 : 0)}deg) translate(${-(i % 3) * 12}px, ${-(i % 2) * 16}px)`;
+        // gentle drift per slide matching reference rotation
+        ghost1.style.transform = `rotate(${-20 + (i % 2 ? 6 : 0)}deg) translate(${(i % 3) * 10}px, ${(i % 2) * 12}px)`;
+        ghost2.style.transform = `rotate(${14 - (i % 2 ? 6 : 0)}deg) translate(${-(i % 3) * 10}px, ${-(i % 2) * 12}px)`;
       }
 
       function trackProgress() {

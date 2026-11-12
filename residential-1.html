@@ -1936,6 +1936,7 @@
 
     /* ===================================================================== */
     /* 6. AMENITIES — COLOUR-STAGE ROLLING-TITLE SHOWCASE (scroll driven)     */
+    /* LUXURY HOMEPAGE PALETTE & TYPOGRAPHY                                  */
     /* ===================================================================== */
     .amen-track {
       position: relative;
@@ -1950,20 +1951,19 @@
       height: 100vh;
       min-height: 620px;
       overflow: hidden;
-      background: var(--amen-bg, #7f9a8a);
-      transition: background-color 1.1s cubic-bezier(0.65, 0, 0.35, 1);
-      color: #fff;
+      background: radial-gradient(circle at 18% 50%, #F3EFE2 0%, #FAF8EE 70%, #F5F2E6 100%);
+      color: #465665;
       isolation: isolate;
     }
 
-    /* soft light vignette like the reference's blurred backdrop */
+    /* soft ambient gold & slate vignette matching homepage luxury lighting */
     .amen-sticky::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(70% 60% at 85% 10%, rgba(255, 255, 255, 0.14), transparent 70%),
-        radial-gradient(60% 50% at 10% 100%, rgba(0, 0, 0, 0.18), transparent 70%);
+        radial-gradient(70% 60% at 85% 15%, rgba(212, 175, 55, 0.08), transparent 70%),
+        radial-gradient(60% 50% at 15% 85%, rgba(70, 86, 101, 0.06), transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -1978,17 +1978,37 @@
       justify-content: space-between;
       align-items: center;
       font-family: 'Jost', sans-serif;
-      font-size: 0.74rem;
-      letter-spacing: 2.4px;
+      font-size: 0.8rem;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.82);
+      font-weight: 600;
+      color: #7b8791;
       z-index: 5;
     }
 
+    .amen-top-meta .amen-brand-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .amen-top-meta .amen-brand-tag span {
+      color: #d4af37;
+    }
+
+    .amen-top-meta .amen-count {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: #7b8791;
+    }
+
     .amen-top-meta .amen-count b {
-      font-weight: 600;
-      color: #fff;
+      font-family: 'Nanum Myeongjo', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1f343f;
+      margin-right: 4px;
     }
 
     /* ghost (blurred, tilted) photos */
@@ -1998,9 +2018,9 @@
       aspect-ratio: 4 / 3;
       background-size: cover;
       background-position: center;
-      border-radius: 6px;
-      filter: blur(7px) saturate(0.8);
-      opacity: 0.32;
+      border-radius: 8px;
+      filter: blur(14px) saturate(0.85);
+      opacity: 0.14;
       z-index: 1;
       transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease;
       will-change: transform;
@@ -2022,12 +2042,12 @@
       opacity: 0;
     }
 
-    /* giant rolling title */
+    /* giant rolling title — Nanum Myeongjo serif matching homepage headlines */
     .amen-title-stage {
       position: absolute;
       left: max(24px, 4.5vw);
-      top: 50%;
-      width: min(56vw, 920px);
+      top: 48%;
+      width: min(54vw, 840px);
       height: 0;
       z-index: 4;
     }
@@ -2038,25 +2058,25 @@
       top: 0;
       transform: translateY(-50%);
       margin: 0;
-      font-family: 'Plus Jakarta Sans', 'Jost', Helvetica, Arial, sans-serif;
-      font-weight: 700;
-      font-size: clamp(3.2rem, 9.2vw, 9.4rem);
-      line-height: 0.98;
-      letter-spacing: -0.045em;
-      color: #fff;
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(2.5rem, 5.4vw, 4.8rem);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: #1f343f;
       pointer-events: none;
       width: 100%;
     }
 
     .amen-title.long {
-      font-size: clamp(2.8rem, 7.2vw, 7.4rem);
+      font-size: clamp(2.1rem, 4.2vw, 3.8rem);
     }
 
     .amen-word {
       display: inline-block;
       overflow: hidden;
       vertical-align: top;
-      padding: 0.06em 0.04em 0.16em;
+      padding: 0.08em 0.04em 0.18em;
       clip-path: inset(0 0 0 0);
     }
 
@@ -2088,8 +2108,8 @@
     .amen-photo-stage {
       position: absolute;
       right: max(24px, 6vw);
-      top: 54%;
-      width: clamp(260px, 31vw, 520px);
+      top: 52%;
+      width: clamp(280px, 34vw, 540px);
       aspect-ratio: 16 / 11;
       transform: translateY(-50%);
       z-index: 3;
@@ -2099,8 +2119,9 @@
       position: absolute;
       inset: 0;
       overflow: hidden;
-      border-radius: 4px;
-      box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.45);
+      border-radius: 6px;
+      box-shadow: 0 24px 50px -15px rgba(31, 52, 63, 0.22);
+      border: 1px solid rgba(70, 86, 101, 0.12);
       opacity: 0;
       transform: translate3d(0, 70%, 0) rotate(16deg) scale(0.86);
       filter: blur(10px);
@@ -2136,12 +2157,12 @@
       filter: blur(10px);
     }
 
-    /* caption bottom-left */
+    /* caption bottom-left — matching homepage body style */
     .amen-caption-stage {
       position: absolute;
       left: max(24px, 4.5vw);
-      bottom: clamp(60px, 11vh, 110px);
-      width: min(340px, 80vw);
+      bottom: clamp(60px, 11vh, 100px);
+      width: min(440px, 80vw);
       height: 110px;
       z-index: 5;
     }
@@ -2151,12 +2172,12 @@
       left: 0;
       bottom: 0;
       font-family: 'Jost', sans-serif;
-      font-size: 0.78rem;
+      font-size: clamp(0.92rem, 1.05vw, 1.02rem);
       line-height: 1.75;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.92);
+      letter-spacing: 0.2px;
+      text-transform: none;
+      font-weight: 400;
+      color: #465665;
       opacity: 0;
       transform: translateY(18px);
       transition: opacity 0.7s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2173,7 +2194,7 @@
       transform: translateY(-18px);
     }
 
-    /* progress ticks (right edge) */
+    /* progress ticks (right edge) — gold active state */
     .amen-progress {
       position: absolute;
       right: max(14px, 2vw);
@@ -2188,53 +2209,17 @@
     .amen-tick {
       width: 2px;
       height: 22px;
-      background: rgba(255, 255, 255, 0.35);
+      background: rgba(70, 86, 101, 0.22);
       border: none;
+      border-radius: 2px;
       padding: 0;
       cursor: pointer;
       transition: background 0.3s, height 0.4s;
     }
 
     .amen-tick.active {
-      background: #fff;
+      background: #d4af37;
       height: 40px;
-    }
-
-    /* scroll pill */
-    .amen-scroll-pill {
-      position: absolute;
-      bottom: clamp(22px, 4vh, 38px);
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 6;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 20px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.16);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: #fff;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 2.2px;
-      text-transform: uppercase;
-      font-weight: 600;
-      white-space: nowrap;
-      cursor: pointer;
-      transition: background 0.25s;
-    }
-
-    .amen-scroll-pill:hover {
-      background: rgba(255, 255, 255, 0.28);
-    }
-
-    .amen-scroll-pill svg {
-      width: 13px;
-      height: 13px;
-      animation: bounceHint 2.2s infinite ease-in-out;
     }
 
     @media (max-width: 900px) {
@@ -2247,28 +2232,35 @@
       }
 
       .amen-title-stage {
-        top: 30%;
+        top: 28%;
         width: calc(100vw - 48px);
       }
 
       .amen-title {
-        font-size: clamp(2.6rem, 14vw, 5rem);
+        font-size: clamp(2rem, 9vw, 3.2rem);
       }
 
       .amen-title.long {
-        font-size: clamp(2.3rem, 11.5vw, 4.2rem);
+        font-size: clamp(1.8rem, 8vw, 2.8rem);
       }
 
       .amen-photo-stage {
         right: 50%;
         transform: translate(50%, 0);
         top: auto;
-        bottom: 150px;
-        width: min(78vw, 420px);
+        bottom: 120px;
+        width: min(86vw, 420px);
       }
 
       .amen-caption-stage {
-        bottom: 104px;
+        bottom: 24px;
+        width: calc(100vw - 48px);
+        height: 80px;
+      }
+
+      .amen-caption {
+        font-size: 0.86rem;
+        line-height: 1.6;
       }
 
       .amen-ghost.g1 {
@@ -2610,7 +2602,7 @@
     <div class="amen-sticky" id="amenSticky">
 
       <div class="amen-top-meta">
-        <span>Amenities &mdash; Skyview Residency</span>
+        <span class="amen-brand-tag">Amenities <span>/</span> Skyview Residency</span>
         <span class="amen-count"><b id="amenCurrent">01</b> / 07</span>
       </div>
 
@@ -2653,12 +2645,6 @@
 
       <!-- Progress ticks -->
       <div class="amen-progress" id="amenProgress"></div>
-
-      <!-- Scroll pill -->
-      <div class="amen-scroll-pill" id="amenScrollHint">
-        <span>Scroll to explore</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7" /></svg>
-      </div>
     </div>
   </section>
 
@@ -3552,10 +3538,7 @@
       const ghost2 = document.getElementById('amenGhost2');
       const progressEl = document.getElementById('amenProgress');
       const currentEl = document.getElementById('amenCurrent');
-      const hintEl = document.getElementById('amenScrollHint');
       const total = titles.length;
-
-      const palette = ['#7f9a8a', '#5f7080', '#c29a5c', '#8c6259', '#6f8289', '#9a9484', '#46535f'];
       const images = photos.map(p => p.querySelector('img').getAttribute('src'));
 
       // Split every title into masked, staggered letters
@@ -3604,9 +3587,6 @@
         setState(photos, i);
         setState(captions, i);
 
-        sticky.style.setProperty('--amen-bg', palette[i % palette.length]);
-        sticky.style.backgroundColor = palette[i % palette.length];
-
         currentEl.textContent = String(i + 1).padStart(2, '0');
         ticks.forEach((t, idx) => t.classList.toggle('active', idx === i));
 
@@ -3622,9 +3602,6 @@
         // gentle drift per slide
         ghost1.style.transform = `rotate(${-24 + (i % 2 ? 8 : 0)}deg) translate(${(i % 3) * 14}px, ${(i % 2) * 18}px)`;
         ghost2.style.transform = `rotate(${16 - (i % 2 ? 10 : 0)}deg) translate(${-(i % 3) * 12}px, ${-(i % 2) * 16}px)`;
-
-        const label = hintEl.querySelector('span');
-        if (label) label.textContent = i === total - 1 ? 'Explore floor plans' : 'Scroll to explore';
       }
 
       function trackProgress() {
@@ -3646,15 +3623,6 @@
       }
 
       ticks.forEach(t => t.addEventListener('click', () => scrollToSlide(parseInt(t.dataset.i, 10))));
-
-      hintEl.addEventListener('click', () => {
-        if (current < total - 1) {
-          scrollToSlide(current + 1);
-        } else {
-          const fp = document.getElementById('floorPlanSection');
-          if (fp) window.scrollTo({ top: fp.getBoundingClientRect().top + window.pageYOffset - 76, behavior: 'smooth' });
-        }
-      });
 
       let ticking = false;
       window.addEventListener('scroll', () => {

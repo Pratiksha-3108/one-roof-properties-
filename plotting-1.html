@@ -2549,8 +2549,7 @@
     // Enquiry Form Submission Handler
     function handlePlotEnquiry(e) {
       e.preventDefault();
-      document.getElementById('enquiryFormWrap').style.display = 'none';
-      document.getElementById('enquirySuccessState').style.display = 'block';
+      window.location.href = 'thank-you.html';
     }
 
     // Prevent browser auto-scrolling down on reload / keep page at top

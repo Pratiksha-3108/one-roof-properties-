@@ -915,7 +915,7 @@
     .coverflow-stage {
       position: relative;
       width: 100%;
-      height: clamp(440px, 62vh, 600px);
+      height: clamp(520px, 68vh, 680px);
       transform-style: preserve-3d;
       -webkit-transform-style: preserve-3d;
       display: flex;
@@ -928,15 +928,16 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: clamp(230px, 24vw, 340px);
-      height: clamp(370px, 52vh, 520px);
-      margin-top: calc(-1 * clamp(370px, 52vh, 520px) / 2);
-      margin-left: calc(-1 * clamp(230px, 24vw, 340px) / 2);
-      border-radius: 14px;
+      width: clamp(280px, 30vw, 440px);
+      height: clamp(430px, 60vh, 600px);
+      margin-top: calc(-1 * clamp(430px, 60vh, 600px) / 2);
+      margin-left: calc(-1 * clamp(280px, 30vw, 440px) / 2);
+      border-radius: 16px;
       overflow: hidden;
       cursor: pointer;
       background: #111e26;
-      border: 1px solid rgba(70, 86, 101, 0.16);
+      border: none !important;
+      outline: none !important;
       box-shadow: 0 20px 45px -12px rgba(31, 52, 63, 0.28);
       transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
                   opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
@@ -959,14 +960,9 @@
       transform: scale(1.06);
     }
 
-    /* Subtle inner depth border */
+    /* Subtle inner depth border - removed for clean plain image */
     .coverflow-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 14px;
-      pointer-events: none;
+      display: none !important;
     }
 
     /* 3D Relative Transforms */
@@ -976,50 +972,56 @@
       filter: brightness(1);
       z-index: 10;
       cursor: default;
-      box-shadow: 0 30px 65px -12px rgba(31, 52, 63, 0.38), 0 0 25px rgba(212, 175, 55, 0.22);
-      border-color: rgba(212, 175, 55, 0.5);
+      box-shadow: 0 32px 70px -12px rgba(31, 52, 63, 0.35);
+      border: none !important;
     }
 
     .coverflow-card.pos-neg-1 {
-      transform: translate3d(calc(-1 * clamp(140px, 15vw, 220px)), 0, -140px) rotateY(32deg) scale(0.88);
+      transform: translate3d(calc(-1 * clamp(180px, 20vw, 290px)), 0, -140px) rotateY(32deg) scale(0.88);
       opacity: 0.88;
       filter: brightness(0.78);
       z-index: 8;
+      border: none !important;
     }
 
     .coverflow-card.pos-1 {
-      transform: translate3d(clamp(140px, 15vw, 220px), 0, -140px) rotateY(-32deg) scale(0.88);
+      transform: translate3d(clamp(180px, 20vw, 290px), 0, -140px) rotateY(-32deg) scale(0.88);
       opacity: 0.88;
       filter: brightness(0.78);
       z-index: 8;
+      border: none !important;
     }
 
     .coverflow-card.pos-neg-2 {
-      transform: translate3d(calc(-2 * clamp(130px, 14vw, 205px)), 0, -280px) rotateY(48deg) scale(0.76);
+      transform: translate3d(calc(-2 * clamp(170px, 18vw, 270px)), 0, -280px) rotateY(48deg) scale(0.76);
       opacity: 0.58;
       filter: brightness(0.6);
       z-index: 6;
+      border: none !important;
     }
 
     .coverflow-card.pos-2 {
-      transform: translate3d(calc(2 * clamp(130px, 14vw, 205px)), 0, -280px) rotateY(-48deg) scale(0.76);
+      transform: translate3d(calc(2 * clamp(170px, 18vw, 270px)), 0, -280px) rotateY(-48deg) scale(0.76);
       opacity: 0.58;
       filter: brightness(0.6);
       z-index: 6;
+      border: none !important;
     }
 
     .coverflow-card.pos-hidden-left {
-      transform: translate3d(calc(-3 * clamp(120px, 13vw, 190px)), 0, -420px) rotateY(60deg) scale(0.6);
+      transform: translate3d(calc(-3 * clamp(160px, 16vw, 250px)), 0, -420px) rotateY(60deg) scale(0.6);
       opacity: 0;
       pointer-events: none;
       z-index: 1;
+      border: none !important;
     }
 
     .coverflow-card.pos-hidden-right {
-      transform: translate3d(calc(3 * clamp(120px, 13vw, 190px)), 0, -420px) rotateY(-60deg) scale(0.6);
+      transform: translate3d(calc(3 * clamp(160px, 16vw, 250px)), 0, -420px) rotateY(-60deg) scale(0.6);
       opacity: 0;
       pointer-events: none;
       z-index: 1;
+      border: none !important;
     }
 
     /* Elegant Navigation Buttons (Matching Light/Cream Theme) */
@@ -3548,7 +3550,8 @@
     // Enquiry Form
     function handleEnquiryForm(e) {
       e.preventDefault();
-      window.location.href = 'thank-you.html';
+      alert('Thank you! Your inquiry for Skyview Residency has been received. Our Pune property advisor will contact you shortly.');
+      e.target.reset();
     }
   </script>
 </body>

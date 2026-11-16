@@ -1695,30 +1695,19 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 2.2px;
       text-transform: uppercase;
       color: var(--gold-accent, #d97706);
-      margin-bottom: 16px;
-    }
-    .sf-eyebrow-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(217, 119, 6, 0.12);
-      color: var(--gold-accent, #d97706);
-      font-size: 0.75rem;
+      margin-bottom: 20px;
     }
 
+    /* TEXT ANIMATION: Masked Line Reveal (STILL / FORM) */
     .sf-headline-deck {
       position: relative;
-      min-height: 80px;
-      overflow: hidden;
-      margin-bottom: 12px;
+      min-height: 120px;
+      margin-bottom: 16px;
     }
 
     .sf-headline-item {
@@ -1726,21 +1715,18 @@
       top: 0;
       left: 0;
       width: 100%;
-      opacity: 0;
+      pointer-events: none;
       visibility: hidden;
-      transform: translateY(30px);
-      transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.6s;
     }
     .sf-headline-item.active {
       position: relative;
-      opacity: 1;
       visibility: visible;
-      transform: translateY(0);
+      pointer-events: auto;
     }
 
     .sf-headline-title {
       font-family: var(--head-font);
-      font-size: clamp(1.85rem, 3.2vw, 3rem);
+      font-size: clamp(2rem, 3.4vw, 3.1rem);
       line-height: 1.15;
       font-weight: 700;
       color: var(--navy-deep);
@@ -1748,23 +1734,45 @@
       margin: 0;
     }
 
-    /* Editorial Description text */
+    .sf-line-mask {
+      display: block;
+      overflow: hidden;
+      padding-bottom: 4px;
+    }
+    .sf-line {
+      display: block;
+      transform: translateY(115%);
+      opacity: 0;
+      transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+      will-change: transform, opacity;
+    }
+    .sf-headline-item.active .sf-line:nth-child(1) {
+      transform: translateY(0);
+      opacity: 1;
+      transition-delay: 0.08s;
+    }
+    .sf-headline-item.active .sf-line:nth-child(2) {
+      transform: translateY(0);
+      opacity: 1;
+      transition-delay: 0.18s;
+    }
+
+    /* Short Editorial Description (Animated Fade-Up) */
     .sf-desc-deck {
       position: relative;
-      min-height: 60px;
-      max-width: 100%;
-      margin-bottom: 16px;
+      min-height: 70px;
+      max-width: 520px;
     }
 
     .sf-desc-item {
       display: none;
-      font-size: 0.92rem;
-      line-height: 1.6;
-      color: #4a5864;
+      font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+      line-height: 1.65;
+      color: #556575;
       margin: 0;
       opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease 0.28s, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
     }
     .sf-desc-item.active {
       display: block;
@@ -1772,106 +1780,56 @@
       transform: translateY(0);
     }
 
-    /* Specification Feature Chips */
-    .sf-chips-deck {
-      position: relative;
-      min-height: 70px;
-      margin-bottom: 8px;
-    }
-
-    .sf-chips-group {
-      display: none;
-      flex-wrap: wrap;
-      gap: 10px;
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s;
-    }
-    .sf-chips-group.active {
-      display: flex;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .sf-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      background: var(--cream-soft);
-      border: 1px solid rgba(70, 86, 101, 0.12);
-      border-radius: 999px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      color: var(--navy-deep);
-      letter-spacing: 0.2px;
-      transition: all 0.25s ease;
-    }
-    .sf-chip i {
-      color: var(--gold-accent, #d97706);
-      font-size: 0.78rem;
-    }
-    .sf-chip:hover {
-      background: #ffffff;
-      border-color: var(--gold-accent, #d97706);
-      transform: translateY(-2px);
-    }
-
-    /* Bottom Interactive Bar */
+    /* Bottom Interactive Bar (STILL / FORM Minimalist Counter + Arrows) */
     .sf-pane-bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding-top: 20px;
+      padding-top: 24px;
       border-top: 1px solid rgba(70, 86, 101, 0.12);
     }
 
-    /* Circular Dials (Matching STILL / FORM) */
     .sf-controls-wrap {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .sf-dials-bar {
-      display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      gap: 16px;
     }
 
-    .sf-dial-btn {
-      width: 44px;
-      height: 44px;
+    /* Dual Circle Counter (Current / Total) */
+    .sf-stillform-counter {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sf-counter-circle {
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      border: 1.5px solid rgba(31, 52, 63, 0.24);
-      background: transparent;
-      color: var(--navy-deep);
+      border: 1.5px solid var(--navy-deep);
+      background: var(--navy-deep);
+      color: #FAF8EE;
       font-family: var(--title-font);
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: 0.5px;
-      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-      position: relative;
+      transition: all 0.3s ease;
     }
-
-    .sf-dial-btn:hover {
-      border-color: var(--navy-deep);
-      transform: scale(1.08);
-      background: rgba(31, 52, 63, 0.04);
-    }
-
-    .sf-dial-btn.active {
-      background: var(--navy-deep);
-      color: #FAF8EE;
-      border-color: var(--navy-deep);
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(31, 52, 63, 0.25);
+    .sf-counter-total {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(70, 86, 101, 0.28);
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--title-font);
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Prev / Next Arrows */
@@ -2810,7 +2768,7 @@
                   <div class="sf-img-gradient"></div>
                   <div class="sf-visual-badge">
                     <span class="sf-badge-dot"></span>
-                    <span>01 · Road Infrastructure</span>
+                    <span>Road Infrastructure</span>
                   </div>
                 </div>
 
@@ -2820,7 +2778,7 @@
                   <div class="sf-img-gradient"></div>
                   <div class="sf-visual-badge">
                     <span class="sf-badge-dot"></span>
-                    <span>02 · Electrical &amp; Telecom</span>
+                    <span>Electrical &amp; Telecom</span>
                   </div>
                 </div>
 
@@ -2830,7 +2788,7 @@
                   <div class="sf-img-gradient"></div>
                   <div class="sf-visual-badge">
                     <span class="sf-badge-dot"></span>
-                    <span>03 · Water &amp; Drainage</span>
+                    <span>Water &amp; Drainage</span>
                   </div>
                 </div>
 
@@ -2840,7 +2798,7 @@
                   <div class="sf-img-gradient"></div>
                   <div class="sf-visual-badge">
                     <span class="sf-badge-dot"></span>
-                    <span>04 · Demarcation</span>
+                    <span>Plot Demarcation</span>
                   </div>
                 </div>
 
@@ -2850,7 +2808,7 @@
                   <div class="sf-img-gradient"></div>
                   <div class="sf-visual-badge">
                     <span class="sf-badge-dot"></span>
-                    <span>05 · Security</span>
+                    <span>Gated Security</span>
                   </div>
                 </div>
 
@@ -2860,14 +2818,10 @@
                   <div class="sf-img-gradient"></div>
                   <div class="sf-visual-badge">
                     <span class="sf-badge-dot"></span>
-                    <span>06 · Sanctions</span>
+                    <span>Sanctions &amp; Clear Title</span>
                   </div>
                 </div>
 
-              </div>
-
-              <div class="sf-visual-pill-count">
-                <span id="sfCurCount">01</span> / 06 &nbsp;&bull;&nbsp; PLOT SPECIFICATION
               </div>
             </div>
 
@@ -2875,118 +2829,80 @@
             <div class="sf-content-pane">
               
               <div class="sf-pane-top">
-                <div class="sf-eyebrow">
-                  <span class="sf-eyebrow-num" id="sfEyebrowNum">01</span>
-                  <span id="sfEyebrowText">Civic Infrastructure</span>
+                <div class="sf-eyebrow" id="sfEyebrowText">
+                  Civic Infrastructure
                 </div>
 
                 <div class="sf-headline-deck">
                   <div class="sf-headline-item active" data-index="0">
-                    <h3 class="sf-headline-title">Avenues engineered for generational permanence.</h3>
+                    <h3 class="sf-headline-title">
+                      <span class="sf-line-mask"><span class="sf-line">Avenues engineered</span></span>
+                      <span class="sf-line-mask"><span class="sf-line">for permanence.</span></span>
+                    </h3>
                   </div>
                   <div class="sf-headline-item" data-index="1">
-                    <h3 class="sf-headline-title">100% Concealed electrical &amp; data conduits.</h3>
+                    <h3 class="sf-headline-title">
+                      <span class="sf-line-mask"><span class="sf-line">100% Underground grids.</span></span>
+                      <span class="sf-line-mask"><span class="sf-line">Zero overhead wires.</span></span>
+                    </h3>
                   </div>
                   <div class="sf-headline-item" data-index="2">
-                    <h3 class="sf-headline-title">Dual water lines &amp; engineered storm culverts.</h3>
+                    <h3 class="sf-headline-title">
+                      <span class="sf-line-mask"><span class="sf-line">Dual water lines &amp;</span></span>
+                      <span class="sf-line-mask"><span class="sf-line">stormwater culverts.</span></span>
+                    </h3>
                   </div>
                   <div class="sf-headline-item" data-index="3">
-                    <h3 class="sf-headline-title">Precision pre-cast markers &amp; pegged footprints.</h3>
+                    <h3 class="sf-headline-title">
+                      <span class="sf-line-mask"><span class="sf-line">Pre-cast markers &amp;</span></span>
+                      <span class="sf-line-mask"><span class="sf-line">pegged footprints.</span></span>
+                    </h3>
                   </div>
                   <div class="sf-headline-item" data-index="4">
-                    <h3 class="sf-headline-title">Architectural gatehouse &amp; 9 Ft. compound wall.</h3>
+                    <h3 class="sf-headline-title">
+                      <span class="sf-line-mask"><span class="sf-line">Manned gatehouse &amp;</span></span>
+                      <span class="sf-line-mask"><span class="sf-line">9 Ft. compound wall.</span></span>
+                    </h3>
                   </div>
                   <div class="sf-headline-item" data-index="5">
-                    <h3 class="sf-headline-title">Sanctioned planning with 100% clear title.</h3>
+                    <h3 class="sf-headline-title">
+                      <span class="sf-line-mask"><span class="sf-line">Sanctioned planning with</span></span>
+                      <span class="sf-line-mask"><span class="sf-line">100% clear title.</span></span>
+                    </h3>
                   </div>
                 </div>
 
-                <!-- Editorial Description -->
+                <!-- Short Editorial Description -->
                 <div class="sf-desc-deck">
                   <p class="sf-desc-item active" data-index="0">
-                    Wide 60 Ft. central spine boulevards and 40 Ft. internal sector blacktop avenues engineered with heavy-duty bitumen, integrated storm gutters, pedestrian curbstones, and ambient solar LED illumination.
+                    60 Ft. and 40 Ft. heavy-duty blacktop boulevards with tree-lined pedestrian curbs and integrated solar lighting.
                   </p>
                   <p class="sf-desc-item" data-index="1">
-                    Unobstructed open sky vistas achieved through 100% concealed underground power networks, dedicated sector feeder pillars, optical fiber telecom conduits, and common area backup generators.
+                    Concealed power networks, optical fiber conduits, and independent sector feeder pillars for uninterrupted open skies.
                   </p>
                   <p class="sf-desc-item" data-index="2">
-                    Dual overhead and subterranean water tapping points delivered to the boundary of every single plot, supported by concealed RCC box culverts, central eco STP, and groundwater recharge pits.
+                    Independent boundary tapping at every plot, backed by concealed RCC culverts, eco STP, and rainwater recharge pits.
                   </p>
                   <p class="sf-desc-item" data-index="3">
-                    Every individual parcel is physically demarcated with pre-cast concrete corner marker stones and peg-marked villa footprints, featuring direct wide road frontage for immediate construction handover.
+                    Physical concrete corner stones, peg-marked villa footprints, and wide road frontage for immediate construction handover.
                   </p>
                   <p class="sf-desc-item" data-index="4">
-                    Uncompromised safety assured by a 9 Ft. reinforced compound wall surrounding the entire perimeter, a grand 24/7 manned gatehouse, RFID automatic boom barriers, and HD CCTV perimeter surveillance.
+                    Round-the-clock security post, RFID automatic boom barriers, and high-definition CCTV surveillance along all boulevards.
                   </p>
                   <p class="sf-desc-item" data-index="5">
-                    Complete peace of mind with officially approved layout plans under competent town planning authorities, G+2 residential villa sanction, unblemished freehold title, and pre-approved bank loans.
+                    Approved town planning permissions, G+2 villa construction clearance, and pre-approved nationalized bank loans.
                   </p>
-                </div>
-
-                <!-- Specification Feature Chips -->
-                <div class="sf-chips-deck">
-                  <!-- Group 01 -->
-                  <div class="sf-chips-group active" data-index="0">
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> 60 Ft. Spine Boulevard</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> 40 Ft. Internal Blacktop</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Concrete Curbstones</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Solar LED Street Lighting</div>
-                  </div>
-
-                  <!-- Group 02 -->
-                  <div class="sf-chips-group" data-index="1">
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> 100% Concealed Underground</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Zero Overhead Wires</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Pre-Laid Optical Fibre</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> DG Backup for Common Areas</div>
-                  </div>
-
-                  <!-- Group 03 -->
-                  <div class="sf-chips-group" data-index="2">
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Boundary Water Tapping</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Concealed RCC Box Culverts</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Central Eco STP Plant</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Groundwater Recharge Pits</div>
-                  </div>
-
-                  <!-- Group 04 -->
-                  <div class="sf-chips-group" data-index="3">
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Pre-Cast Marker Stones</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Peg-Marked Footprints</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Direct Road Frontage</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Immediate Possession Ready</div>
-                  </div>
-
-                  <!-- Group 05 -->
-                  <div class="sf-chips-group" data-index="4">
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> 9 Ft. Reinforced Wall</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Manned Entrance Gatehouse</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> RFID Automatic Barriers</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> 24/7 HD CCTV Surveillance</div>
-                  </div>
-
-                  <!-- Group 06 -->
-                  <div class="sf-chips-group" data-index="5">
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Approved Layout Permissions</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> Verified Freehold Title</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> G+2 Villa Sanction</div>
-                    <div class="sf-chip"><i class="fa-solid fa-circle-check"></i> National Bank Loan Approvals</div>
-                  </div>
                 </div>
 
               </div>
 
-              <!-- Bottom Interactive Bar -->
+              <!-- Bottom Interactive Bar (STILL / FORM Minimalist Counter + Arrows) -->
               <div class="sf-pane-bottom">
                 
                 <div class="sf-controls-wrap">
-                  <div class="sf-dials-bar" role="tablist" aria-label="Specification Selection">
-                    <button type="button" class="sf-dial-btn active" data-step="0" aria-label="Specification 01">01</button>
-                    <button type="button" class="sf-dial-btn" data-step="1" aria-label="Specification 02">02</button>
-                    <button type="button" class="sf-dial-btn" data-step="2" aria-label="Specification 03">03</button>
-                    <button type="button" class="sf-dial-btn" data-step="3" aria-label="Specification 04">04</button>
-                    <button type="button" class="sf-dial-btn" data-step="4" aria-label="Specification 05">05</button>
-                    <button type="button" class="sf-dial-btn" data-step="5" aria-label="Specification 06">06</button>
+                  <div class="sf-stillform-counter">
+                    <span class="sf-counter-circle" id="sfCurCount">01</span>
+                    <span class="sf-counter-total">06</span>
                   </div>
 
                   <div class="sf-progress-track">
@@ -3583,17 +3499,14 @@
 
       const images = stage.querySelectorAll('.sf-img-item');
       const headlines = stage.querySelectorAll('.sf-headline-item');
-      const chipGroups = stage.querySelectorAll('.sf-chips-group');
-      const dials = stage.querySelectorAll('.sf-dial-btn');
       const descItems = stage.querySelectorAll('.sf-desc-item');
-      const eyebrowNum = document.getElementById('sfEyebrowNum');
       const eyebrowText = document.getElementById('sfEyebrowText');
       const curCount = document.getElementById('sfCurCount');
       const prevBtn = document.getElementById('sfPrevBtn');
       const nextBtn = document.getElementById('sfNextBtn');
       const progressFill = document.getElementById('sfProgressFill');
 
-      const total = dials.length;
+      const total = images.length || 6;
       let currentIndex = 0;
       let isManualScroll = false;
 
@@ -3627,7 +3540,6 @@
         });
 
         // Eyebrow and counters
-        if (eyebrowNum) eyebrowNum.textContent = pad(idx + 1);
         if (eyebrowText) eyebrowText.textContent = titles[idx] || "Township Specification";
         if (curCount) curCount.textContent = pad(idx + 1);
 
@@ -3646,24 +3558,6 @@
             ds.classList.add('active');
           } else {
             ds.classList.remove('active');
-          }
-        });
-
-        // Specification chips
-        chipGroups.forEach((cg, i) => {
-          if (i === idx) {
-            cg.classList.add('active');
-          } else {
-            cg.classList.remove('active');
-          }
-        });
-
-        // Circular number dials
-        dials.forEach((d, i) => {
-          if (i === idx) {
-            d.classList.add('active');
-          } else {
-            d.classList.remove('active');
           }
         });
 
@@ -3701,13 +3595,6 @@
 
       window.addEventListener('scroll', handlePinnedScroll, { passive: true });
       window.addEventListener('resize', handlePinnedScroll, { passive: true });
-
-      // Dial clicks
-      dials.forEach((btn, idx) => {
-        btn.addEventListener('click', () => {
-          goToSlide(idx, true);
-        });
-      });
 
       // Prev / Next button handlers
       if (prevBtn) {

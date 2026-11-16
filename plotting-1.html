@@ -1004,36 +1004,24 @@
       inset: 0;
       overflow: hidden;
       border-radius: 20px;
-      background: #142028;
-      clip-path: inset(100% 0 0 0 round 20px);
-      transition: clip-path 1.3s var(--ease);
+      background: transparent;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
     }
     .gx-frame img {
-      position: absolute;
-      top: 0;
-      left: -9%;
-      width: 118%;
+      width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
       border-radius: 20px;
-      transform: scale(1.22);
-      transition: transform 1.8s var(--ease);
-      will-change: transform;
     }
     .gx-card.seen .gx-frame {
-      clip-path: inset(0 round 20px);
+      opacity: 1;
     }
     .gx-card.seen .gx-frame img {
-      transform: scale(1);
+      opacity: 1;
     }
     .gx-frame::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: 20px;
-      pointer-events: none;
+      display: none;
     }
     .gx-cap {
       position: absolute;
@@ -2662,10 +2650,6 @@
             const b = c.getBoundingClientRect();
             const mid = b.left + b.width / 2;
             const off = (mid - window.innerWidth / 2) / window.innerWidth;
-            const img = c.querySelector('img');
-            if (img && c.classList.contains('seen')) {
-              img.style.transform = 'translate3d(' + (-off * 7).toFixed(2) + '%, 0, 0)';
-            }
             if (b.left < window.innerWidth * 0.9) c.classList.add('seen');
             const d = Math.abs(mid - window.innerWidth / 2);
             if (d < bd) { bd = d; best = i; }

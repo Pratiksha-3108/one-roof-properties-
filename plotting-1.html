@@ -766,8 +766,11 @@
     /* 03 — PLOT LAYOUT & CONFIGURATIONS                        */
     /* ======================================================== */
     .sizes-sec {
-      padding: clamp(80px, 8vw, 120px) 0;
-      background: var(--cream);
+      background-color: var(--cream);
+      background-image:
+        radial-gradient(ellipse at 92% 4%, rgba(217, 119, 6, 0.07) 0%, transparent 50%),
+        radial-gradient(circle at 6% 96%, #F3EFE2 0%, transparent 50%);
+      position: relative;
     }
     .size-filter-tabs {
       display: flex;
@@ -796,73 +799,281 @@
     .sizes-cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-bottom: 50px;
+      gap: 30px;
+      margin-bottom: 44px;
+      align-items: stretch;
     }
     .size-card {
+      position: relative;
       background: #ffffff;
-      border-radius: 20px;
+      border-radius: 26px;
       border: 1px solid var(--border-line);
       overflow: hidden;
-      box-shadow: 0 10px 28px rgba(70, 86, 101, 0.06);
-      transition: all 0.35s var(--ease);
+      box-shadow: 0 14px 36px rgba(31, 52, 63, 0.07);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
       display: flex;
       flex-direction: column;
     }
     .size-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 42px rgba(70, 86, 101, 0.14);
-      border-color: var(--navy);
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(31, 52, 63, 0.16);
+      border-color: rgba(217, 119, 6, 0.5);
+    }
+    .size-card.is-featured {
+      border-color: rgba(217, 119, 6, 0.55);
+      box-shadow: 0 24px 56px rgba(217, 119, 6, 0.14);
+    }
+    /* Photo area */
+    .size-card-media {
+      position: relative;
+      height: 270px;
+      overflow: hidden;
+      background: #1f343f;
     }
     .size-card-photo {
-      height: 220px;
       width: 100%;
+      height: 100%;
       object-fit: cover;
+      display: block;
+      transition: transform 0.9s var(--ease);
     }
+    .size-card:hover .size-card-photo { transform: scale(1.08); }
+    .size-card-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(17, 30, 38, 0.30) 0%, rgba(17, 30, 38, 0) 38%, rgba(17, 30, 38, 0.82) 100%);
+      pointer-events: none;
+    }
+    .size-card-num {
+      position: absolute;
+      top: 18px; left: 18px;
+      z-index: 2;
+      font-family: var(--title-font);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #ffffff;
+      background: rgba(17, 30, 38, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 7px 14px;
+      border-radius: 999px;
+    }
+    .size-card-badge {
+      position: absolute;
+      top: 18px; right: 18px;
+      z-index: 2;
+      font-family: var(--title-font);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #ffffff;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      padding: 7px 14px;
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(217, 119, 6, 0.4);
+    }
+    .size-card-badge.is-soft {
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--navy-deep);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+    .size-card-title {
+      position: absolute;
+      left: 22px; bottom: 18px; right: 22px;
+      z-index: 2;
+      color: #ffffff;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .size-card-title b {
+      font-family: var(--head-font);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+    .size-card-title span {
+      font-family: var(--title-font);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.82);
+    }
+    /* Body */
     .size-card-body {
-      padding: 26px 24px;
+      padding: 24px 24px 26px;
       display: flex;
       flex-direction: column;
       flex: 1;
     }
-    .size-sqft-subtitle {
-      font-size: 0.88rem;
-      color: var(--muted);
-      margin-bottom: 18px;
-      padding-bottom: 14px;
+    .size-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
       border-bottom: 1px dashed var(--border-line);
     }
-    .size-spec-list {
+    .size-footprint {
+      flex: 0 0 74px;
+      height: 74px;
+      border-radius: 16px;
+      background: var(--cream-soft);
+      border: 1px solid var(--border-line);
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+    .size-footprint i {
+      display: block;
+      border: 2px solid var(--navy-deep);
+      border-radius: 3px;
+      background: repeating-linear-gradient(45deg, rgba(217, 119, 6, 0.16) 0 6px, transparent 6px 12px);
+    }
+    .size-sqft-subtitle {
+      font-size: 0.78rem;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      margin: 0 0 4px;
+      padding: 0;
+      border: none;
+    }
+    .size-sqft-big {
+      font-family: var(--head-font);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      line-height: 1.25;
+    }
+    .size-spec-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 14px;
       margin-bottom: 22px;
       flex: 1;
     }
     .size-spec-row {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 3px;
       font-size: 0.88rem;
     }
-    .size-spec-row .k { color: var(--muted); }
-    .size-spec-row .v { font-weight: 600; color: var(--navy-deep); }
+    .size-spec-row .k {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .size-spec-row .k i { color: var(--gold-accent, #d97706); font-size: 0.78rem; width: 14px; text-align: center; }
+    .size-spec-row .v { font-weight: 600; color: var(--navy-deep); line-height: 1.35; padding-left: 22px; }
     .size-price-tag {
-      padding-top: 16px;
-      border-top: 1px solid var(--border-line);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
       margin-bottom: 18px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #fbf3e3 0%, #f6ead2 100%);
+      border: 1px solid rgba(217, 119, 6, 0.22);
     }
     .size-price-tag small {
       display: block;
-      font-size: 0.72rem;
-      letter-spacing: 1.5px;
+      font-size: 0.7rem;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #8a6a3a;
+      font-weight: 700;
     }
     .size-price-tag strong {
       font-family: var(--head-font);
-      font-size: 1.45rem;
+      font-size: 1.55rem;
       font-weight: 700;
-      color: var(--navy-deep);
+      color: #b45309;
+      line-height: 1.2;
+    }
+    .size-price-tag em {
+      font-style: normal;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #8a6a3a;
+      white-space: nowrap;
+    }
+    .size-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: var(--navy-deep);
+      color: var(--cream);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      transition: all 0.3s var(--ease);
+    }
+    .size-cta i { transition: transform 0.3s var(--ease); }
+    .size-card:hover .size-cta { background: #d97706; color: #ffffff; }
+    .size-card:hover .size-cta i { transform: translateX(5px); }
+
+    /* Assurance strip */
+    .size-assure {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      background: var(--navy-deep);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 22px 50px rgba(31, 52, 63, 0.22);
+    }
+    .size-assure-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 24px;
+      color: var(--cream);
+      border-right: 1px solid rgba(250, 248, 238, 0.12);
+    }
+    .size-assure-item:last-child { border-right: none; }
+    .size-assure-ic {
+      flex: 0 0 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(245, 158, 11, 0.14);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #f59e0b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .size-assure-item b { display: block; font-size: 0.92rem; font-weight: 600; line-height: 1.3; }
+    .size-assure-item small { font-size: 0.76rem; color: rgba(250, 248, 238, 0.6); }
+    @media (max-width: 960px) {
+      .size-assure { grid-template-columns: repeat(2, 1fr); }
+      .size-assure-item:nth-child(2) { border-right: none; }
+      .size-assure-item:nth-child(-n+2) { border-bottom: 1px solid rgba(250, 248, 238, 0.12); }
+    }
+    @media (max-width: 520px) {
+      .size-assure { grid-template-columns: 1fr; }
+      .size-assure-item { border-right: none; border-bottom: 1px solid rgba(250, 248, 238, 0.12); }
+      .size-assure-item:last-child { border-bottom: none; }
+      .size-spec-list { grid-template-columns: 1fr; }
     }
 
     /* ======================================================== */
@@ -1948,76 +2159,105 @@
 
         <!-- Cards Grid with Photos -->
         <div class="sizes-cards-grid">
-          
+
           <!-- Card 1 -->
           <div class="size-card plot-reveal" data-size="150">
-            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=700&q=80" alt="Executive Villa 150 Sq. Yds" class="size-card-photo">
+            <div class="size-card-media">
+              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" alt="Executive Villa 150 Sq. Yds" class="size-card-photo">
+              <span class="size-card-num">PLOT 01</span>
+              <span class="size-card-badge is-soft">Executive</span>
+              <div class="size-card-title"><b>150</b><span>Sq. Yards</span></div>
+            </div>
             <div class="size-card-body">
-              <h3 class="sec-headline" style="font-size: 1.6rem; margin-bottom: 2px;">150 Sq. Yards</h3>
-              <p class="size-sqft-subtitle">1,350 Sq. Ft. &bull; 30' &times; 45' Footprint</p>
-              
+              <div class="size-meta-row">
+                <div class="size-footprint"><i style="width:30px;height:44px;"></i></div>
+                <div>
+                  <p class="size-sqft-subtitle">Plot Footprint</p>
+                  <div class="size-sqft-big">1,350 Sq. Ft.<br><span style="font-size:0.95rem;font-weight:600;color:var(--muted);">30' &times; 45'</span></div>
+                </div>
+              </div>
               <div class="size-spec-list">
-                <div class="size-spec-row"><span class="k">Road Width:</span><span class="v">40 Ft. Blacktop</span></div>
-                <div class="size-spec-row"><span class="k">Orientation:</span><span class="v">East / North Facing</span></div>
-                <div class="size-spec-row"><span class="k">Permissible:</span><span class="v">G + 2 Floors</span></div>
-                <div class="size-spec-row"><span class="k">Possession:</span><span class="v">Immediate</span></div>
+                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-road"></i> Road Width</span><span class="v">40 Ft. Blacktop</span></div>
+                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-compass"></i> Orientation</span><span class="v">East / North Facing</span></div>
+                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-building"></i> Permissible</span><span class="v">G + 2 Floors</span></div>
+                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-key"></i> Possession</span><span class="v">Immediate</span></div>
               </div>
-
               <div class="size-price-tag">
-                <small>Starting Price</small>
-                <strong>&#8377;45.00 Lakhs*</strong>
+                <div><small>Starting Price</small><strong>&#8377;45.00 Lakhs*</strong></div>
+                <em>All-inclusive</em>
               </div>
-
-              <a href="#enquirySection" class="btn-slate-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
+              <a href="#enquirySection" class="size-cta">Inquire Plot <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </div>
 
           <!-- Card 2 -->
-          <div class="size-card plot-reveal" data-size="250">
-            <img src="assets/pune-luxury-villas.jpg" alt="Park Facing Villa 250 Sq. Yds" class="size-card-photo">
+          <div class="size-card is-featured plot-reveal" data-size="250">
+            <div class="size-card-media">
+              <img src="assets/pune-luxury-villas.jpg" alt="Park Facing Villa 250 Sq. Yds" class="size-card-photo">
+              <span class="size-card-num">PLOT 02</span>
+              <span class="size-card-badge">Most Popular</span>
+              <div class="size-card-title"><b>250</b><span>Sq. Yards</span></div>
+            </div>
             <div class="size-card-body">
-              <h3 class="sec-headline" style="font-size: 1.6rem; margin-bottom: 2px;">250 Sq. Yards</h3>
-              <p class="size-sqft-subtitle">2,250 Sq. Ft. &bull; 35' &times; 64' Footprint</p>
-              
+              <div class="size-meta-row">
+                <div class="size-footprint"><i style="width:36px;height:46px;"></i></div>
+                <div>
+                  <p class="size-sqft-subtitle">Plot Footprint</p>
+                  <div class="size-sqft-big">2,250 Sq. Ft.<br><span style="font-size:0.95rem;font-weight:600;color:var(--muted);">35' &times; 64'</span></div>
+                </div>
+              </div>
               <div class="size-spec-list">
-                <div class="size-spec-row"><span class="k">Road Width:</span><span class="v">40 Ft. Tree-Lined</span></div>
-                <div class="size-spec-row"><span class="k">Orientation:</span><span class="v">Garden Facing</span></div>
-                <div class="size-spec-row"><span class="k">Permissible:</span><span class="v">G + 2 with Terrace</span></div>
-                <div class="size-spec-row"><span class="k">Possession:</span><span class="v">Immediate</span></div>
+                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-road"></i> Road Width</span><span class="v">40 Ft. Tree-Lined</span></div>
+                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-compass"></i> Orientation</span><span class="v">Garden Facing</span></div>
+                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-building"></i> Permissible</span><span class="v">G + 2 with Terrace</span></div>
+                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-key"></i> Possession</span><span class="v">Immediate</span></div>
               </div>
-
               <div class="size-price-tag">
-                <small>Starting Price</small>
-                <strong>&#8377;72.50 Lakhs*</strong>
+                <div><small>Starting Price</small><strong>&#8377;72.50 Lakhs*</strong></div>
+                <em>All-inclusive</em>
               </div>
-
-              <a href="#enquirySection" class="btn-slate-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
+              <a href="#enquirySection" class="size-cta">Inquire Plot <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </div>
 
           <!-- Card 3 -->
           <div class="size-card plot-reveal" data-size="350">
-            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80" alt="Corner Boulevard 350 Sq. Yds" class="size-card-photo">
+            <div class="size-card-media">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Corner Boulevard 350 Sq. Yds" class="size-card-photo">
+              <span class="size-card-num">PLOT 03</span>
+              <span class="size-card-badge is-soft">Corner Parcel</span>
+              <div class="size-card-title"><b>350</b><span>Sq. Yards</span></div>
+            </div>
             <div class="size-card-body">
-              <h3 class="sec-headline" style="font-size: 1.6rem; margin-bottom: 2px;">350 Sq. Yards</h3>
-              <p class="size-sqft-subtitle">3,150 Sq. Ft. &bull; 42' &times; 75' Footprint</p>
-              
+              <div class="size-meta-row">
+                <div class="size-footprint"><i style="width:42px;height:48px;"></i></div>
+                <div>
+                  <p class="size-sqft-subtitle">Plot Footprint</p>
+                  <div class="size-sqft-big">3,150 Sq. Ft.<br><span style="font-size:0.95rem;font-weight:600;color:var(--muted);">42' &times; 75'</span></div>
+                </div>
+              </div>
               <div class="size-spec-list">
-                <div class="size-spec-row"><span class="k">Road Width:</span><span class="v">60 Ft. Boulevard</span></div>
-                <div class="size-spec-row"><span class="k">Orientation:</span><span class="v">Corner Access</span></div>
-                <div class="size-spec-row"><span class="k">Permissible:</span><span class="v">G + 2 Independent</span></div>
-                <div class="size-spec-row"><span class="k">Possession:</span><span class="v">Immediate</span></div>
+                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-road"></i> Road Width</span><span class="v">60 Ft. Boulevard</span></div>
+                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-compass"></i> Orientation</span><span class="v">Corner Access</span></div>
+                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-building"></i> Permissible</span><span class="v">G + 2 Independent</span></div>
+                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-key"></i> Possession</span><span class="v">Immediate</span></div>
               </div>
-
               <div class="size-price-tag">
-                <small>Starting Price</small>
-                <strong>&#8377;1.05 Crores*</strong>
+                <div><small>Starting Price</small><strong>&#8377;1.05 Crores*</strong></div>
+                <em>All-inclusive</em>
               </div>
-
-              <a href="#enquirySection" class="btn-slate-action" style="width: 100%;"><i class="fa-solid fa-key"></i> Inquire Plot #</a>
+              <a href="#enquirySection" class="size-cta">Inquire Plot <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </div>
 
+        </div>
+
+        <!-- Assurance strip -->
+        <div class="size-assure plot-reveal">
+          <div class="size-assure-item"><div class="size-assure-ic"><i class="fa-solid fa-road"></i></div><div><b>Direct Road Frontage</b><small>Every single plot</small></div></div>
+          <div class="size-assure-item"><div class="size-assure-ic"><i class="fa-solid fa-droplet"></i></div><div><b>Water &amp; Power Points</b><small>Independent tapping</small></div></div>
+          <div class="size-assure-item"><div class="size-assure-ic"><i class="fa-solid fa-stamp"></i></div><div><b>G+2 Villa Sanction</b><small>Approved construction</small></div></div>
+          <div class="size-assure-item"><div class="size-assure-ic"><i class="fa-solid fa-file-shield"></i></div><div><b>Clear &amp; Verified Title</b><small>Transparent records</small></div></div>
         </div>
 
       </div>

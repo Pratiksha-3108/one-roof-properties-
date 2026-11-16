@@ -1005,7 +1005,7 @@
       overflow: hidden;
       border-radius: 20px;
       background: #142028;
-      clip-path: inset(100% 0 0 0);
+      clip-path: inset(100% 0 0 0 round 20px);
       transition: clip-path 1.3s var(--ease);
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
     }
@@ -1016,12 +1016,13 @@
       width: 118%;
       height: 100%;
       object-fit: cover;
+      border-radius: 20px;
       transform: scale(1.22);
       transition: transform 1.8s var(--ease);
       will-change: transform;
     }
     .gx-card.seen .gx-frame {
-      clip-path: inset(0);
+      clip-path: inset(0 round 20px);
     }
     .gx-card.seen .gx-frame img {
       transform: scale(1);
@@ -1229,8 +1230,8 @@
         opacity: 1;
         transform: none;
       }
-      .gx-frame { clip-path: inset(0); }
-      .gx-frame img { transform: none; }
+      .gx-frame { clip-path: inset(0 round 20px); border-radius: 20px; }
+      .gx-frame img { transform: none; border-radius: 20px; }
       .gx-hud { display: none; }
       .gx-cursor { display: none; }
     }

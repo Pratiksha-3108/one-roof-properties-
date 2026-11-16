@@ -1513,103 +1513,193 @@
       .gx-cursor { display: none; }
     }
 
-    /* ======================================================== */
-    /* 07 — SPECIFICATIONS & LEGAL CREDENTIALS                  */
+        /* ======================================================== */
+    /* 06 — TOWNSHIP SPECIFICATIONS & INFRASTRUCTURE            */
     /* ======================================================== */
     .legal-sec {
       padding: clamp(80px, 8vw, 120px) 0;
       background: var(--cream);
       border-top: 1px solid var(--border-line);
+      position: relative;
     }
-    .legal-triad-grid {
+    .plot-specs-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
-    .legal-box-card {
+    .plot-spec-card {
       background: #ffffff;
       border: 1px solid var(--border-line);
-      border-radius: 20px;
+      border-radius: 24px;
       padding: 32px 28px;
-      box-shadow: 0 8px 24px rgba(70, 86, 101, 0.05);
-      transition: all 0.3s ease;
-    }
-    .legal-box-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 36px rgba(70, 86, 101, 0.12);
-      border-color: var(--navy);
-    }
-    .legal-reg-badge {
-      display: inline-block;
-      padding: 4px 12px;
-      background: var(--cream-soft);
-      border: 1px solid var(--border-line);
-      border-radius: 6px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--navy-deep);
-      margin-top: 14px;
-    }
-
-    /* Specifications Matrix */
-    .specs-matrix-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 10px;
-    }
-    .specs-matrix-card {
-      background: #ffffff;
-      border: 1px solid var(--border-line);
-      border-radius: 18px;
-      padding: 26px 28px;
-      box-shadow: 0 6px 20px rgba(70, 86, 101, 0.04);
-      transition: all 0.3s ease;
-    }
-    .specs-matrix-card:hover {
-      border-color: var(--navy);
-      box-shadow: 0 12px 30px rgba(70, 86, 101, 0.09);
-    }
-    .specs-matrix-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border-line);
-    }
-    .specs-matrix-head i {
-      font-size: 1.2rem;
-      color: var(--navy);
-    }
-    .specs-matrix-head h4 {
-      font-family: var(--head-font);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--navy-deep);
-      margin: 0;
-    }
-    .specs-list {
+      box-shadow: 0 10px 28px rgba(70, 86, 101, 0.05);
+      transition: all 0.35s var(--ease);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      position: relative;
     }
-    .specs-list-item {
+    .plot-spec-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(31, 52, 63, 0.12);
+      border-color: rgba(217, 119, 6, 0.45);
+    }
+    .plot-spec-top {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: baseline;
-      font-size: 0.9rem;
-      gap: 12px;
+      margin-bottom: 18px;
     }
-    .specs-list-item .prop {
+    .plot-spec-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: rgba(217, 119, 6, 0.1);
+      border: 1px solid rgba(217, 119, 6, 0.25);
+      color: var(--gold-accent, #d97706);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: transform 0.3s ease;
+    }
+    .plot-spec-card:hover .plot-spec-icon {
+      transform: scale(1.08);
+      background: var(--navy-deep);
+      color: #FAF8EE;
+      border-color: var(--navy-deep);
+    }
+    .plot-spec-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       color: var(--muted);
+      background: var(--cream-soft);
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-line);
+    }
+    .plot-spec-title {
+      font-family: var(--head-font);
+      font-size: 1.32rem;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin: 0 0 14px 0;
+      line-height: 1.3;
+    }
+    .plot-spec-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
       flex: 1;
     }
-    .specs-list-item .val {
-      color: var(--navy-deep);
-      font-weight: 600;
-      text-align: right;
+    .plot-spec-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: #4a5864;
+      line-height: 1.5;
+    }
+    .plot-spec-list li i {
+      color: var(--gold-accent, #d97706);
+      font-size: 0.82rem;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+    .plot-spec-list li span {
+      flex: 1;
+    }
+
+    /* Bottom Infrastructure Assurance Bar */
+    .plot-specs-footer-bar {
+      background: var(--navy-deep);
+      border-radius: 22px;
+      padding: 24px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      box-shadow: 0 20px 48px rgba(31, 52, 63, 0.2);
+      color: var(--cream);
+    }
+    .plot-specs-footer-info {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .plot-specs-footer-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1.5px solid rgba(245, 158, 11, 0.4);
+      color: #f59e0b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    .plot-specs-footer-text h4 {
+      font-family: var(--head-font);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #FAF8EE;
+      margin: 0 0 4px 0;
+    }
+    .plot-specs-footer-text p {
+      font-size: 0.88rem;
+      color: rgba(250, 248, 238, 0.72);
+      margin: 0;
+    }
+    .plot-specs-footer-btn {
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding: 12px 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.3px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(217, 119, 6, 0.35);
+    }
+    .plot-specs-footer-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(217, 119, 6, 0.48);
+      color: #ffffff;
+    }
+
+    @media (max-width: 992px) {
+      .plot-specs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .plot-specs-footer-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    @media (max-width: 640px) {
+      .plot-specs-grid {
+        grid-template-columns: 1fr;
+      }
+      .plot-specs-footer-bar {
+        padding: 20px 22px;
+      }
+      .plot-specs-footer-btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
 
     /* ======================================================== */
@@ -2423,50 +2513,137 @@
 
     <!-- ======================================================== -->
     <!-- 06 — SPECIFICATIONS                                      -->
+        <!-- ======================================================== -->
+    <!-- 06 — TOWNSHIP SPECIFICATIONS & INFRASTRUCTURE            -->
     <!-- ======================================================== -->
     <section class="legal-sec" id="specsSection">
       <div class="sec-container">
         
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">06</span> &mdash; Specifications
+            <span class="dash"></span> <span class="num-highlight">06</span> &mdash; Township Specifications
           </div>
           <h2 class="sec-headline">
-            Project Details at a Glance
+            World-Class Infrastructure &amp; Specifications
           </h2>
           <p class="sec-lead">
-            Statutory certifications, development clearances, and engineered civic specifications governing Green Valley Township.
+            Every plot is delivered fully developed with underground utilities, wide blacktop roads, clear boundaries, and approved planning permissions &mdash; ready for your custom villa.
           </p>
         </div>
 
-        <div class="legal-triad-grid">
+        <div class="plot-specs-grid">
           
-          <div class="legal-box-card plot-reveal">
-            <div style="font-size: 1.8rem; color: var(--navy); margin-bottom: 12px;"><i class="fa-solid fa-stamp"></i></div>
-            <h3 class="sec-headline" style="font-size: 1.3rem; margin-bottom: 6px;">MahaRERA Registration</h3>
-            <p style="font-size: 0.92rem; color: var(--muted); margin: 0;">Officially sanctioned and registered under MahaRERA with all phase-wise escrow and compliance disclosures logged.</p>
-            <span class="legal-reg-badge">RERA No: P52100054321</span>
+          <!-- Spec Card 1: Roads -->
+          <div class="plot-spec-card plot-reveal">
+            <div class="plot-spec-top">
+              <div class="plot-spec-icon"><i class="fa-solid fa-road"></i></div>
+              <span class="plot-spec-tag">60 &amp; 40 Ft. Roads</span>
+            </div>
+            <h3 class="plot-spec-title">Avenues &amp; Road Infrastructure</h3>
+            <ul class="plot-spec-list">
+              <li><i class="fa-solid fa-circle-check"></i> <span>60 Ft. wide spine boulevard &amp; 40 Ft. internal sector roads</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Heavy-duty bitumen blacktop with concrete curbstones</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Tree-lined avenues with paved pedestrian curbed footpaths</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Integrated solar LED street lighting throughout the township</span></li>
+            </ul>
           </div>
 
-          <div class="legal-box-card plot-reveal">
-            <div style="font-size: 1.8rem; color: var(--navy); margin-bottom: 12px;"><i class="fa-solid fa-building-columns"></i></div>
-            <h3 class="sec-headline" style="font-size: 1.3rem; margin-bottom: 6px;">PMRDA Layout Sanction</h3>
-            <p style="font-size: 0.92rem; color: var(--muted); margin: 0;">Comprehensive planning clearance issued by Pune Metropolitan Region Development Authority under final town planning approval.</p>
-            <span class="legal-reg-badge">Order: PMRDA/TPS/2024/098</span>
+          <!-- Spec Card 2: Underground Utilities -->
+          <div class="plot-spec-card plot-reveal">
+            <div class="plot-spec-top">
+              <div class="plot-spec-icon"><i class="fa-solid fa-bolt"></i></div>
+              <span class="plot-spec-tag">100% Concealed</span>
+            </div>
+            <h3 class="plot-spec-title">Concealed Underground Utilities</h3>
+            <ul class="plot-spec-list">
+              <li><i class="fa-solid fa-circle-check"></i> <span>100% underground electrical cabling with zero overhead wires</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Independent sector feeder pillars &amp; distribution junction boxes</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Pre-laid high-speed telecom &amp; optical fibre conduits</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Power backup provisions for streetlights &amp; common pumps</span></li>
+            </ul>
           </div>
 
-          <div class="legal-box-card plot-reveal">
-            <div style="font-size: 1.8rem; color: var(--navy); margin-bottom: 12px;"><i class="fa-solid fa-scale-balanced"></i></div>
-            <h3 class="sec-headline" style="font-size: 1.3rem; margin-bottom: 6px;">30-Year Title Search</h3>
-            <p style="font-size: 0.92rem; color: var(--muted); margin: 0;">Unblemished title search certificate from Adv. Sneha P. Jadhav certifying zero litigations and clear freehold status.</p>
-            <span class="legal-reg-badge">Title Certificate Verified</span>
+          <!-- Spec Card 3: Water & Drainage -->
+          <div class="plot-spec-card plot-reveal">
+            <div class="plot-spec-top">
+              <div class="plot-spec-icon"><i class="fa-solid fa-faucet-drip"></i></div>
+              <span class="plot-spec-tag">Individual Tapping</span>
+            </div>
+            <h3 class="plot-spec-title">Water Supply &amp; Drainage Network</h3>
+            <ul class="plot-spec-list">
+              <li><i class="fa-solid fa-circle-check"></i> <span>Individual water connection tapping point at each plot boundary</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Concealed RCC box culverts for heavy-rain stormwater drainage</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Central eco-friendly sewage treatment plant (STP)</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Groundwater recharge &amp; dedicated rainwater harvesting pits</span></li>
+            </ul>
+          </div>
+
+          <!-- Spec Card 4: Plot Demarcation -->
+          <div class="plot-spec-card plot-reveal">
+            <div class="plot-spec-top">
+              <div class="plot-spec-icon"><i class="fa-solid fa-draw-polygon"></i></div>
+              <span class="plot-spec-tag">Pre-Demarcated</span>
+            </div>
+            <h3 class="plot-spec-title">Plot Demarcation &amp; Frontage</h3>
+            <ul class="plot-spec-list">
+              <li><i class="fa-solid fa-circle-check"></i> <span>Pre-cast concrete marker stones at all four corners of each plot</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Clearly peg-marked villa footprints for hassle-free construction</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Direct road frontage with independent wide driveway access</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Immediate possession handover for custom villa development</span></li>
+            </ul>
+          </div>
+
+          <!-- Spec Card 5: Gated Security -->
+          <div class="plot-spec-card plot-reveal">
+            <div class="plot-spec-top">
+              <div class="plot-spec-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <span class="plot-spec-tag">24/7 Gated Security</span>
+            </div>
+            <h3 class="plot-spec-title">Gated Security &amp; Demarcation</h3>
+            <ul class="plot-spec-list">
+              <li><i class="fa-solid fa-circle-check"></i> <span>Grand architectural entrance gatehouse with manned security post</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>9 Ft. reinforced compound wall surrounding the entire perimeter</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>RFID &amp; boom-barrier controlled access for residents and guests</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>24/7 high-definition CCTV coverage along all avenues and gates</span></li>
+            </ul>
+          </div>
+
+          <!-- Spec Card 6: Approvals & Permissions -->
+          <div class="plot-spec-card plot-reveal">
+            <div class="plot-spec-top">
+              <div class="plot-spec-icon"><i class="fa-solid fa-file-signature"></i></div>
+              <span class="plot-spec-tag">Sanctioned Layout</span>
+            </div>
+            <h3 class="plot-spec-title">Planning Sanctions &amp; Clear Title</h3>
+            <ul class="plot-spec-list">
+              <li><i class="fa-solid fa-circle-check"></i> <span>Approved layout plan under applicable planning permissions</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>100% clear and verified title records with transparent ownership</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>G+2 residential villa sanction for your dream home construction</span></li>
+              <li><i class="fa-solid fa-circle-check"></i> <span>Bank loan assistance with leading associated banking partners</span></li>
+            </ul>
           </div>
 
         </div>
 
+        <!-- Township Assurance Footer Bar -->
+        <div class="plot-specs-footer-bar plot-reveal">
+          <div class="plot-specs-footer-info">
+            <div class="plot-specs-footer-icon">
+              <i class="fa-solid fa-certificate"></i>
+            </div>
+            <div class="plot-specs-footer-text">
+              <h4>Township Development Guarantee</h4>
+              <p>Every plot is delivered with guaranteed civic infrastructure, verified titles, and immediate construction sanction.</p>
+            </div>
+          </div>
+          <a href="#enquirySection" class="plot-specs-footer-btn">
+            <i class="fa-solid fa-file-lines"></i> Inquire Plot Specifications
+          </a>
+        </div>
 
       </div>
     </section>
+
 
     <!-- ======================================================== -->
     <!-- 07 — FAQS                                                -->

@@ -1514,14 +1514,32 @@
     }
 
         /* ======================================================== */
-    /* 06 — TOWNSHIP SPECIFICATIONS & INFRASTRUCTURE            */
+    /* 06 — TOWNSHIP SPECIFICATIONS (PINNED SCROLL TRACK)       */
     /* ======================================================== */
-    .legal-sec {
-      padding: clamp(80px, 8vw, 120px) 0;
-      background: var(--cream);
-      border-top: 1px solid var(--border-line);
+    .legal-sec.sf-scroll-track {
       position: relative;
+      height: 420vh; /* Scroll-driven track through all 6 specifications */
+      background: var(--cream);
+      overflow: clip; /* Keeps position: sticky active */
+      border-top: 1px solid var(--border-line);
+      padding: 0;
     }
+
+    .sf-sticky-pin {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: clamp(65px, 8vh, 85px) 24px clamp(20px, 3vh, 32px);
+      box-sizing: border-box;
+      background: var(--cream);
+    }
+
     /* ======================================================== */
     /* 06 — STILL / FORM LUXURY SPLIT SPECIFICATIONS SHOWCASE    */
     /* ======================================================== */
@@ -1536,7 +1554,7 @@
       grid-template-columns: 1fr 1fr;
       gap: clamp(20px, 2.5vw, 36px);
       align-items: stretch;
-      min-height: 600px;
+      min-height: 520px;
       position: relative;
     }
 
@@ -1903,6 +1921,18 @@
 
     /* Responsive */
     @media (max-width: 1024px) {
+      .legal-sec.sf-scroll-track {
+        height: auto;
+        padding: clamp(60px, 8vw, 100px) 0;
+      }
+      .sf-sticky-pin {
+        position: relative;
+        top: auto;
+        height: auto;
+        min-height: auto;
+        padding: 0;
+        overflow: visible;
+      }
       .sf-stage-grid {
         grid-template-columns: 1fr;
         min-height: auto;
@@ -2748,29 +2778,26 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 06 — SPECIFICATIONS                                      -->
-        <!-- ======================================================== -->
-    <!-- 06 — TOWNSHIP SPECIFICATIONS & INFRASTRUCTURE            -->
-        <!-- ======================================================== -->
-    <!-- 06 — SPECIFICATIONS                                      -->
+    <!-- 06 — SPECIFICATIONS (PINNED SCROLL TRACK)                -->
     <!-- ======================================================== -->
-    <section class="legal-sec" id="specsSection">
-      <div class="sec-container">
-        
-        <div class="sec-header plot-reveal">
-          <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">06</span> &mdash; Specifications
+    <section class="legal-sec sf-scroll-track" id="specsSection">
+      <div class="sf-sticky-pin" id="sfStickyPin">
+        <div class="sec-container">
+          
+          <div class="sec-header">
+            <div class="sec-num-eyebrow">
+              <span class="dash"></span> <span class="num-highlight">06</span> &mdash; Specifications
+            </div>
+            <h2 class="sec-headline">
+              Specifications
+            </h2>
+            <p class="sec-lead">
+              Comprehensive civil infrastructure, underground utility networks, and statutory layout approvals governing every individual plot.
+            </p>
           </div>
-          <h2 class="sec-headline">
-            Specifications
-          </h2>
-          <p class="sec-lead">
-            Comprehensive civil infrastructure, underground utility networks, and statutory layout approvals governing every individual plot.
-          </p>
-        </div>
 
-        <!-- STILL / FORM LUXURY SPLIT SHOWCASE (6 SPECIFICATIONS) -->
-        <div class="sf-specs-stage plot-reveal" id="sfSpecsStage">
+          <!-- STILL / FORM LUXURY SPLIT SHOWCASE (6 SPECIFICATIONS) -->
+          <div class="sf-specs-stage" id="sfSpecsStage">
           <div class="sf-stage-grid" id="sfStageGrid">
             
             <!-- LEFT: Architectural Visual Pane -->
@@ -2984,7 +3011,8 @@
         </div>
 
       </div>
-    </section>
+    </div>
+  </section>
 
 
     <!-- ======================================================== -->
@@ -3538,9 +3566,11 @@
     // 06 — STILL / FORM LUXURY SPECIFICATIONS CONTROLLER
     // ========================================================
     (function initStillFormSpecs() {
+      const sec = document.getElementById('specsSection');
+      const pin = document.getElementById('sfStickyPin');
       const stage = document.getElementById('sfSpecsStage');
       const grid = document.getElementById('sfStageGrid');
-      if (!stage) return;
+      if (!sec || !pin || !grid) return;
 
       const titles = [
         "Civic Infrastructure",
@@ -3565,16 +3595,13 @@
 
       const total = dials.length;
       let currentIndex = 0;
-      let animProgress = 0;
-      let progressInterval = null;
-      const DURATION = 5500; // 5.5 seconds auto transition
-      let isHovered = false;
+      let isManualScroll = false;
 
       function pad(n) {
         return n < 10 ? '0' + n : '' + n;
       }
 
-      function goToSlide(idx) {
+      function goToSlide(idx, fromClick = false) {
         if (idx < 0) idx = total - 1;
         if (idx >= total) idx = 0;
         currentIndex = idx;
@@ -3640,34 +3667,45 @@
           }
         });
 
-        resetProgress();
+        if (fromClick && window.innerWidth > 1024) {
+          const max = Math.max(1, sec.offsetHeight - pin.offsetHeight);
+          const targetY = sec.offsetTop + (idx / (total - 1)) * max;
+          isManualScroll = true;
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+          setTimeout(() => { isManualScroll = false; }, 850);
+        }
       }
 
-      function resetProgress() {
-        animProgress = 0;
-        if (progressFill) progressFill.style.width = '0%';
-      }
+      // PINNED SCROLL LISTENER:
+      // Controls the specifications as the user scrolls naturally down the page.
+      // The section remains PINNED and will not scroll away until all 6 specifications are visible!
+      function handlePinnedScroll() {
+        if (window.innerWidth <= 1024 || isManualScroll) return;
+        const r = sec.getBoundingClientRect();
+        const max = Math.max(1, sec.offsetHeight - pin.offsetHeight);
+        // p goes from 0.0 when top of section hits top of window, to 1.0 when bottom of section unpins
+        const p = Math.min(1, Math.max(0, -r.top / max));
 
-      function startTimer() {
-        clearInterval(progressInterval);
-        const tick = 50;
-        progressInterval = setInterval(() => {
-          if (!isHovered) {
-            animProgress += tick;
-            const pct = Math.min(100, (animProgress / DURATION) * 100);
-            if (progressFill) progressFill.style.width = pct + '%';
+        if (progressFill) {
+          progressFill.style.width = (p * 100).toFixed(1) + '%';
+        }
 
-            if (animProgress >= DURATION) {
-              goToSlide(currentIndex + 1);
-            }
+        // Map scroll percentage to the 6 specifications
+        if (r.top <= 20 && r.bottom >= pin.offsetHeight - 20) {
+          const targetIndex = Math.min(total - 1, Math.floor(p * total));
+          if (targetIndex !== currentIndex) {
+            goToSlide(targetIndex, false);
           }
-        }, tick);
+        }
       }
+
+      window.addEventListener('scroll', handlePinnedScroll, { passive: true });
+      window.addEventListener('resize', handlePinnedScroll, { passive: true });
 
       // Dial clicks
       dials.forEach((btn, idx) => {
         btn.addEventListener('click', () => {
-          goToSlide(idx);
+          goToSlide(idx, true);
         });
       });
 
@@ -3675,54 +3713,25 @@
       if (prevBtn) {
         prevBtn.addEventListener('click', (e) => {
           e.preventDefault();
-          goToSlide(currentIndex - 1);
+          goToSlide(currentIndex - 1, true);
         });
       }
 
       if (nextBtn) {
         nextBtn.addEventListener('click', (e) => {
           e.preventDefault();
-          goToSlide(currentIndex + 1);
+          goToSlide(currentIndex + 1, true);
         });
       }
 
-      // Cursor scroll wheel control:
-      // Scrolling down/up over the stage switches between specifications
-      let wheelThrottle = false;
-      stage.addEventListener('wheel', (e) => {
-        if (Math.abs(e.deltaY) > 25 && !wheelThrottle) {
-          if (e.deltaY > 0) {
-            // Scroll down: step to next spec if not at the end
-            if (currentIndex < total - 1) {
-              e.preventDefault();
-              wheelThrottle = true;
-              goToSlide(currentIndex + 1);
-              setTimeout(() => { wheelThrottle = false; }, 650);
-            }
-          } else {
-            // Scroll up: step to prev spec if not at the beginning
-            if (currentIndex > 0) {
-              e.preventDefault();
-              wheelThrottle = true;
-              goToSlide(currentIndex - 1);
-              setTimeout(() => { wheelThrottle = false; }, 650);
-            }
-          }
-        }
-      }, { passive: false });
-
-      // Pause on hover
-      stage.addEventListener('mouseenter', () => { isHovered = true; });
-      stage.addEventListener('mouseleave', () => { isHovered = false; });
-
       // Keyboard left/right arrows when stage is in view
       window.addEventListener('keydown', (e) => {
-        const rect = stage.getBoundingClientRect();
+        const rect = sec.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
           if (e.key === 'ArrowRight') {
-            goToSlide(currentIndex + 1);
+            goToSlide(currentIndex + 1, true);
           } else if (e.key === 'ArrowLeft') {
-            goToSlide(currentIndex - 1);
+            goToSlide(currentIndex - 1, true);
           }
         }
       });
@@ -3733,7 +3742,6 @@
         if (e.changedTouches && e.changedTouches[0]) {
           touchStartX = e.changedTouches[0].clientX;
         }
-        isHovered = true;
       }, { passive: true });
 
       stage.addEventListener('touchend', (e) => {
@@ -3741,17 +3749,16 @@
           const touchEndX = e.changedTouches[0].clientX;
           const diff = touchEndX - touchStartX;
           if (diff > 50) {
-            goToSlide(currentIndex - 1);
+            goToSlide(currentIndex - 1, false);
           } else if (diff < -50) {
-            goToSlide(currentIndex + 1);
+            goToSlide(currentIndex + 1, false);
           }
         }
-        isHovered = false;
       }, { passive: true });
 
-      // Initialize slide 0 and start auto-progress
-      goToSlide(0);
-      startTimer();
+      // Initialize slide 0 and run scroll check
+      goToSlide(0, false);
+      handlePinnedScroll();
     })();
 
   </script>

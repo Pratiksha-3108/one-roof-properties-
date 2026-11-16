@@ -46,16 +46,35 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
 .wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 24px}
 .explore h2{font-family:var(--disp);font-weight:400;font-size:clamp(1.6rem,2.8vw,2.3rem);letter-spacing:3px;color:var(--gold);text-align:center;text-transform:uppercase;margin-bottom:34px}
 
-/* PILL FILTER: icon | divider | selects | search */
-.pill{display:flex;align-items:center;max-width:780px;margin:0 auto;padding:7px 8px 7px 18px;border:1.5px solid var(--gold-line);border-radius:999px;background:#fff;box-shadow:0 8px 26px rgba(180,131,44,.08)}
-.pill>i{color:var(--gold);font-size:1.05rem;padding-right:14px;margin-right:10px;border-right:1px solid var(--line);line-height:1.8}
-.pill select{flex:1;min-width:0;border:none;outline:none;background:transparent;appearance:none;-webkit-appearance:none;color:var(--navy-deep);font-size:.84rem;font-weight:500;cursor:pointer;padding:6px 16px 6px 6px;background-image:url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='6'%3E%3Cpath fill='%23b4832c' d='M0 0l4.5 6L9 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 3px center;text-overflow:ellipsis}
-.pill select:hover{color:var(--gold)}
-.btn-search{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border:none;border-radius:999px;background:linear-gradient(135deg,#d4af37,#b4832c);color:#fff;font-size:.86rem;font-weight:600;cursor:pointer;box-shadow:0 5px 16px rgba(180,131,44,.3);transition:transform .3s,box-shadow .3s}
-.btn-search:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(180,131,44,.42)}
+/* ADVANCED FILTER BOX (MAIN + DYNAMIC FIELDS) */
+.filter-box-wrap{max-width:1120px;margin:0 auto;background:#fff;border:1.5px solid var(--gold-line);border-radius:24px;box-shadow:0 12px 36px rgba(31,52,63,.08);padding:22px 24px;transition:all .35s var(--ease)}
+.filter-main-row{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:14px;align-items:center}
+.filter-field{display:flex;flex-direction:column;gap:5px;position:relative}
+.filter-label{font-family:var(--body);font-size:.72rem;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:6px}
+.filter-label i{color:var(--gold);font-size:.75rem}
+.filter-select-wrap{position:relative}
+.filter-select{width:100%;border:1px solid rgba(70,86,101,.2);border-radius:12px;background:#FAF8EE;padding:11px 32px 11px 14px;font-family:var(--body);font-size:.85rem;font-weight:500;color:var(--navy-deep);outline:none;appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='6'%3E%3Cpath fill='%23b4832c' d='M0 0l4.5 6L9 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;transition:border-color .25s ease,background-color .25s ease}
+.filter-select:hover,.filter-select:focus{border-color:var(--gold);background-color:#fff}
+
+/* Dynamic Secondary Row */
+.filter-dynamic-row{display:none;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px;padding-top:16px;border-top:1px dashed rgba(70,86,101,.18);animation:filterFadeIn .35s var(--ease) forwards}
+.filter-dynamic-row.active{display:grid}
+@keyframes filterFadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+.btn-search{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 28px;border:none;border-radius:14px;background:linear-gradient(135deg,#d4af37,#b4832c);color:#fff;font-family:var(--body);font-size:.86rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;box-shadow:0 6px 18px rgba(180,131,44,.28);transition:transform .3s,box-shadow .3s;align-self:flex-end;height:44px}
+.btn-search:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(180,131,44,.4)}
 .count{text-align:center;margin:22px 0 0;font-size:.9rem;color:var(--muted)}
 .count b{color:var(--gold)}
 .count button{background:none;border:none;color:var(--gold);cursor:pointer;margin-left:10px;font-size:.84rem;text-decoration:underline}
+
+@media(max-width:1000px){
+  .filter-main-row{grid-template-columns:repeat(2,1fr);gap:12px}
+  .filter-main-row .btn-search{grid-column:1 / -1;width:100%;margin-top:6px}
+  .filter-dynamic-row{grid-template-columns:1fr;gap:12px}
+}
+@media(max-width:600px){
+  .filter-main-row{grid-template-columns:1fr}
+}
 
 /* GRID: 3 columns, middle column dropped, poster style */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px clamp(28px,5vw,64px);max-width:1000px;margin:56px auto 80px;align-items:start}
@@ -230,7 +249,8 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
       <li><a href="services.html" style="color: #ffffff; font-size: 1rem;">Services</a></li>
       <li><a href="nri-corner.html" style="color: #ffffff; font-size: 1rem;">NRI Corner</a></li>
       <li><a href="blog.html" style="color: #ffffff; font-size: 1rem;">Blogs</a></li>
-      <li><a href="contact.html" style="color: #ffffff; font-size: 1rem;">Contact</a></li>
+      <li>
+        <a href="contact.html" style="color: #ffffff; font-size: 1rem;">Contact</a></li>
       <li><a href="tel:9494168733" style="color: #d97706; font-size: 1rem; font-weight: 600;">949-416-8733</a></li>
     </ul>
   </div>
@@ -248,41 +268,206 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
   <div class="wrap">
     <h2 class="title-rise">Explore Our Projects</h2>
 
-    <div class="pill title-rise">
-      <i class="fa-solid fa-sliders"></i>
-      <select id="fType" aria-label="Project type"><option value="all">Select Project</option><option value="residential">Residential</option><option value="plotting">Plotting</option></select>
-      <select id="fLoc" aria-label="Locality"><option value="all">Select Locality</option><option value="baner">Baner</option><option value="wakad">Wakad</option><option value="kharadi">Kharadi</option><option value="hinjawadi">Hinjawadi</option><option value="north-expressway">North Expressway</option><option value="financial-district">Financial District</option></select>
-      <select id="fBed" aria-label="Bedroom"><option value="all">Select Bedroom</option><option value="3">3 BHK</option><option value="4">4 BHK</option><option value="5">5 BHK</option><option value="plots">Plots</option></select>
-      <select id="fPos" aria-label="Possession"><option value="all">Select Possession</option><option value="ready">Ready to Move</option><option value="under-construction">Under Construction</option><option value="immediate">Immediate Registry</option></select>
-      <select id="fBud" aria-label="Budget"><option value="all">Select Budget</option><option value="under-75l">Under ₹75 Lakhs</option><option value="75l-1.5cr">₹75L – ₹1.5 Cr</option><option value="1.5cr-3cr">₹1.5 Cr – ₹3 Cr</option><option value="3cr-plus">₹3 Cr &amp; Above</option></select>
-      <button class="btn-search" id="btnSearch"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+    <!-- Advanced Dynamic Filter Bar -->
+    <div class="filter-box-wrap title-rise">
+      <!-- Row 1: Common 4 Main Fields + Search Button -->
+      <div class="filter-main-row">
+        <!-- 1. Property Type -->
+        <div class="filter-field">
+          <label class="filter-label" for="fType"><i class="fa-solid fa-building-circle-check"></i> Property Type</label>
+          <div class="filter-select-wrap">
+            <select id="fType" class="filter-select" aria-label="Property Type">
+              <option value="all">All Property Types</option>
+              <option value="residential">Residential</option>
+              <option value="plotting">Plotting</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 2. Select Location -->
+        <div class="filter-field">
+          <label class="filter-label" for="fLoc"><i class="fa-solid fa-location-dot"></i> Select Location</label>
+          <div class="filter-select-wrap">
+            <select id="fLoc" class="filter-select" aria-label="Select Location">
+              <option value="all">All Locations</option>
+              <option value="wagholi">Wagholi</option>
+              <option value="hinjewadi">Hinjewadi</option>
+              <option value="baner">Baner</option>
+              <option value="other">Other Locations (Wakad, Kharadi)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 3. Select Budget -->
+        <div class="filter-field">
+          <label class="filter-label" for="fBud"><i class="fa-solid fa-indian-rupee-sign"></i> Select Budget</label>
+          <div class="filter-select-wrap">
+            <select id="fBud" class="filter-select" aria-label="Select Budget">
+              <option value="all">All Budgets</option>
+              <option value="below-25l">Below ₹25 Lakhs</option>
+              <option value="25l-50l">₹25–50 Lakhs</option>
+              <option value="50l-75l">₹50–75 Lakhs</option>
+              <option value="75l-1cr">₹75 Lakhs–1 Crore</option>
+              <option value="above-1cr">Above ₹1 Crore</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 4. Project Status -->
+        <div class="filter-field">
+          <label class="filter-label" for="fStatus"><i class="fa-solid fa-clock-rotate-left"></i> Project Status</label>
+          <div class="filter-select-wrap">
+            <select id="fStatus" class="filter-select" aria-label="Project Status">
+              <option value="all">All Project Statuses</option>
+              <option value="upcoming">Upcoming</option>
+              <option value="under-construction">Under Construction</option>
+              <option value="ready-to-move">Ready to Move</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Search Button -->
+        <button class="btn-search" id="btnSearch" type="button">
+          <i class="fa-solid fa-magnifying-glass"></i> Search Projects
+        </button>
+      </div>
+
+      <!-- Row 2: Dynamic Fields (Shown based on Residential or Plotting) -->
+      <!-- Dynamic Residential Fields -->
+      <div class="filter-dynamic-row" id="rowResidential">
+        <!-- Configuration -->
+        <div class="filter-field">
+          <label class="filter-label" for="fConfig"><i class="fa-solid fa-bed"></i> Configuration</label>
+          <div class="filter-select-wrap">
+            <select id="fConfig" class="filter-select" aria-label="Configuration">
+              <option value="all">All Configurations</option>
+              <option value="1">1 BHK</option>
+              <option value="2">2 BHK</option>
+              <option value="3">3 BHK</option>
+              <option value="4">4 BHK</option>
+              <option value="5">5 BHK</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Possession -->
+        <div class="filter-field">
+          <label class="filter-label" for="fPossession"><i class="fa-solid fa-key"></i> Possession</label>
+          <div class="filter-select-wrap">
+            <select id="fPossession" class="filter-select" aria-label="Possession">
+              <option value="all">All Possession Timelines</option>
+              <option value="ready-to-move">Ready to Move</option>
+              <option value="under-construction">Under Construction</option>
+              <option value="new-launch">New Launch</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Plotting Fields -->
+      <div class="filter-dynamic-row" id="rowPlotting">
+        <!-- Plot Area -->
+        <div class="filter-field">
+          <label class="filter-label" for="fPlotArea"><i class="fa-solid fa-ruler-combined"></i> Plot Area</label>
+          <div class="filter-select-wrap">
+            <select id="fPlotArea" class="filter-select" aria-label="Plot Area">
+              <option value="all">All Plot Sizes</option>
+              <option value="below-1000">Below 1000 sq.ft.</option>
+              <option value="1000-1500">1000–1500 sq.ft.</option>
+              <option value="1500-2000">1500–2000 sq.ft.</option>
+              <option value="above-2000">Above 2000 sq.ft.</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Plot Category -->
+        <div class="filter-field">
+          <label class="filter-label" for="fPlotCategory"><i class="fa-solid fa-layer-group"></i> Plot Category</label>
+          <div class="filter-select-wrap">
+            <select id="fPlotCategory" class="filter-select" aria-label="Plot Category">
+              <option value="all">All Plot Categories</option>
+              <option value="residential-plot">Residential Plot</option>
+              <option value="commercial-plot">Commercial Plot</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
     </div>
+
     <p class="count title-rise">Showing <b id="shown">6</b> projects<button id="btnReset" type="button">Reset filters</button></p>
 
     <div class="grid" id="grid">
-      <a class="card reveal" href="residential-1.html" data-type="residential" data-locality="baner" data-bedroom="3 4" data-possession="under-construction" data-budget="75l-1.5cr 1.5cr-3cr">
+      <!-- 1. The Grand Emerald (Baner) -->
+      <a class="card reveal" href="residential-1.html" 
+         data-type="residential" 
+         data-location="baner" 
+         data-budget="75l-1cr above-1cr" 
+         data-status="under-construction" 
+         data-config="3 4" 
+         data-possession="under-construction">
         <div class="poster"><img src="assets/pune-luxury-tower.jpg" alt="The Grand Emerald, Baner" loading="lazy"></div>
         <div class="cap"><small>3 &amp; 4 BHK Sky Residences</small><strong>THE GRAND EMERALD – Baner, Pune</strong><span class="know">Know More <i class="fa-solid fa-arrow-right"></i></span></div>
       </a>
-      <a class="card reveal" href="residential-2.html" data-type="residential" data-locality="wakad" data-bedroom="4" data-possession="ready immediate" data-budget="1.5cr-3cr">
+
+      <!-- 2. Palm Crest Villas (Wakad / Other) -->
+      <a class="card reveal" href="residential-2.html" 
+         data-type="residential" 
+         data-location="other wakad" 
+         data-budget="above-1cr" 
+         data-status="ready-to-move" 
+         data-config="4" 
+         data-possession="ready-to-move">
         <div class="poster"><img src="assets/pune-luxury-villas.jpg" alt="Palm Crest Villas, Wakad" loading="lazy"></div>
         <div class="cap"><small>4 BHK Private Villas</small><strong>PALM CREST VILLAS – Wakad, Pune</strong><span class="know">Know More <i class="fa-solid fa-arrow-right"></i></span></div>
       </a>
-      <a class="card reveal" href="residential-3.html" data-type="residential" data-locality="kharadi" data-bedroom="5" data-possession="under-construction" data-budget="3cr-plus">
+
+      <!-- 3. Skyline Imperial (Kharadi / Other) -->
+      <a class="card reveal" href="residential-3.html" 
+         data-type="residential" 
+         data-location="other kharadi" 
+         data-budget="above-1cr" 
+         data-status="upcoming under-construction" 
+         data-config="4 5" 
+         data-possession="new-launch under-construction">
         <div class="poster"><img src="assets/project-3.jpg" alt="Skyline Imperial, Kharadi" loading="lazy"></div>
         <div class="cap"><small>5 BHK Sky Mansions</small><strong>SKYLINE IMPERIAL – Kharadi, Pune</strong><span class="know">Know More <i class="fa-solid fa-arrow-right"></i></span></div>
       </a>
-      <a class="card reveal" href="plotting-1.html" data-type="plotting" data-locality="north-expressway" data-bedroom="plots" data-possession="immediate ready" data-budget="under-75l 75l-1.5cr">
+
+      <!-- 4. Green Valley Township (Wagholi / North Corridor) -->
+      <a class="card reveal" href="plotting-1.html" 
+         data-type="plotting" 
+         data-location="wagholi" 
+         data-budget="below-25l 25l-50l 50l-75l" 
+         data-status="ready-to-move" 
+         data-plotarea="1000-1500 1500-2000 above-2000" 
+         data-plotcategory="residential-plot">
         <div class="poster"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80" alt="Green Valley Township" loading="lazy"></div>
-        <div class="cap"><small>Plotting Township, 150–500 sq. yd.</small><strong>GREEN VALLEY TOWNSHIP – North Expressway, Pune</strong><span class="know">Know More <i class="fa-solid fa-arrow-right"></i></span></div>
+        <div class="cap"><small>Gated Villa Plots, 1,350–3,500 sq.ft.</small><strong>GREEN VALLEY TOWNSHIP – Wagholi, Pune</strong><span class="know">Know More <i class="fa-solid fa-arrow-right"></i></span></div>
       </a>
-      <a class="card reveal" href="plotting-2.html" data-type="plotting" data-locality="hinjawadi" data-bedroom="plots" data-possession="immediate ready" data-budget="under-75l 75l-1.5cr">
+
+      <!-- 5. Royal Meadows Estates (Hinjewadi) -->
+      <a class="card reveal" href="plotting-2.html" 
+         data-type="plotting" 
+         data-location="hinjewadi" 
+         data-budget="50l-75l 75l-1cr above-1cr" 
+         data-status="ready-to-move" 
+         data-plotarea="above-2000" 
+         data-plotcategory="residential-plot">
         <div class="poster"><img src="assets/amenity-garden.jpg" alt="Royal Meadows Estates" loading="lazy"></div>
-        <div class="cap"><small>Gated Farm Plots, ¼ &amp; ½ Acre</small><strong>ROYAL MEADOWS ESTATES – Hinjawadi Hills, Pune</strong><span class="know">Know More <i class="fa-solid fa-arrow-right"></i></span></div>
+        <div class="cap"><small>Luxury Farmhouse Plots, 2,000+ sq.ft.</small><strong>ROYAL MEADOWS ESTATES – Hinjewadi, Pune</strong><span class="know">Know More <i class="fa-solid fa-arrow-right"></i></span></div>
       </a>
-      <a class="card reveal" href="plotting-3.html" data-type="plotting" data-locality="financial-district" data-bedroom="plots" data-possession="under-construction ready" data-budget="75l-1.5cr 1.5cr-3cr">
+
+      <!-- 6. Metro Boulevard Plots (Commercial / Hinjewadi) -->
+      <a class="card reveal" href="plotting-3.html" 
+         data-type="plotting" 
+         data-location="hinjewadi other" 
+         data-budget="75l-1cr above-1cr" 
+         data-status="under-construction upcoming" 
+         data-plotarea="1000-1500 1500-2000 above-2000" 
+         data-plotcategory="commercial-plot">
         <div class="poster"><img src="assets/project-4.jpg" alt="Metro Boulevard Plots" loading="lazy"></div>
-        <div class="cap"><small>Commercial Plots, 1,200–4,500 sq. ft.</small><strong>METRO BOULEVARD PLOTS – Financial District, Pune</strong><span class="know">Know More <i class="fa-solid fa-arrow-right"></i></span></div>
+        <div class="cap"><small>Commercial SCO Plots, 1,200–4,500 sq.ft.</small><strong>METRO BOULEVARD PLOTS – Hinjewadi Corridor, Pune</strong><span class="know">Know More <i class="fa-solid fa-arrow-right"></i></span></div>
       </a>
     </div>
 
@@ -328,7 +513,39 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
 
   var cards=[].slice.call(document.querySelectorAll('.card')),grid=document.getElementById('grid'),
       empty=document.getElementById('empty'),shown=document.getElementById('shown'),
-      ids=['fType','fLoc','fBed','fPos','fBud'],sel=ids.map(function(i){return document.getElementById(i)});
+      fType=document.getElementById('fType'),
+      fLoc=document.getElementById('fLoc'),
+      fBud=document.getElementById('fBud'),
+      fStatus=document.getElementById('fStatus'),
+      fConfig=document.getElementById('fConfig'),
+      fPossession=document.getElementById('fPossession'),
+      fPlotArea=document.getElementById('fPlotArea'),
+      fPlotCategory=document.getElementById('fPlotCategory'),
+      rowResidential=document.getElementById('rowResidential'),
+      rowPlotting=document.getElementById('rowPlotting');
+
+  // Toggle dynamic fields row based on selected Property Type
+  function updateDynamicRows(){
+    var type = fType ? fType.value : 'all';
+    if(type === 'residential'){
+      if(rowResidential) rowResidential.classList.add('active');
+      if(rowPlotting) rowPlotting.classList.remove('active');
+      if(fPlotArea) fPlotArea.value = 'all';
+      if(fPlotCategory) fPlotCategory.value = 'all';
+    } else if(type === 'plotting'){
+      if(rowPlotting) rowPlotting.classList.add('active');
+      if(rowResidential) rowResidential.classList.remove('active');
+      if(fConfig) fConfig.value = 'all';
+      if(fPossession) fPossession.value = 'all';
+    } else {
+      if(rowResidential) rowResidential.classList.remove('active');
+      if(rowPlotting) rowPlotting.classList.remove('active');
+      if(fConfig) fConfig.value = 'all';
+      if(fPossession) fPossession.value = 'all';
+      if(fPlotArea) fPlotArea.value = 'all';
+      if(fPlotCategory) fPlotCategory.value = 'all';
+    }
+  }
 
   // Scroll reveal: blur + fade in, stagger by column
   var io='IntersectionObserver' in window?new IntersectionObserver(function(es){
@@ -345,26 +562,113 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
       var col=n%3;c.dataset.col=col;c.classList.toggle('mid',col===1);n++;
     });
   }
-  function apply(){
-    var v=sel.map(function(s){return s.value}),n=0;
-    cards.forEach(function(c){
-      var d=c.dataset,
-      ok=(v[0]==='all'||d.type===v[0])&&(v[1]==='all'||d.locality===v[1])&&(v[2]==='all'||d.bedroom.indexOf(v[2])>-1)&&
-         (v[3]==='all'||d.possession.indexOf(v[3])>-1)&&(v[4]==='all'||d.budget.indexOf(v[4])>-1);
-      c.style.display=ok?'':'none';if(ok)n++;
-    });
-    layout();shown.textContent=n;
-    empty.style.display=n?'none':'block';grid.style.display=n?'grid':'none';
-    cards.forEach(function(c){if(c.style.display!=='none'&&!c.classList.contains('in')&&c.getBoundingClientRect().top<innerHeight)setTimeout(function(){c.classList.add('in')},(c.dataset.col||0)*160)});
-  }
-  function reset(){sel.forEach(function(s){s.value='all'});apply()}
-  sel.forEach(function(s){s.addEventListener('change',apply)});
-  document.getElementById('btnSearch').onclick=function(){apply();grid.scrollIntoView({behavior:'smooth',block:'start'})};
-  document.getElementById('btnReset').onclick=reset;document.getElementById('btnResetEmpty').onclick=reset;
 
-  var q=new URLSearchParams(location.search),t=q.get('type'),l=q.get('locality');
-  if(t==='residential'||t==='plotting')sel[0].value=t;if(l)sel[1].value=l;
-  apply();cards.forEach(watch);
+  function apply(){
+    var vType = fType.value,
+        vLoc = fLoc.value,
+        vBud = fBud.value,
+        vStatus = fStatus.value,
+        vConfig = fConfig.value,
+        vPossession = fPossession.value,
+        vPlotArea = fPlotArea.value,
+        vPlotCategory = fPlotCategory.value,
+        n = 0;
+
+    cards.forEach(function(c){
+      var d = c.dataset;
+
+      // 1. Property Type match
+      var matchType = (vType === 'all' || d.type === vType);
+
+      // 2. Location match
+      var matchLoc = (vLoc === 'all' || (d.location && d.location.indexOf(vLoc) > -1));
+
+      // 3. Budget match
+      var matchBud = (vBud === 'all' || (d.budget && d.budget.indexOf(vBud) > -1));
+
+      // 4. Project Status match
+      var matchStatus = (vStatus === 'all' || (d.status && d.status.indexOf(vStatus) > -1));
+
+      // 5. Dynamic Residential matches
+      var matchConfig = true;
+      var matchPossession = true;
+      if(vType === 'residential' || (vType === 'all' && (vConfig !== 'all' || vPossession !== 'all'))){
+        if(vConfig !== 'all') matchConfig = (d.config && d.config.indexOf(vConfig) > -1);
+        if(vPossession !== 'all') matchPossession = (d.possession && d.possession.indexOf(vPossession) > -1);
+      }
+
+      // 6. Dynamic Plotting matches
+      var matchPlotArea = true;
+      var matchPlotCategory = true;
+      if(vType === 'plotting' || (vType === 'all' && (vPlotArea !== 'all' || vPlotCategory !== 'all'))){
+        if(vPlotArea !== 'all') matchPlotArea = (d.plotarea && d.plotarea.indexOf(vPlotArea) > -1);
+        if(vPlotCategory !== 'all') matchPlotCategory = (d.plotcategory && d.plotcategory.indexOf(vPlotCategory) > -1);
+      }
+
+      var ok = matchType && matchLoc && matchBud && matchStatus && matchConfig && matchPossession && matchPlotArea && matchPlotCategory;
+      c.style.display = ok ? '' : 'none';
+      if(ok) n++;
+    });
+
+    layout();
+    shown.textContent = n;
+    empty.style.display = n ? 'none' : 'block';
+    grid.style.display = n ? 'grid' : 'none';
+    cards.forEach(function(c){
+      if(c.style.display !== 'none' && !c.classList.contains('in') && c.getBoundingClientRect().top < innerHeight){
+        setTimeout(function(){c.classList.add('in')},(c.dataset.col||0)*160);
+      }
+    });
+  }
+
+  function reset(){
+    fType.value = 'all';
+    fLoc.value = 'all';
+    fBud.value = 'all';
+    fStatus.value = 'all';
+    fConfig.value = 'all';
+    fPossession.value = 'all';
+    fPlotArea.value = 'all';
+    fPlotCategory.value = 'all';
+    updateDynamicRows();
+    apply();
+  }
+
+  // Event Listeners
+  if(fType){
+    fType.addEventListener('change', function(){
+      updateDynamicRows();
+      apply();
+    });
+  }
+
+  [fLoc, fBud, fStatus, fConfig, fPossession, fPlotArea, fPlotCategory].forEach(function(s){
+    if(s) s.addEventListener('change', apply);
+  });
+
+  var btnSearch = document.getElementById('btnSearch');
+  if(btnSearch){
+    btnSearch.onclick = function(){
+      apply();
+      grid.scrollIntoView({behavior:'smooth', block:'start'});
+    };
+  }
+
+  var btnReset = document.getElementById('btnReset');
+  var btnResetEmpty = document.getElementById('btnResetEmpty');
+  if(btnReset) btnReset.onclick = reset;
+  if(btnResetEmpty) btnResetEmpty.onclick = reset;
+
+  // Handle URL query parameters (e.g. properties.html?type=residential or ?type=plotting)
+  var q = new URLSearchParams(location.search);
+  var t = q.get('type');
+  var l = q.get('location') || q.get('locality');
+  if(t === 'residential' || t === 'plotting') fType.value = t;
+  if(l && (l === 'wagholi' || l === 'hinjewadi' || l === 'baner' || l === 'other')) fLoc.value = l;
+
+  updateDynamicRows();
+  apply();
+  cards.forEach(watch);
 })();
 </script>
 </body>

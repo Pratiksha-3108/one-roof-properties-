@@ -647,17 +647,51 @@
       border-radius: 20px;
       padding: 34px 28px;
       box-shadow: 0 8px 24px rgba(70, 86, 101, 0.05);
-      transition: all 0.35s var(--ease);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.45s ease;
       display: flex;
       flex-direction: column;
       position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      isolation: isolate;
     }
     .highlight-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 38px rgba(70, 86, 101, 0.12);
-      border-color: var(--navy);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 50px rgba(17, 30, 38, 0.22);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .highlight-bg-cover {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      border-radius: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .highlight-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.0);
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      display: block;
+    }
+    .highlight-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(16, 29, 37, 0.45) 0%, rgba(12, 22, 29, 0.88) 100%);
+    }
+    .highlight-card:hover .highlight-bg-cover {
+      opacity: 1;
+    }
+    .highlight-card:hover .highlight-bg-img {
+      transform: scale(1.08);
     }
     .highlight-icon-wrap {
+      position: relative;
+      z-index: 2;
       width: 52px;
       height: 52px;
       border-radius: 14px;
@@ -669,17 +703,21 @@
       font-size: 1.35rem;
       color: var(--navy-deep);
       margin-bottom: 20px;
-      transition: all 0.3s ease;
+      transition: transform 0.35s ease, background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
     }
     .highlight-card:hover .highlight-icon-wrap {
-      background: var(--navy-deep);
+      background: rgba(255, 255, 255, 0.18);
       color: #ffffff;
-      border-color: var(--navy-deep);
+      border-color: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transform: translateY(-2px);
     }
     .highlight-tag {
       position: absolute;
       top: 28px;
       right: 28px;
+      z-index: 2;
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 1.4px;
@@ -689,19 +727,39 @@
       padding: 4px 10px;
       border-radius: 999px;
       border: 1px solid var(--border-line);
+      transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+    }
+    .highlight-card:hover .highlight-tag {
+      background: rgba(212, 175, 55, 0.28);
+      color: #ffffff;
+      border-color: rgba(212, 175, 55, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
     .highlight-title {
+      position: relative;
+      z-index: 2;
       font-family: var(--head-font);
       font-size: 1.32rem;
       font-weight: 700;
       color: var(--navy-deep);
       margin-bottom: 10px;
       line-height: 1.25;
+      transition: color 0.35s ease;
+    }
+    .highlight-card:hover .highlight-title {
+      color: #ffffff;
     }
     .highlight-desc {
+      position: relative;
+      z-index: 2;
       font-size: 0.92rem;
       color: var(--muted);
       line-height: 1.65;
+      transition: color 0.35s ease;
+    }
+    .highlight-card:hover .highlight-desc {
+      color: rgba(250, 248, 238, 0.92);
     }
 
     /* ======================================================== */
@@ -1778,6 +1836,10 @@
         <div class="highlights-grid">
           
           <div class="highlight-card plot-reveal">
+            <div class="highlight-bg-cover">
+              <img src="assets/pune-luxury-villas.jpg" alt="Master-Planned Enclave" class="highlight-bg-img" loading="lazy">
+              <div class="highlight-bg-overlay"></div>
+            </div>
             <div class="highlight-icon-wrap"><i class="fa-solid fa-tree-city"></i></div>
             <span class="highlight-tag">80 ACRES</span>
             <h3 class="highlight-title">Master-Planned Enclave</h3>
@@ -1785,6 +1847,10 @@
           </div>
 
           <div class="highlight-card plot-reveal">
+            <div class="highlight-bg-cover">
+              <img src="assets/project-3.jpg" alt="100% Freehold Title" class="highlight-bg-img" loading="lazy">
+              <div class="highlight-bg-overlay"></div>
+            </div>
             <div class="highlight-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
             <span class="highlight-tag">CLEAR 7/12</span>
             <h3 class="highlight-title">100% Freehold Title</h3>
@@ -1792,6 +1858,10 @@
           </div>
 
           <div class="highlight-card plot-reveal">
+            <div class="highlight-bg-cover">
+              <img src="assets/realestate23.webp" alt="PMRDA &amp; MahaRERA Approved" class="highlight-bg-img" loading="lazy">
+              <div class="highlight-bg-overlay"></div>
+            </div>
             <div class="highlight-icon-wrap"><i class="fa-solid fa-stamp"></i></div>
             <span class="highlight-tag">SANCTIONED</span>
             <h3 class="highlight-title">PMRDA &amp; MahaRERA Approved</h3>
@@ -1799,6 +1869,10 @@
           </div>
 
           <div class="highlight-card plot-reveal">
+            <div class="highlight-bg-cover">
+              <img src="assets/counter-day.jpg" alt="Underground Infrastructure" class="highlight-bg-img" loading="lazy">
+              <div class="highlight-bg-overlay"></div>
+            </div>
             <div class="highlight-icon-wrap"><i class="fa-solid fa-bolt-lightning"></i></div>
             <span class="highlight-tag">PLUG &amp; PLAY</span>
             <h3 class="highlight-title">Underground Infrastructure</h3>
@@ -1806,6 +1880,10 @@
           </div>
 
           <div class="highlight-card plot-reveal">
+            <div class="highlight-bg-cover">
+              <img src="assets/loan-hero-bread.jpg" alt="Pre-Approved Bank Loans" class="highlight-bg-img" loading="lazy">
+              <div class="highlight-bg-overlay"></div>
+            </div>
             <div class="highlight-icon-wrap"><i class="fa-solid fa-building-columns"></i></div>
             <span class="highlight-tag">UP TO 80%</span>
             <h3 class="highlight-title">Pre-Approved Bank Loans</h3>
@@ -1813,6 +1891,10 @@
           </div>
 
           <div class="highlight-card plot-reveal">
+            <div class="highlight-bg-cover">
+              <img src="assets/project-5.webp" alt="Immediate Villa Construction" class="highlight-bg-img" loading="lazy">
+              <div class="highlight-bg-overlay"></div>
+            </div>
             <div class="highlight-icon-wrap"><i class="fa-solid fa-compass-drafting"></i></div>
             <span class="highlight-tag">G+2 FLOORS</span>
             <h3 class="highlight-title">Immediate Villa Construction</h3>

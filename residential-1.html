@@ -1246,11 +1246,14 @@
     }
 
     /* ===================================================================== */
-    /* SECTION 8: 3D LOCATION & CONNECTIVITY SHOWCASE                        */
+    /* SECTION 8: 3D LOCATION & CONNECTIVITY SHOWCASE (URBAN SKYLINE STYLE)  */
     /* ===================================================================== */
     .conn-3d-sec {
-      background: var(--bg-cream);
-      padding: clamp(60px, 6.5vw, 95px) 0;
+      background-color: var(--bg-cream, #FAF8EE);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(217, 119, 6, 0.05) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 60 C30 40, 90 80, 120 60' stroke='%23e2dcce' stroke-width='0.7' fill='none' stroke-opacity='0.45'/%3E%3Cpath d='M0 90 C30 70, 90 110, 120 90' stroke='%23e2dcce' stroke-width='0.7' fill='none' stroke-opacity='0.3'/%3E%3Cpath d='M0 30 C30 10, 90 50, 120 30' stroke='%23e2dcce' stroke-width='0.7' fill='none' stroke-opacity='0.3'/%3E%3C/svg%3E");
+      padding: clamp(60px, 7vw, 100px) 0;
       position: relative;
       overflow: hidden;
       border-top: 1px solid rgba(70, 86, 101, 0.08);
@@ -1259,12 +1262,21 @@
     .conn-3d-container {
       max-width: 1360px;
       margin: 0 auto;
-      padding: 0 clamp(20px, 4vw, 40px);
+      padding: 0 clamp(16px, 3.5vw, 36px);
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .conn-header {
-      margin-bottom: clamp(32px, 3.5vw, 44px);
-      max-width: 860px;
+
+    /* Centered Minimalist Eyebrow & Headline */
+    .conn-header-center {
+      text-align: center;
+      margin-bottom: clamp(28px, 3.5vw, 40px);
+      max-width: 820px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .conn-eyebrow {
       display: inline-flex;
@@ -1279,18 +1291,18 @@
       margin-bottom: 12px;
     }
     .conn-eyebrow-line {
-      width: 28px;
+      width: 24px;
       height: 2px;
       background: var(--gold-accent);
       display: inline-block;
     }
     .conn-headline {
       font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 3.6vw, 3.3rem);
+      font-size: clamp(2.1rem, 3.4vw, 3.2rem);
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.22;
       color: #1f343f;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       letter-spacing: -0.5px;
     }
     .conn-gold-italic {
@@ -1302,89 +1314,25 @@
       font-family: var(--font-body);
       font-size: clamp(0.95rem, 1.05vw, 1.05rem);
       color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 680px;
+      line-height: 1.6;
+      max-width: 660px;
       margin: 0;
     }
 
-    /* Main Showcase: Split Columns (Left Features + Right 3D Visual Map) */
-    .conn-showcase-grid {
-      display: grid;
-      grid-template-columns: minmax(320px, 380px) 1fr;
-      gap: clamp(24px, 3vw, 40px);
-      align-items: stretch;
-      margin-bottom: 28px;
-    }
-
-    /* Left Feature Pillars */
-    .conn-pillars-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      justify-content: space-between;
-    }
-    .conn-pillar-card {
-      background: #ffffff;
-      border: 1px solid rgba(70, 86, 101, 0.1);
-      border-radius: 16px;
-      padding: 18px 20px;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      box-shadow: 0 4px 16px rgba(70, 86, 101, 0.04);
-      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .conn-pillar-card:hover {
-      transform: translateX(6px);
-      border-color: rgba(217, 119, 6, 0.4);
-      box-shadow: 0 10px 24px rgba(70, 86, 101, 0.08);
-    }
-    .conn-pillar-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: rgba(217, 119, 6, 0.12);
-      color: var(--gold-accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.15rem;
-      flex-shrink: 0;
-      transition: all 0.3s ease;
-    }
-    .conn-pillar-card:hover .conn-pillar-icon {
-      background: var(--gold-accent);
-      color: #ffffff;
-      transform: scale(1.06);
-    }
-    .conn-pillar-content h4 {
-      font-family: var(--font-body);
-      font-size: 1.02rem;
-      font-weight: 700;
-      color: #1f343f;
-      margin-bottom: 4px;
-    }
-    .conn-pillar-content p {
-      font-family: var(--font-body);
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-      margin: 0;
-    }
-
-    /* Right 3D Visual Map Frame */
+    /* HERO 3D VIEWPORT STAGE (Matching Urban Skyline Layout) */
     .conn-visual-stage {
       position: relative;
-      border-radius: 24px;
+      border-radius: 28px;
       overflow: hidden;
-      background: #f6f1e5;
-      border: 1.5px solid rgba(70, 86, 101, 0.14);
-      box-shadow: 0 20px 50px rgba(31, 52, 63, 0.12);
-      height: 520px;
+      background: #edf2f7;
+      border: 1.5px solid rgba(70, 86, 101, 0.12);
+      box-shadow: 0 20px 60px rgba(31, 52, 63, 0.1);
+      height: clamp(480px, 58vh, 620px);
       width: 100%;
       user-select: none;
       -webkit-user-select: none;
       touch-action: pan-y;
+      margin-bottom: clamp(20px, 2.5vw, 30px);
     }
     #conn3dCanvas {
       width: 100%;
@@ -1397,17 +1345,17 @@
       cursor: grabbing;
     }
 
-    /* 3D Viewport Controls HUD Overlay */
+    /* Top Controls HUD Overlay */
     .conn-3d-hud {
       position: absolute;
-      top: 16px;
-      left: 16px;
-      right: 16px;
+      top: 18px;
+      left: 20px;
+      right: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       pointer-events: none;
-      z-index: 10;
+      z-index: 12;
     }
     .conn-3d-badge {
       display: inline-flex;
@@ -1420,12 +1368,13 @@
       font-family: var(--font-body);
       font-size: 0.76rem;
       font-weight: 700;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.4px;
       text-transform: uppercase;
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: 999px;
       border: 1px solid rgba(217, 119, 6, 0.4);
       pointer-events: auto;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
     }
     .conn-3d-badge i {
       color: var(--gold-accent);
@@ -1434,12 +1383,12 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       padding: 4px;
       border-radius: 999px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
       border: 1px solid rgba(70, 86, 101, 0.12);
       pointer-events: auto;
     }
@@ -1466,196 +1415,263 @@
       background: var(--gold-accent);
       color: #ffffff;
     }
-    .conn-3d-hint {
+
+    /* Bottom-Right "Drag to explore" Pill (Identical to Urban Skyline) */
+    .conn-3d-drag-hint {
       position: absolute;
-      bottom: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      padding: 5px 14px;
+      bottom: 18px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 7px 18px;
       border-radius: 999px;
       font-family: var(--font-body);
-      font-size: 0.74rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      color: #475569;
+      color: #334155;
       pointer-events: none;
-      z-index: 10;
+      z-index: 12;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-      white-space: nowrap;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(70, 86, 101, 0.1);
+    }
+    .conn-3d-drag-hint i {
+      color: var(--gold-accent);
+      font-size: 0.88rem;
     }
 
-    /* HTML Layer for 3D Projected Floating Pins */
+    /* 3D PROJECTED PINS & TOOLTIPS LAYER */
     .conn-pins-layer {
       position: absolute;
       inset: 0;
       pointer-events: none;
       overflow: hidden;
-      z-index: 6;
+      z-index: 10;
     }
-    .conn-pin {
+
+    /* Main Project Tower Pill (Dark Navy Capsule with Stem) */
+    .conn-map-tooltip.conn-tooltip-main {
       position: absolute;
       top: 0;
       left: 0;
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 6px 14px;
+      gap: 8px;
+      background: #1f343f;
+      color: #FAF8EE;
+      padding: 7px 18px 7px 14px;
       border-radius: 999px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+      border: 1.5px solid var(--gold-accent);
+      box-shadow: 0 10px 28px rgba(31, 52, 63, 0.35);
       font-family: var(--font-body);
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      color: #1f343f;
       pointer-events: auto;
       cursor: pointer;
       white-space: nowrap;
-      transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease, border-color 0.2s ease;
-      will-change: transform;
+      z-index: 25;
+      transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .conn-pin:hover, .conn-pin.pin-active {
-      transform: scale(1.1) translateY(-4px) !important;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
-      border: 1.5px solid var(--gold-accent);
-      z-index: 20;
+    .conn-tooltip-main:hover {
+      transform: scale(1.08) translateY(-4px) !important;
     }
-    .conn-pin-icon {
+    .conn-tooltip-main .conn-pin-badge {
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background: rgba(217, 119, 6, 0.18);
-      color: var(--gold-accent);
+      background: var(--gold-accent);
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.72rem;
     }
-    .conn-pin-dist {
-      color: var(--gold-accent);
-      font-weight: 800;
-      margin-left: 2px;
-    }
-
-    /* Main Project Pin (Tower beacon) */
-    .conn-pin-main {
-      background: #1f343f;
-      color: #FAF8EE;
-      border: 1.5px solid var(--gold-accent);
-      padding: 8px 18px;
-      font-size: 0.88rem;
-    }
-    .conn-pin-main .conn-pin-icon {
-      background: var(--gold-accent);
-      color: #ffffff;
-      width: 26px;
-      height: 26px;
-    }
-    .conn-pin-beacon {
+    .conn-tooltip-stem {
       position: absolute;
-      bottom: -6px;
+      bottom: -8px;
       left: 50%;
       transform: translateX(-50%);
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--gold-accent);
-      box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.4);
-      animation: connBeacon 2s infinite;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid #1f343f;
     }
 
-    /* Interactive Quick-Access Connectivity Pills (Image 2) */
-    .conn-pills-wrap {
-      background: #ffffff;
-      border: 1px solid rgba(70, 86, 101, 0.1);
-      border-radius: 20px;
-      padding: 22px 26px;
-      margin-bottom: 24px;
-      box-shadow: 0 6px 20px rgba(70, 86, 101, 0.04);
+    /* Landmark Map Pin: Circular Amber Pin (Urban Skyline Style) */
+    .conn-map-pin {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      pointer-events: auto;
+      cursor: pointer;
+      z-index: 18;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      user-select: none;
     }
-    .conn-pills-headline {
-      font-family: var(--font-body);
+    .conn-pin-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.45);
+      border: 2px solid #ffffff;
+      position: relative;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
     }
-    .conn-pills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 12px;
-      align-items: center;
+    .conn-map-pin:hover .conn-pin-circle {
+      transform: scale(1.18);
+      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.65);
     }
-    .conn-badge-pill {
+    /* Subtle Pin Stem */
+    .conn-pin-stem {
+      width: 2px;
+      height: 10px;
+      background: #d97706;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Expanded Dynamic Tooltip Badge (Shown when pin is active / hovered) */
+    .conn-pin-pop {
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%) scale(0.85);
+      opacity: 0;
+      pointer-events: none;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      background: #1f343f;
+      color: #FAF8EE;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(217, 119, 6, 0.5);
+      box-shadow: 0 8px 24px rgba(31, 52, 63, 0.35);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .conn-pop-time {
+      background: #d97706;
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .conn-map-pin:hover .conn-pin-pop,
+    .conn-map-pin.pin-active .conn-pin-pop {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+      pointer-events: auto;
+    }
+    .conn-map-pin.pin-active .conn-pin-circle {
+      transform: scale(1.22);
+      box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.35), 0 8px 22px rgba(217, 119, 6, 0.7);
+    }
+    .conn-map-pin.pin-active {
+      z-index: 30;
+    }
+
+    /* TWO-ROW LANDMARK NAVIGATION PILLS (Identical to Urban Skyline UI) */
+    .conn-pills-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: clamp(24px, 3vw, 36px);
+    }
+    .conn-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px 12px;
+      max-width: 1280px;
+    }
+    .conn-nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
       background: #ffffff;
       border: 1.5px solid rgba(70, 86, 101, 0.14);
       border-radius: 999px;
-      padding: 7px 16px 7px 14px;
+      padding: 8px 18px 8px 16px;
       font-family: var(--font-body);
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       font-weight: 600;
       color: #1f343f;
       box-shadow: 0 2px 8px rgba(70, 86, 101, 0.04);
+      cursor: pointer;
       transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      outline: none;
     }
-    .conn-badge-pill:hover {
+    .conn-nav-pill:hover {
       transform: translateY(-2px);
       border-color: var(--gold-accent);
       box-shadow: 0 6px 18px rgba(217, 119, 6, 0.15);
     }
-    .conn-badge-pill i {
+    .conn-nav-pill i {
       color: var(--gold-accent);
       font-size: 0.95rem;
+      transition: color 0.2s ease;
     }
-    .conn-badge-time {
+    .conn-pill-time {
       background: #f1f5f9;
       color: #475569;
       font-size: 0.74rem;
       font-weight: 700;
       padding: 3px 10px;
       border-radius: 999px;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
+      transition: all 0.2s ease;
     }
-    /* Special Highlight Pill for Hinjewadi IT Park (matching Image 2) */
-    .conn-badge-pill.conn-badge-highlight {
+
+    /* Active Pill State: Dark Navy with Amber Time Badge (from Urban Skyline UI) */
+    .conn-nav-pill.active {
       background: #1f343f;
       color: #FAF8EE;
       border-color: #1f343f;
-      box-shadow: 0 6px 20px rgba(31, 52, 63, 0.25);
+      box-shadow: 0 8px 24px rgba(31, 52, 63, 0.28);
+      transform: translateY(-2px);
     }
-    .conn-badge-pill.conn-badge-highlight i {
+    .conn-nav-pill.active i {
       color: var(--gold-accent);
     }
-    .conn-badge-pill.conn-badge-highlight .conn-badge-time {
+    .conn-nav-pill.active .conn-pill-time {
       background: var(--gold-accent);
       color: #ffffff;
     }
 
-    /* Bottom Transit Bar (Image 1) */
+    /* Bottom Transit Bar (Sleek Regional Connectivity Card) */
     .conn-transit-bar {
+      width: 100%;
+      max-width: 1200px;
       background: #ffffff;
       border: 1px solid rgba(70, 86, 101, 0.12);
       border-radius: 999px;
-      padding: 16px 32px;
+      padding: 16px 36px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
       align-items: center;
-      box-shadow: 0 6px 24px rgba(70, 86, 101, 0.05);
+      box-shadow: 0 8px 24px rgba(70, 86, 101, 0.05);
+      box-sizing: border-box;
     }
     .conn-transit-item {
       display: flex;
@@ -1694,18 +1710,27 @@
     }
 
     @media (max-width: 1024px) {
-      .conn-showcase-grid {
-        grid-template-columns: 1fr;
-      }
       .conn-transit-bar {
         border-radius: 20px;
         grid-template-columns: 1fr 1fr;
+        padding: 20px 24px;
       }
       .conn-transit-item:nth-child(2) {
         border-right: none;
       }
     }
     @media (max-width: 640px) {
+      .conn-visual-stage {
+        height: 420px;
+        border-radius: 20px;
+      }
+      .conn-pills-row {
+        gap: 8px;
+      }
+      .conn-nav-pill {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+      }
       .conn-transit-bar {
         grid-template-columns: 1fr;
         padding: 18px;
@@ -1715,9 +1740,6 @@
         border-bottom: 1px solid rgba(70, 86, 101, 0.1);
         padding-bottom: 12px;
         padding-right: 0;
-      }
-      .pin-pos-schools, .pin-pos-hospital, .pin-pos-highway, .pin-pos-mall {
-        transform: scale(0.85);
       }
     }
 
@@ -3082,198 +3104,194 @@
   </section>
 
   <!-- ===================================================================== -->
-  <!-- 8. 3D LOCATION & CONNECTIVITY SHOWCASE                                -->
+  <!-- 8. 3D LOCATION & CONNECTIVITY SHOWCASE (URBAN SKYLINE STYLE)          -->
   <!-- ===================================================================== -->
   <section class="conn-3d-sec" id="connectivitySection">
     <div class="conn-3d-container">
       
-      <!-- Section Header -->
-      <div class="conn-header">
+      <!-- Section Header (Centered Minimalist Style) -->
+      <div class="conn-header-center">
         <div class="conn-eyebrow">
-          <span class="conn-eyebrow-line"></span> Location &amp; Connectivity
+          <span class="conn-eyebrow-line"></span> Location &amp; Connectivity <span class="conn-eyebrow-line"></span>
         </div>
         <h2 class="conn-headline">
           Everything Connected.<br>Everything <span class="conn-gold-italic">Within Reach.</span>
         </h2>
         <p class="conn-lead">
-          Enjoy seamless connectivity to key destinations, schools, healthcare, and IT corridors, making your everyday life effortless and convenient.
+          Enjoy seamless connectivity to premier schools, top healthcare, express highways, and prime IT corridors.
         </p>
       </div>
 
-      <!-- Main Showcase: 4 Feature Pillars (Left) + 3D Visual Map (Right) -->
-      <div class="conn-showcase-grid">
-        
-        <!-- Left Feature Pillars -->
-        <div class="conn-pillars-list">
-          <div class="conn-pillar-card">
-            <div class="conn-pillar-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-            <div class="conn-pillar-content">
-              <h4>Schools &amp; Colleges</h4>
-              <p>Top educational institutions nearby — S B Patil, City Pride School &amp; D Y Patil University.</p>
-            </div>
-          </div>
+      <!-- Full-Width 3D Visual Map Hero Stage -->
+      <div class="conn-visual-stage" id="conn3dStage">
+        <canvas id="conn3dCanvas"></canvas>
 
-          <div class="conn-pillar-card">
-            <div class="conn-pillar-icon"><i class="fa-solid fa-hospital"></i></div>
-            <div class="conn-pillar-content">
-              <h4>Hospitals &amp; Healthcare</h4>
-              <p>Quality healthcare within minutes — Aditya Birla Memorial Hospital &amp; emergency clinics.</p>
-            </div>
-          </div>
-
-          <div class="conn-pillar-card">
-            <div class="conn-pillar-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-            <div class="conn-pillar-content">
-              <h4>Shopping &amp; Entertainment</h4>
-              <p>Malls and daily leisure destinations close by — D-Mart, Reliance Mart &amp; Mukai Chowk.</p>
-            </div>
-          </div>
-
-          <div class="conn-pillar-card">
-            <div class="conn-pillar-icon"><i class="fa-solid fa-route"></i></div>
-            <div class="conn-pillar-content">
-              <h4>Road &amp; IT Connectivity</h4>
-              <p>Instant access to Mumbai-Pune Expressway (3 Mins) and Hinjewadi IT Park (15 Mins).</p>
-            </div>
+        <!-- Top Controls Overlay -->
+        <div class="conn-3d-hud">
+          <span class="conn-3d-badge"><i class="fa-solid fa-cube"></i> Interactive 3D City View</span>
+          <div class="conn-3d-ctrl-btns">
+            <button class="conn-3d-btn active" id="btn3dRotate" title="Toggle Auto Rotation"><i class="fa-solid fa-rotate"></i></button>
+            <button class="conn-3d-btn" id="btn3dZoomIn" title="Zoom In"><i class="fa-solid fa-plus"></i></button>
+            <button class="conn-3d-btn" id="btn3dZoomOut" title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
+            <button class="conn-3d-btn" id="btn3dReset" title="Reset View"><i class="fa-solid fa-crosshairs"></i></button>
           </div>
         </div>
 
-        <!-- Right: 3D Interactive WebGL Map Stage -->
-        <div class="conn-visual-stage" id="conn3dStage">
-          <canvas id="conn3dCanvas"></canvas>
-
-          <!-- 3D Controls HUD Overlay -->
-          <div class="conn-3d-hud">
-            <span class="conn-3d-badge"><i class="fa-solid fa-cube"></i> Interactive 3D City View</span>
-            <div class="conn-3d-ctrl-btns">
-              <button class="conn-3d-btn active" id="btn3dRotate" title="Toggle Auto Rotation"><i class="fa-solid fa-rotate"></i></button>
-              <button class="conn-3d-btn" id="btn3dZoomIn" title="Zoom In"><i class="fa-solid fa-plus"></i></button>
-              <button class="conn-3d-btn" id="btn3dZoomOut" title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
-              <button class="conn-3d-btn" id="btn3dReset" title="Reset Camera"><i class="fa-solid fa-crosshairs"></i></button>
-            </div>
+        <!-- HTML Layer for 3D Projected Floating Pins & Dynamic Tooltips -->
+        <div class="conn-pins-layer" id="connPinsLayer">
+          <!-- Main Project Tower Badge (Identical to Urban Skyline Ravet Badge) -->
+          <div class="conn-map-tooltip conn-tooltip-main" id="pin-project" data-target="project">
+            <div class="conn-pin-badge"><i class="fa-solid fa-building"></i></div>
+            <span class="conn-tooltip-title">Skyview Residency</span>
+            <div class="conn-tooltip-stem"></div>
           </div>
 
-          <!-- HTML Layer for 3D Projected Floating Pins -->
-          <div class="conn-pins-layer" id="connPinsLayer">
-            <!-- Our Project (Main Tower Pin) -->
-            <div class="conn-pin conn-pin-main" id="pin-project" data-target="project">
-              <div class="conn-pin-icon"><i class="fa-solid fa-house"></i></div>
-              <span>Skyview Residency (Our Project)</span>
-              <span class="conn-pin-beacon"></span>
+          <!-- Surrounding Landmarks (Circular Amber Pins with Hover/Active Tooltips) -->
+          <div class="conn-map-pin" id="pin-sbpatil" data-target="sbpatil">
+            <div class="conn-pin-circle"><i class="fa-solid fa-school"></i></div>
+            <div class="conn-pin-pop">
+              <span>S B Patil Public School</span>
+              <span class="conn-pop-time">3 Mins</span>
             </div>
-
-            <!-- Surrounding Landmarks from 2nd UI -->
-            <div class="conn-pin" id="pin-sbpatil" data-target="sbpatil">
-              <div class="conn-pin-icon"><i class="fa-solid fa-school"></i></div>
-              <span>S B Patil School &bull; <strong class="conn-pin-dist">3 Mins</strong></span>
-            </div>
-
-            <div class="conn-pin" id="pin-citypride" data-target="citypride">
-              <div class="conn-pin-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-              <span>City Pride School &bull; <strong class="conn-pin-dist">3 Mins</strong></span>
-            </div>
-
-            <div class="conn-pin" id="pin-expressway" data-target="expressway">
-              <div class="conn-pin-icon"><i class="fa-solid fa-route"></i></div>
-              <span>Express Highway &bull; <strong class="conn-pin-dist">3 Mins</strong></span>
-            </div>
-
-            <div class="conn-pin" id="pin-mukaichowk" data-target="mukaichowk">
-              <div class="conn-pin-icon"><i class="fa-solid fa-diamond-turn-right"></i></div>
-              <span>Mukai Chowk &bull; <strong class="conn-pin-dist">3 Mins</strong></span>
-            </div>
-
-            <div class="conn-pin" id="pin-dypatil" data-target="dypatil">
-              <div class="conn-pin-icon"><i class="fa-solid fa-building-columns"></i></div>
-              <span>D Y Patil University &bull; <strong class="conn-pin-dist">5 Mins</strong></span>
-            </div>
-
-            <div class="conn-pin" id="pin-dmart" data-target="dmart">
-              <div class="conn-pin-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-              <span>D-Mart / Reliance &bull; <strong class="conn-pin-dist">5 Mins</strong></span>
-            </div>
-
-            <div class="conn-pin" id="pin-hospital" data-target="hospital">
-              <div class="conn-pin-icon"><i class="fa-solid fa-hospital"></i></div>
-              <span>Aditya Birla Hospital &bull; <strong class="conn-pin-dist">10 Mins</strong></span>
-            </div>
-
-            <div class="conn-pin" id="pin-hinjewadi" data-target="hinjewadi" style="background: #1f343f; color: #FAF8EE; border: 1.5px solid #d97706;">
-              <div class="conn-pin-icon" style="background: #d97706; color: #fff;"><i class="fa-solid fa-laptop-code"></i></div>
-              <span>Hinjewadi IT Park &bull; <strong class="conn-pin-dist" style="color: #d97706;">15 Mins</strong></span>
-            </div>
+            <div class="conn-pin-stem"></div>
           </div>
 
-          <div class="conn-3d-hint">
-            <i class="fa-solid fa-hand-pointer"></i> Drag to rotate &bull; Scroll to zoom &bull; Click any landmark below to focus
+          <div class="conn-map-pin" id="pin-citypride" data-target="citypride">
+            <div class="conn-pin-circle"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="conn-pin-pop">
+              <span>City Pride School</span>
+              <span class="conn-pop-time">3 Mins</span>
+            </div>
+            <div class="conn-pin-stem"></div>
+          </div>
+
+          <div class="conn-map-pin" id="pin-expressway" data-target="expressway">
+            <div class="conn-pin-circle"><i class="fa-solid fa-route"></i></div>
+            <div class="conn-pin-pop">
+              <span>Express Highway</span>
+              <span class="conn-pop-time">3 Mins</span>
+            </div>
+            <div class="conn-pin-stem"></div>
+          </div>
+
+          <div class="conn-map-pin" id="pin-mukaichowk" data-target="mukaichowk">
+            <div class="conn-pin-circle"><i class="fa-solid fa-diamond-turn-right"></i></div>
+            <div class="conn-pin-pop">
+              <span>Mukai Chowk</span>
+              <span class="conn-pop-time">3 Mins</span>
+            </div>
+            <div class="conn-pin-stem"></div>
+          </div>
+
+          <div class="conn-map-pin" id="pin-dypatil" data-target="dypatil">
+            <div class="conn-pin-circle"><i class="fa-solid fa-building-columns"></i></div>
+            <div class="conn-pin-pop">
+              <span>D Y Patil University</span>
+              <span class="conn-pop-time">5 Mins</span>
+            </div>
+            <div class="conn-pin-stem"></div>
+          </div>
+
+          <div class="conn-map-pin" id="pin-dmart" data-target="dmart">
+            <div class="conn-pin-circle"><i class="fa-solid fa-cart-shopping"></i></div>
+            <div class="conn-pin-pop">
+              <span>D-Mart / Reliance Mart</span>
+              <span class="conn-pop-time">5 Mins</span>
+            </div>
+            <div class="conn-pin-stem"></div>
+          </div>
+
+          <div class="conn-map-pin" id="pin-hospital" data-target="hospital">
+            <div class="conn-pin-circle"><i class="fa-solid fa-hospital"></i></div>
+            <div class="conn-pin-pop">
+              <span>Aditya Birla Hospital</span>
+              <span class="conn-pop-time">10 Mins</span>
+            </div>
+            <div class="conn-pin-stem"></div>
+          </div>
+
+          <div class="conn-map-pin" id="pin-hinjewadi" data-target="hinjewadi">
+            <div class="conn-pin-circle"><i class="fa-solid fa-laptop-code"></i></div>
+            <div class="conn-pin-pop">
+              <span>Hinjewadi IT Park</span>
+              <span class="conn-pop-time">15 Mins</span>
+            </div>
+            <div class="conn-pin-stem"></div>
+          </div>
+
+          <div class="conn-map-pin" id="pin-park" data-target="park">
+            <div class="conn-pin-circle"><i class="fa-solid fa-tree"></i></div>
+            <div class="conn-pin-pop">
+              <span>Bhakti-Shakti Park</span>
+              <span class="conn-pop-time">10 Mins</span>
+            </div>
+            <div class="conn-pin-stem"></div>
           </div>
         </div>
 
+        <!-- Drag to explore indicator (Bottom Right, matching Urban Skyline) -->
+        <div class="conn-3d-drag-hint">
+          <i class="fa-solid fa-arrows-rotate"></i> Drag to explore
+        </div>
       </div>
 
-      <!-- Quick Access Location Pills (Matching Image 2 Exactly) -->
-      <div class="conn-pills-wrap">
-        <div class="conn-pills-headline">
-          <i class="fa-solid fa-compass" style="color: var(--gold-accent);"></i> Key Landmarks &amp; Commute Time (Click to Focus 3D View)
-        </div>
-        <div class="conn-pills-grid">
-          <div class="conn-badge-pill" data-target="sbpatil" style="cursor: pointer;">
+      <!-- Quick-Access Landmark Pills (Two Clean Centered Rows Matching Urban Skyline UI) -->
+      <div class="conn-pills-container">
+        <!-- Row 1: 6 Pills -->
+        <div class="conn-pills-row">
+          <button class="conn-nav-pill active" data-target="sbpatil" type="button">
             <i class="fa-solid fa-school"></i>
-            <span>S B Patil Public School</span>
-            <span class="conn-badge-time">3 Mins</span>
-          </div>
-
-          <div class="conn-badge-pill" data-target="citypride" style="cursor: pointer;">
+            <span class="conn-pill-label">S B Patil Public School</span>
+            <span class="conn-pill-time">3 Mins</span>
+          </button>
+          <button class="conn-nav-pill" data-target="citypride" type="button">
             <i class="fa-solid fa-graduation-cap"></i>
-            <span>City Pride School</span>
-            <span class="conn-badge-time">3 Mins</span>
-          </div>
-
-          <div class="conn-badge-pill" data-target="expressway" style="cursor: pointer;">
+            <span class="conn-pill-label">City Pride School</span>
+            <span class="conn-pill-time">3 Mins</span>
+          </button>
+          <button class="conn-nav-pill" data-target="expressway" type="button">
             <i class="fa-solid fa-route"></i>
-            <span>Express Highway</span>
-            <span class="conn-badge-time">3 Mins</span>
-          </div>
-
-          <div class="conn-badge-pill" data-target="mukaichowk" style="cursor: pointer;">
+            <span class="conn-pill-label">Express Highway</span>
+            <span class="conn-pill-time">3 Mins</span>
+          </button>
+          <button class="conn-nav-pill" data-target="mukaichowk" type="button">
             <i class="fa-solid fa-diamond-turn-right"></i>
-            <span>Mukai Chowk</span>
-            <span class="conn-badge-time">3 Mins</span>
-          </div>
-
-          <div class="conn-badge-pill" data-target="dypatil" style="cursor: pointer;">
+            <span class="conn-pill-label">Mukai Chowk</span>
+            <span class="conn-pill-time">3 Mins</span>
+          </button>
+          <button class="conn-nav-pill" data-target="dypatil" type="button">
             <i class="fa-solid fa-building-columns"></i>
-            <span>D Y Patil University</span>
-            <span class="conn-badge-time">5 Mins</span>
-          </div>
-
-          <div class="conn-badge-pill" data-target="dmart" style="cursor: pointer;">
+            <span class="conn-pill-label">D Y Patil University</span>
+            <span class="conn-pill-time">5 Mins</span>
+          </button>
+          <button class="conn-nav-pill" data-target="dmart" type="button">
             <i class="fa-solid fa-cart-shopping"></i>
-            <span>D-Mart / Reliance Mart</span>
-            <span class="conn-badge-time">5 Mins</span>
-          </div>
+            <span class="conn-pill-label">D-Mart / Reliance Mart</span>
+            <span class="conn-pill-time">5 Mins</span>
+          </button>
+        </div>
 
-          <div class="conn-badge-pill" data-target="hospital" style="cursor: pointer;">
+        <!-- Row 2: 3 Pills -->
+        <div class="conn-pills-row conn-pills-row-sub">
+          <button class="conn-nav-pill" data-target="hospital" type="button">
             <i class="fa-solid fa-hospital"></i>
-            <span>Aditya Birla Hospital</span>
-            <span class="conn-badge-time">10 Mins</span>
-          </div>
-
-          <div class="conn-badge-pill conn-badge-highlight" data-target="hinjewadi" style="cursor: pointer;">
+            <span class="conn-pill-label">Aditya Birla Hospital</span>
+            <span class="conn-pill-time">10 Mins</span>
+          </button>
+          <button class="conn-nav-pill" data-target="hinjewadi" type="button">
             <i class="fa-solid fa-laptop-code"></i>
-            <span>Hinjewadi IT Park</span>
-            <span class="conn-badge-time">15 Mins</span>
-          </div>
-
-          <div class="conn-badge-pill" data-target="park" style="cursor: pointer;">
+            <span class="conn-pill-label">Hinjewadi IT Park</span>
+            <span class="conn-pill-time">15 Mins</span>
+          </button>
+          <button class="conn-nav-pill" data-target="park" type="button">
             <i class="fa-solid fa-tree"></i>
-            <span>Bhakti-Shakti Park</span>
-            <span class="conn-badge-time">10 Mins</span>
-          </div>
+            <span class="conn-pill-label">Bhakti-Shakti Park</span>
+            <span class="conn-pill-time">10 Mins</span>
+          </button>
         </div>
       </div>
 
-      <!-- Bottom Transit Bar (Matching Image 1) -->
+      <!-- Bottom Regional Transit Bar -->
       <div class="conn-transit-bar">
         <div class="conn-transit-item">
           <div class="conn-transit-icon"><i class="fa-solid fa-location-dot"></i></div>
@@ -4178,7 +4196,7 @@
     }
 
     // =========================================================================
-    // 3D LOCATION & CONNECTIVITY INTERACTIVE WEBGL SCENE
+    // 3D LOCATION & CONNECTIVITY INTERACTIVE WEBGL SCENE (URBAN SKYLINE STYLE)
     // =========================================================================
     (function initConnectivity3D() {
       const container = document.getElementById('conn3dStage');
@@ -4190,13 +4208,13 @@
 
       // 1. Scene, Camera & Renderer
       const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xf6f1e5);
-      scene.fog = new THREE.FogExp2(0xf6f1e5, 0.007);
+      scene.background = new THREE.Color(0xedf2f7);
+      scene.fog = new THREE.FogExp2(0xedf2f7, 0.0055);
 
-      const camera = new THREE.PerspectiveCamera(40, width / height, 0.5, 400);
+      const camera = new THREE.PerspectiveCamera(36, width / height, 0.5, 450);
       
-      // Default viewpoint
-      const defaultCam = { x: 30, y: 34, z: 36, tx: 0, ty: 5, tz: 0 };
+      // Default isometric viewpoint (matching Urban Skyline isometric angle)
+      const defaultCam = { x: 26, y: 34, z: 38, tx: 0, ty: 4, tz: 0 };
       camera.position.set(defaultCam.x, defaultCam.y, defaultCam.z);
       
       let targetCamPos = new THREE.Vector3(defaultCam.x, defaultCam.y, defaultCam.z);
@@ -4210,64 +4228,86 @@
       renderer.shadowMap.enabled = true;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-      // 2. Lighting System
-      const ambientLight = new THREE.AmbientLight(0xfff6ec, 0.85);
+      // 2. High-Key Architectural Lighting System
+      const ambientLight = new THREE.AmbientLight(0xfff8ee, 0.9);
       scene.add(ambientLight);
 
-      const sun = new THREE.DirectionalLight(0xfff0d8, 1.25);
-      sun.position.set(45, 65, 30);
+      const sun = new THREE.DirectionalLight(0xfff3e0, 1.25);
+      sun.position.set(45, 68, 32);
       sun.castShadow = true;
       sun.shadow.mapSize.width = 1024;
       sun.shadow.mapSize.height = 1024;
       sun.shadow.camera.near = 10;
-      sun.shadow.camera.far = 160;
-      sun.shadow.camera.left = -40;
-      sun.shadow.camera.right = 40;
-      sun.shadow.camera.top = 40;
-      sun.shadow.camera.bottom = -40;
-      sun.shadow.bias = -0.0005;
+      sun.shadow.camera.far = 170;
+      sun.shadow.camera.left = -44;
+      sun.shadow.camera.right = 44;
+      sun.shadow.camera.top = 44;
+      sun.shadow.camera.bottom = -44;
+      sun.shadow.bias = -0.0004;
       scene.add(sun);
 
-      const skyFill = new THREE.HemisphereLight(0xfffdf7, 0x5a6e7f, 0.4);
+      const skyFill = new THREE.HemisphereLight(0xf4f8fc, 0xd0dbe6, 0.45);
       scene.add(skyFill);
 
-      // Materials Palette
-      const matGrass = new THREE.MeshLambertMaterial({ color: 0x86b37c });
+      // Materials Palette (Matching Urban Skyline Clean Light City Tone)
+      const matTerrain = new THREE.MeshLambertMaterial({ color: 0xe8edf2 });
+      const matRoad = new THREE.MeshLambertMaterial({ color: 0xd9e1e8 });
+      const matRoadDark = new THREE.MeshLambertMaterial({ color: 0x334454 });
       const matWater = new THREE.MeshPhongMaterial({
-        color: 0x3d8591,
-        specular: 0x99e5f2,
-        shininess: 90,
+        color: 0x112232,       // Deep midnight navy river ribbon
+        specular: 0x486982,
+        shininess: 65,
         transparent: true,
-        opacity: 0.92
+        opacity: 0.96
       });
-      const matRoad = new THREE.MeshLambertMaterial({ color: 0x33414d });
-      const matWhiteBuilding = new THREE.MeshLambertMaterial({ color: 0xfcfbfa });
-      const matGlass = new THREE.MeshPhongMaterial({ color: 0x243e4f, specular: 0x7cb5d2, shininess: 85 });
-      const matGoldAccent = new THREE.MeshLambertMaterial({ color: 0xd97706 });
-      const matPodium = new THREE.MeshLambertMaterial({ color: 0xeee7db });
-      const matTreeTrunk = new THREE.MeshLambertMaterial({ color: 0x6e5038 });
-      const matTreeLeaves = new THREE.MeshLambertMaterial({ color: 0x4a7c43 });
-      const matTreeLeavesDark = new THREE.MeshLambertMaterial({ color: 0x386333 });
+      const matWhiteBuilding = new THREE.MeshLambertMaterial({ color: 0xfcfdff });
+      const matSlateBuilding = new THREE.MeshLambertMaterial({ color: 0xe5ecf2 });
+      const matWarmBuilding = new THREE.MeshLambertMaterial({ color: 0xf0ede6 });
+      const matGlass = new THREE.MeshPhongMaterial({ color: 0x1d303f, specular: 0x82b2d2, shininess: 85 });
+      const matGold = new THREE.MeshLambertMaterial({ color: 0xd97706 });
+      const matPodium = new THREE.MeshLambertMaterial({ color: 0xeae6dc });
+      const matTreeTrunk = new THREE.MeshLambertMaterial({ color: 0x6e523e });
+      const matTreeLeaves = new THREE.MeshLambertMaterial({ color: 0x548c52 });
+      const matTreeLeavesDark = new THREE.MeshLambertMaterial({ color: 0x427540 });
 
       // 3. World Group
       const worldGroup = new THREE.Group();
       scene.add(worldGroup);
 
-      // Ground Base
-      const islandGeo = new THREE.CylinderGeometry(46, 48, 2.5, 48);
-      const islandMesh = new THREE.Mesh(islandGeo, matGrass);
-      islandMesh.position.y = -1.25;
-      islandMesh.receiveShadow = true;
-      worldGroup.add(islandMesh);
+      // Ground Base (Rounded City Island)
+      const baseGeo = new THREE.CylinderGeometry(48, 50, 2.5, 48);
+      const baseMesh = new THREE.Mesh(baseGeo, matTerrain);
+      baseMesh.position.y = -1.25;
+      baseMesh.receiveShadow = true;
+      worldGroup.add(baseMesh);
 
-      // Curved River
+      // Street Grid Network (Criss-crossing city blocks like in Urban Skyline)
+      const roadMat = new THREE.MeshBasicMaterial({ color: 0xdce4ec });
+      const gridAvenues = [-30, -20, -10, 0, 10, 20, 30];
+      gridAvenues.forEach(x => {
+        const road = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 88), roadMat);
+        road.rotation.x = -Math.PI / 2;
+        road.position.set(x, 0.02, 0);
+        road.receiveShadow = true;
+        worldGroup.add(road);
+      });
+      const gridStreets = [-32, -22, -12, -2, 8, 18, 28];
+      gridStreets.forEach(z => {
+        const road = new THREE.Mesh(new THREE.PlaneGeometry(88, 2.4), roadMat);
+        road.rotation.x = -Math.PI / 2;
+        road.position.set(0, 0.02, z);
+        road.receiveShadow = true;
+        worldGroup.add(road);
+      });
+
+      // Winding Midnight Navy River Ribbon (Urban Skyline Style S-curve)
       const riverShape = new THREE.Shape();
-      riverShape.moveTo(-45, 12);
-      riverShape.bezierCurveTo(-20, 18, 0, -4, 20, 8);
-      riverShape.bezierCurveTo(32, 14, 40, -18, 48, -15);
-      riverShape.lineTo(48, -25);
-      riverShape.bezierCurveTo(35, -28, 26, 4, 15, -1);
-      riverShape.bezierCurveTo(-4, -14, -20, 7, -45, 0);
+      riverShape.moveTo(-48, 16);
+      riverShape.bezierCurveTo(-26, 20, -8, -6, 12, 6);
+      riverShape.bezierCurveTo(24, 14, 34, -14, 48, -12);
+      riverShape.lineTo(48, -22);
+      riverShape.bezierCurveTo(32, -24, 20, 0, 8, -2);
+      riverShape.bezierCurveTo(-12, -14, -28, 10, -48, 6);
       riverShape.closePath();
 
       const riverGeo = new THREE.ShapeGeometry(riverShape);
@@ -4276,161 +4316,169 @@
       riverMesh.position.y = 0.05;
       worldGroup.add(riverMesh);
 
-      // Bridges across river
+      // Bridges across river carrying roads
       function createBridge(x, z, rotY) {
         const bridgeGroup = new THREE.Group();
-        const deck = new THREE.Mesh(new THREE.BoxGeometry(10, 0.5, 3.2), matRoad);
+        const deck = new THREE.Mesh(new THREE.BoxGeometry(11, 0.45, 3.4), matRoad);
         deck.castShadow = true;
         deck.receiveShadow = true;
-        deck.position.y = 0.6;
+        deck.position.y = 0.55;
         bridgeGroup.add(deck);
 
         const railMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
-        const rail1 = new THREE.Mesh(new THREE.BoxGeometry(10, 0.4, 0.15), railMat);
-        rail1.position.set(0, 0.9, 1.5);
+        const rail1 = new THREE.Mesh(new THREE.BoxGeometry(11, 0.35, 0.15), railMat);
+        rail1.position.set(0, 0.85, 1.6);
         const rail2 = rail1.clone();
-        rail2.position.z = -1.5;
+        rail2.position.z = -1.6;
         bridgeGroup.add(rail1, rail2);
 
         bridgeGroup.position.set(x, 0, z);
         bridgeGroup.rotation.y = rotY;
         worldGroup.add(bridgeGroup);
       }
-      createBridge(-8, 8, 0.45);
-      createBridge(22, 1, -0.6);
+      createBridge(-10, 8, 0.35);
+      createBridge(20, 2, -0.5);
 
-      // Expressway Sweeping Road
+      // Sweeping Expressway Curve
       const curve = new THREE.CatmullRomCurve3([
-        new THREE.Vector3(-42, 0.1, -16),
-        new THREE.Vector3(-22, 0.1, -12),
-        new THREE.Vector3(-8, 0.6, 8),
-        new THREE.Vector3(6, 0.1, 16),
-        new THREE.Vector3(26, 0.1, 14),
-        new THREE.Vector3(42, 0.1, 8)
+        new THREE.Vector3(-42, 0.15, -16),
+        new THREE.Vector3(-22, 0.15, -12),
+        new THREE.Vector3(-10, 0.6, 8),
+        new THREE.Vector3(6, 0.15, 16),
+        new THREE.Vector3(26, 0.15, 14),
+        new THREE.Vector3(42, 0.15, 8)
       ]);
-      const roadGeo = new THREE.TubeGeometry(curve, 40, 1.6, 2, false);
-      const roadMesh = new THREE.Mesh(roadGeo, matRoad);
-      roadMesh.scale.set(1, 0.15, 1);
-      roadMesh.receiveShadow = true;
-      worldGroup.add(roadMesh);
+      const expresswayGeo = new THREE.TubeGeometry(curve, 45, 1.6, 2, false);
+      const expresswayMesh = new THREE.Mesh(expresswayGeo, matRoadDark);
+      expresswayMesh.scale.set(1, 0.15, 1);
+      expresswayMesh.receiveShadow = true;
+      worldGroup.add(expresswayMesh);
 
-      // Vehicles moving along the highway
+      // Vehicles moving along Expressway
       const vehicles = [];
       const carColors = [0xd97706, 0xffffff, 0x1f343f, 0xc2410c, 0x3b82f6];
       for (let i = 0; i < 7; i++) {
         const carMat = new THREE.MeshLambertMaterial({ color: carColors[i % carColors.length] });
-        const car = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.5, 0.65), carMat);
+        const car = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.45, 0.65), carMat);
         car.castShadow = true;
         worldGroup.add(car);
         vehicles.push({ mesh: car, t: i / 7, speed: 0.0018 + (i % 3) * 0.0004 });
       }
 
-      // 4. MAIN PROJECT TOWER: Skyview Residency
+      // 4. MAIN PROJECT TOWER: Skyview Residency (Centered High-Rise)
       const towerGroup = new THREE.Group();
       
-      // Podium
-      const podium = new THREE.Mesh(new THREE.BoxGeometry(9.5, 2.2, 9), matPodium);
+      // Landscaped Podium
+      const podium = new THREE.Mesh(new THREE.BoxGeometry(10, 2.2, 9.5), matPodium);
       podium.position.y = 1.1;
       podium.castShadow = true;
       podium.receiveShadow = true;
       towerGroup.add(podium);
 
       // Podium Pool
-      const pool = new THREE.Mesh(new THREE.PlaneGeometry(3.5, 2.8), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+      const pool = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 2.8), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
       pool.rotation.x = -Math.PI / 2;
-      pool.position.set(-2, 2.22, 1.5);
+      pool.position.set(-2.2, 2.22, 1.6);
       towerGroup.add(pool);
 
-      // Main Tower Core (Step 1)
-      const tower1 = new THREE.Mesh(new THREE.BoxGeometry(6.2, 12, 5.8), matWhiteBuilding);
-      tower1.position.y = 2.2 + 6;
-      tower1.castShadow = true;
-      tower1.receiveShadow = true;
-      towerGroup.add(tower1);
+      // Tower Core (Step 1)
+      const towerCore = new THREE.Mesh(new THREE.BoxGeometry(6.4, 13, 6), matWhiteBuilding);
+      towerCore.position.y = 2.2 + 6.5;
+      towerCore.castShadow = true;
+      towerCore.receiveShadow = true;
+      towerGroup.add(towerCore);
 
-      // Tower Glass Windows (Banded)
-      for (let f = 3.5; f < 14; f += 1.4) {
-        const win = new THREE.Mesh(new THREE.BoxGeometry(6.3, 0.65, 5.9), matGlass);
+      // Tower Glass Window Bands
+      for (let f = 3.6; f < 15; f += 1.4) {
+        const win = new THREE.Mesh(new THREE.BoxGeometry(6.5, 0.65, 6.1), matGlass);
         win.position.y = f;
         towerGroup.add(win);
       }
 
-      // Tower Setback (Upper Penthouse Tier)
-      const tower2 = new THREE.Mesh(new THREE.BoxGeometry(4.8, 6.5, 4.4), matWhiteBuilding);
-      tower2.position.y = 14 + 3.25;
-      tower2.castShadow = true;
-      towerGroup.add(tower2);
+      // Upper Penthouse Tier Setback
+      const towerTier2 = new THREE.Mesh(new THREE.BoxGeometry(4.8, 6.5, 4.4), matWhiteBuilding);
+      towerTier2.position.y = 15 + 3.25;
+      towerTier2.castShadow = true;
+      towerGroup.add(towerTier2);
 
-      // Gold Architectural Fins
-      const finMat = new THREE.MeshLambertMaterial({ color: 0xd97706 });
-      for (let finX = -2.2; finX <= 2.2; finX += 1.1) {
-        const fin = new THREE.Mesh(new THREE.BoxGeometry(0.12, 17, 0.4), finMat);
-        fin.position.set(finX, 10.5, 3.1);
+      // Gold Architectural Accent Fins
+      for (let finX = -2.4; finX <= 2.4; finX += 1.2) {
+        const fin = new THREE.Mesh(new THREE.BoxGeometry(0.12, 17, 0.4), matGold);
+        fin.position.set(finX, 11, 3.2);
         towerGroup.add(fin);
       }
 
       // Rooftop Crown Pergola & Golden Beacon
-      const crown = new THREE.Mesh(new THREE.BoxGeometry(5.2, 0.4, 4.8), matGoldAccent);
-      crown.position.y = 20.7;
+      const crown = new THREE.Mesh(new THREE.BoxGeometry(5.2, 0.4, 4.8), matGold);
+      crown.position.y = 21.8;
       towerGroup.add(crown);
 
       const beaconMesh = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.5, 0.5, 3, 16),
+        new THREE.CylinderGeometry(0.5, 0.5, 2.8, 16),
         new THREE.MeshBasicMaterial({ color: 0xf59e0b, transparent: true, opacity: 0.85 })
       );
-      beaconMesh.position.y = 22.4;
+      beaconMesh.position.y = 23.4;
       towerGroup.add(beaconMesh);
 
       towerGroup.position.set(0, 0, 0);
       worldGroup.add(towerGroup);
 
-      // 5. SURROUNDING LANDMARKS (from User's list)
+      // 5. SURROUNDING SPECIFIC LANDMARKS (from User's list)
       
-      // Landmark 1: Hinjewadi IT Park (Glass Towers)
-      const itParkGroup = new THREE.Group();
-      const itTower1 = new THREE.Mesh(new THREE.BoxGeometry(5.5, 14, 5.2), matGlass);
-      itTower1.position.y = 7;
-      itTower1.castShadow = true;
-      const itTower2 = new THREE.Mesh(new THREE.BoxGeometry(4.8, 10.5, 4.2), matGlass);
-      itTower2.position.set(4, 5.25, 3);
-      itTower2.castShadow = true;
-      itParkGroup.add(itTower1, itTower2);
-      itParkGroup.position.set(18, 0, -18);
-      worldGroup.add(itParkGroup);
-
-      // Landmark 2: S B Patil Public School (Academic Campus)
+      // Landmark 1: S B Patil Public School
       const schoolGroup = new THREE.Group();
-      const school1 = new THREE.Mesh(new THREE.BoxGeometry(7, 3.2, 4), matWhiteBuilding);
-      school1.position.y = 1.6;
-      school1.castShadow = true;
-      const schoolPitch = new THREE.Mesh(new THREE.PlaneGeometry(6, 4.5), new THREE.MeshBasicMaterial({ color: 0x5a9e52 }));
-      schoolPitch.rotation.x = -Math.PI / 2;
-      schoolPitch.position.set(0, 0.05, 4.5);
-      schoolGroup.add(school1, schoolPitch);
-      schoolGroup.position.set(-15, 0, 10);
+      const schoolBldg = new THREE.Mesh(new THREE.BoxGeometry(7, 3.2, 4), matWhiteBuilding);
+      schoolBldg.position.y = 1.6;
+      schoolBldg.castShadow = true;
+      const schoolField = new THREE.Mesh(new THREE.PlaneGeometry(6, 4.5), new THREE.MeshBasicMaterial({ color: 0x5a9e52 }));
+      schoolField.rotation.x = -Math.PI / 2;
+      schoolField.position.set(0, 0.05, 4.5);
+      schoolGroup.add(schoolBldg, schoolField);
+      schoolGroup.position.set(-16, 0, 10);
       worldGroup.add(schoolGroup);
 
-      // Landmark 3: City Pride School
+      // Landmark 2: City Pride School
       const cityPrideGroup = new THREE.Group();
       const cpBldg = new THREE.Mesh(new THREE.BoxGeometry(6.5, 3.4, 4.2), matWhiteBuilding);
       cpBldg.position.y = 1.7;
       cpBldg.castShadow = true;
       cityPrideGroup.add(cpBldg);
-      cityPrideGroup.position.set(-19, 0, -6);
+      cityPrideGroup.position.set(-20, 0, -6);
       worldGroup.add(cityPrideGroup);
 
-      // Landmark 4: D-Mart / Reliance Mart
+      // Landmark 3: Mukai Chowk (Roundabout feature)
+      const mukaiGroup = new THREE.Group();
+      const roundabout = new THREE.Mesh(new THREE.CylinderGeometry(3.5, 3.5, 0.15, 24), matRoadDark);
+      roundabout.position.y = 0.08;
+      const roundIsland = new THREE.Mesh(new THREE.CylinderGeometry(2, 2, 0.35, 24), matTerrain);
+      roundIsland.position.y = 0.25;
+      mukaiGroup.add(roundabout, roundIsland);
+      mukaiGroup.position.set(-24, 0, -14);
+      worldGroup.add(mukaiGroup);
+
+      // Landmark 4: D Y Patil University
+      const uniGroup = new THREE.Group();
+      const uniMain = new THREE.Mesh(new THREE.BoxGeometry(8, 4.2, 5), matWarmBuilding);
+      uniMain.position.y = 2.1;
+      uniMain.castShadow = true;
+      const dome = new THREE.Mesh(new THREE.SphereGeometry(1.6, 16, 12, 0, Math.PI * 2, 0, Math.PI / 2), matGold);
+      dome.position.y = 4.2;
+      uniGroup.add(uniMain, dome);
+      uniGroup.position.set(14, 0, 18);
+      worldGroup.add(uniGroup);
+
+      // Landmark 5: D-Mart / Reliance Mart
       const dmartGroup = new THREE.Group();
-      const dmartBldg = new THREE.Mesh(new THREE.BoxGeometry(7.5, 3, 5.5), new THREE.MeshLambertMaterial({ color: 0xe2e8f0 }));
+      const dmartBldg = new THREE.Mesh(new THREE.BoxGeometry(7.5, 3, 5.5), matSlateBuilding);
       dmartBldg.position.y = 1.5;
       dmartBldg.castShadow = true;
-      const dmartRoof = new THREE.Mesh(new THREE.BoxGeometry(6, 0.4, 4), matGoldAccent);
-      dmartRoof.position.y = 3.2;
-      dmartGroup.add(dmartBldg, dmartRoof);
+      const dmartCanopy = new THREE.Mesh(new THREE.BoxGeometry(6, 0.4, 4), matGold);
+      dmartCanopy.position.y = 3.2;
+      dmartGroup.add(dmartBldg, dmartCanopy);
       dmartGroup.position.set(18, 0, 4);
       worldGroup.add(dmartGroup);
 
-      // Landmark 5: Aditya Birla Hospital
+      // Landmark 6: Aditya Birla Hospital
       const hospGroup = new THREE.Group();
       const hospMain = new THREE.Mesh(new THREE.BoxGeometry(8, 4.5, 5.5), matWhiteBuilding);
       hospMain.position.y = 2.25;
@@ -4441,20 +4489,21 @@
       hospGroup.position.set(22, 0, -6);
       worldGroup.add(hospGroup);
 
-      // Landmark 6: D Y Patil University
-      const uniGroup = new THREE.Group();
-      const uniMain = new THREE.Mesh(new THREE.BoxGeometry(8, 4.2, 5), new THREE.MeshLambertMaterial({ color: 0xd6c7b2 }));
-      uniMain.position.y = 2.1;
-      uniMain.castShadow = true;
-      const dome = new THREE.Mesh(new THREE.SphereGeometry(1.6, 16, 12, 0, Math.PI * 2, 0, Math.PI / 2), matGoldAccent);
-      dome.position.y = 4.2;
-      uniGroup.add(uniMain, dome);
-      uniGroup.position.set(13, 0, 18);
-      worldGroup.add(uniGroup);
+      // Landmark 7: Hinjewadi IT Park (Modern Twin Glass Towers)
+      const itParkGroup = new THREE.Group();
+      const itTower1 = new THREE.Mesh(new THREE.BoxGeometry(5.5, 14, 5.2), matGlass);
+      itTower1.position.y = 7;
+      itTower1.castShadow = true;
+      const itTower2 = new THREE.Mesh(new THREE.BoxGeometry(4.8, 10.5, 4.2), matGlass);
+      itTower2.position.set(4, 5.25, 3);
+      itTower2.castShadow = true;
+      itParkGroup.add(itTower1, itTower2);
+      itParkGroup.position.set(20, 0, -18);
+      worldGroup.add(itParkGroup);
 
-      // Landmark 7: Bhakti-Shakti Park (Round garden oasis)
+      // Landmark 8: Bhakti-Shakti Park (Round Garden Oasis)
       const parkGroup = new THREE.Group();
-      const parkGrass = new THREE.Mesh(new THREE.CylinderGeometry(5.5, 5.5, 0.15, 24), new THREE.MeshLambertMaterial({ color: 0x4d8c43 }));
+      const parkGrass = new THREE.Mesh(new THREE.CylinderGeometry(5.5, 5.5, 0.15, 24), new THREE.MeshLambertMaterial({ color: 0x488c3e }));
       parkGrass.position.y = 0.08;
       const fountain = new THREE.Mesh(new THREE.CylinderGeometry(1.2, 1.4, 0.4, 16), matWater);
       fountain.position.y = 0.25;
@@ -4462,77 +4511,115 @@
       parkGroup.position.set(6, 0, 24);
       worldGroup.add(parkGroup);
 
-      // Residential Villa Clusters (Smaller background architecture)
-      const villaGeo = new THREE.BoxGeometry(2.4, 1.8, 2.2);
-      const villaMat = new THREE.MeshLambertMaterial({ color: 0xf3ede2 });
-      const villaPositions = [
-        [-6, 0.9, -6], [-9, 0.9, -4], [-8, 0.9, 16], [-12, 0.9, 18],
-        [8, 0.9, -8], [11, 0.9, -10], [9, 0.9, 8], [12, 0.9, 10],
-        [-24, 0.9, 4], [-26, 0.9, 8], [-22, 0.9, -12], [-26, 0.9, -8]
+      // 6. DENSE CITY GRID BLOCKS (Matching Urban Skyline Clean Cubist Style)
+      const bldgMats = [matWhiteBuilding, matSlateBuilding, matWarmBuilding];
+      const cityBuildings = [
+        // West District (Left of River)
+        { x: -5, z: -5, w: 3, h: 2.8, d: 3 },
+        { x: -9, z: -4, w: 2.8, h: 3.4, d: 2.8 },
+        { x: -5, z: -10, w: 3.5, h: 4.2, d: 2.6 },
+        { x: -9, z: -10, w: 2.6, h: 2.4, d: 3.2 },
+        { x: -14, z: -5, w: 3.2, h: 3.8, d: 3 },
+        { x: -14, z: -11, w: 3, h: 2.6, d: 2.8 },
+        { x: -5, z: 15, w: 3.2, h: 3.5, d: 2.8 },
+        { x: -9, z: 15, w: 2.6, h: 2.2, d: 3.4 },
+        { x: -5, z: 21, w: 3.5, h: 3.2, d: 3 },
+        { x: -10, z: 21, w: 3, h: 4.5, d: 2.8 },
+        { x: -21, z: 15, w: 3.2, h: 3, d: 3 },
+        { x: -25, z: 15, w: 2.8, h: 2.4, d: 3.2 },
+        { x: -22, z: 21, w: 3.4, h: 3.8, d: 2.8 },
+        { x: -27, z: 21, w: 3, h: 2.6, d: 2.6 },
+        { x: -26, z: 4, w: 3.2, h: 3.2, d: 3.4 },
+        { x: -30, z: 4, w: 2.8, h: 2.5, d: 2.8 },
+        { x: -26, z: -4, w: 3, h: 3.5, d: 3 },
+        { x: -30, z: -4, w: 2.6, h: 2.2, d: 2.8 },
+
+        // East District (Right of River)
+        { x: 5, z: -5, w: 3.2, h: 3.6, d: 2.8 },
+        { x: 9, z: -4, w: 2.8, h: 2.4, d: 3.2 },
+        { x: 5, z: -10, w: 3.4, h: 4.4, d: 3 },
+        { x: 9, z: -10, w: 2.8, h: 3.2, d: 2.8 },
+        { x: 14, z: -5, w: 3, h: 3.8, d: 3 },
+        { x: 14, z: -11, w: 3.2, h: 2.8, d: 3.2 },
+        { x: 6, z: 14, w: 3.2, h: 3.4, d: 2.8 },
+        { x: 10, z: 14, w: 2.8, h: 2.5, d: 3 },
+        { x: 20, z: 14, w: 3.5, h: 3.6, d: 3 },
+        { x: 25, z: 14, w: 2.8, h: 2.4, d: 2.8 },
+        { x: 21, z: 21, w: 3.2, h: 4, d: 3 },
+        { x: 26, z: 21, w: 3, h: 2.8, d: 2.8 },
+        { x: 26, z: 4, w: 3.2, h: 3.2, d: 3 },
+        { x: 30, z: 4, w: 2.6, h: 2.2, d: 2.8 },
+        { x: 27, z: -12, w: 3.2, h: 4.5, d: 3 },
+        { x: 31, z: -12, w: 2.8, h: 3.2, d: 2.8 },
+        { x: 28, z: -18, w: 3, h: 3.8, d: 3.2 },
+        { x: 32, z: -18, w: 2.6, h: 2.5, d: 2.6 }
       ];
-      villaPositions.forEach(p => {
-        const v = new THREE.Mesh(villaGeo, villaMat);
-        v.position.set(p[0], p[1], p[2]);
-        v.castShadow = true;
-        v.receiveShadow = true;
-        worldGroup.add(v);
+
+      cityBuildings.forEach((b, idx) => {
+        const mat = bldgMats[idx % bldgMats.length];
+        const mesh = new THREE.Mesh(new THREE.BoxGeometry(b.w, b.h, b.d), mat);
+        mesh.position.set(b.x, b.h / 2, b.z);
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+        worldGroup.add(mesh);
       });
 
-      // Stylized 3D Trees
+      // 7. LOLLIPOP / SPHERE TREES (Matching Urban Skyline green dots)
       const treeTrunkGeo = new THREE.CylinderGeometry(0.12, 0.16, 0.8, 6);
-      const treeLeavesGeo1 = new THREE.ConeGeometry(0.7, 1.6, 7);
+      const treeLeavesGeo1 = new THREE.SphereGeometry(0.65, 8, 8);
       const treeLeavesGeo2 = new THREE.DodecahedronGeometry(0.65);
 
-      function createTree(x, z, type) {
+      function createTree(x, z, alt) {
         const t = new THREE.Group();
         const trunk = new THREE.Mesh(treeTrunkGeo, matTreeTrunk);
         trunk.position.y = 0.4;
         trunk.castShadow = true;
-        const leaves = new THREE.Mesh(type ? treeLeavesGeo1 : treeLeavesGeo2, type ? matTreeLeaves : matTreeLeavesDark);
-        leaves.position.y = 1.3;
+        const leaves = new THREE.Mesh(alt ? treeLeavesGeo1 : treeLeavesGeo2, alt ? matTreeLeaves : matTreeLeavesDark);
+        leaves.position.y = 1.25;
         leaves.castShadow = true;
         t.add(trunk, leaves);
         t.position.set(x, 0, z);
         worldGroup.add(t);
       }
 
-      const treeLocs = [
-        [-3, 3], [-4, -2], [3, -2], [4, 4], [-2, 8], [-1, -8],
-        [7, 2], [6, -4], [-12, 6], [-16, 3], [-14, -2], [-18, 14],
-        [16, -11], [20, 12], [24, 7], [10, 20], [3, 20], [8, 26]
+      const treeGrid = [
+        [-2, 3], [-3, -2], [2, -2], [3, 4], [-1, 7], [-1, -7],
+        [6, 2], [6, -3], [-11, 5], [-15, 3], [-13, -2], [-17, 14],
+        [15, -10], [19, 11], [23, 7], [9, 19], [2, 19], [7, 26],
+        [-20, 2], [-23, 8], [-28, 9], [17, -2], [23, -2], [29, -6]
       ];
-      treeLocs.forEach((tl, i) => createTree(tl[0], tl[1], i % 2));
+      treeGrid.forEach((pos, i) => createTree(pos[0], pos[1], i % 2 === 0));
 
-      // 6. 3D LANDMARK DEFINITIONS & CAMERA TARGETS
+      // 8. LANDMARKS CAMERA TARGETS & DOM PIN PAIRING
       const landmarks = {
         project: {
-          pos: new THREE.Vector3(0, 23, 0),
-          cam: { x: 26, y: 32, z: 32, tx: 0, ty: 7, tz: 0 },
+          pos: new THREE.Vector3(0, 24, 0),
+          cam: { x: 26, y: 34, z: 38, tx: 0, ty: 5, tz: 0 },
           el: document.getElementById('pin-project')
         },
         sbpatil: {
-          pos: new THREE.Vector3(-15, 4.5, 10),
-          cam: { x: -8, y: 16, z: 24, tx: -15, ty: 2, tz: 10 },
+          pos: new THREE.Vector3(-16, 4.5, 10),
+          cam: { x: -8, y: 17, z: 24, tx: -16, ty: 2, tz: 10 },
           el: document.getElementById('pin-sbpatil')
         },
         citypride: {
-          pos: new THREE.Vector3(-19, 4.8, -6),
-          cam: { x: -10, y: 16, z: 8, tx: -19, ty: 2, tz: -6 },
+          pos: new THREE.Vector3(-20, 4.8, -6),
+          cam: { x: -10, y: 17, z: 8, tx: -20, ty: 2, tz: -6 },
           el: document.getElementById('pin-citypride')
         },
         expressway: {
-          pos: new THREE.Vector3(-8, 3.5, 8),
-          cam: { x: 8, y: 18, z: 22, tx: -8, ty: 1, tz: 8 },
+          pos: new THREE.Vector3(-10, 3.5, 8),
+          cam: { x: 6, y: 18, z: 22, tx: -10, ty: 1, tz: 8 },
           el: document.getElementById('pin-expressway')
         },
         mukaichowk: {
-          pos: new THREE.Vector3(-22, 2.5, -14),
-          cam: { x: -10, y: 18, z: 4, tx: -22, ty: 1, tz: -14 },
+          pos: new THREE.Vector3(-24, 2.5, -14),
+          cam: { x: -12, y: 18, z: 4, tx: -24, ty: 1, tz: -14 },
           el: document.getElementById('pin-mukaichowk')
         },
         dypatil: {
-          pos: new THREE.Vector3(13, 5.5, 18),
-          cam: { x: 18, y: 18, z: 32, tx: 13, ty: 2, tz: 18 },
+          pos: new THREE.Vector3(14, 5.5, 18),
+          cam: { x: 19, y: 18, z: 32, tx: 14, ty: 2, tz: 18 },
           el: document.getElementById('pin-dypatil')
         },
         dmart: {
@@ -4546,56 +4633,56 @@
           el: document.getElementById('pin-hospital')
         },
         hinjewadi: {
-          pos: new THREE.Vector3(18, 16, -18),
-          cam: { x: 28, y: 24, z: -4, tx: 18, ty: 7, tz: -18 },
+          pos: new THREE.Vector3(20, 16, -18),
+          cam: { x: 29, y: 24, z: -4, tx: 20, ty: 7, tz: -18 },
           el: document.getElementById('pin-hinjewadi')
         },
         park: {
           pos: new THREE.Vector3(6, 2.5, 24),
           cam: { x: 14, y: 16, z: 36, tx: 6, ty: 1, tz: 24 },
-          el: null
+          el: document.getElementById('pin-park')
         }
       };
 
-      // 7. INTERACTIVE CONTROLS
+      // 9. INTERACTIVE CONTROLS & EVENT LISTENERS
       let isDragging = false;
       let prevMousePos = { x: 0, y: 0 };
       let autoRotate = true;
       let rotSpeed = 0.003;
+      let activeKey = 'sbpatil'; // Default matching Urban Skyline screenshot
 
-      function focusLandmark(key) {
+      function selectLandmark(key) {
         const lm = landmarks[key];
         if (!lm) return;
+        activeKey = key;
         autoRotate = false;
         if (btnRotate) btnRotate.classList.remove('active');
 
+        // Smooth camera glide
         targetCamPos.set(lm.cam.x, lm.cam.y, lm.cam.z);
         targetLookAt.set(lm.cam.tx, lm.cam.ty, lm.cam.tz);
 
-        document.querySelectorAll('.conn-pin').forEach(p => p.classList.remove('pin-active'));
-        if (lm.el) lm.el.classList.add('pin-active');
+        // Highlight 3D pin & expand dynamic pop tooltip
+        document.querySelectorAll('.conn-map-pin').forEach(p => p.classList.remove('pin-active'));
+        if (lm.el && lm.el.classList.contains('conn-map-pin')) {
+          lm.el.classList.add('pin-active');
+        }
 
-        document.querySelectorAll('.conn-badge-pill').forEach(pill => {
+        // Highlight corresponding pill in bottom list
+        document.querySelectorAll('.conn-nav-pill').forEach(pill => {
           if (pill.getAttribute('data-target') === key) {
-            pill.style.borderColor = 'var(--gold-accent)';
-            pill.style.boxShadow = '0 6px 20px rgba(217, 119, 6, 0.35)';
+            pill.classList.add('active');
           } else {
-            pill.style.borderColor = '';
-            pill.style.boxShadow = '';
+            pill.classList.remove('active');
           }
         });
       }
 
-      function resetCamera() {
+      function resetView() {
         targetCamPos.set(defaultCam.x, defaultCam.y, defaultCam.z);
         targetLookAt.set(defaultCam.tx, defaultCam.ty, defaultCam.tz);
         autoRotate = true;
         if (btnRotate) btnRotate.classList.add('active');
-        document.querySelectorAll('.conn-pin').forEach(p => p.classList.remove('pin-active'));
-        document.querySelectorAll('.conn-badge-pill').forEach(pill => {
-          pill.style.borderColor = '';
-          pill.style.boxShadow = '';
-        });
       }
 
       // Mouse drag controls
@@ -4683,14 +4770,22 @@
         });
       }
       if (btnReset) {
-        btnReset.addEventListener('click', resetCamera);
+        btnReset.addEventListener('click', resetView);
       }
 
-      // Clicking Pins or Landmark Pills
-      document.querySelectorAll('.conn-pin, .conn-badge-pill').forEach(el => {
-        el.addEventListener('click', () => {
-          const target = el.getAttribute('data-target');
-          if (target) focusLandmark(target);
+      // Landmark Pills Click Event
+      document.querySelectorAll('.conn-nav-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          const target = pill.getAttribute('data-target');
+          if (target) selectLandmark(target);
+        });
+      });
+
+      // 3D Map Pins Click Event
+      document.querySelectorAll('.conn-map-pin, .conn-map-tooltip').forEach(pin => {
+        pin.addEventListener('click', () => {
+          const target = pin.getAttribute('data-target');
+          if (target) selectLandmark(target);
         });
       });
 
@@ -4705,7 +4800,10 @@
       }
       window.addEventListener('resize', onResize);
 
-      // 8. ANIMATION LOOP
+      // Set initial active state (S B Patil Public School)
+      selectLandmark('sbpatil');
+
+      // 10. ANIMATION LOOP
       const tempVec = new THREE.Vector3();
       let clock = 0;
 
@@ -4715,7 +4813,7 @@
 
         // Auto Rotation
         if (autoRotate && !isDragging) {
-          worldGroup.rotation.y += 0.0018;
+          worldGroup.rotation.y += 0.0016;
         }
 
         // Camera smooth dampening
@@ -4739,7 +4837,7 @@
           1 + Math.sin(clock * 4) * 0.25
         );
 
-        // Project 3D Coordinates to 2D HTML Floating Pins
+        // Project 3D Coordinates to 2D HTML Floating Pins & Tooltips
         for (const key in landmarks) {
           const lm = landmarks[key];
           if (!lm.el) continue;
@@ -4751,7 +4849,7 @@
           const x = (tempVec.x * 0.5 + 0.5) * width;
           const y = (-(tempVec.y * 0.5) + 0.5) * height;
 
-          if (tempVec.z < 1 && x >= -40 && x <= width + 40 && y >= -40 && y <= height + 40) {
+          if (tempVec.z < 1 && x >= -50 && x <= width + 50 && y >= -50 && y <= height + 50) {
             lm.el.style.display = 'inline-flex';
             lm.el.style.transform = `translate(-50%, -100%) translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
           } else {

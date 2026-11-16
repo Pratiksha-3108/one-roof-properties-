@@ -1249,15 +1249,18 @@
     /* SECTION 8: 3D LOCATION & CONNECTIVITY SHOWCASE (URBAN SKYLINE STYLE)  */
     /* ===================================================================== */
     .conn-3d-sec {
-      background-color: var(--bg-cream, #FAF8EE);
+      background-color: #faf8ee;
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(217, 119, 6, 0.05) 0%, transparent 60%),
-        url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 60 C30 40, 90 80, 120 60' stroke='%23e2dcce' stroke-width='0.7' fill='none' stroke-opacity='0.45'/%3E%3Cpath d='M0 90 C30 70, 90 110, 120 90' stroke='%23e2dcce' stroke-width='0.7' fill='none' stroke-opacity='0.3'/%3E%3Cpath d='M0 30 C30 10, 90 50, 120 30' stroke='%23e2dcce' stroke-width='0.7' fill='none' stroke-opacity='0.3'/%3E%3C/svg%3E");
+        radial-gradient(circle at 50% 15%, rgba(217, 119, 6, 0.09) 0%, transparent 65%),
+        url("assets/connectivity-topo-bg.svg");
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
       padding: clamp(60px, 7vw, 100px) 0;
       position: relative;
       overflow: hidden;
-      border-top: 1px solid rgba(70, 86, 101, 0.08);
-      border-bottom: 1px solid rgba(70, 86, 101, 0.08);
+      border-top: 1px solid rgba(217, 119, 6, 0.16);
+      border-bottom: 1px solid rgba(217, 119, 6, 0.16);
     }
     .conn-3d-container {
       max-width: 1360px;
@@ -1324,9 +1327,9 @@
       position: relative;
       border-radius: 28px;
       overflow: hidden;
-      background: #edf2f7;
-      border: 1.5px solid rgba(70, 86, 101, 0.12);
-      box-shadow: 0 20px 60px rgba(31, 52, 63, 0.1);
+      background: radial-gradient(ellipse at 50% 25%, #ffffff 0%, #edf3fa 55%, #d9e5f2 100%);
+      border: 1.5px solid rgba(217, 119, 6, 0.22);
+      box-shadow: 0 24px 70px rgba(31, 52, 63, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
       height: clamp(480px, 58vh, 620px);
       width: 100%;
       user-select: none;
@@ -1382,15 +1385,43 @@
     .conn-3d-ctrl-btns {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      padding: 4px;
+      padding: 4px 6px;
       border-radius: 999px;
       box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
       border: 1px solid rgba(70, 86, 101, 0.12);
       pointer-events: auto;
+    }
+    .conn-3d-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #1f343f;
+      color: #FAF8EE;
+      border: 1px solid rgba(217, 119, 6, 0.4);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      outline: none;
+    }
+    .conn-3d-pill-btn:hover {
+      background: var(--gold-accent);
+      color: #ffffff;
+      transform: scale(1.04);
+    }
+    .conn-3d-pill-btn i {
+      color: var(--gold-accent);
+      transition: color 0.2s ease;
+    }
+    .conn-3d-pill-btn:hover i {
+      color: #ffffff;
     }
     .conn-3d-btn {
       width: 32px;
@@ -1542,7 +1573,12 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    /* Expanded Dynamic Tooltip Badge (Shown when pin is active / hovered) */
+    /* Dynamic Tooltip Pop-Up with Bouncy Spring Animation */
+    @keyframes pinPopBounce {
+      0% { transform: translateX(-50%) scale(0.6); opacity: 0; }
+      60% { transform: translateX(-50%) scale(1.08); opacity: 1; }
+      100% { transform: translateX(-50%) scale(1); opacity: 1; }
+    }
     .conn-pin-pop {
       position: absolute;
       bottom: calc(100% + 6px);
@@ -1578,10 +1614,11 @@
       opacity: 1;
       transform: translateX(-50%) scale(1);
       pointer-events: auto;
+      animation: pinPopBounce 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     .conn-map-pin.pin-active .conn-pin-circle {
-      transform: scale(1.22);
-      box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.35), 0 8px 22px rgba(217, 119, 6, 0.7);
+      transform: scale(1.24);
+      box-shadow: 0 0 0 5px rgba(217, 119, 6, 0.38), 0 8px 22px rgba(217, 119, 6, 0.7);
     }
     .conn-map-pin.pin-active {
       z-index: 30;
@@ -3126,11 +3163,16 @@
       <div class="conn-visual-stage" id="conn3dStage">
         <canvas id="conn3dCanvas"></canvas>
 
-        <!-- Top Controls Overlay (No Zoom In / Zoom Out) -->
+        <!-- Top Controls Overlay -->
         <div class="conn-3d-hud">
           <span class="conn-3d-badge"><i class="fa-solid fa-cube"></i> Interactive 3D City View</span>
           <div class="conn-3d-ctrl-btns">
-            <button class="conn-3d-btn active" id="btn3dRotate" title="Toggle Auto Motion"><i class="fa-solid fa-rotate"></i></button>
+            <!-- Tower Architecture Switcher Idea -->
+            <button class="conn-3d-pill-btn" id="btn3dSwitchTower" title="Switch Tower Design Idea">
+              <i class="fa-solid fa-building-columns"></i>
+              <span id="towerIdeaLabel">Switch Building Idea</span>
+            </button>
+            <button class="conn-3d-btn active" id="btn3dRotate" title="Toggle Auto-Cycle"><i class="fa-solid fa-play"></i></button>
             <button class="conn-3d-btn" id="btn3dReset" title="Reset View"><i class="fa-solid fa-crosshairs"></i></button>
           </div>
         </div>
@@ -4339,7 +4381,35 @@
         worldGroup.add(roadMesh);
       });
 
-      // 4. Photorealistic Architectural High-Rise Tower (Freepik / Urban Skyline 3D Render)
+      // 4. Photorealistic Architectural High-Rise Tower (With Multiple Design Ideas)
+      const towerIdeas = [
+        {
+          name: 'Modern High-Rise Elevation',
+          url: 'assets/tower-3d-render.webp',
+          width: 33,
+          height: 44,
+          posY: 0,
+          posZ: -4
+        },
+        {
+          name: 'Signature Luxury Tower',
+          url: 'assets/cta-building-luxury.png',
+          width: 44,
+          height: 33,
+          posY: 0,
+          posZ: -3
+        },
+        {
+          name: 'Contemporary Glass Pavilion',
+          url: 'assets/cta-building.png',
+          width: 40,
+          height: 30,
+          posY: 0,
+          posZ: -3
+        }
+      ];
+      let currentIdeaIdx = 0;
+
       const towerMaterial = new THREE.SpriteMaterial({
         transparent: true,
         alphaTest: 0.08,
@@ -4347,29 +4417,62 @@
       });
       const towerSprite = new THREE.Sprite(towerMaterial);
       towerSprite.center.set(0.5, 0.05);
-      towerSprite.scale.set((1100 / 1491) * 42, 42, 1);
       towerSprite.position.set(0, 0, -4);
       towerSprite.visible = false;
       worldGroup.add(towerSprite);
 
-      // Load high-resolution transparent architectural render cutout
+      // Preload textures for instant, smooth switching
       const texLoader = new THREE.TextureLoader();
-      texLoader.load('assets/tower-3d-render.webp', tex => {
-        if (tex.colorSpace !== undefined) tex.colorSpace = THREE.SRGBColorSpace;
-        tex.anisotropy = 4;
-        towerMaterial.map = tex;
-        towerMaterial.needsUpdate = true;
-        towerSprite.visible = true;
+      const loadedTextures = [];
+      towerIdeas.forEach((idea, idx) => {
+        texLoader.load(idea.url, tex => {
+          if (tex.colorSpace !== undefined) tex.colorSpace = THREE.SRGBColorSpace;
+          tex.anisotropy = 4;
+          loadedTextures[idx] = tex;
+          if (idx === currentIdeaIdx) {
+            applyTowerIdea(currentIdeaIdx);
+          }
+        });
       });
+
+      function applyTowerIdea(index) {
+        currentIdeaIdx = index % towerIdeas.length;
+        const idea = towerIdeas[currentIdeaIdx];
+        if (loadedTextures[currentIdeaIdx]) {
+          towerMaterial.map = loadedTextures[currentIdeaIdx];
+          towerMaterial.needsUpdate = true;
+          towerSprite.scale.set(idea.width, idea.height, 1);
+          towerSprite.position.set(0, idea.posY, idea.posZ);
+          towerSprite.visible = true;
+        }
+        const labelEl = document.getElementById('towerIdeaLabel');
+        if (labelEl) {
+          const nextIdea = towerIdeas[(currentIdeaIdx + 1) % towerIdeas.length];
+          labelEl.textContent = 'Switch to ' + nextIdea.name;
+        }
+      }
+
+      const btnSwitchTower = document.getElementById('btn3dSwitchTower');
+      if (btnSwitchTower) {
+        btnSwitchTower.addEventListener('click', () => {
+          applyTowerIdea(currentIdeaIdx + 1);
+          // Scale pop feedback
+          towerSprite.scale.multiplyScalar(1.08);
+          setTimeout(() => {
+            const cur = towerIdeas[currentIdeaIdx];
+            towerSprite.scale.set(cur.width, cur.height, 1);
+          }, 200);
+        });
+      }
 
       // Soft elliptical drop-shadow beneath tower
       const shadowMesh = new THREE.Mesh(
-        new THREE.CircleGeometry(9, 48),
-        new THREE.MeshBasicMaterial({ color: 0x13356b, transparent: true, opacity: 0.18, depthWrite: false })
+        new THREE.CircleGeometry(9.5, 48),
+        new THREE.MeshBasicMaterial({ color: 0x13356b, transparent: true, opacity: 0.22, depthWrite: false })
       );
       shadowMesh.rotation.x = -Math.PI / 2;
       shadowMesh.scale.set(1.25, 0.8, 1);
-      shadowMesh.position.set(0, 0.11, -4);
+      shadowMesh.position.set(0, 0.11, -3);
       worldGroup.add(shadowMesh);
 
       // Pulsing golden beacon rings around the main tower
@@ -4377,7 +4480,7 @@
       const beaconRings = [0, 0.5].map(offset => {
         const ringMesh = new THREE.Mesh(new THREE.RingGeometry(7.2, 7.8, 72), ringMat.clone());
         ringMesh.rotation.x = -Math.PI / 2;
-        ringMesh.position.set(0, 0.12, -4);
+        ringMesh.position.set(0, 0.12, -3);
         worldGroup.add(ringMesh);
         return { mesh: ringMesh, offset: offset };
       });
@@ -4627,65 +4730,131 @@
       }, { passive: false });
 
       // Landmark Selection & Smooth Camera Angle Gliding
-      function selectLandmark(key) {
+      const landmarkCycle = [
+        'sbpatil',
+        'citypride',
+        'expressway',
+        'mukaichowk',
+        'dypatil',
+        'dmart',
+        'hospital',
+        'hinjewadi',
+        'park'
+      ];
+      let cycleIdx = 0;
+      let cycleTimer = null;
+      let isUserInteracting = false;
+      let userPauseTimer = null;
+
+      function pauseCycle(duration = 4500) {
+        isUserInteracting = true;
+        if (userPauseTimer) clearTimeout(userPauseTimer);
+        userPauseTimer = setTimeout(() => {
+          isUserInteracting = false;
+        }, duration);
+      }
+
+      function selectLandmark(key, isUser = true) {
         const lm = landmarks[key];
         if (!lm) return;
         orbit.userTheta = lm.targetTheta;
         orbit.userPhi = lm.targetPhi;
         lastInteraction = performance.now() + 2500; // Pause ambient sway temporarily
 
-        // Highlight 3D pin pop
+        if (isUser) {
+          const idx = landmarkCycle.indexOf(key);
+          if (idx !== -1) cycleIdx = idx;
+          pauseCycle(5000);
+        }
+
+        // Highlight 3D pin pop with bounce animation
         document.querySelectorAll('.conn-map-pin').forEach(p => p.classList.remove('pin-active'));
         if (lm.el && lm.el.classList.contains('conn-map-pin')) {
           lm.el.classList.add('pin-active');
         }
 
-        // Highlight bottom navigation pill
+        // Highlight bottom navigation pill & scroll into view smoothly
         document.querySelectorAll('.conn-nav-pill').forEach(pill => {
           if (pill.getAttribute('data-target') === key) {
             pill.classList.add('active');
+            if (window.innerWidth < 900) {
+              pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
           } else {
             pill.classList.remove('active');
           }
         });
       }
 
+      // Automated One-by-One Landmark Pop-Up Cycle (2.8s per landmark)
+      function stepAutoCycle() {
+        if (!autoMotion || isDragging || isUserInteracting) return;
+        cycleIdx = (cycleIdx + 1) % landmarkCycle.length;
+        selectLandmark(landmarkCycle[cycleIdx], false);
+      }
+
+      function startAutoCycle() {
+        if (cycleTimer) clearInterval(cycleTimer);
+        cycleTimer = setInterval(stepAutoCycle, 2800);
+      }
+      startAutoCycle();
+
       function resetView() {
         orbit.userTheta = 0;
         orbit.userPhi = 0.98;
         lastInteraction = performance.now();
-        selectLandmark('sbpatil');
+        cycleIdx = 0;
+        selectLandmark('sbpatil', true);
       }
 
       // HUD Button Listeners
       const btnRotate = document.getElementById('btn3dRotate');
       const btnReset = document.getElementById('btn3dReset');
 
+      function updateRotateBtnState() {
+        if (!btnRotate) return;
+        btnRotate.classList.toggle('active', autoMotion);
+        btnRotate.innerHTML = autoMotion ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
+        btnRotate.title = autoMotion ? 'Pause Auto-Cycle' : 'Play Auto-Cycle';
+      }
+
       if (btnRotate) {
+        updateRotateBtnState();
         btnRotate.addEventListener('click', () => {
           autoMotion = !autoMotion;
-          btnRotate.classList.toggle('active', autoMotion);
+          updateRotateBtnState();
+          if (autoMotion) {
+            isUserInteracting = false;
+          }
         });
       }
       if (btnReset) {
         btnReset.addEventListener('click', resetView);
       }
 
-      // Landmark Pills Click Event
+      // Landmark Pills Events
       document.querySelectorAll('.conn-nav-pill').forEach(pill => {
         pill.addEventListener('click', () => {
           const target = pill.getAttribute('data-target');
-          if (target) selectLandmark(target);
+          if (target) selectLandmark(target, true);
         });
+        pill.addEventListener('mouseenter', () => pauseCycle(3000));
+        pill.addEventListener('touchstart', () => pauseCycle(3000), { passive: true });
       });
 
-      // 3D Pins Click Event
+      // 3D Pins Events
       document.querySelectorAll('.conn-map-pin, .conn-map-tooltip').forEach(pin => {
         pin.addEventListener('click', () => {
           const target = pin.getAttribute('data-target');
-          if (target) selectLandmark(target);
+          if (target) selectLandmark(target, true);
         });
+        pin.addEventListener('mouseenter', () => pauseCycle(3500));
+        pin.addEventListener('touchstart', () => pauseCycle(3500), { passive: true });
       });
+
+      // Stage hover/interaction pause
+      container.addEventListener('mouseenter', () => pauseCycle(2500));
+      container.addEventListener('touchstart', () => pauseCycle(3500), { passive: true });
 
       // Window resize & Aspect Ratio handling
       function onResize() {

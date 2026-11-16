@@ -1537,6 +1537,7 @@
       gap: clamp(20px, 2.5vw, 36px);
       align-items: stretch;
       min-height: 600px;
+      position: relative;
     }
 
     /* Left Visual Card */
@@ -1547,6 +1548,8 @@
       background: var(--navy-darkest, #111e26);
       box-shadow: 0 20px 50px rgba(31, 52, 63, 0.12);
       min-height: 500px;
+      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 2;
     }
 
     .sf-img-deck {
@@ -1649,6 +1652,19 @@
       flex-direction: column;
       justify-content: space-between;
       gap: 20px;
+      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 1;
+    }
+
+    /* ALTERNATING POSITION FOR EVEN SPECIFICATIONS (02, 04, 06):
+       Content moves to the Left, Image moves to the Right */
+    @media (min-width: 1025px) {
+      .sf-stage-grid.is-flipped .sf-visual-pane {
+        transform: translateX(calc(100% + clamp(20px, 2.5vw, 36px)));
+      }
+      .sf-stage-grid.is-flipped .sf-content-pane {
+        transform: translateX(calc(-100% - clamp(20px, 2.5vw, 36px)));
+      }
     }
 
     /* Top Content Area */
@@ -2755,7 +2771,7 @@
 
         <!-- STILL / FORM LUXURY SPLIT SHOWCASE (6 SPECIFICATIONS) -->
         <div class="sf-specs-stage plot-reveal" id="sfSpecsStage">
-          <div class="sf-stage-grid">
+          <div class="sf-stage-grid" id="sfStageGrid">
             
             <!-- LEFT: Architectural Visual Pane -->
             <div class="sf-visual-pane">
@@ -3523,6 +3539,7 @@
     // ========================================================
     (function initStillFormSpecs() {
       const stage = document.getElementById('sfSpecsStage');
+      const grid = document.getElementById('sfStageGrid');
       if (!stage) return;
 
       const titles = [
@@ -3550,7 +3567,7 @@
       let currentIndex = 0;
       let animProgress = 0;
       let progressInterval = null;
-      const DURATION = 5000; // 5 seconds auto transition
+      const DURATION = 5500; // 5.5 seconds auto transition
       let isHovered = false;
 
       function pad(n) {
@@ -3561,6 +3578,17 @@
         if (idx < 0) idx = total - 1;
         if (idx >= total) idx = 0;
         currentIndex = idx;
+
+        // ALTERNATING POSITION:
+        // Even indices (0, 2, 4 -> Specs 01, 03, 05): Image on LEFT, Content on RIGHT
+        // Odd indices (1, 3, 5 -> Specs 02, 04, 06): Content on LEFT, Image on RIGHT
+        if (grid) {
+          if (idx % 2 === 1) {
+            grid.classList.add('is-flipped');
+          } else {
+            grid.classList.remove('is-flipped');
+          }
+        }
 
         // Visual pane images
         images.forEach((img, i) => {
@@ -3585,6 +3613,15 @@
           }
         });
 
+        // Description text
+        descItems.forEach((ds, i) => {
+          if (i === idx) {
+            ds.classList.add('active');
+          } else {
+            ds.classList.remove('active');
+          }
+        });
+
         // Specification chips
         chipGroups.forEach((cg, i) => {
           if (i === idx) {
@@ -3600,15 +3637,6 @@
             d.classList.add('active');
           } else {
             d.classList.remove('active');
-          }
-        });
-
-        // Description text
-        descItems.forEach((ds, i) => {
-          if (i === idx) {
-            ds.classList.add('active');
-          } else {
-            ds.classList.remove('active');
           }
         });
 
@@ -3657,6 +3685,31 @@
           goToSlide(currentIndex + 1);
         });
       }
+
+      // Cursor scroll wheel control:
+      // Scrolling down/up over the stage switches between specifications
+      let wheelThrottle = false;
+      stage.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaY) > 25 && !wheelThrottle) {
+          if (e.deltaY > 0) {
+            // Scroll down: step to next spec if not at the end
+            if (currentIndex < total - 1) {
+              e.preventDefault();
+              wheelThrottle = true;
+              goToSlide(currentIndex + 1);
+              setTimeout(() => { wheelThrottle = false; }, 650);
+            }
+          } else {
+            // Scroll up: step to prev spec if not at the beginning
+            if (currentIndex > 0) {
+              e.preventDefault();
+              wheelThrottle = true;
+              goToSlide(currentIndex - 1);
+              setTimeout(() => { wheelThrottle = false; }, 650);
+            }
+          }
+        }
+      }, { passive: false });
 
       // Pause on hover
       stage.addEventListener('mouseenter', () => { isHovered = true; });

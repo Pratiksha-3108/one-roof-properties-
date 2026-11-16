@@ -3126,13 +3126,11 @@
       <div class="conn-visual-stage" id="conn3dStage">
         <canvas id="conn3dCanvas"></canvas>
 
-        <!-- Top Controls Overlay -->
+        <!-- Top Controls Overlay (No Zoom In / Zoom Out) -->
         <div class="conn-3d-hud">
           <span class="conn-3d-badge"><i class="fa-solid fa-cube"></i> Interactive 3D City View</span>
           <div class="conn-3d-ctrl-btns">
-            <button class="conn-3d-btn active" id="btn3dRotate" title="Toggle Auto Rotation"><i class="fa-solid fa-rotate"></i></button>
-            <button class="conn-3d-btn" id="btn3dZoomIn" title="Zoom In"><i class="fa-solid fa-plus"></i></button>
-            <button class="conn-3d-btn" id="btn3dZoomOut" title="Zoom Out"><i class="fa-solid fa-minus"></i></button>
+            <button class="conn-3d-btn active" id="btn3dRotate" title="Toggle Auto Motion"><i class="fa-solid fa-rotate"></i></button>
             <button class="conn-3d-btn" id="btn3dReset" title="Reset View"><i class="fa-solid fa-crosshairs"></i></button>
           </div>
         </div>
@@ -4196,7 +4194,7 @@
     }
 
     // =========================================================================
-    // 3D LOCATION & CONNECTIVITY INTERACTIVE WEBGL SCENE (URBAN SKYLINE STYLE)
+    // 3D LOCATION & CONNECTIVITY SHOWCASE (URBAN SKYLINE / FREEPIK 3D STYLE)
     // =========================================================================
     (function initConnectivity3D() {
       const container = document.getElementById('conn3dStage');
@@ -4206,469 +4204,443 @@
       let width = container.clientWidth;
       let height = container.clientHeight;
 
-      // 1. Scene, Camera & Renderer
+      // 1. Scene, Isometric Camera & High-Quality Renderer
       const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xedf2f7);
-      scene.fog = new THREE.FogExp2(0xedf2f7, 0.0055);
+      const fogColor = new THREE.Color(0xe6eff9);
+      scene.background = fogColor;
+      scene.fog = new THREE.Fog(fogColor, 150, 330);
 
-      const camera = new THREE.PerspectiveCamera(36, width / height, 0.5, 450);
-      
-      // Default isometric viewpoint (matching Urban Skyline isometric angle)
-      const defaultCam = { x: 26, y: 34, z: 38, tx: 0, ty: 4, tz: 0 };
-      camera.position.set(defaultCam.x, defaultCam.y, defaultCam.z);
-      
-      let targetCamPos = new THREE.Vector3(defaultCam.x, defaultCam.y, defaultCam.z);
-      let currentLookAt = new THREE.Vector3(defaultCam.tx, defaultCam.ty, defaultCam.tz);
-      let targetLookAt = new THREE.Vector3(defaultCam.tx, defaultCam.ty, defaultCam.tz);
-      camera.lookAt(currentLookAt);
+      const camera = new THREE.PerspectiveCamera(30, width / height, 1, 800);
+      const lookTarget = new THREE.Vector3(4, 11, 4);
 
-      const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
-      renderer.setSize(width, height);
+      // Camera Orbit State (Fixed Radius — NO Zoom In / Zoom Out, 3D Tilt/Orbit Only)
+      const orbit = {
+        theta: 0,
+        phi: 0.98,
+        userTheta: 0,
+        userPhi: 0.98,
+        radius: 120
+      };
+
+      const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true,
+        alpha: false,
+        powerPreference: 'high-performance'
+      });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(width, height);
+      if (renderer.outputColorSpace !== undefined) {
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+      }
+      renderer.toneMapping = THREE.ACESFilmicToneMapping || THREE.LinearToneMapping;
+      renderer.toneMappingExposure = 1.15;
       renderer.shadowMap.enabled = true;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-      // 2. High-Key Architectural Lighting System
-      const ambientLight = new THREE.AmbientLight(0xfff8ee, 0.9);
-      scene.add(ambientLight);
+      // 2. High-Key Architectural Lighting
+      const hemiLight = new THREE.HemisphereLight(0xfffaf1, 0xcbc2b4, 1.25);
+      scene.add(hemiLight);
 
-      const sun = new THREE.DirectionalLight(0xfff3e0, 1.25);
-      sun.position.set(45, 68, 32);
+      const sun = new THREE.DirectionalLight(0xfff0d8, 2.4);
+      sun.position.set(-70, 110, 55);
       sun.castShadow = true;
-      sun.shadow.mapSize.width = 1024;
-      sun.shadow.mapSize.height = 1024;
+      sun.shadow.mapSize.set(1024, 1024);
+      sun.shadow.camera.left = -130;
+      sun.shadow.camera.right = 130;
+      sun.shadow.camera.top = 100;
+      sun.shadow.camera.bottom = -100;
       sun.shadow.camera.near = 10;
-      sun.shadow.camera.far = 170;
-      sun.shadow.camera.left = -44;
-      sun.shadow.camera.right = 44;
-      sun.shadow.camera.top = 44;
-      sun.shadow.camera.bottom = -44;
+      sun.shadow.camera.far = 320;
       sun.shadow.bias = -0.0004;
+      sun.shadow.normalBias = 0.04;
       scene.add(sun);
-
-      const skyFill = new THREE.HemisphereLight(0xf4f8fc, 0xd0dbe6, 0.45);
-      scene.add(skyFill);
-
-      // Materials Palette (Matching Urban Skyline Clean Light City Tone)
-      const matTerrain = new THREE.MeshLambertMaterial({ color: 0xe8edf2 });
-      const matRoad = new THREE.MeshLambertMaterial({ color: 0xd9e1e8 });
-      const matRoadDark = new THREE.MeshLambertMaterial({ color: 0x334454 });
-      const matWater = new THREE.MeshPhongMaterial({
-        color: 0x112232,       // Deep midnight navy river ribbon
-        specular: 0x486982,
-        shininess: 65,
-        transparent: true,
-        opacity: 0.96
-      });
-      const matWhiteBuilding = new THREE.MeshLambertMaterial({ color: 0xfcfdff });
-      const matSlateBuilding = new THREE.MeshLambertMaterial({ color: 0xe5ecf2 });
-      const matWarmBuilding = new THREE.MeshLambertMaterial({ color: 0xf0ede6 });
-      const matGlass = new THREE.MeshPhongMaterial({ color: 0x1d303f, specular: 0x82b2d2, shininess: 85 });
-      const matGold = new THREE.MeshLambertMaterial({ color: 0xd97706 });
-      const matPodium = new THREE.MeshLambertMaterial({ color: 0xeae6dc });
-      const matTreeTrunk = new THREE.MeshLambertMaterial({ color: 0x6e523e });
-      const matTreeLeaves = new THREE.MeshLambertMaterial({ color: 0x548c52 });
-      const matTreeLeavesDark = new THREE.MeshLambertMaterial({ color: 0x427540 });
 
       // 3. World Group
       const worldGroup = new THREE.Group();
       scene.add(worldGroup);
 
-      // Ground Base (Rounded City Island)
-      const baseGeo = new THREE.CylinderGeometry(48, 50, 2.5, 48);
-      const baseMesh = new THREE.Mesh(baseGeo, matTerrain);
-      baseMesh.position.y = -1.25;
-      baseMesh.receiveShadow = true;
-      worldGroup.add(baseMesh);
+      // Base Ground Terrain
+      const terrainGeo = new THREE.PlaneGeometry(600, 420);
+      const terrainMat = new THREE.MeshStandardMaterial({ color: 0xdce8f5, roughness: 1 });
+      const terrain = new THREE.Mesh(terrainGeo, terrainMat);
+      terrain.rotation.x = -Math.PI / 2;
+      terrain.receiveShadow = true;
+      worldGroup.add(terrain);
 
-      // Street Grid Network (Criss-crossing city blocks like in Urban Skyline)
-      const roadMat = new THREE.MeshBasicMaterial({ color: 0xdce4ec });
-      const gridAvenues = [-30, -20, -10, 0, 10, 20, 30];
-      gridAvenues.forEach(x => {
-        const road = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 88), roadMat);
-        road.rotation.x = -Math.PI / 2;
-        road.position.set(x, 0.02, 0);
-        road.receiveShadow = true;
-        worldGroup.add(road);
-      });
-      const gridStreets = [-32, -22, -12, -2, 8, 18, 28];
-      gridStreets.forEach(z => {
-        const road = new THREE.Mesh(new THREE.PlaneGeometry(88, 2.4), roadMat);
-        road.rotation.x = -Math.PI / 2;
-        road.position.set(0, 0.02, z);
-        road.receiveShadow = true;
-        worldGroup.add(road);
-      });
+      // S-Curved Midnight Navy River (Generated with CatmullRom Curve)
+      const riverControlPts = [
+        [-140, -6], [-105, -14], [-78, -26], [-56, -30], [-40, -22],
+        [-36, -8], [-38, 6], [-28, 17], [-8, 22], [14, 23],
+        [32, 18], [46, 8], [60, 1], [78, 3], [98, -6], [140, -14]
+      ].map(([x, z]) => new THREE.Vector2(x, z));
 
-      // Winding Midnight Navy River Ribbon (Urban Skyline Style S-curve)
-      const riverShape = new THREE.Shape();
-      riverShape.moveTo(-48, 16);
-      riverShape.bezierCurveTo(-26, 20, -8, -6, 12, 6);
-      riverShape.bezierCurveTo(24, 14, 34, -14, 48, -12);
-      riverShape.lineTo(48, -22);
-      riverShape.bezierCurveTo(32, -24, 20, 0, 8, -2);
-      riverShape.bezierCurveTo(-12, -14, -28, 10, -48, 6);
-      riverShape.closePath();
+      function buildRibbonGeometry(pts, ribbonWidth, heightY) {
+        const vertices = [];
+        const indices = [];
+        for (let i = 0; i < pts.length; i++) {
+          const curr = pts[i];
+          const prev = pts[Math.max(0, i - 1)];
+          const next = pts[Math.min(pts.length - 1, i + 1)];
+          const dx = next.x - prev.x;
+          const dy = next.y - prev.y;
+          const len = Math.hypot(dx, dy) || 1;
+          const px = (-dy / len) * (ribbonWidth / 2);
+          const py = (dx / len) * (ribbonWidth / 2);
+          vertices.push(curr.x + px, heightY, curr.y + py);
+          vertices.push(curr.x - px, heightY, curr.y - py);
+          if (i < pts.length - 1) {
+            const base = 2 * i;
+            indices.push(base, base + 2, base + 1, base + 1, base + 2, base + 3);
+          }
+        }
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        geo.setIndex(indices);
+        geo.computeVertexNormals();
+        return geo;
+      }
 
-      const riverGeo = new THREE.ShapeGeometry(riverShape);
-      const riverMesh = new THREE.Mesh(riverGeo, matWater);
-      riverMesh.rotation.x = -Math.PI / 2;
-      riverMesh.position.y = 0.05;
+      const riverCurve = new THREE.SplineCurve(riverControlPts);
+      const riverPoints = riverCurve.getSpacedPoints(240);
+
+      // Riverbanks (Light crisp edge)
+      const riverBankMesh = new THREE.Mesh(
+        buildRibbonGeometry(riverPoints, 13, 0.03),
+        new THREE.MeshStandardMaterial({ color: 0xf4f8fd, roughness: 0.9, side: THREE.DoubleSide })
+      );
+      riverBankMesh.receiveShadow = true;
+      worldGroup.add(riverBankMesh);
+
+      // Deep Midnight Navy River Core (Glossy Water)
+      const riverMesh = new THREE.Mesh(
+        buildRibbonGeometry(riverPoints, 10, 0.06),
+        new THREE.MeshStandardMaterial({ color: 0x10304f, roughness: 0.22, metalness: 0.15, side: THREE.DoubleSide })
+      );
+      riverMesh.receiveShadow = true;
       worldGroup.add(riverMesh);
 
-      // Bridges across river carrying roads
-      function createBridge(x, z, rotY) {
-        const bridgeGroup = new THREE.Group();
-        const deck = new THREE.Mesh(new THREE.BoxGeometry(11, 0.45, 3.4), matRoad);
-        deck.castShadow = true;
-        deck.receiveShadow = true;
-        deck.position.y = 0.55;
-        bridgeGroup.add(deck);
-
-        const railMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
-        const rail1 = new THREE.Mesh(new THREE.BoxGeometry(11, 0.35, 0.15), railMat);
-        rail1.position.set(0, 0.85, 1.6);
-        const rail2 = rail1.clone();
-        rail2.position.z = -1.6;
-        bridgeGroup.add(rail1, rail2);
-
-        bridgeGroup.position.set(x, 0, z);
-        bridgeGroup.rotation.y = rotY;
-        worldGroup.add(bridgeGroup);
-      }
-      createBridge(-10, 8, 0.35);
-      createBridge(20, 2, -0.5);
-
-      // Sweeping Expressway Curve
-      const curve = new THREE.CatmullRomCurve3([
-        new THREE.Vector3(-42, 0.15, -16),
-        new THREE.Vector3(-22, 0.15, -12),
-        new THREE.Vector3(-10, 0.6, 8),
-        new THREE.Vector3(6, 0.15, 16),
-        new THREE.Vector3(26, 0.15, 14),
-        new THREE.Vector3(42, 0.15, 8)
-      ]);
-      const expresswayGeo = new THREE.TubeGeometry(curve, 45, 1.6, 2, false);
-      const expresswayMesh = new THREE.Mesh(expresswayGeo, matRoadDark);
-      expresswayMesh.scale.set(1, 0.15, 1);
-      expresswayMesh.receiveShadow = true;
-      worldGroup.add(expresswayMesh);
-
-      // Vehicles moving along Expressway
-      const vehicles = [];
-      const carColors = [0xd97706, 0xffffff, 0x1f343f, 0xc2410c, 0x3b82f6];
-      for (let i = 0; i < 7; i++) {
-        const carMat = new THREE.MeshLambertMaterial({ color: carColors[i % carColors.length] });
-        const car = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.45, 0.65), carMat);
-        car.castShadow = true;
-        worldGroup.add(car);
-        vehicles.push({ mesh: car, t: i / 7, speed: 0.0018 + (i % 3) * 0.0004 });
-      }
-
-      // 4. MAIN PROJECT TOWER: Skyview Residency (Centered High-Rise)
-      const towerGroup = new THREE.Group();
-      
-      // Landscaped Podium
-      const podium = new THREE.Mesh(new THREE.BoxGeometry(10, 2.2, 9.5), matPodium);
-      podium.position.y = 1.1;
-      podium.castShadow = true;
-      podium.receiveShadow = true;
-      towerGroup.add(podium);
-
-      // Podium Pool
-      const pool = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 2.8), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
-      pool.rotation.x = -Math.PI / 2;
-      pool.position.set(-2.2, 2.22, 1.6);
-      towerGroup.add(pool);
-
-      // Tower Core (Step 1)
-      const towerCore = new THREE.Mesh(new THREE.BoxGeometry(6.4, 13, 6), matWhiteBuilding);
-      towerCore.position.y = 2.2 + 6.5;
-      towerCore.castShadow = true;
-      towerCore.receiveShadow = true;
-      towerGroup.add(towerCore);
-
-      // Tower Glass Window Bands
-      for (let f = 3.6; f < 15; f += 1.4) {
-        const win = new THREE.Mesh(new THREE.BoxGeometry(6.5, 0.65, 6.1), matGlass);
-        win.position.y = f;
-        towerGroup.add(win);
-      }
-
-      // Upper Penthouse Tier Setback
-      const towerTier2 = new THREE.Mesh(new THREE.BoxGeometry(4.8, 6.5, 4.4), matWhiteBuilding);
-      towerTier2.position.y = 15 + 3.25;
-      towerTier2.castShadow = true;
-      towerGroup.add(towerTier2);
-
-      // Gold Architectural Accent Fins
-      for (let finX = -2.4; finX <= 2.4; finX += 1.2) {
-        const fin = new THREE.Mesh(new THREE.BoxGeometry(0.12, 17, 0.4), matGold);
-        fin.position.set(finX, 11, 3.2);
-        towerGroup.add(fin);
-      }
-
-      // Rooftop Crown Pergola & Golden Beacon
-      const crown = new THREE.Mesh(new THREE.BoxGeometry(5.2, 0.4, 4.8), matGold);
-      crown.position.y = 21.8;
-      towerGroup.add(crown);
-
-      const beaconMesh = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.5, 0.5, 2.8, 16),
-        new THREE.MeshBasicMaterial({ color: 0xf59e0b, transparent: true, opacity: 0.85 })
-      );
-      beaconMesh.position.y = 23.4;
-      towerGroup.add(beaconMesh);
-
-      towerGroup.position.set(0, 0, 0);
-      worldGroup.add(towerGroup);
-
-      // 5. SURROUNDING SPECIFIC LANDMARKS (from User's list)
-      
-      // Landmark 1: S B Patil Public School
-      const schoolGroup = new THREE.Group();
-      const schoolBldg = new THREE.Mesh(new THREE.BoxGeometry(7, 3.2, 4), matWhiteBuilding);
-      schoolBldg.position.y = 1.6;
-      schoolBldg.castShadow = true;
-      const schoolField = new THREE.Mesh(new THREE.PlaneGeometry(6, 4.5), new THREE.MeshBasicMaterial({ color: 0x5a9e52 }));
-      schoolField.rotation.x = -Math.PI / 2;
-      schoolField.position.set(0, 0.05, 4.5);
-      schoolGroup.add(schoolBldg, schoolField);
-      schoolGroup.position.set(-16, 0, 10);
-      worldGroup.add(schoolGroup);
-
-      // Landmark 2: City Pride School
-      const cityPrideGroup = new THREE.Group();
-      const cpBldg = new THREE.Mesh(new THREE.BoxGeometry(6.5, 3.4, 4.2), matWhiteBuilding);
-      cpBldg.position.y = 1.7;
-      cpBldg.castShadow = true;
-      cityPrideGroup.add(cpBldg);
-      cityPrideGroup.position.set(-20, 0, -6);
-      worldGroup.add(cityPrideGroup);
-
-      // Landmark 3: Mukai Chowk (Roundabout feature)
-      const mukaiGroup = new THREE.Group();
-      const roundabout = new THREE.Mesh(new THREE.CylinderGeometry(3.5, 3.5, 0.15, 24), matRoadDark);
-      roundabout.position.y = 0.08;
-      const roundIsland = new THREE.Mesh(new THREE.CylinderGeometry(2, 2, 0.35, 24), matTerrain);
-      roundIsland.position.y = 0.25;
-      mukaiGroup.add(roundabout, roundIsland);
-      mukaiGroup.position.set(-24, 0, -14);
-      worldGroup.add(mukaiGroup);
-
-      // Landmark 4: D Y Patil University
-      const uniGroup = new THREE.Group();
-      const uniMain = new THREE.Mesh(new THREE.BoxGeometry(8, 4.2, 5), matWarmBuilding);
-      uniMain.position.y = 2.1;
-      uniMain.castShadow = true;
-      const dome = new THREE.Mesh(new THREE.SphereGeometry(1.6, 16, 12, 0, Math.PI * 2, 0, Math.PI / 2), matGold);
-      dome.position.y = 4.2;
-      uniGroup.add(uniMain, dome);
-      uniGroup.position.set(14, 0, 18);
-      worldGroup.add(uniGroup);
-
-      // Landmark 5: D-Mart / Reliance Mart
-      const dmartGroup = new THREE.Group();
-      const dmartBldg = new THREE.Mesh(new THREE.BoxGeometry(7.5, 3, 5.5), matSlateBuilding);
-      dmartBldg.position.y = 1.5;
-      dmartBldg.castShadow = true;
-      const dmartCanopy = new THREE.Mesh(new THREE.BoxGeometry(6, 0.4, 4), matGold);
-      dmartCanopy.position.y = 3.2;
-      dmartGroup.add(dmartBldg, dmartCanopy);
-      dmartGroup.position.set(18, 0, 4);
-      worldGroup.add(dmartGroup);
-
-      // Landmark 6: Aditya Birla Hospital
-      const hospGroup = new THREE.Group();
-      const hospMain = new THREE.Mesh(new THREE.BoxGeometry(8, 4.5, 5.5), matWhiteBuilding);
-      hospMain.position.y = 2.25;
-      hospMain.castShadow = true;
-      const helipad = new THREE.Mesh(new THREE.CylinderGeometry(2, 2, 0.15, 16), new THREE.MeshLambertMaterial({ color: 0xe11d48 }));
-      helipad.position.y = 4.6;
-      hospGroup.add(hospMain, helipad);
-      hospGroup.position.set(22, 0, -6);
-      worldGroup.add(hospGroup);
-
-      // Landmark 7: Hinjewadi IT Park (Modern Twin Glass Towers)
-      const itParkGroup = new THREE.Group();
-      const itTower1 = new THREE.Mesh(new THREE.BoxGeometry(5.5, 14, 5.2), matGlass);
-      itTower1.position.y = 7;
-      itTower1.castShadow = true;
-      const itTower2 = new THREE.Mesh(new THREE.BoxGeometry(4.8, 10.5, 4.2), matGlass);
-      itTower2.position.set(4, 5.25, 3);
-      itTower2.castShadow = true;
-      itParkGroup.add(itTower1, itTower2);
-      itParkGroup.position.set(20, 0, -18);
-      worldGroup.add(itParkGroup);
-
-      // Landmark 8: Bhakti-Shakti Park (Round Garden Oasis)
-      const parkGroup = new THREE.Group();
-      const parkGrass = new THREE.Mesh(new THREE.CylinderGeometry(5.5, 5.5, 0.15, 24), new THREE.MeshLambertMaterial({ color: 0x488c3e }));
-      parkGrass.position.y = 0.08;
-      const fountain = new THREE.Mesh(new THREE.CylinderGeometry(1.2, 1.4, 0.4, 16), matWater);
-      fountain.position.y = 0.25;
-      parkGroup.add(parkGrass, fountain);
-      parkGroup.position.set(6, 0, 24);
-      worldGroup.add(parkGroup);
-
-      // 6. DENSE CITY GRID BLOCKS (Matching Urban Skyline Clean Cubist Style)
-      const bldgMats = [matWhiteBuilding, matSlateBuilding, matWarmBuilding];
-      const cityBuildings = [
-        // West District (Left of River)
-        { x: -5, z: -5, w: 3, h: 2.8, d: 3 },
-        { x: -9, z: -4, w: 2.8, h: 3.4, d: 2.8 },
-        { x: -5, z: -10, w: 3.5, h: 4.2, d: 2.6 },
-        { x: -9, z: -10, w: 2.6, h: 2.4, d: 3.2 },
-        { x: -14, z: -5, w: 3.2, h: 3.8, d: 3 },
-        { x: -14, z: -11, w: 3, h: 2.6, d: 2.8 },
-        { x: -5, z: 15, w: 3.2, h: 3.5, d: 2.8 },
-        { x: -9, z: 15, w: 2.6, h: 2.2, d: 3.4 },
-        { x: -5, z: 21, w: 3.5, h: 3.2, d: 3 },
-        { x: -10, z: 21, w: 3, h: 4.5, d: 2.8 },
-        { x: -21, z: 15, w: 3.2, h: 3, d: 3 },
-        { x: -25, z: 15, w: 2.8, h: 2.4, d: 3.2 },
-        { x: -22, z: 21, w: 3.4, h: 3.8, d: 2.8 },
-        { x: -27, z: 21, w: 3, h: 2.6, d: 2.6 },
-        { x: -26, z: 4, w: 3.2, h: 3.2, d: 3.4 },
-        { x: -30, z: 4, w: 2.8, h: 2.5, d: 2.8 },
-        { x: -26, z: -4, w: 3, h: 3.5, d: 3 },
-        { x: -30, z: -4, w: 2.6, h: 2.2, d: 2.8 },
-
-        // East District (Right of River)
-        { x: 5, z: -5, w: 3.2, h: 3.6, d: 2.8 },
-        { x: 9, z: -4, w: 2.8, h: 2.4, d: 3.2 },
-        { x: 5, z: -10, w: 3.4, h: 4.4, d: 3 },
-        { x: 9, z: -10, w: 2.8, h: 3.2, d: 2.8 },
-        { x: 14, z: -5, w: 3, h: 3.8, d: 3 },
-        { x: 14, z: -11, w: 3.2, h: 2.8, d: 3.2 },
-        { x: 6, z: 14, w: 3.2, h: 3.4, d: 2.8 },
-        { x: 10, z: 14, w: 2.8, h: 2.5, d: 3 },
-        { x: 20, z: 14, w: 3.5, h: 3.6, d: 3 },
-        { x: 25, z: 14, w: 2.8, h: 2.4, d: 2.8 },
-        { x: 21, z: 21, w: 3.2, h: 4, d: 3 },
-        { x: 26, z: 21, w: 3, h: 2.8, d: 2.8 },
-        { x: 26, z: 4, w: 3.2, h: 3.2, d: 3 },
-        { x: 30, z: 4, w: 2.6, h: 2.2, d: 2.8 },
-        { x: 27, z: -12, w: 3.2, h: 4.5, d: 3 },
-        { x: 31, z: -12, w: 2.8, h: 3.2, d: 2.8 },
-        { x: 28, z: -18, w: 3, h: 3.8, d: 3.2 },
-        { x: 32, z: -18, w: 2.6, h: 2.5, d: 2.6 }
+      // City Arterial Roads
+      const cityRoads = [
+        [-150, -36, 150, -30, 3.8],
+        [-150, 34, 150, 36, 2.6],
+        [-150, -62, 150, -58, 2.4],
+        [-56, -90, -49, 90, 2.4],
+        [40, -90, 36, 90, 2.6],
+        [-22, 90, 62, -90, 2.2],
+        [-150, 60, 150, 62, 2.2],
+        [82, -90, 90, 90, 2.2]
       ];
-
-      cityBuildings.forEach((b, idx) => {
-        const mat = bldgMats[idx % bldgMats.length];
-        const mesh = new THREE.Mesh(new THREE.BoxGeometry(b.w, b.h, b.d), mat);
-        mesh.position.set(b.x, b.h / 2, b.z);
-        mesh.castShadow = true;
-        mesh.receiveShadow = true;
-        worldGroup.add(mesh);
+      const roadMat = new THREE.MeshStandardMaterial({ color: 0xc3d3e6, roughness: 0.95, side: THREE.DoubleSide });
+      cityRoads.forEach(([x1, z1, x2, z2, rW]) => {
+        const roadGeo = buildRibbonGeometry([new THREE.Vector2(x1, z1), new THREE.Vector2(x2, z2)], rW, 0.09);
+        const roadMesh = new THREE.Mesh(roadGeo, roadMat);
+        roadMesh.receiveShadow = true;
+        worldGroup.add(roadMesh);
       });
 
-      // 7. LOLLIPOP / SPHERE TREES (Matching Urban Skyline green dots)
-      const treeTrunkGeo = new THREE.CylinderGeometry(0.12, 0.16, 0.8, 6);
-      const treeLeavesGeo1 = new THREE.SphereGeometry(0.65, 8, 8);
-      const treeLeavesGeo2 = new THREE.DodecahedronGeometry(0.65);
+      // 4. Photorealistic Architectural High-Rise Tower (Freepik / Urban Skyline 3D Render)
+      const towerMaterial = new THREE.SpriteMaterial({
+        transparent: true,
+        alphaTest: 0.08,
+        toneMapped: false
+      });
+      const towerSprite = new THREE.Sprite(towerMaterial);
+      towerSprite.center.set(0.5, 0.05);
+      towerSprite.scale.set((1100 / 1491) * 42, 42, 1);
+      towerSprite.position.set(0, 0, -4);
+      towerSprite.visible = false;
+      worldGroup.add(towerSprite);
 
-      function createTree(x, z, alt) {
-        const t = new THREE.Group();
-        const trunk = new THREE.Mesh(treeTrunkGeo, matTreeTrunk);
-        trunk.position.y = 0.4;
-        trunk.castShadow = true;
-        const leaves = new THREE.Mesh(alt ? treeLeavesGeo1 : treeLeavesGeo2, alt ? matTreeLeaves : matTreeLeavesDark);
-        leaves.position.y = 1.25;
-        leaves.castShadow = true;
-        t.add(trunk, leaves);
-        t.position.set(x, 0, z);
-        worldGroup.add(t);
+      // Load high-resolution transparent architectural render cutout
+      const texLoader = new THREE.TextureLoader();
+      texLoader.load('assets/tower-3d-render.webp', tex => {
+        if (tex.colorSpace !== undefined) tex.colorSpace = THREE.SRGBColorSpace;
+        tex.anisotropy = 4;
+        towerMaterial.map = tex;
+        towerMaterial.needsUpdate = true;
+        towerSprite.visible = true;
+      });
+
+      // Soft elliptical drop-shadow beneath tower
+      const shadowMesh = new THREE.Mesh(
+        new THREE.CircleGeometry(9, 48),
+        new THREE.MeshBasicMaterial({ color: 0x13356b, transparent: true, opacity: 0.18, depthWrite: false })
+      );
+      shadowMesh.rotation.x = -Math.PI / 2;
+      shadowMesh.scale.set(1.25, 0.8, 1);
+      shadowMesh.position.set(0, 0.11, -4);
+      worldGroup.add(shadowMesh);
+
+      // Pulsing golden beacon rings around the main tower
+      const ringMat = new THREE.MeshBasicMaterial({ color: 0xf5a623, transparent: true, depthWrite: false });
+      const beaconRings = [0, 0.5].map(offset => {
+        const ringMesh = new THREE.Mesh(new THREE.RingGeometry(7.2, 7.8, 72), ringMat.clone());
+        ringMesh.rotation.x = -Math.PI / 2;
+        ringMesh.position.set(0, 0.12, -4);
+        worldGroup.add(ringMesh);
+        return { mesh: ringMesh, offset: offset };
+      });
+
+      // 5. Instanced Clean Cubist City Buildings & Trees (High-Key Architectural Minimalism)
+      function pseudoRand(seed) {
+        const t = 233280 * Math.sin(9301 * seed + 49297);
+        return t - Math.floor(t);
       }
 
-      const treeGrid = [
-        [-2, 3], [-3, -2], [2, -2], [3, 4], [-1, 7], [-1, -7],
-        [6, 2], [6, -3], [-11, 5], [-15, 3], [-13, -2], [-17, 14],
-        [15, -10], [19, 11], [23, 7], [9, 19], [2, 19], [7, 26],
-        [-20, 2], [-23, 8], [-28, 9], [17, -2], [23, -2], [29, -6]
-      ];
-      treeGrid.forEach((pos, i) => createTree(pos[0], pos[1], i % 2 === 0));
+      const buildingData = [];
+      const treeData = [];
+      let seedCounter = 1;
 
-      // 8. LANDMARKS CAMERA TARGETS & DOM PIN PAIRING
+      for (let x = -135; x <= 135; x += 5.4) {
+        for (let z = -85; z <= 80; z += 5.4) {
+          seedCounter++;
+          const bX = x + (pseudoRand(seedCounter) - 0.5) * 1.4;
+          const bZ = z + (pseudoRand(seedCounter + 5000) - 0.5) * 1.4;
+
+          // Distance from river
+          let dRiverSq = Infinity;
+          for (let k = 0; k < riverPoints.length; k += 8) {
+            const rx = riverPoints[k].x - bX;
+            const rz = riverPoints[k].y - bZ;
+            const d = rx * rx + rz * rz;
+            if (d < dRiverSq) dRiverSq = d;
+          }
+          if (dRiverSq < 67) continue;
+
+          // Clear area for central project tower
+          const dCenter = Math.hypot(bX - 0, bZ - (-4));
+          if (dCenter < 10) {
+            if (dCenter > 7.5 && pseudoRand(seedCounter + 11) > 0.4) {
+              treeData.push({ x: bX, z: bZ, s: 0.8 + 0.4 * pseudoRand(seedCounter + 12) });
+            }
+            continue;
+          }
+
+          // Road clearances
+          let onRoad = false;
+          for (let r = 0; r < cityRoads.length; r++) {
+            const [x1, z1, x2, z2, rw] = cityRoads[r];
+            const segX = x2 - x1, segZ = z2 - z1;
+            const lenSq = segX * segX + segZ * segZ;
+            const u = Math.max(0, Math.min(1, ((bX - x1) * segX + (bZ - z1) * segZ) / lenSq));
+            const dist = Math.hypot(bX - (x1 + u * segX), bZ - (z1 + u * segZ));
+            if (dist < rw / 2 + 1.8) { onRoad = true; break; }
+          }
+          if (onRoad) continue;
+
+          const rnd = pseudoRand(seedCounter + 9000);
+          if (rnd < 0.16) {
+            if (rnd < 0.08) {
+              treeData.push({ x: bX, z: bZ, s: 0.8 + 0.4 * pseudoRand(seedCounter + 13) });
+            }
+            continue;
+          }
+
+          const distFact = Math.max(0, 1 - Math.hypot(bX, bZ) / 58);
+          let bH = 0.9 + 1.8 * pseudoRand(seedCounter + 21) + distFact * pseudoRand(seedCounter + 22) * 2.8;
+          if (pseudoRand(seedCounter + 23) > 0.982) bH = 6 + 5 * pseudoRand(seedCounter + 24);
+
+          buildingData.push({
+            x: bX,
+            z: bZ,
+            w: 2.4 + 2.2 * pseudoRand(seedCounter + 31),
+            d: 2.4 + 2.2 * pseudoRand(seedCounter + 32),
+            h: bH,
+            rot: (pseudoRand(seedCounter + 33) - 0.5) * 0.45
+          });
+
+          if (distFact > 0.25 && pseudoRand(seedCounter + 41) > 0.58) {
+            treeData.push({ x: bX + 2.6, z: bZ + 2.4, s: 0.6 + 0.4 * pseudoRand(seedCounter + 42) });
+          }
+        }
+      }
+
+      // Instanced Building Mesh
+      const bldgUnitGeo = new THREE.BoxGeometry(1, 1, 1).translate(0, 0.5, 0);
+      const bldgInstanced = new THREE.InstancedMesh(
+        bldgUnitGeo,
+        new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.85 }),
+        buildingData.length
+      );
+      const dummyMat = new THREE.Matrix4();
+      const dummyQuat = new THREE.Quaternion();
+      const dummyAxis = new THREE.Vector3(0, 1, 0);
+      const dummyColor = new THREE.Color();
+
+      buildingData.forEach((b, i) => {
+        dummyQuat.setFromAxisAngle(dummyAxis, b.rot);
+        dummyMat.compose(new THREE.Vector3(b.x, 0, b.z), dummyQuat, new THREE.Vector3(b.w, b.h, b.d));
+        bldgInstanced.setMatrixAt(i, dummyMat);
+        dummyColor.setHSL(0.09, 0.18, 0.9 + 0.06 * pseudoRand(i + 77));
+        bldgInstanced.setColorAt(i, dummyColor);
+      });
+      bldgInstanced.castShadow = true;
+      bldgInstanced.receiveShadow = true;
+      worldGroup.add(bldgInstanced);
+
+      // Instanced Tree Spheres & Trunks
+      const treeCanopyGeo = new THREE.SphereGeometry(1, 8, 8);
+      const treeCanopyInstanced = new THREE.InstancedMesh(
+        treeCanopyGeo,
+        new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.9, flatShading: true }),
+        treeData.length
+      );
+      const treeTrunkGeo = new THREE.CylinderGeometry(0.12, 0.16, 1, 5).translate(0, 0.5, 0);
+      const treeTrunkInstanced = new THREE.InstancedMesh(
+        treeTrunkGeo,
+        new THREE.MeshStandardMaterial({ color: 0x8a6f55, roughness: 1 }),
+        treeData.length
+      );
+      const treePalette = ['#5f8f3c', '#4f7d31', '#74a64b', '#86b35a'];
+
+      treeData.forEach((t, i) => {
+        dummyMat.compose(new THREE.Vector3(t.x, 0.9 * t.s + 0.6, t.z), dummyQuat.identity(), new THREE.Vector3(t.s, 1.1 * t.s, t.s));
+        treeCanopyInstanced.setMatrixAt(i, dummyMat);
+        dummyColor.set(treePalette[i % treePalette.length]);
+        treeCanopyInstanced.setColorAt(i, dummyColor);
+
+        dummyMat.compose(new THREE.Vector3(t.x, 0, t.z), dummyQuat.identity(), new THREE.Vector3(1, 0.7 + 0.4 * t.s, 1));
+        treeTrunkInstanced.setMatrixAt(i, dummyMat);
+      });
+      treeCanopyInstanced.castShadow = true;
+      treeTrunkInstanced.castShadow = true;
+      worldGroup.add(treeCanopyInstanced, treeTrunkInstanced);
+
+      // 6. Landmark Pin Definitions (Matching exact Urban Skyline coordinates)
       const landmarks = {
         project: {
-          pos: new THREE.Vector3(0, 24, 0),
-          cam: { x: 26, y: 34, z: 38, tx: 0, ty: 5, tz: 0 },
+          id: 0,
+          pos: new THREE.Vector3(0, 36, -4),
+          targetTheta: 0,
+          targetPhi: 0.98,
           el: document.getElementById('pin-project')
         },
         sbpatil: {
-          pos: new THREE.Vector3(-16, 4.5, 10),
-          cam: { x: -8, y: 17, z: 24, tx: -16, ty: 2, tz: 10 },
+          id: 1,
+          pos: new THREE.Vector3(-36, 0, 28),
+          targetTheta: -0.42,
+          targetPhi: 1.04,
           el: document.getElementById('pin-sbpatil')
         },
         citypride: {
-          pos: new THREE.Vector3(-20, 4.8, -6),
-          cam: { x: -10, y: 17, z: 8, tx: -20, ty: 2, tz: -6 },
+          id: 8,
+          pos: new THREE.Vector3(-62, 0, -16),
+          targetTheta: -0.65,
+          targetPhi: 0.88,
           el: document.getElementById('pin-citypride')
         },
         expressway: {
-          pos: new THREE.Vector3(-10, 3.5, 8),
-          cam: { x: 6, y: 18, z: 22, tx: -10, ty: 1, tz: 8 },
+          id: 3,
+          pos: new THREE.Vector3(20, 0, -32.5),
+          targetTheta: 0.32,
+          targetPhi: 0.86,
           el: document.getElementById('pin-expressway')
         },
         mukaichowk: {
-          pos: new THREE.Vector3(-24, 2.5, -14),
-          cam: { x: -12, y: 18, z: 4, tx: -24, ty: 1, tz: -14 },
+          id: 5,
+          pos: new THREE.Vector3(37, 0, 35),
+          targetTheta: 0.52,
+          targetPhi: 1.08,
           el: document.getElementById('pin-mukaichowk')
         },
         dypatil: {
-          pos: new THREE.Vector3(14, 5.5, 18),
-          cam: { x: 19, y: 18, z: 32, tx: 14, ty: 2, tz: 18 },
+          id: 9,
+          pos: new THREE.Vector3(-8, 0, 46),
+          targetTheta: -0.15,
+          targetPhi: 1.1,
           el: document.getElementById('pin-dypatil')
         },
         dmart: {
-          pos: new THREE.Vector3(18, 4.5, 4),
-          cam: { x: 24, y: 16, z: 18, tx: 18, ty: 2, tz: 4 },
+          id: 6,
+          pos: new THREE.Vector3(58, 0, -14),
+          targetTheta: 0.62,
+          targetPhi: 0.94,
           el: document.getElementById('pin-dmart')
         },
         hospital: {
-          pos: new THREE.Vector3(22, 6, -6),
-          cam: { x: 26, y: 18, z: 10, tx: 22, ty: 2, tz: -6 },
+          id: 2,
+          pos: new THREE.Vector3(-24, 0, -40),
+          targetTheta: -0.32,
+          targetPhi: 0.82,
           el: document.getElementById('pin-hospital')
         },
         hinjewadi: {
-          pos: new THREE.Vector3(20, 16, -18),
-          cam: { x: 29, y: 24, z: -4, tx: 20, ty: 7, tz: -18 },
+          id: 7,
+          pos: new THREE.Vector3(66, 0, 26),
+          targetTheta: 0.72,
+          targetPhi: 1.02,
           el: document.getElementById('pin-hinjewadi')
         },
         park: {
-          pos: new THREE.Vector3(6, 2.5, 24),
-          cam: { x: 14, y: 16, z: 36, tx: 6, ty: 1, tz: 24 },
+          id: 4,
+          pos: new THREE.Vector3(10, 0, -21),
+          targetTheta: 0.18,
+          targetPhi: 0.9,
           el: document.getElementById('pin-park')
         }
       };
 
-      // 9. INTERACTIVE CONTROLS & EVENT LISTENERS
+      // 7. Interactive Swipe & Drag Controls (NO ZOOM IN / ZOOM OUT, 3D TILT & ORBIT ONLY)
       let isDragging = false;
-      let prevMousePos = { x: 0, y: 0 };
-      let autoRotate = true;
-      let rotSpeed = 0.003;
-      let activeKey = 'sbpatil'; // Default matching Urban Skyline screenshot
+      let startX = 0, startY = 0;
+      let lastInteraction = performance.now();
+      let autoMotion = true;
 
+      function onPointerDown(e) {
+        if (e.button !== undefined && e.button !== 0) return;
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        canvas.style.cursor = 'grabbing';
+      }
+
+      function onPointerMove(e) {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        startX = e.clientX;
+        startY = e.clientY;
+
+        // Pure 3D Orbit & Tilt Clamped (Strictly NO Zooming)
+        orbit.userTheta = Math.max(-0.78, Math.min(0.78, orbit.userTheta - dx * 0.005));
+        orbit.userPhi = Math.max(0.72, Math.min(1.15, orbit.userPhi - dy * 0.004));
+        lastInteraction = performance.now();
+      }
+
+      function onPointerUp() {
+        if (isDragging) {
+          isDragging = false;
+          lastInteraction = performance.now();
+          canvas.style.cursor = 'grab';
+        }
+      }
+
+      canvas.addEventListener('pointerdown', onPointerDown);
+      window.addEventListener('pointermove', onPointerMove);
+      window.addEventListener('pointerup', onPointerUp);
+      window.addEventListener('pointercancel', onPointerUp);
+
+      // Disable Mouse Wheel Zoom completely as requested
+      canvas.addEventListener('wheel', e => {
+        e.preventDefault();
+      }, { passive: false });
+
+      // Landmark Selection & Smooth Camera Angle Gliding
       function selectLandmark(key) {
         const lm = landmarks[key];
         if (!lm) return;
-        activeKey = key;
-        autoRotate = false;
-        if (btnRotate) btnRotate.classList.remove('active');
+        orbit.userTheta = lm.targetTheta;
+        orbit.userPhi = lm.targetPhi;
+        lastInteraction = performance.now() + 2500; // Pause ambient sway temporarily
 
-        // Smooth camera glide
-        targetCamPos.set(lm.cam.x, lm.cam.y, lm.cam.z);
-        targetLookAt.set(lm.cam.tx, lm.cam.ty, lm.cam.tz);
-
-        // Highlight 3D pin & expand dynamic pop tooltip
+        // Highlight 3D pin pop
         document.querySelectorAll('.conn-map-pin').forEach(p => p.classList.remove('pin-active'));
         if (lm.el && lm.el.classList.contains('conn-map-pin')) {
           lm.el.classList.add('pin-active');
         }
 
-        // Highlight corresponding pill in bottom list
+        // Highlight bottom navigation pill
         document.querySelectorAll('.conn-nav-pill').forEach(pill => {
           if (pill.getAttribute('data-target') === key) {
             pill.classList.add('active');
@@ -4679,94 +4651,20 @@
       }
 
       function resetView() {
-        targetCamPos.set(defaultCam.x, defaultCam.y, defaultCam.z);
-        targetLookAt.set(defaultCam.tx, defaultCam.ty, defaultCam.tz);
-        autoRotate = true;
-        if (btnRotate) btnRotate.classList.add('active');
+        orbit.userTheta = 0;
+        orbit.userPhi = 0.98;
+        lastInteraction = performance.now();
+        selectLandmark('sbpatil');
       }
-
-      // Mouse drag controls
-      canvas.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        autoRotate = false;
-        if (btnRotate) btnRotate.classList.remove('active');
-        prevMousePos = { x: e.clientX, y: e.clientY };
-      });
-
-      window.addEventListener('mouseup', () => { isDragging = false; });
-
-      window.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        const dx = e.clientX - prevMousePos.x;
-        const dy = e.clientY - prevMousePos.y;
-        prevMousePos = { x: e.clientX, y: e.clientY };
-
-        worldGroup.rotation.y += dx * rotSpeed;
-        targetCamPos.y = Math.max(12, Math.min(55, targetCamPos.y - dy * 0.12));
-      });
-
-      // Touch drag controls
-      canvas.addEventListener('touchstart', (e) => {
-        if (e.touches.length === 1) {
-          isDragging = true;
-          autoRotate = false;
-          if (btnRotate) btnRotate.classList.remove('active');
-          prevMousePos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        }
-      }, { passive: true });
-
-      canvas.addEventListener('touchmove', (e) => {
-        if (!isDragging || e.touches.length !== 1) return;
-        const dx = e.touches[0].clientX - prevMousePos.x;
-        const dy = e.touches[0].clientY - prevMousePos.y;
-        prevMousePos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-
-        worldGroup.rotation.y += dx * rotSpeed * 1.5;
-        targetCamPos.y = Math.max(12, Math.min(55, targetCamPos.y - dy * 0.12));
-      }, { passive: true });
-
-      canvas.addEventListener('touchend', () => { isDragging = false; });
-
-      // Mouse wheel zoom
-      canvas.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        autoRotate = false;
-        if (btnRotate) btnRotate.classList.remove('active');
-        const zoomDelta = e.deltaY * 0.04;
-        const dir = new THREE.Vector3().subVectors(targetCamPos, targetLookAt).normalize();
-        const dist = targetCamPos.distanceTo(targetLookAt);
-        const newDist = Math.max(18, Math.min(75, dist + zoomDelta));
-        targetCamPos.copy(targetLookAt).addScaledVector(dir, newDist);
-      }, { passive: false });
 
       // HUD Button Listeners
       const btnRotate = document.getElementById('btn3dRotate');
-      const btnZoomIn = document.getElementById('btn3dZoomIn');
-      const btnZoomOut = document.getElementById('btn3dZoomOut');
       const btnReset = document.getElementById('btn3dReset');
 
       if (btnRotate) {
         btnRotate.addEventListener('click', () => {
-          autoRotate = !autoRotate;
-          btnRotate.classList.toggle('active', autoRotate);
-        });
-      }
-      if (btnZoomIn) {
-        btnZoomIn.addEventListener('click', () => {
-          autoRotate = false;
-          if (btnRotate) btnRotate.classList.remove('active');
-          const dir = new THREE.Vector3().subVectors(targetCamPos, targetLookAt).normalize();
-          const dist = Math.max(18, targetCamPos.distanceTo(targetLookAt) - 8);
-          targetCamPos.copy(targetLookAt).addScaledVector(dir, dist);
-        });
-      }
-      if (btnZoomOut) {
-        btnZoomOut.addEventListener('click', () => {
-          autoRotate = false;
-          if (btnRotate) btnRotate.classList.remove('active');
-          const dir = new THREE.Vector3().subVectors(targetCamPos, targetLookAt).normalize();
-          const dist = Math.min(75, targetCamPos.distanceTo(targetLookAt) + 8);
-          targetCamPos.copy(targetLookAt).addScaledVector(dir, dist);
+          autoMotion = !autoMotion;
+          btnRotate.classList.toggle('active', autoMotion);
         });
       }
       if (btnReset) {
@@ -4781,7 +4679,7 @@
         });
       });
 
-      // 3D Map Pins Click Event
+      // 3D Pins Click Event
       document.querySelectorAll('.conn-map-pin, .conn-map-tooltip').forEach(pin => {
         pin.addEventListener('click', () => {
           const target = pin.getAttribute('data-target');
@@ -4789,69 +4687,74 @@
         });
       });
 
-      // Window resize
+      // Window resize & Aspect Ratio handling
       function onResize() {
         if (!container) return;
         width = container.clientWidth;
         height = container.clientHeight;
-        camera.aspect = width / height;
+        const aspect = width / height;
+        camera.aspect = aspect;
+        orbit.radius = 158 * Math.max(1, 1.2 / aspect);
+        scene.fog.near = 0.95 * orbit.radius;
+        scene.fog.far = 2.1 * orbit.radius;
         camera.updateProjectionMatrix();
         renderer.setSize(width, height);
       }
       window.addEventListener('resize', onResize);
+      onResize();
 
-      // Set initial active state (S B Patil Public School)
+      // Initial active landmark: S B Patil Public School (Matching Urban Skyline)
       selectLandmark('sbpatil');
 
-      // 10. ANIMATION LOOP
-      const tempVec = new THREE.Vector3();
-      let clock = 0;
+      // 8. ANIMATION LOOP (Smooth 3D Orbit, Ambient Sway, Pulsing Rings, 2D Pin Projections)
+      const projVec = new THREE.Vector3();
+      const startTime = performance.now();
 
       function animate() {
         requestAnimationFrame(animate);
-        clock += 0.016;
+        const now = performance.now();
+        const elapsed = (now - startTime) / 1000;
 
-        // Auto Rotation
-        if (autoRotate && !isDragging) {
-          worldGroup.rotation.y += 0.0016;
-        }
+        // Subtle ambient 3D breathing motion when idle
+        const ambient = (!autoMotion || isDragging || (now - lastInteraction < 2200))
+          ? 0
+          : (0.12 * Math.sin(0.18 * elapsed));
 
-        // Camera smooth dampening
-        camera.position.lerp(targetCamPos, 0.06);
-        currentLookAt.lerp(targetLookAt, 0.06);
-        camera.lookAt(currentLookAt);
+        orbit.theta += (orbit.userTheta + ambient - orbit.theta) * 0.06;
+        orbit.phi += (orbit.userPhi - orbit.phi) * 0.08;
 
-        // Move highway vehicles
-        vehicles.forEach(v => {
-          v.t = (v.t + v.speed) % 1;
-          const pt = curve.getPointAt(v.t);
-          v.mesh.position.copy(pt);
-          const tangent = curve.getTangentAt(v.t).normalize();
-          v.mesh.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), tangent);
+        const sinPhi = Math.sin(orbit.phi);
+        camera.position.set(
+          lookTarget.x + orbit.radius * sinPhi * Math.sin(orbit.theta),
+          lookTarget.y + orbit.radius * Math.cos(orbit.phi),
+          lookTarget.z + orbit.radius * sinPhi * Math.cos(orbit.theta)
+        );
+        camera.lookAt(lookTarget);
+
+        // Pulse golden beacon rings
+        beaconRings.forEach(({ mesh, offset }) => {
+          const p = (0.45 * elapsed + offset) % 1;
+          mesh.scale.setScalar(1 + 1.1 * p);
+          mesh.material.opacity = 0.75 * (1 - p);
         });
 
-        // Tower beacon pulsating glow
-        beaconMesh.scale.set(
-          1 + Math.sin(clock * 4) * 0.25,
-          1 + Math.sin(clock * 3) * 0.15,
-          1 + Math.sin(clock * 4) * 0.25
-        );
-
-        // Project 3D Coordinates to 2D HTML Floating Pins & Tooltips
+        // Project 3D Coordinates to 2D HTML Floating Pins
         for (const key in landmarks) {
           const lm = landmarks[key];
           if (!lm.el) continue;
 
-          tempVec.copy(lm.pos);
-          tempVec.applyMatrix4(worldGroup.matrixWorld);
-          tempVec.project(camera);
+          projVec.copy(lm.pos);
+          projVec.project(camera);
 
-          const x = (tempVec.x * 0.5 + 0.5) * width;
-          const y = (-(tempVec.y * 0.5) + 0.5) * height;
+          const px = (projVec.x + 1) * 0.5 * width;
+          const py = (1 - projVec.y) * 0.5 * height;
 
-          if (tempVec.z < 1 && x >= -50 && x <= width + 50 && y >= -50 && y <= height + 50) {
+          if (projVec.z < 1 && px >= -60 && px <= width + 60 && py >= -60 && py <= height + 60) {
             lm.el.style.display = 'inline-flex';
-            lm.el.style.transform = `translate(-50%, -100%) translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
+            lm.el.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0)`;
+            if (!lm.el.classList.contains('pin-active')) {
+              lm.el.style.zIndex = String(Math.round(py));
+            }
           } else {
             lm.el.style.display = 'none';
           }

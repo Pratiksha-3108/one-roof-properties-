@@ -2041,432 +2041,416 @@
     }
 
     /* ======================================================== */
-    /* CATEGORY SHOWCASE: RESIDENTIAL & PLOTTING (REAKTOR STYLE)*/
+    /* ACCORDION SHOWCASE: RESIDENTIAL & PLOTTING PROJECTS      */
+    /* Spaciaz Inspired Expanding Card Accordion + Brand Palette*/
     /* ======================================================== */
     #categoryShowcaseSection {
       position: relative;
-      height: 550vh;
       background: #FAF8EE;
       margin: 0;
-      padding: 0;
-    }
-    .sr-sticky-wrapper {
-      position: sticky;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
+      padding: clamp(80px, 9vw, 130px) 0 clamp(90px, 10vw, 140px);
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: #FAF8EE;
+    }
+
+    .sp-accordion-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 56px);
       box-sizing: border-box;
-      padding: clamp(20px, 3vh, 36px) clamp(24px, 4.5vw, 64px) clamp(16px, 2.5vh, 28px);
-    }
-
-    /* Architectural Geometric Rings Layer in Background */
-    .sr-bg-rings {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 1;
-      display: none !important; /* Removed bluish background circle rings */
-    }
-    .sr-bg-ring {
-      display: none !important;
-    }
-    .sr-bg-ring.ring-a {
-      width: 900px;
-      height: 900px;
-      right: 2%;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .sr-bg-ring.ring-b {
-      width: 620px;
-      height: 620px;
-      right: 12%;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .sr-bg-ring.ring-c {
-      width: 1200px;
-      height: 1200px;
-      right: -8%;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    /* Top Navigation Bar */
-    .sr-top-bar {
       position: relative;
-      z-index: 25;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 4px;
+      z-index: 2;
     }
-    .sr-eyebrow {
+
+    /* Top Header Bar */
+    .sp-acc-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: clamp(36px, 4.5vw, 54px);
+    }
+
+    .sp-acc-header-left {
+      max-width: 760px;
+    }
+
+    .sp-acc-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       font-family: 'Jost', sans-serif;
       font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 2.8px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: #7b8791;
+      margin-bottom: 12px;
     }
-    .sr-eyebrow-dot {
+
+    .sp-acc-eyebrow-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #465665;
+      background: #d97706;
     }
-    .sr-pills-nav {
+
+    .sp-acc-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+      font-weight: 700;
+      color: #1f343f;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+
+    .sp-acc-header-right {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 16px;
+    }
+
+    /* Tab switcher for Residential vs Plotting */
+    .sp-acc-tabs {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       background: rgba(70, 86, 101, 0.08);
       padding: 5px;
       border-radius: 999px;
-      border: 1px solid rgba(70, 86, 101, 0.12);
+      border: 1px solid rgba(70, 86, 101, 0.14);
     }
-    .sr-pill-btn {
+
+    .sp-acc-tab-btn {
       font-family: 'Jost', sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
       color: #7b8791;
       background: transparent;
       border: none;
-      padding: 8px 20px;
+      padding: 9px 22px;
       border-radius: 999px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .sr-pill-btn:hover {
-      color: #465665;
+
+    .sp-acc-tab-btn:hover {
+      color: #1f343f;
     }
-    .sr-pill-btn.active {
-      background: #465665;
+
+    .sp-acc-tab-btn.active {
+      background: #1f343f;
       color: #FAF8EE;
-      box-shadow: 0 4px 14px rgba(70, 86, 101, 0.2);
+      box-shadow: 0 4px 16px rgba(31, 52, 63, 0.22);
     }
 
-    /* Center Stage */
-    .sr-stage-center {
-      position: relative;
-      z-index: 10;
-      flex: 1;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      box-sizing: border-box;
-    }
-
-    /* Left Brand & Category Headline Block */
-    .sr-brand-block {
-      position: relative;
-      z-index: 20;
-      width: clamp(380px, 36vw, 560px);
-      flex-shrink: 0;
-      pointer-events: auto;
-      background: #FAF8EE; /* Solid cream matching page, guarantees no cards show through */
-    }
-    .sr-cat-subtitle {
-      display: block;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 2.8px;
-      text-transform: uppercase;
-      color: #7b8791;
-      margin-bottom: 8px;
-      transition: opacity 0.3s ease;
-    }
-    .sr-title-stack {
-      position: relative;
-      height: clamp(80px, 9.5vw, 130px);
-      overflow: hidden;
-      margin-bottom: 16px;
-      width: 100%;
-    }
-    .sr-title-text {
-      position: absolute;
-      bottom: clamp(10px, 1.4vw, 18px);
-      left: 0;
-      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
-      font-size: clamp(2.6rem, 5.0vw, 5.2rem);
-      font-weight: 700;
-      color: #465665;
-      line-height: 1.15;
-      letter-spacing: -1px;
-      margin: 0;
-      padding-bottom: 6px;
-      white-space: nowrap;
-      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
-    }
-    .sr-title-text.is-active {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .sr-title-text.is-prev {
-      transform: translateY(-110%);
-      opacity: 0;
-      pointer-events: none;
-    }
-    .sr-title-text.is-next {
-      transform: translateY(110%);
-      opacity: 0;
-      pointer-events: none;
-    }
-    .sr-cat-desc {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(0.95rem, 1.05vw, 1.08rem);
-      font-weight: 300;
-      color: #7b8791;
-      line-height: 1.65;
-      margin: 0 0 28px 0;
-      max-width: 440px;
-      min-height: 4.8em;
-      transition: opacity 0.35s ease;
-    }
-    .sr-cat-action-btn {
+    /* View All Projects Pill Link */
+    .sp-acc-viewall-btn {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: #465665;
-      color: #FAF8EE;
+      background: #FAF8EE;
+      color: #1f343f;
       font-family: 'Jost', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 2px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
-      padding: 14px 28px;
+      padding: 8px 10px 8px 24px;
       border-radius: 999px;
+      border: 1.5px solid rgba(70, 86, 101, 0.22);
       text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 24px rgba(70, 86, 101, 0.22);
+      box-shadow: 0 4px 16px rgba(70, 86, 101, 0.08);
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .sr-cat-action-btn:hover {
-      background: #273440;
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(70, 86, 101, 0.3);
+
+    .sp-acc-viewall-btn:hover {
+      background: #1f343f;
       color: #FAF8EE;
-    }
-    .sr-action-icon {
-      font-size: 1.1rem;
-      transition: transform 0.25s ease;
-    }
-    .sr-cat-action-btn:hover .sr-action-icon {
-      transform: translateX(4px);
+      border-color: #1f343f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(31, 52, 63, 0.2);
     }
 
-    /* Right Side / Horizontal Project Trains Viewport */
-    .sr-projects-viewport {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: visible;
-      z-index: 5;
-      /* Hard boundary: Never allow any card to enter or overlap the left div words */
-      clip-path: inset(-60px 0 -60px clamp(380px, 36vw, 560px));
-    }
-    .sr-projects-train {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      display: flex;
-      align-items: center;
-      gap: 0; /* Outer blueprint circles touch as tangent rings */
-      pointer-events: auto;
-      will-change: transform;
-      transition: opacity 0.45s ease;
-      opacity: 0;
-    }
-    .sr-projects-train.is-active {
-      opacity: 1;
-    }
-
-    /* Project Node with Outer Tangent Blueprint Ring */
-    .sr-project-node {
-      position: relative;
-      flex-shrink: 0;
-      width: clamp(340px, 30vw, 430px);
-      height: clamp(430px, 38vw, 530px);
+    .sp-acc-viewall-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #d97706;
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
-      will-change: transform, opacity;
-    }
-    /* The large outer ring outside the image */
-    .sr-node-ring {
-      position: absolute;
-      inset: 0;
-      border-radius: 9999px 9999px 0 0;
-      border: none !important;
-      display: none !important;
-      pointer-events: none;
-    }
-    .sr-project-node:hover .sr-node-ring {
-      display: none !important;
+      font-size: 0.85rem;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.35s ease;
     }
 
-    /* Arched Architectural Window Frame (Window Shape like Raheja Vistas Reference) */
-    .sr-node-portal {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1);
-      transform-origin: center center;
-      width: clamp(280px, 24vw, 350px);
-      height: clamp(390px, 34vw, 480px);
-      border-radius: 9999px 9999px 0 0; /* Pure Roman Arched Window Shape */
-      overflow: hidden;
-      background: #111a22;
-      box-shadow: 0 20px 45px rgba(70, 86, 101, 0.16);
-      transition: filter 0.3s ease, box-shadow 0.3s ease;
-      will-change: transform;
+    .sp-acc-viewall-btn:hover .sp-acc-viewall-icon {
+      background: #FAF8EE;
+      color: #1f343f;
+      transform: rotate(45deg);
     }
-    .sr-node-portal img {
+
+    /* Cards Group Wrapper (Holds Residential & Plotting panes) */
+    .sp-accordion-panes {
+      position: relative;
+      width: 100%;
+    }
+
+    .sp-accordion-group {
+      display: flex;
+      align-items: stretch;
+      gap: clamp(10px, 1.2vw, 18px);
+      width: 100%;
+      height: clamp(520px, 48vw, 640px);
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      visibility: hidden;
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+
+    .sp-accordion-group.is-active {
+      opacity: 1;
+      pointer-events: auto;
+      position: relative;
+      visibility: visible;
+    }
+
+    /* Individual Accordion Card */
+    .sp-acc-card {
+      position: relative;
+      flex: 1 1 0%;
+      height: 100%;
+      border-radius: clamp(24px, 2.5vw, 36px);
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      background: #111a22;
+      box-shadow: 0 16px 38px rgba(31, 52, 63, 0.12);
+      transition: flex 0.75s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.5s ease, transform 0.4s ease;
+      will-change: flex;
+    }
+
+    .sp-acc-card:hover {
+      box-shadow: 0 24px 50px rgba(31, 52, 63, 0.24);
+    }
+
+    /* Expanded Card State (Default 1st or on hover) */
+    .sp-acc-card.is-expanded {
+      flex: 3.2 1 0%;
+    }
+
+    /* Background Image with Smooth Zoom */
+    .sp-acc-bg {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      filter: brightness(1);
-      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
-    }
-    .sr-project-node:hover .sr-node-portal img {
-      transform: scale(1.08);
-      filter: brightness(1.04);
-    }
-    .sr-project-node:hover .sr-node-portal {
-      box-shadow: 0 30px 60px rgba(70, 86, 101, 0.28);
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+      transform: scale(1.02);
+      filter: brightness(0.92);
     }
 
-    /* Window Overlay Caption (Project Content on Arch Window) */
-    .sr-node-overlay {
+    .sp-acc-card:hover .sp-acc-bg,
+    .sp-acc-card.is-expanded .sp-acc-bg {
+      filter: brightness(0.98);
+    }
+
+    .sp-acc-card.is-expanded:hover .sp-acc-bg {
+      transform: scale(1.06);
+    }
+
+    /* Card Gradients */
+    .sp-acc-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(17, 26, 34, 0.08) 0%, rgba(17, 26, 34, 0.35) 45%, rgba(17, 26, 34, 0.88) 100%);
+      background: linear-gradient(180deg, rgba(17, 26, 34, 0.08) 0%, rgba(17, 26, 34, 0.32) 50%, rgba(17, 26, 34, 0.88) 100%);
+      transition: background 0.5s ease;
+      z-index: 2;
+    }
+
+    .sp-acc-card.is-expanded .sp-acc-overlay {
+      background: linear-gradient(180deg, rgba(17, 26, 34, 0.06) 0%, rgba(17, 26, 34, 0.28) 40%, rgba(17, 26, 34, 0.92) 100%);
+    }
+
+    /* Collapsed View: Vertical Title Bar */
+    .sp-acc-collapsed-content {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      text-align: center;
-      padding: clamp(20px, 3vw, 36px) clamp(16px, 2.5vw, 28px);
-      box-sizing: border-box;
-      transition: background 0.3s ease, opacity 0.3s ease;
+      padding: clamp(24px, 3vh, 36px) 14px;
       pointer-events: none;
-      z-index: 5;
-    }
-    .sr-project-node:hover .sr-node-overlay {
-      background: linear-gradient(180deg, rgba(17, 26, 34, 0.15) 0%, rgba(17, 26, 34, 0.5) 45%, rgba(17, 26, 34, 0.94) 100%);
-    }
-    .sr-node-sub {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.74rem;
-      font-weight: 600;
-      letter-spacing: 2.2px;
-      text-transform: uppercase;
-      color: #d97706; /* Homepage gold accent */
-      margin-bottom: 6px;
-    }
-    .sr-node-name {
-      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.28rem, 1.6vw, 1.8rem);
-      font-weight: 700;
-      color: #FAF8EE; /* Homepage architectural cream */
-      margin: 0 0 6px 0;
-      line-height: 1.22;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
-    }
-    .sr-node-detail {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.84rem;
-      font-weight: 400;
-      color: rgba(250, 248, 238, 0.88); /* Homepage cream-tinted body */
-      line-height: 1.55;
-      max-width: 260px;
-      margin: 0 0 14px 0;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
-    }
-    .sr-node-link {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-      color: #FAF8EE;
-      background: #d97706; /* Homepage gold accent */
-      padding: 7px 18px;
-      border-radius: 999px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-      transition: all 0.25s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .sr-project-node:hover .sr-node-link {
-      background: #d97706;
-      transform: translateY(-2px);
+      opacity: 1;
+      transition: opacity 0.35s ease 0.15s, transform 0.4s ease;
     }
 
+    .sp-acc-card.is-expanded .sp-acc-collapsed-content {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease 0s;
+    }
+
+    .sp-acc-vertical-title {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.1rem, 1.4vw, 1.45rem);
+      font-weight: 700;
+      color: #FAF8EE;
+      white-space: nowrap;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+      margin: 0;
+    }
+
+    /* Expanded View: Full Details Drawer */
+    .sp-acc-expanded-content {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(24px, 3.5vw, 44px);
+      box-sizing: border-box;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.18s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.18s;
+    }
+
+    .sp-acc-card.is-expanded .sp-acc-expanded-content {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .sp-acc-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #d97706;
+      margin-bottom: 8px;
+    }
+
+    .sp-acc-location i {
+      font-size: 0.85rem;
+    }
+
+    .sp-acc-name {
+      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.6rem);
+      font-weight: 700;
+      color: #FAF8EE;
+      margin: 0 0 10px 0;
+      line-height: 1.18;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.75);
+    }
+
+    .sp-acc-detail {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.9rem, 1.05vw, 1.0rem);
+      font-weight: 400;
+      color: rgba(250, 248, 238, 0.88);
+      line-height: 1.55;
+      max-width: 460px;
+      margin: 0 0 24px 0;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Explore Project Button on Card */
+    .sp-acc-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #FAF8EE;
+      color: #1f343f;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 7px 8px 7px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      align-self: flex-start;
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .sp-acc-cta-btn:hover {
+      background: #1f343f;
+      color: #FAF8EE;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    .sp-acc-cta-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #d97706;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .sp-acc-cta-btn:hover .sp-acc-cta-icon {
+      background: #FAF8EE;
+      color: #1f343f;
+      transform: rotate(45deg);
+    }
+
+    /* Responsive adjustments */
     @media (max-width: 960px) {
-      #categoryShowcaseSection {
-        height: auto;
-        padding: 60px 0;
-      }
-      .sr-sticky-wrapper {
-        position: relative;
-        height: auto;
-        padding: 0 24px;
-        gap: 36px;
-      }
-      .sr-stage-center {
+      .sp-acc-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 32px;
+        gap: 20px;
       }
-      .sr-brand-block {
+      .sp-accordion-group {
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+      }
+      .sp-acc-card {
+        flex: none !important;
         width: 100%;
+        height: 380px;
+        border-radius: 24px;
       }
-      .sr-projects-viewport {
-        position: relative;
-        inset: auto;
-        width: 100%;
-        overflow-x: auto;
-        scrollbar-width: none;
-        pointer-events: auto;
-        padding: 20px 0;
-      }
-      .sr-projects-viewport::-webkit-scrollbar {
+      .sp-acc-collapsed-content {
         display: none;
       }
-      .sr-projects-train {
-        position: relative;
-        top: auto;
-        left: auto;
+      .sp-acc-expanded-content {
+        opacity: 1 !important;
         transform: none !important;
-        display: none;
+        pointer-events: auto !important;
+        padding: 26px;
       }
-      .sr-projects-train.is-active {
-        display: flex;
-      }
-      .sr-project-node {
-        width: 230px;
-        height: 320px;
-      }
-      .sr-node-portal {
-        width: 200px;
-        height: 285px;
-        border-radius: 9999px 9999px 0 0;
+      .sp-acc-detail {
+        margin-bottom: 16px;
       }
     }
 
@@ -2881,150 +2865,193 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- ARCHITECTURAL CATEGORY SHOWCASE (RESIDENTIAL & PLOTTING) -->
-  <!-- Studio Reaktor Inspired Window Geometry & Horizontal Train-->
+  <!-- EXPANDING PROJECT ACCORDION SHOWCASE (SPACIAZ INSPIRED)  -->
+  <!-- Dynamic smooth hover accordion with One Roof properties  -->
   <!-- ======================================================== -->
   <section id="categoryShowcaseSection">
-    <div class="sr-sticky-wrapper">
+    <div class="sp-accordion-container">
 
-      <!-- Concentric Blueprint Rings in Background -->
-      <div class="sr-bg-rings" aria-hidden="true">
-        <div class="sr-bg-ring ring-a" id="srRingA"></div>
-        <div class="sr-bg-ring ring-b" id="srRingB"></div>
-        <div class="sr-bg-ring ring-c" id="srRingC"></div>
-      </div>
-
-      <!-- Top Bar: Category Switcher & Eyebrow -->
-      <div class="sr-top-bar">
-        <div class="sr-eyebrow">
-          <span class="sr-eyebrow-dot"></span>
-          <span>Property Portfolios</span>
-        </div>
-        <nav class="sr-pills-nav" role="tablist" aria-label="Portfolio Categories">
-          <button class="sr-pill-btn active" id="srTabResidential" role="tab" aria-selected="true" data-cat="0">
-            01 Residential
-          </button>
-          <button class="sr-pill-btn" id="srTabPlotting" role="tab" aria-selected="false" data-cat="1">
-            02 Plotting
-          </button>
-        </nav>
-      </div>
-
-      <!-- Center Stage Body -->
-      <div class="sr-stage-center">
-
-        <!-- Left Brand & Category Headline Block -->
-        <div class="sr-brand-block">
-          <span class="sr-cat-subtitle" id="srCatSubtitle">01 / Curated Living Spaces</span>
-          <div class="sr-title-stack">
-            <h2 class="sr-title-text is-active" id="srCatTitleRes">Residential</h2>
-            <h2 class="sr-title-text is-next" id="srCatTitlePlot">Plotting</h2>
+      <!-- Top Header Row -->
+      <div class="sp-acc-header">
+        <div class="sp-acc-header-left">
+          <div class="sp-acc-eyebrow">
+            <span class="sp-acc-eyebrow-dot"></span>
+            <span>Signature Property Portfolios</span>
           </div>
-          <p class="sr-cat-desc" id="srCatDesc">
-            From luxury high-rise penthouses to serene private villas, explore premier homes designed for generational comfort, elevated lifestyle, and timeless architecture.
-          </p>
-          <a href="residential-1.html" class="sr-cat-action-btn" id="srCatActionBtn">
-            <span id="srCatActionText">Explore Residential</span>
-            <span class="sr-action-icon">&rarr;</span>
+          <h2 class="sp-acc-title">
+            Discover luxury living at an exceptional value
+          </h2>
+        </div>
+
+        <div class="sp-acc-header-right">
+          <!-- Portfolio Filter Switcher -->
+          <div class="sp-acc-tabs" role="tablist" aria-label="Project Portfolios">
+            <button class="sp-acc-tab-btn active" id="spTabRes" role="tab" aria-selected="true" data-target="residential">
+              Residential
+            </button>
+            <button class="sp-acc-tab-btn" id="spTabPlot" role="tab" aria-selected="false" data-target="plotting">
+              Plotting
+            </button>
+          </div>
+
+          <!-- View All Projects Button -->
+          <a href="properties.html" class="sp-acc-viewall-btn" id="spViewAllBtn">
+            <span>View All Projects</span>
+            <span class="sp-acc-viewall-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
           </a>
         </div>
+      </div>
 
-        <!-- Right Horizontal Project Tracks Viewport -->
-        <div class="sr-projects-viewport" id="srProjectsViewport">
+      <!-- Accordion Groups Wrapper -->
+      <div class="sp-accordion-panes">
 
-          <!-- RESIDENTIAL PROJECTS TRAIN (3 Projects) -->
-          <div class="sr-projects-train is-active" id="srTrainResidential">
+        <!-- RESIDENTIAL PROJECTS ACCORDION (Active by default) -->
+        <div class="sp-accordion-group is-active" id="spGroupResidential" role="region" aria-label="Residential Projects">
 
-            <!-- Residential 01 -->
-            <a href="residential-1.html" class="sr-project-node" data-index="0">
-              <div class="sr-node-ring"></div>
-              <div class="sr-node-portal">
-                <img src="assets/realestate23.webp" alt="The Grand Emerald - Luxury Apartments" loading="lazy">
-                <div class="sr-node-overlay">
-                  <span class="sr-node-sub">3 &amp; 4 BHK Luxury</span>
-                  <h3 class="sr-node-name">The Grand Emerald</h3>
-                  <p class="sr-node-detail">Panoramic skyline residences with private elevators and marble decks.</p>
-                  <span class="sr-node-link">View Residence &rarr;</span>
-                </div>
+          <!-- Residential Card 1: The Grand Emerald (Expanded initially) -->
+          <a href="residential-1.html" class="sp-acc-card is-expanded" data-index="0">
+            <img src="assets/realestate23.webp" alt="The Grand Emerald - Luxury Apartments" class="sp-acc-bg" loading="lazy">
+            <div class="sp-acc-overlay"></div>
+
+            <!-- Collapsed Vertical Title -->
+            <div class="sp-acc-collapsed-content">
+              <h3 class="sp-acc-vertical-title">The Grand Emerald</h3>
+            </div>
+
+            <!-- Expanded Info Content -->
+            <div class="sp-acc-expanded-content">
+              <span class="sp-acc-location">
+                <i class="fa-solid fa-location-dot"></i>
+                Wakad, Pune &bull; 3 &amp; 4 BHK Luxury
+              </span>
+              <h3 class="sp-acc-name">The Grand Emerald</h3>
+              <p class="sp-acc-detail">Panoramic skyline residences featuring private high-speed elevators, double-height marble sundecks, and world-class clubhouse amenities.</p>
+              <div class="sp-acc-cta-btn">
+                <span>Explore Project</span>
+                <span class="sp-acc-cta-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </div>
-            </a>
+            </div>
+          </a>
 
-            <!-- Residential 02 -->
-            <a href="residential-2.html" class="sr-project-node" data-index="1">
-              <div class="sr-node-ring"></div>
-              <div class="sr-node-portal">
-                <img src="assets/counter-day.jpg" alt="Palm Crest Villas" loading="lazy">
-                <div class="sr-node-overlay">
-                  <span class="sr-node-sub">Private Gated Estate</span>
-                  <h3 class="sr-node-name">Palm Crest Villas</h3>
-                  <p class="sr-node-detail">Signature courtyard villas with private pools and landscaped lawns.</p>
-                  <span class="sr-node-link">View Residence &rarr;</span>
-                </div>
+          <!-- Residential Card 2: Palm Crest Villas -->
+          <a href="residential-2.html" class="sp-acc-card" data-index="1">
+            <img src="assets/counter-day.jpg" alt="Palm Crest Villas - Gated Estate" class="sp-acc-bg" loading="lazy">
+            <div class="sp-acc-overlay"></div>
+
+            <div class="sp-acc-collapsed-content">
+              <h3 class="sp-acc-vertical-title">Palm Crest Villas</h3>
+            </div>
+
+            <div class="sp-acc-expanded-content">
+              <span class="sp-acc-location">
+                <i class="fa-solid fa-location-dot"></i>
+                Baner, Pune &bull; Private Gated Estate
+              </span>
+              <h3 class="sp-acc-name">Palm Crest Villas</h3>
+              <p class="sp-acc-detail">Signature Mediterranean courtyard villas surrounded by manicured lawns, individual private infinity plunge pools, and 24/7 smart security.</p>
+              <div class="sp-acc-cta-btn">
+                <span>Explore Project</span>
+                <span class="sp-acc-cta-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </div>
-            </a>
+            </div>
+          </a>
 
-            <!-- Residential 03 -->
-            <a href="residential-3.html" class="sr-project-node" data-index="2">
-              <div class="sr-node-ring"></div>
-              <div class="sr-node-portal">
-                <img src="assets/cta-interior-2.jpg" alt="Skyline Imperial Penthouses" loading="lazy">
-                <div class="sr-node-overlay">
-                  <span class="sr-node-sub">Signature Sky Homes</span>
-                  <h3 class="sr-node-name">Skyline Imperial</h3>
-                  <p class="sr-node-detail">Double-height sky penthouses with bespoke concierge amenities.</p>
-                  <span class="sr-node-link">View Residence &rarr;</span>
-                </div>
+          <!-- Residential Card 3: Skyline Imperial -->
+          <a href="residential-3.html" class="sp-acc-card" data-index="2">
+            <img src="assets/cta-interior-2.jpg" alt="Skyline Imperial Penthouses" class="sp-acc-bg" loading="lazy">
+            <div class="sp-acc-overlay"></div>
+
+            <div class="sp-acc-collapsed-content">
+              <h3 class="sp-acc-vertical-title">Skyline Imperial</h3>
+            </div>
+
+            <div class="sp-acc-expanded-content">
+              <span class="sp-acc-location">
+                <i class="fa-solid fa-location-dot"></i>
+                Kharadi, Pune &bull; Signature Sky Homes
+              </span>
+              <h3 class="sp-acc-name">Skyline Imperial</h3>
+              <p class="sp-acc-detail">Double-height glass penthouses overlooking the golf corridor, complete with bespoke international concierge, rooftop helipad, and temperature-controlled pools.</p>
+              <div class="sp-acc-cta-btn">
+                <span>Explore Project</span>
+                <span class="sp-acc-cta-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </div>
-            </a>
+            </div>
+          </a>
 
-          </div>
+        </div>
 
-          <!-- PLOTTING PROJECTS TRAIN (3 Projects) -->
-          <div class="sr-projects-train" id="srTrainPlotting">
+        <!-- PLOTTING PROJECTS ACCORDION -->
+        <div class="sp-accordion-group" id="spGroupPlotting" role="region" aria-label="Plotting Projects">
 
-            <!-- Plotting 01 -->
-            <a href="plotting-1.html" class="sr-project-node" data-index="0">
-              <div class="sr-node-ring"></div>
-              <div class="sr-node-portal">
-                <img src="assets/realestate25.webp" alt="Green Valley Township Plots" loading="lazy">
-                <div class="sr-node-overlay">
-                  <span class="sr-node-sub">Gated Township</span>
-                  <h3 class="sr-node-name">Green Valley Plots</h3>
-                  <p class="sr-node-detail">Clear-title residential plots with wide avenues and underground utilities.</p>
-                  <span class="sr-node-link">View Parcels &rarr;</span>
-                </div>
+          <!-- Plotting Card 1: Green Valley Plots (Expanded initially for plotting) -->
+          <a href="plotting-1.html" class="sp-acc-card is-expanded" data-index="0">
+            <img src="assets/realestate25.webp" alt="Green Valley Township Plots" class="sp-acc-bg" loading="lazy">
+            <div class="sp-acc-overlay"></div>
+
+            <div class="sp-acc-collapsed-content">
+              <h3 class="sp-acc-vertical-title">Green Valley Plots</h3>
+            </div>
+
+            <div class="sp-acc-expanded-content">
+              <span class="sp-acc-location">
+                <i class="fa-solid fa-location-dot"></i>
+                Hinjewadi Ph-3, Pune &bull; Gated NA Plots
+              </span>
+              <h3 class="sp-acc-name">Green Valley Plots</h3>
+              <p class="sp-acc-detail">PMRDA-sanctioned clear-title villa plots with 40-foot paved avenues, underground electrical grid, manicured botanical gardens, and ready demarcation.</p>
+              <div class="sp-acc-cta-btn">
+                <span>Explore Project</span>
+                <span class="sp-acc-cta-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </div>
-            </a>
+            </div>
+          </a>
 
-            <!-- Plotting 02 -->
-            <a href="plotting-2.html" class="sr-project-node" data-index="1">
-              <div class="sr-node-ring"></div>
-              <div class="sr-node-portal">
-                <img src="assets/project-3.jpg" alt="Royal Meadows Farmhouse Plots" loading="lazy">
-                <div class="sr-node-overlay">
-                  <span class="sr-node-sub">Luxury Farmhouses</span>
-                  <h3 class="sr-node-name">Royal Meadows</h3>
-                  <p class="sr-node-detail">Expansive countryside plots tailored for private estates and retreats.</p>
-                  <span class="sr-node-link">View Parcels &rarr;</span>
-                </div>
+          <!-- Plotting Card 2: Royal Meadows -->
+          <a href="plotting-2.html" class="sp-acc-card" data-index="1">
+            <img src="assets/project-3.jpg" alt="Royal Meadows Farmhouse Plots" class="sp-acc-bg" loading="lazy">
+            <div class="sp-acc-overlay"></div>
+
+            <div class="sp-acc-collapsed-content">
+              <h3 class="sp-acc-vertical-title">Royal Meadows</h3>
+            </div>
+
+            <div class="sp-acc-expanded-content">
+              <span class="sp-acc-location">
+                <i class="fa-solid fa-location-dot"></i>
+                Lonavala Touch &bull; Luxury Farmhouses
+              </span>
+              <h3 class="sp-acc-name">Royal Meadows</h3>
+              <p class="sp-acc-detail">Generational agricultural and farmhouse parcels with scenic valley vistas, natural water bodies, and club membership for bespoke weekend living.</p>
+              <div class="sp-acc-cta-btn">
+                <span>Explore Project</span>
+                <span class="sp-acc-cta-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </div>
-            </a>
+            </div>
+          </a>
 
-            <!-- Plotting 03 -->
-            <a href="plotting-3.html" class="sr-project-node" data-index="2">
-              <div class="sr-node-ring"></div>
-              <div class="sr-node-portal">
-                <img src="assets/realestate24.webp" alt="Metro Boulevard Commercial Plots" loading="lazy">
-                <div class="sr-node-overlay">
-                  <span class="sr-node-sub">High-Street Commercial</span>
-                  <h3 class="sr-node-name">Metro Boulevard</h3>
-                  <p class="sr-node-detail">Prime corridor-facing commercial parcels pre-approved for retail hubs.</p>
-                  <span class="sr-node-link">View Parcels &rarr;</span>
-                </div>
+          <!-- Plotting Card 3: Metro Boulevard -->
+          <a href="plotting-3.html" class="sp-acc-card" data-index="2">
+            <img src="assets/realestate24.webp" alt="Metro Boulevard Commercial Plots" class="sp-acc-bg" loading="lazy">
+            <div class="sp-acc-overlay"></div>
+
+            <div class="sp-acc-collapsed-content">
+              <h3 class="sp-acc-vertical-title">Metro Boulevard</h3>
+            </div>
+
+            <div class="sp-acc-expanded-content">
+              <span class="sp-acc-location">
+                <i class="fa-solid fa-location-dot"></i>
+                Talegaon Corridor &bull; Commercial SCO Plots
+              </span>
+              <h3 class="sp-acc-name">Metro Boulevard</h3>
+              <p class="sp-acc-detail">Prime expressway-facing commercial plots pre-approved for retail plazas, business hubs, and high-yield SCO aggregations with immediate highway frontage.</p>
+              <div class="sp-acc-cta-btn">
+                <span>Explore Project</span>
+                <span class="sp-acc-cta-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </div>
-            </a>
-
-          </div>
+            </div>
+          </a>
 
         </div>
 
@@ -4244,222 +4271,114 @@
     });
 
     /* ======================================================== */
-    /* CATEGORY SHOWCASE (RESIDENTIAL & PLOTTING) CONTROLLER   */
-    /* Sequential Project Viewing & Pinned Horizontal Scroll    */
+    /* ACCORDION SHOWCASE (SPACIAZ INSPIRED) CONTROLLER        */
+    /* Smooth hover-to-expand card transitions & Tab switching  */
     /* ======================================================== */
-    (function initCategoryShowcase() {
+    (function initAccordionShowcase() {
       const section = document.getElementById('categoryShowcaseSection');
       if (!section) return;
 
-      const tabRes = document.getElementById('srTabResidential');
-      const tabPlot = document.getElementById('srTabPlotting');
-      const trainRes = document.getElementById('srTrainResidential');
-      const trainPlot = document.getElementById('srTrainPlotting');
-      const titleRes = document.getElementById('srCatTitleRes');
-      const titlePlot = document.getElementById('srCatTitlePlot');
-      const subtitle = document.getElementById('srCatSubtitle');
-      const desc = document.getElementById('srCatDesc');
-      const actionBtn = document.getElementById('srCatActionBtn');
-      const actionText = document.getElementById('srCatActionText');
-      const progressFill = document.getElementById('srProgressFill');
-      const counterLabel = document.getElementById('srCounterLabel');
-      const ringA = document.getElementById('srRingA');
-      const ringB = document.getElementById('srRingB');
-      const ringC = document.getElementById('srRingC');
+      const tabRes = document.getElementById('spTabRes');
+      const tabPlot = document.getElementById('spTabPlot');
+      const groupRes = document.getElementById('spGroupResidential');
+      const groupPlot = document.getElementById('spGroupPlotting');
 
-      const resNodes = trainRes ? Array.from(trainRes.querySelectorAll('.sr-project-node')) : [];
-      const plotNodes = trainPlot ? Array.from(trainPlot.querySelectorAll('.sr-project-node')) : [];
+      // Setup hover and focus interactions for a specific accordion group
+      function bindAccordionGroup(group) {
+        if (!group) return;
+        const cards = Array.from(group.querySelectorAll('.sp-acc-card'));
+        if (cards.length === 0) return;
 
-      const RES_PROJECT_NAMES = ['THE GRAND EMERALD', 'PALM CREST VILLAS', 'SKYLINE IMPERIAL'];
-      const PLOT_PROJECT_NAMES = ['GREEN VALLEY PLOTS', 'ROYAL MEADOWS', 'METRO BOULEVARD'];
+        let activeCard = cards[0];
 
-      const RES_DESC = 'From luxury high-rise penthouses to serene private villas, explore premier homes designed for generational comfort, elevated lifestyle, and timeless architecture.';
-      const PLOT_DESC = 'Secure prime residential plots and strategic commercial parcels with clear RERA titles, master-planned infrastructure, and immense long-term appreciation potential.';
+        cards.forEach((card) => {
+          // On hover (mouse enter)
+          card.addEventListener('mouseenter', () => {
+            cards.forEach(c => c.classList.remove('is-expanded'));
+            card.classList.add('is-expanded');
+            activeCard = card;
+          });
 
-      let activeCategory = -1; // Force initial setup
+          // Focus support for accessibility
+          card.addEventListener('focus', () => {
+            cards.forEach(c => c.classList.remove('is-expanded'));
+            card.classList.add('is-expanded');
+            activeCard = card;
+          });
+        });
 
-      function updateCategoryUI(catIndex) {
-        if (activeCategory === catIndex) return;
-        activeCategory = catIndex;
-
-        if (catIndex === 0) {
-          if (tabRes) { tabRes.classList.add('active'); tabRes.setAttribute('aria-selected', 'true'); }
-          if (tabPlot) { tabPlot.classList.remove('active'); tabPlot.setAttribute('aria-selected', 'false'); }
-          if (titleRes) { titleRes.className = 'sr-title-text is-active'; }
-          if (titlePlot) { titlePlot.className = 'sr-title-text is-next'; }
-          if (subtitle) subtitle.textContent = '01 / CURATED LIVING SPACES';
-          if (desc) desc.textContent = RES_DESC;
-          if (actionBtn) actionBtn.setAttribute('href', 'residential-1.html');
-          if (actionText) actionText.textContent = 'Explore Residential';
-          if (trainRes) trainRes.classList.add('is-active');
-          if (trainPlot) trainPlot.classList.remove('is-active');
-        } else {
-          if (tabRes) { tabRes.classList.remove('active'); tabRes.setAttribute('aria-selected', 'false'); }
-          if (tabPlot) { tabPlot.classList.add('active'); tabPlot.setAttribute('aria-selected', 'true'); }
-          if (titleRes) { titleRes.className = 'sr-title-text is-prev'; }
-          if (titlePlot) { titlePlot.className = 'sr-title-text is-active'; }
-          if (subtitle) subtitle.textContent = '02 / CLEAR-TITLE LAND PARCELS';
-          if (desc) desc.textContent = PLOT_DESC;
-          if (actionBtn) actionBtn.setAttribute('href', 'plotting-1.html');
-          if (actionText) actionText.textContent = 'Explore Plotting';
-          if (trainRes) trainRes.classList.remove('is-active');
-          if (trainPlot) trainPlot.classList.add('is-active');
-        }
-      }
-
-      function updateTrainPositions(train, nodes, subProgress, targetCenter) {
-        if (!train || nodes.length === 0) return;
-
-        const firstNode = nodes[0];
-        const nodeWidth = firstNode.offsetWidth || 380;
-        const stride = nodeWidth; // Clean card stride
-        const totalProjects = nodes.length;
-
-        const maxScrollDist = (totalProjects - 1) * stride;
-        const currentScroll = subProgress * maxScrollDist;
-        const trainLeft = (targetCenter - nodeWidth / 2) - currentScroll;
-
-        train.style.transform = `translate3d(${trainLeft}px, -50%, 0)`;
-
-        nodes.forEach((node, i) => {
-          const nodeCenter = trainLeft + i * stride + nodeWidth / 2;
-          const dist = nodeCenter - targetCenter;
-          const normDist = dist / stride; // negative if moved left, positive if on right
-
-          const portal = node.querySelector('.sr-node-portal');
-          const overlay = node.querySelector('.sr-node-overlay');
-
-          // Keep full arched window proportions (no miniature shrink)
-          let scale = 1.0;
-          if (normDist > 0) {
-            // Subtle natural depth for incoming cards from right
-            scale = Math.max(0.96, 1.0 - 0.04 * Math.min(normDist, 2));
+        // When mouse leaves the group, keep the active card or default to 1st
+        group.addEventListener('mouseleave', () => {
+          cards.forEach(c => c.classList.remove('is-expanded'));
+          if (activeCard) {
+            activeCard.classList.add('is-expanded');
           } else {
-            scale = 1.0;
-          }
-
-          if (portal) {
-            portal.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
-          }
-
-          // Counter-translate and rapidly dissolve exiting cards so they NEVER go back into left div words
-          if (normDist < 0) {
-            const holdX = Math.abs(dist) * 0.88;
-            node.style.transform = `translate3d(${holdX.toFixed(1)}px, 0, 0)`;
-            const exitOpacity = Math.max(0, 1.0 - 3.2 * Math.abs(normDist));
-            node.style.opacity = exitOpacity.toFixed(2);
-            node.style.pointerEvents = exitOpacity > 0.4 ? 'auto' : 'none';
-          } else {
-            node.style.transform = 'translate3d(0, 0, 0)';
-            node.style.opacity = '1';
-            node.style.pointerEvents = 'auto';
-          }
-
-          if (overlay) {
-            overlay.style.opacity = '1';
-            overlay.style.pointerEvents = 'auto';
+            cards[0].classList.add('is-expanded');
           }
         });
       }
 
-      function onScrollSync() {
-        if (window.innerWidth <= 960) return;
+      bindAccordionGroup(groupRes);
+      bindAccordionGroup(groupPlot);
 
-        const rect = section.getBoundingClientRect();
-        const totalDistance = section.offsetHeight - window.innerHeight;
-        if (totalDistance <= 0) return;
+      // Tab switcher function
+      function switchCategory(category) {
+        if (category === 'residential') {
+          if (tabRes) {
+            tabRes.classList.add('active');
+            tabRes.setAttribute('aria-selected', 'true');
+          }
+          if (tabPlot) {
+            tabPlot.classList.remove('active');
+            tabPlot.setAttribute('aria-selected', 'false');
+          }
+          if (groupRes) groupRes.classList.add('is-active');
+          if (groupPlot) groupPlot.classList.remove('is-active');
 
-        const scrolled = -rect.top;
-        const progress = Math.max(0, Math.min(1, scrolled / totalDistance));
+          // Reset 1st card expanded in residential
+          if (groupRes) {
+            const cards = groupRes.querySelectorAll('.sp-acc-card');
+            cards.forEach((c, i) => {
+              if (i === 0) c.classList.add('is-expanded');
+              else c.classList.remove('is-expanded');
+            });
+          }
+        } else if (category === 'plotting') {
+          if (tabPlot) {
+            tabPlot.classList.add('active');
+            tabPlot.setAttribute('aria-selected', 'true');
+          }
+          if (tabRes) {
+            tabRes.classList.remove('active');
+            tabRes.setAttribute('aria-selected', 'false');
+          }
+          if (groupPlot) groupPlot.classList.add('is-active');
+          if (groupRes) groupRes.classList.remove('is-active');
 
-        // Parallax background blueprint rings
-        if (ringA) ringA.style.transform = `translateY(calc(-50% + ${(progress - 0.5) * 60}px)) scale(${1 + (progress - 0.5) * 0.08})`;
-        if (ringB) ringB.style.transform = `translateY(calc(-50% - ${(progress - 0.5) * 80}px)) scale(${1 - (progress - 0.5) * 0.06})`;
-        if (ringC) ringC.style.transform = `translateY(calc(-50% + ${(progress - 0.5) * 100}px))`;
-
-        const viewportWidth = window.innerWidth;
-        const firstNode = resNodes[0] || plotNodes[0];
-        const nodeWidth = firstNode ? firstNode.offsetWidth : 380;
-        
-        // Position active card cleanly right next to brand text block (where small image was, no awkward gap)
-        const stageCenter = section.querySelector('.sr-stage-center');
-        const brandBlock = section.querySelector('.sr-brand-block');
-        let targetCenter;
-        if (stageCenter && brandBlock) {
-          const brandRect = brandBlock.getBoundingClientRect();
-          const stageRect = stageCenter.getBoundingClientRect();
-          const brandRightInStage = brandRect.right - stageRect.left;
-          targetCenter = brandRightInStage + 28 + (nodeWidth / 2);
-        } else {
-          targetCenter = Math.min(viewportWidth * 0.48, viewportWidth - nodeWidth * 0.52);
-        }
-
-        // PHASE 1: RESIDENTIAL (progress 0.00 to 0.48)
-        // Scrolls through all 3 residential projects one by one
-        if (progress < 0.48) {
-          updateCategoryUI(0);
-          const subProgress = Math.max(0, Math.min(1, progress / 0.48));
-          updateTrainPositions(trainRes, resNodes, subProgress, targetCenter);
-        }
-        // TRANSITION PHASE (progress 0.48 to 0.52)
-        else if (progress >= 0.48 && progress < 0.52) {
-          updateCategoryUI(1);
-          const subProgress = 0;
-          updateTrainPositions(trainPlot, plotNodes, subProgress, targetCenter);
-        }
-        // PHASE 2: PLOTTING (progress 0.52 to 1.00)
-        // Scrolls through all 3 plotting projects one by one
-        else {
-          updateCategoryUI(1);
-          const subProgress = Math.max(0, Math.min(1, (progress - 0.52) / 0.48));
-          updateTrainPositions(trainPlot, plotNodes, subProgress, targetCenter);
+          // Reset 1st card expanded in plotting
+          if (groupPlot) {
+            const cards = groupPlot.querySelectorAll('.sp-acc-card');
+            cards.forEach((c, i) => {
+              if (i === 0) c.classList.add('is-expanded');
+              else c.classList.remove('is-expanded');
+            });
+          }
         }
       }
 
       if (tabRes) {
         tabRes.addEventListener('click', (e) => {
           e.preventDefault();
-          if (window.innerWidth <= 960) {
-            updateCategoryUI(0);
-            return;
-          }
-          const secTop = section.getBoundingClientRect().top + window.pageYOffset;
-          window.scrollTo({ top: secTop + 10, behavior: 'smooth' });
+          switchCategory('residential');
         });
       }
 
       if (tabPlot) {
         tabPlot.addEventListener('click', (e) => {
           e.preventDefault();
-          if (window.innerWidth <= 960) {
-            updateCategoryUI(1);
-            return;
-          }
-          const secTop = section.getBoundingClientRect().top + window.pageYOffset;
-          const totalDistance = section.offsetHeight - window.innerHeight;
-          window.scrollTo({ top: secTop + totalDistance * 0.53, behavior: 'smooth' });
+          switchCategory('plotting');
         });
       }
-
-      let isTicking = false;
-      window.addEventListener('scroll', () => {
-        if (!isTicking) {
-          requestAnimationFrame(() => {
-            onScrollSync();
-            isTicking = false;
-          });
-          isTicking = true;
-        }
-      }, { passive: true });
-
-      window.addEventListener('resize', () => {
-        onScrollSync();
-      }, { passive: true });
-
-      setTimeout(() => {
-        updateCategoryUI(0);
-        onScrollSync();
-      }, 120);
     })();
   </script>
 </body>

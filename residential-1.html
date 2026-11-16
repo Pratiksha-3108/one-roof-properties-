@@ -1245,40 +1245,387 @@
       color: #ffffff;
     }
 
-    /* SECTION 8: LOCATION ADVANTAGES */
-    .location-adv-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 20px;
-      align-items: center;
+    /* ===================================================================== */
+    /* SECTION 8: 3D LOCATION & CONNECTIVITY SHOWCASE                        */
+    /* ===================================================================== */
+    .conn-3d-sec {
+      background: var(--bg-cream);
+      padding: clamp(60px, 6.5vw, 95px) 0;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(70, 86, 101, 0.08);
+      border-bottom: 1px solid rgba(70, 86, 101, 0.08);
     }
-
-    .landmarks-list {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
+    .conn-3d-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 40px);
+      box-sizing: border-box;
     }
-
-    .landmark-row-item {
-      display: flex;
+    .conn-header {
+      margin-bottom: clamp(32px, 3.5vw, 44px);
+      max-width: 860px;
+    }
+    .conn-eyebrow {
+      display: inline-flex;
       align-items: center;
       gap: 12px;
-      font-size: 0.88rem;
-      color: var(--navy-primary);
-      font-weight: 500;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: var(--gold-accent);
+      margin-bottom: 12px;
+    }
+    .conn-eyebrow-line {
+      width: 28px;
+      height: 2px;
+      background: var(--gold-accent);
+      display: inline-block;
+    }
+    .conn-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 3.6vw, 3.3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: #1f343f;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+    .conn-gold-italic {
+      color: var(--gold-accent);
+      font-style: italic;
+      font-weight: 400;
+    }
+    .conn-lead {
+      font-family: var(--font-body);
+      font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 680px;
+      margin: 0;
     }
 
-    .landmark-icon-sq {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      background: #eff6ff;
-      color: #2563eb;
+    /* Main Showcase: Split Columns (Left Features + Right 3D Visual Map) */
+    .conn-showcase-grid {
+      display: grid;
+      grid-template-columns: minmax(320px, 380px) 1fr;
+      gap: clamp(24px, 3vw, 40px);
+      align-items: stretch;
+      margin-bottom: 28px;
+    }
+
+    /* Left Feature Pillars */
+    .conn-pillars-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      justify-content: space-between;
+    }
+    .conn-pillar-card {
+      background: #ffffff;
+      border: 1px solid rgba(70, 86, 101, 0.1);
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      box-shadow: 0 4px 16px rgba(70, 86, 101, 0.04);
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .conn-pillar-card:hover {
+      transform: translateX(6px);
+      border-color: rgba(217, 119, 6, 0.4);
+      box-shadow: 0 10px 24px rgba(70, 86, 101, 0.08);
+    }
+    .conn-pillar-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(217, 119, 6, 0.12);
+      color: var(--gold-accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.95rem;
+      font-size: 1.15rem;
       flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+    .conn-pillar-card:hover .conn-pillar-icon {
+      background: var(--gold-accent);
+      color: #ffffff;
+      transform: scale(1.06);
+    }
+    .conn-pillar-content h4 {
+      font-family: var(--font-body);
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #1f343f;
+      margin-bottom: 4px;
+    }
+    .conn-pillar-content p {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    /* Right 3D Visual Map Frame */
+    .conn-visual-stage {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1.5px solid rgba(70, 86, 101, 0.12);
+      box-shadow: 0 16px 40px rgba(31, 52, 63, 0.1);
+      display: flex;
+      align-items: center;
+    }
+    .conn-visual-img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      max-height: 520px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .conn-visual-stage:hover .conn-visual-img {
+      transform: scale(1.02);
+    }
+
+    /* Floating 3D Map Markers / Tooltip Pins */
+    .conn-pin {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #1f343f;
+      z-index: 5;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      white-space: nowrap;
+    }
+    .conn-pin:hover {
+      transform: scale(1.08) translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+    }
+    .conn-pin-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(217, 119, 6, 0.18);
+      color: var(--gold-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+    }
+    .conn-pin-dist {
+      color: var(--gold-accent);
+      font-weight: 800;
+      margin-left: 2px;
+    }
+
+    /* Main Project Pin (Tower beacon) */
+    .conn-pin-main {
+      background: #1f343f;
+      color: #FAF8EE;
+      border: 1.5px solid var(--gold-accent);
+      padding: 8px 18px;
+      font-size: 0.88rem;
+    }
+    .conn-pin-main .conn-pin-icon {
+      background: var(--gold-accent);
+      color: #ffffff;
+      width: 26px;
+      height: 26px;
+    }
+    .conn-pin-beacon {
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gold-accent);
+      box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.4);
+      animation: connBeacon 2s infinite;
+    }
+    @keyframes connBeacon {
+      0% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.7); }
+      70% { box-shadow: 0 0 0 14px rgba(217, 119, 6, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0); }
+    }
+
+    /* Pin Coordinates on 3D Map */
+    .pin-pos-project { top: 18%; left: 58%; }
+    .pin-pos-schools { top: 32%; left: 44%; }
+    .pin-pos-hospital { top: 22%; left: 80%; }
+    .pin-pos-highway { top: 62%; left: 45%; }
+    .pin-pos-mall { top: 43%; left: 84%; }
+
+    /* Interactive Quick-Access Connectivity Pills (Image 2) */
+    .conn-pills-wrap {
+      background: #ffffff;
+      border: 1px solid rgba(70, 86, 101, 0.1);
+      border-radius: 20px;
+      padding: 22px 26px;
+      margin-bottom: 24px;
+      box-shadow: 0 6px 20px rgba(70, 86, 101, 0.04);
+    }
+    .conn-pills-headline {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .conn-pills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      align-items: center;
+    }
+    .conn-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      border: 1.5px solid rgba(70, 86, 101, 0.14);
+      border-radius: 999px;
+      padding: 7px 16px 7px 14px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1f343f;
+      box-shadow: 0 2px 8px rgba(70, 86, 101, 0.04);
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .conn-badge-pill:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold-accent);
+      box-shadow: 0 6px 18px rgba(217, 119, 6, 0.15);
+    }
+    .conn-badge-pill i {
+      color: var(--gold-accent);
+      font-size: 0.95rem;
+    }
+    .conn-badge-time {
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.3px;
+    }
+    /* Special Highlight Pill for Hinjewadi IT Park (matching Image 2) */
+    .conn-badge-pill.conn-badge-highlight {
+      background: #1f343f;
+      color: #FAF8EE;
+      border-color: #1f343f;
+      box-shadow: 0 6px 20px rgba(31, 52, 63, 0.25);
+    }
+    .conn-badge-pill.conn-badge-highlight i {
+      color: var(--gold-accent);
+    }
+    .conn-badge-pill.conn-badge-highlight .conn-badge-time {
+      background: var(--gold-accent);
+      color: #ffffff;
+    }
+
+    /* Bottom Transit Bar (Image 1) */
+    .conn-transit-bar {
+      background: #ffffff;
+      border: 1px solid rgba(70, 86, 101, 0.12);
+      border-radius: 999px;
+      padding: 16px 32px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      align-items: center;
+      box-shadow: 0 6px 24px rgba(70, 86, 101, 0.05);
+    }
+    .conn-transit-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .conn-transit-item:not(:last-child) {
+      border-right: 1px solid rgba(70, 86, 101, 0.12);
+      padding-right: 18px;
+    }
+    .conn-transit-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(217, 119, 6, 0.1);
+      color: var(--gold-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+    .conn-transit-info strong {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #1f343f;
+    }
+    .conn-transit-info span {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    @media (max-width: 1024px) {
+      .conn-showcase-grid {
+        grid-template-columns: 1fr;
+      }
+      .conn-transit-bar {
+        border-radius: 20px;
+        grid-template-columns: 1fr 1fr;
+      }
+      .conn-transit-item:nth-child(2) {
+        border-right: none;
+      }
+    }
+    @media (max-width: 640px) {
+      .conn-transit-bar {
+        grid-template-columns: 1fr;
+        padding: 18px;
+      }
+      .conn-transit-item:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid rgba(70, 86, 101, 0.1);
+        padding-bottom: 12px;
+        padding-right: 0;
+      }
+      .pin-pos-schools, .pin-pos-hospital, .pin-pos-highway, .pin-pos-mall {
+        transform: scale(0.85);
+      }
     }
 
     .map-preview-card {
@@ -2642,97 +2989,240 @@
   </section>
 
   <!-- ===================================================================== -->
-  <!-- 8. LOCATION ADVANTAGES  +  9. PROJECT SPECIFICATIONS (SIDE-BY-SIDE)    -->
+  <!-- 8. 3D LOCATION & CONNECTIVITY SHOWCASE                                -->
   <!-- ===================================================================== -->
-  <section class="section-wrap" style="padding-top: 0;">
-    <div class="container">
-      <div class="two-col-master-grid">
-        <!-- 8. Location Advantages -->
-        <div class="master-card-box">
-          <div>
-            <h2 class="sec-title">Location Advantages</h2>
-            <div class="location-adv-grid">
-              <div class="landmarks-list">
-                <div class="landmark-row-item">
-                  <div class="landmark-icon-sq"><i class="fa-solid fa-cart-shopping"></i></div>
-                  <span>3 min to D'Mart</span>
-                </div>
-                <div class="landmark-row-item">
-                  <div class="landmark-icon-sq"><i class="fa-solid fa-hospital"></i></div>
-                  <span>5 min to City Hospital</span>
-                </div>
-                <div class="landmark-row-item">
-                  <div class="landmark-icon-sq"><i class="fa-solid fa-train-subway"></i></div>
-                  <span>10 min to Metro Station</span>
-                </div>
-                <div class="landmark-row-item">
-                  <div class="landmark-icon-sq"><i class="fa-solid fa-plane-departure"></i></div>
-                  <span>20 min to Pune Airport</span>
-                </div>
-                <div class="landmark-row-item">
-                  <div class="landmark-icon-sq"><i class="fa-solid fa-graduation-cap"></i></div>
-                  <span>15 min to Pune University</span>
-                </div>
-                <div class="landmark-row-item">
-                  <div class="landmark-icon-sq"><i class="fa-solid fa-road"></i></div>
-                  <span>Easy access to Mumbai-Bangalore Highway</span>
-                </div>
-              </div>
+  <section class="conn-3d-sec" id="connectivitySection">
+    <div class="conn-3d-container">
+      
+      <!-- Section Header -->
+      <div class="conn-header">
+        <div class="conn-eyebrow">
+          <span class="conn-eyebrow-line"></span> Location &amp; Connectivity
+        </div>
+        <h2 class="conn-headline">
+          Everything Connected.<br>Everything <span class="conn-gold-italic">Within Reach.</span>
+        </h2>
+        <p class="conn-lead">
+          Enjoy seamless connectivity to key destinations, schools, healthcare, and IT corridors, making your everyday life effortless and convenient.
+        </p>
+      </div>
 
-              <div class="map-preview-card">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.5684478796856!2d73.80521631536785!3d18.502844374533036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bfbb6d79e86d%3A0xe6dd7d21c5f3b745!2sKothrud%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
-                  style="border:0;" allowfullscreen="" loading="lazy">
-                </iframe>
-                <a href="https://maps.google.com/?q=Kothrud,+Pune" target="_blank" class="btn-map-overlay">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> View on Google Maps
-                </a>
-              </div>
+      <!-- Main Showcase: 4 Feature Pillars (Left) + 3D Visual Map (Right) -->
+      <div class="conn-showcase-grid">
+        
+        <!-- Left Feature Pillars -->
+        <div class="conn-pillars-list">
+          <div class="conn-pillar-card">
+            <div class="conn-pillar-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="conn-pillar-content">
+              <h4>Schools &amp; Colleges</h4>
+              <p>Top educational institutions nearby — S B Patil, City Pride School &amp; D Y Patil University.</p>
+            </div>
+          </div>
+
+          <div class="conn-pillar-card">
+            <div class="conn-pillar-icon"><i class="fa-solid fa-hospital"></i></div>
+            <div class="conn-pillar-content">
+              <h4>Hospitals &amp; Healthcare</h4>
+              <p>Quality healthcare within minutes — Aditya Birla Memorial Hospital &amp; emergency clinics.</p>
+            </div>
+          </div>
+
+          <div class="conn-pillar-card">
+            <div class="conn-pillar-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+            <div class="conn-pillar-content">
+              <h4>Shopping &amp; Entertainment</h4>
+              <p>Malls and daily leisure destinations close by — D-Mart, Reliance Mart &amp; Mukai Chowk.</p>
+            </div>
+          </div>
+
+          <div class="conn-pillar-card">
+            <div class="conn-pillar-icon"><i class="fa-solid fa-route"></i></div>
+            <div class="conn-pillar-content">
+              <h4>Road &amp; IT Connectivity</h4>
+              <p>Instant access to Mumbai-Pune Expressway (3 Mins) and Hinjewadi IT Park (15 Mins).</p>
             </div>
           </div>
         </div>
 
-        <!-- 9. Project Specifications -->
-        <div class="master-card-box">
-          <div>
-            <h2 class="sec-title">Project Specifications</h2>
-            <div class="specs-layout-flex">
-              <table class="specs-table-compact">
-                <tbody>
-                  <tr>
-                    <td class="spec-label-col">Project Area</td>
-                    <td class="spec-val-col">2.5 Acres</td>
-                  </tr>
-                  <tr>
-                    <td class="spec-label-col">Total Units</td>
-                    <td class="spec-val-col">160 Units</td>
-                  </tr>
-                  <tr>
-                    <td class="spec-label-col">Number of Floors</td>
-                    <td class="spec-val-col">14 Floors</td>
-                  </tr>
-                  <tr>
-                    <td class="spec-label-col">Construction Status</td>
-                    <td class="spec-val-col">Under Construction</td>
-                  </tr>
-                  <tr>
-                    <td class="spec-label-col">Possession Date</td>
-                    <td class="spec-val-col">Dec 2026</td>
-                  </tr>
-                  <tr>
-                    <td class="spec-label-col">RERA Number</td>
-                    <td class="spec-val-col">P52100012345</td>
-                  </tr>
-                  <tr>
-                    <td class="spec-label-col">Developer</td>
-                    <td class="spec-val-col">ABC Developers</td>
-                  </tr>
-                </tbody>
-              </table>
+        <!-- Right 3D Visual Map Frame with Floating Pins -->
+        <div class="conn-visual-stage">
+          <img src="assets/connectivity-3d-render.jpg" alt="3D Location & Connectivity Map — Skyview Residency" class="conn-visual-img" loading="lazy">
+          
+          <!-- Floating Interactive Pins -->
+          <div class="conn-pin conn-pin-main pin-pos-project">
+            <div class="conn-pin-icon"><i class="fa-solid fa-house"></i></div>
+            <span>Our Project</span>
+            <span class="conn-pin-beacon"></span>
+          </div>
 
-              <div class="spec-photo-frame">
-                <img src="assets/project-5.webp" alt="Skyview Residency Architecture Elevation">
-              </div>
+          <div class="conn-pin pin-pos-schools">
+            <div class="conn-pin-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <span>Schools &bull; <strong class="conn-pin-dist">2 km</strong></span>
+          </div>
+
+          <div class="conn-pin pin-pos-hospital">
+            <div class="conn-pin-icon"><i class="fa-solid fa-plus"></i></div>
+            <span>Hospital &bull; <strong class="conn-pin-dist">3 km</strong></span>
+          </div>
+
+          <div class="conn-pin pin-pos-highway">
+            <div class="conn-pin-icon"><i class="fa-solid fa-road"></i></div>
+            <span>Main Highway &bull; <strong class="conn-pin-dist">1.5 km</strong></span>
+          </div>
+
+          <div class="conn-pin pin-pos-mall">
+            <div class="conn-pin-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+            <span>Shopping Mall &bull; <strong class="conn-pin-dist">4 km</strong></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Access Location Pills (Matching Image 2 Exactly) -->
+      <div class="conn-pills-wrap">
+        <div class="conn-pills-headline">
+          <i class="fa-solid fa-compass" style="color: var(--gold-accent);"></i> Key Landmarks &amp; Commute Time
+        </div>
+        <div class="conn-pills-grid">
+          <div class="conn-badge-pill">
+            <i class="fa-solid fa-school"></i>
+            <span>S B Patil Public School</span>
+            <span class="conn-badge-time">3 Mins</span>
+          </div>
+
+          <div class="conn-badge-pill">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>City Pride School</span>
+            <span class="conn-badge-time">3 Mins</span>
+          </div>
+
+          <div class="conn-badge-pill">
+            <i class="fa-solid fa-route"></i>
+            <span>Express Highway</span>
+            <span class="conn-badge-time">3 Mins</span>
+          </div>
+
+          <div class="conn-badge-pill">
+            <i class="fa-solid fa-diamond-turn-right"></i>
+            <span>Mukai Chowk</span>
+            <span class="conn-badge-time">3 Mins</span>
+          </div>
+
+          <div class="conn-badge-pill">
+            <i class="fa-solid fa-building-columns"></i>
+            <span>D Y Patil University</span>
+            <span class="conn-badge-time">5 Mins</span>
+          </div>
+
+          <div class="conn-badge-pill">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>D-Mart / Reliance Mart</span>
+            <span class="conn-badge-time">5 Mins</span>
+          </div>
+
+          <div class="conn-badge-pill">
+            <i class="fa-solid fa-hospital"></i>
+            <span>Aditya Birla Hospital</span>
+            <span class="conn-badge-time">10 Mins</span>
+          </div>
+
+          <div class="conn-badge-pill conn-badge-highlight">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span>Hinjewadi IT Park</span>
+            <span class="conn-badge-time">15 Mins</span>
+          </div>
+
+          <div class="conn-badge-pill">
+            <i class="fa-solid fa-tree"></i>
+            <span>Bhakti-Shakti Park</span>
+            <span class="conn-badge-time">10 Mins</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Transit Bar (Matching Image 1) -->
+      <div class="conn-transit-bar">
+        <div class="conn-transit-item">
+          <div class="conn-transit-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="conn-transit-info">
+            <strong>Pune City Centre</strong>
+            <span>12 km (25 Mins)</span>
+          </div>
+        </div>
+
+        <div class="conn-transit-item">
+          <div class="conn-transit-icon"><i class="fa-solid fa-plane-departure"></i></div>
+          <div class="conn-transit-info">
+            <strong>Pune International Airport</strong>
+            <span>18 km (35 Mins)</span>
+          </div>
+        </div>
+
+        <div class="conn-transit-item">
+          <div class="conn-transit-icon"><i class="fa-solid fa-train"></i></div>
+          <div class="conn-transit-info">
+            <strong>Railway Station</strong>
+            <span>14 km (30 Mins)</span>
+          </div>
+        </div>
+
+        <div class="conn-transit-item">
+          <div class="conn-transit-icon"><i class="fa-solid fa-road"></i></div>
+          <div class="conn-transit-info">
+            <strong>Mumbai-Pune Expressway</strong>
+            <span>5 km (7 Mins)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 9. PROJECT SPECIFICATIONS                                             -->
+  <!-- ===================================================================== -->
+  <section class="section-wrap" style="padding-top: clamp(40px, 5vw, 60px);">
+    <div class="container">
+      <div class="master-card-box">
+        <div>
+          <h2 class="sec-title">Project Specifications</h2>
+          <div class="specs-layout-flex">
+            <table class="specs-table-compact">
+              <tbody>
+                <tr>
+                  <td class="spec-label-col">Project Area</td>
+                  <td class="spec-val-col">2.5 Acres</td>
+                </tr>
+                <tr>
+                  <td class="spec-label-col">Total Units</td>
+                  <td class="spec-val-col">160 Units</td>
+                </tr>
+                <tr>
+                  <td class="spec-label-col">Number of Floors</td>
+                  <td class="spec-val-col">14 Floors</td>
+                </tr>
+                <tr>
+                  <td class="spec-label-col">Construction Status</td>
+                  <td class="spec-val-col">Under Construction</td>
+                </tr>
+                <tr>
+                  <td class="spec-label-col">Possession Date</td>
+                  <td class="spec-val-col">Dec 2026</td>
+                </tr>
+                <tr>
+                  <td class="spec-label-col">RERA Number</td>
+                  <td class="spec-val-col">P52100012345</td>
+                </tr>
+                <tr>
+                  <td class="spec-label-col">Developer</td>
+                  <td class="spec-val-col">ABC Developers</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="spec-photo-frame">
+              <img src="assets/project-5.webp" alt="Skyview Residency Architecture Elevation">
             </div>
           </div>
         </div>

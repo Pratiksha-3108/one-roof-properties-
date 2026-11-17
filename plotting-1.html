@@ -912,6 +912,28 @@
       flex-direction: column;
       flex: 1;
     }
+    /* ===== Image-overlay hover reveal (info grows up over the photo) ===== */
+    .sizes-cards-grid { align-items: stretch; }
+    .size-card { height: 520px; outline: none; border-radius: 22px; }
+    .size-card:hover { transform: translateY(-6px); }
+    .size-card-media { position: absolute; inset: 0; height: 100%; }
+    .size-card-body { position: absolute; inset: 0; z-index: 3; padding: 24px; flex: none; display: flex; flex-direction: column; justify-content: flex-end; pointer-events: none; background: linear-gradient(180deg, rgba(17,30,38,0) 38%, rgba(17,30,38,0.82) 100%); transition: background 0.45s ease; }
+    .size-card:hover .size-card-body, .size-card:focus-within .size-card-body { background: linear-gradient(180deg, rgba(17,30,38,0.05) 15%, rgba(17,30,38,0.92) 100%); }
+    .size-card-title { position: static; inset: auto; margin: 0; }
+    .size-teaser { margin: 6px 0 0; color: rgba(255,255,255,0.88); font-size: 0.95rem; line-height: 1.5; }
+    .size-details { display: grid; grid-template-rows: 0fr; opacity: 0; margin-top: 0; transition: grid-template-rows 0.55s var(--ease), opacity 0.45s ease, margin-top 0.55s var(--ease); }
+    .size-card:hover .size-details, .size-card:focus-within .size-details { grid-template-rows: 1fr; opacity: 1; margin-top: 16px; pointer-events: auto; }
+    .size-details-inner { overflow: hidden; min-height: 0; display: flex; flex-direction: column; gap: 14px; }
+    .size-details-inner .size-spec-list, .size-details-inner .size-footprint { display: none; }
+    .size-details-inner .size-meta-row { margin: 0; padding: 14px 0 0; border: 0; border-top: 1px solid rgba(255,255,255,0.2); display: block; }
+    .size-details-inner .size-sqft-subtitle, .size-details-inner .size-price-tag small { color: rgba(255,255,255,0.6); font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; margin: 0 0 2px; }
+    .size-details-inner .size-sqft-big { color: #fff; font-size: 1.05rem; line-height: 1.35; }
+    .size-details-inner .size-sqft-big span { color: rgba(255,255,255,0.7) !important; }
+    .size-details-inner .size-price-tag { margin: 0; padding: 0; border: 0; background: none; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+    .size-details-inner .size-price-tag strong { color: #fff; font-size: 1.15rem; display: block; }
+    .size-details-inner .size-price-tag em { color: rgba(255,255,255,0.6); }
+    .size-details-inner .size-cta { margin: 2px 0 0; width: 100%; justify-content: center; background: #d97706; color: #fff; }
+    @media (max-width: 1024px) { .size-card { height: 540px; } }
     .size-meta-row {
       display: flex;
       align-items: center;
@@ -1173,7 +1195,7 @@
       position: relative;
       width: 100vw;
       min-height: 580px;
-      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #FAF8EE 65%, #F0E8D9 100%);
+      background: #FFF8EE url('images/connectivity-map-bg.jpg') center / cover no-repeat;
       border-top: 1px solid rgba(70, 86, 101, 0.12);
       border-bottom: 1px solid rgba(70, 86, 101, 0.12);
       overflow: hidden;
@@ -1804,15 +1826,28 @@
       position: sticky;
       top: 0;
       height: 100vh;
-      min-height: 600px;
+      min-height: 0;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
       overflow: hidden;
-      padding: clamp(65px, 8vh, 85px) 24px clamp(20px, 3vh, 32px);
+      padding: 84px 24px clamp(16px, 3vh, 32px);
       box-sizing: border-box;
       background: var(--cream);
+    }
+    .sf-sticky-pin > .sec-container {
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .sf-sticky-pin .sec-header { margin-bottom: clamp(10px, 2vh, 24px); }
+    .sf-sticky-pin .sec-headline { font-size: clamp(1.6rem, 4.2vh, 2.6rem); margin-bottom: 6px; }
+    .sf-sticky-pin .sec-lead { font-size: clamp(0.8rem, 1.9vh, 1rem); margin-bottom: 0; }
+    @media (max-height: 760px) and (min-width: 1025px) {
+      .sf-sticky-pin .sec-lead { display: none; }
     }
 
     /* ======================================================== */
@@ -1822,6 +1857,8 @@
       position: relative;
       width: 100%;
       background: transparent;
+      flex: 1;
+      min-height: 0;
     }
 
     .sf-stage-grid {
@@ -1829,7 +1866,8 @@
       grid-template-columns: 1fr 1fr;
       gap: clamp(20px, 2.5vw, 36px);
       align-items: stretch;
-      min-height: 520px;
+      height: 100%;
+      min-height: 0;
       position: relative;
     }
 
@@ -1840,7 +1878,7 @@
       overflow: hidden;
       background: var(--navy-darkest, #111e26);
       box-shadow: 0 20px 50px rgba(31, 52, 63, 0.12);
-      min-height: 500px;
+      min-height: 0;
       transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
       z-index: 2;
     }
@@ -1940,10 +1978,12 @@
       border-radius: clamp(24px, 3vw, 36px);
       border: 1px solid rgba(70, 86, 101, 0.12);
       box-shadow: 0 20px 50px rgba(31, 52, 63, 0.08);
-      padding: clamp(28px, 3.8vw, 48px);
+      padding: clamp(18px, 3.2vh, 48px) clamp(24px, 3.8vw, 48px);
+      min-height: 0;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       gap: 20px;
       transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
       z-index: 1;
@@ -2153,6 +2193,13 @@
     }
 
     /* Responsive */
+    @media (min-width: 1025px) {
+      .sf-eyebrow { margin-bottom: clamp(8px, 2vh, 20px); }
+      .sf-headline-deck { min-height: 0; margin-bottom: clamp(8px, 1.6vh, 16px); }
+      .sf-headline-title { font-size: clamp(1.5rem, 4.6vh, 3.1rem); }
+      .sf-desc-deck { min-height: 0; }
+      .sf-desc-item { font-size: clamp(0.82rem, 2vh, 1.08rem); line-height: 1.5; }
+    }
     @media (max-width: 1024px) {
       .legal-sec.sf-scroll-track {
         height: auto;
@@ -2346,6 +2393,20 @@
       background: #ffffff;
       box-shadow: 0 0 0 4px rgba(70, 86, 101, 0.12);
     }
+    .enquiry-head { text-align: left; max-width: 760px; margin: 0 0 clamp(28px, 4vw, 48px); }
+    .enquiry-eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .enquiry-title { font-family: var(--head-font); font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 500; line-height: 1.2; color: var(--navy-deep); margin: 0 0 16px; letter-spacing: -0.01em; }
+    .enquiry-sub { font-size: clamp(0.9rem, 1.1vw, 1rem); line-height: 1.7; color: #6b7a86; margin: 0; max-width: 560px; }
+    .enquiry-split { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 90px); align-items: center; }
+    .enquiry-map { height: clamp(300px, 34vw, 440px); border-radius: 6px; overflow: hidden; background: #e8e4d8; border: 1px solid var(--border-line); }
+    .enquiry-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(0.85); }
+    .enquiry-form-col { width: 100%; max-width: 420px; margin: 0 auto; }
+    .enq-line { display: block; width: 100%; padding: 14px 2px; border: 0; border-bottom: 1px solid rgba(70, 86, 101, 0.35); background: transparent; font-family: inherit; font-size: 0.95rem; color: var(--navy-deep); margin-bottom: 14px; border-radius: 0; transition: border-color 0.25s ease; }
+    .enq-line::placeholder { color: #7b8791; }
+    .enq-line:focus { outline: none; border-bottom-color: var(--navy-deep); }
+    .enq-submit { display: block; margin: 28px auto 0; padding: 12px 38px; background: transparent; border: 1px solid var(--navy-deep); color: var(--navy-deep); font-family: inherit; font-size: 0.82rem; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease; }
+    .enq-submit:hover { background: var(--navy-deep); color: #fff; }
+    @media (max-width: 900px) { .enquiry-split { grid-template-columns: 1fr; } .enquiry-form-col { max-width: 100%; } }
     .form-success-alert {
       display: none;
       text-align: center;
@@ -2750,14 +2811,14 @@
         <div class="sizes-cards-grid">
 
           <!-- Card 1 -->
-          <div class="size-card plot-reveal" data-size="150">
+          <div class="size-card plot-reveal" tabindex="0" data-size="150">
             <div class="size-card-media">
               <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" alt="Executive Villa 150 Sq. Yds" class="size-card-photo">
-              <span class="size-card-num">PLOT 01</span>
-              <span class="size-card-badge is-soft">Executive</span>
-              <div class="size-card-title"><b>150</b><span>Sq. Yards</span></div>
             </div>
             <div class="size-card-body">
+              <div class="size-card-title"><b>150</b><span>Sq. Yards</span></div>
+              <p class="size-teaser">Compact executive footprint, ideal for your first villa.</p>
+              <div class="size-details"><div class="size-details-inner">
               <div class="size-meta-row">
                 <div class="size-footprint"><i style="width:30px;height:44px;"></i></div>
                 <div>
@@ -2776,18 +2837,19 @@
                 <em>All-inclusive</em>
               </div>
               <a href="#enquirySection" class="size-cta">Inquire Plot <i class="fa-solid fa-arrow-right"></i></a>
+              </div></div>
             </div>
           </div>
 
           <!-- Card 2 -->
-          <div class="size-card is-featured plot-reveal" data-size="250">
+          <div class="size-card is-featured plot-reveal" tabindex="0" data-size="250">
             <div class="size-card-media">
               <img src="assets/pune-luxury-villas.jpg" alt="Park Facing Villa 250 Sq. Yds" class="size-card-photo">
-              <span class="size-card-num">PLOT 02</span>
-              <span class="size-card-badge">Most Popular</span>
-              <div class="size-card-title"><b>250</b><span>Sq. Yards</span></div>
             </div>
             <div class="size-card-body">
+              <div class="size-card-title"><b>250</b><span>Sq. Yards</span></div>
+              <p class="size-teaser">Garden-facing plots with generous space, our most loved size.</p>
+              <div class="size-details"><div class="size-details-inner">
               <div class="size-meta-row">
                 <div class="size-footprint"><i style="width:36px;height:46px;"></i></div>
                 <div>
@@ -2806,18 +2868,19 @@
                 <em>All-inclusive</em>
               </div>
               <a href="#enquirySection" class="size-cta">Inquire Plot <i class="fa-solid fa-arrow-right"></i></a>
+              </div></div>
             </div>
           </div>
 
           <!-- Card 3 -->
-          <div class="size-card plot-reveal" data-size="350">
+          <div class="size-card plot-reveal" tabindex="0" data-size="350">
             <div class="size-card-media">
               <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Corner Boulevard 350 Sq. Yds" class="size-card-photo">
-              <span class="size-card-num">PLOT 03</span>
-              <span class="size-card-badge is-soft">Corner Parcel</span>
-              <div class="size-card-title"><b>350</b><span>Sq. Yards</span></div>
             </div>
             <div class="size-card-body">
+              <div class="size-card-title"><b>350</b><span>Sq. Yards</span></div>
+              <p class="size-teaser">Corner boulevard parcel with dual road access.</p>
+              <div class="size-details"><div class="size-details-inner">
               <div class="size-meta-row">
                 <div class="size-footprint"><i style="width:42px;height:48px;"></i></div>
                 <div>
@@ -2836,17 +2899,10 @@
                 <em>All-inclusive</em>
               </div>
               <a href="#enquirySection" class="size-cta">Inquire Plot <i class="fa-solid fa-arrow-right"></i></a>
+              </div></div>
             </div>
           </div>
 
-        </div>
-
-        <!-- Assurance strip -->
-        <div class="size-assure plot-reveal">
-          <div class="size-assure-item"><div class="size-assure-ic"><i class="fa-solid fa-road"></i></div><div><b>Direct Road Frontage</b><small>Every single plot</small></div></div>
-          <div class="size-assure-item"><div class="size-assure-ic"><i class="fa-solid fa-droplet"></i></div><div><b>Water &amp; Power Points</b><small>Independent tapping</small></div></div>
-          <div class="size-assure-item"><div class="size-assure-ic"><i class="fa-solid fa-stamp"></i></div><div><b>G+2 Villa Sanction</b><small>Approved construction</small></div></div>
-          <div class="size-assure-item"><div class="size-assure-ic"><i class="fa-solid fa-file-shield"></i></div><div><b>Clear &amp; Verified Title</b><small>Transparent records</small></div></div>
         </div>
 
       </div>
@@ -2983,7 +3039,7 @@
       <div class="connect-map-stage plot-reveal" id="connectMapStage">
         
         <!-- Full-Width Stylized Route Network SVG -->
-        <svg class="connect-svg-bg" viewBox="0 0 1600 580" fill="none" preserveAspectRatio="none">
+        <svg class="connect-svg-bg" viewBox="0 0 1600 580" fill="none" preserveAspectRatio="none" style="display:none" aria-hidden="true">
           <path d="M 0,420 C 300,380 450,460 750,340 C 1050,220 1350,320 1600,260" stroke="rgba(217, 119, 6, 0.16)" stroke-width="4.5" stroke-dasharray="10 7"/>
           <path d="M 100,580 C 350,440 650,300 850,280 C 1050,260 1350,480 1600,410" stroke="rgba(70, 86, 101, 0.13)" stroke-width="3.5" />
           <path d="M 0,240 C 400,300 700,180 1100,240 C 1350,280 1480,200 1600,220" stroke="rgba(70, 86, 101, 0.09)" stroke-width="2.5" />
@@ -3100,9 +3156,6 @@
         <div class="sec-container">
           
           <div class="sec-header">
-            <div class="sec-num-eyebrow">
-              <span class="dash"></span> <span class="num-highlight">06</span> &mdash; Specifications
-            </div>
             <h2 class="sec-headline">
               Specifications
             </h2>
@@ -3122,61 +3175,31 @@
                 <!-- Slide 01: Roads -->
                 <div class="sf-img-item active" data-index="0">
                   <img src="assets/pune-luxury-villas.jpg" alt="Avenues & Road Infrastructure">
-                  <div class="sf-img-gradient"></div>
-                  <div class="sf-visual-badge">
-                    <span class="sf-badge-dot"></span>
-                    <span>Road Infrastructure</span>
-                  </div>
                 </div>
 
                 <!-- Slide 02: Underground Utilities -->
                 <div class="sf-img-item" data-index="1">
                   <img src="assets/project-5.jpg" alt="Concealed Underground Utilities">
-                  <div class="sf-img-gradient"></div>
-                  <div class="sf-visual-badge">
-                    <span class="sf-badge-dot"></span>
-                    <span>Electrical &amp; Telecom</span>
-                  </div>
                 </div>
 
                 <!-- Slide 03: Water & Drainage -->
                 <div class="sf-img-item" data-index="2">
                   <img src="assets/project-3.jpg" alt="Water Supply & Drainage Network">
-                  <div class="sf-img-gradient"></div>
-                  <div class="sf-visual-badge">
-                    <span class="sf-badge-dot"></span>
-                    <span>Water &amp; Drainage</span>
-                  </div>
                 </div>
 
                 <!-- Slide 04: Demarcation -->
                 <div class="sf-img-item" data-index="3">
                   <img src="assets/realestate23.webp" alt="Plot Demarcation & Frontage">
-                  <div class="sf-img-gradient"></div>
-                  <div class="sf-visual-badge">
-                    <span class="sf-badge-dot"></span>
-                    <span>Plot Demarcation</span>
-                  </div>
                 </div>
 
                 <!-- Slide 05: Security -->
                 <div class="sf-img-item" data-index="4">
                   <img src="assets/amenity-security.jpg" alt="Gated Security & Perimeter">
-                  <div class="sf-img-gradient"></div>
-                  <div class="sf-visual-badge">
-                    <span class="sf-badge-dot"></span>
-                    <span>Gated Security</span>
-                  </div>
                 </div>
 
                 <!-- Slide 06: Sanctions -->
                 <div class="sf-img-item" data-index="5">
                   <img src="assets/cta-building-luxury.jpg" alt="Planning Sanctions & Clear Title">
-                  <div class="sf-img-gradient"></div>
-                  <div class="sf-visual-badge">
-                    <span class="sf-badge-dot"></span>
-                    <span>Sanctions &amp; Clear Title</span>
-                  </div>
                 </div>
 
               </div>
@@ -3249,31 +3272,6 @@
                   <p class="sf-desc-item" data-index="5">
                     Approved town planning permissions, G+2 villa construction clearance, and pre-approved nationalized bank loans.
                   </p>
-                </div>
-
-              </div>
-
-              <!-- Bottom Interactive Bar (STILL / FORM Minimalist Counter + Arrows) -->
-              <div class="sf-pane-bottom">
-                
-                <div class="sf-controls-wrap">
-                  <div class="sf-stillform-counter">
-                    <span class="sf-counter-circle" id="sfCurCount">01</span>
-                    <span class="sf-counter-total">06</span>
-                  </div>
-
-                  <div class="sf-progress-track">
-                    <div class="sf-progress-fill" id="sfProgressFill"></div>
-                  </div>
-                </div>
-
-                <div class="sf-arrows-row">
-                  <button type="button" class="sf-nav-arrow" id="sfPrevBtn" aria-label="Previous specification">
-                    <i class="fa-solid fa-arrow-left"></i>
-                  </button>
-                  <button type="button" class="sf-nav-arrow" id="sfNextBtn" aria-label="Next specification">
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </button>
                 </div>
 
               </div>
@@ -3379,106 +3377,38 @@
     <section class="enquiry-sec" id="enquirySection">
       <div class="sec-container">
         
-        <div class="sec-header plot-reveal">
-          <div class="sec-num-eyebrow">
-            <span class="dash"></span> <span class="num-highlight">08</span> &mdash; Enquiry
-          </div>
-          <h2 class="sec-headline">
-            Let's Find Your Perfect Plot
-          </h2>
-          <p class="sec-lead">
-            Select your preferred day and time for a private walkthrough with our Senior Land Acquisition Director.
-          </p>
+                <div class="enquiry-head plot-reveal">
+          <div class="enquiry-eyebrow">Contact Us</div>
+          <h2 class="enquiry-title">Begin Your Journey Towards A Timeless Legacy</h2>
+          <p class="enquiry-sub">Connect with One Roof Properties and take the first step towards owning a thoughtfully planned plot crafted for your dreams and aspirations.</p>
         </div>
 
-        <div class="enquiry-split-box plot-reveal">
-          
-          <!-- Left Info Pane -->
-          <div class="enquiry-info-pane">
-            <div>
-              <h3 class="sec-headline" style="font-size: 1.8rem; margin-bottom: 12px;">Experience Green Valley On-Ground</h3>
-              <p style="color: var(--muted); font-size: 0.96rem; margin-bottom: 24px;">
-                Walking the land is the only true way to understand its elevation, wind currents, and panoramic horizons. Schedule a complimentary private chauffeur-driven site tour today.
-              </p>
+        <div class="enquiry-split plot-reveal">
 
-              <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px;">
-                <div style="display: flex; gap: 12px; align-items: center; font-size: 0.92rem;"><i class="fa-solid fa-car-side" style="color: var(--navy);"></i> Free Chauffeur Pickup &amp; Drop across Pune</div>
-                <div style="display: flex; gap: 12px; align-items: center; font-size: 0.92rem;"><i class="fa-solid fa-compass-drafting" style="color: var(--navy);"></i> Physical plot demarcation walkthrough</div>
-                <div style="display: flex; gap: 12px; align-items: center; font-size: 0.92rem;"><i class="fa-solid fa-file-invoice-dollar" style="color: var(--navy);"></i> Unit-by-unit pricing &amp; FSI breakdown</div>
-              </div>
-            </div>
-
-            <div style="border-top: 1px solid var(--border-line); padding-top: 20px;">
-              <a href="tel:+919494168733" style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--navy-deep); margin-bottom: 8px;">
-                <i class="fa-solid fa-phone" style="color: var(--navy);"></i> +91-949 416 8733
-              </a>
-              <a href="https://wa.me/919494168733?text=Hi%20One%20Roof%20Properties,%20I%20am%20interested%20in%20visiting%20Green%20Valley%20Township%20Plots." target="_blank" style="display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 0.92rem;">
-                <i class="fa-brands fa-whatsapp" style="color: #16a34a;"></i> Chat with Senior Land Advisor
-              </a>
-            </div>
+          <!-- Left: Map -->
+          <div class="enquiry-map">
+            <iframe src="https://www.google.com/maps?q=Wagholi,+Pune,+Maharashtra&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Project location map"></iframe>
           </div>
 
-          <!-- Right Form Pane -->
-          <div class="enquiry-form-pane">
+          <!-- Right: Minimal Form -->
+          <div class="enquiry-form-col">
             <div id="enquiryFormWrap">
-              <h3 class="sec-headline" style="font-size: 1.8rem; margin-bottom: 4px;">Schedule Your Site Visit</h3>
-              <p style="color: var(--muted); font-size: 0.92rem; margin-bottom: 24px;">Fill in your details and our team will confirm within 15 minutes.</p>
-
               <form id="projectEnquiryForm" onsubmit="handlePlotEnquiry(event)">
-                <div class="form-grid-fields">
-                  
-                  <div class="form-group">
-                    <label for="fName">Full Name *</label>
-                    <input type="text" id="fName" class="form-input-ctrl" placeholder="e.g. Vikram Bhosale" required>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="fPhone">Phone / WhatsApp *</label>
-                    <input type="tel" id="fPhone" class="form-input-ctrl" placeholder="+91 98765 43210" required>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="fEmail">Email Address *</label>
-                    <input type="email" id="fEmail" class="form-input-ctrl" placeholder="name@domain.com" required>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="fSize">Preferred Plot Size</label>
-                    <select id="fSize" class="form-input-ctrl">
-                      <option value="150">150 Sq. Yards (Executive Villa)</option>
-                      <option value="250" selected>250 Sq. Yards (Park Facing)</option>
-                      <option value="350">350 Sq. Yards (Corner Boulevard)</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="fDate">Preferred Visit Date</label>
-                    <input type="date" id="fDate" class="form-input-ctrl">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="fTimeSlot">Preferred Time</label>
-                    <select id="fTimeSlot" class="form-input-ctrl">
-                      <option value="morning">Morning (10:00 AM)</option>
-                      <option value="afternoon">Afternoon (02:00 PM)</option>
-                      <option value="evening">Sunset Tour (04:30 PM)</option>
-                    </select>
-                  </div>
-
-                </div>
-
-                <button type="submit" class="btn-slate-action" style="width: 100%; padding: 15px; font-size: 0.95rem; margin-top: 10px;">
-                  <i class="fa-solid fa-paper-plane"></i> Confirm Site Visit &amp; Inquire Plots
-                </button>
+                <input type="text" id="fName" class="enq-line" placeholder="Name*" required>
+                <input type="email" id="fEmail" class="enq-line" placeholder="Email*" required>
+                <input type="tel" id="fPhone" class="enq-line" placeholder="Phone*" required>
+                <input type="text" id="fLocation" class="enq-line" placeholder="Location*" required>
+                <input type="text" id="fMessage" class="enq-line" placeholder="Message">
+                <button type="submit" class="enq-submit">Submit Enquiry</button>
               </form>
             </div>
 
             <!-- Success State -->
             <div id="enquirySuccessState" class="form-success-alert">
               <i class="fa-solid fa-circle-check"></i>
-              <h4 class="sec-headline" style="font-size: 1.5rem; margin-bottom: 8px;">Site Visit Request Confirmed!</h4>
+              <h4 class="sec-headline" style="font-size: 1.5rem; margin-bottom: 8px;">Enquiry Received!</h4>
               <p style="color: var(--muted); font-size: 0.95rem; max-width: 420px; margin: 0 auto;">
-                Thank you! Our senior land advisor has received your request. We will contact you immediately with the master layout blueprint and confirm your private visit schedule.
+                Thank you! Our team will contact you shortly with the master layout and your private visit schedule.
               </p>
             </div>
           </div>

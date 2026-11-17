@@ -1013,7 +1013,7 @@
           Thank you! Your inquiry has been received by One Roof Properties. Our team will connect with you shortly.
         </div>
 
-        <form id="contactInquiryForm" onsubmit="event.preventDefault(); window.location.href='thank-you.html';">
+        <form id="contactInquiryForm" onsubmit="event.preventDefault(); const alertBox = document.getElementById('contactSuccessAlert'); if(alertBox){ alertBox.style.display='block'; } this.reset();">
           <div class="contact-field-group">
             <input type="text" class="contact-input" placeholder="Full name*" required>
           </div>

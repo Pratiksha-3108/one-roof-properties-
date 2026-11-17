@@ -126,19 +126,14 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
   margin-top: 0; /* Kept level across all 3 columns like Shri Vrinda reference */
 }
 
-/* Card Header (Title, Status Badge, Location & Config) */
-.card-head {
+/* Project Info (Below Card Image: Name & Location Only) */
+.card-info {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-bottom: 14px;
+  margin-top: 16px;
   padding: 0 2px;
-}
-.card-head-main {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
+  text-align: left;
 }
 .card-title {
   font-family: var(--head);
@@ -153,48 +148,18 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
 .card:hover .card-title {
   color: var(--gold);
 }
-.card-status-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 13px;
-  border-radius: 999px;
-  font-family: var(--body);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  background: #ece3d4;
-  color: #4a3c2c;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.card-meta {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 0.86rem;
-  color: var(--muted);
-  line-height: 1.4;
-}
 .card-loc {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  color: #556575;
+  gap: 6px;
+  font-family: var(--body);
+  font-size: 0.88rem;
+  color: var(--muted);
   font-weight: 500;
+  line-height: 1.35;
 }
 .card-loc i {
-  color: var(--gold);
-  font-size: 0.78rem;
-}
-.card-dot {
-  color: rgba(70, 86, 101, 0.35);
-  font-size: 0.75rem;
-}
-.card-config {
-  color: var(--muted);
+  color: #64748b;
   font-size: 0.82rem;
 }
 
@@ -615,23 +580,16 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
          data-status="under-construction" 
          data-config="3 4" 
          data-possession="under-construction">
-        <div class="card-head">
-          <div class="card-head-main">
-            <h3 class="card-title">The Grand Emerald</h3>
-            <span class="card-status-badge">Under Construction</span>
-          </div>
-          <div class="card-meta">
-            <span class="card-loc"><i class="fa-solid fa-location-dot"></i> Baner, Pune</span>
-            <span class="card-dot">•</span>
-            <span class="card-config">3 &amp; 4 BHK Sky Residences</span>
-          </div>
-        </div>
         <div class="poster">
           <img src="assets/pune-luxury-tower.jpg" alt="The Grand Emerald, Baner" loading="lazy">
           <span class="artistic-tag">Artistic Impression*</span>
           <div class="explore-circle-btn">
             <span>Explore<br>Now</span>
           </div>
+        </div>
+        <div class="card-info">
+          <h3 class="card-title">The Grand Emerald</h3>
+          <div class="card-loc"><i class="fa-solid fa-location-dot"></i> Baner, Pune</div>
         </div>
       </a>
 
@@ -643,23 +601,16 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
          data-status="ready-to-move" 
          data-config="4" 
          data-possession="ready-to-move">
-        <div class="card-head">
-          <div class="card-head-main">
-            <h3 class="card-title">Palm Crest Villas</h3>
-            <span class="card-status-badge">Ready to Move</span>
-          </div>
-          <div class="card-meta">
-            <span class="card-loc"><i class="fa-solid fa-location-dot"></i> Wakad, Pune</span>
-            <span class="card-dot">•</span>
-            <span class="card-config">4 BHK Private Villas</span>
-          </div>
-        </div>
         <div class="poster">
           <img src="assets/pune-luxury-villas.jpg" alt="Palm Crest Villas, Wakad" loading="lazy">
           <span class="artistic-tag">Artistic Impression*</span>
           <div class="explore-circle-btn">
             <span>Explore<br>Now</span>
           </div>
+        </div>
+        <div class="card-info">
+          <h3 class="card-title">Palm Crest Villas</h3>
+          <div class="card-loc"><i class="fa-solid fa-location-dot"></i> Wakad, Pune</div>
         </div>
       </a>
 
@@ -671,23 +622,16 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
          data-status="upcoming under-construction" 
          data-config="4 5" 
          data-possession="new-launch under-construction">
-        <div class="card-head">
-          <div class="card-head-main">
-            <h3 class="card-title">Skyline Imperial</h3>
-            <span class="card-status-badge">Upcoming</span>
-          </div>
-          <div class="card-meta">
-            <span class="card-loc"><i class="fa-solid fa-location-dot"></i> Kharadi, Pune</span>
-            <span class="card-dot">•</span>
-            <span class="card-config">5 BHK Sky Mansions</span>
-          </div>
-        </div>
         <div class="poster">
           <img src="assets/project-3.jpg" alt="Skyline Imperial, Kharadi" loading="lazy">
           <span class="artistic-tag">Artistic Impression*</span>
           <div class="explore-circle-btn">
             <span>Explore<br>Now</span>
           </div>
+        </div>
+        <div class="card-info">
+          <h3 class="card-title">Skyline Imperial</h3>
+          <div class="card-loc"><i class="fa-solid fa-location-dot"></i> Kharadi, Pune</div>
         </div>
       </a>
 
@@ -699,23 +643,16 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
          data-status="ready-to-move" 
          data-plotarea="1000-1500 1500-2000 above-2000" 
          data-plotcategory="residential-plot">
-        <div class="card-head">
-          <div class="card-head-main">
-            <h3 class="card-title">Green Valley Township</h3>
-            <span class="card-status-badge">Ready to Move</span>
-          </div>
-          <div class="card-meta">
-            <span class="card-loc"><i class="fa-solid fa-location-dot"></i> Wagholi, Pune</span>
-            <span class="card-dot">•</span>
-            <span class="card-config">Gated Villa Plots, 1,350–3,500 sq.ft.</span>
-          </div>
-        </div>
         <div class="poster">
           <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80" alt="Green Valley Township" loading="lazy">
           <span class="artistic-tag">Artistic Impression*</span>
           <div class="explore-circle-btn">
             <span>Explore<br>Now</span>
           </div>
+        </div>
+        <div class="card-info">
+          <h3 class="card-title">Green Valley Township</h3>
+          <div class="card-loc"><i class="fa-solid fa-location-dot"></i> Wagholi, Pune</div>
         </div>
       </a>
 
@@ -727,23 +664,16 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
          data-status="ready-to-move" 
          data-plotarea="above-2000" 
          data-plotcategory="residential-plot">
-        <div class="card-head">
-          <div class="card-head-main">
-            <h3 class="card-title">Royal Meadows Estates</h3>
-            <span class="card-status-badge">Ready to Move</span>
-          </div>
-          <div class="card-meta">
-            <span class="card-loc"><i class="fa-solid fa-location-dot"></i> Hinjewadi, Pune</span>
-            <span class="card-dot">•</span>
-            <span class="card-config">Luxury Farmhouse Plots, 2,000+ sq.ft.</span>
-          </div>
-        </div>
         <div class="poster">
           <img src="assets/amenity-garden.jpg" alt="Royal Meadows Estates" loading="lazy">
           <span class="artistic-tag">Artistic Impression*</span>
           <div class="explore-circle-btn">
             <span>Explore<br>Now</span>
           </div>
+        </div>
+        <div class="card-info">
+          <h3 class="card-title">Royal Meadows Estates</h3>
+          <div class="card-loc"><i class="fa-solid fa-location-dot"></i> Hinjewadi, Pune</div>
         </div>
       </a>
 
@@ -755,23 +685,16 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
          data-status="under-construction upcoming" 
          data-plotarea="1000-1500 1500-2000 above-2000" 
          data-plotcategory="commercial-plot">
-        <div class="card-head">
-          <div class="card-head-main">
-            <h3 class="card-title">Metro Boulevard Plots</h3>
-            <span class="card-status-badge">Upcoming</span>
-          </div>
-          <div class="card-meta">
-            <span class="card-loc"><i class="fa-solid fa-location-dot"></i> Hinjewadi Corridor, Pune</span>
-            <span class="card-dot">•</span>
-            <span class="card-config">Commercial SCO Plots, 1,200–4,500 sq.ft.</span>
-          </div>
-        </div>
         <div class="poster">
           <img src="assets/project-4.jpg" alt="Metro Boulevard Plots" loading="lazy">
           <span class="artistic-tag">Artistic Impression*</span>
           <div class="explore-circle-btn">
             <span>Explore<br>Now</span>
           </div>
+        </div>
+        <div class="card-info">
+          <h3 class="card-title">Metro Boulevard Plots</h3>
+          <div class="card-loc"><i class="fa-solid fa-location-dot"></i> Hinjewadi Corridor, Pune</div>
         </div>
       </a>
     </div>

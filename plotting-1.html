@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Green Valley Township Plots | PMRDA &amp; MahaRERA Approved | One Roof Properties</title>
-  <meta name="description" content="Green Valley Township: 80-acre master-planned residential plotting project on Pune's North Expressway Corridor. 150 to 500 Sq. Yds. Freehold registry, immediate possession &amp; 80% bank loan approval.">
+  <meta name="description"
+    content="Green Valley Township: 80-acre master-planned residential plotting project on Pune's North Expressway Corridor. 150 to 500 Sq. Yds. Freehold registry, immediate possession &amp; 80% bank loan approval.">
   <meta name="theme-color" content="#1f343f">
-  
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     :root {
       --cream: #FAF8EE;
       --cream-soft: #F4EFE3;
@@ -43,13 +53,30 @@
       font-family: var(--body-font);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
-      overflow-x: clip; /* NOT hidden: 'hidden' on body breaks position: sticky */
+      overflow-x: clip;
+      /* NOT hidden: 'hidden' on body breaks position: sticky */
     }
 
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    img { max-width: 100%; display: block; }
-    button, input, select, textarea { font-family: inherit; }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+    }
 
     .skip-to-content {
       position: absolute;
@@ -62,7 +89,10 @@
       border-radius: 6px;
       font-weight: 600;
     }
-    .skip-to-content:focus { left: 16px; }
+
+    .skip-to-content:focus {
+      left: 16px;
+    }
 
     /* ======================================================== */
     /* EDITORIAL UTILITY STYLES (MATCHING REFERENCE DESIGN)    */
@@ -93,12 +123,14 @@
       color: var(--muted);
       margin-bottom: 14px;
     }
+
     .sec-num-eyebrow span.dash {
       width: 24px;
       height: 2px;
       background: var(--navy);
       display: inline-block;
     }
+
     .sec-num-eyebrow span.num-highlight {
       color: var(--navy);
       font-weight: 700;
@@ -128,6 +160,7 @@
       transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
       will-change: opacity, transform;
     }
+
     .plot-reveal.is-in {
       opacity: 1;
       transform: translateY(0);
@@ -152,6 +185,7 @@
       transition: all 0.3s var(--ease);
       box-shadow: 0 6px 20px rgba(70, 86, 101, 0.22);
     }
+
     .btn-slate-action:hover {
       background: var(--navy-deep);
       border-color: var(--navy-deep);
@@ -177,6 +211,7 @@
       cursor: pointer;
       transition: all 0.3s var(--ease);
     }
+
     .btn-outline-slate:hover {
       background: var(--navy);
       color: var(--cream);
@@ -193,10 +228,12 @@
       gap: clamp(20px, 3.5vw, 36px);
       margin-bottom: 40px;
     }
+
     .ref-triad-item {
       display: flex;
       flex-direction: column;
     }
+
     .ref-triad-img-box {
       position: relative;
       aspect-ratio: 1 / 1.08;
@@ -206,6 +243,7 @@
       background: #111e26;
       margin-bottom: 24px;
     }
+
     .ref-triad-img {
       width: 100%;
       height: 100%;
@@ -213,9 +251,11 @@
       transition: transform 0.65s var(--ease);
       display: block;
     }
+
     .ref-triad-item:hover .ref-triad-img {
       transform: scale(1.06);
     }
+
     .ref-watermark {
       position: absolute;
       bottom: 12px;
@@ -229,11 +269,13 @@
       border-radius: 4px;
       backdrop-filter: blur(4px);
     }
+
     .ref-triad-meta {
       padding-top: 4px;
       text-align: center;
       position: relative;
     }
+
     .ref-triad-num {
       font-family: var(--head-font);
       font-size: clamp(2rem, 3.2vw, 2.7rem);
@@ -242,6 +284,7 @@
       line-height: 1.15;
       margin-bottom: 6px;
     }
+
     .ref-triad-cap {
       font-family: var(--body-font);
       font-size: 0.85rem;
@@ -258,12 +301,14 @@
       position: relative;
       margin-top: 14px;
     }
-    .ref-triad-dividers > div {
+
+    .ref-triad-dividers>div {
       position: relative;
       text-align: center;
       padding: 14px 10px;
     }
-    .ref-triad-dividers > div:not(:last-child)::after {
+
+    .ref-triad-dividers>div:not(:last-child)::after {
       content: '';
       position: absolute;
       right: 0;
@@ -286,6 +331,7 @@
       background: transparent;
       transition: all 0.35s ease;
     }
+
     .header.scrolled {
       background: rgba(23, 34, 45, 0.96);
       backdrop-filter: blur(14px);
@@ -294,12 +340,14 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
+
     .holder {
       padding: 0 max(24px, 4.5vw);
       max-width: 1820px;
       margin: 0 auto;
       width: 100%;
     }
+
     .header-block {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -307,36 +355,43 @@
       min-height: 54px;
       gap: 24px;
     }
+
     .header-logo {
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
     .header-logo img {
       height: 46px;
       width: auto;
       object-fit: contain;
     }
+
     .header-nav-list {
       display: flex;
       gap: clamp(18px, 2.2vw, 36px);
       align-items: center;
     }
+
     .header-nav-right {
       display: flex;
       justify-content: flex-end;
     }
+
     .header-nav-list li {
       font-size: clamp(13px, 0.88vw, 15px);
       font-weight: 500;
       letter-spacing: 1.4px;
       text-transform: uppercase;
     }
+
     .header-nav-list a {
       color: #ffffff;
       position: relative;
       transition: color 0.2s ease;
     }
+
     .header-nav-list a::before {
       content: '';
       position: absolute;
@@ -349,10 +404,20 @@
       transform-origin: left;
       transition: transform 0.35s ease;
     }
-    .header-nav-list a:hover::before { transform: scaleX(1); }
-    .header-nav-list a:hover { color: var(--cream); }
 
-    .dd-parent { position: relative; padding: 6px 0; }
+    .header-nav-list a:hover::before {
+      transform: scaleX(1);
+    }
+
+    .header-nav-list a:hover {
+      color: var(--cream);
+    }
+
+    .dd-parent {
+      position: relative;
+      padding: 6px 0;
+    }
+
     .dd {
       display: none;
       position: absolute;
@@ -368,9 +433,20 @@
       text-transform: none;
       letter-spacing: 0;
     }
-    .dd.left { left: 0; }
-    .dd.right { right: 0; }
-    .dd-parent:hover .dd, .dd-parent:focus-within .dd { display: block; }
+
+    .dd.left {
+      left: 0;
+    }
+
+    .dd.right {
+      right: 0;
+    }
+
+    .dd-parent:hover .dd,
+    .dd-parent:focus-within .dd {
+      display: block;
+    }
+
     .dd a {
       display: block;
       padding: 8px 12px;
@@ -378,11 +454,16 @@
       color: #cbd5e1;
       font-size: 0.88rem;
     }
+
     .dd a:hover {
       background: rgba(255, 255, 255, 0.08);
       color: #ffffff;
     }
-    .dd a::before { display: none !important; }
+
+    .dd a::before {
+      display: none !important;
+    }
+
     .dd .dd-h {
       color: #ffffff;
       font-weight: 600;
@@ -394,8 +475,16 @@
       gap: 8px;
       margin-top: 4px;
     }
-    .dd .sub { padding-left: 24px; margin-bottom: 8px; }
-    .dd .sub a.on { color: var(--cream); font-weight: 600; }
+
+    .dd .sub {
+      padding-left: 24px;
+      margin-bottom: 8px;
+    }
+
+    .dd .sub a.on {
+      color: var(--cream);
+      font-weight: 600;
+    }
 
     .nav-mobile-btn {
       display: none;
@@ -407,6 +496,7 @@
       justify-self: end;
       grid-column: 3;
     }
+
     .drawer {
       display: none;
       position: fixed;
@@ -421,7 +511,11 @@
       max-height: calc(100vh - 76px);
       overflow: auto;
     }
-    .drawer.open { display: block; }
+
+    .drawer.open {
+      display: block;
+    }
+
     .drawer a {
       display: block;
       padding: 12px 0;
@@ -431,7 +525,10 @@
       text-transform: uppercase;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .drawer a.on { color: var(--cream); }
+
+    .drawer a.on {
+      color: var(--cream);
+    }
 
     /* ======================================================== */
     /* 01 — PROJECT HERO (MATCHING TOP BANNER OF REFERENCE)     */
@@ -447,6 +544,7 @@
       overflow: hidden;
       color: #ffffff;
     }
+
     .hero-project-bg {
       position: absolute;
       inset: 0;
@@ -456,12 +554,14 @@
       object-position: center 36%;
       opacity: 0.55;
     }
+
     .hero-project-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, rgba(15, 26, 32, 0.45) 0%, rgba(15, 26, 32, 0.1) 40%, rgba(15, 26, 32, 0.88) 100%);
       pointer-events: none;
     }
+
     .hero-center-box {
       position: relative;
       z-index: 5;
@@ -471,6 +571,7 @@
       margin: 0 auto;
       padding: 0 24px;
     }
+
     .hero-main-title {
       font-family: var(--head-font);
       font-size: clamp(2.6rem, 5.2vw, 4.4rem);
@@ -481,6 +582,7 @@
       margin-bottom: 14px;
       text-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
     }
+
     .hero-subline-pipes {
       font-family: var(--body-font);
       font-size: clamp(0.82rem, 1vw, 0.94rem);
@@ -494,6 +596,7 @@
       gap: clamp(8px, 1.4vw, 16px);
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
+
     .hero-subline-pipes span.sep {
       color: rgba(255, 255, 255, 0.45);
     }
@@ -505,12 +608,17 @@
     .about {
       --header-h: 78px;
       --stage-h: clamp(390px, 54vh, 500px);
-      --p: 0;                       /* scroll progress, set by JS */
-      --grow: 0;                    /* cards growth 0→1  (first 70% of scroll) */
-      --text-out: 0;                /* text fade-out 0→1 (first 40%) */
-      --stats-in: 0;                /* stats fade-in 0→1 (from 35%) */
+      --p: 0;
+      /* scroll progress, set by JS */
+      --grow: 0;
+      /* cards growth 0→1  (first 70% of scroll) */
+      --text-out: 0;
+      /* text fade-out 0→1 (first 40%) */
+      --stats-in: 0;
+      /* stats fade-in 0→1 (from 35%) */
       position: relative;
-      height: 240vh;                /* scroll distance of the animation */
+      height: 240vh;
+      /* scroll distance of the animation */
       background: var(--cream);
     }
 
@@ -537,95 +645,227 @@
       gap: clamp(18px, 2.6vw, 32px);
       height: var(--stage-h);
     }
-    .about__col { position: relative; height: 100%; }
+
+    .about__col {
+      position: relative;
+      height: 100%;
+    }
 
     /* ---------- cards ---------- */
     .card {
       position: absolute;
-      left: 0; right: 0;
+      left: 0;
+      right: 0;
       overflow: hidden;
       border-radius: 20px;
       background: #111e26;
       box-shadow: 0 14px 36px rgba(70, 86, 101, .12);
       will-change: height;
     }
-    .card img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.22,1,.36,1); }
-    .card:hover img { transform: scale(1.05); }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
 
     /* LEFT: anchored bottom → grows UP     60% → 100% */
-    .card--left   { bottom: 0; height: calc(60% + 40% * var(--grow)); }
+    .card--left {
+      bottom: 0;
+      height: calc(60% + 40% * var(--grow));
+    }
+
     /* RIGHT: anchored top → grows DOWN     52% → 100% */
-    .card--right  { top: 0;    height: calc(52% + 48% * var(--grow)); }
+    .card--right {
+      top: 0;
+      height: calc(52% + 48% * var(--grow));
+    }
+
     /* CENTER: always full height */
-    .card--center { top: 0; bottom: 0; }
+    .card--center {
+      top: 0;
+      bottom: 0;
+    }
 
     .card__tag {
-      position: absolute; right: 14px; bottom: 12px; z-index: 2;
-      font-size: .62rem; letter-spacing: 1.5px; text-transform: uppercase;
-      color: rgba(255,255,255,.8); background: rgba(0,0,0,.38);
-      padding: 3px 8px; border-radius: 4px; backdrop-filter: blur(4px);
+      position: absolute;
+      right: 14px;
+      bottom: 12px;
+      z-index: 2;
+      font-size: .62rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .8);
+      background: rgba(0, 0, 0, .38);
+      padding: 3px 8px;
+      border-radius: 4px;
+      backdrop-filter: blur(4px);
     }
 
     /* ---------- floating text (fades while cards grow) ---------- */
-    .about__title, .about__text {
-      position: absolute; left: 0; right: 0; z-index: 2;
+    .about__title,
+    .about__text {
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: 2;
       opacity: calc(1 - var(--text-out));
       pointer-events: none;
       will-change: opacity, transform;
     }
-    .about__title { top: 8%;  transform: translate3d(0, calc(var(--text-out) * -40px), 0); padding-right: 12px; }
-    .about__text  { bottom: 0; transform: translate3d(0, calc(var(--text-out) *  40px), 0); }
+
+    .about__title {
+      top: 8%;
+      transform: translate3d(0, calc(var(--text-out) * -40px), 0);
+      padding-right: 12px;
+    }
+
+    .about__text {
+      bottom: 0;
+      transform: translate3d(0, calc(var(--text-out) * 40px), 0);
+    }
 
     .about__eyebrow {
-      display: inline-block; margin-bottom: 10px;
-      font-size: .8rem; font-weight: 600; letter-spacing: 2.6px; text-transform: uppercase; color: var(--muted);
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: 2.6px;
+      text-transform: uppercase;
+      color: var(--muted);
     }
+
     .about__headline {
       font-family: var(--head-font);
       font-size: clamp(1.8rem, 2.5vw, 2.6rem);
-      font-weight: 700; line-height: 1.2; letter-spacing: -.5px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -.5px;
       color: var(--navy-deep);
     }
+
     .about__text p {
       font-size: clamp(.88rem, 1.05vw, .98rem);
-      color: var(--muted); line-height: 1.75;
+      color: var(--muted);
+      line-height: 1.75;
     }
 
     /* ---------- stats strip (fades in under the 3 big cards) ---------- */
     .about__stats {
-      display: grid; grid-template-columns: repeat(3, 1fr);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       margin-top: 26px;
       opacity: var(--stats-in);
       transform: translate3d(0, calc((1 - var(--stats-in)) * 24px), 0);
       will-change: opacity, transform;
     }
-    .stat { position: relative; text-align: center; padding: 8px 16px; }
+
+    .stat {
+      position: relative;
+      text-align: center;
+      padding: 8px 16px;
+    }
+
     .stat:not(:last-child)::after {
-      content: ''; position: absolute; right: 0; top: 15%; height: 70%; width: 1px;
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 15%;
+      height: 70%;
+      width: 1px;
       background: rgba(70, 86, 101, .25);
     }
+
     .stat__num {
-      font-family: var(--head-font); font-weight: 700; line-height: 1.12; margin-bottom: 6px;
-      font-size: clamp(2rem, 3.2vw, 2.8rem); color: var(--navy-deep);
+      font-family: var(--head-font);
+      font-weight: 700;
+      line-height: 1.12;
+      margin-bottom: 6px;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      color: var(--navy-deep);
     }
-    .stat__label { font-size: .8rem; font-weight: 500; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); }
+
+    .stat__label {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
     /* ---------- tablet / mobile: no pinning, simple stacked layout ---------- */
     @media (max-width: 991px) {
-      .about { height: auto; }
-      .about__sticky { position: relative; top: 0; height: auto; padding: 70px 0; overflow: visible; }
-      .about__stage { grid-template-columns: 1fr; height: auto; gap: 28px; }
-      .about__col { height: auto; display: flex; flex-direction: column; gap: 28px; }
-      .card, .card--left, .card--right, .card--center { position: relative; inset: auto; height: 320px; }
-      .about__title, .about__text { position: static; opacity: 1; transform: none; pointer-events: auto; }
-      .about__stats { opacity: 1; transform: none; grid-template-columns: 1fr; margin-top: 30px; }
-      .stat:not(:last-child)::after { display: none; }
+      .about {
+        height: auto;
+      }
+
+      .about__sticky {
+        position: relative;
+        top: 0;
+        height: auto;
+        padding: 70px 0;
+        overflow: visible;
+      }
+
+      .about__stage {
+        grid-template-columns: 1fr;
+        height: auto;
+        gap: 28px;
+      }
+
+      .about__col {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .card,
+      .card--left,
+      .card--right,
+      .card--center {
+        position: relative;
+        inset: auto;
+        height: 320px;
+      }
+
+      .about__title,
+      .about__text {
+        position: static;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+
+      .about__stats {
+        opacity: 1;
+        transform: none;
+        grid-template-columns: 1fr;
+        margin-top: 30px;
+      }
+
+      .stat:not(:last-child)::after {
+        display: none;
+      }
     }
 
     /* respect reduced-motion: show final state */
     @media (prefers-reduced-motion: reduce) {
-      .about { height: auto; }
-      .about__sticky { position: relative; top: 0; height: auto; padding: 70px 0; }
+      .about {
+        height: auto;
+      }
+
+      .about__sticky {
+        position: relative;
+        top: 0;
+        height: auto;
+        padding: 70px 0;
+      }
     }
 
     /* ======================================================== */
@@ -636,11 +876,13 @@
       background: var(--cream);
       border-top: 1px solid var(--border-line);
     }
+
     .highlights-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
     }
+
     .highlight-card {
       background: #ffffff;
       border: 1px solid var(--border-line);
@@ -655,11 +897,13 @@
       cursor: pointer;
       isolation: isolate;
     }
+
     .highlight-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 24px 50px rgba(17, 30, 38, 0.22);
       border-color: rgba(255, 255, 255, 0.3);
     }
+
     .highlight-bg-cover {
       position: absolute;
       inset: 0;
@@ -670,6 +914,7 @@
       pointer-events: none;
       transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
+
     .highlight-bg-img {
       width: 100%;
       height: 100%;
@@ -678,17 +923,21 @@
       transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
       display: block;
     }
+
     .highlight-bg-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, rgba(16, 29, 37, 0.45) 0%, rgba(12, 22, 29, 0.88) 100%);
     }
+
     .highlight-card:hover .highlight-bg-cover {
       opacity: 1;
     }
+
     .highlight-card:hover .highlight-bg-img {
       transform: scale(1.08);
     }
+
     .highlight-icon-wrap {
       position: relative;
       z-index: 2;
@@ -705,6 +954,7 @@
       margin-bottom: 20px;
       transition: transform 0.35s ease, background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
     }
+
     .highlight-card:hover .highlight-icon-wrap {
       background: rgba(255, 255, 255, 0.18);
       color: #ffffff;
@@ -713,6 +963,7 @@
       -webkit-backdrop-filter: blur(8px);
       transform: translateY(-2px);
     }
+
     .highlight-tag {
       position: absolute;
       top: 28px;
@@ -729,6 +980,7 @@
       border: 1px solid var(--border-line);
       transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
     }
+
     .highlight-card:hover .highlight-tag {
       background: rgba(212, 175, 55, 0.28);
       color: #ffffff;
@@ -736,6 +988,7 @@
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
     }
+
     .highlight-title {
       position: relative;
       z-index: 2;
@@ -747,9 +1000,11 @@
       line-height: 1.25;
       transition: color 0.35s ease;
     }
+
     .highlight-card:hover .highlight-title {
       color: #ffffff;
     }
+
     .highlight-desc {
       position: relative;
       z-index: 2;
@@ -758,6 +1013,7 @@
       line-height: 1.65;
       transition: color 0.35s ease;
     }
+
     .highlight-card:hover .highlight-desc {
       color: rgba(250, 248, 238, 0.92);
     }
@@ -772,6 +1028,7 @@
         radial-gradient(circle at 6% 96%, #F3EFE2 0%, transparent 50%);
       position: relative;
     }
+
     .size-filter-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -779,6 +1036,7 @@
       gap: 12px;
       margin-bottom: 42px;
     }
+
     .size-filter-btn {
       padding: 10px 24px;
       border-radius: 999px;
@@ -790,7 +1048,9 @@
       cursor: pointer;
       transition: all 0.25s ease;
     }
-    .size-filter-btn.active, .size-filter-btn:hover {
+
+    .size-filter-btn.active,
+    .size-filter-btn:hover {
       background: var(--navy);
       border-color: var(--navy);
       color: var(--cream);
@@ -803,6 +1063,7 @@
       margin-bottom: 44px;
       align-items: stretch;
     }
+
     .size-card {
       position: relative;
       background: #ffffff;
@@ -814,15 +1075,18 @@
       display: flex;
       flex-direction: column;
     }
+
     .size-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 30px 60px rgba(31, 52, 63, 0.16);
       border-color: rgba(217, 119, 6, 0.5);
     }
+
     .size-card.is-featured {
       border-color: rgba(217, 119, 6, 0.55);
       box-shadow: 0 24px 56px rgba(217, 119, 6, 0.14);
     }
+
     /* Photo area */
     .size-card-media {
       position: relative;
@@ -830,6 +1094,7 @@
       overflow: hidden;
       background: #1f343f;
     }
+
     .size-card-photo {
       width: 100%;
       height: 100%;
@@ -837,7 +1102,11 @@
       display: block;
       transition: transform 0.9s var(--ease);
     }
-    .size-card:hover .size-card-photo { transform: scale(1.08); }
+
+    .size-card:hover .size-card-photo {
+      transform: scale(1.08);
+    }
+
     .size-card-media::after {
       content: '';
       position: absolute;
@@ -845,9 +1114,11 @@
       background: linear-gradient(180deg, rgba(17, 30, 38, 0.30) 0%, rgba(17, 30, 38, 0) 38%, rgba(17, 30, 38, 0.82) 100%);
       pointer-events: none;
     }
+
     .size-card-num {
       position: absolute;
-      top: 18px; left: 18px;
+      top: 18px;
+      left: 18px;
       z-index: 2;
       font-family: var(--title-font);
       font-size: 0.74rem;
@@ -861,9 +1132,11 @@
       padding: 7px 14px;
       border-radius: 999px;
     }
+
     .size-card-badge {
       position: absolute;
-      top: 18px; right: 18px;
+      top: 18px;
+      right: 18px;
       z-index: 2;
       font-family: var(--title-font);
       font-size: 0.72rem;
@@ -876,20 +1149,25 @@
       border-radius: 999px;
       box-shadow: 0 8px 20px rgba(217, 119, 6, 0.4);
     }
+
     .size-card-badge.is-soft {
       background: rgba(255, 255, 255, 0.92);
       color: var(--navy-deep);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
     }
+
     .size-card-title {
       position: absolute;
-      left: 22px; bottom: 18px; right: 22px;
+      left: 22px;
+      bottom: 18px;
+      right: 22px;
       z-index: 2;
       color: #ffffff;
       display: flex;
       align-items: baseline;
       gap: 10px;
     }
+
     .size-card-title b {
       font-family: var(--head-font);
       font-size: 3rem;
@@ -897,6 +1175,7 @@
       line-height: 1;
       letter-spacing: -1px;
     }
+
     .size-card-title span {
       font-family: var(--title-font);
       font-size: 0.78rem;
@@ -905,6 +1184,7 @@
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.82);
     }
+
     /* Body */
     .size-card-body {
       padding: 24px 24px 26px;
@@ -912,28 +1192,151 @@
       flex-direction: column;
       flex: 1;
     }
+
     /* ===== Image-overlay hover reveal (info grows up over the photo) ===== */
-    .sizes-cards-grid { align-items: stretch; }
-    .size-card { height: 520px; outline: none; border-radius: 22px; }
-    .size-card:hover { transform: translateY(-6px); }
-    .size-card-media { position: absolute; inset: 0; height: 100%; }
-    .size-card-body { position: absolute; inset: 0; z-index: 3; padding: 24px; flex: none; display: flex; flex-direction: column; justify-content: flex-end; pointer-events: none; background: linear-gradient(180deg, rgba(17,30,38,0) 38%, rgba(17,30,38,0.82) 100%); transition: background 0.45s ease; }
-    .size-card:hover .size-card-body, .size-card:focus-within .size-card-body { background: linear-gradient(180deg, rgba(17,30,38,0.05) 15%, rgba(17,30,38,0.92) 100%); }
-    .size-card-title { position: static; inset: auto; margin: 0; }
-    .size-teaser { margin: 6px 0 0; color: rgba(255,255,255,0.88); font-size: 0.95rem; line-height: 1.5; }
-    .size-details { display: grid; grid-template-rows: 0fr; opacity: 0; margin-top: 0; transition: grid-template-rows 0.55s var(--ease), opacity 0.45s ease, margin-top 0.55s var(--ease); }
-    .size-card:hover .size-details, .size-card:focus-within .size-details { grid-template-rows: 1fr; opacity: 1; margin-top: 16px; pointer-events: auto; }
-    .size-details-inner { overflow: hidden; min-height: 0; display: flex; flex-direction: column; gap: 14px; }
-    .size-details-inner .size-spec-list, .size-details-inner .size-footprint { display: none; }
-    .size-details-inner .size-meta-row { margin: 0; padding: 14px 0 0; border: 0; border-top: 1px solid rgba(255,255,255,0.2); display: block; }
-    .size-details-inner .size-sqft-subtitle, .size-details-inner .size-price-tag small { color: rgba(255,255,255,0.6); font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; margin: 0 0 2px; }
-    .size-details-inner .size-sqft-big { color: #fff; font-size: 1.05rem; line-height: 1.35; }
-    .size-details-inner .size-sqft-big span { color: rgba(255,255,255,0.7) !important; }
-    .size-details-inner .size-price-tag { margin: 0; padding: 0; border: 0; background: none; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-    .size-details-inner .size-price-tag strong { color: #fff; font-size: 1.15rem; display: block; }
-    .size-details-inner .size-price-tag em { color: rgba(255,255,255,0.6); }
-    .size-details-inner .size-cta { margin: 2px 0 0; width: 100%; justify-content: center; background: #5e571b; color: #fff; }
-    @media (max-width: 1024px) { .size-card { height: 540px; } }
+    .sizes-cards-grid {
+      align-items: stretch;
+    }
+
+    .size-card {
+      height: 520px;
+      outline: none;
+      border-radius: 22px;
+    }
+
+    .size-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .size-card-media {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+    }
+
+    .size-card-body {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      padding: 24px;
+      flex: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(17, 30, 38, 0) 38%, rgba(17, 30, 38, 0.82) 100%);
+      transition: background 0.45s ease;
+    }
+
+    .size-card:hover .size-card-body,
+    .size-card:focus-within .size-card-body {
+      background: linear-gradient(180deg, rgba(17, 30, 38, 0.05) 15%, rgba(17, 30, 38, 0.92) 100%);
+    }
+
+    .size-card-title {
+      position: static;
+      inset: auto;
+      margin: 0;
+    }
+
+    .size-teaser {
+      margin: 6px 0 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .size-details {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      margin-top: 0;
+      transition: grid-template-rows 0.55s var(--ease), opacity 0.45s ease, margin-top 0.55s var(--ease);
+    }
+
+    .size-card:hover .size-details,
+    .size-card:focus-within .size-details {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      margin-top: 16px;
+      pointer-events: auto;
+    }
+
+    .size-details-inner {
+      overflow: hidden;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .size-details-inner .size-spec-list,
+    .size-details-inner .size-footprint {
+      display: none;
+    }
+
+    .size-details-inner .size-meta-row {
+      margin: 0;
+      padding: 14px 0 0;
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      display: block;
+    }
+
+    .size-details-inner .size-sqft-subtitle,
+    .size-details-inner .size-price-tag small {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin: 0 0 2px;
+    }
+
+    .size-details-inner .size-sqft-big {
+      color: #fff;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+
+    .size-details-inner .size-sqft-big span {
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    .size-details-inner .size-price-tag {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .size-details-inner .size-price-tag strong {
+      color: #fff;
+      font-size: 1.15rem;
+      display: block;
+    }
+
+    .size-details-inner .size-price-tag em {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .size-details-inner .size-cta {
+      margin: 2px 0 0;
+      width: 100%;
+      justify-content: center;
+      background: #5e571b;
+      color: #fff;
+    }
+
+    @media (max-width: 1024px) {
+      .size-card {
+        height: 540px;
+      }
+    }
+
     .size-meta-row {
       display: flex;
       align-items: center;
@@ -942,6 +1345,7 @@
       padding-bottom: 20px;
       border-bottom: 1px dashed var(--border-line);
     }
+
     .size-footprint {
       flex: 0 0 74px;
       height: 74px;
@@ -952,12 +1356,14 @@
       align-items: center;
       justify-content: center;
     }
+
     .size-footprint i {
       display: block;
       border: 2px solid var(--navy-deep);
       border-radius: 3px;
       background: repeating-linear-gradient(45deg, rgba(217, 119, 6, 0.16) 0 6px, transparent 6px 12px);
     }
+
     .size-sqft-subtitle {
       font-size: 0.78rem;
       letter-spacing: 1.6px;
@@ -968,6 +1374,7 @@
       padding: 0;
       border: none;
     }
+
     .size-sqft-big {
       font-family: var(--head-font);
       font-size: 1.35rem;
@@ -975,6 +1382,7 @@
       color: var(--navy-deep);
       line-height: 1.25;
     }
+
     .size-spec-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -982,12 +1390,14 @@
       margin-bottom: 22px;
       flex: 1;
     }
+
     .size-spec-row {
       display: flex;
       flex-direction: column;
       gap: 3px;
       font-size: 0.88rem;
     }
+
     .size-spec-row .k {
       display: inline-flex;
       align-items: center;
@@ -998,8 +1408,21 @@
       text-transform: uppercase;
       font-weight: 600;
     }
-    .size-spec-row .k i { color: var(--gold-accent, #5e571b); font-size: 0.78rem; width: 14px; text-align: center; }
-    .size-spec-row .v { font-weight: 600; color: var(--navy-deep); line-height: 1.35; padding-left: 22px; }
+
+    .size-spec-row .k i {
+      color: var(--gold-accent, #5e571b);
+      font-size: 0.78rem;
+      width: 14px;
+      text-align: center;
+    }
+
+    .size-spec-row .v {
+      font-weight: 600;
+      color: var(--navy-deep);
+      line-height: 1.35;
+      padding-left: 22px;
+    }
+
     .size-price-tag {
       display: flex;
       align-items: flex-end;
@@ -1011,6 +1434,7 @@
       background: linear-gradient(135deg, #fbf3e3 0%, #f6ead2 100%);
       border: 1px solid rgba(217, 119, 6, 0.22);
     }
+
     .size-price-tag small {
       display: block;
       font-size: 0.7rem;
@@ -1019,6 +1443,7 @@
       color: #8a6a3a;
       font-weight: 700;
     }
+
     .size-price-tag strong {
       font-family: var(--head-font);
       font-size: 1.55rem;
@@ -1026,6 +1451,7 @@
       color: #b45309;
       line-height: 1.2;
     }
+
     .size-price-tag em {
       font-style: normal;
       font-size: 0.72rem;
@@ -1033,6 +1459,7 @@
       color: #8a6a3a;
       white-space: nowrap;
     }
+
     .size-cta {
       display: flex;
       align-items: center;
@@ -1049,9 +1476,19 @@
       letter-spacing: 0.4px;
       transition: all 0.3s var(--ease);
     }
-    .size-cta i { transition: transform 0.3s var(--ease); }
-    .size-card:hover .size-cta { background: #5e571b; color: #ffffff; }
-    .size-card:hover .size-cta i { transform: translateX(5px); }
+
+    .size-cta i {
+      transition: transform 0.3s var(--ease);
+    }
+
+    .size-card:hover .size-cta {
+      background: #5e571b;
+      color: #ffffff;
+    }
+
+    .size-card:hover .size-cta i {
+      transform: translateX(5px);
+    }
 
     /* Assurance strip */
     .size-assure {
@@ -1063,6 +1500,7 @@
       overflow: hidden;
       box-shadow: 0 22px 50px rgba(31, 52, 63, 0.22);
     }
+
     .size-assure-item {
       display: flex;
       align-items: center;
@@ -1071,7 +1509,11 @@
       color: var(--cream);
       border-right: 1px solid rgba(250, 248, 238, 0.12);
     }
-    .size-assure-item:last-child { border-right: none; }
+
+    .size-assure-item:last-child {
+      border-right: none;
+    }
+
     .size-assure-ic {
       flex: 0 0 44px;
       height: 44px;
@@ -1084,18 +1526,50 @@
       justify-content: center;
       font-size: 1rem;
     }
-    .size-assure-item b { display: block; font-size: 0.92rem; font-weight: 600; line-height: 1.3; }
-    .size-assure-item small { font-size: 0.76rem; color: rgba(250, 248, 238, 0.6); }
-    @media (max-width: 960px) {
-      .size-assure { grid-template-columns: repeat(2, 1fr); }
-      .size-assure-item:nth-child(2) { border-right: none; }
-      .size-assure-item:nth-child(-n+2) { border-bottom: 1px solid rgba(250, 248, 238, 0.12); }
+
+    .size-assure-item b {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.3;
     }
+
+    .size-assure-item small {
+      font-size: 0.76rem;
+      color: rgba(250, 248, 238, 0.6);
+    }
+
+    @media (max-width: 960px) {
+      .size-assure {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .size-assure-item:nth-child(2) {
+        border-right: none;
+      }
+
+      .size-assure-item:nth-child(-n+2) {
+        border-bottom: 1px solid rgba(250, 248, 238, 0.12);
+      }
+    }
+
     @media (max-width: 520px) {
-      .size-assure { grid-template-columns: 1fr; }
-      .size-assure-item { border-right: none; border-bottom: 1px solid rgba(250, 248, 238, 0.12); }
-      .size-assure-item:last-child { border-bottom: none; }
-      .size-spec-list { grid-template-columns: 1fr; }
+      .size-assure {
+        grid-template-columns: 1fr;
+      }
+
+      .size-assure-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(250, 248, 238, 0.12);
+      }
+
+      .size-assure-item:last-child {
+        border-bottom: none;
+      }
+
+      .size-spec-list {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* ======================================================== */
@@ -1106,16 +1580,19 @@
       background: var(--cream);
       border-top: 1px solid var(--border-line);
     }
+
     .amenities-triad-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: clamp(20px, 3.5vw, 36px);
     }
+
     .amenity-ref-card {
       display: flex;
       flex-direction: column;
       margin-bottom: 20px;
     }
+
     .amenity-img-box {
       aspect-ratio: 1 / 1.08;
       border-radius: 20px;
@@ -1124,6 +1601,7 @@
       background: #111e26;
       margin-bottom: 20px;
     }
+
     .amenity-img {
       width: 100%;
       height: 100%;
@@ -1131,9 +1609,11 @@
       transition: transform 0.65s var(--ease);
       display: block;
     }
+
     .amenity-ref-card:hover .amenity-img {
       transform: scale(1.06);
     }
+
     .amenity-title-serif {
       font-family: var(--head-font);
       font-size: 1.35rem;
@@ -1141,6 +1621,7 @@
       color: var(--navy-deep);
       margin-bottom: 6px;
     }
+
     .amenity-desc-text {
       font-size: 0.92rem;
       color: var(--muted);
@@ -1164,6 +1645,7 @@
       max-width: 820px;
       margin: 0 auto 36px;
     }
+
     .sec-eyebrow-center {
       display: inline-flex;
       align-items: center;
@@ -1175,6 +1657,7 @@
       color: var(--gold-accent, #5e571b);
       margin-bottom: 12px;
     }
+
     .sec-headline-center {
       font-family: var(--head-font);
       font-size: clamp(2.2rem, 3.8vw, 3.2rem);
@@ -1184,6 +1667,7 @@
       margin-bottom: 16px;
       letter-spacing: -0.02em;
     }
+
     .sec-lead-center {
       font-size: clamp(0.96rem, 1.1vw, 1.05rem);
       color: #556575;
@@ -1246,9 +1730,11 @@
       background: rgba(36, 44, 51, 0.32);
       pointer-events: none;
     }
+
     .connect-follower-ring.ring-1 {
       animation: pingRadar 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
+
     .connect-follower-ring.ring-2 {
       animation: pingRadar 2.2s cubic-bezier(0, 0, 0.2, 1) infinite 0.75s;
     }
@@ -1258,7 +1744,9 @@
         transform: scale(0.85);
         opacity: 0.85;
       }
-      70%, 100% {
+
+      70%,
+      100% {
         transform: scale(1.6);
         opacity: 0;
       }
@@ -1294,7 +1782,8 @@
     }
 
     /* Touch & Mobile Fallback */
-    @media (max-width: 768px), (pointer: coarse) {
+    @media (max-width: 768px),
+    (pointer: coarse) {
       .connect-follower {
         top: 50% !important;
         left: 50% !important;
@@ -1316,6 +1805,7 @@
       transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
       z-index: 10;
     }
+
     .connect-pin:hover {
       transform: translate(-50%, -105%) scale(1.06);
       z-index: 30;
@@ -1334,10 +1824,12 @@
       margin-bottom: 6px;
       transition: all 0.25s ease;
     }
+
     .connect-pin:hover .connect-card {
       border-color: var(--gold-accent, #5e571b);
       box-shadow: 0 10px 24px rgba(217, 119, 6, 0.18);
     }
+
     .connect-card-name {
       font-size: 0.72rem;
       font-weight: 700;
@@ -1346,6 +1838,7 @@
       color: var(--navy-deep);
       line-height: 1.2;
     }
+
     .connect-card-time {
       font-size: 0.76rem;
       font-weight: 600;
@@ -1365,6 +1858,7 @@
       box-shadow: 0 4px 12px rgba(234, 88, 12, 0.4);
       position: relative;
     }
+
     .connect-marker-dot {
       width: 10px;
       height: 10px;
@@ -1374,12 +1868,35 @@
     }
 
     /* Pin Coordinates across Full-Width Canvas */
-    .pin-1 { left: 12%; top: 72%; }
-    .pin-2 { left: 24%; top: 38%; }
-    .pin-3 { left: 42%; top: 70%; }
-    .pin-4 { left: 58%; top: 38%; }
-    .pin-5 { left: 72%; top: 80%; }
-    .pin-6 { left: 88%; top: 60%; }
+    .pin-1 {
+      left: 12%;
+      top: 72%;
+    }
+
+    .pin-2 {
+      left: 24%;
+      top: 38%;
+    }
+
+    .pin-3 {
+      left: 42%;
+      top: 70%;
+    }
+
+    .pin-4 {
+      left: 58%;
+      top: 38%;
+    }
+
+    .pin-5 {
+      left: 72%;
+      top: 80%;
+    }
+
+    .pin-6 {
+      left: 88%;
+      top: 60%;
+    }
 
     /* Modal Dialog with Elastic Pop-up Entrance (Shri Vrinda Exact Design Replica) */
     .connect-modal-backdrop {
@@ -1395,6 +1912,7 @@
       padding: clamp(16px, 3vw, 24px);
       box-sizing: border-box;
     }
+
     .connect-modal-backdrop.open {
       display: flex !important;
       visibility: visible !important;
@@ -1414,9 +1932,17 @@
       animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       box-sizing: border-box;
     }
+
     @keyframes modalFadeIn {
-      0% { opacity: 0; transform: scale(0.96) translateY(12px); }
-      100% { opacity: 1; transform: scale(1) translateY(0); }
+      0% {
+        opacity: 0;
+        transform: scale(0.96) translateY(12px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
 
     .connect-modal-close {
@@ -1439,6 +1965,7 @@
       padding: 0;
       line-height: 1;
     }
+
     .connect-modal-close:hover {
       background: #1f343f;
       color: #FAF8EE;
@@ -1468,6 +1995,7 @@
       width: 100%;
       border-top: 1px solid #1f343f;
     }
+
     .connect-list-row {
       display: flex;
       align-items: center;
@@ -1477,9 +2005,11 @@
       transition: background 0.15s ease;
       gap: 20px;
     }
+
     .connect-list-row:hover {
       background: rgba(70, 86, 101, 0.03);
     }
+
     .connect-list-name {
       font-family: 'Cormorant Garamond', 'Nanum Myeongjo', Georgia, serif;
       font-size: clamp(1.15rem, 1.4vw, 1.32rem);
@@ -1487,6 +2017,7 @@
       color: #1f343f;
       letter-spacing: 0.1px;
     }
+
     .connect-list-time {
       font-family: 'Cormorant Garamond', 'Nanum Myeongjo', Georgia, serif;
       font-size: clamp(1.05rem, 1.25vw, 1.2rem);
@@ -1501,15 +2032,48 @@
       .connect-map-stage {
         min-height: 440px;
       }
-      .pin-1 { left: 14%; top: 68%; }
-      .pin-2 { left: 24%; top: 32%; }
-      .pin-3 { left: 45%; top: 74%; }
-      .pin-4 { left: 62%; top: 34%; }
-      .pin-5 { left: 74%; top: 82%; }
-      .pin-6 { left: 86%; top: 58%; }
-      .connect-card { padding: 5px 10px; }
-      .connect-card-name { font-size: 0.65rem; }
-      .connect-card-time { font-size: 0.7rem; }
+
+      .pin-1 {
+        left: 14%;
+        top: 68%;
+      }
+
+      .pin-2 {
+        left: 24%;
+        top: 32%;
+      }
+
+      .pin-3 {
+        left: 45%;
+        top: 74%;
+      }
+
+      .pin-4 {
+        left: 62%;
+        top: 34%;
+      }
+
+      .pin-5 {
+        left: 74%;
+        top: 82%;
+      }
+
+      .pin-6 {
+        left: 86%;
+        top: 58%;
+      }
+
+      .connect-card {
+        padding: 5px 10px;
+      }
+
+      .connect-card-name {
+        font-size: 0.65rem;
+      }
+
+      .connect-card-time {
+        font-size: 0.7rem;
+      }
     }
 
     /* ======================================================== */
@@ -1529,6 +2093,7 @@
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
+
     .gx-pin {
       position: sticky;
       top: 0;
@@ -1537,18 +2102,22 @@
       overflow: hidden;
       display: flex;
       align-items: center;
-      padding-top: 85px; /* Clear sticky navbar completely */
-      padding-bottom: 70px; /* Clear bottom HUD bar */
+      padding-top: 85px;
+      /* Clear sticky navbar completely */
+      padding-bottom: 70px;
+      /* Clear bottom HUD bar */
       box-sizing: border-box;
     }
+
     .gx-pin::before {
       content: '';
       position: absolute;
       inset: 0;
       background: radial-gradient(60% 50% at 18% 20%, rgba(212, 175, 55, 0.12), transparent 70%),
-                  radial-gradient(50% 60% at 92% 90%, rgba(70, 86, 101, 0.22), transparent 70%);
+        radial-gradient(50% 60% at 92% 90%, rgba(70, 86, 101, 0.22), transparent 70%);
       pointer-events: none;
     }
+
     .gx-track {
       display: flex;
       align-items: center;
@@ -1557,9 +2126,11 @@
       will-change: transform;
       height: 100%;
     }
+
     .gx-intro {
       flex: 0 0 min(38vw, 500px);
     }
+
     .gx-intro .gx-eyebrow {
       display: inline-flex;
       align-items: center;
@@ -1572,24 +2143,28 @@
       color: var(--gold);
       margin-bottom: 12px;
     }
+
     .gx-intro .gx-eyebrow span.dash {
       width: 22px;
       height: 2px;
       background: var(--gold);
       display: inline-block;
     }
+
     .gx-intro h2 {
       font: 700 clamp(2.2rem, 4.2vw, 3.8rem)/1.15 'Nanum Myeongjo', Georgia, serif;
       color: var(--cream);
       letter-spacing: -0.5px;
       margin: 0;
     }
+
     .gx-intro p {
       font: 300 0.98rem/1.75 'Jost', sans-serif;
       color: rgba(250, 248, 238, 0.72);
       margin-top: 18px;
       max-width: 400px;
     }
+
     .gx-intro i {
       display: block;
       width: 72px;
@@ -1599,10 +2174,20 @@
       transform-origin: left;
       animation: gxLine 2.4s var(--ease) infinite;
     }
+
     @keyframes gxLine {
-      0% { transform: scaleX(0); }
-      55% { transform: scaleX(1); }
-      100% { transform: scaleX(1); opacity: 0.2; }
+      0% {
+        transform: scaleX(0);
+      }
+
+      55% {
+        transform: scaleX(1);
+      }
+
+      100% {
+        transform: scaleX(1);
+        opacity: 0.2;
+      }
     }
 
     /* Alternating Vertical & Horizontal Layout */
@@ -1620,6 +2205,7 @@
       aspect-ratio: 3/4;
       transform: translateY(-26px);
     }
+
     .gx-v .gx-cap {
       top: calc(100% + 14px);
       bottom: auto;
@@ -1631,17 +2217,20 @@
       aspect-ratio: 16/10;
       transform: translateY(26px);
     }
+
     .gx-h .gx-cap {
       top: auto;
       bottom: calc(100% + 14px);
     }
 
     /* Fallback helper classes */
-    .gx-a, .gx-c {
+    .gx-a,
+    .gx-c {
       width: min(27vw, 360px);
       aspect-ratio: 3/4;
       transform: translateY(-26px);
     }
+
     .gx-b {
       width: min(42vw, 580px);
       aspect-ratio: 16/10;
@@ -1656,6 +2245,7 @@
       background: transparent;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
     }
+
     .gx-frame img {
       width: 100%;
       height: 100%;
@@ -1663,15 +2253,19 @@
       display: block;
       border-radius: 20px;
     }
+
     .gx-card.seen .gx-frame {
       opacity: 1;
     }
+
     .gx-card.seen .gx-frame img {
       opacity: 1;
     }
+
     .gx-frame::after {
       display: none;
     }
+
     .gx-cap {
       position: absolute;
       left: 0;
@@ -1684,15 +2278,18 @@
       transition: opacity 0.85s 0.3s, transform 0.85s 0.3s var(--ease);
       white-space: nowrap;
     }
+
     .gx-card.seen .gx-cap {
       opacity: 1;
       transform: none;
     }
+
     .gx-cap b {
       font: 600 0.8rem 'Jost', sans-serif;
       letter-spacing: 2px;
       color: var(--gold);
     }
+
     .gx-cap span {
       font: 400 1.15rem 'Nanum Myeongjo', Georgia, serif;
       color: var(--cream);
@@ -1711,12 +2308,14 @@
       letter-spacing: 2px;
       pointer-events: none;
     }
+
     .gx-count {
       display: flex;
       align-items: baseline;
       gap: 8px;
       min-width: 96px;
     }
+
     .gx-roll {
       display: inline-block;
       height: 1.9rem;
@@ -1724,15 +2323,18 @@
       font: 400 1.7rem/1.9rem 'Nanum Myeongjo', serif;
       color: var(--cream);
     }
+
     .gx-roll span {
       display: block;
       transition: transform 0.7s var(--ease);
     }
+
     .gx-roll span em {
       display: block;
       height: 1.9rem;
       font-style: normal;
     }
+
     .gx-bar {
       flex: 1;
       height: 2px;
@@ -1740,6 +2342,7 @@
       position: relative;
       border-radius: 999px;
     }
+
     .gx-bar span {
       position: absolute;
       inset: 0;
@@ -1748,6 +2351,7 @@
       transform: scaleX(0);
       border-radius: 999px;
     }
+
     .gx-hint {
       color: rgba(250, 248, 238, 0.65);
       text-transform: uppercase;
@@ -1779,6 +2383,7 @@
       transition: opacity 0.3s, transform 0.35s var(--ease);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
+
     .gx-cursor.on {
       opacity: 1;
       transform: scale(1);
@@ -1797,11 +2402,18 @@
       gap: 16px;
       padding: 5vh 5vw;
     }
+
     .gx-lb.open {
       display: flex;
       animation: gxFade 0.4s ease;
     }
-    @keyframes gxFade { from { opacity: 0; } }
+
+    @keyframes gxFade {
+      from {
+        opacity: 0;
+      }
+    }
+
     .gx-lb img {
       max-width: 90vw;
       max-height: 78vh;
@@ -1809,11 +2421,13 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
       object-fit: contain;
     }
+
     .gx-lb p {
       font: 400 1.25rem 'Nanum Myeongjo', serif;
       color: var(--cream);
       margin: 0;
     }
+
     .gx-lb button {
       position: absolute;
       background: none;
@@ -1824,23 +2438,46 @@
       padding: 12px;
       transition: color 0.2s ease, transform 0.2s ease;
     }
+
     .gx-lb button:hover {
       color: var(--gold);
       transform: scale(1.15);
     }
-    .gx-lb .x { top: 22px; right: 28px; }
-    .gx-lb .p { left: 24px; top: 50%; transform: translateY(-50%); }
-    .gx-lb .n { right: 24px; top: 50%; transform: translateY(-50%); }
-    .gx-lb .p:hover { transform: translateY(-50%) scale(1.15); }
-    .gx-lb .n:hover { transform: translateY(-50%) scale(1.15); }
 
-    @media (max-width: 800px), (prefers-reduced-motion: reduce) {
+    .gx-lb .x {
+      top: 22px;
+      right: 28px;
+    }
+
+    .gx-lb .p {
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .gx-lb .n {
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .gx-lb .p:hover {
+      transform: translateY(-50%) scale(1.15);
+    }
+
+    .gx-lb .n:hover {
+      transform: translateY(-50%) scale(1.15);
+    }
+
+    @media (max-width: 800px),
+    (prefers-reduced-motion: reduce) {
       .gx-pin {
         position: relative;
         height: auto;
         display: block;
         padding: 80px 0 60px;
       }
+
       .gx-track {
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -1849,6 +2486,7 @@
         height: auto;
         align-items: flex-start;
       }
+
       .gx-card {
         scroll-snap-align: center;
         margin: 0 !important;
@@ -1856,28 +2494,55 @@
         align-self: flex-start !important;
         cursor: pointer;
       }
-      .gx-intro { flex-basis: 80vw; }
-      .gx-a, .gx-b, .gx-c, .gx-v, .gx-h { width: 78vw; }
+
+      .gx-intro {
+        flex-basis: 80vw;
+      }
+
+      .gx-a,
+      .gx-b,
+      .gx-c,
+      .gx-v,
+      .gx-h {
+        width: 78vw;
+      }
+
       .gx-card .gx-cap {
         top: calc(100% + 12px) !important;
         bottom: auto !important;
         opacity: 1;
         transform: none;
       }
-      .gx-frame { clip-path: inset(0 round 20px); border-radius: 20px; }
-      .gx-frame img { transform: none; border-radius: 20px; }
-      .gx-hud { display: none; }
-      .gx-cursor { display: none; }
+
+      .gx-frame {
+        clip-path: inset(0 round 20px);
+        border-radius: 20px;
+      }
+
+      .gx-frame img {
+        transform: none;
+        border-radius: 20px;
+      }
+
+      .gx-hud {
+        display: none;
+      }
+
+      .gx-cursor {
+        display: none;
+      }
     }
 
-        /* ======================================================== */
+    /* ======================================================== */
     /* 06 — TOWNSHIP SPECIFICATIONS (PINNED SCROLL TRACK)       */
     /* ======================================================== */
     .legal-sec.sf-scroll-track {
       position: relative;
-      height: 420vh; /* Scroll-driven track through all 6 specifications */
+      height: 420vh;
+      /* Scroll-driven track through all 6 specifications */
       background: var(--cream);
-      overflow: clip; /* Keeps position: sticky active */
+      overflow: clip;
+      /* Keeps position: sticky active */
       border-top: 1px solid var(--border-line);
       padding: 0;
     }
@@ -1896,18 +2561,33 @@
       box-sizing: border-box;
       background: var(--cream);
     }
-    .sf-sticky-pin > .sec-container {
+
+    .sf-sticky-pin>.sec-container {
       width: 100%;
       flex: 1;
       min-height: 0;
       display: flex;
       flex-direction: column;
     }
-    .sf-sticky-pin .sec-header { margin-bottom: clamp(10px, 2vh, 24px); }
-    .sf-sticky-pin .sec-headline { font-size: clamp(1.6rem, 4.2vh, 2.6rem); margin-bottom: 6px; }
-    .sf-sticky-pin .sec-lead { font-size: clamp(0.8rem, 1.9vh, 1rem); margin-bottom: 0; }
+
+    .sf-sticky-pin .sec-header {
+      margin-bottom: clamp(10px, 2vh, 24px);
+    }
+
+    .sf-sticky-pin .sec-headline {
+      font-size: clamp(1.6rem, 4.2vh, 2.6rem);
+      margin-bottom: 6px;
+    }
+
+    .sf-sticky-pin .sec-lead {
+      font-size: clamp(0.8rem, 1.9vh, 1rem);
+      margin-bottom: 0;
+    }
+
     @media (max-height: 760px) and (min-width: 1025px) {
-      .sf-sticky-pin .sec-lead { display: none; }
+      .sf-sticky-pin .sec-lead {
+        display: none;
+      }
     }
 
     /* ======================================================== */
@@ -2003,6 +2683,7 @@
       color: var(--navy-deep);
       box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
     }
+
     .sf-badge-dot {
       width: 7px;
       height: 7px;
@@ -2055,6 +2736,7 @@
       .sf-stage-grid.is-flipped .sf-visual-pane {
         transform: translateX(calc(100% + clamp(20px, 2.5vw, 36px)));
       }
+
       .sf-stage-grid.is-flipped .sf-content-pane {
         transform: translateX(calc(-100% - clamp(20px, 2.5vw, 36px)));
       }
@@ -2093,6 +2775,7 @@
       pointer-events: none;
       visibility: hidden;
     }
+
     .sf-headline-item.active {
       position: relative;
       visibility: visible;
@@ -2114,6 +2797,7 @@
       overflow: hidden;
       padding-bottom: 4px;
     }
+
     .sf-line {
       display: block;
       transform: translateY(115%);
@@ -2121,11 +2805,13 @@
       transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
       will-change: transform, opacity;
     }
+
     .sf-headline-item.active .sf-line:nth-child(1) {
       transform: translateY(0);
       opacity: 1;
       transition-delay: 0.08s;
     }
+
     .sf-headline-item.active .sf-line:nth-child(2) {
       transform: translateY(0);
       opacity: 1;
@@ -2149,6 +2835,7 @@
       transform: translateY(20px);
       transition: opacity 0.65s ease 0.28s, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
     }
+
     .sf-desc-item.active {
       display: block;
       opacity: 1;
@@ -2177,6 +2864,7 @@
       align-items: center;
       gap: 6px;
     }
+
     .sf-counter-circle {
       width: 48px;
       height: 48px;
@@ -2192,6 +2880,7 @@
       justify-content: center;
       transition: all 0.3s ease;
     }
+
     .sf-counter-total {
       width: 48px;
       height: 48px;
@@ -2228,6 +2917,7 @@
       font-size: 0.82rem;
       transition: all 0.25s ease;
     }
+
     .sf-nav-arrow:hover {
       background: var(--gold-accent, #5e571b);
       color: #ffffff;
@@ -2245,6 +2935,7 @@
       overflow: hidden;
       position: relative;
     }
+
     .sf-progress-fill {
       height: 100%;
       width: 0%;
@@ -2254,17 +2945,35 @@
 
     /* Responsive */
     @media (min-width: 1025px) {
-      .sf-eyebrow { margin-bottom: clamp(8px, 2vh, 20px); }
-      .sf-headline-deck { min-height: 0; margin-bottom: clamp(8px, 1.6vh, 16px); }
-      .sf-headline-title { font-size: clamp(1.5rem, 4.6vh, 3.1rem); }
-      .sf-desc-deck { min-height: 0; }
-      .sf-desc-item { font-size: clamp(0.82rem, 2vh, 1.08rem); line-height: 1.5; }
+      .sf-eyebrow {
+        margin-bottom: clamp(8px, 2vh, 20px);
+      }
+
+      .sf-headline-deck {
+        min-height: 0;
+        margin-bottom: clamp(8px, 1.6vh, 16px);
+      }
+
+      .sf-headline-title {
+        font-size: clamp(1.5rem, 4.6vh, 3.1rem);
+      }
+
+      .sf-desc-deck {
+        min-height: 0;
+      }
+
+      .sf-desc-item {
+        font-size: clamp(0.82rem, 2vh, 1.08rem);
+        line-height: 1.5;
+      }
     }
+
     @media (max-width: 1024px) {
       .legal-sec.sf-scroll-track {
         height: auto;
         padding: clamp(60px, 8vw, 100px) 0;
       }
+
       .sf-sticky-pin {
         position: relative;
         top: auto;
@@ -2273,14 +2982,17 @@
         padding: 0;
         overflow: visible;
       }
+
       .sf-stage-grid {
         grid-template-columns: 1fr;
         min-height: auto;
       }
+
       .sf-visual-pane {
         min-height: 380px;
         height: 420px;
       }
+
       .sf-headline-deck {
         min-height: 100px;
       }
@@ -2291,16 +3003,20 @@
         height: 320px;
         min-height: 320px;
       }
+
       .sf-content-pane {
         padding: 28px 20px;
       }
+
       .sf-pane-bottom {
         flex-direction: column;
         align-items: flex-start;
       }
+
       .sf-desc-deck {
         max-width: 100%;
       }
+
       .sf-dial-btn {
         width: 42px;
         height: 42px;
@@ -2316,6 +3032,7 @@
       background: var(--cream);
       border-top: 1px solid var(--border-line);
     }
+
     .faq-accordion-wrap {
       display: flex;
       flex-direction: column;
@@ -2323,6 +3040,7 @@
       max-width: 980px;
       margin: 0 auto;
     }
+
     .faq-acc-item {
       background: #ffffff;
       border: 1.5px solid var(--border-line);
@@ -2331,10 +3049,12 @@
       box-shadow: 0 4px 16px rgba(70, 86, 101, 0.04);
       transition: all 0.3s var(--ease);
     }
+
     .faq-acc-item.open {
       border-color: var(--navy);
       box-shadow: 0 10px 30px rgba(70, 86, 101, 0.1);
     }
+
     .faq-acc-trigger {
       width: 100%;
       text-align: left;
@@ -2352,9 +3072,11 @@
       color: var(--navy-deep);
       transition: color 0.25s ease;
     }
+
     .faq-acc-trigger:hover {
       color: var(--navy);
     }
+
     .faq-acc-icon {
       width: 36px;
       height: 36px;
@@ -2369,21 +3091,25 @@
       color: var(--navy);
       transition: all 0.35s var(--ease);
     }
+
     .faq-acc-item.open .faq-acc-icon {
       background: var(--navy-deep);
       color: #ffffff;
       transform: rotate(180deg);
       border-color: var(--navy-deep);
     }
+
     .faq-acc-body {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), padding 0.35s ease;
       padding: 0 28px;
     }
+
     .faq-acc-item.open .faq-acc-body {
       padding: 0 28px 24px 28px;
     }
+
     .faq-acc-body p {
       font-family: var(--body-font);
       font-size: 0.95rem;
@@ -2400,6 +3126,7 @@
       background: var(--cream);
       border-top: 1px solid var(--border-line);
     }
+
     .enquiry-split-box {
       background: #ffffff;
       border: 1px solid var(--border-line);
@@ -2409,6 +3136,7 @@
       display: grid;
       grid-template-columns: 1fr 1.25fr;
     }
+
     .enquiry-info-pane {
       background: var(--cream-soft);
       padding: clamp(36px, 5vw, 60px);
@@ -2417,17 +3145,23 @@
       flex-direction: column;
       justify-content: space-between;
     }
+
     .enquiry-form-pane {
       padding: clamp(36px, 5vw, 60px);
       background: #ffffff;
     }
+
     .form-grid-fields {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
       margin-bottom: 18px;
     }
-    .form-col-full { grid-column: span 2; }
+
+    .form-col-full {
+      grid-column: span 2;
+    }
+
     .form-group label {
       display: block;
       font-size: 0.8rem;
@@ -2437,6 +3171,7 @@
       color: var(--navy-deep);
       margin-bottom: 6px;
     }
+
     .form-input-ctrl {
       width: 100%;
       padding: 13px 16px;
@@ -2447,31 +3182,135 @@
       background: #FAF8EE;
       transition: all 0.3s ease;
     }
+
     .form-input-ctrl:focus {
       outline: none;
       border-color: var(--navy);
       background: #ffffff;
       box-shadow: 0 0 0 4px rgba(70, 86, 101, 0.12);
     }
-    .enquiry-head { text-align: left; max-width: 760px; margin: 0 0 clamp(28px, 4vw, 48px); }
-    .enquiry-eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-    .enquiry-title { font-family: var(--head-font); font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 500; line-height: 1.2; color: var(--navy-deep); margin: 0 0 16px; letter-spacing: -0.01em; }
-    .enquiry-sub { font-size: clamp(0.9rem, 1.1vw, 1rem); line-height: 1.7; color: #6b7a86; margin: 0; max-width: 560px; }
-    .enquiry-split { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 90px); align-items: center; }
-    .enquiry-map { height: clamp(300px, 34vw, 440px); border-radius: 6px; overflow: hidden; background: #e8e4d8; border: 1px solid var(--border-line); }
-    .enquiry-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(0.85); }
-    .enquiry-form-col { width: 100%; max-width: 420px; margin: 0 auto; }
-    .enq-line { display: block; width: 100%; padding: 14px 2px; border: 0; border-bottom: 1px solid rgba(70, 86, 101, 0.35); background: transparent; font-family: inherit; font-size: 0.95rem; color: var(--navy-deep); margin-bottom: 14px; border-radius: 0; transition: border-color 0.25s ease; }
-    .enq-line::placeholder { color: #7b8791; }
-    .enq-line:focus { outline: none; border-bottom-color: var(--navy-deep); }
-    .enq-submit { display: block; margin: 28px auto 0; padding: 12px 38px; background: transparent; border: 1px solid var(--navy-deep); color: var(--navy-deep); font-family: inherit; font-size: 0.82rem; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease; }
-    .enq-submit:hover { background: var(--navy-deep); color: #fff; }
-    @media (max-width: 900px) { .enquiry-split { grid-template-columns: 1fr; } .enquiry-form-col { max-width: 100%; } }
+
+    .enquiry-head {
+      text-align: left;
+      max-width: 760px;
+      margin: 0 0 clamp(28px, 4vw, 48px);
+    }
+
+    .enquiry-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .enquiry-title {
+      font-family: var(--head-font);
+      font-size: clamp(2rem, 3.6vw, 3rem);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--navy-deep);
+      margin: 0 0 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .enquiry-sub {
+      font-size: clamp(0.9rem, 1.1vw, 1rem);
+      line-height: 1.7;
+      color: #6b7a86;
+      margin: 0;
+      max-width: 560px;
+    }
+
+    .enquiry-split {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: clamp(32px, 6vw, 90px);
+      align-items: center;
+    }
+
+    .enquiry-map {
+      height: clamp(300px, 34vw, 440px);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #e8e4d8;
+      border: 1px solid var(--border-line);
+    }
+
+    .enquiry-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      filter: saturate(0.85);
+    }
+
+    .enquiry-form-col {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .enq-line {
+      display: block;
+      width: 100%;
+      padding: 14px 2px;
+      border: 0;
+      border-bottom: 1px solid rgba(70, 86, 101, 0.35);
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--navy-deep);
+      margin-bottom: 14px;
+      border-radius: 0;
+      transition: border-color 0.25s ease;
+    }
+
+    .enq-line::placeholder {
+      color: #7b8791;
+    }
+
+    .enq-line:focus {
+      outline: none;
+      border-bottom-color: var(--navy-deep);
+    }
+
+    .enq-submit {
+      display: block;
+      margin: 28px auto 0;
+      padding: 12px 38px;
+      background: transparent;
+      border: 1px solid var(--navy-deep);
+      color: var(--navy-deep);
+      font-family: inherit;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .enq-submit:hover {
+      background: var(--navy-deep);
+      color: #fff;
+    }
+
+    @media (max-width: 900px) {
+      .enquiry-split {
+        grid-template-columns: 1fr;
+      }
+
+      .enquiry-form-col {
+        max-width: 100%;
+      }
+    }
+
     .form-success-alert {
       display: none;
       text-align: center;
       padding: 40px 20px;
     }
+
     .form-success-alert i {
       font-size: 3rem;
       color: #16a34a;
@@ -2485,17 +3324,19 @@
       position: relative;
       padding: 110px 24px 36px;
       background: radial-gradient(ellipse at 50% 0%, rgba(70, 86, 101, 0.14) 0%, rgba(70, 86, 101, 0.04) 45%, transparent 75%),
-                  linear-gradient(180deg, #E3EAE8 0%, #EFF2EC 42%, #FAF8EE 100%);
+        linear-gradient(180deg, #E3EAE8 0%, #EFF2EC 42%, #FAF8EE 100%);
       color: var(--navy);
       overflow: hidden;
       border-top: 1px solid var(--border-line);
     }
+
     .nw-footer-inner {
       position: relative;
       z-index: 2;
       max-width: 1240px;
       margin: 0 auto;
     }
+
     .nw-footer-top {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -2503,8 +3344,18 @@
       margin-bottom: 56px;
       gap: 24px;
     }
-    .nw-footer-brand { display: flex; justify-content: center; }
-    .nw-footer-socials { display: flex; justify-content: center; gap: 16px; }
+
+    .nw-footer-brand {
+      display: flex;
+      justify-content: center;
+    }
+
+    .nw-footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
     .nw-social-pill {
       width: 58px;
       height: 40px;
@@ -2517,22 +3368,26 @@
       justify-content: center;
       transition: all 0.25s ease;
     }
+
     .nw-social-pill:hover {
       background: var(--navy-deep);
       color: #ffffff;
       transform: translateY(-2px);
     }
+
     .nw-footer-member {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
+
     .nw-member-label {
       font-family: var(--head-font);
       font-size: 0.92rem;
       font-weight: 700;
       margin-bottom: 6px;
     }
+
     .nw-credai-badge {
       font-size: 1.45rem;
       font-weight: 700;
@@ -2540,11 +3395,13 @@
       display: inline-flex;
       gap: 4px;
     }
+
     .nw-credai-roof {
       color: #c05640;
       font-size: 0.95rem;
       transform: translateY(-7px);
     }
+
     .nw-footer-cols {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -2552,6 +3409,7 @@
       text-align: center;
       padding-bottom: 50px;
     }
+
     .nw-col-title {
       font-family: var(--head-font);
       font-size: 1.38rem;
@@ -2559,19 +3417,29 @@
       margin-bottom: 22px;
       color: var(--navy-deep);
     }
+
     .nw-col-list {
       display: flex;
       flex-direction: column;
       gap: 12px;
       align-items: center;
     }
-    .nw-col-list a, .nw-contact-item {
+
+    .nw-col-list a,
+    .nw-contact-item {
       font-size: 0.95rem;
       color: var(--muted);
       transition: color 0.22s ease;
     }
-    .nw-col-list a:hover { color: var(--navy-deep); }
-    .nw-contact-address { max-width: 240px; }
+
+    .nw-col-list a:hover {
+      color: var(--navy-deep);
+    }
+
+    .nw-contact-address {
+      max-width: 240px;
+    }
+
     .nw-footer-bottom {
       border-top: 1px solid rgba(70, 86, 101, 0.14);
       padding-top: 22px;
@@ -2583,37 +3451,79 @@
       justify-content: center;
       flex-wrap: wrap;
     }
-    .nw-footer-bottom a:hover { color: var(--navy-deep); }
+
+    .nw-footer-bottom a:hover {
+      color: var(--navy-deep);
+    }
 
     /* ======================================================== */
     /* RESPONSIVE BREAKPOINTS                                   */
     /* ======================================================== */
     @media (max-width: 991px) {
-      .header-nav-list { display: none; }
-      .nav-mobile-btn { display: block; }
-      .ref-triad-grid, .sizes-cards-grid, .amenities-triad-grid, .gal-masonry-3col, .legal-triad-grid, .highlights-grid, .specs-matrix-grid {
+      .header-nav-list {
+        display: none;
+      }
+
+      .nav-mobile-btn {
+        display: block;
+      }
+
+      .ref-triad-grid,
+      .sizes-cards-grid,
+      .amenities-triad-grid,
+      .gal-masonry-3col,
+      .legal-triad-grid,
+      .highlights-grid,
+      .specs-matrix-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .overview-narrative-split, .enquiry-split-box {
+
+      .overview-narrative-split,
+      .enquiry-split-box {
         grid-template-columns: 1fr;
       }
+
       .ref-triad-dividers {
         grid-template-columns: 1fr;
       }
-      .ref-triad-dividers > div::after { display: none; }
-      .nw-footer-top, .nw-footer-cols { grid-template-columns: 1fr; }
+
+      .ref-triad-dividers>div::after {
+        display: none;
+      }
+
+      .nw-footer-top,
+      .nw-footer-cols {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 600px) {
-      .ref-triad-grid, .sizes-cards-grid, .amenities-triad-grid, .gal-masonry-3col, .legal-triad-grid, .highlights-grid, .specs-matrix-grid {
+
+      .ref-triad-grid,
+      .sizes-cards-grid,
+      .amenities-triad-grid,
+      .gal-masonry-3col,
+      .legal-triad-grid,
+      .highlights-grid,
+      .specs-matrix-grid {
         grid-template-columns: 1fr;
       }
-      .form-grid-fields { grid-template-columns: 1fr; }
-      .form-col-full { grid-column: span 1; }
-      .hero-subline-pipes { font-size: 0.76rem; }
+
+      .form-grid-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .form-col-full {
+        grid-column: span 1;
+      }
+
+      .hero-subline-pipes {
+        font-size: 0.76rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <a href="#main" class="skip-to-content">Skip to content</a>
 
@@ -2627,15 +3537,18 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li class="dd-parent">
-            <a href="properties.html" style="display:flex;align-items:center;gap:6px;color:#cbd5e1;">Properties <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+            <a href="properties.html" style="display:flex;align-items:center;gap:6px;color:#cbd5e1;">Properties <i
+                class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
             <div class="dd left">
-              <a class="dd-h" href="residential.html"><i class="fa-solid fa-building-user" style="color:#60a5fa;"></i> Residential Properties</a>
+              <a class="dd-h" href="residential.html"><i class="fa-solid fa-building-user" style="color:#60a5fa;"></i>
+                Residential Properties</a>
               <div class="sub">
                 <a href="residential-1.html">The Grand Emerald (3-4 BHK)</a>
                 <a href="residential-2.html">Palm Crest Villas (4 BHK)</a>
                 <a href="residential-3.html">Skyline Imperial (5 BHK)</a>
               </div>
-              <a class="dd-h" href="plotting.html"><i class="fa-solid fa-map-location-dot" style="color:#cbd5e1;"></i> Plotting Developments</a>
+              <a class="dd-h" href="plotting.html"><i class="fa-solid fa-map-location-dot" style="color:#cbd5e1;"></i>
+                Plotting Developments</a>
               <div class="sub" style="margin-bottom:0;">
                 <a class="on" href="plotting-1.html">Green Valley Township Plots</a>
                 <a href="plotting-2.html">Royal Meadows Farmhouse Plots</a>
@@ -2654,17 +3567,21 @@
             <li><a href="services.html">Services</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li class="dd-parent">
-              <a href="nri-corner.html" style="display:flex;align-items:center;gap:6px;">NRI Support <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:#cbd5e1;"></i></a>
+              <a href="nri-corner.html" style="display:flex;align-items:center;gap:6px;">NRI Support <i
+                  class="fa-solid fa-chevron-down" style="font-size:.65rem;color:#cbd5e1;"></i></a>
               <div class="dd right" style="min-width:270px;">
-                <a href="legal-information.html"><i class="fa-solid fa-scale-balanced" style="color:#cbd5e1;margin-right:8px;"></i>Legal Information</a>
-                <a href="loan-help.html"><i class="fa-solid fa-hand-holding-dollar" style="color:#60a5fa;margin-right:8px;"></i>Loan Help</a>
+                <a href="legal-information.html"><i class="fa-solid fa-scale-balanced"
+                    style="color:#cbd5e1;margin-right:8px;"></i>Legal Information</a>
+                <a href="loan-help.html"><i class="fa-solid fa-hand-holding-dollar"
+                    style="color:#60a5fa;margin-right:8px;"></i>Loan Help</a>
               </div>
             </li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
         </div>
 
-        <button id="mobileBtn" class="nav-mobile-btn" aria-label="Toggle navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+        <button id="mobileBtn" class="nav-mobile-btn" aria-label="Toggle navigation" aria-expanded="false"><i
+            class="fa-solid fa-bars"></i></button>
       </div>
     </div>
   </header>
@@ -2686,7 +3603,8 @@
     <!-- 01 — PROJECT HERO (TOP PANORAMIC BANNER OF REFERENCE)    -->
     <!-- ======================================================== -->
     <section class="hero-project-sec" id="heroProject">
-      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=80" alt="Green Valley Township Plots Dusk Horizon" class="hero-project-bg">
+      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=80"
+        alt="Green Valley Township Plots Dusk Horizon" class="hero-project-bg">
       <div class="hero-project-overlay"></div>
 
       <div class="hero-center-box">
@@ -2707,61 +3625,73 @@
     <!-- 01 — PROJECT OVERVIEW (PINNED SCROLL TRIPTYCH ANIMATION)  -->
     <!-- ======================================================== -->
     <section class="about" id="about">
-    <div class="about__sticky">
-      <div class="about__inner">
+      <div class="about__sticky">
+        <div class="about__inner">
 
-        <div class="about__stage">
+          <div class="about__stage">
 
-          <!-- Column 1: headline (top) + small card (bottom, grows up) -->
-          <div class="about__col">
-            <div class="about__title">
-              <span class="about__eyebrow">01 &mdash; Project Overview</span>
-              <h2 class="about__headline">Discover Your Next Address</h2>
+            <!-- Column 1: headline (top) + small card (bottom, grows up) -->
+            <div class="about__col">
+              <div class="about__title">
+                <span class="about__eyebrow">01 &mdash; Project Overview</span>
+                <h2 class="about__headline">Discover Your Next Address</h2>
+              </div>
+              <figure class="card card--left">
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80"
+                  alt="Township landscape">
+                <span class="card__tag">Artistic Impression</span>
+              </figure>
             </div>
-            <figure class="card card--left">
-              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80" alt="Township landscape">
-              <span class="card__tag">Artistic Impression</span>
-            </figure>
+
+            <!-- Column 2: tall centre card -->
+            <div class="about__col">
+              <figure class="card card--center">
+                <img src="assets/pune-luxury-villas.jpg" alt="Residential architecture">
+                <span class="card__tag">Actual Site View</span>
+              </figure>
+            </div>
+
+            <!-- Column 3: small card (top, grows down) + paragraph (bottom) -->
+            <div class="about__col">
+              <figure class="card card--right">
+                <img src="assets/amenity-garden.jpg" alt="Leisure waters and gardens">
+                <span class="card__tag">Artistic Impression</span>
+              </figure>
+              <div class="about__text">
+                <p>Green Valley Township is an 80-acre master-planned residential enclave along Pune's North Expressway
+                  corridor, with 420+ demarcated freehold plots, 80% bank loan approval and vast landscaped parks.
+                  Designed for generational legacy and complete peace of mind.</p>
+              </div>
+            </div>
+
           </div>
 
-          <!-- Column 2: tall centre card -->
-          <div class="about__col">
-            <figure class="card card--center">
-              <img src="assets/pune-luxury-villas.jpg" alt="Residential architecture">
-              <span class="card__tag">Actual Site View</span>
-            </figure>
-          </div>
-
-          <!-- Column 3: small card (top, grows down) + paragraph (bottom) -->
-          <div class="about__col">
-            <figure class="card card--right">
-              <img src="assets/amenity-garden.jpg" alt="Leisure waters and gardens">
-              <span class="card__tag">Artistic Impression</span>
-            </figure>
-            <div class="about__text">
-              <p>Green Valley Township is an 80-acre master-planned residential enclave along Pune's North Expressway corridor, with 420+ demarcated freehold plots, 80% bank loan approval and vast landscaped parks. Designed for generational legacy and complete peace of mind.</p>
+          <!-- Stats — appear when the cards have aligned -->
+          <div class="about__stats">
+            <div class="stat">
+              <div class="stat__num">80 Acres</div>
+              <div class="stat__label">Total Land Area</div>
+            </div>
+            <div class="stat">
+              <div class="stat__num">420+</div>
+              <div class="stat__label">Freehold Plots</div>
+            </div>
+            <div class="stat">
+              <div class="stat__num">80%</div>
+              <div class="stat__label">Landscaped Greens</div>
             </div>
           </div>
 
         </div>
-
-        <!-- Stats — appear when the cards have aligned -->
-        <div class="about__stats">
-          <div class="stat"><div class="stat__num">80 Acres</div><div class="stat__label">Total Land Area</div></div>
-          <div class="stat"><div class="stat__num">420+</div><div class="stat__label">Freehold Plots</div></div>
-          <div class="stat"><div class="stat__num">80%</div><div class="stat__label">Landscaped Greens</div></div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
     <!-- ======================================================== -->
     <!-- 02 — PROJECT HIGHLIGHTS                                  -->
     <!-- ======================================================== -->
     <section class="highlights-sec" id="highlightsSection">
       <div class="sec-container">
-        
+
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
             Project Highlights
@@ -2770,20 +3700,23 @@
             A Vision of Thoughtful Planning
           </h2>
           <p class="sec-lead">
-            An expansive, fully sanctioned plotted enclave crafted with institutional discipline, generational foresight, and integrated civil infrastructure.
+            An expansive, fully sanctioned plotted enclave crafted with institutional discipline, generational
+            foresight, and integrated civil infrastructure.
           </p>
         </div>
 
         <div class="highlights-grid">
-          
+
           <div class="highlight-card plot-reveal">
             <div class="highlight-bg-cover">
-              <img src="assets/pune-luxury-villas.jpg" alt="Master-Planned Enclave" class="highlight-bg-img" loading="lazy">
+              <img src="assets/pune-luxury-villas.jpg" alt="Master-Planned Enclave" class="highlight-bg-img"
+                loading="lazy">
               <div class="highlight-bg-overlay"></div>
             </div>
             <div class="highlight-icon-wrap"><i class="fa-solid fa-tree-city"></i></div>
             <h3 class="highlight-title">Master-Planned Enclave</h3>
-            <p class="highlight-desc">Well-planned plots, landscaped spaces, organized roads and thoughtfully designed layouts.</p>
+            <p class="highlight-desc">Well-planned plots, landscaped spaces, organized roads and thoughtfully designed
+              layouts.</p>
           </div>
 
           <div class="highlight-card plot-reveal">
@@ -2798,7 +3731,8 @@
 
           <div class="highlight-card plot-reveal">
             <div class="highlight-bg-cover">
-              <img src="assets/realestate23.webp" alt="PMRDA &amp; MahaRERA Approved" class="highlight-bg-img" loading="lazy">
+              <img src="assets/realestate23.webp" alt="PMRDA &amp; MahaRERA Approved" class="highlight-bg-img"
+                loading="lazy">
               <div class="highlight-bg-overlay"></div>
             </div>
             <div class="highlight-icon-wrap"><i class="fa-solid fa-stamp"></i></div>
@@ -2808,7 +3742,8 @@
 
           <div class="highlight-card plot-reveal">
             <div class="highlight-bg-cover">
-              <img src="assets/counter-day.jpg" alt="Underground Infrastructure" class="highlight-bg-img" loading="lazy">
+              <img src="assets/counter-day.jpg" alt="Underground Infrastructure" class="highlight-bg-img"
+                loading="lazy">
               <div class="highlight-bg-overlay"></div>
             </div>
             <div class="highlight-icon-wrap"><i class="fa-solid fa-bolt-lightning"></i></div>
@@ -2828,7 +3763,8 @@
 
           <div class="highlight-card plot-reveal">
             <div class="highlight-bg-cover">
-              <img src="assets/project-5.webp" alt="Villa Construction Potential" class="highlight-bg-img" loading="lazy">
+              <img src="assets/project-5.webp" alt="Villa Construction Potential" class="highlight-bg-img"
+                loading="lazy">
               <div class="highlight-bg-overlay"></div>
             </div>
             <div class="highlight-icon-wrap"><i class="fa-solid fa-compass-drafting"></i></div>
@@ -2846,7 +3782,7 @@
     <!-- ======================================================== -->
     <section class="sizes-sec" id="sizesSection">
       <div class="sec-container">
-        
+
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
             <span class="dash"></span> <span class="num-highlight">03</span> &mdash; Plot Layout &amp; Configurations
@@ -2855,7 +3791,8 @@
             Explore Your Perfect Plot
           </h2>
           <p class="sec-lead">
-            Select from standard villa footprints to sprawling corner parcels. Every plot enjoys direct road frontage, independent water/power tapping points, and G+2 residential villa sanction.
+            Select from standard villa footprints to sprawling corner parcels. Every plot enjoys direct road frontage,
+            independent water/power tapping points, and G+2 residential villa sanction.
           </p>
         </div>
 
@@ -2873,31 +3810,39 @@
           <!-- Card 1 -->
           <div class="size-card plot-reveal" tabindex="0" data-size="150">
             <div class="size-card-media">
-              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" alt="Executive Villa 150 Sq. Yds" class="size-card-photo">
+              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80"
+                alt="Executive Villa 150 Sq. Yds" class="size-card-photo">
             </div>
             <div class="size-card-body">
               <div class="size-card-title"><b>150</b><span>Sq. Yards</span></div>
               <p class="size-teaser">Compact executive footprint, ideal for your first villa.</p>
-              <div class="size-details"><div class="size-details-inner">
-              <div class="size-meta-row">
-                <div class="size-footprint"><i style="width:30px;height:44px;"></i></div>
-                <div>
-                  <p class="size-sqft-subtitle">Plot Footprint</p>
-                  <div class="size-sqft-big">1,350 Sq. Ft.<br><span style="font-size:0.95rem;font-weight:600;color:var(--muted);">30' &times; 45'</span></div>
+              <div class="size-details">
+                <div class="size-details-inner">
+                  <div class="size-meta-row">
+                    <div class="size-footprint"><i style="width:30px;height:44px;"></i></div>
+                    <div>
+                      <p class="size-sqft-subtitle">Plot Footprint</p>
+                      <div class="size-sqft-big">1,350 Sq. Ft.<br><span
+                          style="font-size:0.95rem;font-weight:600;color:var(--muted);">30' &times; 45'</span></div>
+                    </div>
+                  </div>
+                  <div class="size-spec-list">
+                    <div class="size-spec-row"><span class="k"><i class="fa-solid fa-road"></i> Road Width</span><span
+                        class="v">40 Ft. Blacktop</span></div>
+                    <div class="size-spec-row"><span class="k"><i class="fa-solid fa-compass"></i>
+                        Orientation</span><span class="v">East / North Facing</span></div>
+                    <div class="size-spec-row"><span class="k"><i class="fa-solid fa-building"></i>
+                        Permissible</span><span class="v">G + 2 Floors</span></div>
+                    <div class="size-spec-row"><span class="k"><i class="fa-solid fa-key"></i> Possession</span><span
+                        class="v">Immediate</span></div>
+                  </div>
+                  <div class="size-price-tag">
+                    <div><small>Starting Price</small><strong>&#8377;45.00 Lakhs*</strong></div>
+                    <em>All-inclusive</em>
+                  </div>
+                  <a href="#enquirySection" class="size-cta">Inquire Plot <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
               </div>
-              <div class="size-spec-list">
-                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-road"></i> Road Width</span><span class="v">40 Ft. Blacktop</span></div>
-                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-compass"></i> Orientation</span><span class="v">East / North Facing</span></div>
-                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-building"></i> Permissible</span><span class="v">G + 2 Floors</span></div>
-                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-key"></i> Possession</span><span class="v">Immediate</span></div>
-              </div>
-              <div class="size-price-tag">
-                <div><small>Starting Price</small><strong>&#8377;45.00 Lakhs*</strong></div>
-                <em>All-inclusive</em>
-              </div>
-              <a href="#enquirySection" class="size-cta">Inquire Plot <i class="fa-solid fa-arrow-right"></i></a>
-              </div></div>
             </div>
           </div>
 
@@ -2909,57 +3854,72 @@
             <div class="size-card-body">
               <div class="size-card-title"><b>250</b><span>Sq. Yards</span></div>
               <p class="size-teaser">Garden-facing plots with generous space, our most loved size.</p>
-              <div class="size-details"><div class="size-details-inner">
-              <div class="size-meta-row">
-                <div class="size-footprint"><i style="width:36px;height:46px;"></i></div>
-                <div>
-                  <p class="size-sqft-subtitle">Plot Footprint</p>
-                  <div class="size-sqft-big">2,250 Sq. Ft.<br><span style="font-size:0.95rem;font-weight:600;color:var(--muted);">35' &times; 64'</span></div>
+              <div class="size-details">
+                <div class="size-details-inner">
+                  <div class="size-meta-row">
+                    <div class="size-footprint"><i style="width:36px;height:46px;"></i></div>
+                    <div>
+                      <p class="size-sqft-subtitle">Plot Footprint</p>
+                      <div class="size-sqft-big">2,250 Sq. Ft.<br><span
+                          style="font-size:0.95rem;font-weight:600;color:var(--muted);">35' &times; 64'</span></div>
+                    </div>
+                  </div>
+                  <div class="size-spec-list">
+                    <div class="size-spec-row"><span class="k"><i class="fa-solid fa-road"></i> Road Width</span><span
+                        class="v">40 Ft. Tree-Lined</span></div>
+                    <div class="size-spec-row"><span class="k"><i class="fa-solid fa-compass"></i>
+                        Orientation</span><span class="v">Garden Facing</span></div>
+                    <div class="size-spec-row"><span class="k"><i class="fa-solid fa-building"></i>
+                        Permissible</span><span class="v">G + 2 with Terrace</span></div>
+                    <div class="size-spec-row"><span class="k"><i class="fa-solid fa-key"></i> Possession</span><span
+                        class="v">Immediate</span></div>
+                  </div>
+                  <div class="size-price-tag">
+                    <div><small>Starting Price</small><strong>&#8377;72.50 Lakhs*</strong></div>
+                    <em>All-inclusive</em>
+                  </div>
+                  <a href="#enquirySection" class="size-cta">Inquire Plot <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
               </div>
-              <div class="size-spec-list">
-                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-road"></i> Road Width</span><span class="v">40 Ft. Tree-Lined</span></div>
-                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-compass"></i> Orientation</span><span class="v">Garden Facing</span></div>
-                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-building"></i> Permissible</span><span class="v">G + 2 with Terrace</span></div>
-                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-key"></i> Possession</span><span class="v">Immediate</span></div>
-              </div>
-              <div class="size-price-tag">
-                <div><small>Starting Price</small><strong>&#8377;72.50 Lakhs*</strong></div>
-                <em>All-inclusive</em>
-              </div>
-              <a href="#enquirySection" class="size-cta">Inquire Plot <i class="fa-solid fa-arrow-right"></i></a>
-              </div></div>
             </div>
           </div>
 
           <!-- Card 3 -->
           <div class="size-card plot-reveal" tabindex="0" data-size="350">
             <div class="size-card-media">
-              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Corner Boulevard 350 Sq. Yds" class="size-card-photo">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
+                alt="Corner Boulevard 350 Sq. Yds" class="size-card-photo">
             </div>
             <div class="size-card-body">
               <div class="size-card-title"><b>350</b><span>Sq. Yards</span></div>
               <p class="size-teaser">Corner boulevard parcel with dual road access.</p>
-              <div class="size-details"><div class="size-details-inner">
-              <div class="size-meta-row">
-                <div class="size-footprint"><i style="width:42px;height:48px;"></i></div>
-                <div>
-                  <p class="size-sqft-subtitle">Plot Footprint</p>
-                  <div class="size-sqft-big">3,150 Sq. Ft.<br><span style="font-size:0.95rem;font-weight:600;color:var(--muted);">42' &times; 75'</span></div>
+              <div class="size-details">
+                <div class="size-details-inner">
+                  <div class="size-meta-row">
+                    <div class="size-footprint"><i style="width:42px;height:48px;"></i></div>
+                    <div>
+                      <p class="size-sqft-subtitle">Plot Footprint</p>
+                      <div class="size-sqft-big">3,150 Sq. Ft.<br><span
+                          style="font-size:0.95rem;font-weight:600;color:var(--muted);">42' &times; 75'</span></div>
+                    </div>
+                  </div>
+                  <div class="size-spec-list">
+                    <div class="size-spec-row"><span class="k"><i class="fa-solid fa-road"></i> Road Width</span><span
+                        class="v">60 Ft. Boulevard</span></div>
+                    <div class="size-spec-row"><span class="k"><i class="fa-solid fa-compass"></i>
+                        Orientation</span><span class="v">Corner Access</span></div>
+                    <div class="size-spec-row"><span class="k"><i class="fa-solid fa-building"></i>
+                        Permissible</span><span class="v">G + 2 Independent</span></div>
+                    <div class="size-spec-row"><span class="k"><i class="fa-solid fa-key"></i> Possession</span><span
+                        class="v">Immediate</span></div>
+                  </div>
+                  <div class="size-price-tag">
+                    <div><small>Starting Price</small><strong>&#8377;1.05 Crores*</strong></div>
+                    <em>All-inclusive</em>
+                  </div>
+                  <a href="#enquirySection" class="size-cta">Inquire Plot <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
               </div>
-              <div class="size-spec-list">
-                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-road"></i> Road Width</span><span class="v">60 Ft. Boulevard</span></div>
-                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-compass"></i> Orientation</span><span class="v">Corner Access</span></div>
-                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-building"></i> Permissible</span><span class="v">G + 2 Independent</span></div>
-                <div class="size-spec-row"><span class="k"><i class="fa-solid fa-key"></i> Possession</span><span class="v">Immediate</span></div>
-              </div>
-              <div class="size-price-tag">
-                <div><small>Starting Price</small><strong>&#8377;1.05 Crores*</strong></div>
-                <em>All-inclusive</em>
-              </div>
-              <a href="#enquirySection" class="size-cta">Inquire Plot <i class="fa-solid fa-arrow-right"></i></a>
-              </div></div>
             </div>
           </div>
 
@@ -2974,14 +3934,15 @@
     <section class="gx" id="gallerySection" aria-label="Project gallery">
       <div class="gx-pin" id="gxPin">
         <div class="gx-track" id="gxTrack">
-          
+
           <div class="gx-intro">
             <div class="gx-eyebrow">
               <span class="dash"></span> <span>04 &mdash; Project Gallery</span>
             </div>
             <h2>A Closer Look at the Project</h2>
             <p>
-              Light-filled avenues, manicured botanical parks, and generational land. Scroll to move through Green Valley Township.
+              Light-filled avenues, manicured botanical parks, and generational land. Scroll to move through Green
+              Valley Township.
             </p>
             <i></i>
           </div>
@@ -2989,7 +3950,8 @@
           <!-- Card 1 (Vertical) -->
           <figure class="gx-card gx-v" data-t="Township Entrance Avenue">
             <div class="gx-frame">
-              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80" alt="Township Entrance Avenue">
+              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80"
+                alt="Township Entrance Avenue">
             </div>
             <figcaption class="gx-cap"><b>01</b><span>Township Entrance Avenue</span></figcaption>
           </figure>
@@ -3005,7 +3967,8 @@
           <!-- Card 3 (Vertical) -->
           <figure class="gx-card gx-v" data-t="Clubhouse &amp; Leisure Pool">
             <div class="gx-frame">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="Clubhouse &amp; Leisure Pool">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"
+                alt="Clubhouse &amp; Leisure Pool">
             </div>
             <figcaption class="gx-cap"><b>03</b><span>Clubhouse &amp; Leisure Pool</span></figcaption>
           </figure>
@@ -3021,7 +3984,8 @@
           <!-- Card 5 (Vertical) -->
           <figure class="gx-card gx-v" data-t="Demarcated Villa Footprints">
             <div class="gx-frame">
-              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1000&q=80" alt="Demarcated Villa Footprints">
+              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1000&q=80"
+                alt="Demarcated Villa Footprints">
             </div>
             <figcaption class="gx-cap"><b>05</b><span>Demarcated Villa Footprints</span></figcaption>
           </figure>
@@ -3090,25 +4054,33 @@
             Every Prime Destination,<br>Effortlessly Within Reach.
           </h2>
           <p class="sec-lead-center">
-            Strategically positioned on Pune's North Expressway Corridor, Green Valley Township keeps you seamlessly connected to premier tech hubs, arterial highways, and everyday civic conveniences.
+            Strategically positioned on Pune's North Expressway Corridor, Green Valley Township keeps you seamlessly
+            connected to premier tech hubs, arterial highways, and everyday civic conveniences.
           </p>
         </div>
       </div>
 
       <!-- FULL WIDTH MAP STAGE (EDGE-TO-EDGE) -->
       <div class="connect-map-stage plot-reveal" id="connectMapStage">
-        
+
         <!-- Full-Width Stylized Route Network SVG -->
-        <svg class="connect-svg-bg" viewBox="0 0 1600 580" fill="none" preserveAspectRatio="none" style="display:none" aria-hidden="true">
-          <path d="M 0,420 C 300,380 450,460 750,340 C 1050,220 1350,320 1600,260" stroke="rgba(217, 119, 6, 0.16)" stroke-width="4.5" stroke-dasharray="10 7"/>
-          <path d="M 100,580 C 350,440 650,300 850,280 C 1050,260 1350,480 1600,410" stroke="rgba(70, 86, 101, 0.13)" stroke-width="3.5" />
-          <path d="M 0,240 C 400,300 700,180 1100,240 C 1350,280 1480,200 1600,220" stroke="rgba(70, 86, 101, 0.09)" stroke-width="2.5" />
-          <path d="M 80,460 Q 500,200 850,280 T 1550,380" stroke="rgba(234, 88, 12, 0.24)" stroke-width="6" stroke-linecap="round" />
-          <circle cx="850" cy="280" r="220" stroke="rgba(217, 119, 6, 0.09)" stroke-width="1.5" stroke-dasharray="5 5" fill="none" />
+        <svg class="connect-svg-bg" viewBox="0 0 1600 580" fill="none" preserveAspectRatio="none" style="display:none"
+          aria-hidden="true">
+          <path d="M 0,420 C 300,380 450,460 750,340 C 1050,220 1350,320 1600,260" stroke="rgba(217, 119, 6, 0.16)"
+            stroke-width="4.5" stroke-dasharray="10 7" />
+          <path d="M 100,580 C 350,440 650,300 850,280 C 1050,260 1350,480 1600,410" stroke="rgba(70, 86, 101, 0.13)"
+            stroke-width="3.5" />
+          <path d="M 0,240 C 400,300 700,180 1100,240 C 1350,280 1480,200 1600,220" stroke="rgba(70, 86, 101, 0.09)"
+            stroke-width="2.5" />
+          <path d="M 80,460 Q 500,200 850,280 T 1550,380" stroke="rgba(234, 88, 12, 0.24)" stroke-width="6"
+            stroke-linecap="round" />
+          <circle cx="850" cy="280" r="220" stroke="rgba(217, 119, 6, 0.09)" stroke-width="1.5" stroke-dasharray="5 5"
+            fill="none" />
         </svg>
 
         <!-- Floating Cursor-Following "View All" Circle with Concentric Ping Ripples (Shri Vrinda Animation) -->
-        <div class="connect-follower connect-floating-btn" id="btnConnectFloating" onclick="openConnectModal(event)" aria-label="View all nearby destinations">
+        <div class="connect-follower connect-floating-btn" id="btnConnectFloating" onclick="openConnectModal(event)"
+          aria-label="View all nearby destinations">
           <span class="connect-follower-ring ring-1"></span>
           <span class="connect-follower-ring ring-2"></span>
           <div class="connect-follower-core">
@@ -3122,7 +4094,9 @@
             <div class="connect-card-name">North Expressway Exit</div>
             <div class="connect-card-time">2 mins</div>
           </div>
-          <div class="connect-marker-icon"><div class="connect-marker-dot"></div></div>
+          <div class="connect-marker-icon">
+            <div class="connect-marker-dot"></div>
+          </div>
         </div>
 
         <!-- Pin 2: Upcoming Ring Road -->
@@ -3131,7 +4105,9 @@
             <div class="connect-card-name">Upcoming Ring Road</div>
             <div class="connect-card-time">5 mins</div>
           </div>
-          <div class="connect-marker-icon"><div class="connect-marker-dot"></div></div>
+          <div class="connect-marker-icon">
+            <div class="connect-marker-dot"></div>
+          </div>
         </div>
 
         <!-- Pin 3: Wagholi City Centre -->
@@ -3140,7 +4116,9 @@
             <div class="connect-card-name">Wagholi City Centre</div>
             <div class="connect-card-time">10 mins</div>
           </div>
-          <div class="connect-marker-icon"><div class="connect-marker-dot"></div></div>
+          <div class="connect-marker-icon">
+            <div class="connect-marker-dot"></div>
+          </div>
         </div>
 
         <!-- Pin 4: Kharadi EON IT Park -->
@@ -3149,7 +4127,9 @@
             <div class="connect-card-name">Kharadi EON IT Park</div>
             <div class="connect-card-time">15 mins</div>
           </div>
-          <div class="connect-marker-icon"><div class="connect-marker-dot"></div></div>
+          <div class="connect-marker-icon">
+            <div class="connect-marker-dot"></div>
+          </div>
         </div>
 
         <!-- Pin 5: Pune International Airport -->
@@ -3158,7 +4138,9 @@
             <div class="connect-card-name">Pune International Airport</div>
             <div class="connect-card-time">20 mins</div>
           </div>
-          <div class="connect-marker-icon"><div class="connect-marker-dot"></div></div>
+          <div class="connect-marker-icon">
+            <div class="connect-marker-dot"></div>
+          </div>
         </div>
 
         <!-- Pin 6: Pune Railway Junction -->
@@ -3167,7 +4149,9 @@
             <div class="connect-card-name">Pune Railway Junction</div>
             <div class="connect-card-time">30 mins</div>
           </div>
-          <div class="connect-marker-icon"><div class="connect-marker-dot"></div></div>
+          <div class="connect-marker-icon">
+            <div class="connect-marker-dot"></div>
+          </div>
         </div>
 
       </div>
@@ -3179,136 +4163,143 @@
     <section class="legal-sec sf-scroll-track" id="specsSection">
       <div class="sf-sticky-pin" id="sfStickyPin">
         <div class="sec-container">
-          
+
           <div class="sec-header">
             <h2 class="sec-headline">
               Specifications
             </h2>
             <p class="sec-lead">
-              Comprehensive civil infrastructure, underground utility networks, and statutory layout approvals governing every individual plot.
+              Comprehensive civil infrastructure, underground utility networks, and statutory layout approvals governing
+              every individual plot.
             </p>
           </div>
 
           <!-- STILL / FORM LUXURY SPLIT SHOWCASE (6 SPECIFICATIONS) -->
           <div class="sf-specs-stage" id="sfSpecsStage">
-          <div class="sf-stage-grid" id="sfStageGrid">
-            
-            <!-- LEFT: Architectural Visual Pane -->
-            <div class="sf-visual-pane">
-              <div class="sf-img-deck">
-                
-                <!-- Slide 01: Roads -->
-                <div class="sf-img-item active" data-index="0">
-                  <img src="assets/pune-luxury-villas.jpg" alt="Avenues & Road Infrastructure">
-                </div>
+            <div class="sf-stage-grid" id="sfStageGrid">
 
-                <!-- Slide 02: Underground Utilities -->
-                <div class="sf-img-item" data-index="1">
-                  <img src="assets/project-5.jpg" alt="Concealed Underground Utilities">
-                </div>
+              <!-- LEFT: Architectural Visual Pane -->
+              <div class="sf-visual-pane">
+                <div class="sf-img-deck">
 
-                <!-- Slide 03: Water & Drainage -->
-                <div class="sf-img-item" data-index="2">
-                  <img src="assets/project-3.jpg" alt="Water Supply & Drainage Network">
-                </div>
+                  <!-- Slide 01: Roads -->
+                  <div class="sf-img-item active" data-index="0">
+                    <img src="assets/pune-luxury-villas.jpg" alt="Avenues & Road Infrastructure">
+                  </div>
 
-                <!-- Slide 04: Demarcation -->
-                <div class="sf-img-item" data-index="3">
-                  <img src="assets/realestate23.webp" alt="Plot Demarcation & Frontage">
-                </div>
+                  <!-- Slide 02: Underground Utilities -->
+                  <div class="sf-img-item" data-index="1">
+                    <img src="assets/project-5.jpg" alt="Concealed Underground Utilities">
+                  </div>
 
-                <!-- Slide 05: Security -->
-                <div class="sf-img-item" data-index="4">
-                  <img src="assets/amenity-security.jpg" alt="Gated Security & Perimeter">
-                </div>
+                  <!-- Slide 03: Water & Drainage -->
+                  <div class="sf-img-item" data-index="2">
+                    <img src="assets/project-3.jpg" alt="Water Supply & Drainage Network">
+                  </div>
 
-                <!-- Slide 06: Sanctions -->
-                <div class="sf-img-item" data-index="5">
-                  <img src="assets/cta-building-luxury.jpg" alt="Planning Sanctions & Clear Title">
+                  <!-- Slide 04: Demarcation -->
+                  <div class="sf-img-item" data-index="3">
+                    <img src="assets/realestate23.webp" alt="Plot Demarcation & Frontage">
+                  </div>
+
+                  <!-- Slide 05: Security -->
+                  <div class="sf-img-item" data-index="4">
+                    <img src="assets/amenity-security.jpg" alt="Gated Security & Perimeter">
+                  </div>
+
+                  <!-- Slide 06: Sanctions -->
+                  <div class="sf-img-item" data-index="5">
+                    <img src="assets/cta-building-luxury.jpg" alt="Planning Sanctions & Clear Title">
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- RIGHT: Editorial Content Pane -->
+              <div class="sf-content-pane">
+
+                <div class="sf-pane-top">
+                  <div class="sf-eyebrow" id="sfEyebrowText">
+                    Civic Infrastructure
+                  </div>
+
+                  <div class="sf-headline-deck">
+                    <div class="sf-headline-item active" data-index="0">
+                      <h3 class="sf-headline-title">
+                        <span class="sf-line-mask"><span class="sf-line">Avenues engineered</span></span>
+                        <span class="sf-line-mask"><span class="sf-line">for permanence.</span></span>
+                      </h3>
+                    </div>
+                    <div class="sf-headline-item" data-index="1">
+                      <h3 class="sf-headline-title">
+                        <span class="sf-line-mask"><span class="sf-line">100% Underground grids.</span></span>
+                        <span class="sf-line-mask"><span class="sf-line">Zero overhead wires.</span></span>
+                      </h3>
+                    </div>
+                    <div class="sf-headline-item" data-index="2">
+                      <h3 class="sf-headline-title">
+                        <span class="sf-line-mask"><span class="sf-line">Dual water lines &amp;</span></span>
+                        <span class="sf-line-mask"><span class="sf-line">stormwater culverts.</span></span>
+                      </h3>
+                    </div>
+                    <div class="sf-headline-item" data-index="3">
+                      <h3 class="sf-headline-title">
+                        <span class="sf-line-mask"><span class="sf-line">Pre-cast markers &amp;</span></span>
+                        <span class="sf-line-mask"><span class="sf-line">pegged footprints.</span></span>
+                      </h3>
+                    </div>
+                    <div class="sf-headline-item" data-index="4">
+                      <h3 class="sf-headline-title">
+                        <span class="sf-line-mask"><span class="sf-line">Manned gatehouse &amp;</span></span>
+                        <span class="sf-line-mask"><span class="sf-line">9 Ft. compound wall.</span></span>
+                      </h3>
+                    </div>
+                    <div class="sf-headline-item" data-index="5">
+                      <h3 class="sf-headline-title">
+                        <span class="sf-line-mask"><span class="sf-line">Sanctioned planning with</span></span>
+                        <span class="sf-line-mask"><span class="sf-line">100% clear title.</span></span>
+                      </h3>
+                    </div>
+                  </div>
+
+                  <!-- Short Editorial Description -->
+                  <div class="sf-desc-deck">
+                    <p class="sf-desc-item active" data-index="0">
+                      60 Ft. and 40 Ft. heavy-duty blacktop boulevards with tree-lined pedestrian curbs and integrated
+                      solar lighting.
+                    </p>
+                    <p class="sf-desc-item" data-index="1">
+                      Concealed power networks, optical fiber conduits, and independent sector feeder pillars for
+                      uninterrupted open skies.
+                    </p>
+                    <p class="sf-desc-item" data-index="2">
+                      Independent boundary tapping at every plot, backed by concealed RCC culverts, eco STP, and
+                      rainwater recharge pits.
+                    </p>
+                    <p class="sf-desc-item" data-index="3">
+                      Physical concrete corner stones, peg-marked villa footprints, and wide road frontage for immediate
+                      construction handover.
+                    </p>
+                    <p class="sf-desc-item" data-index="4">
+                      Round-the-clock security post, RFID automatic boom barriers, and high-definition CCTV surveillance
+                      along all boulevards.
+                    </p>
+                    <p class="sf-desc-item" data-index="5">
+                      Approved town planning permissions, G+2 villa construction clearance, and pre-approved
+                      nationalized bank loans.
+                    </p>
+                  </div>
+
                 </div>
 
               </div>
-            </div>
-
-            <!-- RIGHT: Editorial Content Pane -->
-            <div class="sf-content-pane">
-              
-              <div class="sf-pane-top">
-                <div class="sf-eyebrow" id="sfEyebrowText">
-                  Civic Infrastructure
-                </div>
-
-                <div class="sf-headline-deck">
-                  <div class="sf-headline-item active" data-index="0">
-                    <h3 class="sf-headline-title">
-                      <span class="sf-line-mask"><span class="sf-line">Avenues engineered</span></span>
-                      <span class="sf-line-mask"><span class="sf-line">for permanence.</span></span>
-                    </h3>
-                  </div>
-                  <div class="sf-headline-item" data-index="1">
-                    <h3 class="sf-headline-title">
-                      <span class="sf-line-mask"><span class="sf-line">100% Underground grids.</span></span>
-                      <span class="sf-line-mask"><span class="sf-line">Zero overhead wires.</span></span>
-                    </h3>
-                  </div>
-                  <div class="sf-headline-item" data-index="2">
-                    <h3 class="sf-headline-title">
-                      <span class="sf-line-mask"><span class="sf-line">Dual water lines &amp;</span></span>
-                      <span class="sf-line-mask"><span class="sf-line">stormwater culverts.</span></span>
-                    </h3>
-                  </div>
-                  <div class="sf-headline-item" data-index="3">
-                    <h3 class="sf-headline-title">
-                      <span class="sf-line-mask"><span class="sf-line">Pre-cast markers &amp;</span></span>
-                      <span class="sf-line-mask"><span class="sf-line">pegged footprints.</span></span>
-                    </h3>
-                  </div>
-                  <div class="sf-headline-item" data-index="4">
-                    <h3 class="sf-headline-title">
-                      <span class="sf-line-mask"><span class="sf-line">Manned gatehouse &amp;</span></span>
-                      <span class="sf-line-mask"><span class="sf-line">9 Ft. compound wall.</span></span>
-                    </h3>
-                  </div>
-                  <div class="sf-headline-item" data-index="5">
-                    <h3 class="sf-headline-title">
-                      <span class="sf-line-mask"><span class="sf-line">Sanctioned planning with</span></span>
-                      <span class="sf-line-mask"><span class="sf-line">100% clear title.</span></span>
-                    </h3>
-                  </div>
-                </div>
-
-                <!-- Short Editorial Description -->
-                <div class="sf-desc-deck">
-                  <p class="sf-desc-item active" data-index="0">
-                    60 Ft. and 40 Ft. heavy-duty blacktop boulevards with tree-lined pedestrian curbs and integrated solar lighting.
-                  </p>
-                  <p class="sf-desc-item" data-index="1">
-                    Concealed power networks, optical fiber conduits, and independent sector feeder pillars for uninterrupted open skies.
-                  </p>
-                  <p class="sf-desc-item" data-index="2">
-                    Independent boundary tapping at every plot, backed by concealed RCC culverts, eco STP, and rainwater recharge pits.
-                  </p>
-                  <p class="sf-desc-item" data-index="3">
-                    Physical concrete corner stones, peg-marked villa footprints, and wide road frontage for immediate construction handover.
-                  </p>
-                  <p class="sf-desc-item" data-index="4">
-                    Round-the-clock security post, RFID automatic boom barriers, and high-definition CCTV surveillance along all boulevards.
-                  </p>
-                  <p class="sf-desc-item" data-index="5">
-                    Approved town planning permissions, G+2 villa construction clearance, and pre-approved nationalized bank loans.
-                  </p>
-                </div>
-
-              </div>
 
             </div>
-
           </div>
-        </div>
 
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
 
     <!-- ======================================================== -->
@@ -3316,7 +4307,7 @@
     <!-- ======================================================== -->
     <section class="faq-sec" id="faqSection">
       <div class="sec-container">
-        
+
         <div class="sec-header plot-reveal">
           <div class="sec-num-eyebrow">
             <span class="dash"></span> <span class="num-highlight">07</span> &mdash; FAQs
@@ -3325,19 +4316,23 @@
             Everything You Need to Know
           </h2>
           <p class="sec-lead">
-            Clear, transparent answers regarding title certifications, development sanctions, loan eligibility, and custom bungalow construction.
+            Clear, transparent answers regarding title certifications, development sanctions, loan eligibility, and
+            custom bungalow construction.
           </p>
         </div>
 
         <div class="faq-accordion-wrap plot-reveal">
-          
+
           <div class="faq-acc-item open">
             <button type="button" class="faq-acc-trigger" onclick="togglePlotFaq(this)">
               <span>Are the plots registered under MahaRERA and approved by PMRDA?</span>
               <span class="faq-acc-icon"><i class="fa-solid fa-chevron-down"></i></span>
             </button>
             <div class="faq-acc-body" style="max-height: 200px;">
-              <p>Yes. Green Valley Township is fully sanctioned by the Pune Metropolitan Region Development Authority (PMRDA Layout Order: PMRDA/TPS/2024/098) and registered under MahaRERA (Registration No: P52100054321). All title clearances, layout approvals, and escrow account details are officially documented and available for solicitor verification.</p>
+              <p>Yes. Green Valley Township is fully sanctioned by the Pune Metropolitan Region Development Authority
+                (PMRDA Layout Order: PMRDA/TPS/2024/098) and registered under MahaRERA (Registration No: P52100054321).
+                All title clearances, layout approvals, and escrow account details are officially documented and
+                available for solicitor verification.</p>
             </div>
           </div>
 
@@ -3347,7 +4342,10 @@
               <span class="faq-acc-icon"><i class="fa-solid fa-chevron-down"></i></span>
             </button>
             <div class="faq-acc-body">
-              <p>Yes. Green Valley Township is pre-approved by leading financial institutions including State Bank of India (SBI), HDFC Bank, ICICI Bank, and Axis Bank. Eligible buyers can secure up to 75% to 80% funding on the plot value as well as composite plot-plus-construction loans at attractive home loan interest rates.</p>
+              <p>Yes. Green Valley Township is pre-approved by leading financial institutions including State Bank of
+                India (SBI), HDFC Bank, ICICI Bank, and Axis Bank. Eligible buyers can secure up to 75% to 80% funding
+                on the plot value as well as composite plot-plus-construction loans at attractive home loan interest
+                rates.</p>
             </div>
           </div>
 
@@ -3357,7 +4355,10 @@
               <span class="faq-acc-icon"><i class="fa-solid fa-chevron-down"></i></span>
             </button>
             <div class="faq-acc-body">
-              <p>Every plot enjoys sanctioned permission for G+2 residential villa construction with an independent terrace. You have full architectural freedom to build your bespoke bungalow within PMRDA development control rules, or you may utilize our pre-approved architect floor plans for accelerated development.</p>
+              <p>Every plot enjoys sanctioned permission for G+2 residential villa construction with an independent
+                terrace. You have full architectural freedom to build your bespoke bungalow within PMRDA development
+                control rules, or you may utilize our pre-approved architect floor plans for accelerated development.
+              </p>
             </div>
           </div>
 
@@ -3367,7 +4368,10 @@
               <span class="faq-acc-icon"><i class="fa-solid fa-chevron-down"></i></span>
             </button>
             <div class="faq-acc-body">
-              <p>Possession and registry are immediate. The township infrastructure—including asphalt blacktop roads, boundary demarcation stones, water supply tapping valves, and underground power conduits—is already delivered on-ground. Registry is executed at the sub-registrar office within 15–30 days of statutory agreement.</p>
+              <p>Possession and registry are immediate. The township infrastructure—including asphalt blacktop roads,
+                boundary demarcation stones, water supply tapping valves, and underground power conduits—is already
+                delivered on-ground. Registry is executed at the sub-registrar office within 15–30 days of statutory
+                agreement.</p>
             </div>
           </div>
 
@@ -3377,7 +4381,10 @@
               <span class="faq-acc-icon"><i class="fa-solid fa-chevron-down"></i></span>
             </button>
             <div class="faq-acc-body">
-              <p>The township provides 40 and 60 ft. wide asphalt roads, concealed storm drainage, dedicated underground electrical conduits, central water supply, 24/7 security with CCTV surveillance, and landscaped botanical gardens. A professional facilities management agency oversees road sweeping, street lighting, and green maintenance.</p>
+              <p>The township provides 40 and 60 ft. wide asphalt roads, concealed storm drainage, dedicated underground
+                electrical conduits, central water supply, 24/7 security with CCTV surveillance, and landscaped
+                botanical gardens. A professional facilities management agency oversees road sweeping, street lighting,
+                and green maintenance.</p>
             </div>
           </div>
 
@@ -3387,7 +4394,10 @@
               <span class="faq-acc-icon"><i class="fa-solid fa-chevron-down"></i></span>
             </button>
             <div class="faq-acc-body">
-              <p>Absolutely. Under RBI general permissions, NRIs and OCIs can freely invest in residential plots in India using standard NRE/NRO banking channels. Our specialized One Roof NRI Advisory team provides seamless remote video verification, Power of Attorney (POA) documentation, and repatriation assistance.</p>
+              <p>Absolutely. Under RBI general permissions, NRIs and OCIs can freely invest in residential plots in
+                India using standard NRE/NRO banking channels. Our specialized One Roof NRI Advisory team provides
+                seamless remote video verification, Power of Attorney (POA) documentation, and repatriation assistance.
+              </p>
             </div>
           </div>
 
@@ -3401,18 +4411,20 @@
     <!-- ======================================================== -->
     <section class="enquiry-sec" id="enquirySection">
       <div class="sec-container">
-        
-                <div class="enquiry-head plot-reveal">
+
+        <div class="enquiry-head plot-reveal">
           <div class="enquiry-eyebrow">Contact Us</div>
           <h2 class="enquiry-title">Begin Your Journey Towards A Timeless Legacy</h2>
-          <p class="enquiry-sub">Connect with One Roof Properties and take the first step towards owning a thoughtfully planned plot crafted for your dreams and aspirations.</p>
+          <p class="enquiry-sub">Connect with One Roof Properties and take the first step towards owning a thoughtfully
+            planned plot crafted for your dreams and aspirations.</p>
         </div>
 
         <div class="enquiry-split plot-reveal">
 
           <!-- Left: Map -->
           <div class="enquiry-map">
-            <iframe src="https://www.google.com/maps?q=Wagholi,+Pune,+Maharashtra&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Project location map"></iframe>
+            <iframe src="https://www.google.com/maps?q=Wagholi,+Pune,+Maharashtra&output=embed" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Project location map"></iframe>
           </div>
 
           <!-- Right: Minimal Form -->
@@ -3452,13 +4464,18 @@
     <div class="nw-footer-inner">
       <div class="nw-footer-top">
         <a href="index.html" class="nw-footer-brand">
-          <img src="assets/one_roof_page-0001.png?v=original" alt="One Roof Properties" style="height:54px;width:auto;object-fit:contain;">
+          <img src="assets/one_roof_page-0001.png?v=original" alt="One Roof Properties"
+            style="height:54px;width:auto;object-fit:contain;">
         </a>
         <div class="nw-footer-socials">
-          <a href="https://linkedin.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="https://youtube.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          <a href="https://facebook.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="https://instagram.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="LinkedIn"><i
+              class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="YouTube"><i
+              class="fa-brands fa-youtube"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="Facebook"><i
+              class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="nw-social-pill"
+            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
         <div class="nw-footer-member">
           <span class="nw-member-label">Member of</span>
@@ -3495,8 +4512,10 @@
           <h4 class="nw-col-title">Reach Out</h4>
           <ul class="nw-col-list">
             <li><a href="tel:+919494168733" class="nw-contact-item">+91-949 416 8733</a></li>
-            <li><a href="mailto:contact@oneroofproperties.com" class="nw-contact-item">contact@oneroofproperties.com</a></li>
-            <li class="nw-contact-item nw-contact-address">One Roof Tower, Financial District,<br>Pune, Maharashtra - 411045</li>
+            <li><a href="mailto:contact@oneroofproperties.com" class="nw-contact-item">contact@oneroofproperties.com</a>
+            </li>
+            <li class="nw-contact-item nw-contact-address">One Roof Tower, Financial District,<br>Pune, Maharashtra -
+              411045</li>
           </ul>
         </div>
       </div>
@@ -3511,9 +4530,11 @@
   </footer>
 
   <!-- Modal Dialog (Nearby Destinations — Mounted at Body Level) -->
-  <div class="connect-modal-backdrop" id="connectModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalDestTitle" onclick="if(event.target === this) closeConnectModal(event);">
+  <div class="connect-modal-backdrop" id="connectModalBackdrop" role="dialog" aria-modal="true"
+    aria-labelledby="modalDestTitle" onclick="if(event.target === this) closeConnectModal(event);">
     <div class="connect-modal-card" onclick="event.stopPropagation();">
-      <button type="button" class="connect-modal-close" id="btnCloseConnectModal" onclick="closeConnectModal(event, true)" aria-label="Close dialog">&#10005;</button>
+      <button type="button" class="connect-modal-close" id="btnCloseConnectModal"
+        onclick="closeConnectModal(event, true)" aria-label="Close dialog">&#10005;</button>
       <div class="connect-modal-eyebrow">Connectivity</div>
       <h3 class="connect-modal-title" id="modalDestTitle">Nearby Destinations</h3>
       <div class="connect-list-table">
@@ -3553,7 +4574,7 @@
     // Global Connectivity Modal Handlers (Accessible from button click and map pins)
     let lastOpenTime = 0;
 
-    window.openConnectModal = function(e) {
+    window.openConnectModal = function (e) {
       if (e) {
         if (e.preventDefault) e.preventDefault();
         if (e.stopPropagation) e.stopPropagation();
@@ -3569,7 +4590,7 @@
       }
     };
 
-    window.closeConnectModal = function(e, force = false) {
+    window.closeConnectModal = function (e, force = false) {
       // Prevent click bleed-through from immediately closing the modal on the same click
       if (!force && Date.now() - lastOpenTime < 350) return;
       if (e && e.stopPropagation) e.stopPropagation();
@@ -3703,7 +4724,7 @@
     // Project Overview — pinned scroll triptych
     (function () {
       const section = document.getElementById('about');
-      const header  = 78;                                     // fixed header height
+      const header = 78;                                     // fixed header height
       const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
       const smooth = t => t * t * (3 - 2 * t);               // smoothstep easing
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -3712,7 +4733,7 @@
       let target = 0, current = 0, raf = null;
 
       function apply(p) {
-        const grow    = smooth(clamp(p / 0.70));              // cards grow during first 70%
+        const grow = smooth(clamp(p / 0.70));              // cards grow during first 70%
         const textOut = smooth(clamp(p / 0.40));              // text fades during first 40%
         const statsIn = smooth(clamp((p - 0.35) / 0.45));     // stats fade in from 35% → 80%
         section.style.setProperty('--p', p.toFixed(4));
@@ -4169,4 +5190,5 @@
 
   </script>
 </body>
+
 </html>

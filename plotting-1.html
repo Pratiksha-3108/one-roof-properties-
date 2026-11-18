@@ -1199,7 +1199,7 @@
       border-top: 1px solid rgba(70, 86, 101, 0.12);
       border-bottom: 1px solid rgba(70, 86, 101, 0.12);
       overflow: hidden;
-      cursor: default;
+      cursor: pointer;
       margin-top: 20px;
     }
 
@@ -1212,52 +1212,97 @@
       pointer-events: none;
     }
 
-    /* Floating Cursor-Tracking "View All" Circle Button with Pop-up Effect */
-    .connect-floating-btn {
+    /* Floating Cursor-Following "View All" Magnetic Badge (Shri Vrinda Style) */
+    .connect-follower {
       position: absolute;
       top: 0;
       left: 0;
       width: 86px;
       height: 86px;
       border-radius: 50%;
-      background: #242c33;
-      color: #ffffff;
-      border: none;
-      font-family: var(--body-font);
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-      cursor: pointer;
+      pointer-events: none;
+      z-index: 40;
+      opacity: 0;
+      transform: translate3d(50vw, 290px, 0) translate(-50%, -50%);
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 14px 36px rgba(17, 30, 38, 0.4);
-      z-index: 40;
-      pointer-events: auto;
-      will-change: transform;
-      transform: translate3d(-50%, -50%, 0);
-      transition: background 0.25s, box-shadow 0.25s;
+      user-select: none;
+      -webkit-user-select: none;
     }
-    .connect-floating-btn::before {
-      content: '';
+
+    .connect-map-stage.has-cursor .connect-follower,
+    .connect-map-stage:hover .connect-follower {
+      opacity: 1;
+    }
+
+    /* Concentric Ping / Radar Ripples */
+    .connect-follower-ring {
       position: absolute;
-      inset: -12px;
+      inset: -10px;
       border-radius: 50%;
-      background: rgba(36, 44, 51, 0.14);
-      animation: hubPulse 2.5s infinite ease-out;
+      background: rgba(36, 44, 51, 0.32);
       pointer-events: none;
     }
-    @keyframes hubPulse {
-      0% { transform: scale(0.9); opacity: 0.8; }
-      50% { transform: scale(1.25); opacity: 0.15; }
-      100% { transform: scale(0.9); opacity: 0.8; }
+    .connect-follower-ring.ring-1 {
+      animation: pingRadar 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
-    .connect-floating-btn:hover {
-      background: #111e26;
-      box-shadow: 0 18px 45px rgba(217, 119, 6, 0.35);
+    .connect-follower-ring.ring-2 {
+      animation: pingRadar 2.2s cubic-bezier(0, 0, 0.2, 1) infinite 0.75s;
     }
-    .connect-floating-btn:active {
-      transform: translate3d(-50%, -50%, 0) scale(0.92) !important;
+
+    @keyframes pingRadar {
+      0% {
+        transform: scale(0.85);
+        opacity: 0.85;
+      }
+      70%, 100% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
+    }
+
+    /* Solid Core Pill */
+    .connect-follower-core {
+      position: relative;
+      z-index: 2;
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      background: rgba(36, 44, 51, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #FFF8EE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--body-font);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      box-shadow: 0 14px 36px rgba(17, 30, 38, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: transform 0.18s ease;
+      pointer-events: none;
+    }
+
+    .connect-map-stage:active .connect-follower-core {
+      transform: scale(0.94);
+    }
+
+    /* Touch & Mobile Fallback */
+    @media (max-width: 768px), (pointer: coarse) {
+      .connect-follower {
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+      }
     }
 
     /* Interactive Location Pins */
@@ -1351,7 +1396,10 @@
       box-sizing: border-box;
     }
     .connect-modal-backdrop.open {
-      display: flex;
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
     }
 
     .connect-modal-card {
@@ -1425,7 +1473,7 @@
       align-items: center;
       justify-content: space-between;
       padding: clamp(16px, 2.2vh, 22px) 2px;
-      border-bottom: 1px solid rgba(70, 86, 101, 0.35);
+      border-bottom: 1px solid #1f343f;
       transition: background 0.15s ease;
       gap: 20px;
     }
@@ -1434,16 +1482,16 @@
     }
     .connect-list-name {
       font-family: 'Cormorant Garamond', 'Nanum Myeongjo', Georgia, serif;
-      font-size: clamp(1.12rem, 1.35vw, 1.28rem);
+      font-size: clamp(1.15rem, 1.4vw, 1.32rem);
       font-weight: 400;
       color: #1f343f;
       letter-spacing: 0.1px;
     }
     .connect-list-time {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(0.9rem, 1.05vw, 1rem);
+      font-family: 'Cormorant Garamond', 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(1.05rem, 1.25vw, 1.2rem);
       font-weight: 400;
-      color: #465665;
+      color: #555555;
       text-align: right;
       letter-spacing: 0.3px;
       white-space: nowrap;
@@ -3059,13 +3107,17 @@
           <circle cx="850" cy="280" r="220" stroke="rgba(217, 119, 6, 0.09)" stroke-width="1.5" stroke-dasharray="5 5" fill="none" />
         </svg>
 
-        <!-- Floating, Animated Cursor-Tracking "View All" Button with Pop-up Effect -->
-        <button type="button" class="connect-floating-btn" id="btnConnectFloating" onclick="openConnectModal(event)" aria-label="View all nearby destinations">
-          <span>View All</span>
-        </button>
+        <!-- Floating Cursor-Following "View All" Circle with Concentric Ping Ripples (Shri Vrinda Animation) -->
+        <div class="connect-follower connect-floating-btn" id="btnConnectFloating" onclick="openConnectModal(event)" aria-label="View all nearby destinations">
+          <span class="connect-follower-ring ring-1"></span>
+          <span class="connect-follower-ring ring-2"></span>
+          <div class="connect-follower-core">
+            <span>View All</span>
+          </div>
+        </div>
 
         <!-- Pin 1: North Expressway -->
-        <div class="connect-pin pin-1">
+        <div class="connect-pin pin-1" onclick="openConnectModal(event)">
           <div class="connect-card">
             <div class="connect-card-name">North Expressway Exit</div>
             <div class="connect-card-time">2 mins</div>
@@ -3073,8 +3125,8 @@
           <div class="connect-marker-icon"><div class="connect-marker-dot"></div></div>
         </div>
 
-        <!-- Pin 2: Ring Road -->
-        <div class="connect-pin pin-2">
+        <!-- Pin 2: Upcoming Ring Road -->
+        <div class="connect-pin pin-2" onclick="openConnectModal(event)">
           <div class="connect-card">
             <div class="connect-card-name">Upcoming Ring Road</div>
             <div class="connect-card-time">5 mins</div>
@@ -3082,8 +3134,8 @@
           <div class="connect-marker-icon"><div class="connect-marker-dot"></div></div>
         </div>
 
-        <!-- Pin 3: Wagholi Centre -->
-        <div class="connect-pin pin-3">
+        <!-- Pin 3: Wagholi City Centre -->
+        <div class="connect-pin pin-3" onclick="openConnectModal(event)">
           <div class="connect-card">
             <div class="connect-card-name">Wagholi City Centre</div>
             <div class="connect-card-time">10 mins</div>
@@ -3092,7 +3144,7 @@
         </div>
 
         <!-- Pin 4: Kharadi EON IT Park -->
-        <div class="connect-pin pin-4">
+        <div class="connect-pin pin-4" onclick="openConnectModal(event)">
           <div class="connect-card">
             <div class="connect-card-name">Kharadi EON IT Park</div>
             <div class="connect-card-time">15 mins</div>
@@ -3100,8 +3152,8 @@
           <div class="connect-marker-icon"><div class="connect-marker-dot"></div></div>
         </div>
 
-        <!-- Pin 5: Pune Airport -->
-        <div class="connect-pin pin-5">
+        <!-- Pin 5: Pune International Airport -->
+        <div class="connect-pin pin-5" onclick="openConnectModal(event)">
           <div class="connect-card">
             <div class="connect-card-name">Pune International Airport</div>
             <div class="connect-card-time">20 mins</div>
@@ -3109,8 +3161,8 @@
           <div class="connect-marker-icon"><div class="connect-marker-dot"></div></div>
         </div>
 
-        <!-- Pin 6: Railway Station -->
-        <div class="connect-pin pin-6">
+        <!-- Pin 6: Pune Railway Junction -->
+        <div class="connect-pin pin-6" onclick="openConnectModal(event)">
           <div class="connect-card">
             <div class="connect-card-name">Pune Railway Junction</div>
             <div class="connect-card-time">30 mins</div>
@@ -3120,45 +3172,6 @@
 
       </div>
     </section>
-
-    <!-- Modal Dialog (Nearby Destinations — Shri Vrinda Exact Design Replica) -->
-    <div class="connect-modal-backdrop" id="connectModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalDestTitle" onclick="if(event.target === this) closeConnectModal();">
-      <div class="connect-modal-card">
-        <button type="button" class="connect-modal-close" id="btnCloseConnectModal" onclick="closeConnectModal()" aria-label="Close dialog">&#10005;</button>
-        <div class="connect-modal-eyebrow">Connectivity</div>
-        <h3 class="connect-modal-title" id="modalDestTitle">Nearby Destinations</h3>
-        <div class="connect-list-table">
-          <div class="connect-list-row">
-            <span class="connect-list-name">North Expressway Exit</span>
-            <span class="connect-list-time">2 mins</span>
-          </div>
-          <div class="connect-list-row">
-            <span class="connect-list-name">Upcoming Ring Road</span>
-            <span class="connect-list-time">5 mins</span>
-          </div>
-          <div class="connect-list-row">
-            <span class="connect-list-name">Wagholi City Centre</span>
-            <span class="connect-list-time">10 mins</span>
-          </div>
-          <div class="connect-list-row">
-            <span class="connect-list-name">Kharadi EON IT Park</span>
-            <span class="connect-list-time">15 mins</span>
-          </div>
-          <div class="connect-list-row">
-            <span class="connect-list-name">Pune International Airport</span>
-            <span class="connect-list-time">20 mins</span>
-          </div>
-          <div class="connect-list-row">
-            <span class="connect-list-name">Hadapsar &amp; Magarpatta Cybercity</span>
-            <span class="connect-list-time">25 mins</span>
-          </div>
-          <div class="connect-list-row">
-            <span class="connect-list-name">Pune Railway Junction</span>
-            <span class="connect-list-time">30 mins</span>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- ======================================================== -->
     <!-- 06 — SPECIFICATIONS (PINNED SCROLL TRACK)                -->
@@ -3497,7 +3510,83 @@
     </div>
   </footer>
 
+  <!-- Modal Dialog (Nearby Destinations — Mounted at Body Level) -->
+  <div class="connect-modal-backdrop" id="connectModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalDestTitle" onclick="if(event.target === this) closeConnectModal(event);">
+    <div class="connect-modal-card" onclick="event.stopPropagation();">
+      <button type="button" class="connect-modal-close" id="btnCloseConnectModal" onclick="closeConnectModal(event, true)" aria-label="Close dialog">&#10005;</button>
+      <div class="connect-modal-eyebrow">Connectivity</div>
+      <h3 class="connect-modal-title" id="modalDestTitle">Nearby Destinations</h3>
+      <div class="connect-list-table">
+        <div class="connect-list-row">
+          <span class="connect-list-name">North Expressway Exit</span>
+          <span class="connect-list-time">2 mins</span>
+        </div>
+        <div class="connect-list-row">
+          <span class="connect-list-name">Upcoming Ring Road</span>
+          <span class="connect-list-time">5 mins</span>
+        </div>
+        <div class="connect-list-row">
+          <span class="connect-list-name">Wagholi City Centre</span>
+          <span class="connect-list-time">10 mins</span>
+        </div>
+        <div class="connect-list-row">
+          <span class="connect-list-name">Kharadi EON IT Park</span>
+          <span class="connect-list-time">15 mins</span>
+        </div>
+        <div class="connect-list-row">
+          <span class="connect-list-name">Pune International Airport</span>
+          <span class="connect-list-time">20 mins</span>
+        </div>
+        <div class="connect-list-row">
+          <span class="connect-list-name">Hadapsar &amp; Magarpatta Cybercity</span>
+          <span class="connect-list-time">25 mins</span>
+        </div>
+        <div class="connect-list-row">
+          <span class="connect-list-name">Pune Railway Junction</span>
+          <span class="connect-list-time">30 mins</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Global Connectivity Modal Handlers (Accessible from button click and map pins)
+    let lastOpenTime = 0;
+
+    window.openConnectModal = function(e) {
+      if (e) {
+        if (e.preventDefault) e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
+      }
+      lastOpenTime = Date.now();
+      const m = document.getElementById('connectModalBackdrop');
+      if (m) {
+        m.classList.add('open');
+        m.style.setProperty('display', 'flex', 'important');
+        m.style.setProperty('visibility', 'visible', 'important');
+        m.style.setProperty('opacity', '1', 'important');
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    window.closeConnectModal = function(e, force = false) {
+      // Prevent click bleed-through from immediately closing the modal on the same click
+      if (!force && Date.now() - lastOpenTime < 350) return;
+      if (e && e.stopPropagation) e.stopPropagation();
+      const m = document.getElementById('connectModalBackdrop');
+      if (m) {
+        m.classList.remove('open');
+        m.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+      }
+    };
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        window.closeConnectModal(null, true);
+      }
+    });
+
     // Header Scroll Effect & Mobile Drawer
     (function initNav() {
       const header = document.getElementById('mainHeader');
@@ -3797,103 +3886,115 @@
     })();
 
     // ========================================================
-    // 05 — CONNECTIVITY MAP: CURSOR-TRACKING "VIEW ALL" & MODAL CONTROLLER
+    // 05 — CONNECTIVITY MAP: "VIEW ALL" & MODAL CONTROLLER
     // ========================================================
     (function initConnectivityMap() {
       const stage = document.getElementById('connectMapStage');
-      const btn = document.getElementById('btnConnectFloating');
+      const follower = document.getElementById('btnConnectFloating');
       const modal = document.getElementById('connectModalBackdrop');
       const closeBtn = document.getElementById('btnCloseConnectModal');
       const pins = document.querySelectorAll('.connect-pin');
-      if (!stage || !btn) return;
 
-      let stageRect = stage.getBoundingClientRect();
-      let targetX = stageRect.width / 2;
-      let targetY = stageRect.height / 2;
-      let currentX = targetX;
-      let currentY = targetY;
-      let isHovered = false;
-      let rafId = null;
+      if (!stage) return;
 
-      function updateStageRect() {
-        stageRect = stage.getBoundingClientRect();
-        if (!isHovered) {
-          targetX = stageRect.width / 2;
-          targetY = stageRect.height / 2;
-        }
-      }
-
-      window.addEventListener('resize', updateStageRect);
-
-      function loop() {
-        // Smooth lerp movement (0.12 factor gives fluid organic trailing)
-        currentX += (targetX - currentX) * 0.12;
-        currentY += (targetY - currentY) * 0.12;
-
-        const scale = isHovered ? 1.15 : 1.0;
-        btn.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0) translate(-50%, -50%) scale(${scale})`;
-
-        rafId = requestAnimationFrame(loop);
-      }
-
-      loop();
-
-      stage.addEventListener('mousemove', (e) => {
-        isHovered = true;
-        const rect = stage.getBoundingClientRect();
-        const padding = 50;
-        targetX = Math.max(padding, Math.min(rect.width - padding, e.clientX - rect.left));
-        targetY = Math.max(padding, Math.min(rect.height - padding, e.clientY - rect.top));
+      // Clicking anywhere on the map stage opens modal on the first click
+      stage.addEventListener('click', (e) => {
+        window.openConnectModal(e);
       });
 
-      stage.addEventListener('mouseleave', () => {
-        isHovered = false;
-        targetX = stageRect.width / 2;
-        targetY = stageRect.height / 2;
-      });
-
-      function openModal(e) {
-        if (e && e.stopPropagation) e.stopPropagation();
-        if (!modal) return;
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
+      if (follower) {
+        follower.addEventListener('click', (e) => {
+          e.stopPropagation();
+          window.openConnectModal(e);
+        });
       }
-
-      function closeModal() {
-        if (!modal) return;
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-
-      window.openConnectModal = openModal;
-      window.closeConnectModal = closeModal;
-
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        openModal(e);
-      });
-
-      if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
       pins.forEach(pin => {
         pin.addEventListener('click', (e) => {
           e.stopPropagation();
-          openModal(e);
+          window.openConnectModal(e);
         });
       });
 
+      if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          window.closeConnectModal(e, true);
+        });
+      }
+
       if (modal) {
         modal.addEventListener('click', (e) => {
-          if (e.target === modal) closeModal();
+          if (e.target === modal) window.closeConnectModal(e);
         });
       }
 
       window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
-          closeModal();
+        if (e.key === 'Escape') {
+          window.closeConnectModal(null, true);
         }
       });
+
+      // Smooth Cursor Follower Animation (Organic Lerp tracking like Shri Vrinda)
+      if (follower && window.matchMedia('(pointer: fine)').matches) {
+        let rect = stage.getBoundingClientRect();
+        let targetX = rect.width / 2;
+        let targetY = rect.height / 2;
+        let currentX = targetX;
+        let currentY = targetY;
+        let isHovered = false;
+        let animFrameId = null;
+
+        const updateBounds = () => {
+          rect = stage.getBoundingClientRect();
+        };
+
+        window.addEventListener('resize', updateBounds, { passive: true });
+        window.addEventListener('scroll', updateBounds, { passive: true });
+
+        const render = () => {
+          // Smooth Lerp spring
+          currentX += (targetX - currentX) * 0.18;
+          currentY += (targetY - currentY) * 0.18;
+
+          follower.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0) translate(-50%, -50%)`;
+
+          if (isHovered || Math.abs(targetX - currentX) > 0.3 || Math.abs(targetY - currentY) > 0.3) {
+            animFrameId = requestAnimationFrame(render);
+          } else {
+            animFrameId = null;
+          }
+        };
+
+        stage.addEventListener('mouseenter', (e) => {
+          updateBounds();
+          isHovered = true;
+          stage.classList.add('has-cursor');
+          targetX = e.clientX - rect.left;
+          targetY = e.clientY - rect.top;
+          currentX = targetX;
+          currentY = targetY;
+          follower.style.opacity = '1';
+          if (!animFrameId) animFrameId = requestAnimationFrame(render);
+        });
+
+        stage.addEventListener('mousemove', (e) => {
+          targetX = e.clientX - rect.left;
+          targetY = e.clientY - rect.top;
+          if (!isHovered) {
+            isHovered = true;
+            stage.classList.add('has-cursor');
+            follower.style.opacity = '1';
+          }
+          if (!animFrameId) animFrameId = requestAnimationFrame(render);
+        });
+
+        stage.addEventListener('mouseleave', () => {
+          isHovered = false;
+          stage.classList.remove('has-cursor');
+          follower.style.opacity = '0';
+        });
+      }
     })();
 
     // ========================================================

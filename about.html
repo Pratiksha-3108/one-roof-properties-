@@ -144,39 +144,374 @@
       .cv-floating-card { left: 20px !important; right: 20px !important; bottom: 24px !important; width: auto !important; transform: none !important; opacity: 1 !important; padding: 24px; }
     }
 
-    /* ===== WHY ONE ROOF (pinned, one-by-one card stack) ===== */
-    #whyOneRoofSection { position: relative; height: 520vh; width: 100%; color: var(--brand-navy); background: #FAF8EE; border-top: 1px solid rgba(70,86,101,0.1); }
-    .wor-pin { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; padding-top: 70px;
-      background: radial-gradient(circle at 18% 50%, #F3EFE2 0%, #FAF8EE 70%, #F5F2E6 100%); }
-    .wor-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(70,86,101,0.1); pointer-events: none; right: -260px; top: 50%; transform: translateY(-50%); }
-    .wor-ring.r1 { width: 560px; height: 560px; } .wor-ring.r2 { width: 800px; height: 800px; right: -380px; } .wor-ring.r3 { width: 1040px; height: 1040px; right: -500px; }
-    .wor-container { position: relative; z-index: 2; width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 clamp(24px, 4.5vw, 64px); display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(40px, 7vw, 110px); align-items: center; }
-    .wor-eyebrow { display: inline-block; margin-bottom: 20px; color: var(--brand-gold); }
-    .wor-title { font-family: var(--head-font); font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: var(--brand-navy-deep); margin: 0 0 24px; }
-    .wor-lead { font-family: var(--body-font); font-size: clamp(0.96rem, 1.1vw, 1.05rem); line-height: 1.7; color: var(--brand-navy); max-width: 420px; margin: 0 0 34px; }
-    .wor-prog { display: flex; gap: 10px; margin-bottom: 34px; }
-    .wor-prog span { position: relative; width: 52px; height: 2px; background: rgba(70,86,101,0.2); overflow: hidden; }
-    .wor-prog i { position: absolute; inset: 0; background: var(--brand-gold); transform: scaleX(0); transform-origin: left; }
-    .wor-cta { display: inline-flex; align-items: center; padding: 14px 30px; border: 1.5px solid var(--brand-navy-deep); border-radius: 999px; color: var(--brand-navy-deep); font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; box-shadow: 0 4px 14px rgba(70,86,101,0.08); transition: all 0.35s cubic-bezier(0.22,1,0.36,1); }
-    .wor-cta:hover { background: var(--brand-navy-deep); color: #FAF8EE; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(31,52,63,0.22); }
-    .wor-stage { position: relative; width: 100%; height: clamp(340px, 50vh, 420px); }
-    .wor-card { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(28px, 3.2vw, 44px); border-radius: 22px; color: inherit;
-      background: #FBF9F3; border: 1px solid rgba(70,86,101,0.32); box-shadow: 0 22px 48px rgba(70,86,101,0.14);
-      transform-origin: 50% 0; will-change: transform, opacity, filter; opacity: 0; }
-    .wor-card-top { display: flex; align-items: center; justify-content: space-between; }
-    .wor-icon { width: 64px; height: 64px; border-radius: 50%; border: 1px solid rgba(70,86,101,0.3); background: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--brand-gold); }
-    .wor-count { font-family: var(--body-font); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.2em; color: var(--brand-muted); }
-    .wor-row-title { font-family: var(--head-font); font-size: clamp(2rem, 3vw, 2.9rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.015em; color: var(--brand-navy-deep); margin: 0 0 14px; }
-    .wor-row-desc { font-family: var(--body-font); font-size: clamp(0.96rem, 1.1vw, 1.05rem); line-height: 1.7; color: var(--brand-navy); margin: 0 0 22px; max-width: 460px; }
-    .wor-link { display: inline-flex; align-items: center; gap: 10px; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--brand-navy-deep); border-bottom: 1.5px solid var(--brand-navy-deep); padding-bottom: 4px; transition: color 0.25s ease, border-color 0.25s ease; }
-    .wor-card:hover .wor-link { color: var(--brand-gold); border-color: var(--brand-gold); }
-    @media (max-width: 960px), (prefers-reduced-motion: reduce) {
-      #whyOneRoofSection { height: auto; }
-      .wor-pin { position: relative; height: auto; overflow: visible; padding: 80px 0; }
-      .wor-container { grid-template-columns: 1fr; gap: 40px; }
-      .wor-prog { display: none; }
-      .wor-stage { height: auto; display: flex; flex-direction: column; gap: 18px; }
-      .wor-card { position: relative; inset: auto; opacity: 1 !important; transform: none !important; filter: none !important; gap: 26px; }
+    /* ===== WHY CHOOSE US (Arched Timeline Layout — Brand Theme) ===== */
+    #whyOneRoofSection {
+      position: relative;
+      background: radial-gradient(circle at 18% 50%, #F3EFE2 0%, #FAF8EE 70%, #F5F2E6 100%);
+      color: var(--brand-navy);
+      padding: clamp(90px, 12vh, 140px) 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(70, 86, 101, 0.12);
+      border-bottom: 1px solid rgba(70, 86, 101, 0.12);
+    }
+    .wor-grid-bg {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      opacity: 0.16;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(70, 86, 101, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(70, 86, 101, 0.12) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .wor-inner-wrap {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 56px);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Desktop Layout */
+    .wor-desktop-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(32px, 5vw, 70px);
+      position: relative;
+      min-height: 960px;
+    }
+    .wor-timeline-canvas {
+      position: relative;
+      width: 100%;
+      min-height: 960px;
+    }
+    .wor-curve-svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 400px;
+      height: 960px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .wor-curve-svg path {
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .wor-arch-wrap {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 240px;
+      border-radius: 0 120px 120px 0;
+      overflow: hidden;
+      background: #ffffff;
+      border: 2px solid rgba(94, 87, 27, 0.35);
+      box-shadow: 0 20px 48px rgba(70, 86, 101, 0.14);
+      transition: top 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 5;
+    }
+    .wor-arch-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: opacity 0.45s ease, transform 0.6s ease;
+    }
+    .wor-arch-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(31, 52, 63, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .wor-step-item {
+      position: absolute;
+      display: flex;
+      align-items: flex-start;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .wor-step-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+      flex-shrink: 0;
+      position: relative;
+      transition: all 0.5s ease;
+    }
+    .wor-step-item.is-active .wor-step-badge {
+      background: var(--brand-navy-deep);
+      color: #FAF8EE;
+      transform: scale(1.12);
+      box-shadow: 0 4px 14px rgba(31, 52, 63, 0.25);
+      outline: 4px solid rgba(94, 87, 27, 0.22);
+    }
+    .wor-step-item:not(.is-active) .wor-step-badge {
+      background: #ffffff;
+      color: var(--brand-navy);
+      border: 1.5px solid rgba(70, 86, 101, 0.24);
+      box-shadow: 0 3px 10px rgba(70, 86, 101, 0.06);
+    }
+    .wor-step-item:not(.is-active):hover .wor-step-badge {
+      background: var(--brand-navy-deep);
+      color: #FAF8EE;
+      border-color: var(--brand-navy-deep);
+      transform: scale(1.06);
+    }
+    .wor-step-text {
+      margin-left: 24px;
+      margin-top: 2px;
+    }
+    .wor-step-title {
+      font-family: var(--head-font);
+      font-size: clamp(1.25rem, 1.6vw, 1.45rem);
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 0 0 6px;
+      letter-spacing: -0.01em;
+      transition: color 0.4s ease;
+    }
+    .wor-step-item.is-active .wor-step-title {
+      color: var(--brand-navy-deep);
+    }
+    .wor-step-item:not(.is-active) .wor-step-title {
+      color: var(--brand-muted);
+    }
+    .wor-step-item:not(.is-active):hover .wor-step-title {
+      color: var(--brand-navy-deep);
+    }
+    .wor-step-desc {
+      font-family: var(--body-font);
+      font-size: clamp(0.92rem, 1.05vw, 1rem);
+      font-weight: 400;
+      line-height: 1.7;
+      margin: 0;
+      transition: color 0.4s ease, opacity 0.4s ease;
+    }
+    .wor-step-item.is-active .wor-step-desc {
+      color: var(--brand-navy);
+      opacity: 1;
+    }
+    .wor-step-item:not(.is-active) .wor-step-desc {
+      color: var(--brand-muted);
+      opacity: 0.85;
+    }
+
+    /* Right Sticky Showcase */
+    .wor-showcase-col {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .wor-sticky-panel {
+      position: sticky;
+      top: clamp(90px, 12vh, 120px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: clamp(20px, 3vh, 36px) 16px 20px;
+    }
+    .wor-eyebrow-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--body-font);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--brand-gold);
+      margin-bottom: 14px;
+    }
+    .wor-eyebrow-tag::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--brand-gold);
+    }
+    .wor-main-title {
+      font-family: var(--head-font);
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--brand-navy-deep);
+      margin: 0 0 18px;
+    }
+    .wor-gold-accent {
+      color: var(--brand-gold);
+      font-style: normal;
+    }
+    .wor-main-desc {
+      font-family: var(--body-font);
+      font-size: clamp(0.96rem, 1.1vw, 1.05rem);
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--brand-navy);
+      max-width: 440px;
+      margin: 0 auto clamp(24px, 3.5vh, 40px);
+    }
+    .wor-villa-wrap {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .wor-villa-img {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 32px rgba(31, 52, 63, 0.16));
+      animation: worFloat 5s ease-in-out infinite;
+      transition: transform 0.4s ease;
+    }
+    .wor-villa-img:hover {
+      transform: scale(1.04);
+    }
+    @keyframes worFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Mobile / Tablet Accordion Layout */
+    .wor-mobile-layout {
+      display: none;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .wor-mobile-header {
+      text-align: center;
+    }
+    .wor-mobile-track {
+      position: relative;
+      padding-left: clamp(24px, 6vw, 32px);
+    }
+    .wor-mobile-line {
+      position: absolute;
+      left: 15px;
+      top: 14px;
+      bottom: 24px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--brand-gold) 0%, rgba(94, 87, 27, 0.4) 70%, rgba(70, 86, 101, 0.15) 100%);
+    }
+    .wor-mobile-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .wor-mobile-card {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      cursor: pointer;
+    }
+    .wor-mobile-badge {
+      position: absolute;
+      left: -24px;
+      top: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .wor-mobile-card.is-active .wor-mobile-badge {
+      background: var(--brand-navy-deep);
+      color: #FAF8EE;
+      outline: 4px solid rgba(94, 87, 27, 0.22);
+      box-shadow: 0 4px 12px rgba(31, 52, 63, 0.2);
+    }
+    .wor-mobile-card:not(.is-active) .wor-mobile-badge {
+      background: #ffffff;
+      color: var(--brand-navy);
+      border: 1.5px solid rgba(70, 86, 101, 0.22);
+      box-shadow: 0 2px 8px rgba(70, 86, 101, 0.05);
+    }
+    .wor-mobile-body {
+      width: 100%;
+      border-radius: 16px;
+      padding: 18px 20px;
+      transition: all 0.35s ease;
+      border: 1px solid rgba(70, 86, 101, 0.14);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .wor-mobile-card.is-active .wor-mobile-body {
+      background: #ffffff;
+      border-color: rgba(94, 87, 27, 0.45);
+      box-shadow: 0 12px 30px rgba(70, 86, 101, 0.12);
+    }
+    .wor-mobile-card-title {
+      font-family: var(--head-font);
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 0 0 6px;
+      color: var(--brand-muted);
+      transition: color 0.3s ease;
+    }
+    .wor-mobile-card.is-active .wor-mobile-card-title {
+      color: var(--brand-navy-deep);
+    }
+    .wor-mobile-card-desc {
+      font-family: var(--body-font);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--brand-navy);
+      margin: 0;
+    }
+    .wor-mobile-card-thumb {
+      margin-top: 14px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(94, 87, 27, 0.25);
+      box-shadow: 0 6px 18px rgba(70, 86, 101, 0.1);
+      display: none;
+    }
+    .wor-mobile-card.is-active .wor-mobile-card-thumb {
+      display: block;
+    }
+    .wor-mobile-card-thumb img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+    }
+    .wor-mobile-villa-bottom {
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+    }
+    .wor-mobile-villa-bottom img {
+      max-width: 320px;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 14px 26px rgba(31, 52, 63, 0.16));
+    }
+
+    @media (max-width: 1023px) {
+      .wor-desktop-grid { display: none !important; }
+      .wor-mobile-layout { display: flex !important; }
+      .wor-grid-bg { width: 100%; }
     }
 
     /* ===== PROCESS ===== */
@@ -191,7 +526,7 @@
     .proc-btn:hover { background: var(--brand-navy-deep); color: #FAF8EE; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(31,52,63,0.22); }
     .proc-timeline-col { position: relative; padding-left: 10px; }
     .proc-step-list { display: flex; flex-direction: column; position: relative; }
-    .proc-step-item { display: grid; grid-template-columns: 46px 1fr 90px; gap: clamp(20px, 3vw, 36px); align-items: stretch; cursor: pointer; padding: 6px 0; opacity: 0.55; transform: translateY(14px); transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22,1,0.36,1); }
+    .proc-step-item { display: grid; grid-template-columns: 46px 1fr; gap: clamp(20px, 3vw, 36px); align-items: stretch; cursor: pointer; padding: 6px 0; opacity: 0.55; transform: translateY(14px); transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22,1,0.36,1); }
     .proc-step-item.is-active, .proc-step-item:hover { opacity: 1; transform: translateY(0); }
     .proc-node-col { display: flex; flex-direction: column; align-items: center; align-self: stretch; position: relative; width: 46px; flex-shrink: 0; }
     .proc-node-circle { width: 44px; height: 44px; border-radius: 50%; border: 1.8px solid var(--brand-navy); background: #ffffff; color: var(--brand-navy); display: flex; align-items: center; justify-content: center; font-family: 'Jost', sans-serif; font-size: 0.84rem; font-weight: 600; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(70,86,101,0.08); transition: all 0.35s cubic-bezier(0.22,1,0.36,1); position: relative; z-index: 5; flex-shrink: 0; }
@@ -206,50 +541,60 @@
     .proc-step-title { font-family: var(--head-font); font-size: clamp(1.4rem, 1.9vw, 1.75rem); font-weight: 600; color: var(--brand-navy-deep); line-height: 1.25; margin: 0 0 8px 0; letter-spacing: -0.01em; transition: transform 0.3s ease; }
     .proc-step-item.is-active .proc-step-title, .proc-step-item:hover .proc-step-title { transform: translateX(2px); }
     .proc-step-desc { font-family: var(--body-font); font-size: clamp(0.92rem, 1.05vw, 1rem); font-weight: 400; line-height: 1.7; color: var(--brand-navy); margin: 0; max-width: 460px; }
-    .proc-watermark-num { font-family: var(--head-font); font-size: clamp(3.2rem, 5vw, 5rem); font-weight: 600; color: rgba(31,52,63,0.08); line-height: 0.85; text-align: right; user-select: none; padding-top: 4px; transition: color 0.4s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1); }
-    .proc-step-item.is-active .proc-watermark-num, .proc-step-item:hover .proc-watermark-num { color: rgba(31,52,63,0.18); transform: scale(1.05) translateX(3px); }
     @media (max-width: 960px) {
       #processSection { padding: 70px 0 80px; }
       .proc-container { grid-template-columns: 1fr; gap: 50px; padding: 0 20px; }
       .proc-pitch-col { position: relative; top: auto; }
       .proc-timeline-col { padding-left: 0; }
       .proc-step-item { grid-template-columns: 46px 1fr; gap: 16px; }
-      .proc-watermark-num { display: none; }
     }
 
-    /* ===== TEAM ===== */
-    .team-split-section { background: radial-gradient(circle at 18% 50%, #F3EFE2 0%, #FAF8EE 70%, #F5F2E6 100%); padding: clamp(80px, 9vh, 120px) 0; position: relative; overflow: hidden; }
-    .team-split-container { max-width: 1320px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); }
-    .team-header-center { text-align: center; max-width: 760px; margin: 0 auto clamp(44px, 6vw, 68px); opacity: 0; transform: translateY(24px); transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1); }
+    /* ===== TEAM — pinned horizontal-scroll strip + hover reveal ===== */
+    .team-split-section { position: relative; background: #FAF8EE; --team-travel: 150vh; height: calc(100vh + var(--team-travel)); }
+    .team-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; padding: clamp(70px, 9vh, 98px) 0 clamp(20px, 3vh, 36px); background: radial-gradient(circle at 18% 50%, #F3EFE2 0%, #FAF8EE 70%, #F5F2E6 100%); }
+    .team-header-center { text-align: center; max-width: 820px; margin: 0 auto; padding: 0 24px; flex: none; opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
     .team-split-section.is-visible .team-header-center { opacity: 1; transform: translateY(0); }
-    .team-title-hero { font-family: var(--head-font); font-size: clamp(2.4rem, 4.2vw, 3.8rem); font-weight: 500; color: var(--brand-navy-deep); letter-spacing: -0.015em; line-height: 1.15; margin: 0 0 16px; }
-    .team-subtitle-lead { font-family: var(--body-font); font-size: clamp(0.95rem, 1.05vw, 1.05rem); font-weight: 400; line-height: 1.7; color: var(--brand-navy); margin: 0 auto; max-width: 660px; }
-    .team-grid-4col { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(18px, 2.2vw, 28px); }
-    .team-card-unit { background: #ffffff; border: 1px solid rgba(70,86,101,0.14); border-radius: 4px; overflow: hidden; box-shadow: 0 8px 24px rgba(70,86,101,0.06); display: flex; flex-direction: column; color: inherit; position: relative; opacity: 0; transform: translateY(35px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1) var(--delay, 0s), transform 0.8s cubic-bezier(0.22,1,0.36,1) var(--delay, 0s), box-shadow 0.35s ease; }
-    .team-split-section.is-visible .team-card-unit { opacity: 1; transform: translateY(0); }
-    .team-split-section.is-visible .team-card-unit:hover { transform: translateY(-8px); box-shadow: 0 20px 42px rgba(31,52,63,0.16); border-color: rgba(31,52,63,0.28); }
-    .team-photo-wrap { width: 100%; aspect-ratio: 1 / 1.08; overflow: hidden; background: #111e26; }
-    .team-photo-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(14%) contrast(105%); transition: transform 0.65s cubic-bezier(0.22,1,0.36,1), filter 0.45s ease; }
-    .team-card-unit:hover .team-photo-img { transform: scale(1.07); filter: grayscale(0%) contrast(100%); }
-    .team-social-strip { display: flex; align-items: center; background: #f8fafc; border-top: 1px solid rgba(70,86,101,0.08); border-bottom: 1px solid rgba(70,86,101,0.1); }
-    .team-social-icon-box { width: 48px; height: 48px; min-width: 48px; background: #1f343f; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 1.18rem; transition: background 0.3s ease; }
-    .team-card-unit:hover .team-social-icon-box { background: #0077b5; }
-    .team-social-text { padding: 0 16px; font-family: 'Jost', sans-serif; font-size: 0.82rem; font-weight: 500; color: var(--brand-muted); letter-spacing: 0.3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; transition: color 0.3s ease; }
-    .team-card-unit:hover .team-social-text { color: var(--brand-navy-deep); }
-    .team-info-box { padding: 24px 22px 22px; background: #ffffff; position: relative; flex: 1; display: flex; flex-direction: column; justify-content: center; transition: background 0.35s cubic-bezier(0.22,1,0.36,1); }
-    .team-person-name { font-family: var(--head-font); font-size: 1.5rem; font-weight: 600; color: var(--brand-navy-deep); margin: 0 0 5px; line-height: 1.2; letter-spacing: -0.01em; padding-right: 36px; transition: color 0.3s ease; }
-    .team-person-role { font-family: var(--body-font); font-size: 0.88rem; color: var(--brand-muted); margin: 0; font-weight: 400; line-height: 1.5; padding-right: 36px; transition: color 0.3s ease; }
-    .team-arrow-btn { position: absolute; right: 22px; bottom: 22px; font-size: 1.28rem; color: var(--brand-navy-deep); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), color 0.3s ease; }
-    .team-card-unit:hover .team-arrow-btn { transform: translateX(6px); }
-    .team-card-unit:hover .team-info-box, .team-card-unit.is-highlighted .team-info-box { background: var(--brand-navy-deep); }
-    .team-card-unit:hover .team-person-name, .team-card-unit.is-highlighted .team-person-name { color: #FAF8EE; }
-    .team-card-unit:hover .team-person-role, .team-card-unit.is-highlighted .team-person-role { color: rgba(250,248,238,0.82); }
-    .team-card-unit:hover .team-arrow-btn, .team-card-unit.is-highlighted .team-arrow-btn { color: #FAF8EE; }
-    .team-card-unit.is-highlighted .team-social-icon-box { background: #0077b5; }
-    .team-card-unit.is-highlighted .team-social-strip { background: #eef4f8; }
-    .team-card-unit.is-highlighted .team-social-text { color: var(--brand-navy-deep); font-weight: 600; }
-    @media (max-width: 1080px) { .team-grid-4col { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
-    @media (max-width: 580px) { .team-grid-4col { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; } }
+    .team-title-hero { font-family: var(--head-font); font-size: clamp(1.9rem, min(4.4vw, 7.6vh), 4rem); font-weight: 500; color: var(--brand-navy-deep); letter-spacing: -0.015em; line-height: 1.05; text-transform: uppercase; margin: 0; }
+    .team-title-hero span { display: block; color: var(--brand-muted); font-weight: 400; }
+
+    .team-viewport { position: relative; flex: 1; display: flex; align-items: flex-start; min-height: 0; padding-top: clamp(4px, 2vh, 24px); }
+    .team-track { display: flex; align-items: flex-start; gap: clamp(18px, 1.8vw, 28px); will-change: transform; padding-top: 30px; }
+
+    .team-card { --w: clamp(210px, min(22vw, 36vh), 340px); flex: 0 0 var(--w); width: var(--w); position: relative; display: block; color: inherit; outline: none; opacity: 0; translate: 80px 0; transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1) var(--delay, 0s), translate 0.9s cubic-bezier(0.22,1,0.36,1) var(--delay, 0s); }
+    .team-split-section.is-visible .team-card { opacity: 1; translate: 0 0; }
+    .team-photo-wrap { position: relative; width: 100%; aspect-ratio: 1 / 1.16; overflow: hidden; background: #111e26; border-radius: 20px; box-shadow: 0 12px 30px rgba(31,52,63,0.12); transform: translateY(0); transition: transform 0.55s cubic-bezier(0.22,1,0.36,1); }
+    .team-photo-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(12%); transition: filter 0.5s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .team-badge { position: absolute; top: 12px; left: 12px; width: 30px; height: 30px; border-radius: 9px; background: var(--brand-navy-deep); color: #FAF8EE; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; opacity: 0; transform: scale(0.7); transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.22,1,0.36,1); }
+
+    .team-details { position: absolute; left: 0; right: 0; top: 100%; padding-top: 14px; opacity: 0; transform: translateY(-14px); pointer-events: none; transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.22,1,0.36,1); }
+    .team-person-name { font-family: var(--body-font); font-size: 1.05rem; font-weight: 600; color: var(--brand-navy-deep); line-height: 1.25; margin: 0; }
+    .team-person-role { font-family: var(--body-font); font-size: 0.85rem; color: var(--brand-muted); line-height: 1.4; margin: 3px 0 0; }
+    .team-social { display: flex; align-items: center; gap: 8px; margin: 12px 0 10px; font-size: 0.76rem; font-weight: 500; color: var(--brand-navy); }
+    .team-social i { width: 20px; height: 20px; border-radius: 50%; background: var(--brand-navy-deep); color: #FAF8EE; display: inline-flex; align-items: center; justify-content: center; font-size: 0.65rem; }
+    .team-bio { font-family: var(--body-font); font-size: 0.86rem; line-height: 1.55; color: var(--brand-navy); margin: 0; }
+
+    .team-card:hover .team-photo-wrap, .team-card:focus-visible .team-photo-wrap, .team-card.is-active .team-photo-wrap { transform: translateY(-30px); }
+    .team-card:hover .team-photo-img, .team-card:focus-visible .team-photo-img, .team-card.is-active .team-photo-img { filter: grayscale(0%); transform: scale(1.04); }
+    .team-card:hover .team-badge, .team-card:focus-visible .team-badge, .team-card.is-active .team-badge { opacity: 1; transform: scale(1); }
+    .team-card:hover .team-details, .team-card:focus-visible .team-details, .team-card.is-active .team-details { opacity: 1; transform: translateY(-30px); pointer-events: auto; }
+
+    .team-footnote { flex: none; text-align: center; max-width: 640px; margin: 0 auto; padding: 0 24px; font-family: var(--body-font); font-size: clamp(0.88rem, 1vw, 1rem); line-height: 1.6; color: var(--brand-navy); position: relative; z-index: 0; transition: opacity 0.4s ease; }
+    .team-split-section.is-hovering .team-footnote { opacity: 0; }
+
+    @media (max-width: 960px), (prefers-reduced-motion: reduce) {
+      .team-split-section { height: auto; }
+      .team-stage { position: relative; height: auto; min-height: 0; padding: 90px 0 60px; }
+      .team-viewport { display: block; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 0 24px; scrollbar-width: none; }
+      .team-viewport::-webkit-scrollbar { display: none; }
+      .team-track { transform: none !important; padding: 36px 0 0; width: max-content; }
+      .team-card { --w: min(78vw, 330px); scroll-snap-align: start; opacity: 1; translate: 0 0; }
+      .team-details { position: static; opacity: 1; transform: none; padding-top: 14px; pointer-events: auto; }
+      .team-photo-wrap, .team-card:hover .team-photo-wrap { transform: none; }
+      .team-card:hover .team-details { transform: none; }
+      .team-badge { opacity: 1; transform: none; }
+      .team-footnote { margin-top: 30px; }
+      .team-split-section.is-hovering .team-footnote { opacity: 1; }
+    }
 
     /* ===== FOOTER (same as home) ===== */
     .nw-footer { position: relative; z-index: 10; padding: 110px 24px 36px; background: radial-gradient(ellipse at 50% 0%, rgba(70,86,101,0.14) 0%, rgba(70,86,101,0.04) 45%, transparent 75%), linear-gradient(180deg, #E3EAE8 0%, #EFF2EC 42%, #FAF8EE 100%); color: #465665; overflow: hidden; border-top: 1px solid rgba(70,86,101,0.14); }
@@ -491,41 +836,152 @@
     </div>
   </section>
 
-  <!-- ======================== WHY ONE ROOF ======================== -->
-  <section id="whyOneRoofSection">
-    <div class="wor-pin">
-      <div class="wor-ring r1"></div><div class="wor-ring r2"></div><div class="wor-ring r3"></div>
-      <div class="wor-container">
-        <div class="wor-intro">
-          <span class="wor-eyebrow eyebrow-style">Why One Roof Properties?</span>
-          <h2 class="wor-title">Five reasons families and investors choose us</h2>
-          <p class="wor-lead">One advisory team for homes, plots and resale, built on clear information and steady support from first enquiry to final choice.</p>
-          <div class="wor-prog" aria-hidden="true"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
-          <a href="contact.html" class="wor-cta">Book a Consultation</a>
+  <!-- ======================== WHY CHOOSE US ======================== -->
+  <section id="whyOneRoofSection" aria-label="Why Choose One Roof Properties">
+    <div class="wor-grid-bg" aria-hidden="true"></div>
+    <div class="wor-inner-wrap">
+      
+      <!-- Desktop Interactive View -->
+      <div class="wor-desktop-grid">
+        <!-- Left: Interactive Arched Timeline Column -->
+        <div class="wor-timeline-canvas" id="worCanvas">
+          <svg class="wor-curve-svg" viewBox="0 0 400 960" preserveAspectRatio="xMinYMin meet" aria-hidden="true">
+            <defs>
+              <linearGradient id="worLineGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5e571b" stop-opacity="0.2"></stop>
+                <stop offset="10%" stop-color="#5e571b" stop-opacity="1"></stop>
+                <stop offset="90%" stop-color="#5e571b" stop-opacity="1"></stop>
+                <stop offset="100%" stop-color="#5e571b" stop-opacity="0.2"></stop>
+              </linearGradient>
+            </defs>
+            <path id="worSvgPath" d="M 80 0 V -20 A 140 140 0 0 1 80 260 V 950 C 80 980, 40 1000, 0 1000" stroke="url(#worLineGrad)" stroke-width="2.5" fill="none"></path>
+          </svg>
+
+          <!-- Dynamic Sliding Arch Photo Wrap -->
+          <div class="wor-arch-wrap" id="worArchWrap" style="top: 0px;">
+            <img id="worArchImg" src="assets/why-hero-bg.png" alt="End-to-End Solutions" loading="lazy">
+          </div>
+
+          <!-- Step 1 (y: 120) -->
+          <div class="wor-step-item wor-desktop-item is-active" data-index="0" style="left: 204px; top: 104px; width: 320px; z-index: 30;">
+            <div class="wor-step-badge">1</div>
+            <div class="wor-step-text">
+              <h4 class="wor-step-title">End-to-End Solutions:</h4>
+              <p class="wor-step-desc" style="max-width: 260px;">Seamless handling from purchase to corporate leasing and eventual resale.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 (y: 340) -->
+          <div class="wor-step-item wor-desktop-item" data-index="1" style="left: 64px; top: 324px; width: 400px; z-index: 20;">
+            <div class="wor-step-badge">2</div>
+            <div class="wor-step-text">
+              <h4 class="wor-step-title">RERA-Certified Team:</h4>
+              <p class="wor-step-desc" style="max-width: 300px;">100% of our consulting partners are individually Rera-Certified.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 (y: 560) -->
+          <div class="wor-step-item wor-desktop-item" data-index="2" style="left: 64px; top: 544px; width: 400px; z-index: 20;">
+            <div class="wor-step-badge">3</div>
+            <div class="wor-step-text">
+              <h4 class="wor-step-title">Deep Market Analytics:</h4>
+              <p class="wor-step-desc" style="max-width: 300px;">Data-driven pricing insights, historical ROI analysis, and yield projections.</p>
+            </div>
+          </div>
+
+          <!-- Step 4 (y: 780) -->
+          <div class="wor-step-item wor-desktop-item" data-index="3" style="left: 64px; top: 764px; width: 400px; z-index: 20;">
+            <div class="wor-step-badge">4</div>
+            <div class="wor-step-text">
+              <h4 class="wor-step-title">Highly Curated Options:</h4>
+              <p class="wor-step-desc" style="max-width: 300px;">We filter out the noise, presenting only the top 1 or 2 best-matched properties for your specific requirements.</p>
+            </div>
+          </div>
         </div>
-        <div class="wor-stage" id="worStage">
-          <a href="services.html" class="wor-card">
-            <div class="wor-card-top"><span class="wor-icon"><i class="fa-solid fa-house-chimney"></i></span><span class="wor-count">1 / 5</span></div>
-            <div><h3 class="wor-row-title">Everything Under One Roof</h3><p class="wor-row-desc">Residential, plotting and resale property solutions in one place.</p><span class="wor-link">Explore solutions <i class="fa-solid fa-arrow-right-long"></i></span></div>
-          </a>
-          <a href="contact.html" class="wor-card">
-            <div class="wor-card-top"><span class="wor-icon"><i class="fa-solid fa-user-check"></i></span><span class="wor-count">2 / 5</span></div>
-            <div><h3 class="wor-row-title">Personalized Property Assistance</h3><p class="wor-row-desc">Property suggestions based on your requirements, preferences and budget.</p><span class="wor-link">Get consultation <i class="fa-solid fa-arrow-right-long"></i></span></div>
-          </a>
-          <a href="services.html" class="wor-card">
-            <div class="wor-card-top"><span class="wor-icon"><i class="fa-solid fa-scale-balanced"></i></span><span class="wor-count">3 / 5</span></div>
-            <div><h3 class="wor-row-title">Transparent Approach</h3><p class="wor-row-desc">Clear communication and straightforward property information.</p><span class="wor-link">Our process <i class="fa-solid fa-arrow-right-long"></i></span></div>
-          </a>
-          <a href="plotting.html" class="wor-card">
-            <div class="wor-card-top"><span class="wor-icon"><i class="fa-solid fa-location-dot"></i></span><span class="wor-count">4 / 5</span></div>
-            <div><h3 class="wor-row-title">Local Market Understanding</h3><p class="wor-row-desc">Guidance to explore property opportunities in your preferred locations.</p><span class="wor-link">Explore locations <i class="fa-solid fa-arrow-right-long"></i></span></div>
-          </a>
-          <a href="contact.html" class="wor-card">
-            <div class="wor-card-top"><span class="wor-icon"><i class="fa-solid fa-handshake-angle"></i></span><span class="wor-count">5 / 5</span></div>
-            <div><h3 class="wor-row-title">Support Throughout Your Journey</h3><p class="wor-row-desc">Assistance from your first enquiry to your property selection.</p><span class="wor-link">Connect with us <i class="fa-solid fa-arrow-right-long"></i></span></div>
-          </a>
+
+        <!-- Right: Sticky Advantage Header & 3D Model Showcase -->
+        <div class="wor-showcase-col">
+          <div class="wor-sticky-panel">
+            <span class="wor-eyebrow-tag eyebrow-style">Why One Roof Properties</span>
+            <h2 class="wor-main-title">
+              The One Roof <span class="wor-gold-accent">Advantage</span>
+            </h2>
+            <p class="wor-main-desc">
+              Beyond simple brokering we offer complete lifecycle management.
+            </p>
+            <div class="wor-villa-wrap">
+              <img src="assets/house-hand.png" alt="One Roof Luxury Property Model" class="wor-villa-img">
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Mobile / Tablet Layout -->
+      <div class="wor-mobile-layout">
+        <div class="wor-mobile-header">
+          <span class="wor-eyebrow-tag eyebrow-style">Why One Roof Properties</span>
+          <h2 class="wor-main-title">
+            The One Roof <span class="wor-gold-accent">Advantage</span>
+          </h2>
+          <p class="wor-main-desc">
+            Beyond simple brokering we offer complete lifecycle management.
+          </p>
+        </div>
+
+        <div class="wor-mobile-track">
+          <div class="wor-mobile-line" aria-hidden="true"></div>
+          <div class="wor-mobile-list">
+            <div class="wor-mobile-card is-active" data-index="0">
+              <div class="wor-mobile-badge">1</div>
+              <div class="wor-mobile-body">
+                <h4 class="wor-mobile-card-title">End-to-End Solutions:</h4>
+                <p class="wor-mobile-card-desc">Seamless handling from purchase to corporate leasing and eventual resale.</p>
+                <div class="wor-mobile-card-thumb">
+                  <img src="assets/why-hero-bg.png" alt="End-to-End Solutions">
+                </div>
+              </div>
+            </div>
+
+            <div class="wor-mobile-card" data-index="1">
+              <div class="wor-mobile-badge">2</div>
+              <div class="wor-mobile-body">
+                <h4 class="wor-mobile-card-title">RERA-Certified Team:</h4>
+                <p class="wor-mobile-card-desc">100% of our consulting partners are individually Rera-Certified.</p>
+                <div class="wor-mobile-card-thumb">
+                  <img src="assets/why-handshake.png" alt="RERA-Certified Team">
+                </div>
+              </div>
+            </div>
+
+            <div class="wor-mobile-card" data-index="2">
+              <div class="wor-mobile-badge">3</div>
+              <div class="wor-mobile-body">
+                <h4 class="wor-mobile-card-title">Deep Market Analytics:</h4>
+                <p class="wor-mobile-card-desc">Data-driven pricing insights, historical ROI analysis, and yield projections.</p>
+                <div class="wor-mobile-card-thumb">
+                  <img src="assets/why-testimonial_1.png" alt="Deep Market Analytics">
+                </div>
+              </div>
+            </div>
+
+            <div class="wor-mobile-card" data-index="3">
+              <div class="wor-mobile-badge">4</div>
+              <div class="wor-mobile-body">
+                <h4 class="wor-mobile-card-title">Highly Curated Options:</h4>
+                <p class="wor-mobile-card-desc">We filter out the noise, presenting only the top 1 or 2 best-matched properties for your specific requirements.</p>
+                <div class="wor-mobile-card-thumb">
+                  <img src="assets/why-building_left.png" alt="Highly Curated Options">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wor-mobile-villa-bottom">
+          <img src="assets/house-hand.png" alt="One Roof Luxury Property Model">
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -544,22 +1000,18 @@
           <div class="proc-step-item is-active" id="procStep0" data-step="0">
             <div class="proc-node-col"><div class="proc-node-circle">01</div><div class="proc-segment-track"><div class="proc-line-primary"><div class="proc-segment-fill" id="procFill0"></div></div><div class="proc-line-secondary" id="procSec0"></div></div></div>
             <div class="proc-step-content"><h3 class="proc-step-title">Discovery &amp; Consultation</h3><p class="proc-step-desc">We begin with a dedicated session to understand your vision, investment goals, and timeline for your real estate journey.</p></div>
-            <div class="proc-watermark-num">01</div>
           </div>
           <div class="proc-step-item" id="procStep1" data-step="1">
             <div class="proc-node-col"><div class="proc-node-circle">02</div><div class="proc-segment-track"><div class="proc-line-primary"><div class="proc-segment-fill" id="procFill1"></div></div><div class="proc-line-secondary" id="procSec1"></div></div></div>
             <div class="proc-step-content"><h3 class="proc-step-title">Site Analysis &amp; Planning</h3><p class="proc-step-desc">Our team evaluates locations, market trends, and feasibility to build a strategic roadmap tailored to your objectives.</p></div>
-            <div class="proc-watermark-num">02</div>
           </div>
           <div class="proc-step-item" id="procStep2" data-step="2">
             <div class="proc-node-col"><div class="proc-node-circle">03</div><div class="proc-segment-track"><div class="proc-line-primary"><div class="proc-segment-fill" id="procFill2"></div></div><div class="proc-line-secondary" id="procSec2"></div></div></div>
             <div class="proc-step-content"><h3 class="proc-step-title">Design &amp; Development</h3><p class="proc-step-desc">From concept to construction, we coordinate architects, contractors, and compliance to deliver excellence at every stage.</p></div>
-            <div class="proc-watermark-num">03</div>
           </div>
           <div class="proc-step-item" id="procStep3" data-step="3">
             <div class="proc-node-col"><div class="proc-node-circle">04</div><div class="proc-segment-track proc-tail-track"><div class="proc-line-primary"></div><div class="proc-line-secondary"></div></div></div>
             <div class="proc-step-content"><h3 class="proc-step-title">Handover &amp; Ongoing Support</h3><p class="proc-step-desc">We ensure a seamless transition at completion and remain your trusted partner for property management and future growth.</p></div>
-            <div class="proc-watermark-num">04</div>
           </div>
         </div>
       </div>
@@ -568,37 +1020,87 @@
 
   <!-- ======================== TEAM ======================== -->
   <section id="teamSection" class="team-split-section">
-    <div class="team-split-container">
+    <div class="team-stage">
       <div class="team-header-center">
-        <h2 class="team-title-hero">Our Team</h2>
-        <p class="team-subtitle-lead">A distinguished coalition of senior PMRDA land strategists, certified legal evaluators, and structural engineering directors guiding every real estate investment with generational integrity.</p>
+        <h2 class="team-title-hero">Key People Behind <span>The Expertise</span></h2>
+      </div>
+      <div class="team-viewport" id="teamViewport">
+        <div class="team-track" id="teamTrack">
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card" style="--delay: 0.10s;" aria-label="Vikramaditya Bhosale — LinkedIn">
+          <div class="team-photo-wrap">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" alt="Vikramaditya Bhosale" class="team-photo-img" loading="lazy">
+            <span class="team-badge" aria-hidden="true"><i class="fa-brands fa-linkedin-in"></i></span>
+          </div>
+          <div class="team-details">
+            <h3 class="team-person-name">Vikramaditya Bhosale</h3>
+            <p class="team-person-role">Managing Director &bull; Land &amp; PMRDA</p>
+            <div class="team-social"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span>/vikramaditya-bhosale</span></div>
+            <p class="team-bio">Leads land strategy and PMRDA approvals, helping buyers choose clean, well-located parcels with long-term value and clear paperwork.</p>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card" style="--delay: 0.22s;" aria-label="Ananya Deshmukh — LinkedIn">
+          <div class="team-photo-wrap">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80" alt="Ananya Deshmukh" class="team-photo-img" loading="lazy">
+            <span class="team-badge" aria-hidden="true"><i class="fa-brands fa-linkedin-in"></i></span>
+          </div>
+          <div class="team-details">
+            <h3 class="team-person-name">Ananya Deshmukh</h3>
+            <p class="team-person-role">Partner &bull; Luxury Estates Director</p>
+            <div class="team-social"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span>/ananya-deshmukh</span></div>
+            <p class="team-bio">Curates premium residences and estates, matching each client to homes that fit their lifestyle, budget and investment goals.</p>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card" style="--delay: 0.34s;" aria-label="Er. Rohan Kulkarni — LinkedIn">
+          <div class="team-photo-wrap">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80" alt="Er. Rohan Kulkarni" class="team-photo-img" loading="lazy">
+            <span class="team-badge" aria-hidden="true"><i class="fa-brands fa-linkedin-in"></i></span>
+          </div>
+          <div class="team-details">
+            <h3 class="team-person-name">Er. Rohan Kulkarni</h3>
+            <p class="team-person-role">Director &bull; Civil Contracting &amp; PMC</p>
+            <div class="team-social"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span>/rohan-kulkarni</span></div>
+            <p class="team-bio">A structural engineer who inspects build quality and project timelines, so every purchase stands on sound construction.</p>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card" style="--delay: 0.46s;" aria-label="Siddharth Patwardhan — LinkedIn">
+          <div class="team-photo-wrap">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80" alt="Siddharth Patwardhan" class="team-photo-img" loading="lazy">
+            <span class="team-badge" aria-hidden="true"><i class="fa-brands fa-linkedin-in"></i></span>
+          </div>
+          <div class="team-details">
+            <h3 class="team-person-name">Siddharth Patwardhan</h3>
+            <p class="team-person-role">Director &bull; Sales &amp; Client Relations</p>
+            <div class="team-social"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span>/siddharth-patwardhan</span></div>
+            <p class="team-bio">Guides buyers from first site visit to registration, keeping every conversation honest, timely and easy to follow.</p>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card" style="--delay: 0.58s;" aria-label="Adv. Sneha Jadhav — LinkedIn">
+          <div class="team-photo-wrap">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=700&q=80" alt="Adv. Sneha Jadhav" class="team-photo-img" loading="lazy">
+            <span class="team-badge" aria-hidden="true"><i class="fa-brands fa-linkedin-in"></i></span>
+          </div>
+          <div class="team-details">
+            <h3 class="team-person-name">Adv. Sneha Jadhav</h3>
+            <p class="team-person-role">Legal Counsel &bull; Title &amp; MahaRERA</p>
+            <div class="team-social"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span>/sneha-jadhav</span></div>
+            <p class="team-bio">Verifies titles and MahaRERA compliance, turning complex legal checks into clear, confident decisions for every client.</p>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card" style="--delay: 0.70s;" aria-label="Meera Joshi — LinkedIn">
+          <div class="team-photo-wrap">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=700&q=80" alt="Meera Joshi" class="team-photo-img" loading="lazy">
+            <span class="team-badge" aria-hidden="true"><i class="fa-brands fa-linkedin-in"></i></span>
+          </div>
+          <div class="team-details">
+            <h3 class="team-person-name">Meera Joshi</h3>
+            <p class="team-person-role">Head &bull; NRI &amp; Investment Advisory</p>
+            <div class="team-social"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span>/meera-joshi</span></div>
+            <p class="team-bio">Supports NRI and first-time investors with market insight, documentation and remote-friendly purchase planning.</p>
+          </div>
+        </a>
+        </div>
       </div>
 
-      <div class="team-grid-4col">
-        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card-unit" style="--delay: 0.08s;">
-          <div class="team-photo-wrap"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" alt="Vikramaditya Bhosale" class="team-photo-img" loading="lazy"></div>
-          <div class="team-social-strip"><div class="team-social-icon-box" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></div><span class="team-social-text">LinkedIn/vikramaditya-bhosale</span></div>
-          <div class="team-info-box"><h3 class="team-person-name">Vikramaditya Bhosale</h3><p class="team-person-role">Managing Director &bull; Land &amp; PMRDA</p><i class="fa-solid fa-arrow-right-long team-arrow-btn" aria-hidden="true"></i></div>
-        </a>
-
-        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card-unit" style="--delay: 0.18s;">
-          <div class="team-photo-wrap"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80" alt="Ananya Deshmukh" class="team-photo-img" loading="lazy"></div>
-          <div class="team-social-strip"><div class="team-social-icon-box" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></div><span class="team-social-text">LinkedIn/ananya-deshmukh</span></div>
-          <div class="team-info-box"><h3 class="team-person-name">Ananya Deshmukh</h3><p class="team-person-role">Partner &bull; Luxury Estates Director</p><i class="fa-solid fa-arrow-right-long team-arrow-btn" aria-hidden="true"></i></div>
-        </a>
-
-        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card-unit is-highlighted" style="--delay: 0.28s;">
-          <div class="team-photo-wrap"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80" alt="Er. Rohan Kulkarni" class="team-photo-img" loading="lazy"></div>
-          <div class="team-social-strip"><div class="team-social-icon-box" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></div><span class="team-social-text">LinkedIn/rohan-kulkarni</span></div>
-          <div class="team-info-box"><h3 class="team-person-name">Er. Rohan Kulkarni</h3><p class="team-person-role">Director &bull; Civil Contracting &amp; PMC</p><i class="fa-solid fa-arrow-right-long team-arrow-btn" aria-hidden="true"></i></div>
-        </a>
-
-        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-card-unit" style="--delay: 0.38s;">
-          <div class="team-photo-wrap"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=700&q=80" alt="Adv. Sneha Jadhav" class="team-photo-img" loading="lazy"></div>
-          <div class="team-social-strip"><div class="team-social-icon-box" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></div><span class="team-social-text">LinkedIn/sneha-jadhav</span></div>
-          <div class="team-info-box"><h3 class="team-person-name">Adv. Sneha Jadhav</h3><p class="team-person-role">Legal Counsel &bull; Title &amp; MahaRERA</p><i class="fa-solid fa-arrow-right-long team-arrow-btn" aria-hidden="true"></i></div>
-        </a>
-      </div>
     </div>
   </section>
 
@@ -832,40 +1334,120 @@
       updateCoreValues();
     })();
 
-    // Why One Roof: scroll brings each reason in one by one, earlier cards recede behind it
-    (function initWhyOneRoof() {
+    // Why One Roof: Foresight inspired interactive arch timeline + SVG path morphing
+    (function initWhyOneRoofSection() {
       const sec = document.getElementById('whyOneRoofSection');
       if (!sec) return;
-      const cards = Array.from(sec.querySelectorAll('.wor-card'));
-      const bars = Array.from(sec.querySelectorAll('.wor-prog i'));
-      const N = cards.length;
-      const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-      const easeOut = (t) => 1 - Math.pow(1 - t, 3);
-      const static_ = () => window.innerWidth <= 960 || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      function update() {
-        if (static_()) return;
-        const total = sec.offsetHeight - window.innerHeight;
-        if (total <= 0) return;
-        const raw = clamp(-sec.getBoundingClientRect().top / total, 0, 1);
-        const s = 0.7 + raw * (N - 1);   // first card is already in place when the section pins
-        const e = cards.map((_, i) => easeOut(clamp((s - i) / 0.7, 0, 1)));
-        cards.forEach((card, i) => {
-          let depth = 0;
-          for (let j = i + 1; j < N; j++) depth += e[j];
-          const enter = (1 - e[i]) * 115;
-          const scale = 1 - depth * 0.05;
-          card.style.opacity = (clamp(e[i] * 6, 0, 1) * clamp(1 - Math.max(0, depth - 2) * 0.9, 0, 1)).toFixed(3);
-          card.style.transform = `translateY(calc(${enter.toFixed(1)}% - ${(depth * 26).toFixed(1)}px)) scale(${scale.toFixed(3)})`;
-          card.style.filter = `brightness(${(1 - depth * 0.035).toFixed(3)})`;
-          card.style.zIndex = i + 1;
-          card.style.pointerEvents = depth < 0.5 && e[i] > 0.5 ? 'auto' : 'none';
+      const reasons = [
+        { title: "End-to-End Solutions:", desc: "Seamless handling from purchase to corporate leasing and eventual resale.", image: "assets/why-hero-bg.png", y: 120 },
+        { title: "RERA-Certified Team:", desc: "100% of our consulting partners are individually Rera-Certified.", image: "assets/why-handshake.png", y: 340 },
+        { title: "Deep Market Analytics:", desc: "Data-driven pricing insights, historical ROI analysis, and yield projections.", image: "assets/why-testimonial_1.png", y: 560 },
+        { title: "Highly Curated Options:", desc: "We filter out the noise, presenting only the top 1 or 2 best-matched properties for your specific requirements.", image: "assets/why-building_left.png", y: 780 }
+      ];
+
+      let activeIdx = 0;
+      let isHovered = false;
+      let isIntersecting = false;
+      const pathEl = document.getElementById('worSvgPath');
+      const archWrap = document.getElementById('worArchWrap');
+      const archImg = document.getElementById('worArchImg');
+      const deskItems = Array.from(sec.querySelectorAll('.wor-desktop-item'));
+      const mobItems = Array.from(sec.querySelectorAll('.wor-mobile-card'));
+
+      function setActive(idx) {
+        if (idx < 0 || idx >= reasons.length) return;
+        activeIdx = idx;
+        const cur = reasons[idx];
+        const y = cur.y;
+
+        // 1. Morph SVG Curve
+        if (pathEl) {
+          const d = `M 80 0 V ${y - 140} A 140 140 0 0 1 80 ${y + 140} V 950 C 80 980, 40 1000, 0 1000`;
+          pathEl.setAttribute('d', d);
+        }
+
+        // 2. Reposition & swap arch image
+        if (archWrap && archImg) {
+          archWrap.style.top = `${y - 120}px`;
+          archImg.style.opacity = '0.35';
+          archImg.style.transform = 'scale(1.08)';
+          setTimeout(() => {
+            archImg.src = cur.image;
+            archImg.alt = cur.title;
+            archImg.style.opacity = '1';
+            archImg.style.transform = 'scale(1)';
+          }, 180);
+        }
+
+        // 3. Update desktop items geometry and active class
+        deskItems.forEach((item, i) => {
+          const isAct = (i === idx);
+          item.classList.toggle('is-active', isAct);
+          if (isAct) {
+            item.style.left = '204px';
+            item.style.width = '320px';
+            item.style.zIndex = '30';
+          } else {
+            item.style.left = '64px';
+            item.style.width = '400px';
+            item.style.zIndex = '20';
+          }
         });
-        bars.forEach((b, i) => { b.style.transform = `scaleX(${e[i].toFixed(3)})`; });
+
+        // 4. Update mobile items
+        mobItems.forEach((mItem, i) => {
+          mItem.classList.toggle('is-active', i === idx);
+        });
       }
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update);
-      update();
+
+      // Desktop events: click & hover
+      deskItems.forEach((item, i) => {
+        item.addEventListener('click', () => setActive(i));
+        item.addEventListener('mouseenter', () => setActive(i));
+      });
+
+      // Mobile click events
+      mobItems.forEach((mItem, i) => {
+        mItem.addEventListener('click', () => setActive(i));
+      });
+
+      // Hover pause on container
+      sec.addEventListener('mouseenter', () => { isHovered = true; });
+      sec.addEventListener('mouseleave', () => { isHovered = false; });
+
+      // Intersection Observer for scroll tracking & auto-play
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(([entry]) => {
+          isIntersecting = entry.isIntersecting;
+        }, { threshold: 0.15 });
+        io.observe(sec);
+      } else {
+        isIntersecting = true;
+      }
+
+      // Auto rotation every 5s when visible and not hovered
+      setInterval(() => {
+        if (isIntersecting && !isHovered && window.innerWidth >= 1024) {
+          setActive((activeIdx + 1) % reasons.length);
+        }
+      }, 5000);
+
+      // Scroll-based progress tracker
+      function onScroll() {
+        if (!isIntersecting || isHovered || window.innerWidth < 1024) return;
+        const rect = sec.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const progress = Math.min(Math.max((0.5 * vh - rect.top) / rect.height, 0), 1);
+        const targetIdx = Math.min(Math.floor(progress * reasons.length), reasons.length - 1);
+        if (targetIdx >= 0 && targetIdx < reasons.length && targetIdx !== activeIdx) {
+          setActive(targetIdx);
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Init first step
+      setActive(0);
     })();
 
     // Process timeline fill + activation
@@ -933,20 +1515,58 @@
       setTimeout(updateProcessTimeline, 250);
     })();
 
-    // Team entrance animation
-    (function initTeamSectionAnimation() {
-      const teamSec = document.getElementById('teamSection');
-      if (!teamSec) return;
+    // Team: entrance + pinned horizontal scroll + hover state
+    (function initTeamSection() {
+      const sec = document.getElementById('teamSection');
+      const track = document.getElementById('teamTrack');
+      if (!sec || !track) return;
+      const cards = Array.from(track.querySelectorAll('.team-card'));
+      const mq = window.matchMedia('(max-width: 960px), (prefers-reduced-motion: reduce)');
+
+      // entrance
       if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) { teamSec.classList.add('is-visible'); observer.unobserve(teamSec); }
-          });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        observer.observe(teamSec);
-      } else {
-        teamSec.classList.add('is-visible');
+        const io = new IntersectionObserver((es) => {
+          es.forEach(e => { if (e.isIntersecting) { sec.classList.add('is-visible'); io.unobserve(sec); } });
+        }, { threshold: 0.15 });
+        io.observe(sec);
+      } else { sec.classList.add('is-visible'); }
+
+      // hover -> fade the footnote
+      cards.forEach(c => {
+        c.addEventListener('mouseenter', () => sec.classList.add('is-hovering'));
+        c.addEventListener('mouseleave', () => sec.classList.remove('is-hovering'));
+        c.addEventListener('focus', () => sec.classList.add('is-hovering'));
+        c.addEventListener('blur', () => sec.classList.remove('is-hovering'));
+      });
+
+      // scroll-linked horizontal travel
+      let startX = 0, endX = 0, travel = 1, ticking = false;
+      function measure() {
+        if (mq.matches) { track.style.transform = ''; sec.style.removeProperty('--team-travel'); sec.style.height = ''; return; }
+        const vw = window.innerWidth;
+        const last = cards[cards.length - 1];
+        const trackW = last.offsetLeft + last.offsetWidth;
+        startX = vw * 0.22;                                   // first card starts left of centre, like the reference
+        endX = trackW + vw * 0.08 > vw ? vw - trackW - vw * 0.08 : (vw - trackW) / 2;
+        if (endX > startX) endX = startX;
+        const dist = Math.abs(startX - endX);
+        travel = Math.max(dist * 1.6, window.innerHeight * 0.9);   // scroll distance spent moving the strip
+        sec.style.height = (window.innerHeight + travel + window.innerHeight * 0.25) + 'px'; // + hold at the end
+        update();
       }
+      function update() {
+        ticking = false;
+        if (mq.matches) return;
+        const r = sec.getBoundingClientRect();
+        const p = Math.min(1, Math.max(0, -r.top / travel));   // reaches 1 before the section unpins, so every card is shown
+        const eased = p;                                      // linear = scroll-locked feel
+        track.style.transform = 'translate3d(' + (startX + (endX - startX) * eased).toFixed(1) + 'px,0,0)';
+      }
+      window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      window.addEventListener('resize', measure);
+      mq.addEventListener ? mq.addEventListener('change', measure) : mq.addListener(measure);
+      window.addEventListener('load', measure);
+      measure();
     })();
   </script>
 </body>

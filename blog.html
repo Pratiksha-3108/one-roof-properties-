@@ -6,7 +6,7 @@
   <title>The Property Journal | Blogs &amp; Insights | One Roof Properties</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&family=Nanum+Myeongjo:wght@400;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&family=Nanum+Myeongjo:wght@400;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,13 +27,18 @@
     /* TOP OVERLAY NAVBAR (TRANSPARENT ON HERO, BG ON SCROLL)   */
     /* ======================================================== */
     .header {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1500;
-      padding: 34px 0 0;
-      background: transparent;
+      padding: 16px 0;
+      background: #38444E;
+      background: rgba(56, 68, 78, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      border-bottom: 1px solid rgba(179, 182, 183, 0.22);
       transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -63,7 +68,7 @@
     }
 
     .header-logo img {
-      height: 48px;
+      height: 54px;
       width: auto;
       display: block;
       object-fit: contain;
@@ -127,23 +132,21 @@
     .blog-hero {
       position: relative;
       width: 100%;
-      height: 76vh;
-      min-height: 520px;
+      height: clamp(480px, 66vh, 680px);
+      min-height: 480px;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-end;
+      justify-content: flex-start;
       overflow: hidden;
-      background: #1e272e;
+      background: #070e17;
     }
 
     .blog-hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('assets/realestate23.webp'), url('assets/counter-day.jpg');
-      background-size: cover;
-      background-position: center 40%;
-      transform: scale(1.02);
-      filter: brightness(0.76) contrast(1.04);
+      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80') center center / cover no-repeat;
+      transform: scale(1.03);
+      animation: blogHeroZoom 9s ease-out forwards;
       z-index: 1;
     }
 
@@ -151,39 +154,36 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(20, 28, 34, 0.32) 0%, rgba(20, 28, 34, 0.22) 50%, rgba(20, 28, 34, 0.62) 100%);
+      background: linear-gradient(180deg, rgba(7, 14, 10, 0.6) 0%, rgba(7, 14, 10, 0.15) 45%, rgba(7, 14, 10, 0.3) 70%, rgba(7, 14, 10, 0.8) 100%);
       pointer-events: none;
       z-index: 2;
+    }
+
+    @keyframes blogHeroZoom {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1); }
     }
 
     .blog-hero-content {
       position: relative;
       z-index: 10;
-      text-align: center;
-      max-width: 820px;
-      padding: 48px 24px 0;
-      color: #ffffff;
-    }
-
-    .blog-hero-overline {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 3.2px;
-      text-transform: uppercase;
-      color: rgba(250, 248, 238, 0.88);
-      margin-bottom: 14px;
+      width: 100%;
+      max-width: 1820px;
+      margin: 0 auto;
+      padding: 0 max(24px, 4.5vw) clamp(36px, 5.5vw, 68px);
+      text-align: left;
+      box-sizing: border-box;
     }
 
     .blog-hero-title {
-      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
-      font-size: clamp(2.4rem, 4.4vw, 3.85rem);
+      font-family: 'Cormorant Garamond', 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(3.2rem, 6.2vw, 5.8rem);
       font-weight: 400;
-      line-height: 1.16;
-      letter-spacing: -0.5px;
       color: #ffffff;
-      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.45);
-      margin: 0 0 18px;
+      letter-spacing: -0.015em;
+      line-height: 1;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+      margin: 0;
     }
 
     .blog-hero-sub {
@@ -853,7 +853,7 @@
           <!-- Properties Dropdown -->
           <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(0deg)';">
             <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.prop-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.prop-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px;">
-              Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+              Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #b3b6b7; transition: transform 0.25s ease;"></i>
             </a>
 
             <div class="prop-dropdown" style="display: none; position: absolute; top: 100%; left: 0; min-width: 320px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 14px; z-index: 1200; text-transform: none;">
@@ -874,9 +874,9 @@
               <div style="padding-top: 10px;">
                 <a href="plotting.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700;">
                   <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem;">
-                    <i class="fa-solid fa-map-location-dot" style="color: #d97706;"></i> Plotting Developments
+                    <i class="fa-solid fa-map-location-dot" style="color: #FAF8EE; font-weight: 600;"></i> Plotting Developments
                   </span>
-                  <span style="font-size: 0.72rem; color: #d97706;">(3) &rarr;</span>
+                  <span style="font-size: 0.72rem; color: #5e571b;">(3) &rarr;</span>
                 </a>
                 <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
                   <a href="plotting-1.html" style="font-size: 0.8rem; color: #94a3b8; padding: 2px 0;">&bull; Green Valley Township Plots</a>
@@ -891,7 +891,7 @@
         <!-- Center Uploaded One Roof Properties Logo -->
         <div class="header-logo">
           <a href="index.html">
-            <img src="assets/one-roof-logo-white.png" alt="One Roof Properties">
+            <img src="assets/one_roof_page-0001.png?v=original" alt="One Roof Properties">
           </a>
         </div>
 
@@ -899,18 +899,18 @@
         <div class="header-nav-right">
           <ul class="header-nav-list">
             <li><a href="services.html">Services</a></li>
-            <li><a href="blog.html" style="color: #d97706;">Blog</a></li>
+            <li><a href="blog.html" style="color: #FAF8EE; font-weight: 600;">Blog</a></li>
                         <!-- NRI Support Dropdown with Caret Icon -->
             <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(0deg)';">
               <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.nri-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.nri-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px;">
-                NRI Support <i class="fa-solid fa-chevron-down nri-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+                NRI Support <i class="fa-solid fa-chevron-down nri-caret" style="font-size: 0.65rem; color: #b3b6b7; transition: transform 0.25s ease;"></i>
               </a>
 
               <!-- Dropdown Card (Legal Information & Loan Help) -->
               <div class="nri-dropdown" style="display: none; position: absolute; top: 100%; right: 0; min-width: 290px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 12px; z-index: 1200; text-transform: none;">
                 <!-- Legal Information -->
                 <a href="legal-information.html" style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: #ffffff; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
-                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(217, 119, 6, 0.2); display: flex; align-items: center; justify-content: center; color: #d97706; font-size: 1.05rem; flex-shrink: 0;">
+                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(70, 86, 101, 0.45); display: flex; align-items: center; justify-content: center; color: #5e571b; font-size: 1.05rem; flex-shrink: 0;">
                     <i class="fa-solid fa-scale-balanced"></i>
                   </div>
                   <div>
@@ -946,18 +946,9 @@
   <!-- ======================================================== -->
   <section class="blog-hero" id="blogHeroSection">
     <div class="blog-hero-bg"></div>
-
     <div class="blog-hero-content">
-      <div class="blog-hero-overline">THE PROPERTY JOURNAL &middot; INSIGHTS &middot; IDEAS &middot; REAL ESTATE</div>
-      <h1 class="blog-hero-title">
-        A Little More Insight.<br>A Better Property Decision.
-      </h1>
-      <p class="blog-hero-sub">
-        Explore thoughtful guides, practical advice and property insights to help you make your next move with confidence.
-      </p>
+      <h1 class="blog-hero-title">Blog</h1>
     </div>
-
-    <span class="blog-hero-caption">One Roof Property Journal</span>
   </section>
 
   <!-- ======================================================== -->
@@ -1189,7 +1180,7 @@
       <!-- Top Row: Brand Logo | Social Outlined Pills | Member of CREDAI -->
       <div class="nw-footer-top">
         <a href="index.html" class="nw-footer-brand">
-          <img src="assets/one-roof-logo-dark.png" alt="One Roof Properties" style="height: 54px; width: auto; object-fit: contain;">
+          <img src="assets/one_roof_page-0001.png?v=original" alt="One Roof Properties" style="height: 54px; width: auto; object-fit: contain;">
         </a>
 
         <div class="nw-footer-socials">

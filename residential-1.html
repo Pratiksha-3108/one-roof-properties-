@@ -2673,21 +2673,31 @@
       z-index: 0;
     }
 
-    /* top meta row */
-    .amen-top-meta {
+    /* Unified Left Content Column: Subtitle, Title & Caption sitting below each other with natural, elegant gap */
+    .amen-left-col {
       position: absolute;
-      top: 112px;
       left: max(24px, 4.5vw);
-      right: max(24px, 4.5vw);
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(48vw, 720px);
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      align-items: flex-start;
+      z-index: 5;
+    }
+
+    /* Subtitle / Kicker */
+    .amen-top-meta {
+      position: relative;
+      display: inline-flex;
       align-items: center;
       font-family: 'Jost', sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       letter-spacing: 2.5px;
       text-transform: uppercase;
       font-weight: 600;
       color: #7b8791;
+      margin-bottom: 20px;
       z-index: 5;
     }
 
@@ -2736,25 +2746,25 @@
       opacity: 0;
     }
 
-    /* giant rolling title — Nanum Myeongjo serif matching homepage headlines */
+    /* Giant rolling title — directly below subtitle with clean gap */
     .amen-title-stage {
-      position: absolute;
-      left: max(24px, 4.5vw);
-      top: 48%;
-      width: min(54vw, 840px);
-      height: 0;
+      position: relative;
+      width: 100%;
+      height: clamp(75px, 13vh, 115px);
+      min-height: 75px;
       z-index: 4;
+      margin-bottom: 20px;
     }
 
     .amen-title {
       position: absolute;
       left: 0;
       top: 0;
-      transform: translateY(-50%);
+      transform: none;
       margin: 0;
       font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
       font-weight: 600;
-      font-size: clamp(2.5rem, 5.4vw, 4.8rem);
+      font-size: clamp(2.4rem, 4.8vw, 4.4rem);
       line-height: 1.15;
       letter-spacing: -0.025em;
       color: #1f343f;
@@ -2763,7 +2773,7 @@
     }
 
     .amen-title.long {
-      font-size: clamp(2.1rem, 4.2vw, 3.8rem);
+      font-size: clamp(2rem, 4vw, 3.6rem);
     }
 
     .amen-word {
@@ -2851,41 +2861,43 @@
       filter: blur(10px);
     }
 
-    /* caption bottom-left — matching homepage body style */
+    /* Content / Caption Stage — directly below title with clean gap */
     .amen-caption-stage {
-      position: absolute;
-      left: max(24px, 4.5vw);
-      bottom: clamp(60px, 11vh, 100px);
-      width: min(440px, 80vw);
-      height: 110px;
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      height: clamp(65px, 10vh, 85px);
+      min-height: 65px;
       z-index: 5;
     }
 
     .amen-caption {
       position: absolute;
       left: 0;
-      bottom: 0;
+      top: 0;
       font-family: 'Jost', sans-serif;
-      font-size: clamp(0.92rem, 1.05vw, 1.02rem);
-      line-height: 1.75;
+      font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+      line-height: 1.7;
       letter-spacing: 0.2px;
       text-transform: none;
       font-weight: 400;
       color: #465665;
       opacity: 0;
-      transform: translateY(18px);
+      transform: translateY(16px);
       transition: opacity 0.7s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: none;
+      margin: 0;
     }
 
     .amen-caption.is-active {
       opacity: 1;
       transform: translateY(0);
-      transition-delay: 0.45s;
+      transition-delay: 0.25s;
     }
 
     .amen-caption.is-prev {
-      transform: translateY(-18px);
+      transform: translateY(-16px);
+      opacity: 0;
     }
 
     @media (max-width: 900px) {
@@ -2893,39 +2905,48 @@
         height: 520vh;
       }
 
+      .amen-left-col {
+        top: 85px;
+        transform: none;
+        width: calc(100vw - 48px);
+        left: 24px;
+      }
+
       .amen-top-meta {
-        top: 92px;
+        margin-bottom: 12px;
       }
 
       .amen-title-stage {
-        top: 28%;
-        width: calc(100vw - 48px);
+        height: 70px;
+        min-height: 70px;
+        margin-bottom: 12px;
+        width: 100%;
       }
 
       .amen-title {
-        font-size: clamp(2rem, 9vw, 3.2rem);
+        font-size: clamp(1.9rem, 7.5vw, 2.9rem);
       }
 
       .amen-title.long {
-        font-size: clamp(1.8rem, 8vw, 2.8rem);
+        font-size: clamp(1.7rem, 6.8vw, 2.5rem);
       }
 
       .amen-photo-stage {
         right: 50%;
         transform: translate(50%, 0);
         top: auto;
-        bottom: 120px;
+        bottom: 95px;
         width: min(86vw, 420px);
       }
 
       .amen-caption-stage {
-        bottom: 24px;
-        width: calc(100vw - 48px);
-        height: 80px;
+        height: 60px;
+        min-height: 60px;
+        width: 100%;
       }
 
       .amen-caption {
-        font-size: 0.86rem;
+        font-size: 0.88rem;
         line-height: 1.6;
       }
 
@@ -3274,24 +3295,38 @@
   <section class="amen-track" id="amenitiesSection">
     <div class="amen-sticky" id="amenSticky">
 
-      <div class="amen-top-meta">
-        <span class="amen-brand-tag">Amenities <span>/</span> Skyview Residency</span>
+      <!-- Left Content Column: Subtitle, Title & Content stacked below each other with elegant, natural gap -->
+      <div class="amen-left-col">
+        <div class="amen-top-meta">
+          <span class="amen-brand-tag">Amenities <span>/</span> Skyview Residency</span>
+        </div>
+
+        <!-- Giant rolling titles (letters built by JS from data-title) -->
+        <div class="amen-title-stage" id="amenTitleStage">
+          <h2 class="amen-title is-active" data-title="Landscaped Garden"></h2>
+          <h2 class="amen-title is-next" data-title="Gymnasium"></h2>
+          <h2 class="amen-title is-next" data-title="Children's Play Area"></h2>
+          <h2 class="amen-title is-next" data-title="Clubhouse"></h2>
+          <h2 class="amen-title is-next" data-title="High-Speed Elevators"></h2>
+          <h2 class="amen-title is-next" data-title="Covered Parking"></h2>
+          <h2 class="amen-title is-next" data-title="24/7 Security"></h2>
+        </div>
+
+        <!-- Caption content directly below title -->
+        <div class="amen-caption-stage">
+          <p class="amen-caption is-active">Lush manicured open lawns, shaded walkways and tranquil botanical seating to unwind every day.</p>
+          <p class="amen-caption is-next">Modern fitness centre with advanced cardio machines, free weights and dedicated workout zones.</p>
+          <p class="amen-caption is-next">A safe, joyful play arena with modern equipment, soft-turf flooring and open space for kids to thrive.</p>
+          <p class="amen-caption is-next">An expansive resident lounge for celebrations, private events, indoor leisure and neighbourly moments.</p>
+          <p class="amen-caption is-next">Automatic high-speed elevators with full power backup, modern safety systems and smooth, rapid transit.</p>
+          <p class="amen-caption is-next">Weather-protected covered bays with wide driveways, secure entry points and dedicated visitor spaces.</p>
+          <p class="amen-caption is-next">Round-the-clock gated protection with trained personnel, CCTV surveillance and intercom access control.</p>
+        </div>
       </div>
 
       <!-- blurred drifting ghost photos -->
       <div class="amen-ghost g1" id="amenGhost1"></div>
       <div class="amen-ghost g2" id="amenGhost2"></div>
-
-      <!-- Giant rolling titles (letters built by JS from data-title) -->
-      <div class="amen-title-stage" id="amenTitleStage">
-        <h2 class="amen-title is-active" data-title="Landscaped Garden"></h2>
-        <h2 class="amen-title is-next" data-title="Gymnasium"></h2>
-        <h2 class="amen-title is-next" data-title="Children's Play Area"></h2>
-        <h2 class="amen-title is-next" data-title="Clubhouse"></h2>
-        <h2 class="amen-title is-next" data-title="High-Speed Elevators"></h2>
-        <h2 class="amen-title is-next" data-title="Covered Parking"></h2>
-        <h2 class="amen-title is-next" data-title="24/7 Security"></h2>
-      </div>
 
       <!-- Tilting framed photo -->
       <div class="amen-photo-stage" id="amenPhotoStage">
@@ -3302,17 +3337,6 @@
         <div class="amen-photo is-next"><img src="assets/amenity-elevator.jpg" alt="High-Speed Elevators"></div>
         <div class="amen-photo is-next"><img src="assets/amenity-parking.jpg" alt="Covered Parking"></div>
         <div class="amen-photo is-next"><img src="assets/amenity-security.jpg" alt="24/7 Security"></div>
-      </div>
-
-      <!-- Small caption bottom-left -->
-      <div class="amen-caption-stage">
-        <p class="amen-caption is-active">Lush manicured open lawns, shaded walkways and tranquil botanical seating to unwind every day.</p>
-        <p class="amen-caption is-next">Modern fitness centre with advanced cardio machines, free weights and dedicated workout zones.</p>
-        <p class="amen-caption is-next">A safe, joyful play arena with modern equipment, soft-turf flooring and open space for kids to thrive.</p>
-        <p class="amen-caption is-next">An expansive resident lounge for celebrations, private events, indoor leisure and neighbourly moments.</p>
-        <p class="amen-caption is-next">Automatic high-speed elevators with full power backup, modern safety systems and smooth, rapid transit.</p>
-        <p class="amen-caption is-next">Weather-protected covered bays with wide driveways, secure entry points and dedicated visitor spaces.</p>
-        <p class="amen-caption is-next">Round-the-clock gated protection with trained personnel, CCTV surveillance and intercom access control.</p>
       </div>
     </div>
   </section>

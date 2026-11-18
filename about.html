@@ -24,12 +24,11 @@
     .about-hero {
       position: relative;
       width: 100%;
-      height: 78vh;
-      min-height: 540px;
-      max-height: 760px;
+      height: clamp(480px, 66vh, 680px);
+      min-height: 480px;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-end;
+      justify-content: flex-start;
       overflow: hidden;
       background: #070e17;
     }
@@ -43,6 +42,15 @@
       z-index: 1;
     }
 
+    .about-hero::after {
+      position: absolute;
+      inset: 0;
+      content: '';
+      background: linear-gradient(180deg, rgba(7, 14, 10, 0.6) 0%, rgba(7, 14, 10, 0.15) 45%, rgba(7, 14, 10, 0.3) 70%, rgba(7, 14, 10, 0.8) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
     @keyframes aboutHeroZoom {
       from { transform: scale(1.05); }
       to   { transform: scale(1); }
@@ -51,31 +59,39 @@
     .about-hero-content {
       position: relative;
       z-index: 10;
-      text-align: center;
-      padding: 0 24px;
-      margin-top: 24px;
+      width: 100%;
+      max-width: 1820px;
+      margin: 0 auto;
+      padding: 0 max(24px, 4.5vw) clamp(36px, 5.5vw, 68px);
+      text-align: left;
+      box-sizing: border-box;
     }
 
     .about-hero-title {
-      font-family: 'Nanum Myeongjo', 'Playfair Display', Georgia, serif;
-      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      font-family: 'Cormorant Garamond', 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(3.2rem, 6.2vw, 5.8rem);
       font-weight: 400;
       color: #ffffff;
-      letter-spacing: -0.5px;
-      line-height: 1.12;
-      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.55);
+      letter-spacing: -0.015em;
+      line-height: 1;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
       margin: 0;
     }
 
     /* Overlay Navigation Header (Transparent on Hero, Fixed with Background from About Content) */
     .header {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1500;
-      padding: 34px 0 0;
-      background: transparent;
+      padding: 16px 0;
+      background: #38444E;
+      background: rgba(56, 68, 78, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      border-bottom: 1px solid rgba(179, 182, 183, 0.22);
       transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
     }
     .holder {
@@ -101,7 +117,7 @@
       align-items: center;
     }
     .header-logo img {
-      height: 48px;
+      height: 54px;
       width: auto;
       display: block;
       object-fit: contain;
@@ -913,8 +929,8 @@
       transition: all 0.25s ease;
     }
     .wor-nav-link:hover {
-      color: #d97706;
-      border-color: #d97706;
+      color: #5e571b;
+      border-color: #5e571b;
       gap: 12px;
     }
     .wor-nav-link span.arrow {
@@ -1136,8 +1152,8 @@
     .proc-step-item.is-active .proc-node-circle,
     .proc-step-item:hover .proc-node-circle {
       background: #ffffff;
-      color: #d97706;
-      border-color: #d97706;
+      color: #5e571b;
+      border-color: #5e571b;
       transform: scale(1.06);
       box-shadow: 0 0 0 5px rgba(217, 119, 6, 0.16), 0 8px 18px rgba(70, 86, 101, 0.14);
     }
@@ -1172,7 +1188,7 @@
       left: 0;
       width: 100%;
       height: 0%;
-      background: linear-gradient(180deg, #465665 0%, #d97706 100%);
+      background: linear-gradient(180deg, #465665 0%, #5e571b 100%);
       transition: height 0.3s ease-out;
     }
 
@@ -1561,12 +1577,12 @@
           <!-- Left Nav Items: Home | About | Properties -->
           <ul class="header-nav-list">
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" style="color: #d97706;">About</a></li>
+            <li><a href="about.html" style="color: #FAF8EE; font-weight: 600;">About</a></li>
 
             <!-- Properties Dropdown with Caret Icon -->
             <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(0deg)';">
               <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.prop-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.prop-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px;">
-                Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+                Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #b3b6b7; transition: transform 0.25s ease;"></i>
               </a>
 
               <!-- Dropdown Card (Residential & Plotting) -->
@@ -1590,9 +1606,9 @@
                 <div style="padding-top: 10px;">
                   <a href="plotting.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
                     <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; letter-spacing: 1px;">
-                      <i class="fa-solid fa-map-location-dot" style="color: #d97706;"></i> Plotting Developments
+                      <i class="fa-solid fa-map-location-dot" style="color: #FAF8EE; font-weight: 600;"></i> Plotting Developments
                     </span>
-                    <span style="font-size: 0.72rem; color: #d97706; font-weight: 600;">(3) &rarr;</span>
+                    <span style="font-size: 0.72rem; color: #5e571b; font-weight: 600;">(3) &rarr;</span>
                   </a>
                   <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
                     <a href="plotting-1.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Green Valley Township Plots</a>
@@ -1607,7 +1623,7 @@
           <!-- Center Uploaded One Roof Properties Logo -->
           <div class="header-logo">
             <a href="index.html">
-              <img src="assets/one-roof-logo-white.png" alt="One Roof Properties">
+              <img src="assets/one_roof_page-0001.png?v=original" alt="One Roof Properties">
             </a>
           </div>
 
@@ -1619,14 +1635,14 @@
                           <!-- NRI Support Dropdown with Caret Icon -->
             <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(0deg)';">
               <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.nri-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.nri-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px;">
-                NRI Support <i class="fa-solid fa-chevron-down nri-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+                NRI Support <i class="fa-solid fa-chevron-down nri-caret" style="font-size: 0.65rem; color: #b3b6b7; transition: transform 0.25s ease;"></i>
               </a>
 
               <!-- Dropdown Card (Legal Information & Loan Help) -->
               <div class="nri-dropdown" style="display: none; position: absolute; top: 100%; right: 0; min-width: 290px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 12px; z-index: 1200; text-transform: none;">
                 <!-- Legal Information -->
                 <a href="legal-information.html" style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: #ffffff; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
-                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(217, 119, 6, 0.2); display: flex; align-items: center; justify-content: center; color: #d97706; font-size: 1.05rem; flex-shrink: 0;">
+                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(70, 86, 101, 0.45); display: flex; align-items: center; justify-content: center; color: #5e571b; font-size: 1.05rem; flex-shrink: 0;">
                     <i class="fa-solid fa-scale-balanced"></i>
                   </div>
                   <div>
@@ -1659,7 +1675,7 @@
 
     <!-- Centered "About Us" Title in Website Serif Font -->
     <div class="about-hero-content">
-      <h1 class="about-hero-title">About Us</h1>
+      <h1 class="about-hero-title">About</h1>
     </div>
   </section>
 
@@ -2200,7 +2216,7 @@
       <div class="responsive-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 50px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
         <div>
           <div style="font-size: 1.5rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-            <i class="fa-solid fa-house-chimney" style="color: #d97706;"></i>
+            <i class="fa-solid fa-house-chimney" style="color: #FAF8EE; font-weight: 600;"></i>
             <div>One<span style="color: #60a5fa;">Roof</span></div>
           </div>
           <p style="line-height: 1.7; margin-bottom: 20px;">
@@ -2237,13 +2253,13 @@
         <div>
           <h4 style="color: #ffffff; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px;">Get in Touch</h4>
           <p style="margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-            <i class="fa-solid fa-phone" style="color: #d97706;"></i> +1 (800) 555-ROOF
+            <i class="fa-solid fa-phone" style="color: #FAF8EE; font-weight: 600;"></i> +1 (800) 555-ROOF
           </p>
           <p style="margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-            <i class="fa-solid fa-envelope" style="color: #d97706;"></i> contact@oneroofproperties.com
+            <i class="fa-solid fa-envelope" style="color: #FAF8EE; font-weight: 600;"></i> contact@oneroofproperties.com
           </p>
           <p style="display: flex; align-items: center; gap: 8px;">
-            <i class="fa-solid fa-location-dot" style="color: #d97706;"></i> One Roof Tower, 500 Financial Center
+            <i class="fa-solid fa-location-dot" style="color: #FAF8EE; font-weight: 600;"></i> One Roof Tower, 500 Financial Center
           </p>
         </div>
       </div>

@@ -18,7 +18,7 @@
   --navy:#465665;
   --navy-deep:#1f343f;
   --dark:#111e26;
-  --gold:#d97706;
+  --gold:#5e571b;
   --gold-l:#d4af37;
   --gold-deep:#b4832c;
   --muted:#7b8791;
@@ -34,12 +34,25 @@ body{background:var(--cream);color:var(--navy);font-family:var(--body);line-heig
 a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;display:block}button,select{font-family:inherit}
 
 /* HEADER & NAVIGATION MATCHING HOMEPAGE */
-.header{position:absolute;top:0;left:0;right:0;z-index:1500;padding:34px 0 0;background:transparent;transition:background-color .3s ease,padding .3s ease,box-shadow .3s ease}
+.header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1500;
+      padding: 16px 0;
+      background: #38444E;
+      background: rgba(56, 68, 78, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      border-bottom: 1px solid rgba(179, 182, 183, 0.22);transition:background-color .3s ease,padding .3s ease,box-shadow .3s ease}
 .header.scrolled{position:fixed;top:0;background:rgba(17,30,38,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:14px 0;box-shadow:0 10px 30px rgba(0,0,0,.3);border-bottom:1px solid rgba(255,255,255,.08)}
 .holder{padding:0 max(24px,4.5vw);max-width:1820px;margin:0 auto;width:100%}
 .header-block{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:58px;gap:24px}
 .header-logo{position:relative;text-align:center;z-index:20;display:flex;justify-content:center;align-items:center}
-.header-logo img{height:48px;width:auto;display:block;object-fit:contain}
+.header-logo img {
+      height: 54px;width:auto;display:block;object-fit:contain}
 .header-nav-list{display:flex;gap:clamp(18px,2.2vw,36px);list-style:none;align-items:center;margin:0;padding:0}
 .header-nav-right{display:flex;align-items:center;justify-content:flex-end}
 .header-nav-list li{font-family:'Jost',sans-serif;font-size:clamp(13px,.88vw,15px);font-weight:400;letter-spacing:1.4px;text-transform:uppercase}
@@ -49,14 +62,13 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
 .header-nav-list a:hover{color:#d4af37}
 @media(max-width:900px){.header-nav-list{display:none !important}.nav-mobile-btn{display:block !important}}
 
-/* HERO */
-.hero{position:relative;height:clamp(420px,56vh,560px);display:flex;align-items:flex-end;background:#0f1a20;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;filter:brightness(.85)}
-.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,32,.5),rgba(15,26,32,.05) 45%,rgba(15,26,32,.8))}
-.hero-in{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(24px,5vw,60px) 40px}
-.hero h1{font-family:var(--head);font-size:clamp(2rem,4vw,3rem);color:#fff;letter-spacing:1px;text-transform:uppercase;line-height:1.15}
-.crumbs{display:flex;gap:10px;font-size:.8rem;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.8);margin-top:6px}
-.crumbs span.sep{color:var(--gold-l)}
+/* HERO EDITORIAL (ONE WORD BOTTOM-LEFT MATCHING REFERENCE) */
+.hero{position:relative;width:100%;height:clamp(480px,66vh,680px);min-height:480px;display:flex;align-items:flex-end;justify-content:flex-start;background:#0f1a20;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.9);transform:scale(1.02);transition:transform 6s ease-out}
+.hero:hover img{transform:scale(1.06)}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,14,10,.6) 0%,rgba(7,14,10,.15) 45%,rgba(7,14,10,.3) 70%,rgba(7,14,10,.8) 100%);pointer-events:none;z-index:2}
+.hero-in{position:relative;z-index:10;width:100%;max-width:1820px;margin:0 auto;padding:0 max(24px,4.5vw) clamp(36px,5.5vw,68px);box-sizing:border-box;text-align:left}
+.hero h1{font-family:'Cormorant Garamond','Nanum Myeongjo',Georgia,serif;font-size:clamp(3.2rem,6.2vw,5.8rem);font-weight:400;color:#fff;letter-spacing:-0.015em;line-height:1;margin:0;text-shadow:0 4px 24px rgba(0,0,0,.5);text-transform:none}
 
 /* EXPLORE */
 .explore{position:relative;padding:clamp(56px,7vw,90px) 0 40px;background:var(--cream);overflow:hidden}
@@ -310,8 +322,8 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
 
           <!-- Properties Dropdown with Caret Icon -->
           <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(0deg)';">
-            <a href="properties.html" onclick="const m=this.parentElement.querySelector('.prop-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.prop-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px; color: #d97706;">
-              Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+            <a href="properties.html" onclick="const m=this.parentElement.querySelector('.prop-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.prop-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px; color: #5e571b;">
+              Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #b3b6b7; transition: transform 0.25s ease;"></i>
             </a>
 
             <!-- Dropdown Card (Residential & Plotting) -->
@@ -335,9 +347,9 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
               <div style="padding-top: 10px;">
                 <a href="plotting.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
                   <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; letter-spacing: 1px;">
-                    <i class="fa-solid fa-map-location-dot" style="color: #d97706;"></i> Plotting Developments
+                    <i class="fa-solid fa-map-location-dot" style="color: #FAF8EE; font-weight: 600;"></i> Plotting Developments
                   </span>
-                  <span style="font-size: 0.72rem; color: #d97706; font-weight: 600;">(3) &rarr;</span>
+                  <span style="font-size: 0.72rem; color: #5e571b; font-weight: 600;">(3) &rarr;</span>
                 </a>
                 <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
                   <a href="plotting-1.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Green Valley Township Plots</a>
@@ -352,7 +364,7 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
         <!-- Center Uploaded One Roof Properties Logo -->
         <div class="header-logo">
           <a href="index.html">
-            <img src="assets/one-roof-logo-white.png" alt="One Roof Properties">
+            <img src="assets/one_roof_page-0001.png?v=original" alt="One Roof Properties">
           </a>
         </div>
 
@@ -365,14 +377,14 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
             <!-- NRI Support Dropdown with Caret Icon -->
             <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(0deg)';">
               <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.nri-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.nri-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px;">
-                NRI Support <i class="fa-solid fa-chevron-down nri-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+                NRI Support <i class="fa-solid fa-chevron-down nri-caret" style="font-size: 0.65rem; color: #b3b6b7; transition: transform 0.25s ease;"></i>
               </a>
 
               <!-- Dropdown Card (Legal Information & Loan Help) -->
               <div class="nri-dropdown" style="display: none; position: absolute; top: 100%; right: 0; min-width: 290px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 12px; z-index: 1200; text-transform: none;">
                 <!-- Legal Information -->
                 <a href="legal-information.html" style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: #ffffff; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
-                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(217, 119, 6, 0.2); display: flex; align-items: center; justify-content: center; color: #d97706; font-size: 1.05rem; flex-shrink: 0;">
+                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(70, 86, 101, 0.45); display: flex; align-items: center; justify-content: center; color: #5e571b; font-size: 1.05rem; flex-shrink: 0;">
                     <i class="fa-solid fa-scale-balanced"></i>
                   </div>
                   <div>
@@ -413,7 +425,7 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
     <ul style="display: flex; flex-direction: column; gap: 16px; margin: 0; padding: 0;">
       <li><a href="index.html" style="color: #ffffff; font-size: 1.05rem;">Home</a></li>
       <li><a href="about.html" style="color: #ffffff; font-size: 1rem;">About</a></li>
-      <li><a href="properties.html" style="color: #d97706; font-weight: 700; font-size: 1rem;">All Projects</a></li>
+      <li><a href="properties.html" style="color: #FAF8EE; font-weight: 600; font-size: 1rem;">All Projects</a></li>
       <li><a href="residential.html" style="color: #ffffff; font-size: 1rem;">Residential Properties (3)</a></li>
       <li><a href="plotting.html" style="color: #ffffff; font-size: 1rem;">Plotting Developments (3)</a></li>
       <li><a href="services.html" style="color: #ffffff; font-size: 1rem;">Services</a></li>
@@ -421,15 +433,14 @@ a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;displ
       <li><a href="blog.html" style="color: #ffffff; font-size: 1rem;">Blogs</a></li>
       <li>
         <a href="contact.html" style="color: #ffffff; font-size: 1rem;">Contact</a></li>
-      <li><a href="tel:9494168733" style="color: #d97706; font-size: 1rem; font-weight: 600;">949-416-8733</a></li>
+      <li><a href="tel:9494168733" style="color: #5e571b; font-size: 1rem; font-weight: 600;">949-416-8733</a></li>
     </ul>
   </div>
 
 <section class="hero">
-  <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=2000&q=80" alt="Family enjoying time at home">
+  <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=80" alt="Projects">
   <div class="hero-in">
-    <h1>Our Projects</h1>
-    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><span>Our Projects</span></div>
+    <h1>Projects</h1>
   </div>
 </section>
 

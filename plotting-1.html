@@ -10,7 +10,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
@@ -871,7 +871,7 @@
       letter-spacing: 1.4px;
       text-transform: uppercase;
       color: #ffffff;
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      background: linear-gradient(135deg, #716922 0%, #5e571b 100%);
       padding: 7px 14px;
       border-radius: 999px;
       box-shadow: 0 8px 20px rgba(217, 119, 6, 0.4);
@@ -932,7 +932,7 @@
     .size-details-inner .size-price-tag { margin: 0; padding: 0; border: 0; background: none; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
     .size-details-inner .size-price-tag strong { color: #fff; font-size: 1.15rem; display: block; }
     .size-details-inner .size-price-tag em { color: rgba(255,255,255,0.6); }
-    .size-details-inner .size-cta { margin: 2px 0 0; width: 100%; justify-content: center; background: #d97706; color: #fff; }
+    .size-details-inner .size-cta { margin: 2px 0 0; width: 100%; justify-content: center; background: #5e571b; color: #fff; }
     @media (max-width: 1024px) { .size-card { height: 540px; } }
     .size-meta-row {
       display: flex;
@@ -998,7 +998,7 @@
       text-transform: uppercase;
       font-weight: 600;
     }
-    .size-spec-row .k i { color: var(--gold-accent, #d97706); font-size: 0.78rem; width: 14px; text-align: center; }
+    .size-spec-row .k i { color: var(--gold-accent, #5e571b); font-size: 0.78rem; width: 14px; text-align: center; }
     .size-spec-row .v { font-weight: 600; color: var(--navy-deep); line-height: 1.35; padding-left: 22px; }
     .size-price-tag {
       display: flex;
@@ -1050,7 +1050,7 @@
       transition: all 0.3s var(--ease);
     }
     .size-cta i { transition: transform 0.3s var(--ease); }
-    .size-card:hover .size-cta { background: #d97706; color: #ffffff; }
+    .size-card:hover .size-cta { background: #5e571b; color: #ffffff; }
     .size-card:hover .size-cta i { transform: translateX(5px); }
 
     /* Assurance strip */
@@ -1078,7 +1078,7 @@
       border-radius: 50%;
       background: rgba(245, 158, 11, 0.14);
       border: 1px solid rgba(245, 158, 11, 0.4);
-      color: #f59e0b;
+      color: #716922;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1172,7 +1172,7 @@
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gold-accent, #d97706);
+      color: var(--gold-accent, #5e571b);
       margin-bottom: 12px;
     }
     .sec-headline-center {
@@ -1290,7 +1290,7 @@
       transition: all 0.25s ease;
     }
     .connect-pin:hover .connect-card {
-      border-color: var(--gold-accent, #d97706);
+      border-color: var(--gold-accent, #5e571b);
       box-shadow: 0 10px 24px rgba(217, 119, 6, 0.18);
     }
     .connect-card-name {
@@ -1336,104 +1336,116 @@
     .pin-5 { left: 72%; top: 80%; }
     .pin-6 { left: 88%; top: 60%; }
 
-    /* Modal Dialog with Elastic Pop-up Entrance */
+    /* Modal Dialog with Elastic Pop-up Entrance (Shri Vrinda Exact Design Replica) */
     .connect-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(17, 30, 38, 0.65);
+      background: rgba(20, 28, 34, 0.48);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       z-index: 9999;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: clamp(16px, 3vw, 24px);
+      box-sizing: border-box;
     }
     .connect-modal-backdrop.open {
       display: flex;
     }
 
     .connect-modal-card {
-      background: var(--cream);
+      background: #FAF8EE;
       width: 100%;
-      max-width: 620px;
-      border-radius: 16px;
-      padding: clamp(28px, 4vw, 44px);
+      max-width: 860px;
+      border-radius: 0;
+      padding: clamp(34px, 4.5vw, 54px) clamp(32px, 5vw, 60px);
       border: 1px solid rgba(70, 86, 101, 0.16);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
       position: relative;
-      animation: modalPopUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
     }
-    @keyframes modalPopUp {
-      0% { opacity: 0; transform: scale(0.8) translateY(30px); }
-      70% { opacity: 1; transform: scale(1.03) translateY(-4px); }
+    @keyframes modalFadeIn {
+      0% { opacity: 0; transform: scale(0.96) translateY(12px); }
       100% { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     .connect-modal-close {
       position: absolute;
-      top: 28px;
-      right: 28px;
-      width: 36px;
-      height: 36px;
-      border-radius: 6px;
-      border: 1px solid rgba(70, 86, 101, 0.2);
+      top: clamp(26px, 3.5vw, 38px);
+      right: clamp(26px, 3.5vw, 38px);
+      width: 44px;
+      height: 44px;
+      border-radius: 0;
+      border: 1px solid #1f343f;
       background: transparent;
-      color: var(--navy-deep);
-      font-size: 1.1rem;
+      color: #1f343f;
+      font-size: 1.15rem;
+      font-family: inherit;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.2s ease;
+      padding: 0;
+      line-height: 1;
     }
     .connect-modal-close:hover {
-      background: var(--navy-deep);
-      color: #ffffff;
-      border-color: var(--navy-deep);
+      background: #1f343f;
+      color: #FAF8EE;
     }
 
     .connect-modal-eyebrow {
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 6px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #7b8791;
+      margin-bottom: 8px;
+      letter-spacing: 0.2px;
+      text-transform: none;
     }
+
     .connect-modal-title {
-      font-family: var(--head-font);
-      font-size: clamp(1.6rem, 2.4vw, 2.1rem);
-      font-weight: 700;
-      color: var(--navy-deep);
-      margin-bottom: 24px;
+      font-family: 'Cormorant Garamond', 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(2.1rem, 3.4vw, 2.85rem);
+      font-weight: 400;
+      color: #1f343f;
+      margin: 0 0 28px;
+      line-height: 1.15;
       letter-spacing: -0.01em;
     }
 
     .connect-list-table {
       width: 100%;
-      border-top: 1px solid rgba(70, 86, 101, 0.2);
+      border-top: 1px solid #1f343f;
     }
     .connect-list-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 4px;
-      border-bottom: 1px solid rgba(70, 86, 101, 0.16);
+      padding: clamp(16px, 2.2vh, 22px) 2px;
+      border-bottom: 1px solid rgba(70, 86, 101, 0.35);
       transition: background 0.15s ease;
+      gap: 20px;
     }
     .connect-list-row:hover {
       background: rgba(70, 86, 101, 0.03);
     }
     .connect-list-name {
-      font-size: 0.98rem;
-      font-weight: 500;
-      color: var(--navy-deep);
+      font-family: 'Cormorant Garamond', 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(1.12rem, 1.35vw, 1.28rem);
+      font-weight: 400;
+      color: #1f343f;
+      letter-spacing: 0.1px;
     }
     .connect-list-time {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: #556575;
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.9rem, 1.05vw, 1rem);
+      font-weight: 400;
+      color: #465665;
+      text-align: right;
+      letter-spacing: 0.3px;
       white-space: nowrap;
     }
 
@@ -1947,8 +1959,8 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--gold-accent, #d97706);
-      box-shadow: 0 0 8px var(--gold-accent, #d97706);
+      background: var(--gold-accent, #5e571b);
+      box-shadow: 0 0 8px var(--gold-accent, #5e571b);
     }
 
     .sf-visual-pill-count {
@@ -2014,7 +2026,7 @@
       font-weight: 700;
       letter-spacing: 2.2px;
       text-transform: uppercase;
-      color: var(--gold-accent, #d97706);
+      color: var(--gold-accent, #5e571b);
       margin-bottom: 20px;
     }
 
@@ -2160,7 +2172,7 @@
       border-radius: 50%;
       border: 1.5px solid rgba(217, 119, 6, 0.35);
       background: rgba(217, 119, 6, 0.08);
-      color: var(--gold-accent, #d97706);
+      color: var(--gold-accent, #5e571b);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -2169,9 +2181,9 @@
       transition: all 0.25s ease;
     }
     .sf-nav-arrow:hover {
-      background: var(--gold-accent, #d97706);
+      background: var(--gold-accent, #5e571b);
       color: #ffffff;
-      border-color: var(--gold-accent, #d97706);
+      border-color: var(--gold-accent, #5e571b);
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(217, 119, 6, 0.3);
     }
@@ -2188,7 +2200,7 @@
     .sf-progress-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #f59e0b, #d97706);
+      background: linear-gradient(90deg, #716922, #5e571b);
       transition: width 0.1s linear;
     }
 
@@ -2586,7 +2598,7 @@
         </ul>
 
         <div class="header-logo">
-          <a href="index.html"><img src="assets/one-roof-logo-white.png" alt="One Roof Properties"></a>
+          <a href="index.html"><img src="assets/one_roof_page-0001.png?v=original" alt="One Roof Properties"></a>
         </div>
 
         <div class="header-nav-right">
@@ -3048,7 +3060,7 @@
         </svg>
 
         <!-- Floating, Animated Cursor-Tracking "View All" Button with Pop-up Effect -->
-        <button type="button" class="connect-floating-btn" id="btnConnectFloating" aria-label="View all nearby destinations">
+        <button type="button" class="connect-floating-btn" id="btnConnectFloating" onclick="openConnectModal(event)" aria-label="View all nearby destinations">
           <span>View All</span>
         </button>
 
@@ -3109,31 +3121,31 @@
       </div>
     </section>
 
-    <!-- Modal Dialog (Nearby Destinations with Elastic Pop-up) -->
-    <div class="connect-modal-backdrop" id="connectModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalDestTitle">
+    <!-- Modal Dialog (Nearby Destinations — Shri Vrinda Exact Design Replica) -->
+    <div class="connect-modal-backdrop" id="connectModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalDestTitle" onclick="if(event.target === this) closeConnectModal();">
       <div class="connect-modal-card">
-        <button type="button" class="connect-modal-close" id="btnCloseConnectModal" aria-label="Close dialog">&times;</button>
+        <button type="button" class="connect-modal-close" id="btnCloseConnectModal" onclick="closeConnectModal()" aria-label="Close dialog">&#10005;</button>
         <div class="connect-modal-eyebrow">Connectivity</div>
         <h3 class="connect-modal-title" id="modalDestTitle">Nearby Destinations</h3>
         <div class="connect-list-table">
           <div class="connect-list-row">
-            <span class="connect-list-name">North Expressway Exit 4B</span>
+            <span class="connect-list-name">North Expressway Exit</span>
             <span class="connect-list-time">2 mins</span>
           </div>
           <div class="connect-list-row">
-            <span class="connect-list-name">Pune Ring Road Junction (Upcoming)</span>
+            <span class="connect-list-name">Upcoming Ring Road</span>
             <span class="connect-list-time">5 mins</span>
           </div>
           <div class="connect-list-row">
-            <span class="connect-list-name">Wagholi Commercial Centre &amp; Markets</span>
+            <span class="connect-list-name">Wagholi City Centre</span>
             <span class="connect-list-time">10 mins</span>
           </div>
           <div class="connect-list-row">
-            <span class="connect-list-name">EON Free Zone &amp; World Trade Center, Kharadi</span>
+            <span class="connect-list-name">Kharadi EON IT Park</span>
             <span class="connect-list-time">15 mins</span>
           </div>
           <div class="connect-list-row">
-            <span class="connect-list-name">Pune International Airport (Lohegaon)</span>
+            <span class="connect-list-name">Pune International Airport</span>
             <span class="connect-list-time">20 mins</span>
           </div>
           <div class="connect-list-row">
@@ -3141,7 +3153,7 @@
             <span class="connect-list-time">25 mins</span>
           </div>
           <div class="connect-list-row">
-            <span class="connect-list-name">Pune Railway Junction Station</span>
+            <span class="connect-list-name">Pune Railway Junction</span>
             <span class="connect-list-time">30 mins</span>
           </div>
         </div>
@@ -3427,7 +3439,7 @@
     <div class="nw-footer-inner">
       <div class="nw-footer-top">
         <a href="index.html" class="nw-footer-brand">
-          <img src="assets/one-roof-logo-dark.png" alt="One Roof Properties" style="height:54px;width:auto;object-fit:contain;">
+          <img src="assets/one_roof_page-0001.png?v=original" alt="One Roof Properties" style="height:54px;width:auto;object-fit:contain;">
         </a>
         <div class="nw-footer-socials">
           <a href="https://linkedin.com" target="_blank" rel="noopener" class="nw-social-pill" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -3489,13 +3501,16 @@
     // Header Scroll Effect & Mobile Drawer
     (function initNav() {
       const header = document.getElementById('mainHeader');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+      if (!header) return;
+      function updateHeader() {
+        if (window.scrollY > 40) {
           header.classList.add('scrolled');
         } else {
           header.classList.remove('scrolled');
         }
-      }, { passive: true });
+      }
+      window.addEventListener('scroll', updateHeader, { passive: true });
+      updateHeader(); // Run immediately on load in case page is restored with scroll
 
       const mobileBtn = document.getElementById('mobileBtn');
       const drawer = document.getElementById('drawer');
@@ -3511,6 +3526,17 @@
     // Reveal animations on scroll
     (function initReveals() {
       const elements = document.querySelectorAll('.plot-reveal');
+      if (!elements.length) return;
+
+      function checkVisible() {
+        elements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight + 60 && rect.bottom > 0) {
+            el.classList.add('is-in');
+          }
+        });
+      }
+
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -3519,11 +3545,16 @@
               observer.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0.05, rootMargin: '0px 0px 60px 0px' });
         elements.forEach(el => observer.observe(el));
       } else {
         elements.forEach(el => el.classList.add('is-in'));
       }
+
+      // Immediate check for above-the-fold or pre-scrolled elements
+      checkVisible();
+      setTimeout(checkVisible, 200);
+      window.addEventListener('scroll', checkVisible, { passive: true });
     })();
 
     // Plot Size Filter
@@ -3821,7 +3852,8 @@
         targetY = stageRect.height / 2;
       });
 
-      function openModal() {
+      function openModal(e) {
+        if (e && e.stopPropagation) e.stopPropagation();
         if (!modal) return;
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
@@ -3833,15 +3865,22 @@
         document.body.style.overflow = '';
       }
 
+      window.openConnectModal = openModal;
+      window.closeConnectModal = closeModal;
+
       btn.addEventListener('click', (e) => {
+        e.preventDefault();
         e.stopPropagation();
-        openModal();
+        openModal(e);
       });
 
       if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
       pins.forEach(pin => {
-        pin.addEventListener('click', openModal);
+        pin.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openModal(e);
+        });
       });
 
       if (modal) {

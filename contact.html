@@ -493,11 +493,11 @@
     /* 3D Rotating Dotted Earth Globe in Upper Center */
     .arch-earth-box {
       position: absolute;
-      top: 6px;
+      top: 0px;
       left: 50%;
       transform: translateX(-50%);
-      width: 320px;
-      height: 320px;
+      width: 390px;
+      height: 390px;
       z-index: 2;
       display: flex;
       align-items: center;
@@ -507,8 +507,10 @@
     }
 
     #rotatingEarthCanvas {
-      width: 320px;
-      height: 320px;
+      width: 390px;
+      height: 390px;
+      max-width: 90vw;
+      max-height: 90vw;
       display: block;
     }
 
@@ -868,6 +870,67 @@
         gap: 36px;
       }
     }
+  
+    /* ======================================================== */
+    /* CONTACT HERO SECTION (EDITORIAL ONE-WORD BOTTOM-LEFT)    */
+    /* ======================================================== */
+    .contact-hero {
+      position: relative;
+      width: 100%;
+      height: clamp(480px, 66vh, 680px);
+      min-height: 480px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      background: #070e17;
+      overflow: hidden;
+    }
+    .contact-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    .contact-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.02);
+      transition: transform 6s ease-out;
+    }
+    .contact-hero:hover .contact-hero-bg img {
+      transform: scale(1.06);
+    }
+    .contact-hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(180deg, rgba(7, 14, 10, 0.6) 0%, rgba(7, 14, 10, 0.15) 45%, rgba(7, 14, 10, 0.3) 70%, rgba(7, 14, 10, 0.8) 100%);
+      pointer-events: none;
+    }
+    .contact-hero-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1820px;
+      margin: 0 auto;
+      padding: 0 max(24px, 4.5vw) clamp(36px, 5.5vw, 68px);
+      box-sizing: border-box;
+      text-align: left;
+    }
+    .contact-hero-title {
+      font-family: 'Cormorant Garamond', 'Nanum Myeongjo', Georgia, serif;
+      font-size: clamp(3.2rem, 6.2vw, 5.8rem);
+      font-weight: 400;
+      color: #ffffff;
+      letter-spacing: -0.015em;
+      line-height: 1;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+      margin: 0;
+    }
+
   </style>
 </head>
 <body>
@@ -923,7 +986,7 @@
 
         <!-- Center Uploaded One Roof Properties Logo -->
         <a href="index.html" class="header-brand-center">
-          <img src="assets/one-roof-logo-dark.png" alt="One Roof Properties">
+          <img src="assets/one_roof_page-0001.png?v=original" alt="One Roof Properties">
         </a>
 
         <!-- Right Nav Items: Services | Blog | NRI Support | Contact Us -->
@@ -934,14 +997,14 @@
                         <!-- NRI Support Dropdown with Caret Icon -->
             <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(0deg)';">
               <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.nri-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.nri-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px;">
-                NRI Support <i class="fa-solid fa-chevron-down nri-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+                NRI Support <i class="fa-solid fa-chevron-down nri-caret" style="font-size: 0.65rem; color: #b3b6b7; transition: transform 0.25s ease;"></i>
               </a>
 
               <!-- Dropdown Card (Legal Information & Loan Help) -->
               <div class="nri-dropdown" style="display: none; position: absolute; top: 100%; right: 0; min-width: 290px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 12px; z-index: 1200; text-transform: none;">
                 <!-- Legal Information -->
                 <a href="legal-information.html" style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: #ffffff; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
-                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(217, 119, 6, 0.2); display: flex; align-items: center; justify-content: center; color: #d97706; font-size: 1.05rem; flex-shrink: 0;">
+                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(70, 86, 101, 0.45); display: flex; align-items: center; justify-content: center; color: #5e571b; font-size: 1.05rem; flex-shrink: 0;">
                     <i class="fa-solid fa-scale-balanced"></i>
                   </div>
                   <div>
@@ -971,6 +1034,20 @@
       </div>
     </div>
   </header>
+
+  <!-- ======================================================== -->
+  <!-- 1. CONTACT HERO SECTION (EDITORIAL ONE-WORD BOTTOM LEFT) -->
+  <!-- ======================================================== -->
+  <section class="contact-hero">
+    <div class="contact-hero-bg">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80" alt="Contact One Roof Properties">
+    </div>
+    <div class="contact-hero-overlay"></div>
+    <div class="contact-hero-content">
+      <h1 class="contact-hero-title">Contact</h1>
+    </div>
+  </section>
+
 
   <!-- ======================================================== -->
   <!-- 1. CONTACT & FRAMED INQUIRY SECTION (REFERENCE LAYOUT)   -->
@@ -1131,7 +1208,7 @@
 
       <!-- 3D Rotating Dotted Earth Globe in Upper Center -->
       <div class="arch-earth-box" id="archEarthBox">
-        <canvas id="rotatingEarthCanvas" width="640" height="640"></canvas>
+        <canvas id="rotatingEarthCanvas" width="780" height="780"></canvas>
       </div>
 
       <!-- Left Orbit Node: Call Now -->
@@ -1186,7 +1263,7 @@
       <!-- Top Row: Brand Logo | Social Outlined Pills | Member of CREDAI -->
       <div class="nw-footer-top">
         <a href="index.html" class="nw-footer-brand">
-          <img src="assets/one-roof-logo-dark.png" alt="One Roof Properties" style="height: 54px; width: auto; object-fit: contain;">
+          <img src="assets/one_roof_page-0001.png?v=original" alt="One Roof Properties" style="height: 54px; width: auto; object-fit: contain;">
         </a>
 
         <div class="nw-footer-socials">
@@ -1283,7 +1360,7 @@
       const H = canvas.height;
       const cx = W / 2;
       const cy = H / 2;
-      const R = W * 0.42;
+      const R = W * 0.44;
 
       // Simplified continent polygons in [lon, lat] degrees (Africa, Europe, Asia/India, Americas, Australia)
       const continents = [
@@ -1377,7 +1454,7 @@
             const depthAlpha = Math.min(1, Math.max(0, (zTilted + 0.05) / 0.42));
             const px = cx + x * R;
             const py = cy + yTilted * R;
-            const dotRadius = (1.3 + Math.max(0, zTilted) * 1.55);
+            const dotRadius = (1.5 + Math.max(0, zTilted) * 1.85);
 
             ctx.beginPath();
             ctx.arc(px, py, dotRadius, 0, Math.PI * 2);

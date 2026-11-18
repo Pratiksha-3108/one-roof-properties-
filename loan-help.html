@@ -21,8 +21,8 @@
       --bg-card-inner: rgba(255, 255, 255, 0.025);
       --border-card: rgba(255, 255, 255, 0.08);
       --border-inner: rgba(255, 255, 255, 0.06);
-      --gold-accent: #d97706;
-      --gold-light: #f59e0b;
+      --gold-accent: #5e571b;
+      --gold-light: #716922;
       --text-white: #ffffff;
       --text-slate: #cbd5e1;
       --text-muted: #94a3b8;
@@ -431,7 +431,7 @@
       color: #cbd5e1;
     }
     .btn-gold {
-      background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+      background: linear-gradient(135deg, #5e571b 0%, #b45309 100%);
       color: #ffffff !important;
       font-weight: 600;
       padding: 12px 26px;
@@ -567,7 +567,7 @@
           <!-- Properties Dropdown with Caret Icon -->
           <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.prop-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.prop-caret'); if(c) c.style.transform='rotate(0deg)';">
             <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.prop-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.prop-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px;">
-              Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+              Properties <i class="fa-solid fa-chevron-down prop-caret" style="font-size: 0.65rem; color: #b3b6b7; transition: transform 0.25s ease;"></i>
             </a>
 
             <!-- Dropdown Card (Residential & Plotting) -->
@@ -591,9 +591,9 @@
               <div style="padding-top: 10px;">
                 <a href="plotting.html" style="display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 8px; text-decoration: none; color: #ffffff; font-weight: 700; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
                   <span style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; letter-spacing: 1px;">
-                    <i class="fa-solid fa-map-location-dot" style="color: #d97706;"></i> Plotting Developments
+                    <i class="fa-solid fa-map-location-dot" style="color: #FAF8EE; font-weight: 600;"></i> Plotting Developments
                   </span>
-                  <span style="font-size: 0.72rem; color: #d97706; font-weight: 600;">(3) &rarr;</span>
+                  <span style="font-size: 0.72rem; color: #5e571b; font-weight: 600;">(3) &rarr;</span>
                 </a>
                 <div style="padding-left: 28px; display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
                   <a href="plotting-1.html" style="font-size: 0.8rem; color: #94a3b8; text-decoration: none; padding: 2px 0;" onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#94a3b8';">&bull; Green Valley Township Plots</a>
@@ -608,7 +608,7 @@
         <!-- Center Uploaded One Roof Properties Logo -->
         <div class="header-logo">
           <a href="index.html">
-            <img src="assets/one-roof-logo-white.png" alt="One Roof Properties">
+            <img src="assets/one_roof_page-0001.png?v=original" alt="One Roof Properties">
           </a>
         </div>
 
@@ -620,15 +620,15 @@
 
             <!-- NRI Support Dropdown with Caret Icon -->
             <li class="dropdown-parent" style="position: relative;" onmouseenter="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='block'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(180deg)';" onmouseleave="const m=this.querySelector('.nri-dropdown'); if(m) m.style.display='none'; const c=this.querySelector('.nri-caret'); if(c) c.style.transform='rotate(0deg)';">
-              <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.nri-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.nri-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px; color: #d97706;">
-                NRI Support <i class="fa-solid fa-chevron-down nri-caret" style="font-size: 0.65rem; color: #d97706; transition: transform 0.25s ease;"></i>
+              <a href="javascript:void(0)" onclick="const m=this.parentElement.querySelector('.nri-dropdown'); if(m){ m.style.display = (m.style.display==='block' ? 'none' : 'block'); } const c=this.querySelector('.nri-caret'); if(c){ c.style.transform = (m && m.style.display==='block' ? 'rotate(180deg)' : 'rotate(0deg)'); }" style="display: flex; align-items: center; gap: 6px; color: #5e571b;">
+                NRI Support <i class="fa-solid fa-chevron-down nri-caret" style="font-size: 0.65rem; color: #b3b6b7; transition: transform 0.25s ease;"></i>
               </a>
 
               <!-- Dropdown Card (Legal Information & Loan Help) -->
               <div class="nri-dropdown" style="display: none; position: absolute; top: 100%; right: 0; min-width: 290px; background: rgba(10, 18, 14, 0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); padding: 12px; z-index: 1200; text-transform: none;">
                 <!-- Legal Information -->
                 <a href="legal-information.html" style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: #ffffff; transition: background 0.15s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)';" onmouseout="this.style.background='transparent';">
-                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(217, 119, 6, 0.2); display: flex; align-items: center; justify-content: center; color: #d97706; font-size: 1.05rem; flex-shrink: 0;">
+                  <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(70, 86, 101, 0.45); display: flex; align-items: center; justify-content: center; color: #5e571b; font-size: 1.05rem; flex-shrink: 0;">
                     <i class="fa-solid fa-scale-balanced"></i>
                   </div>
                   <div>
@@ -822,7 +822,7 @@
     <div class="nw-footer-inner">
       <div class="nw-footer-top">
         <a href="index.html" class="nw-footer-brand">
-          <img src="assets/one-roof-logo-white.png" alt="One Roof Properties">
+          <img src="assets/one_roof_page-0001.png?v=original" alt="One Roof Properties">
         </a>
         <div class="nw-footer-socials">
           <a href="#" class="nw-social-pill" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>

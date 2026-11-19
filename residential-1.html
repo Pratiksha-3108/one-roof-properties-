@@ -1160,16 +1160,15 @@
     }
 
     /* ===================================================================== */
-    /* SECTION 7: MASTER & FLOOR PLAN — PREMIUM EDITORIAL LAYOUT             */
+    /* SECTION 7: MASTER & FLOOR PLAN — SKYVIEW RESIDENCY / URBAN SKYLINE UI */
     /* ===================================================================== */
     .fp-sec {
-      background-color: #FAF8EE;
-      background-image:
-        radial-gradient(ellipse at 88% 6%, rgba(217, 119, 6, 0.08) 0%, transparent 55%),
-        radial-gradient(circle at 10% 90%, #F3EFE2 0%, transparent 55%);
-      padding: clamp(64px, 8vw, 110px) 0 clamp(56px, 7vw, 96px);
       position: relative;
+      background: linear-gradient(135deg, #edf4fb 0%, #dceaf7 100%);
+      padding: clamp(64px, 7.5vw, 105px) 0;
       overflow: hidden;
+      border-top: 1px solid rgba(70, 86, 101, 0.12);
+      border-bottom: 1px solid rgba(70, 86, 101, 0.12);
     }
     .fp-wrap {
       max-width: 1240px;
@@ -1177,8 +1176,13 @@
       padding: 0 clamp(18px, 4vw, 48px);
       box-sizing: border-box;
     }
-    /* Header (same editorial rhythm as plotting pages) */
-    .fp-eyebrow {
+
+    /* Left-Aligned Title and Subtitle */
+    .fp-header-left {
+      text-align: left;
+      margin-bottom: clamp(28px, 3.5vw, 42px);
+    }
+    .fp-header-left .fp-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -1187,270 +1191,425 @@
       font-weight: 600;
       letter-spacing: 2.8px;
       text-transform: uppercase;
-      color: #6b7a88;
+      color: #486278;
       margin-bottom: 14px;
+      text-align: left;
     }
-    .fp-eyebrow .fp-dash { width: 26px; height: 2px; background: #1f343f; display: inline-block; }
-    .fp-eyebrow b { color: #1f343f; font-weight: 700; }
-    .fp-headline {
+    .fp-header-left .fp-dash {
+      width: 26px;
+      height: 2px;
+      background: #1f343f;
+      display: inline-block;
+    }
+    .fp-header-left .fp-eyebrow b {
+      color: #1f343f;
+      font-weight: 700;
+    }
+    .fp-header-left .fp-headline {
       font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 3.8vw, 3.5rem);
+      font-size: clamp(2.1rem, 3.6vw, 3.3rem);
       font-weight: 700;
       line-height: 1.15;
       color: #1b2836;
       letter-spacing: -0.5px;
       margin: 0 0 16px;
+      text-align: left;
     }
-    .fp-headline em { font-style: italic; color: var(--gold-accent, #d97706); font-weight: 600; }
-    .fp-lead {
+    .fp-header-left .fp-headline em {
+      font-style: italic;
+      color: var(--gold-accent, #d97706);
+      font-weight: 600;
+    }
+    .fp-header-left .fp-lead {
       font-family: var(--font-body);
       font-size: clamp(0.96rem, 1.15vw, 1.08rem);
-      color: #6b7a88;
+      color: #4b6377;
       line-height: 1.75;
-      max-width: 700px;
-      margin: 0 0 30px;
+      max-width: 720px;
+      margin: 0;
+      text-align: left;
     }
-    .fp-pills { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: clamp(28px, 3.5vw, 42px); }
+
+    /* Middle-Aligned Content Section */
+    .fp-content-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Configuration Switcher Pills */
+    .fp-pills {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: clamp(26px, 3.2vw, 36px);
+    }
     .floorplan-pill {
       background: #ffffff;
       color: #1f343f;
-      font-family: var(--font-body);
-      font-size: 0.88rem;
-      font-weight: 700;
-      padding: 11px 28px;
-      border-radius: 999px;
-      border: 1.5px solid rgba(70, 86, 101, 0.16);
-      cursor: pointer;
-      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-      outline: none;
-    }
-    .floorplan-pill:hover { transform: translateY(-2px); border-color: var(--gold-accent, #d97706); }
-    .floorplan-pill.active {
-      background: #465665;
-      color: #ffffff;
-      border-color: #465665;
-      box-shadow: 0 8px 22px rgba(70, 86, 101, 0.3);
-    }
-
-    /* Two-column stage */
-    .fp-stage {
-      display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-      gap: clamp(18px, 2.4vw, 30px);
-      align-items: stretch;
-    }
-
-    /* Drawing board */
-    .fp-board {
-      position: relative;
-      background: #ffffff;
-      border-radius: 26px;
-      border: 1px solid rgba(70, 86, 101, 0.12);
-      box-shadow: 0 30px 70px rgba(27, 40, 54, 0.10), 0 2px 8px rgba(27, 40, 54, 0.04);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .fp-board-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 24px;
-      border-bottom: 1px solid rgba(70, 86, 101, 0.1);
-      background: linear-gradient(180deg, #fffdf8 0%, #ffffff 100%);
-      font-family: var(--font-body);
-    }
-    .fp-board-tag {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 0.74rem; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; color: #1f343f;
-    }
-    .fp-board-tag i { color: var(--gold-accent, #d97706); }
-    .fp-board-meta { font-size: 0.74rem; font-weight: 600; letter-spacing: 1.4px; color: #94a3b8; text-transform: uppercase; }
-    .floorplan-canvas-frame {
-      position: relative;
-      flex: 1;
-      min-height: clamp(360px, 46vh, 460px);
-      background-color: #fdfcf9;
-      background-image:
-        linear-gradient(rgba(70, 86, 101, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(70, 86, 101, 0.045) 1px, transparent 1px);
-      background-size: 28px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 22px;
-      box-sizing: border-box;
-      overflow: hidden;
-    }
-    .fp-corner { position: absolute; width: 22px; height: 22px; border-color: rgba(217, 119, 6, 0.55); border-style: solid; border-width: 0; z-index: 3; }
-    .fp-corner.tl { top: 14px; left: 14px; border-top-width: 2px; border-left-width: 2px; }
-    .fp-corner.tr { top: 14px; right: 14px; border-top-width: 2px; border-right-width: 2px; }
-    .fp-corner.bl { bottom: 14px; left: 14px; border-bottom-width: 2px; border-left-width: 2px; }
-    .fp-corner.br { bottom: 14px; right: 14px; border-bottom-width: 2px; border-right-width: 2px; }
-    .floorplan-blueprint-img {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      filter: blur(5px);
-      opacity: 0.85;
-      transform: scale(1.02);
-      transition: filter 0.6s ease, transform 0.6s ease, opacity 0.6s ease;
-      user-select: none;
-    }
-    .fp-stage.is-unlocked .floorplan-blueprint-img { filter: blur(0); opacity: 1; transform: scale(1); }
-    .floorplan-lock-overlay {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 24px;
-      background: rgba(250, 248, 238, 0.66);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      z-index: 5;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
-    }
-    .fp-stage.is-unlocked .floorplan-lock-overlay { opacity: 0; visibility: hidden; pointer-events: none; }
-    .floorplan-lock-circle {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: #1f343f;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 14px;
-      box-shadow: 0 10px 26px rgba(31, 52, 63, 0.28);
-      border: 2px solid #d97706;
-    }
-    .floorplan-lock-circle i { color: #f59e0b; font-size: 1.2rem; }
-    .floorplan-lock-title { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #1b2836; margin: 0 0 6px; }
-    .floorplan-lock-text { font-family: var(--font-body); font-size: 0.92rem; color: #5a6e7f; max-width: 360px; line-height: 1.5; margin: 0 0 18px; }
-    .floorplan-unlock-btn {
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-      color: #ffffff;
       font-family: var(--font-body);
       font-size: 0.92rem;
       font-weight: 700;
       padding: 12px 32px;
       border-radius: 999px;
+      border: 1.5px solid rgba(70, 86, 101, 0.22);
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      outline: none;
+      box-shadow: 0 4px 14px rgba(70, 86, 101, 0.08);
+    }
+    .floorplan-pill:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold-accent, #d97706);
+      box-shadow: 0 8px 20px rgba(217, 119, 6, 0.18);
+    }
+    .floorplan-pill.active {
+      background: #465665;
+      color: #ffffff;
+      border-color: #465665;
+      box-shadow: 0 8px 24px rgba(70, 86, 101, 0.35);
+    }
+
+    /* Floor Plan Showcase Card (Centered) */
+    .fp-card-showcase {
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .fp-card-showcase:hover {
+      transform: translateY(-4px);
+    }
+    .fp-card-inner {
+      background: #ffffff;
+      border-radius: 26px;
+      border: 1px solid rgba(70, 86, 101, 0.16);
+      box-shadow: 0 28px 70px rgba(27, 40, 54, 0.13), 0 2px 8px rgba(27, 40, 54, 0.05);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .fp-card-bar {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 26px;
+      border-bottom: 1px solid rgba(70, 86, 101, 0.1);
+      background: linear-gradient(180deg, #fffdf8 0%, #ffffff 100%);
+      font-family: var(--font-body);
+    }
+    .fp-board-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1f343f;
+    }
+    .fp-board-tag i {
+      color: var(--gold-accent, #d97706);
+    }
+    .fp-board-meta {
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      color: #94a3b8;
+      text-transform: uppercase;
+    }
+
+    /* Blueprint Canvas Frame */
+    .fp-image-container {
+      position: relative;
+      width: 100%;
+      min-height: clamp(380px, 48vh, 500px);
+      background-color: #fcfdfd;
+      background-image:
+        linear-gradient(rgba(70, 86, 101, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(70, 86, 101, 0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 28px 52px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .fp-corner {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-color: rgba(217, 119, 6, 0.55);
+      border-style: solid;
+      border-width: 0;
+      z-index: 3;
+    }
+    .fp-corner.tl { top: 16px; left: 16px; border-top-width: 2px; border-left-width: 2px; }
+    .fp-corner.tr { top: 16px; right: 16px; border-top-width: 2px; border-right-width: 2px; }
+    .fp-corner.bl { bottom: 16px; left: 16px; border-bottom-width: 2px; border-left-width: 2px; }
+    .fp-corner.br { bottom: 16px; right: 16px; border-bottom-width: 2px; border-right-width: 2px; }
+
+    .fp-blueprint-img {
+      max-width: 100%;
+      max-height: 420px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: blur(6px);
+      opacity: 0.82;
+      transform: scale(1.02);
+      transition: filter 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+      user-select: none;
+    }
+    .fp-card-showcase.is-unlocked .fp-blueprint-img {
+      filter: blur(0);
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Floor Plan Lock Overlay (Initially visible on top of blurred blueprint, matching 2nd UI) */
+    .floorplan-lock-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.42);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      z-index: 6;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .fp-card-showcase.is-unlocked .floorplan-lock-overlay {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .floorplan-lock-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #0d1722;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      box-shadow: 0 8px 24px rgba(13, 23, 34, 0.28);
+      border: 2px solid #f59e0b;
+    }
+    .floorplan-lock-circle i {
+      color: #f59e0b;
+      font-size: 1.15rem;
+    }
+    .floorplan-lock-title {
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #172a3a;
+      margin: 0 0 6px;
+      letter-spacing: -0.2px;
+    }
+    .floorplan-lock-text {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: #556677;
+      max-width: 330px;
+      line-height: 1.45;
+      margin: 0 0 16px;
+    }
+    .floorplan-lock-overlay .floorplan-unlock-btn {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 10px 30px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(217, 119, 6, 0.38);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .floorplan-lock-overlay .floorplan-unlock-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(217, 119, 6, 0.5);
+    }
+
+    /* Floating Mini Info Pill (Exact Match to Image 1) */
+    .fp-mini-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 10px 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 32px;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16), 0 2px 6px rgba(15, 23, 42, 0.05);
+      border: 1.5px solid rgba(70, 86, 101, 0.14);
+      margin-top: -26px;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 10;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .fp-card-showcase:hover .fp-mini-card {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.22);
+    }
+    .fp-mini-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .fp-mini-label {
+      font-size: 0.70rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #d97706;
+      margin-bottom: 2px;
+      font-family: var(--font-body);
+    }
+    .fp-mini-val {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0284c7;
+      letter-spacing: -0.2px;
+      font-family: var(--font-body);
+    }
+    .fp-mini-divider {
+      width: 1px;
+      height: 34px;
+      background: #cbd5e1;
+    }
+
+    /* Unlock Action Button Below Card */
+    .fp-cta-center {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+    }
+    .floorplan-unlock-btn {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 13px 36px;
+      border-radius: 999px;
       border: none;
       cursor: pointer;
       box-shadow: 0 10px 26px rgba(217, 119, 6, 0.35);
       transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
-    .floorplan-unlock-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 14px 30px rgba(217, 119, 6, 0.45); }
+    .floorplan-unlock-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 14px 32px rgba(217, 119, 6, 0.48);
+    }
 
-    /* Legend footer of board */
-    .fp-board-foot {
-      display: flex; flex-wrap: wrap; gap: 8px 22px;
-      padding: 14px 24px;
-      border-top: 1px solid rgba(70, 86, 101, 0.1);
-      font-family: var(--font-body);
-      font-size: 0.76rem; font-weight: 600; color: #64748b;
-    }
-    .fp-board-foot span { display: inline-flex; align-items: center; gap: 8px; }
-    .fp-board-foot i { width: 14px; height: 4px; border-radius: 2px; display: inline-block; }
-
-    /* Detail panel (dark premium) */
-    .fp-panel {
-      position: relative;
-      background: linear-gradient(160deg, #26394a 0%, #1b2836 100%);
-      color: #FAF8EE;
-      border-radius: 26px;
-      padding: clamp(24px, 2.6vw, 36px);
-      display: flex; flex-direction: column;
-      box-shadow: 0 30px 70px rgba(27, 40, 54, 0.28);
-      overflow: hidden;
-      font-family: var(--font-body);
-    }
-    .fp-panel::before {
-      content: ''; position: absolute; top: -80px; right: -80px; width: 240px; height: 240px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(217, 119, 6, 0.28) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .fp-panel-tag {
-      align-self: flex-start;
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase;
-      color: #f59e0b;
-      border: 1px solid rgba(245, 158, 11, 0.4);
-      padding: 6px 14px; border-radius: 999px; margin-bottom: 16px;
-    }
-    .fp-panel-title { font-family: var(--font-heading); font-size: clamp(1.6rem, 2.2vw, 2.1rem); font-weight: 700; line-height: 1.2; margin: 0 0 6px; color: #FAF8EE; }
-    .fp-panel-sub { font-size: 0.88rem; color: rgba(250, 248, 238, 0.62); margin: 0 0 22px; line-height: 1.55; }
-    .fp-spec-list { list-style: none; margin: 0 0 22px; padding: 0; border-top: 1px solid rgba(250, 248, 238, 0.12); }
-    .fp-spec-list li {
-      display: flex; justify-content: space-between; align-items: center; gap: 14px;
-      padding: 13px 0; border-bottom: 1px solid rgba(250, 248, 238, 0.12);
-      font-size: 0.88rem;
-    }
-    .fp-spec-list li span { color: rgba(250, 248, 238, 0.6); display: inline-flex; align-items: center; gap: 10px; }
-    .fp-spec-list li span i { color: #f59e0b; width: 16px; text-align: center; font-size: 0.85rem; }
-    .fp-spec-list li strong { font-weight: 700; color: #FAF8EE; text-align: right; }
-    .fp-price-box { margin-top: auto; padding-top: 6px; }
-    .fp-price-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(250, 248, 238, 0.55); }
-    .fp-price-val { font-family: var(--font-heading); font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 700; color: #f59e0b; line-height: 1.15; margin: 4px 0 18px; }
-    .fp-panel .fp-cta-unlock { width: 100%; padding: 14px; }
-    .fp-panel .fp-cta-download {
-      display: none; width: 100%; box-sizing: border-box;
-      align-items: center; justify-content: center; gap: 8px;
-      background: #FAF8EE; color: #1b2836; text-decoration: none;
-      font-size: 0.92rem; font-weight: 700; padding: 14px; border-radius: 999px;
-      transition: all 0.25s;
-    }
-    .fp-panel .fp-cta-download:hover { background: #f59e0b; color: #ffffff; transform: translateY(-2px); }
-    .fp-stage.is-unlocked .fp-cta-unlock { display: none; }
-    .fp-stage.is-unlocked .fp-cta-download { display: inline-flex; }
-    .fp-relock {
-      display: none; margin: 12px auto 0; background: none; border: none; cursor: pointer;
-      color: rgba(250, 248, 238, 0.55); font-size: 0.78rem; font-weight: 600; font-family: var(--font-body);
-    }
-    .fp-relock:hover { color: #f59e0b; }
-    .fp-stage.is-unlocked .fp-relock { display: block; }
-    .fp-note { margin: 14px 0 0; font-size: 0.72rem; color: rgba(250, 248, 238, 0.45); text-align: center; line-height: 1.5; }
-
-    /* Highlights strip */
+    /* Highlights Strip (Middle Aligned) */
     .fp-highlights {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-      margin-top: clamp(20px, 2.6vw, 30px);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 860px;
+      width: 100%;
+      margin-top: clamp(24px, 3.2vw, 36px);
     }
     .fp-hl {
-      display: flex; align-items: center; gap: 14px;
-      background: #ffffff; border: 1px solid rgba(70, 86, 101, 0.1);
-      border-radius: 18px; padding: 16px 18px;
-      box-shadow: 0 6px 18px rgba(27, 40, 54, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #ffffff;
+      border: 1px solid rgba(70, 86, 101, 0.12);
+      border-radius: 18px;
+      padding: 16px 18px;
+      box-shadow: 0 6px 18px rgba(27, 40, 54, 0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
-    .fp-hl:hover { transform: translateY(-3px); border-color: rgba(217, 119, 6, 0.4); box-shadow: 0 14px 30px rgba(217, 119, 6, 0.1); }
-    .fp-hl-ic {
-      flex: 0 0 42px; height: 42px; border-radius: 50%;
-      background: rgba(217, 119, 6, 0.12); color: #d97706;
-      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    .fp-hl:hover {
+      transform: translateY(-3px);
+      border-color: rgba(217, 119, 6, 0.4);
+      box-shadow: 0 14px 30px rgba(217, 119, 6, 0.12);
     }
-    .fp-hl b { display: block; font-family: var(--font-body); font-size: 0.9rem; color: #1b2836; font-weight: 700; }
-    .fp-hl small { font-family: var(--font-body); font-size: 0.76rem; color: #6b7a88; }
+    .fp-hl-ic {
+      flex: 0 0 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(217, 119, 6, 0.12);
+      color: #d97706;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .fp-hl b {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: #1b2836;
+      font-weight: 700;
+    }
+    .fp-hl small {
+      font-family: var(--font-body);
+      font-size: 0.76rem;
+      color: #6b7a88;
+    }
 
     @media (max-width: 960px) {
-      .fp-stage { grid-template-columns: 1fr; }
       .fp-highlights { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 520px) {
+      .fp-mini-card {
+        padding: 8px 18px;
+        gap: 18px;
+      }
+      .fp-mini-val { font-size: 0.98rem; }
+      .fp-mini-label { font-size: 0.62rem; }
       .fp-highlights { grid-template-columns: 1fr; }
       .fp-board-meta { display: none; }
     }
 
-    /* Floor Plan Unlock Modal */
+    /* ===================================================================== */
+    /* POPUP FORM MODAL (EXACT 2-COLUMN LUXURY DESIGN MATCHING IMAGE 2)      */
+    /* ===================================================================== */
     .fp-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(31, 52, 63, 0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(8, 14, 22, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 9999;
+      z-index: 99999;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
       padding: 20px;
       box-sizing: border-box;
     }
@@ -1458,41 +1617,315 @@
       opacity: 1;
       visibility: visible;
     }
-    .fp-modal-card {
-      background: #ffffff;
-      border-radius: 24px;
-      max-width: 440px;
+    .fp-modal-dialog {
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) minmax(360px, 1.32fr);
+      max-width: 880px;
       width: 100%;
-      padding: 32px 28px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(217, 119, 6, 0.25);
+      background: #0d1722;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 35px 85px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.1);
       position: relative;
-      transform: scale(0.95) translateY(10px);
-      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: scale(0.94) translateY(16px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .fp-modal-backdrop.is-open .fp-modal-card {
+    .fp-modal-backdrop.is-open .fp-modal-dialog {
       transform: scale(1) translateY(0);
     }
-    .fp-modal-close {
+
+    /* Left Column: Night Skyscraper Showcase */
+    .fp-modal-hero {
+      position: relative;
+      background: url("assets/cand3.jpg") center/cover no-repeat;
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 490px;
+      box-sizing: border-box;
+    }
+    .fp-modal-hero::before {
+      content: '';
       position: absolute;
-      top: 18px;
-      right: 18px;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13, 23, 34, 0.65) 0%, rgba(13, 23, 34, 0.94) 86%);
+      pointer-events: none;
+    }
+    .fp-modal-logo-pill {
+      position: relative;
+      z-index: 2;
+      background: #ffffff;
+      padding: 6px 14px;
+      border-radius: 8px;
+      align-self: flex-start;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fp-modal-logo-pill img {
+      height: 28px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .fp-modal-hero-bottom {
+      position: relative;
+      z-index: 2;
+    }
+    .fp-modal-loc {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.2px;
+      color: #f59e0b;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .fp-modal-proj-title {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 16px;
+      line-height: 1.15;
+      letter-spacing: -0.3px;
+    }
+    .fp-modal-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .fp-modal-feat {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #f1f5f9;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    .fp-modal-feat-icon {
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: #f1f5f9;
-      border: none;
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #64748b;
+      font-size: 0.78rem;
+      color: #ffffff;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .fp-modal-rera {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 0.68rem;
+      color: #cbd5e1;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .fp-modal-rera i {
+      color: #f59e0b;
+    }
+
+    /* Right Column: Sleek Midnight Form */
+    .fp-modal-form-wrap {
+      background: #0d1722;
+      padding: clamp(28px, 3.5vw, 40px) clamp(24px, 3vw, 36px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .fp-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.24);
+      background: transparent;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.2s;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      z-index: 5;
     }
     .fp-modal-close:hover {
-      background: #e2e8f0;
-      color: #0f172a;
+      border-color: #ffffff;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      transform: scale(1.06);
+    }
+    .fp-modal-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #f59e0b;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .fp-modal-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.45rem, 2vw, 1.8rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 8px;
+      line-height: 1.2;
+    }
+    .fp-modal-desc {
+      font-size: 0.84rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin: 0 0 22px;
+    }
+
+    /* Form Fields with Sleek Left Icons */
+    .fp-lead-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .fp-input-group {
+      position: relative;
+      width: 100%;
+    }
+    .fp-input-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748b;
+      font-size: 0.92rem;
+      pointer-events: none;
+      transition: color 0.2s ease;
+    }
+    .fp-form-input {
+      width: 100%;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 12px 20px 12px 46px;
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-family: var(--font-body);
+      outline: none;
+      transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .fp-form-input::placeholder {
+      color: #64748b;
+    }
+    .fp-form-input:focus {
+      border-color: #f59e0b;
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+    }
+    .fp-input-group:focus-within .fp-input-icon {
+      color: #f59e0b;
+    }
+    .fp-form-select {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      padding-right: 40px;
+    }
+    .fp-form-select option {
+      background: #0d1722;
+      color: #ffffff;
+    }
+    .fp-select-chevron {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748b;
+      font-size: 0.78rem;
+      pointer-events: none;
+    }
+
+    /* Checkbox */
+    .fp-checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.74rem;
+      color: #94a3b8;
+      margin: 4px 0 6px;
+      cursor: pointer;
+    }
+    .fp-checkbox {
+      accent-color: #f59e0b;
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+    .fp-checkbox-label a {
+      color: #cbd5e1;
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+    .fp-checkbox-label a:hover {
+      color: #f59e0b;
+    }
+
+    /* Form Submit Button */
+    .fp-form-submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-size: 0.96rem;
+      font-weight: 700;
+      padding: 13px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
+      letter-spacing: 0.3px;
+    }
+    .fp-form-submit-btn:hover {
+      background: linear-gradient(135deg, #fbbf24 0%, #ea580c 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.48);
+    }
+    .fp-form-footer-note {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.72rem;
+      color: #64748b;
+    }
+
+    @media (max-width: 768px) {
+      .fp-modal-dialog {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .fp-modal-hero {
+        min-height: 220px;
+        padding: 24px;
+      }
+      .fp-modal-features {
+        display: none;
+      }
+      .fp-modal-form-wrap {
+        padding: 28px 22px;
+      }
     }
 
     /* ===================================================================== */
@@ -3342,164 +3775,180 @@
   </section>
 
   <!-- ===================================================================== -->
-  <!-- 7. MASTER & FLOOR PLAN — PREMIUM EDITORIAL LAYOUT                     -->
+  <!-- 7. MASTER & FLOOR PLAN — SKYVIEW RESIDENCY / URBAN SKYLINE UI         -->
   <!-- ===================================================================== -->
   <section class="fp-sec" id="floorPlanSection">
     <div class="fp-wrap">
 
-      <div class="fp-eyebrow"><span class="fp-dash"></span> <b>07</b> &mdash; Master &amp; Floor Plan</div>
-      <h2 class="fp-headline">Layouts Designed for <em>Luxury Living</em></h2>
-      <p class="fp-lead">
-        Explore thoughtfully planned layouts where refined design, effortless functionality and timeless luxury come together to shape every square foot with purpose.
-      </p>
-
-      <div class="fp-pills">
-        <button type="button" class="floorplan-pill active" id="btnPlan2BHK" onclick="switchFloorPlan('2bhk', this)">2 BHK Luxury</button>
-        <button type="button" class="floorplan-pill" id="btnPlan3BHK" onclick="switchFloorPlan('3bhk', this)">3 BHK Imperial</button>
+      <!-- Left-Aligned Header (Title & Subtitle) -->
+      <div class="fp-header-left">
+        <div class="fp-eyebrow"><span class="fp-dash"></span> <b>07</b> &mdash; Master &amp; Floor Plan</div>
+        <h2 class="fp-headline">Layouts Designed for <em>Luxury Living</em></h2>
+        <p class="fp-lead">
+          Explore thoughtfully planned layouts where refined design, effortless functionality and timeless luxury come together to shape every square foot with purpose.
+        </p>
       </div>
 
-      <div class="fp-stage" id="floorPlanCard">
+      <!-- Middle-Aligned Interactive Content -->
+      <div class="fp-content-center">
+        <!-- Configuration Switcher Pills -->
+        <div class="fp-pills">
+          <button type="button" class="floorplan-pill active" id="btnPlan2BHK" onclick="switchFloorPlan('2bhk', this)">2 BHK Luxury</button>
+          <button type="button" class="floorplan-pill" id="btnPlan3BHK" onclick="switchFloorPlan('3bhk', this)">3 BHK Imperial</button>
+        </div>
 
-        <!-- Drawing board -->
-        <div class="fp-board">
-          <div class="fp-board-bar">
-            <span class="fp-board-tag"><i class="fa-solid fa-compass-drafting"></i> <span id="fpBoardTag">2 BHK &middot; Typical Floor</span></span>
-            <span class="fp-board-meta">Scale 1 : 100 &middot; MahaRERA Approved</span>
-          </div>
-
-          <div class="floorplan-canvas-frame">
-            <span class="fp-corner tl"></span><span class="fp-corner tr"></span>
-            <span class="fp-corner bl"></span><span class="fp-corner br"></span>
-
-            <div class="floorplan-blueprint-img" id="floorPlanSvgWrap">
-              <svg id="planBlueprintSvg" viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <pattern id="fpGrid" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#e2e8f0" stroke-width="0.8"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="400" fill="#fcfdfd"/>
-                <rect width="600" height="400" fill="url(#fpGrid)"/>
-                <path d="M 60 40 L 540 40 L 540 360 L 60 360 Z" fill="none" stroke="#1f343f" stroke-width="6"/>
-                <line x1="60" y1="130" x2="220" y2="130" stroke="#1f343f" stroke-width="4"/>
-                <line x1="220" y1="40" x2="220" y2="250" stroke="#1f343f" stroke-width="4"/>
-                <line x1="60" y1="250" x2="220" y2="250" stroke="#1f343f" stroke-width="4"/>
-                <line x1="380" y1="40" x2="380" y2="230" stroke="#1f343f" stroke-width="4"/>
-                <line x1="220" y1="230" x2="540" y2="230" stroke="#1f343f" stroke-width="4"/>
-                <line x1="380" y1="130" x2="540" y2="130" stroke="#1f343f" stroke-width="3"/>
-                <line x1="460" y1="130" x2="460" y2="230" stroke="#1f343f" stroke-width="3"/>
-                <rect x="220" y="40" width="160" height="45" fill="#fdf1dc" stroke="#d97706" stroke-width="2" stroke-dasharray="4 3"/>
-                <text x="300" y="68" font-size="11" font-weight="700" fill="#b45309" text-anchor="middle">SUNDECK BALCONY (16'0" x 5'0")</text>
-                <text x="140" y="85" font-size="12" font-weight="700" fill="#1b2836" text-anchor="middle">FOYER</text>
-                <text x="140" y="102" font-size="9" fill="#64748b" text-anchor="middle">6'6" x 6'0"</text>
-                <text x="140" y="195" font-size="13" font-weight="700" fill="#1b2836" text-anchor="middle">MODULAR KITCHEN</text>
-                <text x="140" y="212" font-size="10" fill="#64748b" text-anchor="middle">10'0" x 8'6"</text>
-                <text x="140" y="305" font-size="12" font-weight="700" fill="#1b2836" text-anchor="middle">UTILITY DRY BALCONY</text>
-                <text x="140" y="322" font-size="9" fill="#64748b" text-anchor="middle">8'0" x 4'6"</text>
-                <text x="300" y="145" font-size="15" font-weight="800" fill="#0f172a" text-anchor="middle">GRAND LIVING &amp; DINING</text>
-                <text x="300" y="166" font-size="11" fill="#475569" text-anchor="middle">19'6" x 13'0"</text>
-                <text x="460" y="85" font-size="13" font-weight="700" fill="#1b2836" text-anchor="middle">MASTER SUITE</text>
-                <text x="460" y="102" font-size="10" fill="#64748b" text-anchor="middle">13'6" x 11'0"</text>
-                <text x="420" y="180" font-size="10" font-weight="700" fill="#1b2836" text-anchor="middle">EN-SUITE</text>
-                <text x="420" y="195" font-size="8" fill="#64748b" text-anchor="middle">7'6" x 5'0"</text>
-                <text x="500" y="180" font-size="10" font-weight="700" fill="#1b2836" text-anchor="middle">DRESS</text>
-                <text x="500" y="195" font-size="8" fill="#64748b" text-anchor="middle">5'0" x 5'0"</text>
-                <text x="380" y="295" font-size="14" font-weight="700" fill="#1b2836" text-anchor="middle">GUEST BEDROOM</text>
-                <text x="380" y="315" font-size="10" fill="#64748b" text-anchor="middle">12'0" x 11'0"</text>
-                <path d="M 170 130 A 30 30 0 0 1 200 160" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2 2"/>
-                <path d="M 380 90 A 25 25 0 0 1 405 115" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2 2"/>
-                <path d="M 300 230 A 30 30 0 0 1 330 260" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2 2"/>
-              </svg>
+        <!-- Centered Floor Plan Blueprint Showcase Card -->
+        <div class="fp-card-showcase" id="floorPlanCard" onclick="openFloorPlanModal()" title="Click to open detailed layout and pricing enquiry">
+          <div class="fp-card-inner">
+            <!-- Top bar -->
+            <div class="fp-card-bar">
+              <span class="fp-board-tag"><i class="fa-solid fa-compass-drafting"></i> <span id="fpBoardTag">2 BHK &middot; Typical Floor Plan</span></span>
+              <span class="fp-board-meta">Scale 1 : 100 &middot; MahaRERA Approved</span>
             </div>
 
-            <div class="floorplan-lock-overlay" id="floorPlanLockOverlay">
-              <div class="floorplan-lock-circle"><i class="fa-solid fa-lock"></i></div>
-              <h3 class="floorplan-lock-title">Floor Plan Locked</h3>
-              <p class="floorplan-lock-text">Verify your details to view clear floor plan dimensions &amp; layouts.</p>
-              <button type="button" class="floorplan-unlock-btn" onclick="openFloorPlanModal()">
-                <i class="fa-solid fa-unlock-keyhole"></i> Unlock Floor Plan
-              </button>
-            </div>
-          </div>
+            <!-- Blueprint Image Viewport with Corner Accents -->
+            <div class="fp-image-container">
+              <span class="fp-corner tl"></span><span class="fp-corner tr"></span>
+              <span class="fp-corner bl"></span><span class="fp-corner br"></span>
 
-          <div class="fp-board-foot">
-            <span><i style="background:#1f343f"></i> Structural walls</span>
-            <span><i style="background:#d97706"></i> Sundeck / balcony</span>
-            <span><i style="background:#94a3b8"></i> Door swing</span>
+              <img src="assets/floor-plan.jpeg" alt="Skyview Residency Floor Plan Blueprint" class="fp-blueprint-img" id="fpBlueprintImg">
+
+              <!-- Floor Plan Locked Overlay (Initially Blurred & Visible Matching 2nd UI) -->
+              <div class="floorplan-lock-overlay" id="floorPlanLockOverlay">
+                <div class="floorplan-lock-circle">
+                  <i class="fa-solid fa-lock"></i>
+                </div>
+                <h3 class="floorplan-lock-title">Floor Plan Locked</h3>
+                <p class="floorplan-lock-text">Verify your details to complete floor plan dimensions &amp; layouts.</p>
+                <button type="button" class="floorplan-unlock-btn" onclick="openFloorPlanModal(event)">
+                  <i class="fa-solid fa-unlock-keyhole"></i> Unlock Floor Plan
+                </button>
+              </div>
+            </div>
+
+            <!-- Floating Mini Info Card (Exact UI Matching Image 1) -->
+            <div class="fp-mini-card">
+              <div class="fp-mini-col">
+                <span class="fp-mini-label">CARPET AREA</span>
+                <span class="fp-mini-val" id="miniCarpetVal">700 - 820 sq.ft.</span>
+              </div>
+              <div class="fp-mini-divider"></div>
+              <div class="fp-mini-col">
+                <span class="fp-mini-label">STARTING PRICE</span>
+                <span class="fp-mini-val" id="miniPriceVal">&#8377; 1.02 Cr*</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Details panel -->
-        <aside class="fp-panel">
-          <span class="fp-panel-tag" id="fpPanelTag">Type A &middot; Premium</span>
-          <h3 class="fp-panel-title" id="fpPanelTitle">2 BHK Luxury Residence</h3>
-          <p class="fp-panel-sub" id="fpPanelSub">Cross-ventilated layout with a private sundeck and vastu-aligned rooms.</p>
 
-          <ul class="fp-spec-list">
-            <li><span><i class="fa-solid fa-ruler-combined"></i> Carpet Area</span><strong id="specCarpetVal">758 - 856 sq.ft.</strong></li>
-            <li><span><i class="fa-solid fa-vector-square"></i> Built-up Area</span><strong id="fpBuiltVal">980 - 1,090 sq.ft.</strong></li>
-            <li><span><i class="fa-solid fa-umbrella-beach"></i> Balcony / Sundeck</span><strong id="fpBalconyVal">1 Viewing Deck</strong></li>
-            <li><span><i class="fa-solid fa-compass"></i> Facing</span><strong id="fpFacingVal">East / North</strong></li>
-            <li><span><i class="fa-solid fa-car"></i> Parking</span><strong id="fpParkingVal">1 Covered Bay</strong></li>
-          </ul>
-
-          <div class="fp-price-box">
-            <div class="fp-price-label">Starting Price</div>
-            <div class="fp-price-val" id="specPriceVal">&#8377; 1.48 Cr*</div>
-            <button type="button" class="floorplan-unlock-btn fp-cta-unlock" onclick="openFloorPlanModal()">
-              <i class="fa-solid fa-unlock-keyhole"></i> Unlock Floor Plan
-            </button>
-            <a href="#brochureSection" class="fp-cta-download"><i class="fa-solid fa-file-pdf"></i> Download Dimension Brochure</a>
-            <button type="button" class="fp-relock" onclick="relockFloorPlan()"><i class="fa-solid fa-lock"></i> Lock plan again</button>
-            <p class="fp-note">*Prices are indicative and subject to change. Terms &amp; conditions apply.</p>
-          </div>
-        </aside>
-      </div>
-
-      <!-- Highlights -->
-      <div class="fp-highlights">
-        <div class="fp-hl"><div class="fp-hl-ic"><i class="fa-solid fa-sun"></i></div><div><b>Vastu Compliant</b><small>Aligned room placement</small></div></div>
-        <div class="fp-hl"><div class="fp-hl-ic"><i class="fa-solid fa-wind"></i></div><div><b>Cross Ventilation</b><small>Light &amp; airy interiors</small></div></div>
-        <div class="fp-hl"><div class="fp-hl-ic"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></div><div><b>Efficient Planning</b><small>Zero wasted space</small></div></div>
-        <div class="fp-hl"><div class="fp-hl-ic"><i class="fa-solid fa-house-signal"></i></div><div><b>Smart-Home Ready</b><small>Future-proof wiring</small></div></div>
+        <!-- Middle-Aligned Highlights Strip -->
+        <div class="fp-highlights">
+          <div class="fp-hl"><div class="fp-hl-ic"><i class="fa-solid fa-sun"></i></div><div><b>Vastu Compliant</b><small>Aligned room placement</small></div></div>
+          <div class="fp-hl"><div class="fp-hl-ic"><i class="fa-solid fa-wind"></i></div><div><b>Cross Ventilation</b><small>Light &amp; airy interiors</small></div></div>
+          <div class="fp-hl"><div class="fp-hl-ic"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></div><div><b>Efficient Planning</b><small>Zero wasted space</small></div></div>
+          <div class="fp-hl"><div class="fp-hl-ic"><i class="fa-solid fa-house-signal"></i></div><div><b>Smart-Home Ready</b><small>Future-proof wiring</small></div></div>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Interactive Floor Plan Unlock Modal -->
+  <!-- ===================================================================== -->
+  <!-- 2-COLUMN LUXURY POPUP ENQUIRY MODAL (EXACT MATCH TO IMAGE 2)          -->
+  <!-- ===================================================================== -->
   <div class="fp-modal-backdrop" id="fpUnlockModal" onclick="closeFloorPlanModalOnBackdrop(event)">
-    <div class="fp-modal-card">
-      <button type="button" class="fp-modal-close" onclick="closeFloorPlanModal()"><i class="fa-solid fa-xmark"></i></button>
-      <div style="text-align: center; margin-bottom: 20px;">
-        <div class="floorplan-lock-circle" style="margin: 0 auto 12px; width: 48px; height: 48px;">
-          <i class="fa-solid fa-unlock-keyhole"></i>
+    <div class="fp-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="fpModalTitle">
+
+      <!-- Left Column: Tower Visual Showcase -->
+      <div class="fp-modal-hero">
+        <div class="fp-modal-logo-pill">
+          <img src="assets/logo.png" alt="One Roof Properties">
         </div>
-        <h3 style="font-size: 1.3rem; color: #172a3a; margin-bottom: 6px; font-weight: 700;">Unlock Floor Plan Layouts</h3>
-        <p style="font-size: 0.88rem; color: #64748b; margin: 0; line-height: 1.4;">
-          Please enter your details to view high-resolution room dimensions and official layout schematics.
-        </p>
+
+        <div class="fp-modal-hero-bottom">
+          <span class="fp-modal-loc">RAVET, PUNE</span>
+          <h3 class="fp-modal-proj-title">Urban Skyline</h3>
+
+          <div class="fp-modal-features">
+            <div class="fp-modal-feat">
+              <span class="fp-modal-feat-icon"><i class="fa-solid fa-house"></i></span>
+              <span>2, 3 BHK Residences</span>
+            </div>
+            <div class="fp-modal-feat">
+              <span class="fp-modal-feat-icon"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+              <span id="modalHeroPrice">Starting &#8377; 1.02 Cr*</span>
+            </div>
+            <div class="fp-modal-feat">
+              <span class="fp-modal-feat-icon"><i class="fa-regular fa-calendar-check"></i></span>
+              <span>Possession: December 2026</span>
+            </div>
+          </div>
+
+          <div class="fp-modal-rera">
+            <i class="fa-solid fa-certificate"></i>
+            <span>MAHARERA P52100031264</span>
+          </div>
+        </div>
       </div>
-      <form onsubmit="handleFloorPlanUnlock(event)" style="display: flex; flex-direction: column; gap: 14px;">
-        <div>
-          <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #475569; margin-bottom: 5px;">YOUR NAME</label>
-          <input type="text" required placeholder="e.g. Rahul Sharma" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.9rem; outline: none; box-sizing: border-box;">
-        </div>
-        <div>
-          <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #475569; margin-bottom: 5px;">PHONE NUMBER</label>
-          <input type="tel" required placeholder="+91 98765 43210" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.9rem; outline: none; box-sizing: border-box;">
-        </div>
-        <div>
-          <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #475569; margin-bottom: 5px;">CONFIGURATION</label>
-          <select id="fpModalConfig" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; font-size: 0.9rem; outline: none; box-sizing: border-box; background: #ffffff;">
-            <option value="2bhk">2 BHK Luxury (758 - 856 sq.ft.)</option>
-            <option value="3bhk">3 BHK Imperial (1,085 - 1,240 sq.ft.)</option>
-          </select>
-        </div>
-        <button type="submit" class="floorplan-unlock-btn" style="width: 100%; justify-content: center; margin-top: 6px; padding: 12px;">
-          <i class="fa-solid fa-unlock"></i> Verify &amp; Unlock Plan Now
+
+      <!-- Right Column: Priority Access Enquiry Form -->
+      <div class="fp-modal-form-wrap">
+        <button type="button" class="fp-modal-close" onclick="closeFloorPlanModal()" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
         </button>
-      </form>
+
+        <span class="fp-modal-badge">PRIORITY ACCESS*</span>
+        <h2 class="fp-modal-title" id="fpModalTitle">Unlock 2 BHK Luxury</h2>
+        <p class="fp-modal-desc">
+          Share your details and our sales team will get in touch with pricing, floor plans and site visit slots.
+        </p>
+
+        <form id="fpLeadForm" onsubmit="handleFloorPlanUnlock(event)" class="fp-lead-form">
+          <div class="fp-input-group">
+            <i class="fa-regular fa-user fp-input-icon"></i>
+            <input type="text" name="name" required placeholder="Full name*" class="fp-form-input">
+          </div>
+
+          <div class="fp-input-group">
+            <i class="fa-solid fa-phone fp-input-icon"></i>
+            <input type="tel" name="phone" required placeholder="Contact Number (10 digits)*" pattern="[0-9]{10}" class="fp-form-input">
+          </div>
+
+          <div class="fp-input-group">
+            <i class="fa-regular fa-envelope fp-input-icon"></i>
+            <input type="email" name="email" placeholder="Email Address" class="fp-form-input">
+          </div>
+
+          <div class="fp-input-group fp-select-group">
+            <i class="fa-regular fa-building fp-input-icon"></i>
+            <select id="fpModalConfig" name="config" class="fp-form-input fp-form-select" onchange="syncModalConfig(this.value)">
+              <option value="2bhk" selected>2 BHK - 788sq ft/1.02 Cr*</option>
+              <option value="3bhk">3 BHK - 1,120sq ft/1.48 Cr*</option>
+            </select>
+            <i class="fa-solid fa-chevron-down fp-select-chevron"></i>
+          </div>
+
+          <div class="fp-input-group">
+            <i class="fa-regular fa-comment-dots fp-input-icon"></i>
+            <input type="text" name="message" placeholder="Message (Optional)" class="fp-form-input">
+          </div>
+
+          <label class="fp-checkbox-label">
+            <input type="checkbox" required checked class="fp-checkbox">
+            <span>I agree to <a href="privacy-policy.html" target="_blank">Privacy Policy</a> &amp; <a href="terms-and-conditions.html" target="_blank">Terms &amp; Conditions</a></span>
+          </label>
+
+          <button type="submit" class="fp-form-submit-btn">
+            Submit enquiry
+          </button>
+
+          <div class="fp-form-footer-note">
+            *Your details are safe with us. no spam, ever.
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
 
@@ -4504,121 +4953,25 @@
       }
     }
 
-    // Modern Master & Floor Plan Controller (Matching Reference UI)
-    const floorPlanSpecs = {
+    // =====================================================================
+    // MODERN MASTER & FLOOR PLAN CONTROLLER (MATCHING REFERENCE UI)
+    // =====================================================================
+    const floorPlanData = {
       '2bhk': {
-        title: '2 BHK Luxury Residence',
-        carpet: '758 - 856 sq.ft.',
-        price: '₹ 1.48 Cr*',
-        tag: 'Type A · Premium', board: '2 BHK · Typical Floor', sub: 'Cross-ventilated layout with a private sundeck and vastu-aligned rooms.', built: '980 - 1,090 sq.ft.', balcony: '1 Viewing Deck', facing: 'East / North', parking: '1 Covered Bay',
-        svg: `<defs>
-                <pattern id="fpGrid2" width="28" height="28" patternUnits="userSpaceOnUse">
-                  <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#e2e8f0" stroke-width="0.75"/>
-                </pattern>
-              </defs>
-              <rect width="600" height="400" fill="#fcfdfd"/>
-              <rect width="600" height="400" fill="url(#fpGrid2)"/>
-              
-              <!-- Outer Boundary Wall -->
-              <path d="M 60 40 L 540 40 L 540 360 L 60 360 Z" fill="none" stroke="#1f343f" stroke-width="6"/>
-              
-              <!-- Partitions -->
-              <line x1="60" y1="130" x2="220" y2="130" stroke="#1f343f" stroke-width="4"/>
-              <line x1="220" y1="40" x2="220" y2="250" stroke="#1f343f" stroke-width="4"/>
-              <line x1="60" y1="250" x2="220" y2="250" stroke="#1f343f" stroke-width="4"/>
-              <line x1="380" y1="40" x2="380" y2="230" stroke="#1f343f" stroke-width="4"/>
-              <line x1="220" y1="230" x2="540" y2="230" stroke="#1f343f" stroke-width="4"/>
-              <line x1="380" y1="130" x2="540" y2="130" stroke="#1f343f" stroke-width="3"/>
-              <line x1="460" y1="130" x2="460" y2="230" stroke="#1f343f" stroke-width="3"/>
-
-              <!-- Sundeck -->
-              <rect x="220" y="40" width="160" height="45" fill="#f0f7ff" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 3"/>
-              <text x="300" y="68" font-size="11" font-weight="700" fill="#2563eb" text-anchor="middle">SUNDECK BALCONY (16'0" x 5'0")</text>
-
-              <!-- Room Labels & Dimensions -->
-              <text x="140" y="85" font-size="12" font-weight="700" fill="#172a3a" text-anchor="middle">FOYER</text>
-              <text x="140" y="102" font-size="9" fill="#64748b" text-anchor="middle">6'6" x 6'0"</text>
-
-              <text x="140" y="195" font-size="13" font-weight="700" fill="#172a3a" text-anchor="middle">MODULAR KITCHEN</text>
-              <text x="140" y="212" font-size="10" fill="#64748b" text-anchor="middle">10'0" x 8'6"</text>
-
-              <text x="140" y="305" font-size="12" font-weight="700" fill="#172a3a" text-anchor="middle">UTILITY DRY BALCONY</text>
-              <text x="140" y="322" font-size="9" fill="#64748b" text-anchor="middle">8'0" x 4'6"</text>
-
-              <text x="300" y="145" font-size="15" font-weight="800" fill="#0f172a" text-anchor="middle">GRAND LIVING &amp; DINING</text>
-              <text x="300" y="166" font-size="11" fill="#475569" text-anchor="middle">19'6" x 13'0"</text>
-
-              <text x="460" y="85" font-size="13" font-weight="700" fill="#172a3a" text-anchor="middle">MASTER SUITE</text>
-              <text x="460" y="102" font-size="10" fill="#64748b" text-anchor="middle">13'6" x 11'0"</text>
-
-              <text x="420" y="180" font-size="10" font-weight="700" fill="#172a3a" text-anchor="middle">EN-SUITE</text>
-              <text x="420" y="195" font-size="8" fill="#64748b" text-anchor="middle">7'6" x 5'0"</text>
-
-              <text x="500" y="180" font-size="10" font-weight="700" fill="#172a3a" text-anchor="middle">DRESS</text>
-              <text x="500" y="195" font-size="8" fill="#64748b" text-anchor="middle">5'0" x 5'0"</text>
-
-              <text x="380" y="295" font-size="14" font-weight="700" fill="#172a3a" text-anchor="middle">GUEST BEDROOM</text>
-              <text x="380" y="315" font-size="10" fill="#64748b" text-anchor="middle">12'0" x 11'0"</text>
-
-              <path d="M 170 130 A 30 30 0 0 1 200 160" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2 2"/>
-              <path d="M 380 90 A 25 25 0 0 1 405 115" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2 2"/>
-              <path d="M 300 230 A 30 30 0 0 1 330 260" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="2 2"/>`
+        title: '2 BHK Luxury',
+        modalTitle: 'Unlock 2 BHK Luxury',
+        board: '2 BHK · Typical Floor Plan',
+        carpet: '700 - 820 sq.ft.',
+        price: '₹ 1.02 Cr*',
+        selectVal: '2bhk'
       },
       '3bhk': {
-        title: '3 BHK Imperial Residence',
+        title: '3 BHK Imperial',
+        modalTitle: 'Unlock 3 BHK Imperial',
+        board: '3 BHK · Typical Floor Plan',
         carpet: '1,085 - 1,240 sq.ft.',
-        price: '₹ 2.15 Cr*',
-        tag: 'Type B · Imperial', board: '3 BHK · Typical Floor', sub: 'Expansive royal lounge, three suites and a panoramic sundeck for grand living.', built: '1,320 - 1,490 sq.ft.', balcony: '2 Balconies', facing: 'East / South', parking: '2 Covered Bays',
-        svg: `<defs>
-                <pattern id="fpGrid3" width="28" height="28" patternUnits="userSpaceOnUse">
-                  <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#e2e8f0" stroke-width="0.75"/>
-                </pattern>
-              </defs>
-              <rect width="600" height="400" fill="#fcfdfd"/>
-              <rect width="600" height="400" fill="url(#fpGrid3)"/>
-              
-              <!-- Outer Boundary Wall -->
-              <path d="M 45 35 L 555 35 L 555 365 L 45 365 Z" fill="none" stroke="#1f343f" stroke-width="6"/>
-              
-              <!-- 3 BHK Partitions -->
-              <line x1="190" y1="35" x2="190" y2="240" stroke="#1f343f" stroke-width="4"/>
-              <line x1="370" y1="35" x2="370" y2="240" stroke="#1f343f" stroke-width="4"/>
-              <line x1="45" y1="140" x2="190" y2="140" stroke="#1f343f" stroke-width="4"/>
-              <line x1="45" y1="240" x2="555" y2="240" stroke="#1f343f" stroke-width="4"/>
-              <line x1="210" y1="240" x2="210" y2="365" stroke="#1f343f" stroke-width="4"/>
-              <line x1="390" y1="240" x2="390" y2="365" stroke="#1f343f" stroke-width="4"/>
-
-              <!-- Balconies -->
-              <rect x="190" y="35" width="180" height="42" fill="#f0f7ff" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 3"/>
-              <text x="280" y="60" font-size="11" font-weight="700" fill="#2563eb" text-anchor="middle">PANORAMIC SUNDECK (18'0" x 5'6")</text>
-
-              <rect x="45" y="240" width="165" height="40" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="4 3"/>
-              <text x="127" y="265" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">SERVICE BALCONY</text>
-
-              <!-- Room Labels & Dimensions -->
-              <text x="117" y="88" font-size="13" font-weight="700" fill="#172a3a" text-anchor="middle">KITCHEN &amp; DINING</text>
-              <text x="117" y="106" font-size="10" fill="#64748b" text-anchor="middle">13'0" x 10'6"</text>
-
-              <text x="117" y="185" font-size="12" font-weight="700" fill="#172a3a" text-anchor="middle">UTILITY</text>
-              <text x="117" y="202" font-size="9" fill="#64748b" text-anchor="middle">7'0" x 5'0"</text>
-
-              <text x="280" y="145" font-size="16" font-weight="800" fill="#0f172a" text-anchor="middle">ROYAL LIVING LOUNGE</text>
-              <text x="280" y="168" font-size="11" fill="#475569" text-anchor="middle">22'6" x 14'0"</text>
-
-              <text x="462" y="85" font-size="13" font-weight="700" fill="#172a3a" text-anchor="middle">MASTER SUITE 1</text>
-              <text x="462" y="104" font-size="10" fill="#64748b" text-anchor="middle">15'0" x 12'6"</text>
-
-              <text x="462" y="175" font-size="11" font-weight="700" fill="#172a3a" text-anchor="middle">BATH &amp; WALK-IN</text>
-              <text x="462" y="192" font-size="9" fill="#64748b" text-anchor="middle">10'0" x 6'0"</text>
-
-              <text x="127" y="320" font-size="12" font-weight="700" fill="#172a3a" text-anchor="middle">GUEST BEDROOM</text>
-              <text x="127" y="338" font-size="9" fill="#64748b" text-anchor="middle">11'6" x 11'0"</text>
-
-              <text x="300" y="300" font-size="13" font-weight="700" fill="#172a3a" text-anchor="middle">CHILDREN'S BEDROOM</text>
-              <text x="300" y="320" font-size="10" fill="#64748b" text-anchor="middle">12'6" x 11'6"</text>
-
-              <text x="472" y="300" font-size="13" font-weight="700" fill="#172a3a" text-anchor="middle">BEDROOM 3 SUITE</text>
-              <text x="472" y="320" font-size="10" fill="#64748b" text-anchor="middle">13'0" x 11'6"</text>`
+        price: '₹ 1.48 Cr*',
+        selectVal: '3bhk'
       }
     };
 
@@ -4627,33 +4980,58 @@
     function switchFloorPlan(type, btn) {
       currentSelectedPlan = type;
       document.querySelectorAll('.floorplan-pill').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-
-      const data = floorPlanSpecs[type];
-      if (data) {
-        const carpetEl = document.getElementById('specCarpetVal');
-        const priceEl = document.getElementById('specPriceVal');
-        const svgEl = document.getElementById('planBlueprintSvg');
-        if (carpetEl) carpetEl.textContent = data.carpet;
-        if (priceEl) priceEl.textContent = data.price;
-        if (svgEl) svgEl.innerHTML = data.svg;
-        const set = (id, v) => { const el = document.getElementById(id); if (el && v) el.textContent = v; };
-        set('fpPanelTag', data.tag); set('fpPanelTitle', data.title); set('fpPanelSub', data.sub);
-        set('fpBoardTag', data.board); set('fpBuiltVal', data.built); set('fpBalconyVal', data.balcony);
-        set('fpFacingVal', data.facing); set('fpParkingVal', data.parking);
+      if (btn) {
+        btn.classList.add('active');
+      } else {
+        const targetBtn = document.getElementById(type === '2bhk' ? 'btnPlan2BHK' : 'btnPlan3BHK');
+        if (targetBtn) targetBtn.classList.add('active');
       }
-      const modalSelect = document.getElementById('fpModalConfig');
-      if (modalSelect) modalSelect.value = type;
+
+      const data = floorPlanData[type];
+      if (data) {
+        const carpetEl = document.getElementById('miniCarpetVal');
+        const priceEl = document.getElementById('miniPriceVal');
+        const boardTag = document.getElementById('fpBoardTag');
+        const modalTitle = document.getElementById('fpModalTitle');
+        const modalSelect = document.getElementById('fpModalConfig');
+        const modalPrice = document.getElementById('modalHeroPrice');
+
+        if (carpetEl) carpetEl.textContent = data.carpet;
+        if (priceEl) priceEl.innerHTML = data.price;
+        if (boardTag) boardTag.textContent = data.board;
+        if (modalTitle) modalTitle.textContent = data.modalTitle;
+        if (modalSelect) modalSelect.value = data.selectVal;
+        if (modalPrice) modalPrice.innerHTML = 'Starting ' + data.price;
+      }
     }
 
-    function openFloorPlanModal() {
+    function syncModalConfig(val) {
+      currentSelectedPlan = val;
+      const targetBtn = document.getElementById(val === '2bhk' ? 'btnPlan2BHK' : 'btnPlan3BHK');
+      switchFloorPlan(val, targetBtn);
+    }
+
+    function openFloorPlanModal(e, config) {
+      if (e && e.stopPropagation) e.stopPropagation();
+      if (config && floorPlanData[config]) {
+        const targetBtn = document.getElementById(config === '2bhk' ? 'btnPlan2BHK' : 'btnPlan3BHK');
+        switchFloorPlan(config, targetBtn);
+      } else if (currentSelectedPlan && floorPlanData[currentSelectedPlan]) {
+        switchFloorPlan(currentSelectedPlan, document.getElementById(currentSelectedPlan === '2bhk' ? 'btnPlan2BHK' : 'btnPlan3BHK'));
+      }
       const modal = document.getElementById('fpUnlockModal');
-      if (modal) modal.classList.add('is-open');
+      if (modal) {
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
     }
 
     function closeFloorPlanModal() {
       const modal = document.getElementById('fpUnlockModal');
-      if (modal) modal.classList.remove('is-open');
+      if (modal) {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
     }
 
     function closeFloorPlanModalOnBackdrop(e) {
@@ -4664,19 +5042,36 @@
 
     function handleFloorPlanUnlock(e) {
       e.preventDefault();
-      closeFloorPlanModal();
-      const card = document.getElementById('floorPlanCard');
-      if (card) {
-        card.classList.add('is-unlocked');
+      const form = e.target;
+      const submitBtn = form.querySelector('.fp-form-submit-btn');
+      const originalText = submitBtn ? submitBtn.innerHTML : 'Submit enquiry';
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Submitting Enquiry...';
       }
+
+      setTimeout(() => {
+        alert('Thank you for your interest! Your priority access request has been received. Our sales specialist will get in touch with floor plans, pricing sheets, and site visit schedules shortly.');
+        closeFloorPlanModal();
+        const card = document.getElementById('floorPlanCard');
+        if (card) {
+          card.classList.add('is-unlocked');
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
+        form.reset();
+      }, 700);
     }
 
-    function relockFloorPlan() {
-      const card = document.getElementById('floorPlanCard');
-      if (card) {
-        card.classList.remove('is-unlocked');
+    // Close modal on Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeFloorPlanModal();
       }
-    }
+    });
 
     // =====================================================================
     // 5. 3D COVERFLOW IMAGE SLIDER CONTROLLER (CONTINUOUS AUTO SLIDER)

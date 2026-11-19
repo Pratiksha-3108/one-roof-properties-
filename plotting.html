@@ -232,301 +232,28 @@
   </main>
 
   <!-- Footer (Inline CSS) -->
-  <!-- ======================== ONE ROOF LUXURY BESPOKE FOOTER ======================== -->
+        <!-- ======================== ONE ROOF SOWITECH-STYLE LUXURY FOOTER ======================== -->
   <style>
-    /* ===== BESPOKE ONE ROOF FOOTER ===== */
+    /* ===== BESPOKE ONE ROOF FOOTER (SOWITECH-INSPIRED WITH ARCHITECTURAL MARQUEE) ===== */
     .orf-footer {
       position: relative;
       width: 100%;
-      background-color: #070d14;
-      color: #e2e8f0;
-      font-family: 'Plus Jakarta Sans', 'Jost', -apple-system, sans-serif;
+      background-color: #08121E;
+      color: #94a3b8;
+      font-family: var(--body-font), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       overflow: hidden;
-      border-top: 1px solid rgba(197, 160, 89, 0.25);
-    }
-
-    /* 1. Cinematic Cloud Horizon Stage */
-    .orf-cloud-stage {
-      position: relative;
-      width: 100%;
-      min-height: clamp(260px, 30vw, 400px);
-      background-image: url('assets/footer-clouds-bg.jpg');
-      background-size: cover;
-      background-position: center 40%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .orf-cloud-stage::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 82% 28%, rgba(255, 225, 160, 0.35) 0%, rgba(255, 185, 105, 0.15) 35%, transparent 68%),
-                  linear-gradient(180deg, rgba(7, 13, 20, 0.15) 0%, rgba(7, 13, 20, 0.05) 30%, rgba(7, 13, 20, 0.8) 80%, #070d14 100%);
-      pointer-events: none;
-      z-index: 1;
-    }
-    .orf-cloud-title-wrap {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 0 20px;
-      transform: translateY(10px);
-    }
-    .orf-cloud-title {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.8rem, 8.5vw, 7.5rem);
-      line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: clamp(14px, 3.6vw, 44px);
-      padding-left: clamp(14px, 3.6vw, 44px);
-      color: #ffffff;
-      background: linear-gradient(180deg, #ffffff 0%, #ffffff 42%, rgba(255, 255, 255, 0.75) 68%, rgba(255, 255, 255, 0.12) 94%, transparent 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 6px 28px rgba(0, 0, 0, 0.5));
-      margin: 0;
-      user-select: none;
-    }
-    .orf-cloud-subtitle {
-      font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(0.72rem, 1vw, 0.92rem);
-      letter-spacing: clamp(0.25em, 0.5vw, 0.45em);
-      text-transform: uppercase;
-      color: #e5c378;
-      margin-top: 14px;
-      font-weight: 600;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
-    }
-
-    /* 2. Main Footer Navigation Body */
-    .orf-footer-body {
-      position: relative;
-      z-index: 2;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 40px clamp(24px, 5vw, 64px) 24px;
-      background: #070d14;
-    }
-    .orf-nav-row {
-      display: grid;
-      grid-template-columns: 280px 1fr 240px;
-      gap: clamp(24px, 3.5vw, 56px);
-      align-items: start;
-      padding-bottom: 44px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    /* Brand Column */
-    .orf-brand-col {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .orf-footer-logo-link {
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-    .orf-footer-logo-link:hover {
-      transform: translateY(-2px);
-    }
-    .orf-footer-logo-img {
-      height: 52px;
-      width: auto;
-      object-fit: contain;
-      filter: brightness(0) invert(1);
-    }
-    .orf-brand-tagline {
-      font-size: 0.85rem;
-      line-height: 1.55;
-      color: #94a3b8;
-      margin: 0;
-    }
-    .orf-trust-badges {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      margin-top: 4px;
-    }
-    .orf-badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 12px;
-      background: rgba(197, 160, 89, 0.1);
-      border: 1px solid rgba(197, 160, 89, 0.3);
-      border-radius: 999px;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #c5a059;
-      font-weight: 600;
-    }
-
-    /* 4 Columns Grid */
-    .orf-cols-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: clamp(16px, 2.5vw, 36px);
-    }
-    .orf-nav-group-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #ffffff;
-      margin: 0 0 16px;
-      position: relative;
-      display: inline-block;
-    }
-    .orf-nav-group-title::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 18px;
-      height: 2px;
-      background: #c5a059;
-      border-radius: 2px;
-    }
-    .orf-nav-links-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .orf-nav-links-list li a {
-      color: #94a3b8;
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: all 0.25s ease;
-      display: inline-block;
-      line-height: 1.45;
-    }
-    .orf-nav-links-list li a:hover {
-      color: #ffffff;
-      transform: translateX(4px);
-    }
-
-    /* Connect Column */
-    .orf-connect-col {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    .orf-connect-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #ffffff;
-      margin: 0;
-      position: relative;
-    }
-    .orf-connect-title::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 18px;
-      height: 2px;
-      background: #c5a059;
-      border-radius: 2px;
-    }
-    .orf-social-icons {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 6px;
-    }
-    .orf-soc-icon-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #cbd5e1;
-      font-size: 0.88rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .orf-soc-icon-btn:hover {
-      background: #c5a059;
-      border-color: #c5a059;
-      color: #070d14;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(197, 160, 89, 0.35);
-    }
-    .orf-direct-contact {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 4px;
-    }
-    .orf-direct-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #94a3b8;
-      font-size: 0.84rem;
-      text-decoration: none;
-      transition: color 0.25s ease;
-    }
-    .orf-direct-link i {
-      color: #c5a059;
-      font-size: 0.82rem;
-      width: 14px;
-    }
-    .orf-direct-link:hover {
-      color: #ffffff;
-    }
-
-    /* 3. Bottom Legal & Copyright Bar */
-    .orf-bottom-legal-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding-top: 22px;
-      font-size: 0.78rem;
-      color: #64748b;
-    }
-    .orf-legal-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-    .orf-legal-links a {
-      color: #94a3b8;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .orf-legal-links a:hover {
-      color: #ffffff;
-    }
-    .orf-legal-sep {
-      opacity: 0.3;
+      border-top: 1px solid rgba(197, 160, 89, 0.22);
     }
 
     /* Scroll To Top Button */
     .orf-scroll-top-btn {
       position: absolute;
-      top: -22px;
-      right: clamp(20px, 5vw, 64px);
-      width: 44px;
-      height: 44px;
+      top: 24px;
+      right: clamp(20px, 4vw, 48px);
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      background: #0f1923;
+      background: #0f1c2d;
       border: 1px solid rgba(197, 160, 89, 0.35);
       color: #c5a059;
       display: flex;
@@ -535,160 +262,421 @@
       cursor: pointer;
       transition: all 0.3s ease;
       z-index: 10;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
     }
     .orf-scroll-top-btn:hover {
       background: #c5a059;
-      color: #070d14;
+      color: #08121E;
       transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(197, 160, 89, 0.4);
+      box-shadow: 0 8px 22px rgba(197, 160, 89, 0.4);
+    }
+
+    /* Main 4-Column Layout */
+    .orf-footer-main {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: clamp(48px, 6vw, 76px) clamp(20px, 4vw, 40px) clamp(36px, 4.5vw, 52px);
+      display: grid;
+      grid-template-columns: 1.4fr 0.85fr 1fr 1.15fr;
+      gap: clamp(28px, 3.8vw, 56px);
+      align-items: start;
+    }
+
+    /* Column 1: Brand & Identity */
+    .orf-brand-col {
+      display: flex;
+      flex-direction: column;
+    }
+    .orf-logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      padding: 10px 18px;
+      border-radius: 12px;
+      width: fit-content;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .orf-logo-badge:hover {
+      transform: translateY(-2px);
+    }
+    .orf-badge-logo {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .orf-brand-quote {
+      font-family: var(--head-font), 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.4rem, 2vw, 1.88rem);
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.25;
+      margin: 0 0 14px;
+      letter-spacing: -0.015em;
+    }
+    .orf-brand-desc {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: #94a3b8;
+      margin: 0 0 18px;
+      max-width: 420px;
+    }
+    .orf-trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+    .orf-trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(197, 160, 89, 0.08);
+      border: 1px solid rgba(197, 160, 89, 0.28);
+      border-radius: 999px;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c5a059;
+      font-weight: 600;
+    }
+
+    /* Column Headings (QUICK LINKS, USEFUL LINKS) */
+    .orf-col-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #c5a059;
+      margin: 0 0 20px;
+      position: relative;
+    }
+    .orf-col-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+    .orf-col-list li a {
+      color: #cbd5e1;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      display: inline-block;
+      line-height: 1.45;
+    }
+    .orf-col-list li a:hover {
+      color: #ffffff;
+      transform: translateX(4px);
+    }
+
+    /* Column 4: Contact & Socials */
+    .orf-contact-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .orf-social-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .orf-social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #cbd5e1;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .orf-social-btn:hover {
+      background: #c5a059;
+      border-color: #c5a059;
+      color: #08121E;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(197, 160, 89, 0.35);
+    }
+    .orf-contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .orf-contact-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #c5a059;
+    }
+    .orf-contact-value {
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    .orf-contact-value:hover {
+      color: #c5a059;
+    }
+    .orf-contact-text {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+
+    /* ===== GIANT HORIZONTAL SCROLLING "ONE ROOF PROPERTIES" BANNER ===== */
+    .orf-marquee-banner {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      padding: clamp(24px, 3.5vw, 40px) 0 clamp(20px, 3vw, 34px);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.22);
+    }
+    .orf-marquee-track {
+      display: flex;
+      width: max-content;
+      will-change: transform;
+      animation: orfMarqueeScroll 26s linear infinite;
+    }
+    .orf-marquee-track:hover {
+      animation-play-state: paused;
+    }
+    @keyframes orfMarqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .orf-marquee-group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .orf-marquee-text {
+      font-family: var(--head-font), 'Cinzel', 'Playfair Display', Georgia, serif;
+      font-size: clamp(3.4rem, 7.8vw, 6.8rem);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35em;
+      padding: 0 clamp(16px, 2vw, 32px);
+      line-height: 1.1;
+      user-select: none;
+    }
+    .orf-marquee-chunk {
+      display: inline-block;
+      background-image: url('assets/about-building.jpg');
+      background-size: cover;
+      background-position: center 55%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.7);
+      filter: brightness(1.28) contrast(1.18) drop-shadow(0 4px 18px rgba(0, 0, 0, 0.6));
+    }
+    .orf-marquee-bullet {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: #c5a059;
+      opacity: 0.75;
+      padding: 0 clamp(12px, 1.5vw, 24px);
+      line-height: 1;
+      display: inline-block;
+      user-select: none;
+    }
+
+    /* Bottom Copyright Bar */
+    .orf-bottom-bar {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 22px clamp(20px, 4vw, 40px) 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.82rem;
+      color: #64748b;
+    }
+    .orf-bottom-copy {
+      color: #94a3b8;
+    }
+    .orf-bottom-rera {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #c5a059;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+    }
+    .orf-bottom-credits a {
+      color: #c5a059;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .orf-bottom-credits a:hover {
+      color: #ffffff;
+      text-decoration: underline;
     }
 
     /* Responsive */
-    @media (max-width: 1120px) {
-      .orf-nav-row {
-        grid-template-columns: 1fr;
-        gap: 36px;
+    @media (max-width: 1080px) {
+      .orf-footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
       }
     }
-    @media (max-width: 768px) {
-      .orf-cols-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 28px;
+    @media (max-width: 640px) {
+      .orf-footer-main {
+        grid-template-columns: 1fr;
+        gap: 32px;
       }
-      .orf-cloud-title {
-        font-size: clamp(2.2rem, 9vw, 3.8rem);
-        letter-spacing: clamp(8px, 2.5vw, 18px);
-        padding-left: clamp(8px, 2.5vw, 18px);
-      }
-      .orf-bottom-legal-bar {
+      .orf-bottom-bar {
         flex-direction: column;
         text-align: center;
-        gap: 12px;
-      }
-      .orf-legal-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
-    @media (max-width: 480px) {
-      .orf-cols-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 10px;
       }
     }
   </style>
 
   <footer class="orf-footer" aria-label="One Roof Properties Footer">
-    <!-- 1. Panoramic Cloud Horizon Stage with B E Y O N D -->
-    <div class="orf-cloud-stage">
-      <div class="orf-cloud-title-wrap">
-        <div class="orf-cloud-title" aria-label="Beyond">B E Y O N D</div>
-        <p class="orf-cloud-subtitle">ELEVATED LIVING &bull; ONE ROOF PROPERTIES &bull; PUNE</p>
+    <!-- Scroll To Top Button -->
+    <button class="orf-scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top of page">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- 1. Main Footer Navigation Grid (Sowitech Style) -->
+    <div class="orf-footer-main">
+      <!-- Column 1: Brand, Logo Badge & Vision -->
+      <div class="orf-brand-col">
+        <a href="index.html" class="orf-logo-badge" aria-label="One Roof Properties Home">
+          <img src="assets/one-roof-logo-dark.png" alt="One Roof Properties Logo" class="orf-badge-logo">
+        </a>
+        <h3 class="orf-brand-quote">
+          “Curating Pune's Prime Sanctioned Plots &amp; Luxury Estates”
+        </h3>
+        <p class="orf-brand-desc">
+          Pune's premier real estate consultancy &amp; channel partner. Delivering PMRDA sanctioned plots, bespoke luxury villas, and verified end-to-end property advisory under one trusted roof.
+        </p>
+        <div class="orf-trust-row">
+          <span class="orf-trust-pill"><i class="fa-solid fa-shield-halved"></i> MahaRERA: A52100039485</span>
+          <span class="orf-trust-pill"><i class="fa-solid fa-check-circle"></i> PMRDA Specialist</span>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="orf-links-col">
+        <h4 class="orf-col-title">QUICK LINKS</h4>
+        <ul class="orf-col-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Useful Links -->
+      <div class="orf-links-col">
+        <h4 class="orf-col-title">USEFUL LINKS</h4>
+        <ul class="orf-col-list">
+          <li><a href="plotting.html">Sanctioned Plots</a></li>
+          <li><a href="properties.html">Luxury Residences</a></li>
+          <li><a href="loan-help.html">Loan Assistance</a></li>
+          <li><a href="legal-information.html">Legal Information</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact & Socials -->
+      <div class="orf-contact-col">
+        <div class="orf-social-row">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="orf-social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="orf-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="orf-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://wa.me/919494168733" target="_blank" rel="noopener noreferrer" class="orf-social-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+
+        <div class="orf-contact-block">
+          <span class="orf-contact-label">EMAIL ADDRESS</span>
+          <a href="mailto:contact@oneroofproperties.com" class="orf-contact-value">contact@oneroofproperties.com</a>
+        </div>
+
+        <div class="orf-contact-block">
+          <span class="orf-contact-label">PHONE NO.</span>
+          <a href="tel:+919494168733" class="orf-contact-value">+91 9494168733</a>
+        </div>
+
+        <div class="orf-contact-block">
+          <span class="orf-contact-label">PUNE HEADQUARTERS</span>
+          <span class="orf-contact-text">Office No. 1601, Baner - Balewadi, Pune, Maharashtra 411045</span>
+        </div>
       </div>
     </div>
 
-    <!-- 2. Main Footer Navigation Body -->
-    <div class="orf-footer-body">
-      <!-- Back to top button -->
-      <button class="orf-scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top of page">
-        <i class="fa-solid fa-arrow-up"></i>
-      </button>
-
-      <div class="orf-nav-row">
-        <!-- Left: Logo & Identity -->
-        <div class="orf-brand-col">
-          <a href="index.html" class="orf-footer-logo-link" aria-label="One Roof Properties Home">
-            <img src="assets/one-roof-logo-white.png" alt="One Roof Properties" class="orf-footer-logo-img">
-          </a>
-          <p class="orf-brand-tagline">
-            Pune's premier real estate consultancy. Sanctioned PMRDA plotting, luxury residences, and strategic land investments under one trusted roof.
-          </p>
-          <div class="orf-trust-badges">
-            <span class="orf-badge-pill"><i class="fa-solid fa-shield-halved"></i> MahaRERA A52100039485</span>
-            <span class="orf-badge-pill"><i class="fa-solid fa-handshake"></i> PMRDA Specialist</span>
-          </div>
+    <!-- 2. Giant Horizontal Scrolling "ONE ROOF PROPERTIES" Banner (Sowitech Style) -->
+    <div class="orf-marquee-banner" aria-hidden="true">
+      <div class="orf-marquee-track">
+        <div class="orf-marquee-group">
+          <span class="orf-marquee-text">
+            <span class="orf-marquee-chunk">ONE ROOF</span>
+            <span class="orf-marquee-chunk">PROPERTIES</span>
+          </span>
+          <span class="orf-marquee-bullet">&bull;</span>
+          <span class="orf-marquee-text">
+            <span class="orf-marquee-chunk">ONE ROOF</span>
+            <span class="orf-marquee-chunk">PROPERTIES</span>
+          </span>
+          <span class="orf-marquee-bullet">&bull;</span>
+          <span class="orf-marquee-text">
+            <span class="orf-marquee-chunk">ONE ROOF</span>
+            <span class="orf-marquee-chunk">PROPERTIES</span>
+          </span>
+          <span class="orf-marquee-bullet">&bull;</span>
         </div>
-
-        <!-- Center: 4 Categorized Columns -->
-        <div class="orf-cols-grid">
-          <!-- Column 1: Company -->
-          <div class="orf-col">
-            <h3 class="orf-nav-group-title">Company</h3>
-            <ul class="orf-nav-links-list">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About One Roof</a></li>
-              <li><a href="services.html">Our Services</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-          </div>
-
-          <!-- Column 2: Plotted Land -->
-          <div class="orf-col">
-            <h3 class="orf-nav-group-title">Plotted Land</h3>
-            <ul class="orf-nav-links-list">
-              <li><a href="plotting.html">All Plotting Projects</a></li>
-              <li><a href="plotting-1.html">Greenfield Valley</a></li>
-              <li><a href="plotting-2.html">Silver Valley Phase 2</a></li>
-              <li><a href="plotting-3.html">Horizon Prime County</a></li>
-            </ul>
-          </div>
-
-          <!-- Column 3: Residential -->
-          <div class="orf-col">
-            <h3 class="orf-nav-group-title">Residential</h3>
-            <ul class="orf-nav-links-list">
-              <li><a href="properties.html">Exclusive Portfolio</a></li>
-              <li><a href="residential-1.html">Springs Haven Villas</a></li>
-              <li><a href="residential-2.html">The Grand Crest</a></li>
-              <li><a href="residential-3.html">Aura Residences</a></li>
-            </ul>
-          </div>
-
-          <!-- Column 4: Advisory & Legal -->
-          <div class="orf-col">
-            <h3 class="orf-nav-group-title">Advisory</h3>
-            <ul class="orf-nav-links-list">
-              <li><a href="loan-help.html">Home Loan Assistance</a></li>
-              <li><a href="nri-corner.html">NRI Investment Corner</a></li>
-              <li><a href="blog.html">Market Insights &amp; Blog</a></li>
-              <li><a href="legal-information.html">Legal &amp; Title Check</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Right: Connect & Direct Channels -->
-        <div class="orf-connect-col">
-          <h3 class="orf-connect-title">Connect</h3>
-          <div class="orf-social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="orf-soc-icon-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="orf-soc-icon-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="orf-soc-icon-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="orf-soc-icon-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-            <a href="https://wa.me/919494168733" target="_blank" rel="noopener noreferrer" class="orf-soc-icon-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-          </div>
-          <div class="orf-direct-contact">
-            <a href="tel:+919494168733" class="orf-direct-link"><i class="fa-solid fa-phone"></i> +91 9494168733</a>
-            <a href="mailto:contact@oneroofproperties.com" class="orf-direct-link"><i class="fa-solid fa-envelope"></i> contact@oneroofproperties.com</a>
-            <span class="orf-direct-link" style="cursor: default;"><i class="fa-solid fa-location-dot"></i> Baner - Balewadi, Pune</span>
-          </div>
+        <div class="orf-marquee-group" aria-hidden="true">
+          <span class="orf-marquee-text">
+            <span class="orf-marquee-chunk">ONE ROOF</span>
+            <span class="orf-marquee-chunk">PROPERTIES</span>
+          </span>
+          <span class="orf-marquee-bullet">&bull;</span>
+          <span class="orf-marquee-text">
+            <span class="orf-marquee-chunk">ONE ROOF</span>
+            <span class="orf-marquee-chunk">PROPERTIES</span>
+          </span>
+          <span class="orf-marquee-bullet">&bull;</span>
+          <span class="orf-marquee-text">
+            <span class="orf-marquee-chunk">ONE ROOF</span>
+            <span class="orf-marquee-chunk">PROPERTIES</span>
+          </span>
+          <span class="orf-marquee-bullet">&bull;</span>
         </div>
       </div>
+    </div>
 
-      <!-- 3. Bottom Legal / Copyright Strip -->
-      <div class="orf-bottom-legal-bar">
-        <div>Copyright &copy; 2026 One Roof Properties. All rights reserved.</div>
-        <div class="orf-legal-links">
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <span class="orf-legal-sep">&bull;</span>
-          <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
-          <span class="orf-legal-sep">&bull;</span>
-          <a href="legal-information.html">Legal Information</a>
-          <span class="orf-legal-sep">&bull;</span>
-          <a href="contact.html">Contact Us</a>
-        </div>
-        <div>MahaRERA: A52100039485 &bull; Pune, Maharashtra</div>
-      </div>
+    <!-- 3. Bottom Copyright Bar -->
+    <div class="orf-bottom-bar">
+      <div class="orf-bottom-copy">&copy; 2026 One Roof Properties Pvt. Ltd. All Rights Reserved.</div>
+      <div class="orf-bottom-rera"><i class="fa-solid fa-shield-halved"></i> MahaRERA: A52100039485 &bull; Pune</div>
+      <div class="orf-bottom-credits">Carefully crafted by <a href="https://digitalizetheglobe.com" target="_blank" rel="noopener noreferrer">Digitalize The Globe</a></div>
     </div>
   </footer>
 
